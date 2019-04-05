@@ -22,17 +22,16 @@ exports[`SearchPage to match snapshot 1`] = `
             id="search-container"
           >
             <label
-              className="controlLabel"
               htmlFor="search"
             >
               What are you looking for?
             </label>
             <div
-              className="textInputContainer"
+              className="container"
             >
               <input
                 aria-controls="results-list"
-                className="textInput "
+                className="input"
                 defaultValue=""
                 id="search"
                 onBlur={[Function]}

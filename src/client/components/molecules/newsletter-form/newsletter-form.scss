@@ -1,0 +1,34 @@
+.newsletter {
+  @include call-to-action;
+}
+
+.inputs {
+  @include for-medium-up {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 6fr 2fr 3fr;
+  }
+
+  > div[class^='text-input'],
+  > span {
+    align-self: start;
+  }
+
+  > div[class^='text-input'] {
+    @include for-small-only {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+
+    @include for-medium-up {
+      margin-bottom: 0;
+    }
+  }
+
+  // align button against text inputs instead of labels
+  :global(.button) {
+    position: relative;
+    top: 28px;
+  }
+}

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import classNames from 'classnames'
 
 import styles from './text-input.scss'
 import { FailureIcon, FormErrorMessage, SuccessIcon, SearchIcon, ValidationIcon } from 'atoms'
@@ -19,11 +20,6 @@ class TextInput extends React.Component {
     } else {
       return null
     }
-  }
-
-  inputValidation(validationState) {
-    const { isValid } = this.state
-    return validationState === 'error' || !isValid ? styles.textInputInvalid : styles.textInput
   }
 
   errorMessage(validationState) {
@@ -81,27 +77,32 @@ class TextInput extends React.Component {
       validationFunction,
       ...rest
     } = this.props
+    const { isValid } = this.state
+
     const validationIcon = this.iconValidation(validationState)
     const errorMessage = this.errorMessage(validationState)
-    //todo: use aria-labelledby in the input instead of htmlFor in the label
+
+    // TODO: use aria-labelledby in the input instead of htmlFor in the label
     return (
       <div
         id={id + '-container'}
         className={`${styles.inputContainer} ${className ? className : ''}`}
         hidden={hidden}
       >
-        <label htmlFor={id} className={labelStyle ? labelStyle : styles.controlLabel}>
+        <label htmlFor={id} className={labelStyle && labelStyle}>
           {label}
         </label>
-        <div className={styles.textInputContainer}>
+        <div className={styles.container}>
           <input
             id={id}
             {...rest}
             onChange={this.handleChange.bind(this)}
             onBlur={this.handleBlur.bind(this)}
-            className={`${this.inputValidation(validationState)} ${
-              showSearchIcon ? styles.searchIconPadding : ''
-            }`}
+            className={classNames({
+              [styles.input]: true,
+              [styles.invalid]: validationState === 'error' || !isValid,
+              [styles.searchIconPadding]: showSearchIcon
+            })}
           />
           {showSearchIcon ? (
             <div className={styles.searchIcon}>

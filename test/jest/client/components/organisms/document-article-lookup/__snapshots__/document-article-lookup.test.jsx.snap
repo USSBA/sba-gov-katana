@@ -19,16 +19,15 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           id="document-lookup-text-input-container"
         >
           <label
-            className="controlLabel"
             htmlFor="document-lookup-text-input"
           >
             Search
           </label>
           <div
-            className="textInputContainer"
+            className="container"
           >
             <input
-              className="textInput "
+              className="input"
               id="document-lookup-text-input"
               onBlur={[Function]}
               onChange={[Function]}

@@ -2461,14 +2461,13 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
         id="document-lookup-container"
       >
         <label
-          className="controlLabel"
           htmlFor="document-lookup"
         />
         <div
-          className="textInputContainer"
+          className="container"
         >
           <input
-            className="textInput "
+            className="input"
             id="document-lookup"
             onBlur={[Function]}
             onChange={[Function]}
