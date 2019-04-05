@@ -15,7 +15,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="searchBox"
       >
         <div
-          className="inputContainer "
+          className="text-input textInput"
           id="document-lookup-text-input-container"
         >
           <label

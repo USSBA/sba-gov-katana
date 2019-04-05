@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import classNames from 'classnames'
+import { kebabCase } from 'lodash'
 
 import styles from './text-input.scss'
 import { FailureIcon, FormErrorMessage, SuccessIcon, SearchIcon, ValidationIcon } from 'atoms'
@@ -85,8 +86,12 @@ class TextInput extends React.Component {
     // TODO: use aria-labelledby in the input instead of htmlFor in the label
     return (
       <div
-        id={id + '-container'}
-        className={`${styles.inputContainer} ${className ? className : ''}`}
+        id={kebabCase(`${id} container`)}
+        className={classNames({
+          'text-input': true,
+          [styles.textInput]: true,
+          [className]: className
+        })}
         hidden={hidden}
       >
         <label htmlFor={id} className={labelStyle && labelStyle}>
