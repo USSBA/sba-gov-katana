@@ -18,7 +18,7 @@ exports[`SearchPage to match snapshot 1`] = `
           className="textInputContainer"
         >
           <div
-            className="inputContainer "
+            className="text-input textInput"
             id="search-container"
           >
             <label

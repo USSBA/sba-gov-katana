@@ -2457,7 +2457,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="searchBox"
     >
       <div
-        className="inputContainer "
+        className="text-input textInput"
         id="document-lookup-container"
       >
         <label
