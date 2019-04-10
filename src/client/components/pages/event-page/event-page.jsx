@@ -30,8 +30,8 @@ class EventPage extends Component {
     const { id } = this.props
     const { id: nextId } = nextProps
 
-    // Re-render the page with new document data when we remain on `/documents`
-    // and the DocumentPage but the location has changed.
+    // Re-render the page with new event data when we remain on `/event`
+    // and the EventPage but the id has changed.
     if (id !== nextId) {
       return this.fetchEvent(nextId)
     }
