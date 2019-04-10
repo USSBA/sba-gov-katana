@@ -203,7 +203,7 @@ class PersonLookupPage extends Component {
       } else {
         // TODO: DRY from search template
         results = (
-          <div className={styles.noResults}>
+          <div className={styles.noResults} data-cy="no-results">
             <h3>Sorry, we didn't find any results that matched your search</h3>
             <p>Try changing your search terms or tweaking your filters.</p>
           </div>
