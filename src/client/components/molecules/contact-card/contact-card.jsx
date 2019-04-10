@@ -98,7 +98,7 @@ const ContactCard = props => {
 
   return (
     <div className={contactCardClassName}>
-      <h6>{title}</h6>
+      <h6 data-cy="contact title">{title}</h6>
       {/* TODO: cleanup double filter */}
       {fields
         .filter(emptyFieldFilter)

@@ -35,7 +35,9 @@ exports[`Person page renders correctly 1`] = `
       <div
         className="contact-card box contactCard"
       >
-        <h6 />
+        <h6
+          data-cy="contact title"
+        />
         <div
           className="row"
           data-cy="contact phone"
