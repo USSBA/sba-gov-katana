@@ -107,7 +107,7 @@ class DetailCard extends React.Component {
 
       if (pageType === 'person') {
         return (
-          <div className={className}>
+          <div className={className} data-cy="detail-card">
             <h6>
               <Link to={data.url}>{data.name}</Link>
             </h6>

@@ -73,11 +73,11 @@
 }
 
 // Select the inner container in the detail card.
-.container :global(.document-card-container) > div:first-child {
+.container :global(.card-container) > div:first-child {
   min-height: 135px;
 }
 
 // Select the download link in the detail card.
-.container :global(.document-card-container) > div:last-child {
+.container :global(.card-container) > div:last-child {
   margin-top: 20px;
 }

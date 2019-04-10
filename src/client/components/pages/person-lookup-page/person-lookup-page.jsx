@@ -232,6 +232,7 @@ class PersonLookupPage extends Component {
             >
               <TextInput
                 className={styles.search}
+                data-cy="search"
                 id="search"
                 label="Search"
                 onChange={({ target: { value } }) => this.setState({ search: value })}

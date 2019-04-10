@@ -308,10 +308,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       className="documentCardCollection"
     >
       <div
-        className="document-card-collection detailCardCollection"
+        className="detail-card-collection detailCardCollection"
+        data-cy="detail-card-collection"
       >
         <div
           className="card-container card"
+          data-cy="detail-card-collection-container"
         >
           <div
             className="detail-card detailCard"
@@ -353,6 +355,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         </div>
         <div
           className="card-container card"
+          data-cy="detail-card-collection-container"
         >
           <div
             className="detail-card detailCard"
@@ -394,6 +397,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         </div>
         <div
           className="card-container card"
+          data-cy="detail-card-collection-container"
         >
           <div
             className="detail-card detailCard"
@@ -435,6 +439,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         </div>
         <div
           className="card-container card"
+          data-cy="detail-card-collection-container"
         >
           <div
             className="detail-card detailCard"
