@@ -1,0 +1,14 @@
+foresee:
+    environment: staging
+server:
+    fqdn: pat.ussba.io
+features:
+    showSbic: false
+    urlRedirect:
+        tableName: UrlToNodePat
+        enabled: true
+    drupalRedirect:
+        enabled: true
+        tableName: UrlToUrlRedirectPat
+sizestandards:
+    endpoint: 27b9p5e3fk.execute-api.us-east-1.amazonaws.com/LATEST/

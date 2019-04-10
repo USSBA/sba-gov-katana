@@ -68,6 +68,7 @@ workflows:
             - staging
             - mint
             - amy
+            - pat
             - /int-\w+/
             - /RELEASE-\d+/
     - build-package:
@@ -83,6 +84,7 @@ workflows:
             - staging
             - mint
             - amy
+            - pat
             - /int-\w+/
             - /RELEASE-\d+/
     - upload-package:
@@ -94,6 +96,7 @@ workflows:
           tags:
             only:
             - amy
+            - pat
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
@@ -107,6 +110,7 @@ workflows:
           tags:
             only:
             - amy
+            - pat
             - /int-\w+/
             - /RELEASE-\d+/
         context: sba-gov-lower
@@ -281,6 +285,9 @@ jobs:
                 ;;
               amy)
                 export ASSET_BUCKET_NAME_PREFIX=amy.ussba.io
+                ;;
+              pat)
+                export ASSET_BUCKET_NAME_PREFIX=pat.ussba.io
                 ;;
               *)
                 export ASSET_BUCKET_NAME_PREFIX=${ENVIRONMENT}
