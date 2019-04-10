@@ -109,7 +109,9 @@ class DetailCard extends React.Component {
         return (
           <div className={className} data-cy="detail-card">
             <h6>
-              <Link to={data.url}>{data.name}</Link>
+              <Link data-cy="detail-card-title" to={data.url}>
+                {data.name}
+              </Link>
             </h6>
             <DecorativeDash width={30} />
             <ContactCard

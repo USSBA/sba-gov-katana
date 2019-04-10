@@ -5,7 +5,7 @@ exports[`ContactCard should render with all the information 1`] = `
   className="contact-card box contactCard"
 >
   <h6
-    data-cy="contact title"
+    data-cy="contact card title"
   >
     Grand Moff Tarkin
   </h6>
