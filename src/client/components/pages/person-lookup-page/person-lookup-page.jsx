@@ -148,18 +148,20 @@ class PersonLookupPage extends Component {
           persons = persons.filter(({ office: { name } }) => name === office)
         }
 
-        persons = persons.sort((a, b) => {
-          if (isEmpty(a.lastName)) {
-            return 1
-          }
-          if (isEmpty(b.lastName)) {
-            return -1
-          }
+        if (persons?.length) {
+          persons = persons.sort((a, b) => {
+            if (isEmpty(a.lastName)) {
+              return 1
+            }
 
-          const ascending = a.lastName.localeCompare(b.lastName)
-          return order === 'ascending' ? ascending : ascending * -1
-        })
+            if (isEmpty(b.lastName)) {
+              return -1
+            }
 
+            const ascending = a.lastName.localeCompare(b.lastName)
+            return order === 'ascending' ? ascending : ascending * -1
+          })
+        }
         this.setState({ persons })
       }
     }
@@ -215,52 +217,51 @@ class PersonLookupPage extends Component {
       <div>
         <div className={styles.banner}>
           <h2>People Lookup</h2>
-          {persons?.length && (
-            <form
-              onSubmit={event => {
-                event.preventDefault()
+          <form
+            onSubmit={event => {
+              event.preventDefault()
 
-                reload(pathname, {
-                  // Always reset to the first page
-                  pageNumber: 1,
-                  pageSize,
-                  ...(search && { search }),
-                  ...(office && { office }),
-                  ...(order && { order })
-                })
-              }}
-            >
-              <TextInput
-                className={styles.search}
-                data-cy="search"
-                id="search"
-                label="Search"
-                onChange={({ target: { value } }) => this.setState({ search: value })}
-                placeholder="Search by name, title, or office"
-                showSearchIcon={true}
-              />
-              <MultiSelect
-                className={styles.select}
-                id="office"
-                label="Office"
-                onChange={({ value }) => this.setState({ office: value })}
-                options={this.officeOptions}
-                value={office}
-              />
-              <MultiSelect
-                className={styles.select}
-                id="sort-by"
-                label="Sort by"
-                onChange={({ value }) => this.setState({ order: value })}
-                options={[
-                  { label: 'Name A-Z', value: 'ascending' },
-                  { label: 'Name Z-A', value: 'descending' }
-                ]}
-                value={order}
-              />
-              <Button primary alternate children="apply" data-cy="search button" />
-            </form>
-          )}
+              reload(pathname, {
+                // Always reset to the first page
+                pageNumber: 1,
+                pageSize,
+                ...(search && { search }),
+                ...(office && { office }),
+                ...(order && { order })
+              })
+            }}
+          >
+            <TextInput
+              className={styles.search}
+              data-cy="search"
+              id="search"
+              label="Search"
+              onChange={({ target: { value } }) => this.setState({ search: value })}
+              placeholder="Search by name, title, or office"
+              value={search}
+              showSearchIcon={true}
+            />
+            <MultiSelect
+              className={styles.select}
+              id="office"
+              label="Office"
+              onChange={({ value }) => this.setState({ office: value })}
+              options={this.officeOptions}
+              value={office}
+            />
+            <MultiSelect
+              className={styles.select}
+              id="sort-by"
+              label="Sort by"
+              onChange={({ value }) => this.setState({ order: value })}
+              options={[
+                { label: 'Name A-Z', value: 'ascending' },
+                { label: 'Name Z-A', value: 'descending' }
+              ]}
+              value={order}
+            />
+            <Button primary alternate children="apply" data-cy="search button" />
+          </form>
         </div>
         <div className={styles.results}>{results}</div>
       </div>
