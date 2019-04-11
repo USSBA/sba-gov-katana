@@ -1,0 +1,2857 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Front Page Hero should render correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <footer
+    className="footer"
+    id="sba-footer"
+  >
+    <div
+      className="footerLinks"
+    >
+      <div
+        className="desktopFooterLinks"
+      >
+        <PageLinkGroup
+          id="footer-group-0"
+          langCode="en"
+          links={
+            Array [
+              Object {
+                "en": Object {
+                  "text": "About SBA",
+                  "url": "/about-sba",
+                },
+                "es": Object {
+                  "text": "Acerca de la SBA",
+                  "url": "/about-sba",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Contact SBA",
+                  "url": "/about-sba/what-we-do/contact-sba",
+                },
+                "es": Object {
+                  "text": "Contacte con la SBA",
+                  "url": "/about-sba/what-we-do/contact-sba",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "SBA en Español",
+                  "url": "/bienvenido-a-la-en-espanol",
+                },
+                "es": Object {
+                  "text": "SBA en español",
+                  "url": "/bienvenido-a-la-en-espanol",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Media and Press Relations",
+                  "url": "/about-sba/sba-newsroom",
+                },
+                "es": Object {
+                  "text": "Relaciones con los medios y la prensa",
+                  "url": "/about-sba/sba-newsroom",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "SBA Locations",
+                  "url": "/about-sba/sba-locations",
+                },
+                "es": Object {
+                  "text": "Ubicaciones de la SBA",
+                  "url": "/about-sba/sba-locations",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "SBA Team",
+                  "url": "/about-sba/sba-team",
+                },
+                "es": Object {
+                  "text": "Equipo de la SBA",
+                  "url": "/about-sba/sba-team",
+                },
+              },
+            ]
+          }
+          title="Customer Service"
+        />
+      </div>
+      <div
+        className="desktopFooterLinks"
+      >
+        <PageLinkGroup
+          id="footer-group-1"
+          langCode="en"
+          links={
+            Array [
+              Object {
+                "en": Object {
+                  "text": "Site Map",
+                  "url": "/sitemap",
+                },
+                "es": Object {
+                  "text": "Mapa del sitio",
+                  "url": "/sitemap",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Privacy Policy",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                },
+                "es": Object {
+                  "text": "Política de privacidad",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Linking Policy",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy",
+                },
+                "es": Object {
+                  "text": "Política de enlaces",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Accessibility",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/accessibility",
+                },
+                "es": Object {
+                  "text": "Accesibilidad",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/accessibility",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Disclaimers",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer",
+                },
+                "es": Object {
+                  "text": "Avisos legales",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Social Media",
+                  "url": "/tools/events#events-page",
+                },
+                "es": Object {
+                  "text": "Redes sociales",
+                  "url": "/tools/events#events-page",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Data Store",
+                  "url": "/about-sba/sba-performance/open-government/digital-sba/open-data",
+                },
+                "es": Object {
+                  "text": "Almacenamiento de datos",
+                  "url": "/about-sba/sba-performance/open-government/digital-sba/open-data",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Blog",
+                  "url": "/blogs",
+                },
+                "es": Object {
+                  "text": "Blog",
+                  "url": "/blogs",
+                },
+              },
+            ]
+          }
+          title="About SBA.gov"
+        />
+      </div>
+      <div
+        className="desktopFooterLinks"
+      >
+        <PageLinkGroup
+          id="footer-group-2"
+          langCode="en"
+          links={
+            Array [
+              Object {
+                "en": Object {
+                  "text": "Freedom of Information Act",
+                  "url": "/about-sba/sba-performance/open-government/foia",
+                },
+                "es": Object {
+                  "text": "Ley de Libertad de Información",
+                  "url": "/about-sba/sba-performance/open-government/foia",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "No Fear Act",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act",
+                },
+                "es": Object {
+                  "text": "Ley de Notificación y Antidiscriminación y Represalias para Empleados Federales (ley No-FEAR)",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Report Fraud, Waste, and Abuse",
+                  "url": "/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse",
+                },
+                "es": Object {
+                  "text": "Informe de fraude, dispendio y abuso",
+                  "url": "/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Initiatives",
+                  "url": "/about-sba/sba-initiatives",
+                },
+                "es": Object {
+                  "text": "Iniciativas",
+                  "url": "/about-sba/sba-initiatives",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Plain Language",
+                  "url": "/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page",
+                },
+                "es": Object {
+                  "text": "Lenguaje claro",
+                  "url": "/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page",
+                },
+              },
+            ]
+          }
+          title="SBA Information"
+        />
+      </div>
+      <div
+        className="desktopFooterLinks"
+      >
+        <PageLinkGroup
+          id="footer-group-3"
+          langCode="en"
+          links={
+            Array [
+              Object {
+                "en": Object {
+                  "text": "Strategic Planning",
+                  "url": "/about-sba/sba-performance/strategic-planning",
+                },
+                "es": Object {
+                  "text": "Planificación estratégica",
+                  "url": "/about-sba/sba-performance/strategic-planning",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Performance, Budget, and Financing",
+                  "url": "/about-sba/sba-performance/performance-budget-finances",
+                },
+                "es": Object {
+                  "text": "Desempeño, presupuesto y financiamiento",
+                  "url": "/about-sba/sba-performance/performance-budget-finances",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Open Government",
+                  "url": "/about-sba/sba-performance/open-government",
+                },
+                "es": Object {
+                  "text": "Gobierno abierto",
+                  "url": "/about-sba/sba-performance/open-government",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Policy and Regulations",
+                  "url": "/about-sba/sba-performance/policy-regulations",
+                },
+                "es": Object {
+                  "text": "Política y normativa",
+                  "url": "/about-sba/sba-performance/policy-regulations",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Eliminating Fraud, Waste, and Abuse",
+                  "url": "/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse",
+                },
+                "es": Object {
+                  "text": "Eliminación de fraude, despilfarro y abuso",
+                  "url": "/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse",
+                },
+              },
+            ]
+          }
+          title="SBA Performance"
+        />
+      </div>
+      <div
+        className="desktopFooterLinks"
+      >
+        <PageLinkGroup
+          id="footer-group-4"
+          langCode="en"
+          links={
+            Array [
+              Object {
+                "en": Object {
+                  "text": "Inspector General",
+                  "url": "/office-of-inspector-general",
+                },
+                "es": Object {
+                  "text": "Inspector general",
+                  "url": "/office-of-inspector-general",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Advocacy",
+                  "url": "/advocacy",
+                },
+                "es": Object {
+                  "text": "Defensa",
+                  "url": "/advocacy",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Hearings and Appeals",
+                  "url": "/oha",
+                },
+                "es": Object {
+                  "text": "Audiencias y apelaciones",
+                  "url": "/oha",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Ombudsman",
+                  "url": "/ombudsman",
+                },
+                "es": Object {
+                  "text": "Defensor general",
+                  "url": "/ombudsman",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "WhiteHouse.gov",
+                  "url": "https://www.whitehouse.gov",
+                },
+                "es": Object {
+                  "text": "WhiteHouse.gov",
+                  "url": "https://www.whitehouse.gov",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "USA.gov",
+                  "url": "https://www.usa.gov",
+                },
+                "es": Object {
+                  "text": "USA.gov",
+                  "url": "https://www.usa.gov",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Regulations.gov",
+                  "url": "https://www.regulations.gov",
+                },
+                "es": Object {
+                  "text": "Regulations.gov",
+                  "url": "https://www.regulations.gov",
+                },
+              },
+            ]
+          }
+          title="Oversight"
+        />
+      </div>
+      <div
+        className="desktopFooterLinks"
+      >
+        <PageLinkGroup
+          id="footer-group-5"
+          langCode="en"
+          links={
+            Array [
+              Object {
+                "en": Object {
+                  "text": "Online Training",
+                  "url": "/tools/sba-learning-center/search/training",
+                },
+                "es": Object {
+                  "text": "Capacitación en línea",
+                  "url": "/tools/sba-learning-center/search/training",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Create a Business Plan",
+                  "url": "/tools/business-plan",
+                },
+                "es": Object {
+                  "text": "Cree un plan de negocios",
+                  "url": "/tools/business-plan",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Find Events",
+                  "url": "/events/find/",
+                },
+                "es": Object {
+                  "text": "Encuentre eventos",
+                  "url": "/events/find/",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Qualify for Government Contracts",
+                  "url": "/size-standards",
+                },
+                "es": Object {
+                  "text": "Gane contratos del gobierno",
+                  "url": "/size-standards",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "SBA Videos",
+                  "url": "/videos",
+                },
+                "es": Object {
+                  "text": "Videos de la SBA",
+                  "url": "/videos",
+                },
+              },
+            ]
+          }
+          title="Tools and Features"
+        />
+      </div>
+    </div>
+    <div
+      className="tabletFooterLinks"
+    >
+      <PageLinkGroup
+        id="tablet-footer-group-1"
+        langCode="en"
+        links={
+          Array [
+            Object {
+              "en": Object {
+                "text": "What We Do",
+                "url": "/about-sba/what-we-do",
+              },
+              "es": Object {
+                "text": "Nuestro trabajo",
+                "url": "/about-sba/what-we-do",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "SBA Performance",
+                "url": "/about-sba/sba-performance",
+              },
+              "es": Object {
+                "text": "Desempeño de la SBA",
+                "url": "/about-sba/sba-performance",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "Contact SBA",
+                "url": "/about-sba/what-we-do/contact-sba",
+              },
+              "es": Object {
+                "text": "Contacte con la SBA",
+                "url": "/about-sba/what-we-do/contact-sba",
+              },
+            },
+          ]
+        }
+      />
+      <PageLinkGroup
+        id="tablet-footer-group-2"
+        langCode="en"
+        links={
+          Array [
+            Object {
+              "en": Object {
+                "text": "SBA Team",
+                "url": "/about-sba/sba-team",
+              },
+              "es": Object {
+                "text": "Equipo de la SBA",
+                "url": "/about-sba/sba-team",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "FOIA",
+                "url": "/about-sba/sba-performance/open-government/foia",
+              },
+              "es": Object {
+                "text": "FOIA",
+                "url": "/about-sba/sba-performance/open-government/foia",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "Privacy Policy",
+                "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+              },
+              "es": Object {
+                "text": "Política de privacidad",
+                "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+              },
+            },
+          ]
+        }
+      />
+      <PageLinkGroup
+        id="tablet-footer-group-3"
+        langCode="en"
+        links={
+          Array [
+            Object {
+              "en": Object {
+                "text": "Newsroom",
+                "url": "/about-sba/sba-newsroom",
+              },
+              "es": Object {
+                "text": "Sala de prensa",
+                "url": "/about-sba/sba-newsroom",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "Oversight & Advocacy",
+                "url": "/about-sba/oversight-advocacy",
+              },
+              "es": Object {
+                "text": "Supervisión y defensa",
+                "url": "/about-sba/oversight-advocacy",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "SBA en Español",
+                "url": "/bienvenido-a-la-en-espanol",
+              },
+              "es": Object {
+                "text": "SBA en español",
+                "url": "/bienvenido-a-la-en-espanol",
+              },
+            },
+          ]
+        }
+      />
+    </div>
+    <div
+      className="mobileFooterLinks"
+    >
+      <PageLinkGroup
+        id="mobile-footer-group-1"
+        langCode="en"
+        links={
+          Array [
+            Object {
+              "en": Object {
+                "text": "What We Do",
+                "url": "/about-sba/what-we-do",
+              },
+              "es": Object {
+                "text": "Nuestro trabajo",
+                "url": "/about-sba/what-we-do",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "Newsroom",
+                "url": "/about-sba/sba-newsroom",
+              },
+              "es": Object {
+                "text": "Sala de prensa",
+                "url": "/about-sba/sba-newsroom",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "FOIA",
+                "url": "/about-sba/sba-performance/open-government/foia",
+              },
+              "es": Object {
+                "text": "FOIA",
+                "url": "/about-sba/sba-performance/open-government/foia",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "Contact SBA",
+                "url": "/about-sba/what-we-do/contact-sba",
+              },
+              "es": Object {
+                "text": "Contacte con la SBA",
+                "url": "/about-sba/what-we-do/contact-sba",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "SBA en Español",
+                "url": "/bienvenido-a-la-en-espanol",
+              },
+              "es": Object {
+                "text": "SBA en español",
+                "url": "/bienvenido-a-la-en-espanol",
+              },
+            },
+          ]
+        }
+      />
+      <PageLinkGroup
+        id="mobile-footer-group-2"
+        langCode="en"
+        links={
+          Array [
+            Object {
+              "en": Object {
+                "text": "SBA Team",
+                "url": "/about-sba/sba-team",
+              },
+              "es": Object {
+                "text": "Equipo de la SBA",
+                "url": "/about-sba/sba-team",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "SBA Performance",
+                "url": "/about-sba/sba-performance",
+              },
+              "es": Object {
+                "text": "Desempeño de la SBA",
+                "url": "/about-sba/sba-performance",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "Oversight & Advocacy",
+                "url": "/about-sba/oversight-advocacy",
+              },
+              "es": Object {
+                "text": "Supervisión y defensa",
+                "url": "/about-sba/oversight-advocacy",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "Privacy Policy",
+                "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+              },
+              "es": Object {
+                "text": "Política de privacidad",
+                "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+              },
+            },
+            Object {
+              "en": Object {
+                "text": "Blog",
+                "url": "/blogs",
+              },
+              "es": Object {
+                "text": "Blog",
+                "url": "/blogs",
+              },
+            },
+          ]
+        }
+      />
+    </div>
+    <hr
+      className="desktopRule"
+    />
+    <SocialMediaLinkSet />
+    <NewsletterForm
+      footer={true}
+      title="Sign up for SBA email updates"
+    />
+    <hr
+      className="mobileRule"
+    />
+    <Address
+      id="sba-footer-address"
+    />
+  </footer>,
+  "nodes": Array [
+    <footer
+      className="footer"
+      id="sba-footer"
+    >
+      <div
+        className="footerLinks"
+      >
+        <div
+          className="desktopFooterLinks"
+        >
+          <PageLinkGroup
+            id="footer-group-0"
+            langCode="en"
+            links={
+              Array [
+                Object {
+                  "en": Object {
+                    "text": "About SBA",
+                    "url": "/about-sba",
+                  },
+                  "es": Object {
+                    "text": "Acerca de la SBA",
+                    "url": "/about-sba",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Contact SBA",
+                    "url": "/about-sba/what-we-do/contact-sba",
+                  },
+                  "es": Object {
+                    "text": "Contacte con la SBA",
+                    "url": "/about-sba/what-we-do/contact-sba",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "SBA en Español",
+                    "url": "/bienvenido-a-la-en-espanol",
+                  },
+                  "es": Object {
+                    "text": "SBA en español",
+                    "url": "/bienvenido-a-la-en-espanol",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Media and Press Relations",
+                    "url": "/about-sba/sba-newsroom",
+                  },
+                  "es": Object {
+                    "text": "Relaciones con los medios y la prensa",
+                    "url": "/about-sba/sba-newsroom",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "SBA Locations",
+                    "url": "/about-sba/sba-locations",
+                  },
+                  "es": Object {
+                    "text": "Ubicaciones de la SBA",
+                    "url": "/about-sba/sba-locations",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "SBA Team",
+                    "url": "/about-sba/sba-team",
+                  },
+                  "es": Object {
+                    "text": "Equipo de la SBA",
+                    "url": "/about-sba/sba-team",
+                  },
+                },
+              ]
+            }
+            title="Customer Service"
+          />
+        </div>
+        <div
+          className="desktopFooterLinks"
+        >
+          <PageLinkGroup
+            id="footer-group-1"
+            langCode="en"
+            links={
+              Array [
+                Object {
+                  "en": Object {
+                    "text": "Site Map",
+                    "url": "/sitemap",
+                  },
+                  "es": Object {
+                    "text": "Mapa del sitio",
+                    "url": "/sitemap",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Privacy Policy",
+                    "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                  },
+                  "es": Object {
+                    "text": "Política de privacidad",
+                    "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Linking Policy",
+                    "url": "/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy",
+                  },
+                  "es": Object {
+                    "text": "Política de enlaces",
+                    "url": "/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Accessibility",
+                    "url": "/about-sba/sba-performance/open-government/about-sbagov-website/accessibility",
+                  },
+                  "es": Object {
+                    "text": "Accesibilidad",
+                    "url": "/about-sba/sba-performance/open-government/about-sbagov-website/accessibility",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Disclaimers",
+                    "url": "/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer",
+                  },
+                  "es": Object {
+                    "text": "Avisos legales",
+                    "url": "/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Social Media",
+                    "url": "/tools/events#events-page",
+                  },
+                  "es": Object {
+                    "text": "Redes sociales",
+                    "url": "/tools/events#events-page",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Data Store",
+                    "url": "/about-sba/sba-performance/open-government/digital-sba/open-data",
+                  },
+                  "es": Object {
+                    "text": "Almacenamiento de datos",
+                    "url": "/about-sba/sba-performance/open-government/digital-sba/open-data",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Blog",
+                    "url": "/blogs",
+                  },
+                  "es": Object {
+                    "text": "Blog",
+                    "url": "/blogs",
+                  },
+                },
+              ]
+            }
+            title="About SBA.gov"
+          />
+        </div>
+        <div
+          className="desktopFooterLinks"
+        >
+          <PageLinkGroup
+            id="footer-group-2"
+            langCode="en"
+            links={
+              Array [
+                Object {
+                  "en": Object {
+                    "text": "Freedom of Information Act",
+                    "url": "/about-sba/sba-performance/open-government/foia",
+                  },
+                  "es": Object {
+                    "text": "Ley de Libertad de Información",
+                    "url": "/about-sba/sba-performance/open-government/foia",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "No Fear Act",
+                    "url": "/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act",
+                  },
+                  "es": Object {
+                    "text": "Ley de Notificación y Antidiscriminación y Represalias para Empleados Federales (ley No-FEAR)",
+                    "url": "/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Report Fraud, Waste, and Abuse",
+                    "url": "/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse",
+                  },
+                  "es": Object {
+                    "text": "Informe de fraude, dispendio y abuso",
+                    "url": "/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Initiatives",
+                    "url": "/about-sba/sba-initiatives",
+                  },
+                  "es": Object {
+                    "text": "Iniciativas",
+                    "url": "/about-sba/sba-initiatives",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Plain Language",
+                    "url": "/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page",
+                  },
+                  "es": Object {
+                    "text": "Lenguaje claro",
+                    "url": "/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page",
+                  },
+                },
+              ]
+            }
+            title="SBA Information"
+          />
+        </div>
+        <div
+          className="desktopFooterLinks"
+        >
+          <PageLinkGroup
+            id="footer-group-3"
+            langCode="en"
+            links={
+              Array [
+                Object {
+                  "en": Object {
+                    "text": "Strategic Planning",
+                    "url": "/about-sba/sba-performance/strategic-planning",
+                  },
+                  "es": Object {
+                    "text": "Planificación estratégica",
+                    "url": "/about-sba/sba-performance/strategic-planning",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Performance, Budget, and Financing",
+                    "url": "/about-sba/sba-performance/performance-budget-finances",
+                  },
+                  "es": Object {
+                    "text": "Desempeño, presupuesto y financiamiento",
+                    "url": "/about-sba/sba-performance/performance-budget-finances",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Open Government",
+                    "url": "/about-sba/sba-performance/open-government",
+                  },
+                  "es": Object {
+                    "text": "Gobierno abierto",
+                    "url": "/about-sba/sba-performance/open-government",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Policy and Regulations",
+                    "url": "/about-sba/sba-performance/policy-regulations",
+                  },
+                  "es": Object {
+                    "text": "Política y normativa",
+                    "url": "/about-sba/sba-performance/policy-regulations",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Eliminating Fraud, Waste, and Abuse",
+                    "url": "/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse",
+                  },
+                  "es": Object {
+                    "text": "Eliminación de fraude, despilfarro y abuso",
+                    "url": "/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse",
+                  },
+                },
+              ]
+            }
+            title="SBA Performance"
+          />
+        </div>
+        <div
+          className="desktopFooterLinks"
+        >
+          <PageLinkGroup
+            id="footer-group-4"
+            langCode="en"
+            links={
+              Array [
+                Object {
+                  "en": Object {
+                    "text": "Inspector General",
+                    "url": "/office-of-inspector-general",
+                  },
+                  "es": Object {
+                    "text": "Inspector general",
+                    "url": "/office-of-inspector-general",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Advocacy",
+                    "url": "/advocacy",
+                  },
+                  "es": Object {
+                    "text": "Defensa",
+                    "url": "/advocacy",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Hearings and Appeals",
+                    "url": "/oha",
+                  },
+                  "es": Object {
+                    "text": "Audiencias y apelaciones",
+                    "url": "/oha",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Ombudsman",
+                    "url": "/ombudsman",
+                  },
+                  "es": Object {
+                    "text": "Defensor general",
+                    "url": "/ombudsman",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "WhiteHouse.gov",
+                    "url": "https://www.whitehouse.gov",
+                  },
+                  "es": Object {
+                    "text": "WhiteHouse.gov",
+                    "url": "https://www.whitehouse.gov",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "USA.gov",
+                    "url": "https://www.usa.gov",
+                  },
+                  "es": Object {
+                    "text": "USA.gov",
+                    "url": "https://www.usa.gov",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Regulations.gov",
+                    "url": "https://www.regulations.gov",
+                  },
+                  "es": Object {
+                    "text": "Regulations.gov",
+                    "url": "https://www.regulations.gov",
+                  },
+                },
+              ]
+            }
+            title="Oversight"
+          />
+        </div>
+        <div
+          className="desktopFooterLinks"
+        >
+          <PageLinkGroup
+            id="footer-group-5"
+            langCode="en"
+            links={
+              Array [
+                Object {
+                  "en": Object {
+                    "text": "Online Training",
+                    "url": "/tools/sba-learning-center/search/training",
+                  },
+                  "es": Object {
+                    "text": "Capacitación en línea",
+                    "url": "/tools/sba-learning-center/search/training",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Create a Business Plan",
+                    "url": "/tools/business-plan",
+                  },
+                  "es": Object {
+                    "text": "Cree un plan de negocios",
+                    "url": "/tools/business-plan",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Find Events",
+                    "url": "/events/find/",
+                  },
+                  "es": Object {
+                    "text": "Encuentre eventos",
+                    "url": "/events/find/",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "Qualify for Government Contracts",
+                    "url": "/size-standards",
+                  },
+                  "es": Object {
+                    "text": "Gane contratos del gobierno",
+                    "url": "/size-standards",
+                  },
+                },
+                Object {
+                  "en": Object {
+                    "text": "SBA Videos",
+                    "url": "/videos",
+                  },
+                  "es": Object {
+                    "text": "Videos de la SBA",
+                    "url": "/videos",
+                  },
+                },
+              ]
+            }
+            title="Tools and Features"
+          />
+        </div>
+      </div>
+      <div
+        className="tabletFooterLinks"
+      >
+        <PageLinkGroup
+          id="tablet-footer-group-1"
+          langCode="en"
+          links={
+            Array [
+              Object {
+                "en": Object {
+                  "text": "What We Do",
+                  "url": "/about-sba/what-we-do",
+                },
+                "es": Object {
+                  "text": "Nuestro trabajo",
+                  "url": "/about-sba/what-we-do",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "SBA Performance",
+                  "url": "/about-sba/sba-performance",
+                },
+                "es": Object {
+                  "text": "Desempeño de la SBA",
+                  "url": "/about-sba/sba-performance",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Contact SBA",
+                  "url": "/about-sba/what-we-do/contact-sba",
+                },
+                "es": Object {
+                  "text": "Contacte con la SBA",
+                  "url": "/about-sba/what-we-do/contact-sba",
+                },
+              },
+            ]
+          }
+        />
+        <PageLinkGroup
+          id="tablet-footer-group-2"
+          langCode="en"
+          links={
+            Array [
+              Object {
+                "en": Object {
+                  "text": "SBA Team",
+                  "url": "/about-sba/sba-team",
+                },
+                "es": Object {
+                  "text": "Equipo de la SBA",
+                  "url": "/about-sba/sba-team",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "FOIA",
+                  "url": "/about-sba/sba-performance/open-government/foia",
+                },
+                "es": Object {
+                  "text": "FOIA",
+                  "url": "/about-sba/sba-performance/open-government/foia",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Privacy Policy",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                },
+                "es": Object {
+                  "text": "Política de privacidad",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                },
+              },
+            ]
+          }
+        />
+        <PageLinkGroup
+          id="tablet-footer-group-3"
+          langCode="en"
+          links={
+            Array [
+              Object {
+                "en": Object {
+                  "text": "Newsroom",
+                  "url": "/about-sba/sba-newsroom",
+                },
+                "es": Object {
+                  "text": "Sala de prensa",
+                  "url": "/about-sba/sba-newsroom",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Oversight & Advocacy",
+                  "url": "/about-sba/oversight-advocacy",
+                },
+                "es": Object {
+                  "text": "Supervisión y defensa",
+                  "url": "/about-sba/oversight-advocacy",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "SBA en Español",
+                  "url": "/bienvenido-a-la-en-espanol",
+                },
+                "es": Object {
+                  "text": "SBA en español",
+                  "url": "/bienvenido-a-la-en-espanol",
+                },
+              },
+            ]
+          }
+        />
+      </div>
+      <div
+        className="mobileFooterLinks"
+      >
+        <PageLinkGroup
+          id="mobile-footer-group-1"
+          langCode="en"
+          links={
+            Array [
+              Object {
+                "en": Object {
+                  "text": "What We Do",
+                  "url": "/about-sba/what-we-do",
+                },
+                "es": Object {
+                  "text": "Nuestro trabajo",
+                  "url": "/about-sba/what-we-do",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Newsroom",
+                  "url": "/about-sba/sba-newsroom",
+                },
+                "es": Object {
+                  "text": "Sala de prensa",
+                  "url": "/about-sba/sba-newsroom",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "FOIA",
+                  "url": "/about-sba/sba-performance/open-government/foia",
+                },
+                "es": Object {
+                  "text": "FOIA",
+                  "url": "/about-sba/sba-performance/open-government/foia",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Contact SBA",
+                  "url": "/about-sba/what-we-do/contact-sba",
+                },
+                "es": Object {
+                  "text": "Contacte con la SBA",
+                  "url": "/about-sba/what-we-do/contact-sba",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "SBA en Español",
+                  "url": "/bienvenido-a-la-en-espanol",
+                },
+                "es": Object {
+                  "text": "SBA en español",
+                  "url": "/bienvenido-a-la-en-espanol",
+                },
+              },
+            ]
+          }
+        />
+        <PageLinkGroup
+          id="mobile-footer-group-2"
+          langCode="en"
+          links={
+            Array [
+              Object {
+                "en": Object {
+                  "text": "SBA Team",
+                  "url": "/about-sba/sba-team",
+                },
+                "es": Object {
+                  "text": "Equipo de la SBA",
+                  "url": "/about-sba/sba-team",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "SBA Performance",
+                  "url": "/about-sba/sba-performance",
+                },
+                "es": Object {
+                  "text": "Desempeño de la SBA",
+                  "url": "/about-sba/sba-performance",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Oversight & Advocacy",
+                  "url": "/about-sba/oversight-advocacy",
+                },
+                "es": Object {
+                  "text": "Supervisión y defensa",
+                  "url": "/about-sba/oversight-advocacy",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Privacy Policy",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                },
+                "es": Object {
+                  "text": "Política de privacidad",
+                  "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                },
+              },
+              Object {
+                "en": Object {
+                  "text": "Blog",
+                  "url": "/blogs",
+                },
+                "es": Object {
+                  "text": "Blog",
+                  "url": "/blogs",
+                },
+              },
+            ]
+          }
+        />
+      </div>
+      <hr
+        className="desktopRule"
+      />
+      <SocialMediaLinkSet />
+      <NewsletterForm
+        footer={true}
+        title="Sign up for SBA email updates"
+      />
+      <hr
+        className="mobileRule"
+      />
+      <Address
+        id="sba-footer-address"
+      />
+    </footer>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Footer />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Footer {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {},
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <footer
+          className="footer"
+          id="sba-footer"
+        >
+          <div
+            className="footerLinks"
+          >
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-0"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "About SBA",
+                        "url": "/about-sba",
+                      },
+                      "es": Object {
+                        "text": "Acerca de la SBA",
+                        "url": "/about-sba",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Contact SBA",
+                        "url": "/about-sba/what-we-do/contact-sba",
+                      },
+                      "es": Object {
+                        "text": "Contacte con la SBA",
+                        "url": "/about-sba/what-we-do/contact-sba",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "SBA en Español",
+                        "url": "/bienvenido-a-la-en-espanol",
+                      },
+                      "es": Object {
+                        "text": "SBA en español",
+                        "url": "/bienvenido-a-la-en-espanol",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Media and Press Relations",
+                        "url": "/about-sba/sba-newsroom",
+                      },
+                      "es": Object {
+                        "text": "Relaciones con los medios y la prensa",
+                        "url": "/about-sba/sba-newsroom",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "SBA Locations",
+                        "url": "/about-sba/sba-locations",
+                      },
+                      "es": Object {
+                        "text": "Ubicaciones de la SBA",
+                        "url": "/about-sba/sba-locations",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "SBA Team",
+                        "url": "/about-sba/sba-team",
+                      },
+                      "es": Object {
+                        "text": "Equipo de la SBA",
+                        "url": "/about-sba/sba-team",
+                      },
+                    },
+                  ]
+                }
+                title="Customer Service"
+              />
+            </div>
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-1"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "Site Map",
+                        "url": "/sitemap",
+                      },
+                      "es": Object {
+                        "text": "Mapa del sitio",
+                        "url": "/sitemap",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Privacy Policy",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                      },
+                      "es": Object {
+                        "text": "Política de privacidad",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Linking Policy",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy",
+                      },
+                      "es": Object {
+                        "text": "Política de enlaces",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Accessibility",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/accessibility",
+                      },
+                      "es": Object {
+                        "text": "Accesibilidad",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/accessibility",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Disclaimers",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer",
+                      },
+                      "es": Object {
+                        "text": "Avisos legales",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Social Media",
+                        "url": "/tools/events#events-page",
+                      },
+                      "es": Object {
+                        "text": "Redes sociales",
+                        "url": "/tools/events#events-page",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Data Store",
+                        "url": "/about-sba/sba-performance/open-government/digital-sba/open-data",
+                      },
+                      "es": Object {
+                        "text": "Almacenamiento de datos",
+                        "url": "/about-sba/sba-performance/open-government/digital-sba/open-data",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Blog",
+                        "url": "/blogs",
+                      },
+                      "es": Object {
+                        "text": "Blog",
+                        "url": "/blogs",
+                      },
+                    },
+                  ]
+                }
+                title="About SBA.gov"
+              />
+            </div>
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-2"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "Freedom of Information Act",
+                        "url": "/about-sba/sba-performance/open-government/foia",
+                      },
+                      "es": Object {
+                        "text": "Ley de Libertad de Información",
+                        "url": "/about-sba/sba-performance/open-government/foia",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "No Fear Act",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act",
+                      },
+                      "es": Object {
+                        "text": "Ley de Notificación y Antidiscriminación y Represalias para Empleados Federales (ley No-FEAR)",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Report Fraud, Waste, and Abuse",
+                        "url": "/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse",
+                      },
+                      "es": Object {
+                        "text": "Informe de fraude, dispendio y abuso",
+                        "url": "/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Initiatives",
+                        "url": "/about-sba/sba-initiatives",
+                      },
+                      "es": Object {
+                        "text": "Iniciativas",
+                        "url": "/about-sba/sba-initiatives",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Plain Language",
+                        "url": "/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page",
+                      },
+                      "es": Object {
+                        "text": "Lenguaje claro",
+                        "url": "/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page",
+                      },
+                    },
+                  ]
+                }
+                title="SBA Information"
+              />
+            </div>
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-3"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "Strategic Planning",
+                        "url": "/about-sba/sba-performance/strategic-planning",
+                      },
+                      "es": Object {
+                        "text": "Planificación estratégica",
+                        "url": "/about-sba/sba-performance/strategic-planning",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Performance, Budget, and Financing",
+                        "url": "/about-sba/sba-performance/performance-budget-finances",
+                      },
+                      "es": Object {
+                        "text": "Desempeño, presupuesto y financiamiento",
+                        "url": "/about-sba/sba-performance/performance-budget-finances",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Open Government",
+                        "url": "/about-sba/sba-performance/open-government",
+                      },
+                      "es": Object {
+                        "text": "Gobierno abierto",
+                        "url": "/about-sba/sba-performance/open-government",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Policy and Regulations",
+                        "url": "/about-sba/sba-performance/policy-regulations",
+                      },
+                      "es": Object {
+                        "text": "Política y normativa",
+                        "url": "/about-sba/sba-performance/policy-regulations",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Eliminating Fraud, Waste, and Abuse",
+                        "url": "/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse",
+                      },
+                      "es": Object {
+                        "text": "Eliminación de fraude, despilfarro y abuso",
+                        "url": "/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse",
+                      },
+                    },
+                  ]
+                }
+                title="SBA Performance"
+              />
+            </div>
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-4"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "Inspector General",
+                        "url": "/office-of-inspector-general",
+                      },
+                      "es": Object {
+                        "text": "Inspector general",
+                        "url": "/office-of-inspector-general",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Advocacy",
+                        "url": "/advocacy",
+                      },
+                      "es": Object {
+                        "text": "Defensa",
+                        "url": "/advocacy",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Hearings and Appeals",
+                        "url": "/oha",
+                      },
+                      "es": Object {
+                        "text": "Audiencias y apelaciones",
+                        "url": "/oha",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Ombudsman",
+                        "url": "/ombudsman",
+                      },
+                      "es": Object {
+                        "text": "Defensor general",
+                        "url": "/ombudsman",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "WhiteHouse.gov",
+                        "url": "https://www.whitehouse.gov",
+                      },
+                      "es": Object {
+                        "text": "WhiteHouse.gov",
+                        "url": "https://www.whitehouse.gov",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "USA.gov",
+                        "url": "https://www.usa.gov",
+                      },
+                      "es": Object {
+                        "text": "USA.gov",
+                        "url": "https://www.usa.gov",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Regulations.gov",
+                        "url": "https://www.regulations.gov",
+                      },
+                      "es": Object {
+                        "text": "Regulations.gov",
+                        "url": "https://www.regulations.gov",
+                      },
+                    },
+                  ]
+                }
+                title="Oversight"
+              />
+            </div>
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-5"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "Online Training",
+                        "url": "/tools/sba-learning-center/search/training",
+                      },
+                      "es": Object {
+                        "text": "Capacitación en línea",
+                        "url": "/tools/sba-learning-center/search/training",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Create a Business Plan",
+                        "url": "/tools/business-plan",
+                      },
+                      "es": Object {
+                        "text": "Cree un plan de negocios",
+                        "url": "/tools/business-plan",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Find Events",
+                        "url": "/events/find/",
+                      },
+                      "es": Object {
+                        "text": "Encuentre eventos",
+                        "url": "/events/find/",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Qualify for Government Contracts",
+                        "url": "/size-standards",
+                      },
+                      "es": Object {
+                        "text": "Gane contratos del gobierno",
+                        "url": "/size-standards",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "SBA Videos",
+                        "url": "/videos",
+                      },
+                      "es": Object {
+                        "text": "Videos de la SBA",
+                        "url": "/videos",
+                      },
+                    },
+                  ]
+                }
+                title="Tools and Features"
+              />
+            </div>
+          </div>
+          <div
+            className="tabletFooterLinks"
+          >
+            <PageLinkGroup
+              id="tablet-footer-group-1"
+              langCode="en"
+              links={
+                Array [
+                  Object {
+                    "en": Object {
+                      "text": "What We Do",
+                      "url": "/about-sba/what-we-do",
+                    },
+                    "es": Object {
+                      "text": "Nuestro trabajo",
+                      "url": "/about-sba/what-we-do",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "SBA Performance",
+                      "url": "/about-sba/sba-performance",
+                    },
+                    "es": Object {
+                      "text": "Desempeño de la SBA",
+                      "url": "/about-sba/sba-performance",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Contact SBA",
+                      "url": "/about-sba/what-we-do/contact-sba",
+                    },
+                    "es": Object {
+                      "text": "Contacte con la SBA",
+                      "url": "/about-sba/what-we-do/contact-sba",
+                    },
+                  },
+                ]
+              }
+            />
+            <PageLinkGroup
+              id="tablet-footer-group-2"
+              langCode="en"
+              links={
+                Array [
+                  Object {
+                    "en": Object {
+                      "text": "SBA Team",
+                      "url": "/about-sba/sba-team",
+                    },
+                    "es": Object {
+                      "text": "Equipo de la SBA",
+                      "url": "/about-sba/sba-team",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "FOIA",
+                      "url": "/about-sba/sba-performance/open-government/foia",
+                    },
+                    "es": Object {
+                      "text": "FOIA",
+                      "url": "/about-sba/sba-performance/open-government/foia",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Privacy Policy",
+                      "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                    },
+                    "es": Object {
+                      "text": "Política de privacidad",
+                      "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                    },
+                  },
+                ]
+              }
+            />
+            <PageLinkGroup
+              id="tablet-footer-group-3"
+              langCode="en"
+              links={
+                Array [
+                  Object {
+                    "en": Object {
+                      "text": "Newsroom",
+                      "url": "/about-sba/sba-newsroom",
+                    },
+                    "es": Object {
+                      "text": "Sala de prensa",
+                      "url": "/about-sba/sba-newsroom",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Oversight & Advocacy",
+                      "url": "/about-sba/oversight-advocacy",
+                    },
+                    "es": Object {
+                      "text": "Supervisión y defensa",
+                      "url": "/about-sba/oversight-advocacy",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "SBA en Español",
+                      "url": "/bienvenido-a-la-en-espanol",
+                    },
+                    "es": Object {
+                      "text": "SBA en español",
+                      "url": "/bienvenido-a-la-en-espanol",
+                    },
+                  },
+                ]
+              }
+            />
+          </div>
+          <div
+            className="mobileFooterLinks"
+          >
+            <PageLinkGroup
+              id="mobile-footer-group-1"
+              langCode="en"
+              links={
+                Array [
+                  Object {
+                    "en": Object {
+                      "text": "What We Do",
+                      "url": "/about-sba/what-we-do",
+                    },
+                    "es": Object {
+                      "text": "Nuestro trabajo",
+                      "url": "/about-sba/what-we-do",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Newsroom",
+                      "url": "/about-sba/sba-newsroom",
+                    },
+                    "es": Object {
+                      "text": "Sala de prensa",
+                      "url": "/about-sba/sba-newsroom",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "FOIA",
+                      "url": "/about-sba/sba-performance/open-government/foia",
+                    },
+                    "es": Object {
+                      "text": "FOIA",
+                      "url": "/about-sba/sba-performance/open-government/foia",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Contact SBA",
+                      "url": "/about-sba/what-we-do/contact-sba",
+                    },
+                    "es": Object {
+                      "text": "Contacte con la SBA",
+                      "url": "/about-sba/what-we-do/contact-sba",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "SBA en Español",
+                      "url": "/bienvenido-a-la-en-espanol",
+                    },
+                    "es": Object {
+                      "text": "SBA en español",
+                      "url": "/bienvenido-a-la-en-espanol",
+                    },
+                  },
+                ]
+              }
+            />
+            <PageLinkGroup
+              id="mobile-footer-group-2"
+              langCode="en"
+              links={
+                Array [
+                  Object {
+                    "en": Object {
+                      "text": "SBA Team",
+                      "url": "/about-sba/sba-team",
+                    },
+                    "es": Object {
+                      "text": "Equipo de la SBA",
+                      "url": "/about-sba/sba-team",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "SBA Performance",
+                      "url": "/about-sba/sba-performance",
+                    },
+                    "es": Object {
+                      "text": "Desempeño de la SBA",
+                      "url": "/about-sba/sba-performance",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Oversight & Advocacy",
+                      "url": "/about-sba/oversight-advocacy",
+                    },
+                    "es": Object {
+                      "text": "Supervisión y defensa",
+                      "url": "/about-sba/oversight-advocacy",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Privacy Policy",
+                      "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                    },
+                    "es": Object {
+                      "text": "Política de privacidad",
+                      "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Blog",
+                      "url": "/blogs",
+                    },
+                    "es": Object {
+                      "text": "Blog",
+                      "url": "/blogs",
+                    },
+                  },
+                ]
+              }
+            />
+          </div>
+          <hr
+            className="desktopRule"
+          />
+          <SocialMediaLinkSet />
+          <NewsletterForm
+            footer={true}
+            title="Sign up for SBA email updates"
+          />
+          <hr
+            className="mobileRule"
+          />
+          <Address
+            id="sba-footer-address"
+          />
+        </footer>,
+        "_debugID": 2,
+        "_renderedOutput": <footer
+          className="footer"
+          id="sba-footer"
+        >
+          <div
+            className="footerLinks"
+          >
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-0"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "About SBA",
+                        "url": "/about-sba",
+                      },
+                      "es": Object {
+                        "text": "Acerca de la SBA",
+                        "url": "/about-sba",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Contact SBA",
+                        "url": "/about-sba/what-we-do/contact-sba",
+                      },
+                      "es": Object {
+                        "text": "Contacte con la SBA",
+                        "url": "/about-sba/what-we-do/contact-sba",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "SBA en Español",
+                        "url": "/bienvenido-a-la-en-espanol",
+                      },
+                      "es": Object {
+                        "text": "SBA en español",
+                        "url": "/bienvenido-a-la-en-espanol",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Media and Press Relations",
+                        "url": "/about-sba/sba-newsroom",
+                      },
+                      "es": Object {
+                        "text": "Relaciones con los medios y la prensa",
+                        "url": "/about-sba/sba-newsroom",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "SBA Locations",
+                        "url": "/about-sba/sba-locations",
+                      },
+                      "es": Object {
+                        "text": "Ubicaciones de la SBA",
+                        "url": "/about-sba/sba-locations",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "SBA Team",
+                        "url": "/about-sba/sba-team",
+                      },
+                      "es": Object {
+                        "text": "Equipo de la SBA",
+                        "url": "/about-sba/sba-team",
+                      },
+                    },
+                  ]
+                }
+                title="Customer Service"
+              />
+            </div>
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-1"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "Site Map",
+                        "url": "/sitemap",
+                      },
+                      "es": Object {
+                        "text": "Mapa del sitio",
+                        "url": "/sitemap",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Privacy Policy",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                      },
+                      "es": Object {
+                        "text": "Política de privacidad",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Linking Policy",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy",
+                      },
+                      "es": Object {
+                        "text": "Política de enlaces",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Accessibility",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/accessibility",
+                      },
+                      "es": Object {
+                        "text": "Accesibilidad",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/accessibility",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Disclaimers",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer",
+                      },
+                      "es": Object {
+                        "text": "Avisos legales",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Social Media",
+                        "url": "/tools/events#events-page",
+                      },
+                      "es": Object {
+                        "text": "Redes sociales",
+                        "url": "/tools/events#events-page",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Data Store",
+                        "url": "/about-sba/sba-performance/open-government/digital-sba/open-data",
+                      },
+                      "es": Object {
+                        "text": "Almacenamiento de datos",
+                        "url": "/about-sba/sba-performance/open-government/digital-sba/open-data",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Blog",
+                        "url": "/blogs",
+                      },
+                      "es": Object {
+                        "text": "Blog",
+                        "url": "/blogs",
+                      },
+                    },
+                  ]
+                }
+                title="About SBA.gov"
+              />
+            </div>
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-2"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "Freedom of Information Act",
+                        "url": "/about-sba/sba-performance/open-government/foia",
+                      },
+                      "es": Object {
+                        "text": "Ley de Libertad de Información",
+                        "url": "/about-sba/sba-performance/open-government/foia",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "No Fear Act",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act",
+                      },
+                      "es": Object {
+                        "text": "Ley de Notificación y Antidiscriminación y Represalias para Empleados Federales (ley No-FEAR)",
+                        "url": "/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Report Fraud, Waste, and Abuse",
+                        "url": "/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse",
+                      },
+                      "es": Object {
+                        "text": "Informe de fraude, dispendio y abuso",
+                        "url": "/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Initiatives",
+                        "url": "/about-sba/sba-initiatives",
+                      },
+                      "es": Object {
+                        "text": "Iniciativas",
+                        "url": "/about-sba/sba-initiatives",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Plain Language",
+                        "url": "/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page",
+                      },
+                      "es": Object {
+                        "text": "Lenguaje claro",
+                        "url": "/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page",
+                      },
+                    },
+                  ]
+                }
+                title="SBA Information"
+              />
+            </div>
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-3"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "Strategic Planning",
+                        "url": "/about-sba/sba-performance/strategic-planning",
+                      },
+                      "es": Object {
+                        "text": "Planificación estratégica",
+                        "url": "/about-sba/sba-performance/strategic-planning",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Performance, Budget, and Financing",
+                        "url": "/about-sba/sba-performance/performance-budget-finances",
+                      },
+                      "es": Object {
+                        "text": "Desempeño, presupuesto y financiamiento",
+                        "url": "/about-sba/sba-performance/performance-budget-finances",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Open Government",
+                        "url": "/about-sba/sba-performance/open-government",
+                      },
+                      "es": Object {
+                        "text": "Gobierno abierto",
+                        "url": "/about-sba/sba-performance/open-government",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Policy and Regulations",
+                        "url": "/about-sba/sba-performance/policy-regulations",
+                      },
+                      "es": Object {
+                        "text": "Política y normativa",
+                        "url": "/about-sba/sba-performance/policy-regulations",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Eliminating Fraud, Waste, and Abuse",
+                        "url": "/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse",
+                      },
+                      "es": Object {
+                        "text": "Eliminación de fraude, despilfarro y abuso",
+                        "url": "/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse",
+                      },
+                    },
+                  ]
+                }
+                title="SBA Performance"
+              />
+            </div>
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-4"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "Inspector General",
+                        "url": "/office-of-inspector-general",
+                      },
+                      "es": Object {
+                        "text": "Inspector general",
+                        "url": "/office-of-inspector-general",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Advocacy",
+                        "url": "/advocacy",
+                      },
+                      "es": Object {
+                        "text": "Defensa",
+                        "url": "/advocacy",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Hearings and Appeals",
+                        "url": "/oha",
+                      },
+                      "es": Object {
+                        "text": "Audiencias y apelaciones",
+                        "url": "/oha",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Ombudsman",
+                        "url": "/ombudsman",
+                      },
+                      "es": Object {
+                        "text": "Defensor general",
+                        "url": "/ombudsman",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "WhiteHouse.gov",
+                        "url": "https://www.whitehouse.gov",
+                      },
+                      "es": Object {
+                        "text": "WhiteHouse.gov",
+                        "url": "https://www.whitehouse.gov",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "USA.gov",
+                        "url": "https://www.usa.gov",
+                      },
+                      "es": Object {
+                        "text": "USA.gov",
+                        "url": "https://www.usa.gov",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Regulations.gov",
+                        "url": "https://www.regulations.gov",
+                      },
+                      "es": Object {
+                        "text": "Regulations.gov",
+                        "url": "https://www.regulations.gov",
+                      },
+                    },
+                  ]
+                }
+                title="Oversight"
+              />
+            </div>
+            <div
+              className="desktopFooterLinks"
+            >
+              <PageLinkGroup
+                id="footer-group-5"
+                langCode="en"
+                links={
+                  Array [
+                    Object {
+                      "en": Object {
+                        "text": "Online Training",
+                        "url": "/tools/sba-learning-center/search/training",
+                      },
+                      "es": Object {
+                        "text": "Capacitación en línea",
+                        "url": "/tools/sba-learning-center/search/training",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Create a Business Plan",
+                        "url": "/tools/business-plan",
+                      },
+                      "es": Object {
+                        "text": "Cree un plan de negocios",
+                        "url": "/tools/business-plan",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Find Events",
+                        "url": "/events/find/",
+                      },
+                      "es": Object {
+                        "text": "Encuentre eventos",
+                        "url": "/events/find/",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "Qualify for Government Contracts",
+                        "url": "/size-standards",
+                      },
+                      "es": Object {
+                        "text": "Gane contratos del gobierno",
+                        "url": "/size-standards",
+                      },
+                    },
+                    Object {
+                      "en": Object {
+                        "text": "SBA Videos",
+                        "url": "/videos",
+                      },
+                      "es": Object {
+                        "text": "Videos de la SBA",
+                        "url": "/videos",
+                      },
+                    },
+                  ]
+                }
+                title="Tools and Features"
+              />
+            </div>
+          </div>
+          <div
+            className="tabletFooterLinks"
+          >
+            <PageLinkGroup
+              id="tablet-footer-group-1"
+              langCode="en"
+              links={
+                Array [
+                  Object {
+                    "en": Object {
+                      "text": "What We Do",
+                      "url": "/about-sba/what-we-do",
+                    },
+                    "es": Object {
+                      "text": "Nuestro trabajo",
+                      "url": "/about-sba/what-we-do",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "SBA Performance",
+                      "url": "/about-sba/sba-performance",
+                    },
+                    "es": Object {
+                      "text": "Desempeño de la SBA",
+                      "url": "/about-sba/sba-performance",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Contact SBA",
+                      "url": "/about-sba/what-we-do/contact-sba",
+                    },
+                    "es": Object {
+                      "text": "Contacte con la SBA",
+                      "url": "/about-sba/what-we-do/contact-sba",
+                    },
+                  },
+                ]
+              }
+            />
+            <PageLinkGroup
+              id="tablet-footer-group-2"
+              langCode="en"
+              links={
+                Array [
+                  Object {
+                    "en": Object {
+                      "text": "SBA Team",
+                      "url": "/about-sba/sba-team",
+                    },
+                    "es": Object {
+                      "text": "Equipo de la SBA",
+                      "url": "/about-sba/sba-team",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "FOIA",
+                      "url": "/about-sba/sba-performance/open-government/foia",
+                    },
+                    "es": Object {
+                      "text": "FOIA",
+                      "url": "/about-sba/sba-performance/open-government/foia",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Privacy Policy",
+                      "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                    },
+                    "es": Object {
+                      "text": "Política de privacidad",
+                      "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                    },
+                  },
+                ]
+              }
+            />
+            <PageLinkGroup
+              id="tablet-footer-group-3"
+              langCode="en"
+              links={
+                Array [
+                  Object {
+                    "en": Object {
+                      "text": "Newsroom",
+                      "url": "/about-sba/sba-newsroom",
+                    },
+                    "es": Object {
+                      "text": "Sala de prensa",
+                      "url": "/about-sba/sba-newsroom",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Oversight & Advocacy",
+                      "url": "/about-sba/oversight-advocacy",
+                    },
+                    "es": Object {
+                      "text": "Supervisión y defensa",
+                      "url": "/about-sba/oversight-advocacy",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "SBA en Español",
+                      "url": "/bienvenido-a-la-en-espanol",
+                    },
+                    "es": Object {
+                      "text": "SBA en español",
+                      "url": "/bienvenido-a-la-en-espanol",
+                    },
+                  },
+                ]
+              }
+            />
+          </div>
+          <div
+            className="mobileFooterLinks"
+          >
+            <PageLinkGroup
+              id="mobile-footer-group-1"
+              langCode="en"
+              links={
+                Array [
+                  Object {
+                    "en": Object {
+                      "text": "What We Do",
+                      "url": "/about-sba/what-we-do",
+                    },
+                    "es": Object {
+                      "text": "Nuestro trabajo",
+                      "url": "/about-sba/what-we-do",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Newsroom",
+                      "url": "/about-sba/sba-newsroom",
+                    },
+                    "es": Object {
+                      "text": "Sala de prensa",
+                      "url": "/about-sba/sba-newsroom",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "FOIA",
+                      "url": "/about-sba/sba-performance/open-government/foia",
+                    },
+                    "es": Object {
+                      "text": "FOIA",
+                      "url": "/about-sba/sba-performance/open-government/foia",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Contact SBA",
+                      "url": "/about-sba/what-we-do/contact-sba",
+                    },
+                    "es": Object {
+                      "text": "Contacte con la SBA",
+                      "url": "/about-sba/what-we-do/contact-sba",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "SBA en Español",
+                      "url": "/bienvenido-a-la-en-espanol",
+                    },
+                    "es": Object {
+                      "text": "SBA en español",
+                      "url": "/bienvenido-a-la-en-espanol",
+                    },
+                  },
+                ]
+              }
+            />
+            <PageLinkGroup
+              id="mobile-footer-group-2"
+              langCode="en"
+              links={
+                Array [
+                  Object {
+                    "en": Object {
+                      "text": "SBA Team",
+                      "url": "/about-sba/sba-team",
+                    },
+                    "es": Object {
+                      "text": "Equipo de la SBA",
+                      "url": "/about-sba/sba-team",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "SBA Performance",
+                      "url": "/about-sba/sba-performance",
+                    },
+                    "es": Object {
+                      "text": "Desempeño de la SBA",
+                      "url": "/about-sba/sba-performance",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Oversight & Advocacy",
+                      "url": "/about-sba/oversight-advocacy",
+                    },
+                    "es": Object {
+                      "text": "Supervisión y defensa",
+                      "url": "/about-sba/oversight-advocacy",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Privacy Policy",
+                      "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                    },
+                    "es": Object {
+                      "text": "Política de privacidad",
+                      "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+                    },
+                  },
+                  Object {
+                    "en": Object {
+                      "text": "Blog",
+                      "url": "/blogs",
+                    },
+                    "es": Object {
+                      "text": "Blog",
+                      "url": "/blogs",
+                    },
+                  },
+                ]
+              }
+            />
+          </div>
+          <hr
+            className="desktopRule"
+          />
+          <SocialMediaLinkSet />
+          <NewsletterForm
+            footer={true}
+            title="Sign up for SBA email updates"
+          />
+          <hr
+            className="mobileRule"
+          />
+          <Address
+            id="sba-footer-address"
+          />
+        </footer>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Footer />,
+}
+`;
