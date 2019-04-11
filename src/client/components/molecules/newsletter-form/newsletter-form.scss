@@ -1,5 +1,45 @@
 .newsletter {
   @include call-to-action;
+
+  // align button against text inputs instead of labels
+  :global(.button) {
+    position: relative;
+    top: 28px;
+  }
+}
+
+.footerLocation {
+  @include for-medium-up {
+    position: relative;
+    bottom: 10px;
+    text-align: right;
+    margin-right: 30px;
+    margin-bottom: 8px;
+
+    h3 {
+      display: inline-block;
+    }
+
+    // button
+    .inputs {
+      display: inline-block;
+      margin-left: 18px;
+    }
+  }
+
+  @include for-small-only {
+    margin-bottom: 20px;
+    text-align: center;
+
+    .buttonWrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    :global(.button) {
+      width: 35%;
+    }
+  }
 }
 
 .inputs {
@@ -24,11 +64,5 @@
     @include for-medium-up {
       margin-bottom: 0;
     }
-  }
-
-  // align button against text inputs instead of labels
-  :global(.button) {
-    position: relative;
-    top: 28px;
   }
 }

@@ -4,6 +4,7 @@
   float: left;
   padding: 30px 0;
   border-top: 1px solid $sba-gray-light;
+
   @include grid-container;
   a {
     text-decoration: none;
@@ -21,6 +22,7 @@
 .desktopFooterLinks {
   display: none;
   margin-bottom: 15px;
+
   @include grid-media($sba-grid-large) {
     @include grid-column(2);
     display: block;
@@ -31,9 +33,11 @@
   display: none;
   margin-bottom: 20px;
   @include grid-container;
+
   ul {
     @include grid-column(4, $sba-grid-medium);
   }
+
   @include grid-media($tablet-nav) {
     display: block;
   }
@@ -43,9 +47,11 @@
   display: none;
   margin-bottom: 20px;
   @include grid-container;
+
   ul {
     @include grid-column(3, $sba-grid-small);
   }
+
   @include grid-media($mobile-nav) {
     display: block;
   }
@@ -54,6 +60,7 @@
 .footer hr {
   display: none;
   border-bottom: 1px solid $sba-gray-light;
+
   &.desktopRule {
     @include grid-media($sba-grid-medium) {
       display: inline-block;
@@ -61,6 +68,7 @@
       margin: 0 30px 20px 30px;
     }
   }
+
   &.mobileRule {
     @include grid-media($sba-grid-small) {
       display: inline-block;
@@ -71,28 +79,42 @@
 }
 
 .SocialMediaLinkSet {
+  margin: 0 auto 20px auto;
+  max-width: 250px;
+  text-align: center;
+
   img {
     width: 35px;
-    margin-right: 15px;
   }
-  @include grid-media($sba-grid-small) {
-    max-width: 300px;
-    margin: 0 auto 20px auto;
+
+  > span {
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
   }
+
   @include grid-media($sba-grid-medium) {
     img {
       width: 25px;
-      margin-right: 10px;
+    }
+
+    > span {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
     }
     @include grid-column(4);
   }
 }
 
 .address {
+  clear: both;
   font-size: 14px;
   color: $sba-gray-dark;
+
   @include grid-media($mobile-nav) {
     text-align: center;
+
     span {
       display: block;
     }
@@ -100,6 +122,7 @@
   @include grid-media($tablet-nav) {
     float: right;
     margin-right: 30px;
+
     .name {
       margin-right: 7px;
       padding-right: 6px;
@@ -109,6 +132,7 @@
   @include grid-media($desktop-nav) {
     float: right;
     margin-right: 30px;
+
     .name {
       margin-right: 5px;
       padding-right: 5px;

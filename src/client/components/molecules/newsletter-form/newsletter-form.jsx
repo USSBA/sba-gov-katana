@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import classNames from 'classnames'
 import isEmail from 'validator/lib/isEmail'
 import isPostalCode from 'validator/lib/isPostalCode'
 import { capitalize } from 'lodash'
@@ -27,7 +28,13 @@ class NewsletterForm extends Component {
   }
 
   render() {
-    const { title } = this.props
+    const { footer, title } = this.props
+
+    const className = classNames({
+      newsletter: true,
+      [styles.newsletter]: !footer,
+      [styles.footerLocation]: footer
+    })
 
     const textInputs = [
       {
@@ -51,7 +58,7 @@ class NewsletterForm extends Component {
 
     return (
       <form
-        className={styles.newsletter}
+        className={className}
         data-cy="newsletter"
         onSubmit={event => {
           event.preventDefault()
@@ -66,18 +73,25 @@ class NewsletterForm extends Component {
       >
         <h3>{title}</h3>
         <div className={styles.inputs}>
-          {textInputs.map(({ name, validate }) => (
-            <TextInput
-              id={`newsletter ${name}`}
-              key={name}
-              label={capitalize(name)}
-              errorText={`Enter a valid ${name}`}
-              validationFunction={validate}
-            />
-          ))}
+          {!footer &&
+            textInputs.map(({ name, validate }) => (
+              <TextInput
+                id={`newsletter ${name}`}
+                key={name}
+                label={capitalize(name)}
+                errorText={`Enter a valid ${name}`}
+                validationFunction={validate}
+              />
+            ))}
           {/* Wrap the button for CSS grid positioning */}
-          <span>
-            <Button primary alternate children="Subscribe" disabled={!this.isValid()} type="submit" />
+          <span className={styles.buttonWrapper}>
+            <Button
+              primary
+              alternate
+              children="Subscribe"
+              disabled={!footer && !this.isValid()}
+              type="submit"
+            />
           </span>
         </div>
       </form>

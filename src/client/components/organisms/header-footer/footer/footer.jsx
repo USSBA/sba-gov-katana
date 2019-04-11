@@ -13,7 +13,7 @@ import styles from './footer.scss'
 import { TRANSLATIONS } from '../../../../translations'
 import { getLanguageOverride } from '../../../../services/utils'
 import { SocialMediaLink } from 'atoms'
-import { PageLinkGroup } from 'molecules'
+import { NewsletterForm, PageLinkGroup } from 'molecules'
 
 const SocialMediaLinkSet = () => {
   const socialMediaLinks = [
@@ -205,6 +205,7 @@ class Footer extends React.Component {
         </div>
         <hr key={4} className={styles.desktopRule} />
         <SocialMediaLinkSet key={5} />
+        <NewsletterForm title={'Sign up for SBA email updates'} footer />
         <hr key={6} className={styles.mobileRule} />
         <Address id="sba-footer-address" key={7} />
       </footer>
