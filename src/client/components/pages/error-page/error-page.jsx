@@ -53,7 +53,7 @@ class ErrorPage extends React.Component {
                 <i alt="search icon" aria-hidden="true" className="fa fa-search" />
               </div>
               <div className={styles.buttonContainer}>
-                <Button alternate primary submit>
+                <Button alternate primary>
                   Search
                 </Button>
               </div>
