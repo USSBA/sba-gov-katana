@@ -38,7 +38,7 @@ class SearchPage extends PureComponent {
     this.state = {
       searchTerm: '',
       newSearchTerm: '',
-      searchResults: [],
+      searchResults: null,
       pageNumber: 1,
       pageSize: 10,
       itemCount: 0,
@@ -75,18 +75,15 @@ class SearchPage extends PureComponent {
           }).then(results => {
             let searchResults = []
             let itemCount = 0
-            let hasNoResults = false
 
             if (!isEmpty(results)) {
               searchResults = results.hits.hit
               itemCount = results.hits.found
-              hasNoResults = results.hasNoResults
             }
 
             const newState = {
               searchResults,
-              itemCount,
-              hasNoResults
+              itemCount
             }
             this.setState(newState)
           })
@@ -166,8 +163,6 @@ class SearchPage extends PureComponent {
   render() {
     const { searchTerm, newSearchTerm, searchResults } = this.state
 
-    const { hasNoResults } = this.props
-
     return (
       <div>
         <div className={styles.banner}>
@@ -187,17 +182,17 @@ class SearchPage extends PureComponent {
               <SuggestedRouteCard searchTerm={searchTerm} />
             </div>
             <div>
-              {searchResults.length > 0 && (
+              {searchResults && searchResults.length > 0 && (
                 <div>
                   <ResultsList {...this.state} onPageNumberChange={this.onPageNumberChange.bind(this)} />
                 </div>
               )}
-              {!hasNoResults && searchResults.length === 0 && (
+              {!searchResults && (
                 <div>
                   <p className="results-message">loading...</p>
                 </div>
               )}
-              {hasNoResults && (
+              {searchResults && searchResults.length === 0 && (
                 <div>
                   <p className="results-message">Sorry, we couldn't find anything matching that query.</p>
                 </div>
