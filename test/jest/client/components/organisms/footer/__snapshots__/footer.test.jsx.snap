@@ -991,9 +991,9 @@ exports[`Front Page Hero should render correctly 1`] = `
     data-cy="newsletter"
     onSubmit={[Function]}
   >
-    <h3>
+    <p>
       Sign up for SBA email updates
-    </h3>
+    </p>
     <div
       className="inputs"
     >

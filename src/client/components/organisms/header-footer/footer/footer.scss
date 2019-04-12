@@ -94,6 +94,8 @@
   }
 
   @include grid-media($sba-grid-medium) {
+    text-align: left;
+
     img {
       width: 25px;
     }
