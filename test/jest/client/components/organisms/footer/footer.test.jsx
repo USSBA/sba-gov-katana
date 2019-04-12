@@ -1,5 +1,3 @@
-/*global expect*/
-
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
@@ -18,7 +16,8 @@ describe('Front Page Hero', () => {
   })
 
   test('should render correctly', () => {
-    const tree = shallow(<Footer />)
+    const component = renderer.create(<Footer />)
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 })
