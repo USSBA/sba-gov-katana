@@ -12,20 +12,19 @@ exports[`PersonLookupPage should render correctly 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="inputContainer search"
+        className="text-input textInput search"
         id="search-container"
       >
         <label
-          className="controlLabel"
           htmlFor="search"
         >
           Search
         </label>
         <div
-          className="textInputContainer"
+          className="container"
         >
           <input
-            className="textInput searchIconPadding"
+            className="input searchIconPadding"
             data-cy="search"
             id="search"
             onBlur={[Function]}
