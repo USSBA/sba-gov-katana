@@ -5,6 +5,7 @@ import { fetchRestContent } from '../../../fetch-content-helper'
 import { Loader } from 'atoms'
 import ErrorPage from '../error-page/error-page.jsx'
 import Blog from '../../templates/blog/blog.jsx'
+import styles from './blog-page.scss'
 
 class BlogPage extends Component {
   constructor() {
@@ -50,7 +51,7 @@ class BlogPage extends Component {
         )
       } else {
         return (
-          <div data-testid={'blog-loader'}>
+          <div className={styles.loaderContainer} data-testid={'blog-loader'}>
             <Loader />
           </div>
         )
