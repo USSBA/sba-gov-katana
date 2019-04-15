@@ -50,9 +50,9 @@ describe('Blog page', () => {
     fetchRestContentStub.mockRestore()
   })
 
-  it('renders error page when BlogPage receives no data back from the api', async () => {
+  it('renders error page when BlogPage receives null data back from the api', async () => {
     const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
-    fetchRestContentStub.mockImplementation(() => Promise.resolve())
+    fetchRestContentStub.mockImplementation(() => Promise.resolve(null))
 
     const initialState = undefined
     const enhancer = applyMiddleware(thunk)
@@ -72,7 +72,7 @@ describe('Blog page', () => {
     fetchRestContentStub.mockRestore()
   })
 
-  it('renders loader when BlogPage is waiting for an api response, but not after', async () => {
+  it('renders loader when BlogPage is waiting for an api response', async () => {
     const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
 
     const initialState = undefined
