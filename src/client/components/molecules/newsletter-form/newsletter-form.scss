@@ -9,24 +9,6 @@
 }
 
 .footerLocation {
-  @include for-medium-up {
-    position: relative;
-    bottom: 10px;
-    text-align: right;
-    margin-right: 30px;
-    margin-bottom: 8px;
-
-    h3 {
-      display: inline-block;
-    }
-
-    // button
-    .inputs {
-      display: inline-block;
-      margin-left: 18px;
-    }
-  }
-
   @include for-small-only {
     margin-bottom: 20px;
     text-align: center;
@@ -38,6 +20,30 @@
 
     :global(.button) {
       width: 47%;
+    }
+  }
+
+  @include for-medium-up {
+    position: relative;
+    bottom: 24px;
+    text-align: right;
+    margin-right: 30px;
+
+    .inputs {
+      display: inline-block;
+      margin-left: 18px;
+    }
+  }
+
+  p {
+    color: $sba-blue;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 600;
+
+    @include for-small-only {
+      margin-bottom: 8px;
+      margin-top: 0;
     }
   }
 }

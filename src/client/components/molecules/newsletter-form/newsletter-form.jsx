@@ -71,7 +71,7 @@ class NewsletterForm extends Component {
           console.log('subscribe')
         }}
       >
-        <h3>{title}</h3>
+        {!footer ? <h3>{title}</h3> : <p>{title}</p>}
         <div className={styles.inputs}>
           {!footer &&
             textInputs.map(({ name, validate }) => (

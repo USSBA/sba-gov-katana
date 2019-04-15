@@ -73,13 +73,13 @@
     @include grid-media($sba-grid-small) {
       display: inline-block;
       width: calc(100% - 40px);
-      margin: 0 20px 20px 20px;
+      margin: 0 20px 12px 20px;
     }
   }
 }
 
 .SocialMediaLinkSet {
-  margin: 0 auto 20px auto;
+  margin: 0 auto 10px auto;
   max-width: 250px;
   text-align: center;
 
@@ -114,28 +114,29 @@
   font-size: 14px;
   color: $sba-gray-dark;
 
-  @include grid-media($mobile-nav) {
+  @include for-small-only {
     text-align: center;
 
     span {
       display: block;
     }
   }
-  @include grid-media($tablet-nav) {
-    float: right;
-    margin-right: 30px;
 
-    .name {
+  @include for-medium-up {
+    bottom: 18px;
+    margin-right: 30px;
+    position: relative;
+    text-align: right;
+  }
+
+  .name {
+    @include for-medium-only {
       margin-right: 7px;
       padding-right: 6px;
       border-right: 1px solid $sba-gray-dark;
     }
-  }
-  @include grid-media($desktop-nav) {
-    float: right;
-    margin-right: 30px;
 
-    .name {
+    @include for-large-up {
       margin-right: 5px;
       padding-right: 5px;
       border-right: 2px solid $sba-gray-light;
