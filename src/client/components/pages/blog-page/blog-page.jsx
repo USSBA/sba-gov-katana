@@ -31,11 +31,10 @@ class BlogPage extends Component {
     }
   }
 
+  // fetchRestContent returns null when data is not found
   fetchBlog(id) {
     if (id) {
-      fetchRestContent('node', id)
-        .then(data => this.setState({ data }))
-        .catch(_ => this.setState({ data: null }))
+      fetchRestContent('node', id).then(data => this.setState({ data }))
     }
   }
 
