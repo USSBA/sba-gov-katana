@@ -32,8 +32,9 @@ class NewsletterForm extends Component {
 
     const className = classNames({
       newsletter: true,
-      [styles.newsletter]: !footer,
-      [styles.footerLocation]: footer
+      [styles.newsletter]: true,
+      [styles.form]: !footer,
+      [styles.footer]: footer
     })
 
     const textInputs = [

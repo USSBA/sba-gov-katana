@@ -1,14 +1,19 @@
 .newsletter {
+  :global(.button) {
+    position: relative;
+  }
+}
+
+.form {
   @include call-to-action;
 
   // align button against text inputs instead of labels
   :global(.button) {
-    position: relative;
     top: 28px;
   }
 }
 
-.footerLocation {
+.footer {
   @include for-small-only {
     margin-bottom: 20px;
     text-align: center;
@@ -25,13 +30,17 @@
 
   @include for-medium-up {
     position: relative;
-    bottom: 24px;
+    bottom: 22px;
     text-align: right;
     margin-right: 30px;
 
     .inputs {
       display: inline-block;
       margin-left: 18px;
+    }
+
+    :global(.button) {
+      bottom: 4px;
     }
   }
 
