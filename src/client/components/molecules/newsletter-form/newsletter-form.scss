@@ -44,6 +44,7 @@
     }
   }
 
+  // TODO: Abstract H1-H6 styles as classes (e.g., .h1, .h2, ...) or mixins and apply .h3 to the p below with compose: h3.
   p {
     color: $sba-blue;
     display: inline-block;
