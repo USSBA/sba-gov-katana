@@ -204,10 +204,12 @@ class Footer extends React.Component {
           />
         </div>
         <hr key={4} className={styles.desktopRule} />
-        <SocialMediaLinkSet key={5} />
-        <NewsletterForm title={'Sign up for SBA email updates'} footer />
-        <hr key={6} className={styles.mobileRule} />
-        <Address id="sba-footer-address" key={7} />
+        <div className={styles.subContainer}>
+          <SocialMediaLinkSet key={5} />
+          <NewsletterForm title={'Sign up for SBA email updates'} footer />
+          <hr key={6} className={styles.mobileRule} />
+          <Address id="sba-footer-address" key={7} />
+        </div>
       </footer>
     )
   }

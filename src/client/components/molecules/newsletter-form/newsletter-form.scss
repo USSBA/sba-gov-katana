@@ -30,7 +30,7 @@
 
   @include for-medium-up {
     position: relative;
-    bottom: 22px;
+    bottom: 24px;
     text-align: right;
     margin-right: 30px;
 
@@ -42,6 +42,11 @@
     :global(.button) {
       bottom: 4px;
     }
+  }
+
+  @include for-large-up {
+    flex-shrink: 1;
+    order: 3;
   }
 
   // TODO: Abstract H1-H6 styles as classes (e.g., .h1, .h2, ...) or mixins and apply .h3 to the p below with compose: h3.

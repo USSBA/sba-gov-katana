@@ -918,114 +918,118 @@ exports[`Front Page Hero should render correctly 1`] = `
     className="desktopRule"
   />
   <div
-    className="SocialMediaLinkSet"
+    className="subContainer"
   >
-    <span>
-      <a
-        href="javascript:void(0);"
-        onClick={[Function]}
-      >
-        <img
-          alt="SBA Facebook page"
-          className="socialMediaIcons"
-          src="test-file-stub"
-        />
-      </a>
-      <noscript />
-    </span>
-    <span>
-      <a
-        href="javascript:void(0);"
-        onClick={[Function]}
-      >
-        <img
-          alt="SBA Twitter page"
-          className="socialMediaIcons"
-          src="test-file-stub"
-        />
-      </a>
-      <noscript />
-    </span>
-    <span>
-      <a
-        href="javascript:void(0);"
-        onClick={[Function]}
-      >
-        <img
-          alt="SBA Youtube page"
-          className="socialMediaIcons"
-          src="test-file-stub"
-        />
-      </a>
-      <noscript />
-    </span>
-    <span>
-      <a
-        href="javascript:void(0);"
-        onClick={[Function]}
-      >
-        <img
-          alt="SBA Linked In page"
-          className="socialMediaIcons"
-          src="test-file-stub"
-        />
-      </a>
-      <noscript />
-    </span>
-    <span>
-      <a
-        href="javascript:void(0);"
-        onClick={[Function]}
-      >
-        <img
-          alt="SBA Instagram page"
-          className="socialMediaIcons"
-          src="test-file-stub"
-        />
-      </a>
-      <noscript />
-    </span>
-  </div>
-  <form
-    className="newsletter footer"
-    data-cy="newsletter"
-    onSubmit={[Function]}
-  >
-    <p>
-      Sign up for SBA email updates
-    </p>
     <div
-      className="inputs"
+      className="SocialMediaLinkSet"
     >
-      <span
-        className="buttonWrapper"
-      >
-        <button
-          className="button alternate large primary responsive spacing"
-          disabled={false}
-          type="submit"
+      <span>
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
         >
-          Subscribe
-        </button>
+          <img
+            alt="SBA Facebook page"
+            className="socialMediaIcons"
+            src="test-file-stub"
+          />
+        </a>
+        <noscript />
+      </span>
+      <span>
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          <img
+            alt="SBA Twitter page"
+            className="socialMediaIcons"
+            src="test-file-stub"
+          />
+        </a>
+        <noscript />
+      </span>
+      <span>
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          <img
+            alt="SBA Youtube page"
+            className="socialMediaIcons"
+            src="test-file-stub"
+          />
+        </a>
+        <noscript />
+      </span>
+      <span>
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          <img
+            alt="SBA Linked In page"
+            className="socialMediaIcons"
+            src="test-file-stub"
+          />
+        </a>
+        <noscript />
+      </span>
+      <span>
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          <img
+            alt="SBA Instagram page"
+            className="socialMediaIcons"
+            src="test-file-stub"
+          />
+        </a>
+        <noscript />
       </span>
     </div>
-  </form>
-  <hr
-    className="mobileRule"
-  />
-  <div
-    className="address"
-  >
-    <span
-      className="name"
+    <form
+      className="newsletter footer"
+      data-cy="newsletter"
+      onSubmit={[Function]}
     >
-      U.S. Small Business Administration
-    </span>
-    <span
-      className="location"
+      <p>
+        Sign up for SBA email updates
+      </p>
+      <div
+        className="inputs"
+      >
+        <span
+          className="buttonWrapper"
+        >
+          <button
+            className="button alternate large primary responsive spacing"
+            disabled={false}
+            type="submit"
+          >
+            Subscribe
+          </button>
+        </span>
+      </div>
+    </form>
+    <hr
+      className="mobileRule"
+    />
+    <div
+      className="address"
     >
-      409 3rd St, SW. Washington DC 20416
-    </span>
+      <span
+        className="name"
+      >
+        U.S. Small Business Administration
+      </span>
+      <span
+        className="location"
+      >
+        409 3rd St, SW. Washington DC 20416
+      </span>
+    </div>
   </div>
 </footer>
 `;
