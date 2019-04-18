@@ -5,7 +5,7 @@ import style from './loader.scss'
 
 const Loader = props => {
   return (
-    <div className={`loader ${style.container}`}>
+    <div className={`loader ${style.container}`} data-cy="loader">
       <img className={style.logo} src={logo} />
       <div className={style.loader} />
     </div>
