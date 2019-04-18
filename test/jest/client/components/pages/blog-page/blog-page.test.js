@@ -88,4 +88,24 @@ describe('Blog page', () => {
     expect(fetchRestContentStub).toHaveBeenCalledTimes(1)
     expect(getByTestId('blog-loader')).toBeInTheDocument()
   })
+  describe('AuthorCard', () => {
+      it('should exist', async () => {
+
+        const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+        fetchRestContentStub.mockImplementation(() => Promise.resolve(mockBlogData))
+
+        const initialState = undefined
+        const enhancer = applyMiddleware(thunk)
+        const store = createStore(reducers, initialState, enhancer)
+
+        const { getByTestId } = render(
+          <Provider store={store}>
+            <BlogPage id="1" />
+          </Provider>
+        )
+        
+        const content = await waitForElement(() => getByTestId('authorCard'))
+        expect(content).toBeInTheDocument()
+      })
+  })
 })
