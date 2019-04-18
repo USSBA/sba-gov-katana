@@ -127,7 +127,7 @@ describe('SearchPage', () => {
       })
 
       const result = component.find('.results-message')
-      const expected = "Sorry, we couldn't find anything matching that query."
+      const expected = "Sorry, we didn't find any results that matched your search."
       expect(result.text()).toEqual(expected)
     })
   })
