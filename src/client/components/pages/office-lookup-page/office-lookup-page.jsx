@@ -95,6 +95,7 @@ class OfficeLookupPage extends React.PureComponent {
     }
     const officeTypeTaxonomy = this.getTaxonomy('officeType')
     const officeServiceTaxonomy = this.getTaxonomy('officeService')
+
     const searchTips = [
       'Try using different search term.',
       'Search near a different ZIP code.',

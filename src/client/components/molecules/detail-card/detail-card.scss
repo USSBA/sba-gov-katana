@@ -1,3 +1,7 @@
+div[class~='contact-card'] {
+  margin-bottom: 30px;
+}
+
 table {
   table-layout: auto;
 }
@@ -14,39 +18,21 @@ table {
   background-color: white;
 }
 
-.container,
-.containerWithoutBorder {
-  height: 100%;
-}
-
-.container {
-  border: 1px solid #bebdbd;
-  background-color: white;
-
-  @include grid-media($sba-grid-medium-and-small) {
-    padding: 15px;
-  }
-  @include grid-media($sba-grid-large) {
-    padding: 20px;
-  }
-}
-
-.containerWithoutBorder {
+.detailCard {
   position: relative;
-  margin-bottom: 60px;
-}
+  height: 100%;
 
-.documentTypeContainer {
-  margin-bottom: 20px;
-}
+  .label {
+    margin-bottom: 20px;
+  }
 
-.title {
-  // This forces the underline color to be the same color as the text.
-  text-decoration: underline;
-  color: $sba-blue;
-  padding-top: 0;
+  > h6 > a {
+    // This forces the underline color to be the same color as the text.
+    text-decoration: underline;
+    color: $sba-blue;
+    padding-top: 0;
+  }
 }
-
 .row {
   width: 100%;
 }
@@ -70,11 +56,9 @@ table {
   padding: 0 0 0 5px;
 }
 
-.dash {
-  hr {
-    margin-top: 15px;
-    width: 30px !important;
-  }
+hr[class~='dash'] {
+  margin-top: 15px;
+  width: 30px !important;
 }
 
 .download {

@@ -6,11 +6,15 @@ import { DetailCard } from 'molecules'
 class DetailCardCollection extends React.Component {
   renderCard(item, index) {
     return (
-      <div className={'card-container ' + styles.card} key={index}>
+      <div
+        className={'card-container ' + styles.card}
+        data-cy="detail-card-collection-container"
+        key={index}
+      >
         <DetailCard
           data={item}
           showDetails={this.props.showDetails}
-          showBorder={false}
+          showBorder={true}
           fieldsToShowInDetails={this.props.fieldsToShowInDetails}
         />
       </div>
@@ -23,7 +27,12 @@ class DetailCardCollection extends React.Component {
 
   render() {
     return (
-      <div className={'document-card-collection ' + styles.detailCardCollection}>{this.renderCards()}</div>
+      <div
+        className={'detail-card-collection ' + styles.detailCardCollection}
+        data-cy="detail-card-collection"
+      >
+        {this.renderCards()}
+      </div>
     )
   }
 }

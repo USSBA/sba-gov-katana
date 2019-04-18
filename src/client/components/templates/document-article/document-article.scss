@@ -12,7 +12,7 @@
   }
 }
 
-div[class~='document-card-collection'] {
+div[class~='detail-card-collection'] {
   @include grid-collapse(
     (
       gutter: 30px

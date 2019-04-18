@@ -82,7 +82,7 @@ class EventLookupPage extends React.PureComponent {
           <TextInput
             id="keyword-search"
             queryParamName="q"
-            className={styles.field + ' ' + styles.search}
+            className={styles.search}
             label="Search"
             placeholder="Enter keyword"
             validationState={''}
@@ -94,7 +94,7 @@ class EventLookupPage extends React.PureComponent {
             queryParamName="dateRange"
             label="Date Range"
             autoFocus={false}
-            className={styles.field + ' ' + styles.multiSelect}
+            className={styles.multiselect}
             multi={false}
             options={[
               {
@@ -135,7 +135,7 @@ class EventLookupPage extends React.PureComponent {
             queryParamName="distance"
             label="Distance"
             autoFocus={false}
-            className={styles.field + ' ' + styles.multiSelect}
+            className={styles.multiselect}
             multi={false}
             disabled={shouldDisableDistance}
             options={[

@@ -48,7 +48,7 @@ exports[`CallToAction renders a large size 1`] = `
     </div>
     <div>
       <hr
-        className="dash"
+        className="dash dash"
         style={
           Object {
             "width": "29px",
@@ -92,7 +92,7 @@ exports[`CallToAction renders a medium size 1`] = `
     </div>
     <div>
       <hr
-        className="dash"
+        className="dash dash"
         style={
           Object {
             "width": "29px",

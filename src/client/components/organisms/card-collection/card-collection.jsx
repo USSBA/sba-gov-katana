@@ -67,4 +67,5 @@ CardCollection.defaultProps = {
   parentIndex: -1,
   leftAligned: false
 }
+
 export default CardCollection

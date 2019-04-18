@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonLookupPage should render correctly 1`] = `
+<div>
+  <div
+    className="banner"
+  >
+    <h2>
+      People Lookup
+    </h2>
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="inputContainer search"
+        id="search-container"
+      >
+        <label
+          className="controlLabel"
+          htmlFor="search"
+        >
+          Search
+        </label>
+        <div
+          className="textInputContainer"
+        >
+          <input
+            className="textInput searchIconPadding"
+            data-cy="search"
+            id="search"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="Search by name, title, or office"
+          />
+          <div
+            className="searchIcon"
+          >
+            <i
+              className="search fa fa-search"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="select"
+        data-cy="office"
+      >
+        <label
+          htmlFor="office"
+        >
+          Office
+        </label>
+        <div
+          className="Select is-clearable is-searchable Select--single"
+        >
+          <div
+            className="Select-control"
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+          >
+            <span
+              className="Select-multi-value-wrapper"
+              id="react-select-2--value"
+            >
+              <div
+                className="Select-placeholder"
+              >
+                Select...
+              </div>
+              <div
+                className="Select-input"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-activedescendant="react-select-2--value"
+                  aria-expanded="false"
+                  aria-haspopup="false"
+                  aria-owns=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  role="combobox"
+                  style={
+                    Object {
+                      "boxSizing": "content-box",
+                      "width": "5px",
+                    }
+                  }
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </span>
+            <span
+              className="Select-arrow-zone"
+              onMouseDown={[Function]}
+            >
+              <i
+                alt="drop-down arrow"
+                className="fa fa-chevron-down"
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="select"
+        data-cy="sort-by"
+      >
+        <label
+          htmlFor="sort-by"
+        >
+          Sort by
+        </label>
+        <div
+          className="Select has-value is-clearable is-searchable Select--single"
+        >
+          <div
+            className="Select-control"
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+          >
+            <span
+              className="Select-multi-value-wrapper"
+              id="react-select-3--value"
+            >
+              <div
+                className="Select-value"
+              >
+                <span
+                  aria-selected="true"
+                  className="Select-value-label"
+                  id="react-select-3--value-item"
+                  role="option"
+                >
+                  Name A-Z
+                </span>
+              </div>
+              <div
+                className="Select-input"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-activedescendant="react-select-3--value"
+                  aria-expanded="false"
+                  aria-haspopup="false"
+                  aria-owns=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  role="combobox"
+                  style={
+                    Object {
+                      "boxSizing": "content-box",
+                      "width": "5px",
+                    }
+                  }
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </span>
+            <span
+              aria-label="Clear value"
+              className="Select-clear-zone"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              title="Clear value"
+            >
+              <span />
+            </span>
+            <span
+              className="Select-arrow-zone"
+              onMouseDown={[Function]}
+            >
+              <i
+                alt="drop-down arrow"
+                className="fa fa-chevron-down"
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+      <button
+        className="button alternate large primary responsive spacing"
+        data-cy="search button"
+      >
+        apply
+      </button>
+    </form>
+  </div>
+  <div
+    className="results"
+  >
+    <div
+      className="loader container"
+      data-cy="loader"
+    >
+      <img
+        className="logo"
+        src="test-file-stub"
+      />
+      <div
+        className="loader"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -49,8 +49,8 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="multiSelect"
       >
         <div
-          className=""
-          id="title-select-container"
+          className="select"
+          data-cy="title-select"
         >
           <label
             htmlFor="title-select"
@@ -58,60 +58,77 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             Title
           </label>
           <div
-            className="errorClass"
-            data-cy=""
-            id="title-select"
+            className="Select is-clearable is-searchable Select--single"
           >
             <div
-              className="Select  myselect Select--single"
+              className="Select-control"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
             >
-              <div
-                className="Select-control"
-                onKeyDown={[Function]}
-                onMouseDown={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
+              <span
+                className="Select-multi-value-wrapper"
+                id="react-select-2--value"
               >
-                <span
-                  className="Select-multi-value-wrapper"
-                  id="react-select-2--value"
+                <div
+                  className="Select-placeholder"
                 >
-                  <div
-                    className="Select-placeholder"
-                  >
-                    Select...
-                  </div>
-                  <div
+                  Select...
+                </div>
+                <div
+                  className="Select-input"
+                  style={
+                    Object {
+                      "display": "inline-block",
+                    }
+                  }
+                >
+                  <input
                     aria-activedescendant="react-select-2--value"
-                    aria-expanded={false}
-                    aria-owns="react-select-2--value"
-                    aria-readonly="false"
-                    className="Select-input"
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-owns=""
                     onBlur={[Function]}
+                    onChange={[Function]}
                     onFocus={[Function]}
+                    required={false}
                     role="combobox"
                     style={
                       Object {
-                        "border": 0,
-                        "display": "inline-block",
-                        "width": 1,
+                        "boxSizing": "content-box",
+                        "width": "5px",
                       }
                     }
-                    tabIndex={0}
+                    value=""
                   />
-                </span>
-                <span
-                  className="Select-arrow-zone"
-                  onMouseDown={[Function]}
-                >
-                  <img
-                    alt="dropdown arrow"
-                    className="chevronIcon"
-                    src="test-file-stub"
-                  />
-                </span>
-              </div>
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
+              </span>
+              <span
+                className="Select-arrow-zone"
+                onMouseDown={[Function]}
+              >
+                <i
+                  alt="drop-down arrow"
+                  className="fa fa-chevron-down"
+                />
+              </span>
             </div>
           </div>
         </div>
@@ -120,8 +137,8 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="multiSelect"
       >
         <div
-          className=""
-          id="lightsabercolor-select-container"
+          className="select"
+          data-cy="lightsabercolor-select"
         >
           <label
             htmlFor="lightsabercolor-select"
@@ -129,60 +146,77 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             Lightsaber Color
           </label>
           <div
-            className="errorClass"
-            data-cy=""
-            id="lightsabercolor-select"
+            className="Select is-clearable is-searchable Select--single"
           >
             <div
-              className="Select  myselect Select--single"
+              className="Select-control"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
             >
-              <div
-                className="Select-control"
-                onKeyDown={[Function]}
-                onMouseDown={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
+              <span
+                className="Select-multi-value-wrapper"
+                id="react-select-3--value"
               >
-                <span
-                  className="Select-multi-value-wrapper"
-                  id="react-select-3--value"
+                <div
+                  className="Select-placeholder"
                 >
-                  <div
-                    className="Select-placeholder"
-                  >
-                    Select...
-                  </div>
-                  <div
+                  Select...
+                </div>
+                <div
+                  className="Select-input"
+                  style={
+                    Object {
+                      "display": "inline-block",
+                    }
+                  }
+                >
+                  <input
                     aria-activedescendant="react-select-3--value"
-                    aria-expanded={false}
-                    aria-owns="react-select-3--value"
-                    aria-readonly="false"
-                    className="Select-input"
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-owns=""
                     onBlur={[Function]}
+                    onChange={[Function]}
                     onFocus={[Function]}
+                    required={false}
                     role="combobox"
                     style={
                       Object {
-                        "border": 0,
-                        "display": "inline-block",
-                        "width": 1,
+                        "boxSizing": "content-box",
+                        "width": "5px",
                       }
                     }
-                    tabIndex={0}
+                    value=""
                   />
-                </span>
-                <span
-                  className="Select-arrow-zone"
-                  onMouseDown={[Function]}
-                >
-                  <img
-                    alt="dropdown arrow"
-                    className="chevronIcon"
-                    src="test-file-stub"
-                  />
-                </span>
-              </div>
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
+              </span>
+              <span
+                className="Select-arrow-zone"
+                onMouseDown={[Function]}
+              >
+                <i
+                  alt="drop-down arrow"
+                  className="fa fa-chevron-down"
+                />
+              </span>
             </div>
           </div>
         </div>
@@ -274,221 +308,174 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       className="documentCardCollection"
     >
       <div
-        className="document-card-collection detailCardCollection"
+        className="detail-card-collection detailCardCollection"
+        data-cy="detail-card-collection"
       >
         <div
           className="card-container card"
+          data-cy="detail-card-collection-container"
         >
           <div
-            className="document-card-container containerWithoutBorder"
+            className="detail-card detailCard"
           >
-            <div>
-              <div
-                className="documentTypeContainer"
+            <div
+              className="label small"
+            >
+              <h6
+                className="type"
               >
-                <div
-                  className="label small"
-                >
-                  <h6
-                    className="type"
-                  >
-                    Memo
-                  </h6>
-                </div>
-              </div>
-              <div />
+                Memo
+              </h6>
+            </div>
+            <h6>
               <a
                 href="javascript:void(0);"
               >
-                <h6
-                  className="document-card-title title"
-                >
-                  Master
-                </h6>
+                Master
               </a>
-              <div>
-                <div
-                  className="dash"
-                >
-                  <hr
-                    className="dash"
-                    style={
-                      Object {
-                        "width": "336px",
-                      }
-                    }
-                  />
-                </div>
-                <table
-                  className="programSummaryTableData"
-                >
-                  <tbody
-                    className="program-summary-table"
-                  />
-                </table>
-              </div>
+            </h6>
+            <div>
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "336px",
+                  }
+                }
+              />
+              <table
+                className="programSummaryTableData"
+              >
+                <tbody
+                  className="program-summary-table"
+                />
+              </table>
             </div>
           </div>
         </div>
         <div
           className="card-container card"
+          data-cy="detail-card-collection-container"
         >
           <div
-            className="document-card-container containerWithoutBorder"
+            className="detail-card detailCard"
           >
-            <div>
-              <div
-                className="documentTypeContainer"
+            <div
+              className="label small"
+            >
+              <h6
+                className="type"
               >
-                <div
-                  className="label small"
-                >
-                  <h6
-                    className="type"
-                  >
-                    Memo
-                  </h6>
-                </div>
-              </div>
-              <div />
+                Memo
+              </h6>
+            </div>
+            <h6>
               <a
                 href="javascript:void(0);"
               >
-                <h6
-                  className="document-card-title title"
-                >
-                  Knight
-                </h6>
+                Knight
               </a>
-              <div>
-                <div
-                  className="dash"
-                >
-                  <hr
-                    className="dash"
-                    style={
-                      Object {
-                        "width": "336px",
-                      }
-                    }
-                  />
-                </div>
-                <table
-                  className="programSummaryTableData"
-                >
-                  <tbody
-                    className="program-summary-table"
-                  />
-                </table>
-              </div>
+            </h6>
+            <div>
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "336px",
+                  }
+                }
+              />
+              <table
+                className="programSummaryTableData"
+              >
+                <tbody
+                  className="program-summary-table"
+                />
+              </table>
             </div>
           </div>
         </div>
         <div
           className="card-container card"
+          data-cy="detail-card-collection-container"
         >
           <div
-            className="document-card-container containerWithoutBorder"
+            className="detail-card detailCard"
           >
-            <div>
-              <div
-                className="documentTypeContainer"
+            <div
+              className="label small"
+            >
+              <h6
+                className="type"
               >
-                <div
-                  className="label small"
-                >
-                  <h6
-                    className="type"
-                  >
-                    Memo
-                  </h6>
-                </div>
-              </div>
-              <div />
+                Memo
+              </h6>
+            </div>
+            <h6>
               <a
                 href="javascript:void(0);"
               >
-                <h6
-                  className="document-card-title title"
-                >
-                  Master
-                </h6>
+                Master
               </a>
-              <div>
-                <div
-                  className="dash"
-                >
-                  <hr
-                    className="dash"
-                    style={
-                      Object {
-                        "width": "336px",
-                      }
-                    }
-                  />
-                </div>
-                <table
-                  className="programSummaryTableData"
-                >
-                  <tbody
-                    className="program-summary-table"
-                  />
-                </table>
-              </div>
+            </h6>
+            <div>
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "336px",
+                  }
+                }
+              />
+              <table
+                className="programSummaryTableData"
+              >
+                <tbody
+                  className="program-summary-table"
+                />
+              </table>
             </div>
           </div>
         </div>
         <div
           className="card-container card"
+          data-cy="detail-card-collection-container"
         >
           <div
-            className="document-card-container containerWithoutBorder"
+            className="detail-card detailCard"
           >
-            <div>
-              <div
-                className="documentTypeContainer"
+            <div
+              className="label small"
+            >
+              <h6
+                className="type"
               >
-                <div
-                  className="label small"
-                >
-                  <h6
-                    className="type"
-                  >
-                    Memo
-                  </h6>
-                </div>
-              </div>
-              <div />
+                Memo
+              </h6>
+            </div>
+            <h6>
               <a
                 href="javascript:void(0);"
               >
-                <h6
-                  className="document-card-title title"
-                >
-                  Knight
-                </h6>
+                Knight
               </a>
-              <div>
-                <div
-                  className="dash"
-                >
-                  <hr
-                    className="dash"
-                    style={
-                      Object {
-                        "width": "336px",
-                      }
-                    }
-                  />
-                </div>
-                <table
-                  className="programSummaryTableData"
-                >
-                  <tbody
-                    className="program-summary-table"
-                  />
-                </table>
-              </div>
+            </h6>
+            <div>
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "336px",
+                  }
+                }
+              />
+              <table
+                className="programSummaryTableData"
+              >
+                <tbody
+                  className="program-summary-table"
+                />
+              </table>
             </div>
           </div>
         </div>

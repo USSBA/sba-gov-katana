@@ -3,7 +3,7 @@
 /*eslint-disable no-unused-vars*/
 import React from 'react'
 /*eslint-enable no-unused-vars*/
-import ReactSelect from 'react-select'
+import ReactSelect from 'react-select-v1'
 import MiniNav from 'organisms/header-footer/mini-nav/mini-nav.jsx'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'

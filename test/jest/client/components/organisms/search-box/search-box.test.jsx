@@ -1,8 +1,8 @@
 import React from 'react'
-import { clone } from 'lodash'
-import { mount, shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
-const sinon = require('sinon')
+import sinon from 'sinon'
+import { mount, shallow } from 'enzyme'
+import { clone } from 'lodash'
 
 import { SearchBox } from 'organisms'
 

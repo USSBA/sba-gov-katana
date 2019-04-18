@@ -1,0 +1,94 @@
+.banner {
+  background-color: $sba-blue;
+  padding-bottom: 20px;
+  padding-left: 28px;
+  padding-right: 28px;
+  padding-top: 40px;
+
+  label,
+  h2 {
+    color: white;
+  }
+
+  :global(.button) {
+    @include for-large-up {
+      padding-bottom: 12px;
+      padding-top: 13px;
+
+      // vertically adjust because native inputs and react-select custom inputs
+      // do not vertically align
+      position: relative;
+      top: 34px;
+    }
+  }
+
+  @include clearfix;
+}
+
+// use global selector to target the container of the multiselect
+.search,
+:global(.select) {
+  @include for-large-up {
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+  }
+}
+
+.search {
+  @include for-large-up {
+    width: 300px;
+  }
+
+  input {
+    padding-bottom: 12px;
+    padding-top: 12px;
+  }
+}
+
+.select {
+  @include for-small-and-medium-only {
+    margin-bottom: 20px;
+  }
+
+  @include for-large-up {
+    width: 200px;
+  }
+}
+
+.noResults {
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+}
+
+.results {
+  display: grid;
+  background-color: $sba-gray-lighter;
+  min-height: 60vh;
+
+  :global(.contact-card) {
+    margin-top: 15px;
+  }
+}
+
+:global(.paginator) {
+  margin-bottom: 20px;
+  margin-right: 30px;
+  margin-top: 20px;
+  text-align: right;
+
+  &:first-of-type {
+    margin-top: 20px;
+  }
+
+  // Hack to deal with the bottom margins of cards in the last row
+  &:last-of-type {
+    margin-top: -10px;
+  }
+}
+
+:global(.loader) {
+  align-self: center;
+  justify-self: center;
+}
