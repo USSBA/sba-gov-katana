@@ -194,7 +194,9 @@ class SearchPage extends PureComponent {
               )}
               {searchResults && searchResults.length === 0 && (
                 <div>
-                  <p className="results-message">Sorry, we couldn't find anything matching that query.</p>
+                  <p className="results-message">
+                    Sorry, we didn't find any results that matched your search.
+                  </p>
                 </div>
               )}
             </div>
