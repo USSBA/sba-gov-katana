@@ -46,6 +46,8 @@
 
   @include for-large-up {
     flex-shrink: 1;
+    // order has been declared on Social Media button set, address and newsletter form on the footer because
+    // the order will change between the address and newsletter depending on the screen size.
     order: 3;
   }
 
