@@ -132,7 +132,7 @@ function fetchExternalContent(endpoint, stage, reqPath, queryParams, res, respon
 app.get('/actions/misc/*', (req, res, next) => {
   fetchExternalContent(config.get('miscapi.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
-app.get('/api/content/*', (req, res, next) => {
+app.get('/api/content/search/*', (req, res, next) => {
   fetchExternalContent(config.get('content.endpoint'), '', req.path, req.query, res, 'json')
 })
 app.get('/naics', (req, res, next) => {
@@ -180,7 +180,7 @@ async function getMetaVariables(nodeId, type = 'node') {
   // so we can regard negative nodeId's as invalid.
   if (nodeId > 0) {
     const jsonContent = await axios.get(
-      `https://${config.get('content.endpoint')}/api/content/${type}/${nodeId}.json`
+      `https://${config.get('content.endpoint')}/api/content/search/${type}/${nodeId}.json`
     )
     if (jsonContent.data) {
       description = jsonContent.data.summary

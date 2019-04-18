@@ -6,7 +6,7 @@ async function fetchRestContent(type, id, langOverride) {
 
   try {
     const response = await axios.get(
-      '/api/content/' + type + (id ? '/' + id : '') + '.json',
+      '/api/content/search/' + type + (id ? '/' + id : '') + '.json',
       langOverride && { headers: { 'accept-language': langOverride } }
     )
     data = response.data
@@ -18,7 +18,7 @@ async function fetchRestContent(type, id, langOverride) {
 }
 
 async function fetchSiteContent(type, query) {
-  const url = '/api/content/' + type + '.json' + (query ? '?' + queryString.stringify(query) : '')
+  const url = '/api/content/search/' + type + '.json' + (query ? '?' + queryString.stringify(query) : '')
   let data = null
   try {
     const response = await axios.get(url)
