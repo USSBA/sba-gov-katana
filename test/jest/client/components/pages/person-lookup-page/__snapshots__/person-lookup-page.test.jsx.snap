@@ -240,6 +240,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
   >
     <div
       className="loader container"
+      data-cy="loader"
     >
       <img
         className="logo"
