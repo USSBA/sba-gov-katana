@@ -180,7 +180,7 @@ async function getMetaVariables(nodeId, type = 'node') {
   // so we can regard negative nodeId's as invalid.
   if (nodeId > 0) {
     const jsonContent = await axios.get(
-      `https://${config.get('content.endpoint')}/api/content/search/${type}/${nodeId}.json`
+      `https://${config.get('server.fqdn')}/api/content/${type}/${nodeId}.json`
     )
     if (jsonContent.data) {
       description = jsonContent.data.summary

@@ -6,7 +6,7 @@ async function fetchRestContent(type, id, langOverride) {
 
   try {
     const response = await axios.get(
-      '/api/content/search/' + type + (id ? '/' + id : '') + '.json',
+      '/api/content/' + type + (id ? '/' + id : '') + '.json',
       langOverride && { headers: { 'accept-language': langOverride } }
     )
     data = response.data
