@@ -10,9 +10,7 @@ class BlogsLandingPage extends Component {
   // }
 
   async componentDidMount() {
-    if (this.props.id) {
-      return this.fetchBlogs()
-    }
+    return this.fetchBlogs()
   }
 
   async componentWillReceiveProps(nextProps) {}
@@ -22,13 +20,21 @@ class BlogsLandingPage extends Component {
   }
 
   render() {
+    const heroData = {
+      title: 'SBA Blog',
+      message: 'Perspectives, news, and practical information for small businesses',
+      buttons: null,
+      imageURL: null,
+      alt: null
+    }
     return (
       <Hero
-        title="SBA Blog"
-        message="Perspectives, news, and practical iformation for small businesses"
-        buttons={null}
-        imageURL={null}
-        alt={null}
+        title={heroData.title}
+        message={heroData.message}
+        button={heroData.buttons}
+        imageURL={heroData.imageURL}
+        alt={heroData.alt}
+        data-testid={'blogs-hero'}
       />
     )
   }
