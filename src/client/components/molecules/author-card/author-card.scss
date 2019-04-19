@@ -1,0 +1,67 @@
+.card {
+  
+  border-top: 3px solid $sba-blue;
+  box-shadow: $box-shadow;
+  padding: 30px 20px 30px 30px;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+
+  h4 {
+    margin-bottom: 5px;
+
+    a {
+      color: $sba-blue;
+      text-decoration: none;
+    }
+  }
+
+  @include for-small-only {
+    @include grid-column(12);
+  }
+
+}
+
+.title {
+    margin-bottom:  10px;
+  }
+
+.bio {
+
+  margin-top: 20px;
+  margin-bottom: 5px;
+
+}
+
+.image {
+
+  display: inline-block;
+  vertical-align: top;
+
+  img {
+    width: 100%;
+  }
+
+  @include grid-media($sba-grid-medium) {
+    width: 35%;
+  }
+
+  @include grid-media($sba-grid-large) {
+    width: 35%;
+  }
+  
+}
+
+.info {
+  
+  display: inline-block;
+  padding-left: 30px;
+
+  @include grid-media($sba-grid-medium) {
+    width: 65%;
+  }
+
+  @include grid-media($sba-grid-large) {
+    width: 65%;
+  }
+}
+

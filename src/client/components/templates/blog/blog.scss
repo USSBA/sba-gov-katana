@@ -1,7 +1,7 @@
 .container {
 
 	word-break: break-word;
-	@include grid-column(6);
+	@include grid-column(12);
 
 	@include grid-media($sba-grid-medium) {
 		@include grid-column(6);
