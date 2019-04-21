@@ -27,7 +27,7 @@ async function fetchEventContent(id, langOverride) {
     )
     data = response.data
   } catch (error) {
-    console.error('fetchRestContent', error)
+    console.error('fetchEventContent', error)
   }
 
   return data
