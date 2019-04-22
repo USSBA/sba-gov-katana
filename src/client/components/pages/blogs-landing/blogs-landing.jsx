@@ -28,14 +28,15 @@ class BlogsLandingPage extends Component {
       alt: null
     }
     return (
-      <Hero
-        title={heroData.title}
-        message={heroData.message}
-        button={heroData.buttons}
-        imageURL={heroData.imageURL}
-        alt={heroData.alt}
-        data-testid={'blogs-hero'}
-      />
+      <div data-testid={'blogs-hero'}>
+        <Hero
+          title={heroData.title}
+          message={heroData.message}
+          button={heroData.buttons}
+          imageURL={heroData.imageURL}
+          alt={heroData.alt}
+        />
+      </div>
     )
   }
 }
