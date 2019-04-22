@@ -38,8 +38,6 @@ export class RootPage extends React.Component {
       return <EventPage id={window.nodeId} />
     } else if (first === 'blog') {
       return <BlogPage id={window.nodeId} />
-    } else if (first === 'blogs') {
-      return <BlogsLandingPage />
     } else if (window && window.nodeId && this.state.siteMap.length && Number(window.nodeId) > 0) {
       const pageLineage = findPageLineageByNodeId(this.state.siteMap, window.nodeId)
       if (pageLineage) {
