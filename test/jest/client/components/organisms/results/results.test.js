@@ -16,20 +16,19 @@ describe('Results', () => {
           location_zipcode: ['20416']
         }
       }
-      const component = shallow(<Results
-        customDetailResultsView={customDetailResultsView}
-        selectedItem={mockSelectedItem}
-        items={items}
-      />)
+      const component = shallow(
+        <Results
+          customDetailResultsView={customDetailResultsView}
+          selectedItem={mockSelectedItem}
+          items={items}
+        />
+      )
       expect(component.find(OfficeDetail)).toHaveLength(1)
     })
     test('should not render custom detail component (OfficeDetail) when no item is selected', () => {
       const customDetailResultsView = () => <OfficeDetail />
       const items = [{}]
-      const component = shallow(<Results
-        customDetailResultsView={customDetailResultsView}
-        items={items}
-      />)
+      const component = shallow(<Results customDetailResultsView={customDetailResultsView} items={items} />)
       expect(component.find(OfficeDetail)).toHaveLength(0)
     })
   })
@@ -39,11 +38,13 @@ describe('Results', () => {
       const searchTips = ['tip1', 'tip2', 'tip3']
       const displaySearchTipsOnNoResults = false
       const items = []
-      const component = shallow(<Results
-        items={items}
-        searchTips={searchTips}
-        displaySearchTipsOnNoResults={displaySearchTipsOnNoResults}
-      />)
+      const component = shallow(
+        <Results
+          items={items}
+          searchTips={searchTips}
+          displaySearchTipsOnNoResults={displaySearchTipsOnNoResults}
+        />
+      )
       const noResultsSection = component.find(NoResultsSection).node
       expect(noResultsSection).not.toBeUndefined()
     })

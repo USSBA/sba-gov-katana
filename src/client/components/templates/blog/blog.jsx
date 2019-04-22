@@ -21,11 +21,11 @@ class Blog extends Component {
     const { authorData } = this.state
     const { blogData } = this.props
     return (
-    	<div className={styles.container}>
-          {!isEmpty(authorData) && <ByLine authorData={authorData} blogData={blogData} />}
-        	<p>{JSON.stringify(blogData)}</p>
-        	{!isEmpty(authorData) && <AuthorCard {...authorData} />}
-        </div>
+      <div className={styles.container}>
+        {!isEmpty(authorData) && <ByLine authorData={authorData} blogData={blogData} />}
+        <p>{JSON.stringify(blogData)}</p>
+        {!isEmpty(authorData) && <AuthorCard {...authorData} />}
+      </div>
     )
   }
 }
@@ -38,9 +38,17 @@ Blog.propTypes = {
   blogData: PropTypes.object
 }
 
-const ByLine = ({authorData, blogData}) => <div data-testid={'byline'}>
-  <p><span data-testid={'postAuthor'}>By <a href="#">{authorData.name}</a></span> <span data-testid={'postDate'}>on {moment.unix(blogData.created).format("MM/DD/YYYY")}</span><br /><span data-testid={'postCategory'}>Category: {blogData.blogCategory}</span></p>
-</div>
-
+const ByLine = ({ authorData, blogData }) => (
+  <div data-testid={'byline'}>
+    <p>
+      <span data-testid={'postAuthor'}>
+        By <a href="#">{authorData.name}</a>
+      </span>{' '}
+      <span data-testid={'postDate'}>on {moment.unix(blogData.created).format('MM/DD/YYYY')}</span>
+      <br />
+      <span data-testid={'postCategory'}>Category: {blogData.blogCategory}</span>
+    </p>
+  </div>
+)
 
 export default Blog
