@@ -87,12 +87,4 @@ class Hero extends React.Component {
   /* eslint-enable no-invalid-this */
 }
 
-// Hero.defaultProps = {
-//   alt: null,
-//   buttons: [],
-//   imageURL: null,
-//   message: 'Hero message',
-//   title: 'Hero title'
-// }
-
 export default Hero
