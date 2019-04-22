@@ -11,7 +11,7 @@ import { getLanguageOverride } from '../../../services/utils'
 const Card = props => {
   const {
     index,
-    item: { image, link, subtitleText, titleText },
+    item: { image, link, subtitleText, titleText, italicText },
     numCards,
     parentIndex
   } = props
@@ -72,12 +72,19 @@ const Card = props => {
             {titleMarkup}
           </h4>
         ) : null}
-        {subtitleText ? (
+        {subtitleText || italicText ? (
           <div>
             <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={30} />
-            <p id={'subtitle-text-' + parentIndex + '-' + index} className={styles.itemSubTitle}>
-              {subtitleText}
-            </p>
+            {italicText ? (
+              <p id={'italic-text-' + parentIndex + '-' + index} className={styles.itemItalic}>
+                {italicText}
+              </p>
+            ) : null}
+            {subtitleText ? (
+              <p id={'subtitle-text-' + parentIndex + '-' + index} className={styles.itemSubTitle}>
+                {subtitleText}
+              </p>
+            ) : null}
           </div>
         ) : null}
         {learnMoreMarkup}
@@ -100,6 +107,7 @@ Card.propTypes = {
       alt: PropTypes.string,
       url: PropTypes.url
     }),
+    italicText: PropTypes.string,
     link: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     subtitleText: PropTypes.string,
     titleText: PropTypes.string
