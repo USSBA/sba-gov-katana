@@ -22,7 +22,7 @@ async function fetchEventContent(id, langOverride) {
 
   try {
     const response = await axios.get(
-      '/api/content/search/event/' + (id ? '/' + id : '') + '.json',
+      '/api/content/search/event' + (id ? '/' + id : '') + '.json',
       langOverride && { headers: { 'accept-language': langOverride } }
     )
     data = response.data
