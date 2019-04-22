@@ -88,24 +88,65 @@ describe('Blog page', () => {
     expect(fetchRestContentStub).toHaveBeenCalledTimes(1)
     expect(getByTestId('blog-loader')).toBeInTheDocument()
   })
+  describe('Byline', () => {
+    it('should exist', async () => {
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      fetchRestContentStub.mockImplementation(() => Promise.resolve(mockBlogData))
+
+      const initialState = undefined
+      const enhancer = applyMiddleware(thunk)
+      const store = createStore(reducers, initialState, enhancer)
+
+      const { getByTestId } = render(
+        <Provider store={store}>
+          <BlogPage id="1" />
+        </Provider>
+      )
+
+      const content = await waitForElement(() => getByTestId('byline'))
+      expect(content).toBeInTheDocument()
+    })
+    it('should contain postAuthor, postDate and postCategory', async () => {
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      fetchRestContentStub.mockImplementation(() => Promise.resolve(mockBlogData))
+
+      const initialState = undefined
+      const enhancer = applyMiddleware(thunk)
+      const store = createStore(reducers, initialState, enhancer)
+
+      const { getByTestId } = render(
+        <Provider store={store}>
+          <BlogPage id="1" />
+        </Provider>
+      )
+
+      let content = await waitForElement(() => getByTestId('byline'))
+      expect(content).toBeInTheDocument()
+      content = await waitForElement(() => getByTestId('postAuthor'))
+      expect(content).toBeInTheDocument()
+      content = await waitForElement(() => getByTestId('postDate'))
+      expect(content).toBeInTheDocument()
+      content = await waitForElement(() => getByTestId('postCategory'))
+      expect(content).toBeInTheDocument()
+    })
+  })
   describe('AuthorCard', () => {
-      it('should exist', async () => {
+    it('should exist', async () => {
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      fetchRestContentStub.mockImplementation(() => Promise.resolve(mockBlogData))
 
-        const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
-        fetchRestContentStub.mockImplementation(() => Promise.resolve(mockBlogData))
+      const initialState = undefined
+      const enhancer = applyMiddleware(thunk)
+      const store = createStore(reducers, initialState, enhancer)
 
-        const initialState = undefined
-        const enhancer = applyMiddleware(thunk)
-        const store = createStore(reducers, initialState, enhancer)
+      const { getByTestId } = render(
+        <Provider store={store}>
+          <BlogPage id="1" />
+        </Provider>
+      )
 
-        const { getByTestId } = render(
-          <Provider store={store}>
-            <BlogPage id="1" />
-          </Provider>
-        )
-        
-        const content = await waitForElement(() => getByTestId('authorCard'))
-        expect(content).toBeInTheDocument()
-      })
+      const content = await waitForElement(() => getByTestId('authorCard'))
+      expect(content).toBeInTheDocument()
+    })
   })
 })

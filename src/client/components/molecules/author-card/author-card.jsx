@@ -9,8 +9,14 @@ class AuthorCard extends PureComponent {
 	render() {
 
 		const { name, title, bio, picture, id } = this.props
+
 		const className = classNames({
 		    [styles.card]: true
+		})
+
+		const infoClassName = classNames({
+			[styles.info]: true,
+			[styles.imageMode]: !isEmpty(picture)
 		})
 
 		return (
@@ -19,7 +25,7 @@ class AuthorCard extends PureComponent {
 				{!isEmpty(picture) && <div data-testid={'picture'} tabIndex="0" className={styles.image}>
 					<img src={picture} alt="photo of author" />
 				</div>}
-				<div className={styles.info}>
+				<div className={infoClassName}>
 					<h4 data-testid={'name'} tabIndex="0">
 						<a href={`#${id}`}>{name}</a>
 					</h4>
@@ -27,9 +33,9 @@ class AuthorCard extends PureComponent {
 						<i>{title}</i>
 					</div>
 					<DecorativeDash width={30} />
-					<div data-testid={'bio'} tabIndex="0" className={styles.bio}>
+					{!isEmpty(bio) && <div data-testid={'bio'} tabIndex="0" className={styles.bio}>
 						{bio}
-					</div>
+					</div>}
 					<div data-testid={'read-more'} tabIndex="0">
 						<a href={`#${id}`}>Read More</a>
 					</div>
@@ -43,7 +49,6 @@ class AuthorCard extends PureComponent {
 AuthorCard.propTypes = {
 	name: PropTypes.string,
 	title: PropTypes.string,
-	bio: PropTypes.string,
 	id: PropTypes.number
 }
 

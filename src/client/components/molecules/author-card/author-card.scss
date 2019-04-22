@@ -17,6 +17,7 @@
 
   @include for-small-only {
     @include grid-column(12);
+    padding: 30px;
   }
 
 }
@@ -41,6 +42,16 @@
     width: 100%;
   }
 
+
+  @include for-small-only {
+
+    display: block;
+    margin: 0 auto 20px;
+    width: 100%;
+    max-width: 280px;
+
+  }
+
   @include grid-media($sba-grid-medium) {
     width: 35%;
   }
@@ -54,14 +65,21 @@
 .info {
   
   display: inline-block;
-  padding-left: 30px;
+
+}
+
+.imageMode {
 
   @include grid-media($sba-grid-medium) {
     width: 65%;
+    padding-left: 30px;
   }
 
   @include grid-media($sba-grid-large) {
     width: 65%;
+    padding-left: 30px;
   }
+  
 }
+
 
