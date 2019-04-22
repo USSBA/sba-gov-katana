@@ -50,6 +50,7 @@ const Card = props => {
         className={styles.itemImage}
         src={image.url}
         alt={image.alt}
+        data-testid="card image"
       />
     )
 
@@ -59,16 +60,24 @@ const Card = props => {
   }
 
   const titleMarkup = uri ? <Link to={uri}>{titleText}</Link> : titleText
-  const learnMoreMarkup = uri ? <Link to={uri}>{title}</Link> : null
+  const learnMoreMarkup = uri ? (
+    <Link to={uri} data-testid="card link">
+      {title}
+    </Link>
+  ) : null
 
   return (
-    <div className={className} id={snakeCase('card', parentIndex, index)}>
+    <div className={className} id={snakeCase('card', parentIndex, index)} data-testid="card">
       {imageMarkup}
       {/* If a card has a an image, a parent StyledGrayBackground will add
         padding to the card using the class name as a hook. */}
       <div className={`${styles.content} ${!isEmpty(image) && 'content-with-image'}`}>
         {titleText ? (
-          <h4 className={styles.itemTitle} id={snakeCase('title', parentIndex, index)}>
+          <h4
+            className={styles.itemTitle}
+            id={snakeCase('title', parentIndex, index)}
+            data-testid="card title"
+          >
             {titleMarkup}
           </h4>
         ) : null}
@@ -76,12 +85,20 @@ const Card = props => {
           <div>
             <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={30} />
             {italicText ? (
-              <p id={'italic-text-' + parentIndex + '-' + index} className={styles.itemItalic}>
+              <p
+                id={'italic-text-' + parentIndex + '-' + index}
+                className={styles.itemItalic}
+                data-testid="card italic text"
+              >
                 {italicText}
               </p>
             ) : null}
             {subtitleText ? (
-              <p id={'subtitle-text-' + parentIndex + '-' + index} className={styles.itemSubTitle}>
+              <p
+                id={'subtitle-text-' + parentIndex + '-' + index}
+                className={styles.itemSubTitle}
+                data-testid="card subtitle text"
+              >
                 {subtitleText}
               </p>
             ) : null}
