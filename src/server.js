@@ -171,14 +171,22 @@ if (config.get('developmentOptions.webpack.enabled')) {
 const { fetchNewUrlByOldUrl } = require('./service/drupal-url-redirect.js')
 const { findMostRecentUrlRedirect } = require('./service/url-redirect.js')
 
-async function getMetaVariables(nodeId, type = 'node') {
+async function getMetaVariables(nodeId, type = 'node', request) {
   let description = config.get('meta.description')
   let title = config.get('meta.title')
 
   // This will only allow valid nodeId's to make an axios call.
   // Currently negative nodeId numbers are associated to pages without a nodeId,
   // so we can regard negative nodeId's as invalid.
-  if (nodeId > 0) {
+  if (request.substring(0, 7) === '/event/') {
+    const jsonContent = await axios.get(
+      `https://${config.get('server.fqdn')}/api/content/search/event/${nodeId}.json`
+    )
+    if (jsonContent.data) {
+      description = jsonContent.data.summary
+      title = jsonContent.data.title
+    }
+  } else if (nodeId > 0) {
     const jsonContent = await axios.get(
       `https://${config.get('server.fqdn')}/api/content/${type}/${nodeId}.json`
     )
@@ -197,7 +205,7 @@ async function getMetaVariables(nodeId, type = 'node') {
 app.get(['/', '/*'], async function(req, res, next) {
   let metaVariables
   try {
-    metaVariables = await getMetaVariables(req.nodeId, req.type)
+    metaVariables = await getMetaVariables(req.nodeId, req.type, req.url)
 
     const pugVariables = _.merge({}, metaVariables, {
       langOverride: req.preferredLanguage,
