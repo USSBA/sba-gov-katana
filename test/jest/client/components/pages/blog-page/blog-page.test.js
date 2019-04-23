@@ -11,7 +11,7 @@ import BlogPage from 'pages/blog-page/blog-page.jsx'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 
 const mockBlogData = {
-  author: null,
+  author: 18024,
   blogBody: {},
   blogTags: 'International',
   office: {},
@@ -25,12 +25,43 @@ const mockBlogData = {
   url: '/blog/18343'
 }
 
+const mockAuthorData = {
+    "bio": "<p>this is a bio</p>\r\n",
+    "emailAddress": "everett.woodeljr@sba.gov",
+    "fax": "202-481-4845",
+    "firstName": "Everette",
+    "highResolutionPhoto": {},
+    "lastName": "Woodel",
+    "office": 6443,
+    "phone": "614-469-6860 ext 287",
+    "picture": {},
+    "shortBio": "this is a short bio",
+    "title": "District Director",
+    "type": "person",
+    "url": "/person/everett-m-woodel-jr",
+    "name": "Everett M. Woodel Jr.",
+    "id": 18024,
+    "updated": 1556029460,
+    "created": 1549300944,
+    "langCode": "en"
+}
+
+const fetchRestContentStubCallback = ({node, id}) => {
+  let result
+  if (id === 18024) {
+    result = Object.assign({}, mockAuthorData)
+  } else {
+    result = Object.assign({}, mockBlogData)
+  }
+  return result
+}
+
 afterEach(cleanup)
 
 describe('Blog page', () => {
   it('renders blog content when BlogPage receives data back from the api', async () => {
     const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
-    fetchRestContentStub.mockImplementation(() => Promise.resolve(mockBlogData))
+    fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
 
     const initialState = undefined
     const enhancer = applyMiddleware(thunk)
@@ -91,7 +122,7 @@ describe('Blog page', () => {
   describe('Byline', () => {
     it('should exist', async () => {
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
-      fetchRestContentStub.mockImplementation(() => Promise.resolve(mockBlogData))
+      fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
 
       const initialState = undefined
       const enhancer = applyMiddleware(thunk)
@@ -108,7 +139,7 @@ describe('Blog page', () => {
     })
     it('should contain postAuthor, postDate and postCategory', async () => {
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
-      fetchRestContentStub.mockImplementation(() => Promise.resolve(mockBlogData))
+      fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
 
       const initialState = undefined
       const enhancer = applyMiddleware(thunk)
@@ -133,7 +164,7 @@ describe('Blog page', () => {
   describe('AuthorCard', () => {
     it('should exist', async () => {
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
-      fetchRestContentStub.mockImplementation(() => Promise.resolve(mockBlogData))
+      fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
 
       const initialState = undefined
       const enhancer = applyMiddleware(thunk)

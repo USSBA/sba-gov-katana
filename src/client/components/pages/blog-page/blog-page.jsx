@@ -33,9 +33,13 @@ class BlogPage extends Component {
   }
 
   // fetchRestContent returns null when data is not found
-  fetchBlog(id) {
+  async fetchBlog(id) {
     if (id) {
-      fetchRestContent('node', id).then(data => this.setState({ data }))
+      const data = await fetchRestContent('node', id)
+      if (!isEmpty(data)) {
+        data.author = await fetchRestContent('node', data.author)
+      }
+      this.setState({data})
     }
   }
 

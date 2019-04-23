@@ -6,25 +6,13 @@ import { isEmpty } from 'lodash'
 import moment from 'moment'
 
 class Blog extends Component {
-  constructor() {
-    super()
-    this.state = {
-      authorData: null
-    }
-  }
-  async componentWillMount() {
-    const { author: id } = this.props.blogData
-    const authorData = await fetchRestContent('node', id)
-    this.setState({ authorData })
-  }
   render() {
-    const { authorData } = this.state
     const { blogData } = this.props
     return (
       <div className={styles.container}>
-        {!isEmpty(authorData) && <ByLine authorData={authorData} blogData={blogData} />}
+        {!isEmpty(blogData.author) && <ByLine blogData={blogData} />}
         <p>{JSON.stringify(blogData)}</p>
-        {!isEmpty(authorData) && <AuthorCard {...authorData} />}
+        {!isEmpty(blogData.author) && <AuthorCard {...blogData.author} />}
       </div>
     )
   }
@@ -38,11 +26,11 @@ Blog.propTypes = {
   blogData: PropTypes.object
 }
 
-const ByLine = ({ authorData, blogData }) => (
+const ByLine = ({ blogData }) => (
   <div data-testid={'byline'}>
     <p>
       <span data-testid={'postAuthor'}>
-        By <a href="#">{authorData.name}</a>
+        By <a href="#">{blogData.author.name}</a>
       </span>{' '}
       <span data-testid={'postDate'}>on {moment.unix(blogData.created).format('MM/DD/YYYY')}</span>
       <br />
