@@ -19,3 +19,5 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectAvery
+content:
+    cloudfront: d15dl68v0dt33i.cloudfront.net
