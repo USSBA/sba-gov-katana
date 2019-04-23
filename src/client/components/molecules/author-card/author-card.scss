@@ -1,10 +1,9 @@
 .card {
   
-  border-top: 3px solid $sba-blue;
-  box-shadow: $box-shadow;
-  padding: 30px 20px 30px 30px;
   margin-bottom: 1.5em;
   margin-top: 1.5em;
+  background: #ffffff;
+  padding: 30px 20px 30px 30px;
 
   h4 {
     margin-bottom: 5px;
@@ -20,6 +19,11 @@
     padding: 30px;
   }
 
+}
+
+.border {
+  border-top: 3px solid $sba-blue;
+  box-shadow: $box-shadow;
 }
 
 .title {

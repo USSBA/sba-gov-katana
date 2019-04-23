@@ -11,17 +11,18 @@ class BlogPage extends Component {
   constructor() {
     super()
     this.state = {
-      data: {}
+      data: {},
+      LOADING_STATE: 'unloaded'
     }
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     if (this.props.id) {
       return this.fetchBlog(this.props.id)
     }
   }
 
-  async componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { id } = this.props
     const { id: nextId } = nextProps
 
@@ -33,40 +34,38 @@ class BlogPage extends Component {
   }
 
   // fetchRestContent returns null when data is not found
-  async fetchBlog(id) {
+  fetchBlog(id) {
     if (id) {
-      const data = await fetchRestContent('node', id)
-      if (!isEmpty(data)) {
-        data.author = await fetchRestContent('node', data.author)
-      }
-      this.setState({ data })
+      this.setState( {
+        LOADING_STATE: 'isLoading'
+      }, async () => {
+        const data = await fetchRestContent('node', id)
+        if (!isEmpty(data)) {
+          data.author = await fetchRestContent('node', data.author)
+        }
+        this.setState({ data, LOADING_STATE: 'isLoaded' })
+      })
     }
   }
 
   render() {
-    const { data } = this.state
+    const { data, LOADING_STATE } = this.state
 
-    if (data) {
-      if (!isEmpty(data)) {
-        return (
-          <div data-testid={'blog-content'}>
-            <Blog blogData={data} />
-          </div>
-        )
-      } else {
-        return (
-          <div className={styles.loaderContainer} data-testid={'blog-loader'}>
-            <Loader />
-          </div>
-        )
-      }
-    } else {
-      return (
-        <div data-testid={'blog-error'}>
-          <ErrorPage />
-        </div>
-      )
-    }
+    return (
+      <div>
+        {LOADING_STATE === 'isLoading' && <div className={styles.loaderContainer} data-testid={'blog-loader'}><Loader /></div>}
+        {LOADING_STATE === 'isLoaded' && <div>
+            {!isEmpty(data) && !isEmpty(data.author) ? (
+              <div data-testid={'blog-content'}>
+                <Blog blogData={data} />
+              </div>) : (
+              <div data-testid={'blog-error'}>
+                <ErrorPage />
+              </div>
+            )}
+          </div>}
+      </div>
+    )
   }
 }
 

@@ -10,9 +10,20 @@ class Blog extends Component {
     const { blogData } = this.props
     return (
       <div className={styles.container}>
-        {!isEmpty(blogData) && !isEmpty(blogData.author) && <ByLine blogData={blogData} />}
+        <ByLine blogData={blogData} />
         <p>{JSON.stringify(blogData)}</p>
-        {!isEmpty(blogData) && !isEmpty(blogData.author) && <AuthorCard {...blogData.author} />}
+        <br />
+        <p>AuthorCard.border=true</p>
+        <AuthorCard {...blogData.author} />
+        <br />
+        <br />
+        <div className={styles.greyBackgroundForAuthorCardDemo}>
+          <p>AuthorCard.border=false</p>
+          <AuthorCard {...blogData.author} border={false} />
+        </div>
+        <br />
+        <br />
+        <br />
       </div>
     )
   }
@@ -30,7 +41,7 @@ const ByLine = ({ blogData }) => (
   <div data-testid={'byline'}>
     <p>
       <span data-testid={'postAuthor'}>
-        By <a href="#">{blogData.author.name}</a>
+        By <a href={blogData.author.url}>{blogData.author.name}</a>
       </span>{' '}
       <span data-testid={'postDate'}>on {moment.unix(blogData.created).format('MM/DD/YYYY')}</span>
       <br />

@@ -7,10 +7,11 @@ import styles from './author-card.scss'
 
 class AuthorCard extends PureComponent {
   render() {
-    const { name, title, shortBio, picture, url } = this.props
+    const { name, title, shortBio:bio, highResolutionPhoto:picture, url, border } = this.props
 
     const className = classNames({
-      [styles.card]: true
+      [styles.card]: true,
+      [styles.border]: border
     })
 
     const infoClassName = classNames({
@@ -33,9 +34,9 @@ class AuthorCard extends PureComponent {
             <i>{title}</i>
           </div>
           <DecorativeDash width={30} />
-          {!isEmpty(shortBio) && (
+          {!isEmpty(bio) && (
             <div data-testid={'bio'} tabIndex="0" className={styles.bio}>
-              {shortBio}
+              {bio}
             </div>
           )}
           <div data-testid={'read-more'} tabIndex="0">
@@ -50,16 +51,18 @@ class AuthorCard extends PureComponent {
 AuthorCard.propTypes = {
   name: PropTypes.string,
   title: PropTypes.string,
-  url: PropTypes.string
+  url: PropTypes.string,
+  border: PropTypes.bool
 }
 
 AuthorCard.defaultProps = {
   name: 'Full Name',
   title: 'title',
-  picture:
+  highResolutionPhoto:
     'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Linda_McMahon_official_photo.jpg/440px-Linda_McMahon_official_photo.jpg',
   shortBio:
-    'Eaque totam ad exercitationem tempora rerum natus ea voluptates. Reiciendis recusandae exercitationem optio perspiciatis rem optio. Rerum velit veniam eos temporibus suscipit debitis dolores.'
+    'Eaque totam ad exercitationem tempora rerum natus ea voluptates. Reiciendis recusandae exercitationem optio perspiciatis rem optio. Rerum velit veniam eos temporibus suscipit debitis dolores.',
+   border: true
 }
 
 export default AuthorCard
