@@ -59,7 +59,7 @@ AuthorCard.defaultProps = {
   picture:
     'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Linda_McMahon_official_photo.jpg/440px-Linda_McMahon_official_photo.jpg',
   shortBio:
-    'Eaque totam ad exercitationem tempora rerum natus ea voluptates. Reiciendis recusandae exercitationem optio perspiciatis rem optio. Rerum velit veniam eos temporibus suscipit debitis dolores.',
+    'Eaque totam ad exercitationem tempora rerum natus ea voluptates. Reiciendis recusandae exercitationem optio perspiciatis rem optio. Rerum velit veniam eos temporibus suscipit debitis dolores.'
 }
 
 export default AuthorCard

@@ -26,27 +26,27 @@ const mockBlogData = {
 }
 
 const mockAuthorData = {
-    "bio": "<p>this is a bio</p>\r\n",
-    "emailAddress": "everett.woodeljr@sba.gov",
-    "fax": "202-481-4845",
-    "firstName": "Everette",
-    "highResolutionPhoto": {},
-    "lastName": "Woodel",
-    "office": 6443,
-    "phone": "614-469-6860 ext 287",
-    "picture": {},
-    "shortBio": "this is a short bio",
-    "title": "District Director",
-    "type": "person",
-    "url": "/person/everett-m-woodel-jr",
-    "name": "Everett M. Woodel Jr.",
-    "id": 18024,
-    "updated": 1556029460,
-    "created": 1549300944,
-    "langCode": "en"
+  bio: '<p>this is a bio</p>\r\n',
+  emailAddress: 'everett.woodeljr@sba.gov',
+  fax: '202-481-4845',
+  firstName: 'Everette',
+  highResolutionPhoto: {},
+  lastName: 'Woodel',
+  office: 6443,
+  phone: '614-469-6860 ext 287',
+  picture: {},
+  shortBio: 'this is a short bio',
+  title: 'District Director',
+  type: 'person',
+  url: '/person/everett-m-woodel-jr',
+  name: 'Everett M. Woodel Jr.',
+  id: 18024,
+  updated: 1556029460,
+  created: 1549300944,
+  langCode: 'en'
 }
 
-const fetchRestContentStubCallback = ({node, id}) => {
+const fetchRestContentStubCallback = ({ node, id }) => {
   let result
   if (id === 18024) {
     result = Object.assign({}, mockAuthorData)

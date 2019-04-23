@@ -39,7 +39,7 @@ class BlogPage extends Component {
       if (!isEmpty(data)) {
         data.author = await fetchRestContent('node', data.author)
       }
-      this.setState({data})
+      this.setState({ data })
     }
   }
 
