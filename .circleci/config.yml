@@ -37,6 +37,15 @@ workflows:
           tags:
             only:
             - /.*/
+    - test-poirot:
+        requires: [cache-dependencies]
+        filters:
+          branches:
+            only:
+            - /.*/
+          tags:
+            only:
+            - /.*/
     - test-mocha:
         requires: [cache-dependencies]
         filters:
@@ -56,7 +65,7 @@ workflows:
             only:
             - /.*/
     - build-webpack:
-        requires: [test-jest, test-mocha, test-format]
+        requires: [test-jest, test-mocha, test-format, test-poirot]
         filters:
           branches:
             only:
@@ -204,6 +213,17 @@ jobs:
     #     name: run eslint fix and prettier
     #     command:
     #       npm run format
+  test-poirot:
+    docker:
+    - image: circleci/python:latest
+    steps:
+    - checkout
+    - run:
+       name: Run poirot tests
+       command: |
+         sudo pip install poirot
+         poirot --patterns='https://raw.githubusercontent.com/DCgov/poirot/master/poirot/patterns/default.txt'
+         poirot --patterns='https://raw.githubusercontent.com/DCgov/poirot-patterns/master/financial.txt'
   build-webpack:
     docker:
     - image: circleci/node:8.10
