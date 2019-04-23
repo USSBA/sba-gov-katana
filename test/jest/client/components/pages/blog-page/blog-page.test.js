@@ -30,7 +30,8 @@ const mockAuthorData = {
   emailAddress: 'everett.woodeljr@sba.gov',
   fax: '202-481-4845',
   firstName: 'Everette',
-  highResolutionPhoto: {},
+  highResolutionPhoto:
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Linda_McMahon_official_photo.jpg/440px-Linda_McMahon_official_photo.jpg',
   lastName: 'Woodel',
   office: 6443,
   phone: '614-469-6860 ext 287',

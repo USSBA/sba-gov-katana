@@ -16,6 +16,7 @@ const mockPersonData = {
   office: 7322,
   phone: {},
   picture: '/sites/default/files/2019-02/bio-james-rivera.jpg',
+  shortBio: 'this is a short bio',
   title: 'Associate Administrator',
   type: 'person',
   name: 'James Rivera',
@@ -25,7 +26,7 @@ const mockPersonData = {
   langCode: 'en'
 }
 
-describe.only('AuthorCard', () => {
+describe('AuthorCard', () => {
   it('should have a name, title and bio', () => {
     const props = Object.assign({}, mockPersonData)
 
@@ -68,12 +69,4 @@ describe.only('AuthorCard', () => {
     const content = getByTestId('read-more')
     expect(content).toBeInTheDocument()
   })
-
-  it('has a border', () => {})
-
-  it('has no border', () => {})
-
-  it('has image', () => {})
-
-  it('has no image', () => {})
 })
