@@ -10,9 +10,9 @@ class Blog extends Component {
     const { blogData } = this.props
     return (
       <div className={styles.container}>
-        {!isEmpty(blogData.author) && <ByLine blogData={blogData} />}
+        {!isEmpty(blogData) && !isEmpty(blogData.author) && <ByLine blogData={blogData} />}
         <p>{JSON.stringify(blogData)}</p>
-        {!isEmpty(blogData.author) && <AuthorCard {...blogData.author} />}
+        {!isEmpty(blogData) && !isEmpty(blogData.author) && <AuthorCard {...blogData.author} />}
       </div>
     )
   }
