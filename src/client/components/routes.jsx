@@ -69,6 +69,10 @@ const EventLookupPage = props => (
   <Async componentProps={props} load={import('./pages/event-lookup-page/event-lookup-page.jsx')} />
 )
 
+const BlogsLandingPage = props => (
+  <Async componentProps={props} load={import('./pages/blogs-landing/blogs-landing.jsx')} />
+)
+
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
 import clientConfig from '../services/client-config.js'
@@ -98,6 +102,8 @@ const mainRoutes = [
   <Redirect key={61} from="/events/find" to="/events/find/" />,
   <Route key={62} path="/person/" component={PersonLookupPage} />,
   <Redirect key={63} from="/person" to="/person/" />,
+  <Route key={64} path="/blogs/" component={BlogsLandingPage} />,
+  <Redirect key={65} from="/blogs" to="/blogs/" />,
   <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
   <Route
     key={13}
