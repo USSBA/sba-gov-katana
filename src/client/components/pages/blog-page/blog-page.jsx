@@ -36,15 +36,18 @@ class BlogPage extends Component {
   // fetchRestContent returns null when data is not found
   fetchBlog(id) {
     if (id) {
-      this.setState( {
-        LOADING_STATE: 'isLoading'
-      }, async () => {
-        const data = await fetchRestContent('node', id)
-        if (!isEmpty(data)) {
-          data.author = await fetchRestContent('node', data.author)
+      this.setState(
+        {
+          LOADING_STATE: 'isLoading'
+        },
+        async () => {
+          const data = await fetchRestContent('node', id)
+          if (!isEmpty(data)) {
+            data.author = await fetchRestContent('node', data.author)
+          }
+          this.setState({ data, LOADING_STATE: 'isLoaded' })
         }
-        this.setState({ data, LOADING_STATE: 'isLoaded' })
-      })
+      )
     }
   }
 
@@ -53,17 +56,24 @@ class BlogPage extends Component {
 
     return (
       <div>
-        {LOADING_STATE === 'isLoading' && <div className={styles.loaderContainer} data-testid={'blog-loader'}><Loader /></div>}
-        {LOADING_STATE === 'isLoaded' && <div>
+        {LOADING_STATE === 'isLoading' && (
+          <div className={styles.loaderContainer} data-testid={'blog-loader'}>
+            <Loader />
+          </div>
+        )}
+        {LOADING_STATE === 'isLoaded' && (
+          <div>
             {!isEmpty(data) && !isEmpty(data.author) ? (
               <div data-testid={'blog-content'}>
                 <Blog blogData={data} />
-              </div>) : (
+              </div>
+            ) : (
               <div data-testid={'blog-error'}>
                 <ErrorPage />
               </div>
             )}
-          </div>}
+          </div>
+        )}
       </div>
     )
   }
