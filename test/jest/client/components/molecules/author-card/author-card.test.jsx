@@ -26,6 +26,8 @@ const mockPersonData = {
   langCode: 'en'
 }
 
+afterEach(cleanup)
+
 describe('AuthorCard', () => {
   it('should have a name, title and bio', () => {
     const props = Object.assign({}, mockPersonData)
@@ -53,12 +55,12 @@ describe('AuthorCard', () => {
 
   it('should not display an image', () => {
     const props = Object.assign({}, mockPersonData)
-    delete props.picture
+    props.highResolutionPhoto = {}
 
-    const { getByTestId } = render(<AuthorCard {...props} />)
+    const { queryByTestId } = render(<AuthorCard {...props} />)
 
-    const content = getByTestId('picture')
-    expect(content).toBeInTheDocument()
+    const content = queryByTestId('picture')
+    expect(content).not.toBeInTheDocument()
   })
 
   it('should display a read-more link', () => {
