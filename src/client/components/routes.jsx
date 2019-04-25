@@ -73,6 +73,10 @@ const BlogsLandingPage = props => (
   <Async componentProps={props} load={import('./pages/blogs-landing/blogs-landing.jsx')} />
 )
 
+const BlogCategoryPage = props => (
+  <Async componentProps={props} load={import('./pages/blog-category/blog-category.jsx')} />
+)
+
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
 import clientConfig from '../services/client-config.js'
@@ -104,6 +108,8 @@ const mainRoutes = [
   <Redirect key={63} from="/person" to="/person/" />,
   <Route key={64} path="/blogs/" component={BlogsLandingPage} />,
   <Redirect key={65} from="/blogs" to="/blogs/" />,
+  <Route key={66} path="/blogs/:first/" component={BlogCategoryPage} />,
+  <Redirect key={67} from="/blogs/:first" to="/blogs/:first/" />,
   <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
   <Route
     key={13}
