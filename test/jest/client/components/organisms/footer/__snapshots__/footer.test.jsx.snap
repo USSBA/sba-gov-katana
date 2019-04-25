@@ -1,0 +1,1035 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Front Page Hero should render correctly 1`] = `
+<footer
+  className="footer"
+  id="sba-footer"
+>
+  <div
+    className="footerLinks"
+  >
+    <div
+      className="desktopFooterLinks"
+    >
+      <ul
+        className="pageLinkGroup"
+        id="footer-group-0"
+      >
+        <li>
+          <a
+            href="javascript:void(0);"
+            id="footer-group-0-title"
+            onBlur={[Function]}
+          >
+            Customer Service
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-0-0"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            About SBA
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-0-1"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Contact SBA
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-0-2"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            SBA en Español
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-0-3"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Media and Press Relations
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-0-4"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            SBA Locations
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-0-5"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            SBA Team
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="desktopFooterLinks"
+    >
+      <ul
+        className="pageLinkGroup"
+        id="footer-group-1"
+      >
+        <li>
+          <a
+            href="javascript:void(0);"
+            id="footer-group-1-title"
+            onBlur={[Function]}
+          >
+            About SBA.gov
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-1-0"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Site Map
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-1-1"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Privacy Policy
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-1-2"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Linking Policy
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-1-3"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Accessibility
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-1-4"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Disclaimers
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-1-5"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Social Media
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-1-6"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Data Store
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-1-7"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Blog
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="desktopFooterLinks"
+    >
+      <ul
+        className="pageLinkGroup"
+        id="footer-group-2"
+      >
+        <li>
+          <a
+            href="javascript:void(0);"
+            id="footer-group-2-title"
+            onBlur={[Function]}
+          >
+            SBA Information
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-2-0"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Freedom of Information Act
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-2-1"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            No Fear Act
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-2-2"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Report Fraud, Waste, and Abuse
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-2-3"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Initiatives
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-2-4"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Plain Language
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="desktopFooterLinks"
+    >
+      <ul
+        className="pageLinkGroup"
+        id="footer-group-3"
+      >
+        <li>
+          <a
+            href="javascript:void(0);"
+            id="footer-group-3-title"
+            onBlur={[Function]}
+          >
+            SBA Performance
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-3-0"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Strategic Planning
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-3-1"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Performance, Budget, and Financing
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-3-2"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Open Government
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-3-3"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Policy and Regulations
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-3-4"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Eliminating Fraud, Waste, and Abuse
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="desktopFooterLinks"
+    >
+      <ul
+        className="pageLinkGroup"
+        id="footer-group-4"
+      >
+        <li>
+          <a
+            href="javascript:void(0);"
+            id="footer-group-4-title"
+            onBlur={[Function]}
+          >
+            Oversight
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-4-0"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Inspector General
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-4-1"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Advocacy
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-4-2"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Hearings and Appeals
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-4-3"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Ombudsman
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            href="https://www.whitehouse.gov"
+            id="footer-group-4-4"
+            onBlur={[Function]}
+          >
+            WhiteHouse.gov
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            href="https://www.usa.gov"
+            id="footer-group-4-5"
+            onBlur={[Function]}
+          >
+            USA.gov
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            href="https://www.regulations.gov"
+            id="footer-group-4-6"
+            onBlur={[Function]}
+          >
+            Regulations.gov
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="desktopFooterLinks"
+    >
+      <ul
+        className="pageLinkGroup"
+        id="footer-group-5"
+      >
+        <li>
+          <a
+            href="javascript:void(0);"
+            id="footer-group-5-title"
+            onBlur={[Function]}
+          >
+            Tools and Features
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-5-0"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Online Training
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-5-1"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Create a Business Plan
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-5-2"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Find Events
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-5-3"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Qualify for Government Contracts
+          </a>
+        </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-5-4"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            SBA Videos
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="tabletFooterLinks"
+  >
+    <ul
+      className="pageLinkGroup"
+      id="tablet-footer-group-1"
+    >
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="tablet-footer-group-1-0"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          What We Do
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="tablet-footer-group-1-1"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          SBA Performance
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="tablet-footer-group-1-2"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          Contact SBA
+        </a>
+      </li>
+    </ul>
+    <ul
+      className="pageLinkGroup"
+      id="tablet-footer-group-2"
+    >
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="tablet-footer-group-2-0"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          SBA Team
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="tablet-footer-group-2-1"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          FOIA
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="tablet-footer-group-2-2"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          Privacy Policy
+        </a>
+      </li>
+    </ul>
+    <ul
+      className="pageLinkGroup"
+      id="tablet-footer-group-3"
+    >
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="tablet-footer-group-3-0"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          Newsroom
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="tablet-footer-group-3-1"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          Oversight & Advocacy
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="tablet-footer-group-3-2"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          SBA en Español
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div
+    className="mobileFooterLinks"
+  >
+    <ul
+      className="pageLinkGroup"
+      id="mobile-footer-group-1"
+    >
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="mobile-footer-group-1-0"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          What We Do
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="mobile-footer-group-1-1"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          Newsroom
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="mobile-footer-group-1-2"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          FOIA
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="mobile-footer-group-1-3"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          Contact SBA
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="mobile-footer-group-1-4"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          SBA en Español
+        </a>
+      </li>
+    </ul>
+    <ul
+      className="pageLinkGroup"
+      id="mobile-footer-group-2"
+    >
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="mobile-footer-group-2-0"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          SBA Team
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="mobile-footer-group-2-1"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          SBA Performance
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="mobile-footer-group-2-2"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          Oversight & Advocacy
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="mobile-footer-group-2-3"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          Privacy Policy
+        </a>
+      </li>
+      <li
+        className="pageLink "
+      >
+        <a
+          className="link "
+          id="mobile-footer-group-2-4"
+          onBlur={[Function]}
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          Blog
+        </a>
+      </li>
+    </ul>
+  </div>
+  <hr
+    className="desktopRule"
+  />
+  <div
+    className="subContainer"
+  >
+    <div
+      className="SocialMediaLinkSet"
+    >
+      <span>
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          <img
+            alt="SBA Facebook page"
+            className="socialMediaIcons"
+            src="test-file-stub"
+          />
+        </a>
+        <noscript />
+      </span>
+      <span>
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          <img
+            alt="SBA Twitter page"
+            className="socialMediaIcons"
+            src="test-file-stub"
+          />
+        </a>
+        <noscript />
+      </span>
+      <span>
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          <img
+            alt="SBA Youtube page"
+            className="socialMediaIcons"
+            src="test-file-stub"
+          />
+        </a>
+        <noscript />
+      </span>
+      <span>
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          <img
+            alt="SBA Linked In page"
+            className="socialMediaIcons"
+            src="test-file-stub"
+          />
+        </a>
+        <noscript />
+      </span>
+      <span>
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          <img
+            alt="SBA Instagram page"
+            className="socialMediaIcons"
+            src="test-file-stub"
+          />
+        </a>
+        <noscript />
+      </span>
+    </div>
+    <form
+      className="newsletter footer"
+      data-cy="newsletter"
+      onSubmit={[Function]}
+    >
+      <p>
+        Sign up for SBA email updates
+      </p>
+      <div
+        className="inputs"
+      >
+        <span
+          className="buttonWrapper"
+        >
+          <button
+            className="button alternate large primary responsive spacing"
+            disabled={false}
+            type="submit"
+          >
+            Subscribe
+          </button>
+        </span>
+      </div>
+    </form>
+    <hr
+      className="mobileRule"
+    />
+    <div
+      className="address"
+    >
+      <span
+        className="name"
+      >
+        U.S. Small Business Administration
+      </span>
+      <span
+        className="location"
+      >
+        409 3rd St, SW. Washington DC 20416
+      </span>
+    </div>
+  </div>
+</footer>
+`;
