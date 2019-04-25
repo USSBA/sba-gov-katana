@@ -17,6 +17,22 @@ async function fetchRestContent(type, id, langOverride) {
   return data
 }
 
+async function fetchEventContent(id, langOverride) {
+  let data = null
+
+  try {
+    const response = await axios.get(
+      '/api/content/search/event' + (id ? '/' + id : '') + '.json',
+      langOverride && { headers: { 'accept-language': langOverride } }
+    )
+    data = response.data
+  } catch (error) {
+    console.error('fetchEventContent', error)
+  }
+
+  return data
+}
+
 async function fetchSiteContent(type, query) {
   const url = '/api/content/search/' + type + '.json' + (query ? '?' + queryString.stringify(query) : '')
   let data = null
@@ -41,4 +57,4 @@ async function runMiscAction(prop, type, query) {
   return data
 }
 
-export { fetchRestContent, fetchSiteContent, runMiscAction }
+export { fetchRestContent, fetchEventContent, fetchSiteContent, runMiscAction }

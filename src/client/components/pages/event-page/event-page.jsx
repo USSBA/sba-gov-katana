@@ -3,7 +3,7 @@ import Event from '../../templates/event/event.jsx'
 import ErrorPage from '../error-page/error-page.jsx'
 import { Loader } from 'atoms'
 import { isEmpty } from 'lodash'
-import { fetchRestContent } from '../../../fetch-content-helper'
+import { fetchEventContent } from '../../../fetch-content-helper'
 import styles from './event-page.scss'
 
 class EventPage extends Component {
@@ -14,7 +14,7 @@ class EventPage extends Component {
 
   fetchEvent(id) {
     if (id) {
-      fetchRestContent('event', id)
+      fetchEventContent(id)
         .then(data => this.setState({ data }))
         .catch(_ => this.setState({ data: null }))
     }
