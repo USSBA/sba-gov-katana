@@ -1,4 +1,6 @@
 import React from 'react'
+import moment from 'moment'
+
 import { Button } from 'atoms'
 import { CardCollection } from 'organisms'
 import styles from './blog-category-deck.scss'
@@ -6,6 +8,7 @@ import styles from './blog-category-deck.scss'
 class BlogCategoryDeck extends React.Component {
   reformatCard(card) {
     return {
+      italicText: moment(card.created).format('MMMM D, YYYY'),
       link: {
         title: 'Read full post',
         uri: card.url
