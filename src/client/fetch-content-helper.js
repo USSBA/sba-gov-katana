@@ -1,7 +1,7 @@
 import axios from 'axios'
 import queryString from 'querystring'
 
-async function fetchRestContent(type, id, langOverride) {
+async function fetchRestContent(id, langOverride) {
   let data = null
 
   try {

@@ -16,7 +16,7 @@ class Page extends React.Component {
     const langOverride = getLanguageOverride()
     const id = this.props.nodeId
     if (id > 0) {
-      fetchRestContent('node', id, langOverride).then(data => {
+      fetchRestContent(id, langOverride).then(data => {
         this.setState({ data })
       })
     }
