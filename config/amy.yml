@@ -12,3 +12,5 @@ features:
         tableName: UrlToUrlRedirectAmy
 sizestandards:
     endpoint: 27b9p5e3fk.execute-api.us-east-1.amazonaws.com/LATEST/
+content:
+    cloudfront: d2qqup4pw7i13r.cloudfront.net

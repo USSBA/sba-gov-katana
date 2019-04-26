@@ -18,3 +18,5 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectIntegration
+content:
+    cloudfront: d32xeasjw66w65.cloudfront.net

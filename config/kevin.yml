@@ -10,3 +10,5 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectKevin
+content:
+    cloudfront: duvf2qi8dallh.cloudfront.net
