@@ -191,7 +191,7 @@ async function getMetaVariables(nodeId, type = 'node', request) {
     }
   } else if (nodeId > 0) {
     const jsonContent = await axios.get(
-      `https://${config.get('content.cloudfront')}/api/content/${type}/${nodeId}.json`
+      `https://${config.get('content.cloudfront')}/api/content/${nodeId}.json`
     )
     if (jsonContent.data) {
       description = jsonContent.data.summary

@@ -22,7 +22,7 @@ describe('RelatedDocumentCards', () => {
   let mockFetchSiteContent
 
   beforeEach(() => {
-    mockFetchSiteContent = jest.spyOn(helper, 'fetchSiteContent')
+    mockFetchSiteContent = jest.spyOn(helper, 'fetchRestContent')
   })
   afterEach(() => {
     mockFetchSiteContent.mockRestore()

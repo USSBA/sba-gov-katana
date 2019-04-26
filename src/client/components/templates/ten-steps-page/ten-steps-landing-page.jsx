@@ -27,7 +27,7 @@ class TenStepsLandingPage extends React.Component {
   async componentDidMount() {
     const { langCode } = this.state
     const mainMenu = await fetchSiteContent('mainMenu')
-    const counselorCta = await fetchRestContent('node', clientConfig.counselorCta, langCode)
+    const counselorCta = await fetchRestContent(clientConfig.counselorCta, langCode)
     const { spanishTranslation } = counselorCta
 
     this.setState({
