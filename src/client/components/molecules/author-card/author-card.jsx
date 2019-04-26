@@ -19,6 +19,10 @@ class AuthorCard extends PureComponent {
       [styles.imageMode]: !isEmpty(picture)
     })
 
+    const readMoreClassName = classNames({
+      [styles.readMoreAdditionalMargin]: isEmpty(bio)
+    })
+
     return (
       <div data-testid={'authorCard'} tabIndex="0" className={className}>
         {!isEmpty(picture) && (
@@ -39,7 +43,7 @@ class AuthorCard extends PureComponent {
               {bio}
             </div>
           )}
-          <div data-testid={'read-more'} tabIndex="0">
+          <div data-testid={'read-more'} tabIndex="0" className={readMoreClassName}>
             <a href={url}>Read More</a>
           </div>
         </div>
