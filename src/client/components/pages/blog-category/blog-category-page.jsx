@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { Paginator, TitleSection } from 'molecules'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 
 class BlogCategoryPage extends Component {
@@ -20,20 +21,20 @@ class BlogCategoryPage extends Component {
   fetchBlogs() {
     // setPagination()
     // return fetchSiteContent('blogs', { category: this.props.category, start: this.state.start, end: this.state.end })
-    return fetchSiteContent('blogs', { category: this.props.category })
+    return fetchSiteContent('blogs', { blogCategory: this.props.params.category })
   }
 
   categoryValidation() {
-    return this.props.category === 'news-and-views' || this.props.category === 'industry-word'
+    return this.props.params.category === 'news-and-views' || this.props.params.category === 'industry-word'
   }
 
   setHeader() {
     let title = ''
     let subtitle = ''
-    if (this.props.category === 'news-and-views') {
+    if (this.props.params.category === 'news-and-views') {
       title = 'SBA News and Views posts'
       subtitle = "Insights and updates from SBA's small business experts."
-    } else if (this.props.category === 'industry') {
+    } else if (this.props.params.category === 'industry') {
       title = 'Industry Word posts'
       subtitle = 'Commentary and advice from leaders in the small business industry.'
     }
@@ -41,19 +42,22 @@ class BlogCategoryPage extends Component {
   }
 
   render() {
+    const category = this.props.params.category
     const { title, subtitle } = this.setHeader()
-    const { total, blogs } = this.fetchBlogs()
+    const { total = 0, blogs = [] } = this.fetchBlogs()
 
     if (this.categoryValidation) {
       return (
         <div>
-          <div>
+          <div className="blog-category-title">
             <h1>{title}</h1>
-            <h2>{subtitle}</h2>
+            <h5>{subtitle}</h5>
           </div>
-          <div>
+          <div className="blog-content">
+            <Paginator id="blog-paginator-top" pageSize={12} total={total} />
             <h3>Total: {total}</h3>
             <p>{blogs}</p>
+            <Paginator id="blog-paginator-bottom" pageSize={12} total={total} />
           </div>
         </div>
       )
@@ -64,11 +68,11 @@ class BlogCategoryPage extends Component {
 }
 
 BlogCategoryPage.defaultProps = {
-  category: ''
+  category: null
 }
 
 BlogCategoryPage.propTypes = {
-  category: React.PropTypes.string
+  category: PropTypes.string
 }
 
 export default BlogCategoryPage

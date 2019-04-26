@@ -74,7 +74,7 @@ const BlogsLandingPage = props => (
 )
 
 const BlogCategoryPage = props => (
-  <Async componentProps={props} load={import('./pages/blog-category/blog-category.jsx')} />
+  <Async componentProps={props} load={import('./pages/blog-category/blog-category-page.jsx')} />
 )
 
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
@@ -108,8 +108,8 @@ const mainRoutes = [
   <Redirect key={63} from="/person" to="/person/" />,
   <Route key={64} path="/blogs/" component={BlogsLandingPage} />,
   <Redirect key={65} from="/blogs" to="/blogs/" />,
-  <Route key={66} path="/blogs/:first/" component={BlogCategoryPage} />,
-  <Redirect key={67} from="/blogs/:first" to="/blogs/:first/" />,
+  <Route key={66} path="/blogs/:category/" component={BlogCategoryPage} />,
+  <Redirect key={67} from="/blogs/:category" to="/blogs/:category/" />,
   <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
   <Route
     key={13}
