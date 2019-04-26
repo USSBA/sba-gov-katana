@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Paginator, TitleSection } from 'molecules'
+import styles from './blog-category-page.scss'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 
 class BlogCategoryPage extends Component {
@@ -34,7 +35,7 @@ class BlogCategoryPage extends Component {
     if (this.props.params.category === 'news-and-views') {
       title = 'SBA News and Views posts'
       subtitle = "Insights and updates from SBA's small business experts."
-    } else if (this.props.params.category === 'industry') {
+    } else if (this.props.params.category === 'industry-word') {
       title = 'Industry Word posts'
       subtitle = 'Commentary and advice from leaders in the small business industry.'
     }
@@ -49,7 +50,7 @@ class BlogCategoryPage extends Component {
     if (this.categoryValidation) {
       return (
         <div>
-          <div className="blog-category-title">
+          <div className={styles.blog_category_title}>
             <h1>{title}</h1>
             <h5>{subtitle}</h5>
           </div>
