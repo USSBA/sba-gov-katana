@@ -21,7 +21,7 @@ class BlogCategoryDeck extends React.Component {
     const cardDeck = cards.map(card => this.reformatCard(card))
 
     return (
-      <div data-testid={categoryTitle}>
+      <div className={styles.container} data-testid={categoryTitle}>
         <h2 data-testid="category title" tabIndex="0">
           {categoryTitle}
         </h2>
