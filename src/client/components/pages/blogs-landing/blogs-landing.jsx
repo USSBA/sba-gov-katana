@@ -21,12 +21,14 @@ class BlogsLandingPage extends Component {
         category: 'News and Views',
         title: 'SBA News & Views posts',
         subtitle: "Insights and updates from SBA's small business experts.",
+        url: '/blogs/news-and-views',
         cards: []
       },
       {
         category: 'Industry Word',
         title: 'Industry Word posts',
         subtitle: 'Commentary and advice from leaders in the small business industry.',
+        url: '/blogs/industry-word',
         cards: []
       }
     ]
@@ -85,6 +87,7 @@ class BlogsLandingPage extends Component {
             cards={section.cards}
             categoryTitle={section.title}
             categorySubtitle={section.subtitle}
+            categoryUrl={section.url}
             key={index}
           />
         ))}
