@@ -5,7 +5,7 @@ import DocumentArticle from '../../templates/document-article/document-article.j
 import ErrorPage from '../error-page/error-page.jsx'
 import styles from './document-page.scss'
 import { Loader } from 'atoms'
-import { fetchSiteContent } from '../../../fetch-content-helper'
+import { fetchSiteContent, fetchRestContent } from '../../../fetch-content-helper'
 
 class DocumentPage extends React.Component {
   constructor() {
@@ -67,7 +67,7 @@ class DocumentPage extends React.Component {
 
         if (size(items)) {
           const { id } = items[0]
-          const document = await fetchSiteContent(`node/${id}`)
+          const document = await fetchRestContent(id)
           this.setState({ document })
         }
       } catch (e) {

@@ -1,17 +1,33 @@
 import axios from 'axios'
 import queryString from 'querystring'
 
-async function fetchRestContent(type, id, langOverride) {
+async function fetchRestContent(id, langOverride) {
   let data = null
 
   try {
     const response = await axios.get(
-      '/api/content/' + type + (id ? '/' + id : '') + '.json',
+      '/api/content' + (id ? '/' + id : '') + '.json',
       langOverride && { headers: { 'accept-language': langOverride } }
     )
     data = response.data
   } catch (error) {
-    console.error('fetchRestContent', error)
+    console.error('fetchEventContent', error)
+  }
+
+  return data
+}
+
+async function fetchEventContent(id, langOverride) {
+  let data = null
+
+  try {
+    const response = await axios.get(
+      '/api/content/search/event' + (id ? '/' + id : '') + '.json',
+      langOverride && { headers: { 'accept-language': langOverride } }
+    )
+    data = response.data
+  } catch (error) {
+    console.error('fetchEventContent', error)
   }
 
   return data
@@ -41,4 +57,4 @@ async function runMiscAction(prop, type, query) {
   return data
 }
 
-export { fetchRestContent, fetchSiteContent, runMiscAction }
+export { fetchRestContent, fetchEventContent, fetchSiteContent, runMiscAction }

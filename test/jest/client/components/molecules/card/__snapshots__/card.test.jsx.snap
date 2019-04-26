@@ -3,6 +3,7 @@
 exports[`Card does not error check malformed link 1`] = `
 <div
   className="card twoColumn"
+  data-testid="card"
   id="card"
 >
   <a
@@ -13,6 +14,7 @@ exports[`Card does not error check malformed link 1`] = `
     <img
       alt="kitten"
       className="itemImage"
+      data-testid="card image"
       id="image-4-0"
       src="https://placekitten.com/588/364"
     />
@@ -22,6 +24,7 @@ exports[`Card does not error check malformed link 1`] = `
   >
     <h4
       className="itemTitle"
+      data-testid="card title"
       id="title"
     >
       <a
@@ -44,12 +47,14 @@ exports[`Card does not error check malformed link 1`] = `
       />
       <p
         className="itemSubTitle"
+        data-testid="card subtitle text"
         id="subtitle-text-4-0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
       </p>
     </div>
     <a
+      data-testid="card link"
       onClick={[Function]}
       style={Object {}}
       target="_self"
@@ -63,6 +68,7 @@ exports[`Card does not error check malformed link 1`] = `
 exports[`Card should render the spanish version correctly if the link is just a string 1`] = `
 <div
   className="card twoColumn"
+  data-testid="card"
   id="card"
 >
   <a
@@ -73,6 +79,7 @@ exports[`Card should render the spanish version correctly if the link is just a 
     <img
       alt="kitten"
       className="itemImage"
+      data-testid="card image"
       id="image-4-0"
       src="https://placekitten.com/588/364"
     />
@@ -82,6 +89,7 @@ exports[`Card should render the spanish version correctly if the link is just a 
   >
     <h4
       className="itemTitle"
+      data-testid="card title"
       id="title"
     >
       <a
@@ -104,12 +112,14 @@ exports[`Card should render the spanish version correctly if the link is just a 
       />
       <p
         className="itemSubTitle"
+        data-testid="card subtitle text"
         id="subtitle-text-4-0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
       </p>
     </div>
     <a
+      data-testid="card link"
       onClick={[Function]}
       style={Object {}}
       target="_self"
@@ -123,6 +133,7 @@ exports[`Card should render the spanish version correctly if the link is just a 
 exports[`Card to render correctly 1`] = `
 <div
   className="card twoColumn"
+  data-testid="card"
   id="card"
 >
   <a
@@ -131,6 +142,7 @@ exports[`Card to render correctly 1`] = `
     <img
       alt="kitten"
       className="itemImage"
+      data-testid="card image"
       id="image-4-0"
       src="https://placekitten.com/588/364"
     />
@@ -140,6 +152,7 @@ exports[`Card to render correctly 1`] = `
   >
     <h4
       className="itemTitle"
+      data-testid="card title"
       id="title"
     >
       <a
@@ -160,12 +173,14 @@ exports[`Card to render correctly 1`] = `
       />
       <p
         className="itemSubTitle"
+        data-testid="card subtitle text"
         id="subtitle-text-4-0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
       </p>
     </div>
     <a
+      data-testid="card link"
       href="https://en.wikipedia.org/wiki/Kitten"
     >
       Learn more about kittens
@@ -177,6 +192,7 @@ exports[`Card to render correctly 1`] = `
 exports[`Card to render correctly if the link is just a string 1`] = `
 <div
   className="card twoColumn"
+  data-testid="card"
   id="card"
 >
   <a
@@ -187,6 +203,7 @@ exports[`Card to render correctly if the link is just a string 1`] = `
     <img
       alt="kitten"
       className="itemImage"
+      data-testid="card image"
       id="image-4-0"
       src="https://placekitten.com/588/364"
     />
@@ -196,6 +213,7 @@ exports[`Card to render correctly if the link is just a string 1`] = `
   >
     <h4
       className="itemTitle"
+      data-testid="card title"
       id="title"
     >
       <a
@@ -218,12 +236,14 @@ exports[`Card to render correctly if the link is just a string 1`] = `
       />
       <p
         className="itemSubTitle"
+        data-testid="card subtitle text"
         id="subtitle-text-4-0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
       </p>
     </div>
     <a
+      data-testid="card link"
       onClick={[Function]}
       style={Object {}}
       target="_self"
@@ -237,11 +257,13 @@ exports[`Card to render correctly if the link is just a string 1`] = `
 exports[`Card to render correctly with null link 1`] = `
 <div
   className="card twoColumn"
+  data-testid="card"
   id="card"
 >
   <img
     alt="kitten"
     className="itemImage"
+    data-testid="card image"
     id="image-4-0"
     src="https://placekitten.com/588/364"
   />
@@ -250,6 +272,7 @@ exports[`Card to render correctly with null link 1`] = `
   >
     <h4
       className="itemTitle"
+      data-testid="card title"
       id="title"
     >
       Kitten
@@ -266,6 +289,7 @@ exports[`Card to render correctly with null link 1`] = `
       />
       <p
         className="itemSubTitle"
+        data-testid="card subtitle text"
         id="subtitle-text-4-0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat

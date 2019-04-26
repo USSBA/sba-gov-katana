@@ -15,3 +15,5 @@ aws:
     searchEndpoint: 'doc-staging-2qt6cxrxhpdkdv5pnjgw54wzqi.us-east-1.cloudsearch.amazonaws.com'
     officeEndpoint: 'doc-staging-offices-igktog6nphm6kuwkkkj52j2rba.us-east-1.cloudsearch.amazonaws.com'
     zipCodeDynamoDBTableName: ZipCodesUpper
+content:
+    cloudfront: d1ibwq49g7xqd4.cloudfront.net
