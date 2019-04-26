@@ -10,3 +10,5 @@ features:
     urlRedirect:
         tableName: UrlToNodeBrian
         enabled: true
+content:
+    cloudfront: dj898ero1amg0.cloudfront.net

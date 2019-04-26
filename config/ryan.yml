@@ -16,3 +16,5 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectRyan
+content:
+    cloudfront: d2gpg521ydb1gz.cloudfront.net

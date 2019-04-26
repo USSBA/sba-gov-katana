@@ -41,9 +41,9 @@ class BlogPage extends Component {
           LOADING_STATE: 'isLoading'
         },
         async () => {
-          const data = await fetchRestContent('node', id)
+          const data = await fetchRestContent(id)
           if (!isEmpty(data)) {
-            data.author = await fetchRestContent('node', data.author)
+            data.author = await fetchRestContent(data.author)
           }
           this.setState({ data, LOADING_STATE: 'isLoaded' })
         }

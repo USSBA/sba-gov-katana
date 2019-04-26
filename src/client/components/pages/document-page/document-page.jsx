@@ -67,7 +67,7 @@ class DocumentPage extends React.Component {
 
         if (size(items)) {
           const { id } = items[0]
-          const document = await fetchRestContent('node', id)
+          const document = await fetchRestContent(id)
           this.setState({ document })
         }
       } catch (e) {

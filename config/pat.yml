@@ -12,3 +12,5 @@ features:
         tableName: UrlToUrlRedirectPat
 sizestandards:
     endpoint: 27b9p5e3fk.execute-api.us-east-1.amazonaws.com/LATEST/
+content:
+    cloudfront: d2oe9i2bio9fwb.cloudfront.net
