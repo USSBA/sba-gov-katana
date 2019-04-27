@@ -83,13 +83,14 @@ class BlogsLandingPage extends Component {
           />
         </div>
         {categorySections.map((section, index) => (
-          <BlogCategoryDeck
-            cards={section.cards}
-            categoryTitle={section.title}
-            categorySubtitle={section.subtitle}
-            categoryUrl={section.url}
-            key={index}
-          />
+          <div data-testid={'blog category deck'} key={index}>
+            <BlogCategoryDeck
+              cards={section.cards}
+              categoryTitle={section.title}
+              categorySubtitle={section.subtitle}
+              categoryUrl={section.url}
+            />
+          </div>
         ))}
       </div>
     )
