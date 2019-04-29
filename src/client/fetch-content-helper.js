@@ -1,4 +1,5 @@
 import axios from 'axios'
+import path from 'path'
 import queryString from 'querystring'
 
 async function fetchRestContent(id, langOverride) {
@@ -33,11 +34,14 @@ async function fetchEventContent(id, langOverride) {
   return data
 }
 
-async function fetchSiteContent(type, query) {
-  const url = '/api/content/search/' + type + '.json' + (query ? '?' + queryString.stringify(query) : '')
+async function fetchSiteContent(type, query, langOverride) {
   let data = null
+
   try {
-    const response = await axios.get(url)
+    const response = await axios.get(
+      '/api/content/search/' + type + '.json' + (query ? '?' + queryString.stringify(query) : ''),
+      langOverride && { headers: { 'accept-language': langOverride } }
+    )
     data = response.data
   } catch (error) {
     console.error('fetchSiteContent', error)
@@ -45,7 +49,23 @@ async function fetchSiteContent(type, query) {
   return data
 }
 
-async function runMiscAction(prop, type, query) {
+async function postMiscAction(endpoint, body) {
+  const url = path.join('/actions/misc', `${endpoint}`)
+
+  let data = null
+
+  try {
+    const response = await axios.post(url, body)
+    data = response.data
+  } catch (error) {
+    console.error('postMiscAction', error)
+    throw error
+  }
+
+  return data
+}
+
+async function runMiscAction(type, query) {
   const url = '/actions/misc/' + type + '.json' + (query ? '?' + queryString.stringify(query) : '')
   let data = null
   try {
@@ -57,4 +77,4 @@ async function runMiscAction(prop, type, query) {
   return data
 }
 
-export { fetchRestContent, fetchEventContent, fetchSiteContent, runMiscAction }
+export { fetchRestContent, fetchEventContent, fetchSiteContent, postMiscAction, runMiscAction }

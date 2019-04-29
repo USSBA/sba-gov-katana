@@ -3,7 +3,7 @@ import cookie from 'react-cookie'
 
 import styles from '../organisms/header-footer/header/header.scss'
 import { getLanguageOverride } from '../../services/utils.js'
-import { fetchRestContent } from '../../fetch-content-helper'
+import { fetchSiteContent } from '../../fetch-content-helper'
 import { MainLoader } from 'molecules'
 import { DisasterAlert, Footer, Header, ModalController } from 'organisms'
 
@@ -19,7 +19,7 @@ class Main extends React.Component {
   }
 
   async componentDidMount() {
-    const disasterAlert = await fetchRestContent('disaster', null, getLanguageOverride())
+    const disasterAlert = await fetchSiteContent('disaster', getLanguageOverride())
     this.setState({
       disasterAlert,
       disasterAlertCookieExists: Boolean(cookie.load(DISASTER_ALERT_COOKIE))

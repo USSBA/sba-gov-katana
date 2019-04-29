@@ -994,23 +994,25 @@ exports[`Front Page Hero should render correctly 1`] = `
       data-cy="newsletter"
       onSubmit={[Function]}
     >
-      <p>
-        Sign up for SBA email updates
-      </p>
-      <div
-        className="inputs"
-      >
-        <span
-          className="buttonWrapper"
+      <div>
+        <p>
+          Sign up for SBA email updates
+        </p>
+        <div
+          className="inputs"
         >
-          <button
-            className="button alternate large primary responsive spacing"
-            disabled={false}
-            type="submit"
+          <span
+            className="buttonWrapper"
           >
-            Subscribe
-          </button>
-        </span>
+            <button
+              className="button alternate large primary responsive spacing"
+              disabled={false}
+              type="submit"
+            >
+              Subscribe
+            </button>
+          </span>
+        </div>
       </div>
     </form>
     <hr

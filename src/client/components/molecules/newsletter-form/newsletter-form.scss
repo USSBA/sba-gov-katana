@@ -46,12 +46,14 @@
 
   @include for-large-up {
     flex-shrink: 1;
-    // order has been declared on Social Media button set, address and newsletter form on the footer because
-    // the order will change between the address and newsletter depending on the screen size.
+    // order has been declared on Social Media button set, address and
+    // newsletter form on the footer because the order will change between the
+    // address and newsletter depending on the screen size.
     order: 3;
   }
 
-  // TODO: Abstract H1-H6 styles as classes (e.g., .h1, .h2, ...) or mixins and apply .h3 to the p below with compose: h3.
+  // TODO: Abstract H1-H6 styles as classes (e.g., .h1, .h2, ...) or mixins and
+  // apply .h3 to the p below with compose: h3.
   p {
     color: $sba-blue;
     display: inline-block;
@@ -87,5 +89,32 @@
     @include for-medium-up {
       margin-bottom: 0;
     }
+  }
+}
+
+.success,
+.error {
+  text-align: center;
+
+  p {
+    margin-bottom: 9px;
+    margin-top: 0;
+  }
+
+  :global(.fa) {
+    font-size: 45px;
+    margin-bottom: 15px;
+  }
+}
+
+.success {
+  :global(.fa) {
+    color: $secondary-green;
+  }
+}
+
+.error {
+  :global(.fa) {
+    color: $sba-red;
   }
 }

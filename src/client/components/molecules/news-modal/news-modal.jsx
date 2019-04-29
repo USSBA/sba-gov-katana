@@ -78,7 +78,7 @@ class SbaNewsModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     //we do not care about the response
-    runMiscAction('newsletterRegistration', 'newsletter-registration', {
+    runMiscAction('newsletter-registration', {
       userEmailAddress: this.state.userEmailAddress,
       userZipCode: this.state.userZipCode
     })

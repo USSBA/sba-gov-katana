@@ -109,6 +109,27 @@ app.post('/api/feedback', (req, res, next) => {
   })
 })
 
+app.post('/actions/misc/*', async (req, res, next) => {
+  const url = 'https://' + path.join(config.get('miscapi.endpoint'), req.path)
+  console.log('Posting to misc api', req.body, url)
+
+  try {
+    const { data } = await axios.post(url, req.body)
+
+    res.status(httpStatus.OK).json({ ...data })
+  } catch (error) {
+    const {
+      response: { data }
+    } = error
+
+    if (data) {
+      console.error('misc api error', data)
+    }
+
+    res.status(httpStatus.BAD_REQUEST).json({ error: data })
+  }
+})
+
 function fetchExternalContent(endpoint, stage, reqPath, queryParams, res, responseType) {
   axios
     .get('https://' + path.join(endpoint, stage, reqPath), {

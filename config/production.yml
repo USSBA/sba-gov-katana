@@ -5,6 +5,8 @@ googleAnalytics:
     accountId: UA-19362636-5
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-MSNZZ6M
+miscapi:
+  content: w1yv86ffx7.execute-api.us-east-1.amazonaws.com/latest/
 server:
     fqdn: sba.gov
 features:
