@@ -8,7 +8,7 @@ import styles from './blog-category-deck.scss'
 class BlogCategoryDeck extends React.Component {
   reformatCard(card) {
     return {
-      italicText: moment(card.created).format('MMMM D, YYYY'),
+      italicText: moment.unix(card.created).format('MMMM D, YYYY'),
       link: {
         title: 'Read full post',
         uri: card.url
@@ -25,10 +25,10 @@ class BlogCategoryDeck extends React.Component {
 
     return (
       <div className={styles.container} data-testid={categoryTitle}>
-        <h2 data-testid="category title" tabIndex="0">
+        <h2 data-testid="category-title" tabIndex="0">
           {categoryTitle}
         </h2>
-        <p data-testid="category subtitle" tabIndex="0">
+        <p data-testid="category-subtitle" tabIndex="0">
           {categorySubtitle}
         </p>
         <CardCollection cards={cardDeck} />
