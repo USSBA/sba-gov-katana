@@ -31,7 +31,7 @@ class AuthorCard extends PureComponent {
           </div>
         )}
         <div className={infoClassName}>
-          <h4 data-testid={'name'} tabIndex="0">
+          <h4 data-testid={'name'}>
             <a href={url}>{name}</a>
           </h4>
           <div data-testid={'title'} tabIndex="0" className={styles.title}>
@@ -43,7 +43,7 @@ class AuthorCard extends PureComponent {
               {bio}
             </div>
           )}
-          <div data-testid={'read-more'} tabIndex="0" className={readMoreClassName}>
+          <div data-testid={'read-more'} className={readMoreClassName}>
             <a href={url}>Read More</a>
           </div>
         </div>
