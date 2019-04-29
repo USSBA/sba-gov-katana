@@ -25,10 +25,10 @@ class BlogCategoryDeck extends React.Component {
 
     return (
       <div className={styles.container} data-testid={categoryTitle}>
-        <h2 data-testid="category-title" tabIndex="0">
+        <h2 className={styles.title} data-testid="category-title" tabIndex="0">
           {categoryTitle}
         </h2>
-        <p data-testid="category-subtitle" tabIndex="0">
+        <p className={styles.subtitle} data-testid="category-subtitle" tabIndex="0">
           {categorySubtitle}
         </p>
         <CardCollection cards={cardDeck} cardAriaLabel="latest blog post" />
