@@ -31,7 +31,7 @@ class BlogCategoryDeck extends React.Component {
         <p data-testid="category-subtitle" tabIndex="0">
           {categorySubtitle}
         </p>
-        <CardCollection cards={cardDeck} />
+        <CardCollection cards={cardDeck} cardAriaLabel="latest blog post" />
         <div className={styles.seeMoreButton}>
           <Button className="see-more-button" data-testid="see more button" primary url={categoryUrl}>
             SEE MORE POSTS

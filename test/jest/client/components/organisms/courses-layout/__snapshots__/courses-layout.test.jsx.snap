@@ -89,9 +89,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
               id="card-row-1-0"
             >
               <div
+                aria-label="card 1"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -136,6 +138,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-1-0"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
@@ -151,9 +154,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
+                aria-label="card 2"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -198,6 +203,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-1-1"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
@@ -213,9 +219,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
+                aria-label="card 3"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -260,6 +268,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-1-2"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
@@ -275,9 +284,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
+                aria-label="card 4"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -322,6 +333,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-1-3"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
@@ -346,9 +358,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
               id="card-row-2-0"
             >
               <div
+                aria-label="card 1"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -393,6 +407,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-2-0"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
@@ -408,9 +423,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
+                aria-label="card 2"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -455,6 +472,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-2-1"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
@@ -470,9 +488,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
+                aria-label="card 3"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -517,6 +537,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-2-2"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
@@ -532,9 +553,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
+                aria-label="card 4"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -579,6 +602,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-2-3"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
@@ -603,9 +627,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
               id="card-row-3-0"
             >
               <div
+                aria-label="card 1"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -650,6 +676,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-3-0"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
@@ -665,9 +692,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
+                aria-label="card 2"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -712,6 +741,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-3-1"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
@@ -727,9 +757,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
+                aria-label="card 3"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -774,6 +806,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-3-2"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
@@ -789,9 +822,11 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
+                aria-label="card 4"
                 className="card fourColumn"
                 data-testid="card"
                 id="card"
+                tabIndex="0"
               >
                 <a
                   onClick={[Function]}
@@ -836,6 +871,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       data-testid="card subtitle text"
                       id="subtitle-text-3-3"
+                      tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
