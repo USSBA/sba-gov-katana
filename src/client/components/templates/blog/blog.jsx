@@ -15,15 +15,6 @@ class Blog extends Component {
         <br />
         <p>AuthorCard.border=true</p>
         <AuthorCard {...blogData.author} />
-        <br />
-        <br />
-        <div className={styles.greyBackgroundForAuthorCardDemo}>
-          <p>AuthorCard.border=false</p>
-          <AuthorCard {...blogData.author} border={false} />
-        </div>
-        <br />
-        <br />
-        <br />
       </div>
     )
   }
