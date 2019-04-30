@@ -14,7 +14,7 @@ class Blog extends Component {
       return (
         <div>
           {!isEmpty(blogData.blogBody[index].blogSectionImage.url) && (
-            <ImageSection src={blogData.blogBody[index].blogSectionImage.url} />
+            <ImageSection class={styles.center} src={blogData.blogBody[index].blogSectionImage.url} />
           )}
           <div dangerouslySetInnerHTML={{ __html: blogData.blogBody[index].blogSectionText }} />
         </div>
@@ -29,6 +29,8 @@ class Blog extends Component {
         <hr className={styles.hr} />
         {blogPage}
         <br />
+        <hr className={styles.hr} />
+        <h3>About the Author</h3>
         <AuthorCard {...blogData.author} />
         <br />
       </div>
