@@ -2,9 +2,11 @@
 
 exports[`Card does not error check malformed link 1`] = `
 <div
+  aria-label="card 1"
   className="card twoColumn"
   data-testid="card"
   id="card"
+  tabIndex="0"
 >
   <a
     onClick={[Function]}
@@ -49,6 +51,7 @@ exports[`Card does not error check malformed link 1`] = `
         className="itemSubTitle"
         data-testid="card subtitle text"
         id="subtitle-text-4-0"
+        tabIndex="0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
       </p>
@@ -67,9 +70,11 @@ exports[`Card does not error check malformed link 1`] = `
 
 exports[`Card should render the spanish version correctly if the link is just a string 1`] = `
 <div
+  aria-label="card 1"
   className="card twoColumn"
   data-testid="card"
   id="card"
+  tabIndex="0"
 >
   <a
     onClick={[Function]}
@@ -114,6 +119,7 @@ exports[`Card should render the spanish version correctly if the link is just a 
         className="itemSubTitle"
         data-testid="card subtitle text"
         id="subtitle-text-4-0"
+        tabIndex="0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
       </p>
@@ -132,9 +138,11 @@ exports[`Card should render the spanish version correctly if the link is just a 
 
 exports[`Card to render correctly 1`] = `
 <div
+  aria-label="card 1"
   className="card twoColumn"
   data-testid="card"
   id="card"
+  tabIndex="0"
 >
   <a
     href="https://en.wikipedia.org/wiki/Kitten"
@@ -175,6 +183,7 @@ exports[`Card to render correctly 1`] = `
         className="itemSubTitle"
         data-testid="card subtitle text"
         id="subtitle-text-4-0"
+        tabIndex="0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
       </p>
@@ -191,9 +200,11 @@ exports[`Card to render correctly 1`] = `
 
 exports[`Card to render correctly if the link is just a string 1`] = `
 <div
+  aria-label="card 1"
   className="card twoColumn"
   data-testid="card"
   id="card"
+  tabIndex="0"
 >
   <a
     onClick={[Function]}
@@ -238,6 +249,7 @@ exports[`Card to render correctly if the link is just a string 1`] = `
         className="itemSubTitle"
         data-testid="card subtitle text"
         id="subtitle-text-4-0"
+        tabIndex="0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
       </p>
@@ -256,9 +268,11 @@ exports[`Card to render correctly if the link is just a string 1`] = `
 
 exports[`Card to render correctly with null link 1`] = `
 <div
+  aria-label="card 1"
   className="card twoColumn"
   data-testid="card"
   id="card"
+  tabIndex="0"
 >
   <img
     alt="kitten"
@@ -291,6 +305,7 @@ exports[`Card to render correctly with null link 1`] = `
         className="itemSubTitle"
         data-testid="card subtitle text"
         id="subtitle-text-4-0"
+        tabIndex="0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
       </p>

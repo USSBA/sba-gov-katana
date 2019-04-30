@@ -24,7 +24,7 @@ class CardCollection extends React.Component {
     this.state = {}
   }
   render() {
-    const { leftAligned, parentIndex, cards, numberOverride } = this.props
+    const { leftAligned, parentIndex, cards, numberOverride, cardAriaLabel } = this.props
     const numCards = numberOverride ? numberOverride : size(this.props.cards)
     const cardComponents = cards.map(function(item, index) {
       return (
@@ -35,6 +35,7 @@ class CardCollection extends React.Component {
           index={index}
           numCards={numCards}
           leftAligned={leftAligned}
+          cardAriaLabel={cardAriaLabel}
         />
       )
     })
@@ -55,6 +56,7 @@ class CardCollection extends React.Component {
 }
 
 CardCollection.propTypes = {
+  cardAriaLabel: React.PropTypes.string,
   cards: React.PropTypes.array,
   numberOverride: React.PropTypes.number,
   parentIndex: React.PropTypes.number,
