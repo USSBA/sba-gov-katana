@@ -27,7 +27,7 @@ class AuthorCard extends PureComponent {
       <div data-testid={'authorCard'} tabIndex="0" className={className}>
         {!isEmpty(picture) && (
           <div data-testid={'picture'} tabIndex="0" className={styles.image}>
-            <img src={picture} alt={`photo of ${name}`} />
+            <img src={picture.src} alt={picture.alt} />
           </div>
         )}
         <div className={infoClassName}>
@@ -62,7 +62,7 @@ AuthorCard.propTypes = {
 AuthorCard.defaultProps = {
   name: 'Full Name',
   title: 'title',
-  picture: '',
+  picture: {},
   shortBio: '',
   border: true
 }
