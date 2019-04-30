@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react'
-
+import React, { Component } from 'react'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import { BlogCategoryDeck, Hero } from 'organisms'
 
@@ -35,6 +34,7 @@ class BlogsLandingPage extends Component {
     const categories = categorySections.map(section => section.category)
     const categoryData = []
 
+    // returns query parameters
     const getQueryParams = category => {
       return {
         category,
@@ -43,6 +43,7 @@ class BlogsLandingPage extends Component {
       }
     }
 
+    // sets the state variable categorySections including updated card data
     const updateCards = () => {
       categoryData.forEach((data, index) => {
         categorySections[index].cards = data
@@ -50,6 +51,7 @@ class BlogsLandingPage extends Component {
       this.setState({ categorySections })
     }
 
+    // makes fetchSiteContent call for each category defined in categorySections
     categories.forEach(async category => {
       const data = await fetchSiteContent('blogs', getQueryParams(category))
       categoryData.push(data.blogs)

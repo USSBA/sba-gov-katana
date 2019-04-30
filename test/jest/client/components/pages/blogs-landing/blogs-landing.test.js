@@ -47,11 +47,11 @@ const mockIndustryWordData = [
 ]
 
 const fetchSiteContentStubCallback = (node, { category }) => {
-  let result
+  const result = { total: 0, blogs: [] }
   if (category === 'News and Views') {
-    result = mockNewsAndViewsData
+    result.blogs = mockNewsAndViewsData
   } else if (category === 'Industry Word') {
-    result = mockIndustryWordData
+    result.blogs = mockIndustryWordData
   }
   return result
 }
