@@ -55,7 +55,7 @@ describe('AuthorCard', () => {
 
   it('should not display an image', () => {
     const props = Object.assign({}, mockPersonData)
-    props.highResolutionPhoto = {}
+    props.picture = {}
 
     const { queryByTestId } = render(<AuthorCard {...props} />)
 
