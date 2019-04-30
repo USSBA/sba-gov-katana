@@ -52,7 +52,7 @@ class BlogsLandingPage extends Component {
 
     categories.forEach(async category => {
       const data = await fetchSiteContent('blogs', getQueryParams(category))
-      categoryData.push(data)
+      categoryData.push(data.blogs)
 
       if (categoryData.length === categories.length) {
         updateCards()
