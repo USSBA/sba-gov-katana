@@ -8,9 +8,18 @@ import moment from 'moment'
 
 class Blog extends Component {
   render() {
-    
     const { blogData } = this.props
-    const body = blogData.blogBody[0].blogSectionText
+    const blogParagraphs = blogData.blogBody
+    const blogPage = blogParagraphs.map(function(item, index) {
+      return (
+        <div>
+          {!isEmpty(blogData.blogBody[index].blogSectionImage.url) && (
+            <ImageSection src={blogData.blogBody[index].blogSectionImage.url} />
+          )}
+          <div dangerouslySetInnerHTML={{ __html: blogData.blogBody[index].blogSectionText }} />
+        </div>
+      )
+    })
 
     return (
       <div className={styles.container}>
@@ -18,9 +27,7 @@ class Blog extends Component {
         <ByLine blogData={blogData} />
         <h5>{blogData.summary}</h5>
         <hr className={styles.hr} />
-        <ImageSection src={blogData.blogBody[0].blogSectionImage.url} />
-        <div dangerouslySetInnerHTML={{ __html: body }} />
-        
+        {blogPage}
         <br />
         <AuthorCard {...blogData.author} />
         <br />
