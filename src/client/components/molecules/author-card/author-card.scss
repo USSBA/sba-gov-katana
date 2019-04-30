@@ -17,6 +17,8 @@
   @include for-small-only {
     @include grid-column(12);
     padding: 30px;
+    margin: auto 0;
+    width: 100%;
   }
 
 }
