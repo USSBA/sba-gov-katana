@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 import isEmail from 'validator/lib/isEmail'
 import isPostalCode from 'validator/lib/isPostalCode'
-import { camelCase, capitalize } from 'lodash'
+import { camelCase, capitalize, isEmpty } from 'lodash'
 
 import styles from './newsletter-form.scss'
 import { Button, Link, TextInput } from 'atoms'
@@ -18,7 +18,7 @@ const FORM_STATE = {
 const initialState = {
   emailAddress: '',
   isEmailAddressValid: false,
-  isZipCodeValid: false,
+  isZipCodeValid: true,
   formState: FORM_STATE.initial,
   zipCode: ''
 }
@@ -69,7 +69,7 @@ class NewsletterForm extends Component {
         name: 'zip code',
         validate: value => {
           // only checks U.S. zip codes
-          const isZipCodeValid = isPostalCode(value, 'US')
+          const isZipCodeValid = isEmpty(value) || isPostalCode(value, 'US')
           this.setState({ isZipCodeValid })
           return isZipCodeValid
         }
