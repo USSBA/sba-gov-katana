@@ -28,3 +28,15 @@ input.invalid {
   top: 50%;
   transform: translateY(-50%);
 }
+
+.optional {
+  bottom: 9px;
+  color: $sba-gray;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  // make "unclickable"
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+}

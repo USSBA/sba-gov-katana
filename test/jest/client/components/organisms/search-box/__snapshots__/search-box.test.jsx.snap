@@ -2467,10 +2467,12 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
           className="container"
         >
           <input
+            aria-labelledby="document-lookup"
             className="input"
             id="document-lookup"
             onBlur={[Function]}
             onChange={[Function]}
+            onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="Search by title or number"
           />

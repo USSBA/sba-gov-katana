@@ -63,7 +63,8 @@ class NewsletterForm extends Component {
           const isEmailAddressValid = isEmail(value)
           this.setState({ isEmailAddressValid })
           return isEmailAddressValid
-        }
+        },
+        optional: false
       },
       {
         name: 'zip code',
@@ -72,7 +73,8 @@ class NewsletterForm extends Component {
           const isZipCodeValid = isEmpty(value) || isPostalCode(value, 'US')
           this.setState({ isZipCodeValid })
           return isZipCodeValid
-        }
+        },
+        optional: true
       }
     ]
 
@@ -86,13 +88,14 @@ class NewsletterForm extends Component {
             {!footer ? <h3>{title}</h3> : <p>{title}</p>}
             <div className={styles.inputs}>
               {!footer &&
-                textInputs.map(({ name, validate }) => (
+                textInputs.map(({ name, optional, validate }) => (
                   <TextInput
                     errorText={`Enter a valid ${name}`}
                     id={`newsletter ${name}`}
                     key={name}
                     label={capitalize(name)}
                     onChange={event => this.setState({ [camelCase(name)]: event.target.value })}
+                    optional={optional}
                     validationFunction={validate}
                     value={this.state[camelCase(name)]}
                   />

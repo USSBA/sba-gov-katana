@@ -27,10 +27,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             className="container"
           >
             <input
+              aria-labelledby="document-lookup-text-input"
               className="input"
               id="document-lookup-text-input"
               onBlur={[Function]}
               onChange={[Function]}
+              onFocus={[Function]}
               onKeyUp={[Function]}
               placeholder="Search by title or number"
             />

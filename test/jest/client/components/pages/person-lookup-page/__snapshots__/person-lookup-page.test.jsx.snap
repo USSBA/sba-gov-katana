@@ -24,11 +24,13 @@ exports[`PersonLookupPage should render correctly 1`] = `
           className="container"
         >
           <input
+            aria-labelledby="search"
             className="input searchIconPadding"
             data-cy="search"
             id="search"
             onBlur={[Function]}
             onChange={[Function]}
+            onFocus={[Function]}
             placeholder="Search by name, title, or office"
           />
           <div

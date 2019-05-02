@@ -31,11 +31,13 @@ exports[`SearchPage to match snapshot 1`] = `
             >
               <input
                 aria-controls="results-list"
+                aria-labelledby="search"
                 className="input"
                 defaultValue=""
                 id="search"
                 onBlur={[Function]}
                 onChange={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
               />
             </div>
