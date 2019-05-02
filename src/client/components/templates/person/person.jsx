@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 import { isEmpty, omitBy } from 'lodash'
-import { fetchSiteContent } from '../../../fetch-content-helper'
+import moment from 'moment'
 
+import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './person.scss'
-import { DecorativeDash, Label, Link } from 'atoms'
+import { Label } from 'atoms'
 import { Breadcrumb, ContactCard } from 'molecules'
+import { ClientPagingMultiviewLayout, CardCollection } from 'organisms'
 
 class Person extends Component {
   constructor() {
@@ -25,18 +27,41 @@ class Person extends Component {
       personData: { id }
     } = this.props
 
+    const reformatBlog = blog => {
+      return {
+        italicText: moment.unix(blog.created).format('MMMM D, YYYY'),
+        link: {
+          title: 'Read full post',
+          uri: blog.url
+        },
+        subtitleText: blog.summary,
+        titleText: blog.title
+      }
+    }
+
     const data = await fetchSiteContent('blogs', { author: id })
 
     if (data.total > 0) {
       this.setState({
-        blogCards: data.blogs,
+        blogCards: data.blogs.map(blog => reformatBlog(blog)),
         isPersonBlogAuthor: true
       })
     }
   }
 
+  makeGridRenderer() {
+    const { blogCards } = this.state
+    return (
+      <div>
+        <CardCollection cards={blogCards} />
+        {/* <CardCollection cards={blogCards.slice(0, 4)} parentIndex={1} numberOverride={3} />
+        <CardCollection cards={blogCards.slice(3, 6)} parentIndex={2} numberOverride={3} /> */}
+      </div>
+    )
+  }
+
   render() {
-    const { isPersonBlogAuthor } = this.state
+    const { blogCards, isPersonBlogAuthor } = this.state
     const {
       personData: {
         bio,
@@ -105,6 +130,14 @@ class Person extends Component {
         {isPersonBlogAuthor && (
           <div className={styles.blogContainer}>
             <h2 className={styles.blogHeader}>Blog posts</h2>
+            <ClientPagingMultiviewLayout
+              className={styles.paginationContainer}
+              // onReset={onReset}
+              items={blogCards}
+              pageSize={6}
+              rendererOne={this.makeGridRenderer.bind(this)}
+              type="blogs"
+            />
           </div>
         )}
       </div>
