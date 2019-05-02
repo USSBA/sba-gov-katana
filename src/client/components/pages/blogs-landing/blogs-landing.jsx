@@ -10,7 +10,7 @@ class BlogsLandingPage extends Component {
     super()
     this.state = {
       categorySections: [],
-      authors: [{},{},{},{},{},{}]
+      authors: [{}, {}, {}, {}, {}, {}]
     }
   }
 
@@ -104,9 +104,11 @@ class BlogsLandingPage extends Component {
           </div>
         ))}
         <div data-testid="authorCardCollection" className={authorCardCollectionClassName}>
-          {authors.map( (author, index) => <div key={index} className={styles.authorCard}>
-            <AuthorCard data-testid="authorCard" border={false} {...author} />
-          </div>)}
+          {authors.map((author, index) => (
+            <div key={index} className={styles.authorCard}>
+              <AuthorCard data-testid="authorCard" border={false} {...author} />
+            </div>
+          ))}
         </div>
       </div>
     )

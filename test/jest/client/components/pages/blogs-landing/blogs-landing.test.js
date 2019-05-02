@@ -86,7 +86,7 @@ describe('Blogs landing page', () => {
     expect(fetchSiteContentStub).toBeCalledWith('blogs', secondCategoryQueryParams)
   })
   describe('AuthorCardCollection', () => {
-    it.only('should exist', async () => {
+    it('should exist', async () => {
       const { getAllByTestId } = render(<BlogsLandingPage />)
       const content = await waitForElement(() => getAllByTestId('authorCardCollection'))
       expect(content[0]).toBeInTheDocument()
