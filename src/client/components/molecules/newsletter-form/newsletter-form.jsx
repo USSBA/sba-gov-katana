@@ -5,7 +5,7 @@ import isPostalCode from 'validator/lib/isPostalCode'
 import { camelCase, capitalize, isEmpty } from 'lodash'
 
 import styles from './newsletter-form.scss'
-import { Button, Link, TextInput } from 'atoms'
+import { Button, CaptionText, Link, TextInput } from 'atoms'
 import { postMiscAction } from '../../../fetch-content-helper'
 
 const FORM_STATE = {
@@ -59,22 +59,22 @@ class NewsletterForm extends Component {
     const textInputs = [
       {
         name: 'email address',
+        optional: false,
         validate: value => {
           const isEmailAddressValid = isEmail(value)
           this.setState({ isEmailAddressValid })
           return isEmailAddressValid
-        },
-        optional: false
+        }
       },
       {
         name: 'zip code',
+        optional: true,
         validate: value => {
           // only checks U.S. zip codes
           const isZipCodeValid = isEmpty(value) || isPostalCode(value, 'US')
           this.setState({ isZipCodeValid })
           return isZipCodeValid
-        },
-        optional: true
+        }
       }
     ]
 
@@ -86,6 +86,7 @@ class NewsletterForm extends Component {
         formContent = (
           <div>
             {!footer ? <h3>{title}</h3> : <p>{title}</p>}
+            {!footer && <CaptionText>Please enter your zip code to receive local news.</CaptionText>}
             <div className={styles.inputs}>
               {!footer &&
                 textInputs.map(({ name, optional, validate }) => (

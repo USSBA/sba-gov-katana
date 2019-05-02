@@ -28,6 +28,7 @@ const Button = props => {
     [styles.fullWidth]: fullWidth,
     [styles.large]: !small,
     [styles.link]: url,
+    [styles.loading]: loading,
     [styles.primary]: primary,
     [styles.responsive]: responsive,
     [styles.secondary]: secondary,
