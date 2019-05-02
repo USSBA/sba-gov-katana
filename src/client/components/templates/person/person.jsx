@@ -8,7 +8,15 @@ import { DecorativeDash, Label, Link } from 'atoms'
 import { Breadcrumb, ContactCard } from 'molecules'
 
 class Person extends Component {
+  constructor() {
+    super()
+    this.state = {
+      isPersonBlogAuthor: false
+    }
+  }
+
   render() {
+    const { isPersonBlogAuthor } = this.state
     const {
       personData: {
         bio,
@@ -74,6 +82,11 @@ class Person extends Component {
           {!isEmpty(picture) && <img alt={picture.alt} className={styles.avatar} src={picture.src} />}
           {!isEmpty(bio) && <div dangerouslySetInnerHTML={{ __html: bio }} />}
         </div>
+        {isPersonBlogAuthor && (
+          <div className={styles.blogContainer}>
+            <h2 className={styles.blogHeader}>Blog posts</h2>
+          </div>
+        )}
       </div>
     )
   }

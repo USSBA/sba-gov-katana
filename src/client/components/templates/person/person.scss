@@ -39,6 +39,16 @@
   }
 }
 
+.blogContainer {
+  border-top: $sba-gray-light;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.blogHeader {
+  padding-top: 50px;
+}
+
 // basically a media object
 .content {
   h5 {
