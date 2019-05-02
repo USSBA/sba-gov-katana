@@ -11,7 +11,27 @@ class Person extends Component {
   constructor() {
     super()
     this.state = {
+      blogCards: null,
       isPersonBlogAuthor: false
+    }
+  }
+
+  componentDidMount() {
+    return this.fetchBlogs()
+  }
+
+  async fetchBlogs() {
+    const {
+      personData: { id }
+    } = this.props
+
+    const data = await fetchSiteContent('blogs', { author: id })
+
+    if (data.total > 0) {
+      this.setState({
+        blogCards: data.blogs,
+        isPersonBlogAuthor: true
+      })
     }
   }
 
