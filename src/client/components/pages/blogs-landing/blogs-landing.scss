@@ -1,0 +1,16 @@
+.authorCardCollection {
+  text-align: center;
+  padding: 0px 80px 50px;
+}
+
+.grayBackground {
+  background-color: $sba-gray-lighter;
+}
+
+.authorCard {
+  display: inline-block;
+  margin: 0 10px 10px;
+  width: 31%;
+  text-align: left;
+  //border: 1px solid red;
+}

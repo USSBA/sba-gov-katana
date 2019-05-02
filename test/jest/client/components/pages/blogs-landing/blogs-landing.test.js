@@ -85,4 +85,16 @@ describe('Blogs landing page', () => {
     expect(fetchSiteContentStub).toBeCalledWith('blogs', firstCategoryQueryParams)
     expect(fetchSiteContentStub).toBeCalledWith('blogs', secondCategoryQueryParams)
   })
+  describe('AuthorCardCollection', () => {
+    it.only('should exist', async () => {
+      const { getAllByTestId } = render(<BlogsLandingPage />)
+      const content = await waitForElement(() => getAllByTestId('authorCardCollection'))
+      expect(content[0]).toBeInTheDocument()
+    })
+    it('should contain 6 AuthorCard components', () => {
+      const { getAllByTestId } = render(<BlogsLandingPage />)
+      const content = getAllByTestId('authorCard')
+      expect(content.length).toEqual(6)
+    })
+  })
 })

@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import { BlogCategoryDeck, Hero } from 'organisms'
+import { AuthorCard } from 'molecules'
+import styles from './blogs-landing.scss'
+import classNames from 'classnames'
 
 class BlogsLandingPage extends Component {
   constructor() {
     super()
     this.state = {
-      categorySections: []
+      categorySections: [],
+      authors: [{},{},{},{},{},{}]
     }
   }
 
@@ -63,7 +67,7 @@ class BlogsLandingPage extends Component {
   }
 
   render() {
-    const { categorySections } = this.state
+    const { categorySections, authors } = this.state
 
     const heroData = {
       title: 'SBA Blog',
@@ -72,6 +76,11 @@ class BlogsLandingPage extends Component {
       imageURL: null,
       alt: null
     }
+
+    const authorCardCollectionClassName = classNames({
+      [styles.authorCardCollection]: true,
+      [styles.grayBackground]: true
+    })
 
     return (
       <div>
@@ -94,6 +103,11 @@ class BlogsLandingPage extends Component {
             />
           </div>
         ))}
+        <div data-testid="authorCardCollection" className={authorCardCollectionClassName}>
+          {authors.map( (author, index) => <div key={index} className={styles.authorCard}>
+            <AuthorCard data-testid="authorCard" border={false} {...author} />
+          </div>)}
+        </div>
       </div>
     )
   }
