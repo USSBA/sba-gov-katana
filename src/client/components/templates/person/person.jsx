@@ -128,8 +128,10 @@ class Person extends Component {
           {!isEmpty(bio) && <div dangerouslySetInnerHTML={{ __html: bio }} />}
         </div>
         {isPersonBlogAuthor && (
-          <div className={styles.blogContainer}>
-            <h2 className={styles.blogHeader}>Blog posts</h2>
+          <div className={styles.blogContainer} data-testid="blog-section">
+            <h2 className={styles.blogHeader} data-testid="blog-section-header">
+              Blog posts
+            </h2>
             <ClientPagingMultiviewLayout
               className={styles.paginationContainer}
               // onReset={onReset}

@@ -254,7 +254,6 @@ class SbicLookup extends React.Component {
   }
 
   render() {
-    console.log('state', this.state)
     return (
       <div>
         <div className={style.banner}>
