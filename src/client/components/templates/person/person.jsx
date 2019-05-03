@@ -10,6 +10,7 @@ import { Breadcrumb, ContactCard, Paginator } from 'molecules'
 import { Label } from 'atoms'
 
 const numBlogsPerPage = 6
+
 class Person extends Component {
   constructor() {
     super()
@@ -91,10 +92,24 @@ class Person extends Component {
     )
   }
 
-  renderPaginator() {
+  renderPaginator(location) {
     const { blogCardsTotal, pageNumber } = this.state
+    const divClassName = classNames({
+      [styles.paginator]: true,
+      [styles.topPaginator]: location === 'top' && true,
+      [styles.bottomPaginator]: location === 'bottom' && true
+    })
+
+    if (location === 'top') {
+      console.log('TOP')
+      console.log(divClassName)
+    } else if (location === 'bottom') {
+      console.log('BOTTOM')
+      console.log(divClassName)
+    }
+
     return (
-      <div className={styles.paginator} data-testid="paginator">
+      <div className={divClassName} data-testid="paginator">
         <Paginator
           pageNumber={pageNumber}
           pageSize={numBlogsPerPage}
@@ -178,9 +193,9 @@ class Person extends Component {
             <h2 className={styles.blogHeader} data-testid="blog-section-header">
               Blog posts
             </h2>
-            {this.renderPaginator()}
+            {this.renderPaginator('top')}
             {this.renderBlogCardCollection()}
-            {this.renderPaginator()}
+            {this.renderPaginator('bottom')}
           </div>
         )}
       </div>
