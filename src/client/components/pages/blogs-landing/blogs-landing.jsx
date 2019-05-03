@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { fetchSiteContent } from '../../../fetch-content-helper'
-import { BlogCategoryDeck, Hero } from 'organisms'
-import { AuthorCard } from 'molecules'
+import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
+import { AuthorCardCollection, BlogCategoryDeck, Hero } from 'organisms'
 import styles from './blogs-landing.scss'
 import classNames from 'classnames'
 
@@ -10,12 +9,13 @@ class BlogsLandingPage extends Component {
     super()
     this.state = {
       categorySections: [],
-      authors: [{}, {}, {}, {}, {}, {}]
+      authors: []
     }
   }
 
-  componentDidMount() {
-    return this.fetchBlogs()
+  async componentDidMount() {
+    this.fetchBlogs()
+    this.fetchAuthors()
   }
 
   fetchBlogs() {
@@ -66,6 +66,20 @@ class BlogsLandingPage extends Component {
     })
   }
 
+  async fetchAuthors() {
+    // fetch author ids from content search api
+    // then fetch author objects from content node api by ids
+    const nodeIds = await fetchSiteContent('authors')
+    const authors = []
+    nodeIds.forEach(async nodeId => {
+      const author = await fetchRestContent(nodeId)
+      authors.push(author)
+      if (nodeIds.length === authors.length) {
+        this.setState({ authors })
+      }
+    })
+  }
+
   render() {
     const { categorySections, authors } = this.state
 
@@ -77,8 +91,8 @@ class BlogsLandingPage extends Component {
       alt: null
     }
 
-    const authorCardCollectionClassName = classNames({
-      [styles.authorCardCollection]: true,
+    const authorCardsSectionHeadingClassName = classNames({
+      [styles.authorCardsSectionHeading]: true,
       [styles.grayBackground]: true
     })
 
@@ -103,20 +117,11 @@ class BlogsLandingPage extends Component {
             />
           </div>
         ))}
-        <div data-testid="authorCardCollection" className={authorCardCollectionClassName}>
+        <div className={authorCardsSectionHeadingClassName}>
           <h2>Browse posts by author</h2>
-          <p className={styles.authorCardSubtitle}>Read posts from SBA's small business experts and leaders in the small business industry.</p>
-          {authors.map((author, index) => <div key={index} className={styles.authorCard}>
-              <AuthorCard
-                key={index}
-                className={styles.authorCard}
-                data-testid="authorCard"
-                border={false}
-                linkMode={'seeAllPosts'}
-                {...author}
-              />
-          </div>)}
+          <p>Read posts from SBA's small business experts and leaders in the small business industry.</p>
         </div>
+        <AuthorCardCollection data={authors} />
       </div>
     )
   }

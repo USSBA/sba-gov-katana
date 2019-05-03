@@ -1,4 +1,5 @@
 // miscellaenous organisms
+import AuthorCardCollection from './author-card-collection/author-card-collection.jsx'
 import BlogCategoryDeck from './blog-category-deck/blog-category-deck.jsx'
 import CardCollection from './card-collection/card-collection.jsx'
 import ClientPagingMultiviewLayout from './client-paging-multiview-layout/client-paging-multiview-layout.jsx'
@@ -57,6 +58,7 @@ import MobileSectionNavModal from './modals/mobile-section-nav/mobile-section-na
 
 // miscellaneous organisms
 export {
+  AuthorCardCollection,
   BlogCategoryDeck,
   CardCollection,
   ClientPagingMultiviewLayout,

@@ -7,7 +7,7 @@ import styles from './author-card.scss'
 
 class AuthorCard extends PureComponent {
   render() {
-    const { name, title, shortBio: bio, picture, url, border, linkMode } = this.props
+    const { name, title, shortBio: bio, picture, url, border, mode } = this.props
 
     const className = classNames({
       [styles.card]: true,
@@ -16,7 +16,7 @@ class AuthorCard extends PureComponent {
 
     const infoClassName = classNames({
       [styles.info]: true,
-      [styles.imageMode]: !isEmpty(picture)
+      [styles.imageMode]: mode === 'single' && !isEmpty(picture)
     })
 
     const linkClassName = classNames({
@@ -24,11 +24,11 @@ class AuthorCard extends PureComponent {
     })
 
     let link
-    if (linkMode === 'readMore') {
+    if (mode === 'single') {
       link = <div data-testid={'read-more'} className={linkClassName}>
               <a href={url}>Read More</a>
             </div>
-    } else if (linkMode === 'seeAllPosts') {
+    } else if (mode === 'grid') {
       link = <div data-testid={'see-all-posts'} className={linkClassName}>
         <a href={`${url}#posts`}>See all posts</a>
       </div>
@@ -36,7 +36,7 @@ class AuthorCard extends PureComponent {
 
     return (
       <div data-testid={'authorCard'} tabIndex="0" className={className}>
-        {!isEmpty(picture) && (
+        {mode === 'single' && !isEmpty(picture) && (
           <div data-testid={'picture'} tabIndex="0" className={styles.image}>
             <img src={picture.src} alt={picture.alt} />
           </div>
@@ -66,7 +66,7 @@ AuthorCard.propTypes = {
   title: PropTypes.string,
   url: PropTypes.string,
   border: PropTypes.bool,
-  linkMode: PropTypes.string
+  mode: PropTypes.string
 }
 
 AuthorCard.defaultProps = {
@@ -75,7 +75,7 @@ AuthorCard.defaultProps = {
   picture: {},
   shortBio: '',
   border: true,
-  linkMode: 'readMore' // readMore | seeAllPosts
+  mode: 'single' // single | grid
 }
 
 export default AuthorCard
