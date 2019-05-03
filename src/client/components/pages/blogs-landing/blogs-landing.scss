@@ -1,6 +1,13 @@
 .authorCardCollection {
-  text-align: center;
-  padding: 0px 80px 50px;
+	padding: 50px 20px 30px;
+  @include grid-media($sba-grid-medium) {
+    text-align: center;
+  	padding: 0px 80px 50px;
+  }
+  @include grid-media($sba-grid-medium) {
+    text-align: center;
+  	padding: 0px 80px 50px;
+  }
 }
 
 .grayBackground {
@@ -8,9 +15,25 @@
 }
 
 .authorCard {
-  display: inline-block;
-  margin: 0 10px 10px;
-  width: 31%;
-  text-align: left;
-  //border: 1px solid red;
+
+	display: inline-block;
+	width: 100%;
+
+	@include grid-media($sba-grid-small) {
+
+	}
+	@include grid-media($sba-grid-medium) {
+		margin: 0 10px 10px;
+		width: 31%;
+		text-align: left;
+	}
+	@include grid-media($sba-grid-large) {
+		margin: 0 10px 10px;
+		width: 31%;
+		text-align: left;
+	}
+}
+
+.authorCardSubtitle {
+	margin-bottom: 45px;
 }

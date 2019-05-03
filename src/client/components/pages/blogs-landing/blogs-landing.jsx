@@ -104,11 +104,18 @@ class BlogsLandingPage extends Component {
           </div>
         ))}
         <div data-testid="authorCardCollection" className={authorCardCollectionClassName}>
-          {authors.map((author, index) => (
-            <div key={index} className={styles.authorCard}>
-              <AuthorCard data-testid="authorCard" border={false} {...author} />
-            </div>
-          ))}
+          <h2>Browse posts by author</h2>
+          <p className={styles.authorCardSubtitle}>Read posts from SBA's small business experts and leaders in the small business industry.</p>
+          {authors.map((author, index) => <div key={index} className={styles.authorCard}>
+              <AuthorCard
+                key={index}
+                className={styles.authorCard}
+                data-testid="authorCard"
+                border={false}
+                linkMode={'seeAllPosts'}
+                {...author}
+              />
+          </div>)}
         </div>
       </div>
     )

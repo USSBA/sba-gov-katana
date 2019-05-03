@@ -1,7 +1,5 @@
 .card {
   
-  margin-bottom: 2.5em;
-  margin-top: 1.5em;
   background: #ffffff;
   padding: 30px 20px 30px 30px;
 
@@ -17,7 +15,7 @@
   @include for-small-only {
     @include grid-column(12);
     padding: 30px;
-    margin: auto 0 2.5em;
+    margin: auto 0 2em;
     width: 100%;
   }
 
@@ -88,7 +86,7 @@
   
 }
 
-.readMoreAdditionalMargin {
+.linkAdditionalMargin {
   margin-top: 25px;
 }
 
