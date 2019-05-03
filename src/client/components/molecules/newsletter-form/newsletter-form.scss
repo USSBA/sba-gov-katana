@@ -67,6 +67,11 @@
   }
 }
 
+:global(.caption-text) {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 .inputs {
   @include for-medium-up {
     display: grid;
