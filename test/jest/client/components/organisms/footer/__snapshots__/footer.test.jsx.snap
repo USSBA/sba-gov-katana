@@ -991,7 +991,7 @@ exports[`Front Page Hero should render correctly 1`] = `
     </div>
     <form
       className="newsletter footer"
-      data-cy="newsletter"
+      data-testid="newsletter-form"
       onSubmit={[Function]}
     >
       <div>

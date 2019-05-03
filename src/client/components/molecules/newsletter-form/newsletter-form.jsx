@@ -141,7 +141,7 @@ class NewsletterForm extends Component {
     return (
       <form
         className={className}
-        data-cy="newsletter"
+        data-testid="newsletter-form"
         onSubmit={async event => {
           this.setState({ formState: FORM_STATE.processing })
 
