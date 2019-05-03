@@ -5,16 +5,19 @@ import moment from 'moment'
 
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './person.scss'
+import { CardCollection } from 'organisms'
+import { Breadcrumb, ContactCard, Paginator } from 'molecules'
 import { Label } from 'atoms'
-import { Breadcrumb, ContactCard } from 'molecules'
-import { ClientPagingMultiviewLayout, CardCollection } from 'organisms'
 
+const numBlogsPerPage = 6
 class Person extends Component {
   constructor() {
     super()
     this.state = {
       blogCards: null,
-      isPersonBlogAuthor: false
+      blogCardsTotal: null,
+      isPersonBlogAuthor: false,
+      pageNumber: 1
     }
   }
 
@@ -27,6 +30,7 @@ class Person extends Component {
       personData: { id }
     } = this.props
 
+    // reformats the blog object for Card component through CardCollection component
     const reformatBlog = blog => {
       return {
         italicText: moment.unix(blog.created).format('MMMM D, YYYY'),
@@ -39,29 +43,71 @@ class Person extends Component {
       }
     }
 
-    const data = await fetchSiteContent('blogs', { author: id })
+    const data = await fetchSiteContent('blogs', { author: 7097 })
 
     if (data.total > 0) {
       this.setState({
         blogCards: data.blogs.map(blog => reformatBlog(blog)),
+        blogCardsTotal: data.total,
         isPersonBlogAuthor: true
       })
     }
   }
 
-  makeGridRenderer() {
-    const { blogCards } = this.state
+  // callback function sets the state with the new pageNumber
+  // prevents pageNumber from being less than 1
+  handleBack() {
+    this.setState({
+      pageNumber: Math.max(1, this.state.pageNumber - 1)
+    })
+  }
+
+  // callback function sets the state with the new pageNumber
+  // prevents pageNumber from exceeding total number of pages
+  handleForward() {
+    const { blogCardsTotal, pageNumber } = this.state
+    const numTotalPages = Math.ceil(blogCardsTotal / numBlogsPerPage)
+
+    this.setState({
+      pageNumber: Math.min(numTotalPages, pageNumber + 1)
+    })
+  }
+
+  // renders 2 rows of CardCollection each displaying 3 cards
+  renderBlogCardCollection() {
+    const { blogCards, pageNumber } = this.state
+    const startIndex = 6 * (pageNumber - 1)
+    const middleIndex = startIndex + 3
+    const endIndex = startIndex + 6
     return (
       <div>
-        <CardCollection cards={blogCards} />
-        {/* <CardCollection cards={blogCards.slice(0, 4)} parentIndex={1} numberOverride={3} />
-        <CardCollection cards={blogCards.slice(3, 6)} parentIndex={2} numberOverride={3} /> */}
+        <CardCollection
+          cards={blogCards.slice(startIndex, middleIndex)}
+          parentIndex={1}
+          numberOverride={3}
+        />
+        <CardCollection cards={blogCards.slice(middleIndex, endIndex)} parentIndex={2} numberOverride={3} />
+      </div>
+    )
+  }
+
+  renderPaginator() {
+    const { blogCardsTotal, pageNumber } = this.state
+    return (
+      <div className={styles.paginator} data-testid="paginator">
+        <Paginator
+          pageNumber={pageNumber}
+          pageSize={numBlogsPerPage}
+          total={blogCardsTotal}
+          onBack={this.handleBack.bind(this)}
+          onForward={this.handleForward.bind(this)}
+        />
       </div>
     )
   }
 
   render() {
-    const { blogCards, isPersonBlogAuthor } = this.state
+    const { isPersonBlogAuthor } = this.state
     const {
       personData: {
         bio,
@@ -132,14 +178,9 @@ class Person extends Component {
             <h2 className={styles.blogHeader} data-testid="blog-section-header">
               Blog posts
             </h2>
-            <ClientPagingMultiviewLayout
-              className={styles.paginationContainer}
-              // onReset={onReset}
-              items={blogCards}
-              pageSize={6}
-              rendererOne={this.makeGridRenderer.bind(this)}
-              type="blogs"
-            />
+            {this.renderPaginator()}
+            {this.renderBlogCardCollection()}
+            {this.renderPaginator()}
           </div>
         )}
       </div>
