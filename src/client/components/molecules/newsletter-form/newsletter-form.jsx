@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 import isEmail from 'validator/lib/isEmail'
 import isPostalCode from 'validator/lib/isPostalCode'
-import { camelCase, capitalize, isEmpty } from 'lodash'
+import { camelCase, capitalize, isEmpty, kebabCase } from 'lodash'
 
 import styles from './newsletter-form.scss'
 import { Button, CaptionText, Link, TextInput } from 'atoms'
@@ -92,7 +92,7 @@ class NewsletterForm extends Component {
                 textInputs.map(({ name, optional, validate }) => (
                   <TextInput
                     errorText={`Enter a valid ${name}`}
-                    id={`newsletter ${name}`}
+                    id={kebabCase(`newsletter ${name}`)}
                     key={name}
                     label={capitalize(name)}
                     onChange={event => this.setState({ [camelCase(name)]: event.target.value })}
