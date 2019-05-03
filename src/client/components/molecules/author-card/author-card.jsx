@@ -25,13 +25,17 @@ class AuthorCard extends PureComponent {
 
     let link
     if (mode === 'single') {
-      link = <div data-testid={'read-more'} className={linkClassName}>
-              <a href={url}>Read More</a>
-            </div>
+      link = (
+        <div data-testid={'read-more'} className={linkClassName}>
+          <a href={url}>Read More</a>
+        </div>
+      )
     } else if (mode === 'grid') {
-      link = <div data-testid={'see-all-posts'} className={linkClassName}>
-        <a href={`${url}#posts`}>See all posts</a>
-      </div>
+      link = (
+        <div data-testid={'see-all-posts'} className={linkClassName}>
+          <a href={`${url}#posts`}>See all posts</a>
+        </div>
+      )
     }
 
     return (

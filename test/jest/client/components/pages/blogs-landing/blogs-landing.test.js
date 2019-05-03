@@ -46,51 +46,55 @@ const mockIndustryWordData = [
   }
 ]
 
-const mockAuthorData = [{
-    "bio": "<p>Pradeep serves as Chief of Staff.",
-    "emailAddress": {},
-    "fax": {},
-    "firstName": "Pradeep",
-    "highResolutionPhoto": "/sites/default/files/2019-02/pradeep-belur_0.jpg",
-    "lastName": "Belur",
-    "office": 18216,
-    "phone": {},
-    "picture": {
-        "alt": "Pradeep Belur",
-        "src": "/sites/default/files/2019-02/pradeep-belur.jpg"
+const mockAuthorData = [
+  {
+    bio: '<p>Pradeep serves as Chief of Staff.',
+    emailAddress: {},
+    fax: {},
+    firstName: 'Pradeep',
+    highResolutionPhoto: '/sites/default/files/2019-02/pradeep-belur_0.jpg',
+    lastName: 'Belur',
+    office: 18216,
+    phone: {},
+    picture: {
+      alt: 'Pradeep Belur',
+      src: '/sites/default/files/2019-02/pradeep-belur.jpg'
     },
-    "shortBio": {},
-    "title": "Chief of Staff, Chief Operating Officer",
-    "type": "person",
-    "url": "/person/pradeep-belur",
-    "name": "Pradeep Belur",
-    "id": 101,
-    "updated": 1551447256,
-    "created": 1550676474,
-    "langCode": "en"
-},{
-    "bio": "<p>Shawn Pensoneau joined the U.S. Small Business Administration (SBA) as Assistant Administrator.",
-    "emailAddress": {},
-    "fax": "202-205-6139",
-    "firstName": "Shawn",
-    "highResolutionPhoto": "/sites/default/files/2019-02/shawn-pensoneau.jpg",
-    "lastName": "Pensoneau",
-    "office": 15839,
-    "phone": "202-205-7364",
-    "picture": {
-        "alt": "Shawn Pensoneau",
-        "src": "/sites/default/files/2019-02/bio-shawn-pensoneau.jpg"
+    shortBio: {},
+    title: 'Chief of Staff, Chief Operating Officer',
+    type: 'person',
+    url: '/person/pradeep-belur',
+    name: 'Pradeep Belur',
+    id: 101,
+    updated: 1551447256,
+    created: 1550676474,
+    langCode: 'en'
+  },
+  {
+    bio:
+      '<p>Shawn Pensoneau joined the U.S. Small Business Administration (SBA) as Assistant Administrator.',
+    emailAddress: {},
+    fax: '202-205-6139',
+    firstName: 'Shawn',
+    highResolutionPhoto: '/sites/default/files/2019-02/shawn-pensoneau.jpg',
+    lastName: 'Pensoneau',
+    office: 15839,
+    phone: '202-205-7364',
+    picture: {
+      alt: 'Shawn Pensoneau',
+      src: '/sites/default/files/2019-02/bio-shawn-pensoneau.jpg'
     },
-    "shortBio": {},
-    "title": "Assitant Administrator",
-    "type": "person",
-    "url": "/person/shawn-pensoneau",
-    "name": "Shawn Pensoneau",
-    "id": 102,
-    "updated": 1551199799,
-    "created": 1550689651,
-    "langCode": "en"
-}]
+    shortBio: {},
+    title: 'Assitant Administrator',
+    type: 'person',
+    url: '/person/shawn-pensoneau',
+    name: 'Shawn Pensoneau',
+    id: 102,
+    updated: 1551199799,
+    created: 1550689651,
+    langCode: 'en'
+  }
+]
 
 const fetchSiteContentStubCallback = (node, { category }) => {
   const result = { total: 0, blogs: [] }
@@ -114,8 +118,8 @@ describe('Blogs landing page', () => {
   it('renders the blog category deck component twice', async () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
     fetchSiteContentStub
-    .mockImplementationOnce(fetchSiteContentStubCallback)
-    .mockImplementationOnce(fetchSiteContentStubCallback)
+      .mockImplementationOnce(fetchSiteContentStubCallback)
+      .mockImplementationOnce(fetchSiteContentStubCallback)
 
     const { getAllByTestId } = render(<BlogsLandingPage />)
     const content = await waitForElement(() => getAllByTestId('blog category deck'))
@@ -142,17 +146,21 @@ describe('Blogs landing page', () => {
     it('should contain 2 AuthorCard components', async () => {
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
       fetchSiteContentStub
-      // fetchBlogs (there are two calls made inside the component so mock both)
-      .mockImplementationOnce(() => { return { blogs: [] } })
-      .mockImplementationOnce(() => { return { blogs: [] } })
-      // fetchAuthors
-      .mockImplementationOnce(() => {
-        const mockResponse = [101,102]
-        return Promise.resolve(mockResponse)
-      })
+        // fetchBlogs (there are two calls made inside the component so mock both)
+        .mockImplementationOnce(() => {
+          return { blogs: [] }
+        })
+        .mockImplementationOnce(() => {
+          return { blogs: [] }
+        })
+        // fetchAuthors
+        .mockImplementationOnce(() => {
+          const mockResponse = [101, 102]
+          return Promise.resolve(mockResponse)
+        })
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
       fetchRestContentStub.mockImplementation(nodeId => {
-        const mockResponse = mockAuthorData.find( author => author.id === nodeId )
+        const mockResponse = mockAuthorData.find(author => author.id === nodeId)
         return Promise.resolve(mockResponse)
       })
       const { getAllByTestId } = render(<BlogsLandingPage />)
