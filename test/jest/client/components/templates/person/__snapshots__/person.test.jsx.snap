@@ -17,14 +17,19 @@ exports[`Person page renders correctly 1`] = `
     className="header"
   >
     <div>
-      <h1>
+      <h1
+        tabIndex="0"
+      >
         Thomas A. Todt
       </h1>
-      <h5>
+      <h5
+        tabIndex="0"
+      >
         District Director
       </h5>
       <p
         className="officeName"
+        tabIndex="0"
       >
         Alabama District Office
       </p>
@@ -88,6 +93,7 @@ exports[`Person page renders correctly 1`] = `
                   "__html": "202-292-3808",
                 }
               }
+              tabIndex="0"
             />
           </div>
         </div>

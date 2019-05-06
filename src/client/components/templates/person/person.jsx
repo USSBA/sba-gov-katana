@@ -86,8 +86,14 @@ class Person extends Component {
           cards={blogCards.slice(startIndex, middleIndex)}
           parentIndex={1}
           numberOverride={3}
+          cardAriaLabel="first row blog post"
         />
-        <CardCollection cards={blogCards.slice(middleIndex, endIndex)} parentIndex={2} numberOverride={3} />
+        <CardCollection
+          cards={blogCards.slice(middleIndex, endIndex)}
+          parentIndex={2}
+          numberOverride={3}
+          cardAriaLabel="second row blog post"
+        />
       </div>
     )
   }
@@ -109,7 +115,7 @@ class Person extends Component {
     }
 
     return (
-      <div className={divClassName} data-testid="paginator">
+      <div data-testid="paginator" className={divClassName}>
         <Paginator
           pageNumber={pageNumber}
           pageSize={numBlogsPerPage}
@@ -174,9 +180,13 @@ class Person extends Component {
         <Label large type="Person" />
         <div className={styles.header}>
           <div>
-            <h1>{name}</h1>
-            {!isEmpty(title) && <h5>{title}</h5>}
-            {!isEmpty(officeName) && <p className={styles.officeName}>{officeName}</p>}
+            <h1 tabIndex="0">{name}</h1>
+            {!isEmpty(title) && <h5 tabIndex="0">{title}</h5>}
+            {!isEmpty(officeName) && (
+              <p className={styles.officeName} tabIndex="0">
+                {officeName}
+              </p>
+            )}
           </div>
           {!isEmpty(contact) && (
             <div className={styles.contact}>
@@ -189,8 +199,8 @@ class Person extends Component {
           {!isEmpty(bio) && <div dangerouslySetInnerHTML={{ __html: bio }} />}
         </div>
         {isPersonBlogAuthor && (
-          <div className={styles.blogContainer} data-testid="blog-section">
-            <h2 className={styles.blogHeader} data-testid="blog-section-header">
+          <div data-testid="blog-section" id="posts" className={styles.blogContainer}>
+            <h2 data-testid="blog-section-header" className={styles.blogHeader} tabIndex="0">
               Blog posts
             </h2>
             {this.renderPaginator('top')}

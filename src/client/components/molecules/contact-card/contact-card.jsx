@@ -110,7 +110,7 @@ const ContactCard = props => {
             </div>
             <div className={styles.secondColumn}>
               {isEmpty(href) ? (
-                <span dangerouslySetInnerHTML={{ __html: text }} />
+                <span dangerouslySetInnerHTML={{ __html: text }} tabIndex="0" />
               ) : (
                 <Link dangerouslySetInnerHTML={{ __html: text }} to={href} />
               )}
