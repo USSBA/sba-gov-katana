@@ -44,7 +44,7 @@ class Person extends Component {
       }
     }
 
-    const data = await fetchSiteContent('blogs', { author: 7097 })
+    const data = await fetchSiteContent('blogs', { author: id })
 
     if (data.total > 0) {
       this.setState({
@@ -105,14 +105,6 @@ class Person extends Component {
       [styles.topPaginator]: location === 'top' && true,
       [styles.bottomPaginator]: location === 'bottom' && true
     })
-
-    if (location === 'top') {
-      console.log('TOP')
-      console.log(divClassName)
-    } else if (location === 'bottom') {
-      console.log('BOTTOM')
-      console.log(divClassName)
-    }
 
     return (
       <div data-testid="paginator" className={divClassName}>

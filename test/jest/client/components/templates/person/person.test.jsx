@@ -1,8 +1,10 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { mount, shallow } from 'enzyme'
+import { render, cleanup, waitForElement } from 'react-testing-library'
+import { shallow } from 'enzyme'
 
 import Person from 'templates/person/person.jsx'
+import * as fetchContentHelper from 'client/fetch-content-helper.js'
 
 const personPropsWithPhoto = {
   bio:
@@ -31,7 +33,7 @@ const personPropsWithPhoto = {
   langCode: 'en'
 }
 
-const personPropsWithWithoutPhoto = {
+const personPropsWithoutPhoto = {
   bio: 'Bio of Thomas Todt',
   emailAddress: 'thomas.todt@sba.gov',
   office: {
@@ -51,6 +53,33 @@ const personPropsWithWithoutPhoto = {
   langCode: 'en'
 }
 
+function makeAnySizeBlogArray(size) {
+  const mockBlog = {
+    author: 6386,
+    blogBody: [],
+    blogCategory: 'Industry Word',
+    blogTags: 'Starting a Business',
+    summary: 'Seventh blog summary. Some stuff goes here for description.',
+    type: 'blog',
+    title: 'Test Blog Title',
+    id: 18746,
+    updated: 1556828290,
+    created: 1556828259,
+    langCode: 'en',
+    url: '/blog/test-blog-title'
+  }
+
+  const mockBlogData = []
+  let i
+  for (i = 0; i < size; i++) {
+    mockBlogData.push(mockBlog)
+  }
+
+  return mockBlogData
+}
+
+afterEach(cleanup)
+
 describe('Person page', () => {
   test('renders correctly', () => {
     const component = renderer.create(<Person personData={personPropsWithPhoto} />)
@@ -66,7 +95,7 @@ describe('Person page', () => {
   })
 
   test('Subcomponent, ContactCard, renders correctly', () => {
-    const component = shallow(<Person personData={personPropsWithWithoutPhoto} />)
+    const component = shallow(<Person personData={personPropsWithoutPhoto} />)
     const subComponent = component.find('ContactCard')
     const subComponentProps = subComponent.node.props
     expect(Object.keys(subComponentProps).length).toEqual(3)
@@ -84,7 +113,71 @@ describe('Person page', () => {
   })
 
   test("doesn't render person image", () => {
-    const component = shallow(<Person personData={personPropsWithWithoutPhoto} />)
+    const component = shallow(<Person personData={personPropsWithoutPhoto} />)
     expect(component.find('.person-page img').length).toEqual(0)
+  })
+
+  describe('Blog section', () => {
+    test.skip('does NOT render the blog section when the person is NOT a blog author', async () => {
+      const mockBlogResponse = { total: 0, blogs: [] }
+
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      fetchSiteContentStub.mockImplementation(() => Promise.resolve(mockBlogResponse))
+
+      const { queryByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      expect(queryByTestId('blog-section')).toBeNull()
+    })
+
+    test('renders the blog section when the person is a blog author', async () => {
+      const blogData = makeAnySizeBlogArray(1)
+      const mockBlogResponse = { total: blogData.length, blogs: blogData }
+
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      fetchSiteContentStub.mockImplementation(() => Promise.resolve(mockBlogResponse))
+
+      const { getAllByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const blogSection = await waitForElement(() => getAllByTestId('blog-section'))
+
+      expect(blogSection.length).toEqual(1)
+    })
+
+    test('blog section contains header titled "Blog posts"', async () => {
+      const blogData = makeAnySizeBlogArray(1)
+      const mockBlogResponse = { total: blogData.length, blogs: blogData }
+
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      fetchSiteContentStub.mockImplementation(() => Promise.resolve(mockBlogResponse))
+
+      const { getByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const blogHeader = await waitForElement(() => getByTestId('blog-section-header'))
+
+      expect(blogHeader.innerHTML).toBe('Blog posts')
+    })
+
+    test('blog section displays number of posts returned from api when posts are between 1 - 3 (inclusive)', async () => {
+      const blogData = makeAnySizeBlogArray(3)
+      const mockBlogResponse = { total: blogData.length, blogs: blogData }
+
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      fetchSiteContentStub.mockImplementation(() => Promise.resolve(mockBlogResponse))
+
+      const { getAllByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const blogSection = await waitForElement(() => getAllByTestId('card'))
+
+      expect(blogSection.length).toEqual(mockBlogResponse.total)
+    })
+
+    test('blog section displays number of posts returned from api when posts are between 4 - 6 (inclusive)', async () => {
+      const blogData = makeAnySizeBlogArray(6)
+      const mockBlogResponse = { total: blogData.length, blogs: blogData }
+
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      fetchSiteContentStub.mockImplementation(() => Promise.resolve(mockBlogResponse))
+
+      const { getAllByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const blogSection = await waitForElement(() => getAllByTestId('card'))
+
+      expect(blogSection.length).toEqual(mockBlogResponse.total)
+    })
   })
 })
