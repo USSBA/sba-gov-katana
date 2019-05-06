@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import { AuthorCardCollection, BlogCategoryDeck, Hero } from 'organisms'
+import { compact } from 'lodash'
 
 class BlogsLandingPage extends Component {
   constructor() {
@@ -73,7 +74,7 @@ class BlogsLandingPage extends Component {
       const author = await fetchRestContent(nodeId)
       authors.push(author)
       if (nodeIds.length === authors.length) {
-        this.setState({ authors })
+        this.setState({ authors: compact(authors) })
       }
     })
   }
