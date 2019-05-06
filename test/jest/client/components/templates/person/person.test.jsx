@@ -118,7 +118,7 @@ describe('Person page', () => {
   })
 
   describe('Blog section', () => {
-    test.skip('does NOT render the blog section when the person is NOT a blog author', async () => {
+    test('does NOT render the blog section when the person is NOT a blog author', async () => {
       const mockBlogResponse = { total: 0, blogs: [] }
 
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')

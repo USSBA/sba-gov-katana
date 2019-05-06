@@ -46,7 +46,7 @@ class Person extends Component {
 
     const data = await fetchSiteContent('blogs', { author: id })
 
-    if (data.total > 0) {
+    if (data && data.total > 0) {
       this.setState({
         blogCards: data.blogs.map(blog => reformatBlog(blog)),
         blogCardsTotal: data.total,
