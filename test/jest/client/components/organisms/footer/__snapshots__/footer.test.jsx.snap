@@ -1004,13 +1004,16 @@ exports[`Front Page Hero should render correctly 1`] = `
           <span
             className="buttonWrapper"
           >
-            <button
-              className="button alternate large primary responsive spacing"
+            <a
+              className="button alternate large link primary responsive spacing"
               disabled={false}
-              type="submit"
+              onClick={[Function]}
+              style={Object {}}
+              target="_self"
+              type={false}
             >
               Subscribe
-            </button>
+            </a>
           </span>
         </div>
       </div>

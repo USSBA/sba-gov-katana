@@ -109,7 +109,8 @@ class NewsletterForm extends Component {
                   children="Subscribe"
                   disabled={!footer && !this.isValid()}
                   loading={!footer && formState === FORM_STATE.processing}
-                  type="submit"
+                  type={!footer && 'submit'}
+                  url={footer && '/updates'}
                 />
               </span>
             </div>
