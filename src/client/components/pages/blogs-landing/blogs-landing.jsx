@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import { AuthorCardCollection, BlogCategoryDeck, Hero } from 'organisms'
-import styles from './blogs-landing.scss'
-import classNames from 'classnames'
 
 class BlogsLandingPage extends Component {
   constructor() {
@@ -91,11 +89,6 @@ class BlogsLandingPage extends Component {
       alt: null
     }
 
-    const authorCardsSectionHeadingClassName = classNames({
-      [styles.authorCardsSectionHeading]: true,
-      [styles.grayBackground]: true
-    })
-
     return (
       <div>
         <div data-testid={'blogs-hero'}>
@@ -117,11 +110,11 @@ class BlogsLandingPage extends Component {
             />
           </div>
         ))}
-        <div className={authorCardsSectionHeadingClassName}>
-          <h2>Browse posts by author</h2>
-          <p>Read posts from SBA's small business experts and leaders in the small business industry.</p>
-        </div>
-        <AuthorCardCollection data={authors} />
+        {authors.length > 0 && (
+          <div data-testid={'author cards section'}>
+            <AuthorCardCollection data={authors} />
+          </div>
+        )}
       </div>
     )
   }

@@ -139,6 +139,25 @@ describe('Blogs landing page', () => {
   })
   describe('AuthorCardCollection', async () => {
     it('should exist', async () => {
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      fetchSiteContentStub
+        // fetchBlogs (there are two calls made inside the component so mock both)
+        .mockImplementationOnce(() => {
+          return { blogs: [] }
+        })
+        .mockImplementationOnce(() => {
+          return { blogs: [] }
+        })
+        // fetchAuthors
+        .mockImplementationOnce(() => {
+          const mockResponse = [101, 102]
+          return Promise.resolve(mockResponse)
+        })
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      fetchRestContentStub.mockImplementation(nodeId => {
+        const mockResponse = mockAuthorData.find(author => author.id === nodeId)
+        return Promise.resolve(mockResponse)
+      })
       const { getAllByTestId } = render(<BlogsLandingPage />)
       const content = await waitForElement(() => getAllByTestId('authorCardCollection'))
       expect(content[0]).toBeInTheDocument()
