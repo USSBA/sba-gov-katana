@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router'
 
 import style from './related-document-cards.scss'
 import { DetailCardCollection } from 'organisms'
-import { fetchSiteContent } from '../../../fetch-content-helper'
+import { fetchRestContent } from '../../../fetch-content-helper'
 import { logEvent, logPageEvent } from '../../../services/analytics'
 
 class RelatedDocumentCards extends React.Component {
@@ -23,7 +23,7 @@ class RelatedDocumentCards extends React.Component {
     let relatedDocumentsData = []
 
     for (let i = 0; i < relatedDocuments.length; i++) {
-      const data = await fetchSiteContent(`node/${relatedDocuments[i]}`)
+      const data = await fetchRestContent(`${relatedDocuments[i]}`)
       relatedDocumentsData.push(data)
     }
 

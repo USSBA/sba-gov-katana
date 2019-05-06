@@ -10,6 +10,7 @@ import { getLanguageOverride } from '../../../services/utils'
 
 const Card = props => {
   const {
+    cardAriaLabel,
     index,
     item: { image, link, subtitleText, titleText, italicText },
     numCards,
@@ -67,7 +68,13 @@ const Card = props => {
   ) : null
 
   return (
-    <div className={className} id={snakeCase('card', parentIndex, index)} data-testid="card">
+    <div
+      className={className}
+      id={snakeCase('card', parentIndex, index)}
+      data-testid="card"
+      tabIndex="0"
+      aria-label={`${cardAriaLabel} ${index + 1}`}
+    >
       {imageMarkup}
       {/* If a card has a an image, a parent StyledGrayBackground will add
         padding to the card using the class name as a hook. */}
@@ -89,6 +96,7 @@ const Card = props => {
                 id={'italic-text-' + parentIndex + '-' + index}
                 className={styles.itemItalic}
                 data-testid="card italic text"
+                tabIndex="0"
               >
                 {italicText}
               </p>
@@ -98,6 +106,7 @@ const Card = props => {
                 id={'subtitle-text-' + parentIndex + '-' + index}
                 className={styles.itemSubTitle}
                 data-testid="card subtitle text"
+                tabIndex="0"
               >
                 {subtitleText}
               </p>
@@ -111,6 +120,7 @@ const Card = props => {
 }
 
 Card.defaultProps = {
+  cardAriaLabel: 'card',
   item: {},
   index: -1,
   numCards: -1,
@@ -118,6 +128,7 @@ Card.defaultProps = {
 }
 
 Card.propTypes = {
+  cardAriaLabel: PropTypes.string,
   index: PropTypes.number,
   item: PropTypes.shape({
     image: PropTypes.shape({

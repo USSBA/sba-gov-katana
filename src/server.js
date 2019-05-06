@@ -135,6 +135,9 @@ app.get('/actions/misc/*', (req, res, next) => {
 app.get('/api/content/search/*', (req, res, next) => {
   fetchExternalContent(config.get('content.endpoint'), '', req.path, req.query, res, 'json')
 })
+app.get('/api/content/*', (req, res, next) => {
+  fetchExternalContent(config.get('content.cloudfront'), '', req.path, req.query, res, 'json')
+})
 app.get('/naics', (req, res, next) => {
   fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
@@ -188,7 +191,7 @@ async function getMetaVariables(nodeId, type = 'node', request) {
     }
   } else if (nodeId > 0) {
     const jsonContent = await axios.get(
-      `https://${config.get('server.fqdn')}/api/content/${type}/${nodeId}.json`
+      `https://${config.get('content.cloudfront')}/api/content/${nodeId}.json`
     )
     if (jsonContent.data) {
       description = jsonContent.data.summary

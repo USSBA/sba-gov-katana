@@ -10,9 +10,11 @@ exports[`ProgramDetailsCardCollection should render the default cards 1`] = `
       id="card-row--1-0"
     >
       <div
+        aria-label="card 1"
         className="card sixColumn noImage"
         data-testid="card"
         id="card"
+        tabIndex="0"
       >
         <div
           className="content false"
@@ -41,9 +43,11 @@ exports[`ProgramDetailsCardCollection should render the default cards 1`] = `
         </div>
       </div>
       <div
+        aria-label="card 2"
         className="card sixColumn noImage"
         data-testid="card"
         id="card"
+        tabIndex="0"
       >
         <div
           className="content false"
@@ -72,9 +76,11 @@ exports[`ProgramDetailsCardCollection should render the default cards 1`] = `
         </div>
       </div>
       <div
+        aria-label="card 3"
         className="card sixColumn noImage"
         data-testid="card"
         id="card"
+        tabIndex="0"
       >
         <div
           className="content false"
@@ -103,9 +109,11 @@ exports[`ProgramDetailsCardCollection should render the default cards 1`] = `
         </div>
       </div>
       <div
+        aria-label="card 4"
         className="card sixColumn noImage"
         data-testid="card"
         id="card"
+        tabIndex="0"
       >
         <div
           className="content false"
@@ -134,9 +142,11 @@ exports[`ProgramDetailsCardCollection should render the default cards 1`] = `
         </div>
       </div>
       <div
+        aria-label="card 5"
         className="card sixColumn noImage"
         data-testid="card"
         id="card"
+        tabIndex="0"
       >
         <div
           className="content false"
@@ -165,9 +175,11 @@ exports[`ProgramDetailsCardCollection should render the default cards 1`] = `
         </div>
       </div>
       <div
+        aria-label="card 6"
         className="card sixColumn noImage"
         data-testid="card"
         id="card"
+        tabIndex="0"
       >
         <div
           className="content false"

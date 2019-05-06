@@ -11,7 +11,7 @@ import BlogPage from 'pages/blog-page/blog-page.jsx'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 
 const mockBlogData = {
-  author: null,
+  author: 18024,
   blogBody: {},
   blogTags: 'International',
   office: {},
@@ -25,12 +25,44 @@ const mockBlogData = {
   url: '/blog/18343'
 }
 
+const mockAuthorData = {
+  bio: '<p>this is a bio</p>\r\n',
+  emailAddress: 'everett.woodeljr@sba.gov',
+  fax: '202-481-4845',
+  firstName: 'Everette',
+  highResolutionPhoto:
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Linda_McMahon_official_photo.jpg/440px-Linda_McMahon_official_photo.jpg',
+  lastName: 'Woodel',
+  office: 6443,
+  phone: '614-469-6860 ext 287',
+  picture: {},
+  shortBio: 'this is a short bio',
+  title: 'District Director',
+  type: 'person',
+  url: '/person/everett-m-woodel-jr',
+  name: 'Everett M. Woodel Jr.',
+  id: 18024,
+  updated: 1556029460,
+  created: 1549300944,
+  langCode: 'en'
+}
+
+const fetchRestContentStubCallback = ({ node, id }) => {
+  let result
+  if (id === 18024) {
+    result = Object.assign({}, mockAuthorData)
+  } else {
+    result = Object.assign({}, mockBlogData)
+  }
+  return result
+}
+
 afterEach(cleanup)
 
 describe('Blog page', () => {
   it('renders blog content when BlogPage receives data back from the api', async () => {
     const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
-    fetchRestContentStub.mockImplementation(() => Promise.resolve(mockBlogData))
+    fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
 
     const initialState = undefined
     const enhancer = applyMiddleware(thunk)
@@ -87,5 +119,66 @@ describe('Blog page', () => {
 
     expect(fetchRestContentStub).toHaveBeenCalledTimes(1)
     expect(getByTestId('blog-loader')).toBeInTheDocument()
+  })
+  describe('Byline', () => {
+    it('should exist', async () => {
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
+
+      const initialState = undefined
+      const enhancer = applyMiddleware(thunk)
+      const store = createStore(reducers, initialState, enhancer)
+
+      const { getByTestId } = render(
+        <Provider store={store}>
+          <BlogPage id="1" />
+        </Provider>
+      )
+
+      const content = await waitForElement(() => getByTestId('byline'))
+      expect(content).toBeInTheDocument()
+    })
+    it('should contain postAuthor, postDate and postCategory', async () => {
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
+
+      const initialState = undefined
+      const enhancer = applyMiddleware(thunk)
+      const store = createStore(reducers, initialState, enhancer)
+
+      const { getByTestId } = render(
+        <Provider store={store}>
+          <BlogPage id="1" />
+        </Provider>
+      )
+
+      let content = await waitForElement(() => getByTestId('byline'))
+      expect(content).toBeInTheDocument()
+      content = await waitForElement(() => getByTestId('postAuthor'))
+      expect(content).toBeInTheDocument()
+      content = await waitForElement(() => getByTestId('postDate'))
+      expect(content).toBeInTheDocument()
+      content = await waitForElement(() => getByTestId('postCategory'))
+      expect(content).toBeInTheDocument()
+    })
+  })
+  describe('AuthorCard', () => {
+    it('should exist', async () => {
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
+
+      const initialState = undefined
+      const enhancer = applyMiddleware(thunk)
+      const store = createStore(reducers, initialState, enhancer)
+
+      const { getByTestId } = render(
+        <Provider store={store}>
+          <BlogPage id="1" />
+        </Provider>
+      )
+
+      const content = await waitForElement(() => getByTestId('authorCard'))
+      expect(content).toBeInTheDocument()
+    })
   })
 })

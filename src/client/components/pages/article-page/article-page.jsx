@@ -28,7 +28,7 @@ class ArticlePage extends React.Component {
 
         if (size(items)) {
           const { id } = items[0]
-          const article = await fetchRestContent('node', id)
+          const article = await fetchRestContent(id)
           this.setState({ article })
         }
       } catch (e) {

@@ -227,14 +227,13 @@ describe('Search Template', () => {
   })
 
   describe('No Results', () => {
-    it('displays the "No Results" messaging when a result set comes back empty', (done) => {
-      mockFetchSiteContent.mockReturnValue(Promise.resolve({
-        found: 0
-      }))
-      const component = mount(<SearchTemplate
-        searchType="none"
-        loadDefaultResults={true}
-      />)
+    it('displays the "No Results" messaging when a result set comes back empty', done => {
+      mockFetchSiteContent.mockReturnValue(
+        Promise.resolve({
+          found: 0
+        })
+      )
+      const component = mount(<SearchTemplate searchType="none" loadDefaultResults={true} />)
       setImmediate(() => {
         try {
           expect(component.find('#no-results').length).toBe(1)

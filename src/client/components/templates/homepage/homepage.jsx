@@ -25,7 +25,7 @@ class Homepage extends React.Component {
     const siteMap = await fetchSiteContent('siteMap')
     const homepageNodeId = findSection(siteMap, 'home-page')
     if (homepageNodeId && homepageNodeId.node) {
-      const homepageData = await fetchRestContent('node', homepageNodeId.node)
+      const homepageData = await fetchRestContent(homepageNodeId.node)
       return { data: homepageData, siteMap }
     }
   }
