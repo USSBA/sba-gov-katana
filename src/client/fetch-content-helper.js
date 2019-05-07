@@ -11,7 +11,7 @@ async function fetchRestContent(id, langOverride) {
     )
     data = response.data
   } catch (error) {
-    console.error('fetchEventContent', error)
+    console.error('fetchRestContent', error)
   }
 
   return data

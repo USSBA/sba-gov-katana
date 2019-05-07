@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
-import { fetchSiteContent } from '../../../fetch-content-helper'
-import { BlogCategoryDeck, Hero } from 'organisms'
+import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
+import { AuthorCardCollection, BlogCategoryDeck, Hero } from 'organisms'
+import { compact } from 'lodash'
 
 class BlogsLandingPage extends Component {
   constructor() {
     super()
     this.state = {
-      categorySections: []
+      categorySections: [],
+      authors: []
     }
   }
 
-  componentDidMount() {
-    return this.fetchBlogs()
+  async componentDidMount() {
+    this.fetchBlogs()
+    this.fetchAuthors()
   }
 
   fetchBlogs() {
@@ -62,8 +65,22 @@ class BlogsLandingPage extends Component {
     })
   }
 
+  async fetchAuthors() {
+    // fetch author ids from content search api
+    // then fetch author objects from content node api by ids
+    const authors = []
+    const nodeIds = await fetchSiteContent('authors')
+    nodeIds.forEach(async nodeId => {
+      const author = await fetchRestContent(nodeId)
+      authors.push(author)
+      if (nodeIds.length === authors.length) {
+        this.setState({ authors: compact(authors) })
+      }
+    })
+  }
+
   render() {
-    const { categorySections } = this.state
+    const { categorySections, authors } = this.state
 
     const heroData = {
       title: 'SBA Blog',
@@ -94,6 +111,11 @@ class BlogsLandingPage extends Component {
             />
           </div>
         ))}
+        {authors.length > 0 && (
+          <div data-testid={'authorSection'}>
+            <AuthorCardCollection data={authors} />
+          </div>
+        )}
       </div>
     )
   }

@@ -7,7 +7,7 @@ import styles from './author-card.scss'
 
 class AuthorCard extends PureComponent {
   render() {
-    const { name, title, shortBio: bio, picture, url, border } = this.props
+    const { name, title, shortBio: bio, picture, url, border, mode } = this.props
 
     const className = classNames({
       [styles.card]: true,
@@ -16,16 +16,31 @@ class AuthorCard extends PureComponent {
 
     const infoClassName = classNames({
       [styles.info]: true,
-      [styles.imageMode]: !isEmpty(picture)
+      [styles.imageMode]: mode === 'single' && !isEmpty(picture)
     })
 
-    const readMoreClassName = classNames({
-      [styles.readMoreAdditionalMargin]: isEmpty(bio)
+    const linkClassName = classNames({
+      [styles.linkAdditionalMargin]: isEmpty(bio)
     })
+
+    let link
+    if (mode === 'single') {
+      link = (
+        <div data-testid={'read-more'} className={linkClassName}>
+          <a href={url}>Read More</a>
+        </div>
+      )
+    } else if (mode === 'grid') {
+      link = (
+        <div data-testid={'see-all-posts'} className={linkClassName}>
+          <a href={`${url}#posts`}>See all posts</a>
+        </div>
+      )
+    }
 
     return (
       <div data-testid={'authorCard'} tabIndex="0" className={className}>
-        {!isEmpty(picture) && (
+        {mode === 'single' && !isEmpty(picture) && (
           <div data-testid={'picture'} tabIndex="0" className={styles.image}>
             <img src={picture.src} alt={picture.alt} />
           </div>
@@ -43,9 +58,7 @@ class AuthorCard extends PureComponent {
               {bio}
             </div>
           )}
-          <div data-testid={'read-more'} className={readMoreClassName}>
-            <a href={url}>Read More</a>
-          </div>
+          {link}
         </div>
       </div>
     )
@@ -56,7 +69,8 @@ AuthorCard.propTypes = {
   name: PropTypes.string,
   title: PropTypes.string,
   url: PropTypes.string,
-  border: PropTypes.bool
+  border: PropTypes.bool,
+  mode: PropTypes.string
 }
 
 AuthorCard.defaultProps = {
@@ -64,7 +78,8 @@ AuthorCard.defaultProps = {
   title: 'title',
   picture: {},
   shortBio: '',
-  border: true
+  border: true,
+  mode: 'single' // single | grid
 }
 
 export default AuthorCard

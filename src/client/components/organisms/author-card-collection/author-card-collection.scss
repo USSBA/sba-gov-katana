@@ -1,0 +1,81 @@
+.authorCardsSectionHeading {
+  @include grid-media($sba-grid-small) {
+    padding: 50px 20px 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 50px 30px 20px;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 50px 80px 20px;
+  }
+}
+
+.authorCardCollection {
+	display: grid;
+	/* autoprefixer: ignore next */
+	grid-auto-rows: 1fr;
+	-ms-grid-rows: none;
+
+	@include for-large-up {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	@include for-medium-only {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@include grid-media($sba-grid-small) {
+		padding-bottom: 30px;
+	}
+	@include grid-media($sba-grid-medium) {
+		padding: 0 10px;
+	}
+	@include grid-media($sba-grid-large) {
+		padding: 0 45px;
+	}
+}
+
+.grayBackground {
+  background-color: $sba-gray-lighter;
+}
+
+.authorCard {
+	@include for-large-up {
+		background: #fff;
+	    &:nth-child(3n-2) {
+	      	margin-left: 30px;
+	    }
+
+	    &:nth-child(3n-1) {
+			margin-left: 30px;
+			margin-right: 30px;
+	    }
+
+	    &:nth-child(3n) {
+	      	margin-right: 30px;
+	    }
+	}
+
+	@include for-medium-only {
+		background: #fff;
+		&:nth-child(2n-1) {
+		  	margin-left: 30px;
+		}
+		&:nth-child(2n) {
+		  	margin-left: 30px;
+		  	margin-right: 30px;
+		}
+	}
+
+  	@include for-small-only {
+    	margin-left: 30px;
+    	margin-right: 30px;
+	}
+
+	@include grid-media($sba-grid-medium) {
+		margin: 0 10px 40px;
+	}
+	@include grid-media($sba-grid-large) {
+		margin: 0 10px 40px;
+	}
+}
