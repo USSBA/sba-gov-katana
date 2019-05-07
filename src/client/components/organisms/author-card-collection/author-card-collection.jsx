@@ -27,7 +27,6 @@ const AuthorCardCollection = props => {
         {data.map((author, index) => (
           <div key={index} className={styles.authorCard}>
             <AuthorCard
-              className={styles.authorCard}
               data-testid="authorCard"
               border={false}
               mode={'grid'}
