@@ -68,8 +68,8 @@ class BlogsLandingPage extends Component {
   async fetchAuthors() {
     // fetch author ids from content search api
     // then fetch author objects from content node api by ids
-    const nodeIds = await fetchSiteContent('authors')
     const authors = []
+    const nodeIds = await fetchSiteContent('authors')
     nodeIds.forEach(async nodeId => {
       const author = await fetchRestContent(nodeId)
       authors.push(author)
