@@ -245,7 +245,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         role="group"
       >
         <span
-          data-cy="showing results text"
+          data-testid="showing results text"
         >
           Showing 
           <strong
@@ -281,7 +281,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         <button
           aria-label="Go to previous results"
           className="button large secondary"
-          data-cy="previous button"
+          data-testid="previous button"
           onClick={[Function]}
         >
           <i
@@ -293,7 +293,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         <button
           aria-label="Go to next results"
           className="button large secondary"
-          data-cy="next button"
+          data-testid="next button"
           onClick={[Function]}
         >
           <i
@@ -490,7 +490,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         role="group"
       >
         <span
-          data-cy="showing results text"
+          data-testid="showing results text"
         >
           Showing 
           <strong
@@ -526,7 +526,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         <button
           aria-label="Go to previous results"
           className="button large secondary"
-          data-cy="previous button"
+          data-testid="previous button"
           onClick={[Function]}
         >
           <i
@@ -538,7 +538,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         <button
           aria-label="Go to next results"
           className="button large secondary"
-          data-cy="next button"
+          data-testid="next button"
           onClick={[Function]}
         >
           <i
