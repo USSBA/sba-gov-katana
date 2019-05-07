@@ -14,7 +14,7 @@ class BlogCategoryPage extends Component {
 
     this.state = {
       page: 1,
-      start: 1,
+      start: 0,
       end: 12,
       blogs: [],
       total: 0
@@ -22,13 +22,13 @@ class BlogCategoryPage extends Component {
   }
 
   setPagination() {
-    const pageSize = 12
-    const start = (this.state.page - 1) * pageSize + 1
-    const end = this.state.page * pageSize
+    // const pageSize = this.state.pageSize
+    const start = (this.state.page - 1) * this.props.pageSize
+    const end = this.state.page * this.props.pageSize
     this.setState({
       start: start,
-      end: end,
-      pageSize: pageSize
+      end: end
+      // pageSize: pageSize
     })
     // return { start, end }
   }
@@ -45,8 +45,16 @@ class BlogCategoryPage extends Component {
 
   async fetchBlogs() {
     this.setPagination()
-    // return await fetchSiteContent('blogs', { category: this.blogCategoryCorrection(this.props.params.category), start: this.state.start, end: this.state.end })
-    return await fetchSiteContent('blogs')
+    const { total = 0, blogs = [] } = await fetchSiteContent('blogs', {
+      category: this.blogCategoryCorrection(this.props.params.category),
+      start: this.state.start,
+      end: this.state.end
+    })
+    // const { total = 0, blogs = [] } = await fetchSiteContent('blogs', { start: this.state.start, end: this.state.end })
+    this.setState({
+      total: total,
+      blogs: blogs
+    })
   }
 
   categoryValidation() {
@@ -66,12 +74,8 @@ class BlogCategoryPage extends Component {
     return { title, subtitle }
   }
 
-  async componentDidMount() {
-    const { total = 0, blogs = [] } = await this.fetchBlogs()
-    this.setState({
-      total: total,
-      blogs: blogs
-    })
+  componentDidMount() {
+    this.fetchBlogs()
   }
 
   reformatBlog(blog) {
@@ -86,12 +90,73 @@ class BlogCategoryPage extends Component {
     }
   }
 
+  onBack() {
+    this.setState({
+      page: Math.max(1, this.state.page - 1)
+    })
+    this.fetchBlogs()
+  }
+
+  onForward() {
+    const totalPages = Math.max(1, Math.ceil(this.state.total / this.props.pageSize))
+
+    this.setState({
+      page: Math.min(totalPages, this.state.page + 1)
+    })
+
+    this.fetchBlogs()
+  }
+
+  renderPaginator() {
+    return (
+      <Paginator
+        pageNumber={this.state.page}
+        pageSize={this.props.pageSize}
+        total={this.state.total}
+        onBack={this.onBack.bind(this)}
+        onForward={this.onForward.bind(this)}
+      />
+    )
+  }
+
+  formatCardDeck(blogDeck) {
+    const firstRow = blogDeck.slice(0, 3)
+    const secRow = blogDeck.slice(3, 6)
+    const thirdRow = blogDeck.slice(6, 9)
+    const fourthRow = blogDeck.slice(9, 12)
+    return (
+      <div>
+        <CardCollection
+          cards={firstRow}
+          parentIndex={1}
+          cardAriaLabel="first row blog posts"
+          numberOverride={3}
+        />
+        <CardCollection
+          cards={secRow}
+          parentIndex={2}
+          cardAriaLabel="second row blog posts"
+          numberOverride={3}
+        />
+        <CardCollection
+          cards={thirdRow}
+          parentIndex={3}
+          cardAriaLabel="third row blog posts"
+          numberOverride={3}
+        />
+        <CardCollection
+          cards={fourthRow}
+          parentIndex={4}
+          cardAriaLabel="fourth row blog posts"
+          numberOverride={3}
+        />
+      </div>
+    )
+  }
+
   render() {
     const { title, subtitle } = this.setHeader()
-    // const { total, blogs } = this.state
     let blogDeck = []
-    console.log('state')
-    console.log(this.state)
 
     if (this.state.blogs.length !== 0) {
       blogDeck = this.state.blogs.map(blog => this.reformatBlog(blog))
@@ -104,14 +169,10 @@ class BlogCategoryPage extends Component {
             <h1>{title}</h1>
             <h5>{subtitle}</h5>
           </div>
-          <div className="blog-content">
-            <div className={styles.blog_paginator}>
-              <Paginator id="blog-paginator-top" pageSize={12} total={this.state.total} />
-            </div>
-            <CardCollection cards={blogDeck} cardAriaLabel="latest blog posts" />
-            <div className={styles.blog_paginator}>
-              <Paginator id="blog-paginator-bottom" pageSize={12} total={this.state.total} />
-            </div>
+          <div className={styles.blog_content}>
+            <div className={styles.blog_paginator}>{this.renderPaginator()}</div>
+            {this.formatCardDeck(blogDeck)}
+            <div className={styles.blog_paginator}>{this.renderPaginator()}</div>
           </div>
         </div>
       )
@@ -122,11 +183,13 @@ class BlogCategoryPage extends Component {
 }
 
 BlogCategoryPage.defaultProps = {
-  category: null
+  category: null,
+  pageSize: 12
 }
 
 BlogCategoryPage.propTypes = {
-  category: PropTypes.string
+  category: PropTypes.string,
+  pageSize: PropTypes.number
 }
 
 export default BlogCategoryPage
