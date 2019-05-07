@@ -20,8 +20,8 @@ const AuthorCardCollection = props => {
   return (
     <div>
       <div className={authorCardsSectionHeadingClassName}>
-        <h2>Browse posts by author</h2>
-        <p>Read posts from SBA's small business experts and leaders in the small business industry.</p>
+        <h2 data-testid="authorSectionTitle">Browse posts by author</h2>
+        <p data-testid="authorSectionSubtitle">Read posts from SBA's small business experts and leaders in the small business industry.</p>
       </div>
       <div data-testid="authorCardCollection" className={authorCardCollectionClassName}>
         {data.map((author, index) => (

@@ -112,7 +112,7 @@ class BlogsLandingPage extends Component {
           </div>
         ))}
         {authors.length > 0 && (
-          <div data-testid={'author cards section'}>
+          <div data-testid={'authorSection'}>
             <AuthorCardCollection data={authors} />
           </div>
         )}
