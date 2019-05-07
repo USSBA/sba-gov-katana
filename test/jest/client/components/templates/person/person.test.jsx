@@ -2,6 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { render, cleanup, waitForElement } from 'react-testing-library'
 import { shallow } from 'enzyme'
+import axiosMock from 'axios'
 
 import Person from 'templates/person/person.jsx'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
@@ -119,10 +120,12 @@ describe('Person page', () => {
 
   describe('Blog section', () => {
     test('does NOT render the blog section when the person is NOT a blog author', async () => {
-      const mockBlogResponse = { total: 0, blogs: [] }
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: 0, blogs: [] }
+      }
 
-      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-      fetchSiteContentStub.mockImplementation(() => Promise.resolve(mockBlogResponse))
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
 
       const { queryByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
       expect(queryByTestId('blog-section')).toBeNull()
@@ -130,10 +133,12 @@ describe('Person page', () => {
 
     test('renders the blog section when the person is a blog author', async () => {
       const blogData = makeAnySizeBlogArray(1)
-      const mockBlogResponse = { total: blogData.length, blogs: blogData }
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
 
-      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-      fetchSiteContentStub.mockImplementation(() => Promise.resolve(mockBlogResponse))
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
 
       const { getAllByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
       const blogSection = await waitForElement(() => getAllByTestId('blog-section'))
@@ -143,10 +148,12 @@ describe('Person page', () => {
 
     test('blog section contains header titled "Blog posts"', async () => {
       const blogData = makeAnySizeBlogArray(1)
-      const mockBlogResponse = { total: blogData.length, blogs: blogData }
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
 
-      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-      fetchSiteContentStub.mockImplementation(() => Promise.resolve(mockBlogResponse))
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
 
       const { getByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
       const blogHeader = await waitForElement(() => getByTestId('blog-section-header'))
@@ -156,28 +163,32 @@ describe('Person page', () => {
 
     test('blog section displays number of posts returned from api when posts are between 1 - 3 (inclusive)', async () => {
       const blogData = makeAnySizeBlogArray(3)
-      const mockBlogResponse = { total: blogData.length, blogs: blogData }
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
 
-      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-      fetchSiteContentStub.mockImplementation(() => Promise.resolve(mockBlogResponse))
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
 
       const { getAllByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
       const blogSection = await waitForElement(() => getAllByTestId('card'))
 
-      expect(blogSection.length).toEqual(mockBlogResponse.total)
+      expect(blogSection.length).toEqual(mockBlogResponse.data.total)
     })
 
     test('blog section displays number of posts returned from api when posts are between 4 - 6 (inclusive)', async () => {
       const blogData = makeAnySizeBlogArray(6)
-      const mockBlogResponse = { total: blogData.length, blogs: blogData }
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
 
-      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-      fetchSiteContentStub.mockImplementation(() => Promise.resolve(mockBlogResponse))
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
 
       const { getAllByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
       const blogSection = await waitForElement(() => getAllByTestId('card'))
 
-      expect(blogSection.length).toEqual(mockBlogResponse.total)
+      expect(blogSection.length).toEqual(mockBlogResponse.data.total)
     })
   })
 })
