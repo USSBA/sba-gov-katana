@@ -110,6 +110,12 @@ afterEach(cleanup)
 
 describe('Blogs landing page', () => {
   it('renders the blog landing page hero', () => {
+    const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+    // mocking both blog category calls and authors call
+    fetchSiteContentStub
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+      .mockImplementationOnce(() => Promise.resolve([]))
     const { getByTestId } = render(<BlogsLandingPage />)
 
     expect(getByTestId('blogs-hero')).toBeInTheDocument()
@@ -120,6 +126,8 @@ describe('Blogs landing page', () => {
     fetchSiteContentStub
       .mockImplementationOnce(fetchSiteContentStubCallback)
       .mockImplementationOnce(fetchSiteContentStubCallback)
+      // mock authors call to return nothing
+      .mockImplementationOnce(() => Promise.resolve([]))
 
     const { getAllByTestId } = render(<BlogsLandingPage />)
     const content = await waitForElement(() => getAllByTestId('blog category deck'))
@@ -129,6 +137,11 @@ describe('Blogs landing page', () => {
 
   it('makes a fetchSiteContent call for each category with defined query params', async () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+    // mocking both blog category calls and authors call
+    fetchSiteContentStub
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+      .mockImplementationOnce(() => Promise.resolve([]))
 
     const firstCategoryQueryParams = { category: 'News and Views', end: 3, order: 'desc' }
     const secondCategoryQueryParams = { category: 'Industry Word', end: 3, order: 'desc' }
