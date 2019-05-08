@@ -137,7 +137,7 @@ describe('Blogs landing page', () => {
     expect(fetchSiteContentStub).toBeCalledWith('blogs', firstCategoryQueryParams)
     expect(fetchSiteContentStub).toBeCalledWith('blogs', secondCategoryQueryParams)
   })
-  describe('AuthorCardCollection', async () => {
+  describe('AuthorCardCollection', () => {
     it('should exist', async () => {
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
       fetchSiteContentStub
