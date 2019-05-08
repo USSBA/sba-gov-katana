@@ -29,7 +29,7 @@ class ErrorPage extends React.Component {
     const { linkUrl, linkMessage } = this.props
 
     return (
-      <div className={styles.errorPage}>
+      <div className={styles.errorPage} data-testid={'error-page'}>
         <RemoveMainLoader />
         <div className={styles.container}>
           <img src={errorImage} alt="error image" />

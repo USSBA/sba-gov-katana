@@ -125,7 +125,7 @@ class BlogCategoryPage extends Component {
     const thirdRow = blogDeck.slice(6, 9)
     const fourthRow = blogDeck.slice(9, 12)
     return (
-      <div>
+      <div data-testid={'blog-card-collections'}>
         <CardCollection
           cards={firstRow}
           parentIndex={1}
@@ -166,13 +166,17 @@ class BlogCategoryPage extends Component {
       return (
         <div>
           <div className={styles.blog_category_title}>
-            <h1>{title}</h1>
-            <h5>{subtitle}</h5>
+            <h1 data-testid={'blog-category-title'}>{title}</h1>
+            <h5 data-testid={'blog-category-subtitle'}>{subtitle}</h5>
           </div>
           <div className={styles.blog_content}>
-            <div className={styles.blog_paginator}>{this.renderPaginator()}</div>
+            <div className={styles.blog_paginator} data-testid={'blog-top-paginator'}>
+              {this.renderPaginator()}
+            </div>
             {this.formatCardDeck(blogDeck)}
-            <div className={styles.blog_paginator}>{this.renderPaginator()}</div>
+            <div className={styles.blog_paginator} data-testid={'blog-bottom-paginator'}>
+              {this.renderPaginator()}
+            </div>
           </div>
         </div>
       )
