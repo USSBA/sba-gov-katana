@@ -22,15 +22,12 @@ class BlogCategoryPage extends Component {
   }
 
   setPagination() {
-    // const pageSize = this.state.pageSize
     const start = (this.state.page - 1) * this.props.pageSize
     const end = this.state.page * this.props.pageSize
     this.setState({
       start: start,
       end: end
-      // pageSize: pageSize
     })
-    // return { start, end }
   }
 
   blogCategoryCorrection(categoryParam) {
@@ -50,7 +47,6 @@ class BlogCategoryPage extends Component {
       start: this.state.start,
       end: this.state.end
     })
-    // const { total = 0, blogs = [] } = await fetchSiteContent('blogs', { start: this.state.start, end: this.state.end })
     this.setState({
       total: total,
       blogs: blogs
