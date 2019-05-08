@@ -11,7 +11,7 @@
 }
 
 .authorCardCollection {
-	display: grid;
+	display: inline-block;
 	/* autoprefixer: ignore next */
 	grid-auto-rows: 1fr;
 	-ms-grid-rows: none;
@@ -22,6 +22,10 @@
 
 	@include for-medium-only {
 		grid-template-columns: 1fr 1fr;
+	}
+
+	@include for-medium-up {
+		display: grid;
 	}
 
 	@include grid-media($sba-grid-small) {
