@@ -21,17 +21,14 @@ const AuthorCardCollection = props => {
     <div>
       <div className={authorCardsSectionHeadingClassName}>
         <h2 data-testid="authorSectionTitle">Browse posts by author</h2>
-        <p data-testid="authorSectionSubtitle">Read posts from SBA's small business experts and leaders in the small business industry.</p>
+        <p data-testid="authorSectionSubtitle">
+          Read posts from SBA's small business experts and leaders in the small business industry.
+        </p>
       </div>
       <div data-testid="authorCardCollection" className={authorCardCollectionClassName}>
         {data.map((author, index) => (
           <div key={index} className={styles.authorCard}>
-            <AuthorCard
-              data-testid="authorCard"
-              border={false}
-              mode={'grid'}
-              {...author}
-            />
+            <AuthorCard data-testid="authorCard" border={false} mode={'grid'} {...author} />
           </div>
         ))}
       </div>
