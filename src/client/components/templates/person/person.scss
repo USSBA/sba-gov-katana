@@ -2,15 +2,15 @@
   $margin-top: 18.5px;
 
   @include for-small-only {
-    margin: $margin-top 20px 30px 30px;
+    margin: $margin-top 20px 50px 20px;
   }
 
   @include for-medium-only {
-    margin: $margin-top 30px 70px 50px;
+    margin: $margin-top 30px 70px 30px;
   }
 
   @include for-large-up {
-    margin: $margin-top 70px 90px 70px;
+    margin: $margin-top 80px 60px 80px;
   }
 }
 
@@ -37,6 +37,17 @@
     grid-template-columns: 2fr 1fr;
     margin-bottom: 50px;
   }
+}
+
+.blogContainer {
+  border-top: $sba-gray-light;
+  border-top-style: solid;
+  border-top-width: 1px;
+  margin-top: 50px;
+}
+
+.blogHeader {
+  padding-top: 50px;
 }
 
 // basically a media object
@@ -79,5 +90,27 @@
 
   @include for-small-only {
     display: none;
+  }
+}
+
+.paginator {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.topPaginator {
+  padding: 10px 0 5px;
+}
+
+.bottomPaginator {
+  padding-top: 30px;
+  @include for-small-only {
+    padding-top: 20px;
+  }
+  @include for-medium-only {
+    padding-top: 30px;
+  }
+  @include for-large-up {
+    padding-top: 30px;
   }
 }

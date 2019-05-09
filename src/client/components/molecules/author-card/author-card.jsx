@@ -33,7 +33,7 @@ class AuthorCard extends PureComponent {
     } else if (mode === 'grid') {
       link = (
         <div data-testid={'see-all-posts'} className={linkClassName}>
-          <a href={`${url}#posts`}>See all posts</a>
+          <a href={`${url}/#posts`}>See all posts</a>
         </div>
       )
     }
