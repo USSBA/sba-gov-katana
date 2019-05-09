@@ -5,7 +5,7 @@ exports[`Card does not error check malformed link 1`] = `
   aria-label="card 1"
   className="card twoColumn"
   data-testid="card"
-  id="card"
+  id="card-4-1"
   tabIndex="0"
 >
   <a
@@ -73,7 +73,7 @@ exports[`Card should render the spanish version correctly if the link is just a 
   aria-label="card 1"
   className="card twoColumn"
   data-testid="card"
-  id="card"
+  id="card-4-1"
   tabIndex="0"
 >
   <a
@@ -141,7 +141,7 @@ exports[`Card to render correctly 1`] = `
   aria-label="card 1"
   className="card twoColumn"
   data-testid="card"
-  id="card"
+  id="card-4-1"
   tabIndex="0"
 >
   <a
@@ -203,7 +203,7 @@ exports[`Card to render correctly if the link is just a string 1`] = `
   aria-label="card 1"
   className="card twoColumn"
   data-testid="card"
-  id="card"
+  id="card-4-1"
   tabIndex="0"
 >
   <a
@@ -271,7 +271,7 @@ exports[`Card to render correctly with null link 1`] = `
   aria-label="card 1"
   className="card twoColumn"
   data-testid="card"
-  id="card"
+  id="card-4-1"
   tabIndex="0"
 >
   <img
