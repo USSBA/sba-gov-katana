@@ -1,7 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { mount, shallow } from 'enzyme'
-
+import { cleanup, fireEvent, render, waitForElement, wait } from 'react-testing-library'
+import { shallow } from 'enzyme'
+import axiosMock from 'axios'
+import 'jest-dom/extend-expect'
 import Person from 'templates/person/person.jsx'
 
 const personPropsWithPhoto = {
@@ -31,7 +33,7 @@ const personPropsWithPhoto = {
   langCode: 'en'
 }
 
-const personPropsWithWithoutPhoto = {
+const personPropsWithoutPhoto = {
   bio: 'Bio of Thomas Todt',
   emailAddress: 'thomas.todt@sba.gov',
   office: {
@@ -51,6 +53,32 @@ const personPropsWithWithoutPhoto = {
   langCode: 'en'
 }
 
+function makeAnySizeBlogArray(size) {
+  const mockBlogData = []
+
+  for (let i = 0; i < size; i++) {
+    const mockBlog = {
+      id: i,
+      author: 6386,
+      blogBody: [],
+      blogCategory: 'Industry Word',
+      blogTags: 'Starting a Business',
+      summary: 'Seventh blog summary. Some stuff goes here for description.',
+      type: 'blog',
+      title: `Test Blog Title ${i}`,
+      updated: 1556828290,
+      created: 1556828259,
+      langCode: 'en',
+      url: '/blog/test-blog-title'
+    }
+    mockBlogData.push(mockBlog)
+  }
+
+  return mockBlogData
+}
+
+afterEach(cleanup)
+
 describe('Person page', () => {
   test('renders correctly', () => {
     const component = renderer.create(<Person personData={personPropsWithPhoto} />)
@@ -66,7 +94,7 @@ describe('Person page', () => {
   })
 
   test('Subcomponent, ContactCard, renders correctly', () => {
-    const component = shallow(<Person personData={personPropsWithWithoutPhoto} />)
+    const component = shallow(<Person personData={personPropsWithoutPhoto} />)
     const subComponent = component.find('ContactCard')
     const subComponentProps = subComponent.node.props
     expect(Object.keys(subComponentProps).length).toEqual(3)
@@ -84,7 +112,184 @@ describe('Person page', () => {
   })
 
   test("doesn't render person image", () => {
-    const component = shallow(<Person personData={personPropsWithWithoutPhoto} />)
+    const component = shallow(<Person personData={personPropsWithoutPhoto} />)
     expect(component.find('.person-page img').length).toEqual(0)
+  })
+
+  describe('Blog section', () => {
+    test('does NOT render the blog section when the person is NOT a blog author', async () => {
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: 0, blogs: [] }
+      }
+
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
+
+      const { queryByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      expect(queryByTestId('blog-section')).toBeNull()
+    })
+
+    test('renders the blog section when the person is a blog author', async () => {
+      const blogData = makeAnySizeBlogArray(1)
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
+
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
+
+      const { getAllByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const blogSection = await waitForElement(() => getAllByTestId('blog-section'))
+
+      expect(blogSection.length).toEqual(1)
+    })
+
+    test('displays header titled "Blog posts"', async () => {
+      const blogData = makeAnySizeBlogArray(1)
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
+
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
+
+      const { getByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const blogHeader = await waitForElement(() => getByTestId('blog-section-header'))
+
+      expect(blogHeader).toHaveTextContent('Blog posts')
+    })
+
+    // first card collection will render row 1 with 3 cards
+    test('displays number of blog posts returned from api when posts are between 1 - 3 (inclusive)', async () => {
+      const blogData = makeAnySizeBlogArray(3)
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
+
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
+
+      const { getAllByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const blogSection = await waitForElement(() => getAllByTestId('card'))
+
+      expect(blogSection.length).toEqual(mockBlogResponse.data.total)
+    })
+
+    // second card collection will render row 2 with 3 cards
+    test('displays number of blog posts returned from api when posts are between 4 - 6 (inclusive)', async () => {
+      const blogData = makeAnySizeBlogArray(6)
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
+
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
+
+      const { getAllByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const blogSection = await waitForElement(() => getAllByTestId('card'))
+
+      expect(blogSection.length).toEqual(mockBlogResponse.data.total)
+    })
+
+    test('paginates forward and back', async () => {
+      const blogData = makeAnySizeBlogArray(7)
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
+
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
+
+      const { getByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const paginationText = await waitForElement(() => getByTestId('showing results text'))
+      const paginationPrevious = await waitForElement(() => getByTestId('previous button'))
+      const paginationNext = await waitForElement(() => getByTestId('next button'))
+
+      const expectedTextPage1 = /^Showing 1 - 6 of 7$/
+      const expectedTextPage2 = /^Showing 7 - 7 of 7$/
+
+      // Paging forward
+      expect(paginationText).toHaveTextContent(expectedTextPage1)
+      fireEvent.click(paginationNext)
+      await wait(() => getByTestId('showing results text'))
+      expect(paginationText).toHaveTextContent(expectedTextPage2)
+
+      // Paging back
+      fireEvent.click(paginationPrevious)
+      await wait(() => getByTestId('showing results text'))
+      expect(paginationText).toHaveTextContent(expectedTextPage1)
+    })
+
+    test('prevents pagination back from page 1', async () => {
+      const blogData = makeAnySizeBlogArray(1)
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
+
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
+
+      const { getByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const paginationText = await waitForElement(() => getByTestId('showing results text'))
+      const paginationPrevious = await waitForElement(() => getByTestId('previous button'))
+
+      const expectedTextPage1 = /^Showing 1 - 1 of 1$/
+
+      // Paging back
+      fireEvent.click(paginationPrevious)
+      await wait(() => getByTestId('showing results text'))
+      expect(paginationText).toHaveTextContent(expectedTextPage1)
+    })
+
+    test('prevents pagination forward from last page of results', async () => {
+      const blogData = makeAnySizeBlogArray(1)
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
+
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
+
+      const { getByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const paginationText = await waitForElement(() => getByTestId('showing results text'))
+      const paginationNext = await waitForElement(() => getByTestId('next button'))
+
+      const expectedTextPage1 = /^Showing 1 - 1 of 1$/
+
+      // Paging forward
+      fireEvent.click(paginationNext)
+      await wait(() => getByTestId('showing results text'))
+      expect(paginationText).toHaveTextContent(expectedTextPage1)
+    })
+
+    test('displays different blog posts on each page', async () => {
+      const blogData = makeAnySizeBlogArray(12)
+      const mockBlogResponse = {
+        response: 200,
+        data: { total: blogData.length, blogs: blogData }
+      }
+
+      axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
+      const { getAllByTestId, getByTestId } = render(<Person personData={personPropsWithoutPhoto} />)
+      const paginationNext = await waitForElement(() => getByTestId('next button'))
+      let titles = await waitForElement(() => getAllByTestId('card title'))
+
+      // page 1 should show first set of 6 blog posts numbered 0 - 5
+      titles.forEach((title, index) => {
+        const expectedBlogTitle = `Test Blog Title ${index}`
+        expect(title).toHaveTextContent(expectedBlogTitle)
+      })
+
+      // paginate to page 2 and wait for titles to update
+      fireEvent.click(paginationNext)
+      titles = await waitForElement(() => getAllByTestId('card title'))
+
+      // page 2 should show second set of 6 blog posts numbered 6 - 11
+      titles.forEach((title, index) => {
+        const indexOffset = index + 6
+        const expectedBlogTitle = `Test Blog Title ${indexOffset}`
+        expect(title).toHaveTextContent(expectedBlogTitle)
+      })
+    })
   })
 })
