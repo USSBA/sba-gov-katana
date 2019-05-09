@@ -2,8 +2,7 @@
 
 import React from 'react'
 import BlogCategoryPage from 'pages/blog-category/blog-category-page.jsx'
-import { render, cleanup, waitForElement, fireEvent, flushPromises, Simulate } from 'react-testing-library'
-// import { findAllByAltText } from 'dom-testing-library'
+import { render, cleanup, waitForElement, fireEvent } from 'react-testing-library'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
@@ -35,15 +34,7 @@ describe('Blog Category Page', () => {
   describe('when visiting a valid blog category type', () => {
     validBlogCategories.forEach(function(blogCategory) {
       it('will show the correct header for ' + blogCategory.title, async () => {
-        const initialState = undefined
-        const enhancer = applyMiddleware(thunk)
-        const store = createStore(reducers, initialState, enhancer)
-
-        const { getByTestId } = render(
-          <Provider store={store}>
-            <BlogCategoryPage params={{ category: blogCategory.name }} />
-          </Provider>
-        )
+        const { getByTestId } = render(<BlogCategoryPage params={{ category: blogCategory.name }} />)
         const title = await waitForElement(() => getByTestId('blog-category-title'))
         expect(title).toHaveTextContent(blogCategory.title)
         const subtitle = await waitForElement(() => getByTestId('blog-category-subtitle'))
@@ -61,14 +52,8 @@ describe('Blog Category Page', () => {
         }
         axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
 
-        const initialState = undefined
-        const enhancer = applyMiddleware(thunk)
-        const store = createStore(reducers, initialState, enhancer)
-
         const { getByTestId, findAllByTestId } = render(
-          <Provider store={store}>
-            <BlogCategoryPage params={{ category: blogCategory.name }} />
-          </Provider>
+          <BlogCategoryPage params={{ category: blogCategory.name }} />
         )
 
         const firstQueryParams = {
@@ -96,26 +81,20 @@ describe('Blog Category Page', () => {
             response: 200,
             data: {
               total: 20,
-              blogs: blogQueryResponse(12)
+              blogs: blogQueryResponse(12, 'newer blogs')
             }
           }
           const mockSecondBlogResponse = {
             response: 200,
             data: {
               total: 20,
-              blogs: blogQueryResponse(8)
+              blogs: blogQueryResponse(8, 'older blogs')
             }
           }
           axiosMock.get.mockResolvedValueOnce(mockFirstBlogResponse)
 
-          const initialState = undefined
-          const enhancer = applyMiddleware(thunk)
-          const store = createStore(reducers, initialState, enhancer)
-
-          const { getByTestId, getAllByTestId, findAllByTestId } = render(
-            <Provider store={store}>
-              <BlogCategoryPage params={{ category: blogCategory.name }} />
-            </Provider>
+          const { getAllByTestId, findAllByTestId, findAllByText } = render(
+            <BlogCategoryPage params={{ category: blogCategory.name }} />
           )
 
           const firstQueryParams = {
@@ -129,25 +108,26 @@ describe('Blog Category Page', () => {
             end: 24
           }
 
-          const blogCollection = await waitForElement(() => getByTestId('blog-card-collections'))
           let blogCards = await waitForElement(() => findAllByTestId('card'))
-          // const topPaginator = await waitForElement(() => getByTestId('blog-top-paginator'))
-          // const bottomPaginator = await waitForElement(() => getByTestId('blog-bottom-paginator'))
-
           const forwardButton = await waitForElement(() => getAllByTestId('next button')[0])
           const backwardButton = await waitForElement(() => getAllByTestId('previous button')[0])
 
           expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
-          // expect(blogCards).toHaveLength(12)
+          expect(blogCards).toHaveLength(12)
+
           axiosMock.get.mockResolvedValueOnce(mockSecondBlogResponse)
           fireEvent.click(forwardButton)
-          blogCards = await waitForElement(() => findAllByTestId('card'))
           expect(fetchSiteContentStub).toBeCalledWith('blogs', secondQueryParams)
-          // expect(blogCards).toHaveLength(8)
+          await waitForElement(() => findAllByText('older blogs'))
+          blogCards = await waitForElement(() => findAllByTestId('card'))
+          expect(blogCards).toHaveLength(8)
+
           axiosMock.get.mockResolvedValueOnce(mockFirstBlogResponse)
           fireEvent.click(backwardButton)
           expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
-          // expect(blogCards).toHaveLength(12)
+          await waitForElement(() => findAllByText('newer blogs'))
+          blogCards = await waitForElement(() => findAllByTestId('card'))
+          expect(blogCards).toHaveLength(12)
         }
       )
     })

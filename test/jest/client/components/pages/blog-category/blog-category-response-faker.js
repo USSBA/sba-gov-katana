@@ -1,12 +1,12 @@
-function blogQueryResponse(blogCount) {
+function blogQueryResponse(blogCount, blogTitles = 'Blog title') {
   const response = []
   for (let i = 0; i < blogCount; i++) {
-    response.push(blogBuilder())
+    response.push(blogBuilder(blogTitles))
   }
   return response
 }
 
-function blogBuilder() {
+function blogBuilder(blogTitle) {
   const blog = {
     author: Math.floor(Math.random * 10000),
     blogBody: [],
@@ -15,7 +15,7 @@ function blogBuilder() {
     summary:
       'The U.S. Small Business Administration recently proposed new regulations to make it easier for small businesses to understand and comply with the Historically Underutilized Business Zone (HUBZone) Program’s requirements.',
     type: 'blog',
-    title: 'SBA Proposes New Rule Changes for the HUBZone Program',
+    title: blogTitle,
     id: Math.floor(Math.random * 100),
     updated: 1556207291,
     created: 1576082790,
