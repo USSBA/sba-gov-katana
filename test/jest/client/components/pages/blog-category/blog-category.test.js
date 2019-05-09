@@ -2,7 +2,8 @@
 
 import React from 'react'
 import BlogCategoryPage from 'pages/blog-category/blog-category-page.jsx'
-import { render, cleanup, waitForElement, fireEvent } from 'react-testing-library'
+import { render, cleanup, waitForElement, fireEvent, flushPromises, Simulate } from 'react-testing-library'
+// import { findAllByAltText } from 'dom-testing-library'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
@@ -50,7 +51,6 @@ describe('Blog Category Page', () => {
       })
       it('will get the blog posts for ' + blogCategory.title, async () => {
         const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-        // fetchSiteContentStub.mockImplementation(fetchSiteContentStubCallback)
 
         const mockBlogResponse = {
           response: 200,
@@ -65,7 +65,7 @@ describe('Blog Category Page', () => {
         const enhancer = applyMiddleware(thunk)
         const store = createStore(reducers, initialState, enhancer)
 
-        const { getByTestId } = render(
+        const { getByTestId, findAllByTestId } = render(
           <Provider store={store}>
             <BlogCategoryPage params={{ category: blogCategory.name }} />
           </Provider>
@@ -78,14 +78,16 @@ describe('Blog Category Page', () => {
         }
 
         const blogPosts = await waitForElement(() => getByTestId('blog-card-collections'))
+        const blogCards = await waitForElement(() => findAllByTestId('card'))
         const topPaginator = await waitForElement(() => getByTestId('blog-top-paginator'))
         const bottomPaginator = await waitForElement(() => getByTestId('blog-bottom-paginator'))
         expect(blogPosts).toBeInTheDocument()
+        expect(blogCards).toHaveLength(12)
         expect(topPaginator).toBeInTheDocument()
         expect(bottomPaginator).toBeInTheDocument()
         expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
       })
-      it(
+      it.skip(
         'will properly paginate the and make the appropriate requests for ' + blogCategory.title,
         async () => {
           const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
@@ -110,7 +112,7 @@ describe('Blog Category Page', () => {
           const enhancer = applyMiddleware(thunk)
           const store = createStore(reducers, initialState, enhancer)
 
-          const { getByTestId } = render(
+          const { getByTestId, getAllByTestId, findAllByTestId } = render(
             <Provider store={store}>
               <BlogCategoryPage params={{ category: blogCategory.name }} />
             </Provider>
@@ -127,14 +129,25 @@ describe('Blog Category Page', () => {
             end: 24
           }
 
-          await waitForElement(() => getByTestId('blog-card-collections'))
+          const blogCollection = await waitForElement(() => getByTestId('blog-card-collections'))
+          let blogCards = await waitForElement(() => findAllByTestId('card'))
           // const topPaginator = await waitForElement(() => getByTestId('blog-top-paginator'))
           // const bottomPaginator = await waitForElement(() => getByTestId('blog-bottom-paginator'))
 
-          expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
+          const forwardButton = await waitForElement(() => getAllByTestId('next button')[0])
+          const backwardButton = await waitForElement(() => getAllByTestId('previous button')[0])
 
-          // axiosMock.get.mockResolvedValueOnce(mockSecondBlogResponse)
-          // expect(fetchSiteContentStub).toBeCalledWith('blogs', secondQueryParams)
+          expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
+          expect(blogCards).toHaveLength(12)
+          axiosMock.get.mockResolvedValueOnce(mockSecondBlogResponse)
+          fireEvent.click(forwardButton)
+          blogCards = await waitForElement(() => findAllByTestId('card'))
+          expect(fetchSiteContentStub).toBeCalledWith('blogs', secondQueryParams)
+          expect(blogCards).toHaveLength(8)
+          axiosMock.get.mockResolvedValueOnce(mockFirstBlogResponse)
+          fireEvent.click(getAllByTestId('previous button')[0])
+          expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
+          expect(blogCards).toHaveLength(12)
         }
       )
     })

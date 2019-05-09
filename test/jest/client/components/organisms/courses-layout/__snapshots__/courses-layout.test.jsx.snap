@@ -18,7 +18,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           role="group"
         >
           <span
-            data-cy="showing results text"
+            data-testid="showing results text"
           >
             Showing 
             <strong
@@ -54,7 +54,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           <button
             aria-label="Go to previous results"
             className="button large secondary"
-            data-cy="previous button"
+            data-testid="previous button"
             onClick={[Function]}
           >
             <i
@@ -66,7 +66,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           <button
             aria-label="Go to next results"
             className="button large secondary"
-            data-cy="next button"
+            data-testid="next button"
             onClick={[Function]}
           >
             <i
@@ -899,7 +899,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           role="group"
         >
           <span
-            data-cy="showing results text"
+            data-testid="showing results text"
           >
             Showing 
             <strong
@@ -935,7 +935,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           <button
             aria-label="Go to previous results"
             className="button large secondary"
-            data-cy="previous button"
+            data-testid="previous button"
             onClick={[Function]}
           >
             <i
@@ -947,7 +947,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           <button
             aria-label="Go to next results"
             className="button large secondary"
-            data-cy="next button"
+            data-testid="next button"
             onClick={[Function]}
           >
             <i
