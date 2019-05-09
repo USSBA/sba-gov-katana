@@ -14,20 +14,9 @@ class BlogCategoryPage extends Component {
 
     this.state = {
       page: 1,
-      start: 0,
-      end: 12,
       blogs: [],
       total: 0
     }
-  }
-
-  setPagination() {
-    const start = (this.state.page - 1) * this.props.pageSize
-    const end = this.state.page * this.props.pageSize
-    this.setState({
-      start: start,
-      end: end
-    })
   }
 
   blogCategoryCorrection(categoryParam) {
@@ -40,12 +29,11 @@ class BlogCategoryPage extends Component {
     return category
   }
 
-  async fetchBlogs() {
-    this.setPagination()
+  async fetchBlogs(start, end ) {
     const { total = 0, blogs = [] } = await fetchSiteContent('blogs', {
       category: this.blogCategoryCorrection(this.props.params.category),
-      start: this.state.start,
-      end: this.state.end
+      start: start,
+      end: end
     })
     this.setState({
       total: total,
@@ -71,7 +59,7 @@ class BlogCategoryPage extends Component {
   }
 
   componentDidMount() {
-    this.fetchBlogs()
+    this.fetchBlogs(0, 12)
   }
 
   reformatBlog(blog) {
@@ -87,20 +75,26 @@ class BlogCategoryPage extends Component {
   }
 
   onBack() {
+    const newPage = Math.max(1, this.state.page - 1)
+    const start = (newPage - 1) * this.props.pageSize
+    const end = newPage * this.props.pageSize
+    
+    this.fetchBlogs(start, end)
     this.setState({
-      page: Math.max(1, this.state.page - 1)
+      page: newPage
     })
-    this.fetchBlogs()
   }
-
+  
   onForward() {
     const totalPages = Math.max(1, Math.ceil(this.state.total / this.props.pageSize))
-
+    const newPage = Math.min(totalPages, this.state.page + 1)
+    const start = (newPage - 1) * this.props.pageSize
+    const end = newPage * this.props.pageSize
+    
+    this.fetchBlogs(start, end)
     this.setState({
-      page: Math.min(totalPages, this.state.page + 1)
+      page: newPage
     })
-
-    this.fetchBlogs()
   }
 
   renderPaginator() {
