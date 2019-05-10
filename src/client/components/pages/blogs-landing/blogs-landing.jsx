@@ -18,6 +18,8 @@ class BlogsLandingPage extends Component {
   }
 
   async fetchBlogs() {
+    // order of categories inside the categorySections array
+    // will determine order that category sections are displayed on the page
     const categorySections = [
       {
         category: 'News and Views',
@@ -44,7 +46,8 @@ class BlogsLandingPage extends Component {
       }
     }
 
-    // add blog data to cards key inside each category section
+    // add blog data to cards key inside each category section.
+    // note: map function preserves order of categorySections array
     let updatedCategorySections = categorySections.map(async section => {
       const { category, title, subtitle, url } = section
       const data = await fetchSiteContent('blogs', getQueryParams(category))
