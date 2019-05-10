@@ -91,7 +91,7 @@ const Card = props => {
         ) : null}
         {subtitleText || italicText ? (
           <div>
-            <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={30} />
+            <DecorativeDash id={`hr-${parentIndex}-${index}`} width={30} />
             {italicText ? (
               <p
                 id={`italic-text-${parentIndex}-${index}`}
