@@ -70,7 +70,6 @@ const Card = props => {
   return (
     <div
       className={className}
-      // id={snakeCase('card', parentIndex, index)}
       id={`card-${parentIndex}-${index + 1}`}
       data-testid="card"
       tabIndex="0"
