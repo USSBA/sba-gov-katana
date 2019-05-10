@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { isEmpty, snakeCase } from 'lodash'
+import { isEmpty } from 'lodash'
 
 import styles from './card.scss'
 import { DecorativeDash, Link } from 'atoms'
