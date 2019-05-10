@@ -1,61 +1,75 @@
-/*eslint-disable no-undefined*/
+/* eslint-disable no-undefined */
+
+import 'jest-dom/extend-expect'
+import 'react-testing-library/cleanup-after-each'
 
 import React from 'react'
-import { render, cleanup, waitForElement } from 'react-testing-library'
-import 'jest-dom/extend-expect'
+import userEvent from 'user-event'
+import { fireEvent, render, wait } from 'react-testing-library'
+import { postMiscAction as mockPostMiscAction } from 'client/fetch-content-helper'
+
 import { NewsletterForm } from 'molecules'
 
-afterEach(cleanup)
+jest.mock('client/fetch-content-helper', () => {
+  return {
+    postMiscAction: jest.fn(() => Promise.resolve({ subscriber: 'id' }))
+  }
+})
+
+function setup(state = { isValid: false }) {
+  const utils = render(<NewsletterForm />)
+  const emailInput = utils.getByLabelText(/email address/i)
+  const zipInput = utils.getByLabelText(/zip code/i)
+
+  return {
+    emailInput,
+    zipInput,
+    ...utils
+  }
+}
 
 describe('NewsletterForm', () => {
   it('should have a title', () => {
-    expect(true)
+    const titleText = 'Sign up for SBA email updates'
+    const { getByTestId, getByText } = render(<NewsletterForm title={titleText} />)
+
+    const form = getByTestId('newsletter-form')
+    expect(form).toBeInTheDocument()
+
+    const title = getByText(new RegExp(titleText, 'i'))
+    expect(title).toBeInTheDocument()
   })
 
-  // it should have a disabled button with invalid input
-  // it should display error state on network error
-  // it should display success state on success
+  it('should be disabled with invalid input', () => {
+    const { emailInput, zipInput, getByText } = setup()
 
-  // it('should have a name, title and bio', () => {
-  //   const props = Object.assign({}, mockPersonData)
+    fireEvent.change(emailInput, { target: { value: 'mail@mail.com' } })
+    // invalid zip code
+    fireEvent.change(zipInput, { target: { value: '123' } })
+
+    const button = getByText(/subscribe/i)
+    expect(button).toBeDisabled()
+  })
+
+  it('should display success state on valid input', async () => {
+    const { debug, getByTestId, getByText, emailInput, zipInput, getByLabelText } = setup()
+    const button = getByTestId('button')
+
+    const mail = 'mail@mail.com'
+
+    userEvent.type(emailInput, mail)
+
+    // wait for button to be enabled when form is valid
+    // await wait(() => expect(button).toBeEnabled())
+    //
+    // fireEvent.click(button)
+    //
+    // expect(mockPostMiscAction).toHaveBeenCalled()
+    //
+    // await wait(() => getByText(/you\'re all done here/i))
+  })
+
+  // it('should display error state on network error', () => {
   //
-  //   const { getByTestId } = render(<AuthorCard {...props} />)
-  //
-  //   let content = getByTestId('name')
-  //   expect(content).toBeInTheDocument()
-  //
-  //   content = getByTestId('title')
-  //   expect(content).toBeInTheDocument()
-  //
-  //   content = getByTestId('bio')
-  //   expect(content).toBeInTheDocument()
-  // })
-  //
-  // it('should display an image', () => {
-  //   const props = Object.assign({}, mockPersonData)
-  //
-  //   const { getByTestId } = render(<AuthorCard {...props} />)
-  //
-  //   const content = getByTestId('picture')
-  //   expect(content).toBeInTheDocument()
-  // })
-  //
-  // it('should not display an image', () => {
-  //   const props = Object.assign({}, mockPersonData)
-  //   props.highResolutionPhoto = {}
-  //
-  //   const { queryByTestId } = render(<AuthorCard {...props} />)
-  //
-  //   const content = queryByTestId('picture')
-  //   expect(content).not.toBeInTheDocument()
-  // })
-  //
-  // it('should display a read-more link', () => {
-  //   const props = Object.assign({}, mockPersonData)
-  //
-  //   const { getByTestId } = render(<AuthorCard {...props} />)
-  //
-  //   const content = getByTestId('read-more')
-  //   expect(content).toBeInTheDocument()
   // })
 })

@@ -227,6 +227,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       >
         <button
           className="button alternate large primary responsive spacing"
+          data-testid="button"
           onClick={[MockFunction]}
         >
           Apply

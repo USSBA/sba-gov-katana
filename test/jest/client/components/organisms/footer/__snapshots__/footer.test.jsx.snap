@@ -1006,6 +1006,7 @@ exports[`Front Page Hero should render correctly 1`] = `
           >
             <a
               className="button alternate large link primary responsive spacing"
+              data-testid="button"
               disabled={false}
               onClick={[Function]}
               style={Object {}}

@@ -20,8 +20,6 @@ const Button = props => {
     ...nativeProps
   } = props
 
-  const disabled = nativeProps.disabled || loading
-
   const className = classNames({
     button: true,
     [styles.alternate]: alternate,
@@ -36,18 +34,19 @@ const Button = props => {
     [styles.spacing]: spacing
   })
 
+  // TODO: order is fragile
+  const mergedProps = {
+    className,
+    'data-testid': 'button',
+    ...nativeProps,
+    disabled: nativeProps.disabled || loading,
+    ...(url && { to: url })
+  }
+
   const content = loading ? <i className="fa fa-circle-o-notch fa-spin fa-fw" /> : children
 
   // TODO: check native props map correctly to anchor or button
-  return url ? (
-    <Link {...nativeProps} className={className} to={url} disabled={disabled}>
-      {content}
-    </Link>
-  ) : (
-    <button {...nativeProps} className={className} disabled={disabled}>
-      {content}
-    </button>
-  )
+  return url ? <Link {...mergedProps}>{content}</Link> : <button {...mergedProps}>{content}</button>
 }
 
 Button.defaultProps = {

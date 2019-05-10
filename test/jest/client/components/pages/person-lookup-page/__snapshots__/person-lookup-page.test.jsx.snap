@@ -231,6 +231,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
       <button
         className="button alternate large primary responsive spacing"
         data-cy="search button"
+        data-testid="button"
       >
         apply
       </button>

@@ -24,7 +24,12 @@ const initialState = {
 }
 
 class NewsletterForm extends Component {
+  static defaultProps = {
+    footer: false
+  }
+
   static propTypes = {
+    footer: PropTypes.bool,
     title: PropTypes.string
   }
 
@@ -110,7 +115,7 @@ class NewsletterForm extends Component {
                   disabled={!footer && !this.isValid()}
                   loading={!footer && formState === FORM_STATE.processing}
                   type={!footer && 'submit'}
-                  url={footer && '/updates'}
+                  url={footer ? '/updates' : null}
                 />
               </span>
             </div>

@@ -56,6 +56,7 @@ exports[`SearchPage to match snapshot 1`] = `
           <button
             aria-controls="results-list"
             className="button alternate large primary responsive spacing"
+            data-testid="button"
             id="submit-button"
             onClick={[Function]}
           >

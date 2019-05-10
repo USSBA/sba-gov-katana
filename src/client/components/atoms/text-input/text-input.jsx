@@ -124,14 +124,14 @@ class TextInput extends React.Component {
             id={id}
             {...rest}
             aria-labelledby={id}
-            onChange={this.handleChange.bind(this)}
-            onBlur={this.handleBlur.bind(this)}
-            onFocus={this.handleFocus.bind(this)}
             className={classNames({
               [styles.input]: true,
               [styles.invalid]: validationState === 'error' || !isValid,
               [styles.searchIconPadding]: showSearchIcon
             })}
+            onChange={this.handleChange.bind(this)}
+            onBlur={this.handleBlur.bind(this)}
+            onFocus={this.handleFocus.bind(this)}
           />
           {optional && !isFocused && !value && <span className={styles.optional}>Optional</span>}
           {showSearchIcon ? (
