@@ -47,7 +47,7 @@ const Card = props => {
   if (image && image.url) {
     imageMarkup = (
       <img
-        id={'image-' + parentIndex + '-' + index}
+        id={`image-${parentIndex}-${index}`}
         className={styles.itemImage}
         src={image.url}
         alt={image.alt}
@@ -94,7 +94,7 @@ const Card = props => {
             <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={30} />
             {italicText ? (
               <p
-                id={'italic-text-' + parentIndex + '-' + index}
+                id={`italic-text-${parentIndex}-${index}`}
                 className={styles.itemItalic}
                 data-testid="card italic text"
                 tabIndex="0"
@@ -104,7 +104,7 @@ const Card = props => {
             ) : null}
             {subtitleText ? (
               <p
-                id={'subtitle-text-' + parentIndex + '-' + index}
+                id={`subtitle-text-${parentIndex}-${index}`}
                 className={styles.itemSubTitle}
                 data-testid="card subtitle text"
                 tabIndex="0"
