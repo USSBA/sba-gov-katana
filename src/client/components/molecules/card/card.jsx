@@ -83,7 +83,7 @@ const Card = props => {
         {titleText ? (
           <h4
             className={styles.itemTitle}
-            id={snakeCase('title', parentIndex, index)}
+            id={`title-${parentIndex}-${index + 1}`}
             data-testid="card title"
           >
             {titleMarkup}
