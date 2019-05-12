@@ -23,14 +23,14 @@ class Blog extends Component {
 
     return (
       <div className={styles.container}>
-        <h1>{blogData.title}</h1>
+        <h1 data-testid={'postTitle'}>{blogData.title}</h1>
         <ByLine blogData={blogData} />
-        <h5>{blogData.summary}</h5>
+        <h5 data-testid={'postSummary'}>{blogData.summary}</h5>
         <hr className={styles.hr} />
-        {blogPage}
+        <div data-testid={'postAuthor'}>{blogPage}</div>
         <br />
         <hr className={styles.hr} />
-        <h3>About the Author</h3>
+        <h3 data-testid={'postAuthorSectionTitle'}>About the author</h3>
         <AuthorCard {...blogData.author} />
         <br />
       </div>
@@ -52,9 +52,22 @@ const ByLine = ({ blogData }) => (
       <span data-testid={'postAuthor'}>
         By <a href={blogData.author.url}>{blogData.author.name}</a>
       </span>{' '}
-      <span data-testid={'postDate'}>on {moment.unix(blogData.created).format('MM/DD/YYYY')}</span>
+      <span data-testid={'postDate'}>on {moment.unix(blogData.created).format('MMMM DD, YYYY')}</span>
       <br />
-      <span data-testid={'postCategory'}>Category: {blogData.blogCategory}</span>
+      <span data-testid={'postCategory'}>
+        Category:{' '}
+        <a
+          href={
+            '/blogs/' +
+            blogData.blogCategory
+              .split(' ')
+              .join('-')
+              .toLowerCase()
+          }
+        >
+          {blogData.blogCategory}
+        </a>
+      </span>
     </p>
   </div>
 )
