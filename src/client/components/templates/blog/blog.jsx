@@ -12,7 +12,7 @@ class Blog extends Component {
     const blogParagraphs = blogData.blogBody
     const blogPage = blogParagraphs.map(function(item, index) {
       return (
-        <div>
+        <div key={index.toString()}>
           {!isEmpty(blogData.blogBody[index].blogSectionImage.url) && (
             <ImageSection class={styles.center} src={blogData.blogBody[index].blogSectionImage.url} />
           )}
