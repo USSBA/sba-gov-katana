@@ -20,7 +20,7 @@ class BlogsLandingPage extends Component {
   fetchBlogs() {
     const categorySections = [
       {
-        category: 'News and Views',
+        category: 'SBA News and Views',
         title: 'SBA News & Views posts',
         subtitle: "Insights and updates from SBA's small business experts.",
         url: '/blogs/news-and-views',

@@ -7,7 +7,7 @@ import * as fetchContentHelper from 'client/fetch-content-helper.js'
 
 const mockNewsAndViewsData = [
   {
-    blogCategory: 'News and Views',
+    blogCategory: 'SBA News and Views',
     created: 1554897112,
     id: 10,
     title: 'SBA celebrates National Veterans Small Business Week',
@@ -16,7 +16,7 @@ const mockNewsAndViewsData = [
     url: '/blog/sba-celebrates-national-veterans-small-business-week'
   },
   {
-    blogCategory: 'News and Views',
+    blogCategory: 'SBA News and Views',
     created: 1554897112,
     id: 11,
     title: 'SBA celebrates Memorial Day',
@@ -98,7 +98,7 @@ const mockAuthorData = [
 
 const fetchSiteContentStubCallback = (node, { category }) => {
   const result = { total: 0, blogs: [] }
-  if (category === 'News and Views') {
+  if (category === 'SBA News and Views') {
     result.blogs = mockNewsAndViewsData
   } else if (category === 'Industry Word') {
     result.blogs = mockIndustryWordData
@@ -143,7 +143,7 @@ describe('Blogs landing page', () => {
       .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
       .mockImplementationOnce(() => Promise.resolve([]))
 
-    const firstCategoryQueryParams = { category: 'News and Views', end: 3, order: 'desc' }
+    const firstCategoryQueryParams = { category: 'SBA News and Views', end: 3, order: 'desc' }
     const secondCategoryQueryParams = { category: 'Industry Word', end: 3, order: 'desc' }
 
     render(<BlogsLandingPage />)
