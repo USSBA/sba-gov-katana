@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { isEmpty, snakeCase } from 'lodash'
+import { isEmpty } from 'lodash'
 
 import styles from './card.scss'
 import { DecorativeDash, Link } from 'atoms'
@@ -47,7 +47,7 @@ const Card = props => {
   if (image && image.url) {
     imageMarkup = (
       <img
-        id={'image-' + parentIndex + '-' + index}
+        id={`image-${parentIndex}-${index}`}
         className={styles.itemImage}
         src={image.url}
         alt={image.alt}
@@ -70,7 +70,7 @@ const Card = props => {
   return (
     <div
       className={className}
-      id={snakeCase('card', parentIndex, index)}
+      id={`card-${parentIndex}-${index + 1}`}
       data-testid="card"
       tabIndex="0"
       aria-label={`${cardAriaLabel} ${index + 1}`}
@@ -82,7 +82,7 @@ const Card = props => {
         {titleText ? (
           <h4
             className={styles.itemTitle}
-            id={snakeCase('title', parentIndex, index)}
+            id={`title-${parentIndex}-${index + 1}`}
             data-testid="card title"
           >
             {titleMarkup}
@@ -90,10 +90,10 @@ const Card = props => {
         ) : null}
         {subtitleText || italicText ? (
           <div>
-            <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={30} />
+            <DecorativeDash id={`hr-${parentIndex}-${index}`} width={30} />
             {italicText ? (
               <p
-                id={'italic-text-' + parentIndex + '-' + index}
+                id={`italic-text-${parentIndex}-${index}`}
                 className={styles.itemItalic}
                 data-testid="card italic text"
                 tabIndex="0"
@@ -103,7 +103,7 @@ const Card = props => {
             ) : null}
             {subtitleText ? (
               <p
-                id={'subtitle-text-' + parentIndex + '-' + index}
+                id={`subtitle-text-${parentIndex}-${index}`}
                 className={styles.itemSubTitle}
                 data-testid="card subtitle text"
                 tabIndex="0"
