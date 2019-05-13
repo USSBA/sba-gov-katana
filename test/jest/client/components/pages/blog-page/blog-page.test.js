@@ -188,6 +188,8 @@ describe('Blog page', () => {
       expect(content).toBeInTheDocument()
       content = await waitForElement(() => getByTestId('postSummary'))
       expect(content).toBeInTheDocument()
+      content = await waitForElement(() => getByTestId('postBlogBody'))
+      expect(content).toBeInTheDocument()
       content = await waitForElement(() => getByTestId('postAuthorSectionTitle'))
       expect(content).toBeInTheDocument()
     })
