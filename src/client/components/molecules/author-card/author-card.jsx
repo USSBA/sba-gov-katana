@@ -23,7 +23,7 @@ class AuthorCard extends PureComponent {
       [styles.linkAdditionalMargin]: isEmpty(bio)
     })
 
-    //Empty author titles come bout of drupal as empty objects, but is a string when valid
+    //Empty author titles come out of drupal as empty objects, but is a string when valid
     const authorTitle = typeof title === 'object' ? '' : title
 
     let link
