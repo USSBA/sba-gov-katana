@@ -10,7 +10,7 @@ function blogBuilder(blogTitle) {
   const blog = {
     author: Math.floor(Math.random * 10000),
     blogBody: [],
-    blogCategory: 'News and Views',
+    blogCategory: 'SBA News and Views',
     blogTags: 'Business Laws',
     summary:
       'The U.S. Small Business Administration recently proposed new regulations to make it easier for small businesses to understand and comply with the Historically Underutilized Business Zone (HUBZone) Program’s requirements.',
