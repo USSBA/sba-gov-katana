@@ -14,10 +14,7 @@ class Blog extends Component {
       return (
         <div key={index.toString()}>
           {!isEmpty(blogData.blogBody[index].blogSectionImage.url) && (
-            <ImageSection
-              className={styles.container + styles.center}
-              src={blogData.blogBody[index].blogSectionImage.url}
-            />
+            <ImageSection className={styles.center} src={blogData.blogBody[index].blogSectionImage.url} />
           )}
           <div dangerouslySetInnerHTML={{ __html: blogData.blogBody[index].blogSectionText }} />
         </div>
@@ -30,7 +27,9 @@ class Blog extends Component {
         <ByLine blogData={blogData} />
         <h5 data-testid={'postSummary'}>{blogData.summary}</h5>
         <hr className={styles.hr} />
-        <div data-testid={'postBlogBody'}>{blogPage}</div>
+        <div data-testid={'postBlogBody'} className={styles.postBlogBody}>
+          {blogPage}
+        </div>
         <br />
         <hr className={styles.hr} />
         <h3 data-testid={'postAuthorSectionTitle'}>About the author</h3>
