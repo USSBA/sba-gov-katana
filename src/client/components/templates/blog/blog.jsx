@@ -14,9 +14,16 @@ class Blog extends Component {
       return (
         <div key={index.toString()}>
           {!isEmpty(blogData.blogBody[index].blogSectionImage.url) && (
-            <ImageSection className={styles.center} src={blogData.blogBody[index].blogSectionImage.url} />
+            <ImageSection
+              className={styles.center}
+              data-testid={'postSectionText'}
+              src={blogData.blogBody[index].blogSectionImage.url}
+            />
           )}
-          <div dangerouslySetInnerHTML={{ __html: blogData.blogBody[index].blogSectionText }} />
+          <div
+            data-testid={'postSectionText'}
+            dangerouslySetInnerHTML={{ __html: blogData.blogBody[index].blogSectionText }}
+          />
         </div>
       )
     })
