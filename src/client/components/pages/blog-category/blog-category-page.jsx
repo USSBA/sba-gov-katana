@@ -22,14 +22,14 @@ class BlogCategoryPage extends Component {
   blogCategoryCorrection(categoryParam) {
     let category = ''
     if (categoryParam === 'news-and-views') {
-      category = 'News and Views'
+      category = 'SBA News and Views'
     } else if (categoryParam === 'industry-word') {
       category = 'Industry Word'
     }
     return category
   }
 
-  async fetchBlogs(start, end ) {
+  async fetchBlogs(start, end) {
     const { total = 0, blogs = [] } = await fetchSiteContent('blogs', {
       category: this.blogCategoryCorrection(this.props.params.category),
       start: start,
@@ -78,19 +78,19 @@ class BlogCategoryPage extends Component {
     const newPage = Math.max(1, this.state.page - 1)
     const start = (newPage - 1) * this.props.pageSize
     const end = newPage * this.props.pageSize
-    
+
     this.fetchBlogs(start, end)
     this.setState({
       page: newPage
     })
   }
-  
+
   onForward() {
     const totalPages = Math.max(1, Math.ceil(this.state.total / this.props.pageSize))
     const newPage = Math.min(totalPages, this.state.page + 1)
     const start = (newPage - 1) * this.props.pageSize
     const end = newPage * this.props.pageSize
-    
+
     this.fetchBlogs(start, end)
     this.setState({
       page: newPage
