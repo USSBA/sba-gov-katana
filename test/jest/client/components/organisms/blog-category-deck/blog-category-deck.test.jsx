@@ -5,7 +5,7 @@ import { shallow, mount } from 'enzyme'
 
 const mockCardsData = [
   {
-    blogCategory: 'News and Views',
+    blogCategory: 'SBA News and Views',
     created: 1554897112,
     id: 10,
     title: 'SBA celebrates National Veterans Small Business Week',
@@ -14,7 +14,7 @@ const mockCardsData = [
     url: '/blog/sba-celebrates-national-veterans-small-business-week'
   },
   {
-    blogCategory: 'News and Views',
+    blogCategory: 'SBA News and Views',
     created: 1554897112,
     id: 11,
     title: 'SBA celebrates Memorial Day',

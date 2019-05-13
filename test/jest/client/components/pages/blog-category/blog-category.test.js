@@ -18,7 +18,7 @@ const validBlogCategories = [
     name: 'news-and-views',
     title: 'SBA News and Views',
     subtitle: "Insights and updates from SBA's small business experts",
-    queryTerm: 'News and Views'
+    queryTerm: 'SBA News and Views'
   },
   {
     name: 'industry-word',

@@ -22,7 +22,7 @@ class BlogsLandingPage extends Component {
     // will determine order that category sections are displayed on the page
     const categorySections = [
       {
-        category: 'News and Views',
+        category: 'SBA News and Views',
         title: 'SBA News & Views posts',
         subtitle: "Insights and updates from SBA's small business experts.",
         url: '/blogs/news-and-views',
