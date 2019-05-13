@@ -23,6 +23,9 @@ class AuthorCard extends PureComponent {
       [styles.linkAdditionalMargin]: isEmpty(bio)
     })
 
+    //Empty author titles come bout of drupal as empty objects, but is a string when valid
+    const authorTitle = typeof title === 'object' ? '' : title
+
     let link
     if (mode === 'single') {
       link = (
@@ -50,7 +53,7 @@ class AuthorCard extends PureComponent {
             <a href={url}>{name}</a>
           </h4>
           <div data-testid={'title'} tabIndex="0" className={styles.title}>
-            <i>{title}</i>
+            <i>{authorTitle}</i>
           </div>
           <DecorativeDash width={30} />
           {!isEmpty(bio) && (
