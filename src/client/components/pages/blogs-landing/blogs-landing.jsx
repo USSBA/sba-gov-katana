@@ -17,7 +17,9 @@ class BlogsLandingPage extends Component {
     this.fetchAuthors()
   }
 
-  fetchBlogs() {
+  async fetchBlogs() {
+    // order of categories inside the categorySections array
+    // will determine order that category sections are displayed on the page
     const categorySections = [
       {
         category: 'SBA News and Views',
@@ -34,8 +36,6 @@ class BlogsLandingPage extends Component {
         cards: []
       }
     ]
-    const categories = categorySections.map(section => section.category)
-    const categoryData = []
 
     // returns query parameters
     const getQueryParams = category => {
@@ -46,23 +46,24 @@ class BlogsLandingPage extends Component {
       }
     }
 
-    // sets the state variable categorySections including updated card data
-    const updateCards = () => {
-      categoryData.forEach((data, index) => {
-        categorySections[index].cards = data
-      })
-      this.setState({ categorySections })
-    }
-
-    // makes fetchSiteContent call for each category defined in categorySections
-    categories.forEach(async category => {
+    // add blog data to cards key inside each category section.
+    // note: map function preserves order of categorySections array
+    let updatedCategorySections = categorySections.map(async section => {
+      const { category, title, subtitle, url } = section
       const data = await fetchSiteContent('blogs', getQueryParams(category))
-      categoryData.push(data.blogs)
-
-      if (categoryData.length === categories.length) {
-        updateCards()
+      return {
+        category,
+        title,
+        subtitle,
+        url,
+        cards: data && data.blogs ? data.blogs : []
       }
     })
+
+    // map function returns promises from fetchSiteContent calls
+    // so we need to wait for all promises to resolve before setting the state
+    updatedCategorySections = await Promise.all(updatedCategorySections)
+    this.setState({ categorySections: updatedCategorySections })
   }
 
   async fetchAuthors() {
