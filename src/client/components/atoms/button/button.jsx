@@ -61,7 +61,7 @@ Button.propTypes = {
     const { disabled, primary, secondary } = props
 
     if (!disabled && !(primary ^ secondary)) {
-      return new Error(`${componentName} was not specified as "primary" xor "secondary"`)
+      return Error(`${componentName} was not specified as "primary" xor "secondary"`)
     }
   },
 
@@ -70,7 +70,7 @@ Button.propTypes = {
     const { alternate, primary } = props
 
     if (alternate && !primary) {
-      return new Error(
+      return Error(
         `${componentName} was specified with "alternate" but only a "primary" ${componentName} can have "alternate"`
       )
     }
