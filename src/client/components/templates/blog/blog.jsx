@@ -42,7 +42,7 @@ class Blog extends Component {
           {blogData.summary}
         </h5>
         <hr className={styles.hr} />
-        <div data-testid={'postBlogBody'} className={styles.postBlogBody} tabIndex="0">
+        <div data-testid={'postBlogBody'} className={styles.postBlogBody}>
           {blogPage}
         </div>
         <br />
@@ -66,12 +66,14 @@ Blog.propTypes = {
 const ByLine = ({ blogData, categoryLink }) => (
   <div data-testid={'byline'}>
     <p>
-      <span data-testid={'postAuthor'}>
+      <span data-testid={'postAuthor'} tabIndex="0">
         By <a href={blogData.author.url}>{blogData.author.name}</a>
       </span>{' '}
-      <span data-testid={'postDate'}>on {moment.unix(blogData.created).format('MMMM DD, YYYY')}</span>
+      <span data-testid={'postDate'} tabIndex="0">
+        on {moment.unix(blogData.created).format('MMMM DD, YYYY')}
+      </span>
       <br />
-      <span data-testid={'postCategory'}>
+      <span data-testid={'postCategory'} tabIndex="0">
         Category: <a href={categoryLink}>{blogData.blogCategory}</a>
       </span>
     </p>
