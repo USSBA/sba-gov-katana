@@ -10,6 +10,8 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectAmy
+miscapi:
+  endpoint: mnk7e0ukgg.execute-api.us-east-1.amazonaws.com/latest/
 sizestandards:
     endpoint: 27b9p5e3fk.execute-api.us-east-1.amazonaws.com/LATEST/
 content:

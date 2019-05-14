@@ -18,6 +18,7 @@ exports[`GlobalSearch should render with one taxonomyFilter 1`] = `
       >
         <button
           className="button alternate large primary responsive spacing"
+          data-testid="button"
           type="submit"
         >
           Apply
@@ -46,6 +47,7 @@ exports[`GlobalSearch should render with two taxonomyFilter 1`] = `
       >
         <button
           className="button alternate large primary responsive spacing"
+          data-testid="button"
           type="submit"
         >
           Apply

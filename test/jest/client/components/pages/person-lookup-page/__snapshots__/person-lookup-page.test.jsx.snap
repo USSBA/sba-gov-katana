@@ -12,24 +12,25 @@ exports[`PersonLookupPage should render correctly 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="inputContainer search"
+        className="text-input textInput search"
         id="search-container"
       >
         <label
-          className="controlLabel"
           htmlFor="search"
         >
           Search
         </label>
         <div
-          className="textInputContainer"
+          className="container"
         >
           <input
-            className="textInput searchIconPadding"
+            aria-labelledby="search"
+            className="input searchIconPadding"
             data-cy="search"
             id="search"
             onBlur={[Function]}
             onChange={[Function]}
+            onFocus={[Function]}
             placeholder="Search by name, title, or office"
           />
           <div
@@ -230,6 +231,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
       <button
         className="button alternate large primary responsive spacing"
         data-cy="search button"
+        data-testid="button"
       >
         apply
       </button>

@@ -47,6 +47,7 @@ exports[`ReadMore should render expanded ReadMore component 1`] = `
   </p>
   <button
     className="button alternate large primary responsive spacing"
+    data-testid="button"
     id="text-readmore-section-3-read-more-btn"
     onClick={[Function]}
   >
@@ -102,6 +103,7 @@ exports[`ReadMore should render expanded ReadMore component 2`] = `
   </p>
   <button
     className="button alternate large primary responsive spacing"
+    data-testid="button"
     id="text-readmore-section-3-read-more-btn"
     onClick={[Function]}
   >
@@ -127,6 +129,7 @@ exports[`ReadMore should render read more button when not expanded 1`] = `
   
   <button
     className="button alternate large primary responsive spacing"
+    data-testid="button"
     id="text-readmore-section-3-read-more-btn"
     onClick={[Function]}
   >

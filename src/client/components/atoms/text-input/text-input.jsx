@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react'
+import classNames from 'classnames'
+import { kebabCase } from 'lodash'
 
 import styles from './text-input.scss'
 import { FailureIcon, FormErrorMessage, SuccessIcon, SearchIcon, ValidationIcon } from 'atoms'
@@ -7,7 +9,9 @@ class TextInput extends React.Component {
   constructor() {
     super()
     this.state = {
-      isValid: true
+      isFocused: false,
+      isValid: true,
+      value: ''
     }
   }
 
@@ -21,11 +25,6 @@ class TextInput extends React.Component {
     }
   }
 
-  inputValidation(validationState) {
-    const { isValid } = this.state
-    return validationState === 'error' || !isValid ? styles.textInputInvalid : styles.textInput
-  }
-
   errorMessage(validationState) {
     const { isValid } = this.state
     return validationState === 'error' || !isValid ? (
@@ -33,16 +32,45 @@ class TextInput extends React.Component {
     ) : null
   }
 
+  handleBlur(event) {
+    const { isValid } = this.state
+    const isNewValueValid = this.isValid(event.target.value)
+
+    // only invalidate input on a blur
+    if (isNewValueValid !== isValid) {
+      this.setState({ isValid: isNewValueValid })
+    }
+
+    this.setState({ isFocused: false })
+  }
+
   handleChange(event) {
     const { onChange } = this.props
     const { isValid } = this.state
+    const {
+      target: { value }
+    } = event
+
     if (onChange) {
       onChange(event)
     }
-    //if input becomes valid as you type, set that it is valid
-    if (this.isValid(event.target.value) && !isValid) {
+
+    // if input becomes valid as you type, set that it is valid
+    if (this.isValid(value) && !isValid) {
       this.setState({ isValid: true })
     }
+
+    this.setState({ value })
+  }
+
+  handleFocus(event) {
+    const { onFocus } = this.props
+
+    if (onFocus) {
+      onFocus(event)
+    }
+
+    this.setState({ isFocused: true })
   }
 
   isValid(value) {
@@ -51,15 +79,6 @@ class TextInput extends React.Component {
       return validationFunction(value)
     } else {
       return true
-    }
-  }
-
-  handleBlur(event) {
-    const { isValid } = this.state
-    const isNewValueValid = this.isValid(event.target.value)
-    //only invalidate input on a blur
-    if (isNewValueValid !== isValid) {
-      this.setState({ isValid: isNewValueValid })
     }
   }
 
@@ -76,33 +95,45 @@ class TextInput extends React.Component {
       showErrorIcon,
       labelStyle,
       onChange,
+      optional,
       className,
       queryParamName,
       validationFunction,
       ...rest
     } = this.props
+    const { isFocused, isValid, value } = this.state
+
     const validationIcon = this.iconValidation(validationState)
     const errorMessage = this.errorMessage(validationState)
-    //todo: use aria-labelledby in the input instead of htmlFor in the label
+
     return (
       <div
-        id={id + '-container'}
-        className={`${styles.inputContainer} ${className ? className : ''}`}
+        id={kebabCase(`${id} container`)}
+        className={classNames({
+          'text-input': true,
+          [styles.textInput]: true,
+          [className]: className
+        })}
         hidden={hidden}
       >
-        <label htmlFor={id} className={labelStyle ? labelStyle : styles.controlLabel}>
+        <label htmlFor={id} className={labelStyle && labelStyle}>
           {label}
         </label>
-        <div className={styles.textInputContainer}>
+        <div className={styles.container}>
           <input
             id={id}
             {...rest}
+            aria-labelledby={id}
+            className={classNames({
+              [styles.input]: true,
+              [styles.invalid]: validationState === 'error' || !isValid,
+              [styles.searchIconPadding]: showSearchIcon
+            })}
             onChange={this.handleChange.bind(this)}
             onBlur={this.handleBlur.bind(this)}
-            className={`${this.inputValidation(validationState)} ${
-              showSearchIcon ? styles.searchIconPadding : ''
-            }`}
+            onFocus={this.handleFocus.bind(this)}
           />
+          {optional && !isFocused && !value && <span className={styles.optional}>Optional</span>}
           {showSearchIcon ? (
             <div className={styles.searchIcon}>
               <SearchIcon aria-hidden="true" />
@@ -136,6 +167,7 @@ TextInput.propTypes = {
   label: PropTypes.string,
   labelStyle: PropTypes.string,
   onChange: PropTypes.func,
+  optional: PropTypes.bool,
   queryParamName: PropTypes.string,
 
   // Props that control icon display

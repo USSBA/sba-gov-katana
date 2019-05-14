@@ -10,6 +10,7 @@ const Button = props => {
     children,
     fullWidth,
     icon,
+    loading,
     small,
     spacing,
     primary,
@@ -25,6 +26,7 @@ const Button = props => {
     [styles.fullWidth]: fullWidth,
     [styles.large]: !small,
     [styles.link]: url,
+    [styles.loading]: loading,
     [styles.primary]: primary,
     [styles.responsive]: responsive,
     [styles.secondary]: secondary,
@@ -32,16 +34,19 @@ const Button = props => {
     [styles.spacing]: spacing
   })
 
+  // TODO: order is fragile
+  const mergedProps = {
+    className,
+    'data-testid': 'button',
+    ...nativeProps,
+    disabled: nativeProps.disabled || loading,
+    ...(url && { to: url })
+  }
+
+  const content = loading ? <i className="fa fa-circle-o-notch fa-spin fa-fw" /> : children
+
   // TODO: check native props map correctly to anchor or button
-  return url ? (
-    <Link {...nativeProps} className={className} to={url}>
-      {children}
-    </Link>
-  ) : (
-    <button {...nativeProps} className={className}>
-      {children}
-    </button>
-  )
+  return url ? <Link {...mergedProps}>{content}</Link> : <button {...mergedProps}>{content}</button>
 }
 
 Button.defaultProps = {
@@ -79,6 +84,9 @@ Button.propTypes = {
 
   // Span button to the full width of its parent
   fullWidth: PropTypes.bool,
+
+  // Replace button text with a spinner. Button is disabled while loading
+  loading: PropTypes.bool,
 
   // Add spacing to sibling buttons depending on context. Set to true by default.
   spacing: PropTypes.bool,

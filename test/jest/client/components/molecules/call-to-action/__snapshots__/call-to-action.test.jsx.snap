@@ -13,6 +13,7 @@ exports[`CallToAction renders a button only 1`] = `
     >
       <a
         className="button large link primary responsive spacing"
+        data-testid="button"
         href="http://www.example.com/"
       >
         Call To Action
@@ -66,6 +67,7 @@ exports[`CallToAction renders a large size 1`] = `
     >
       <a
         className="button alternate large link primary responsive spacing"
+        data-testid="button"
         href="http://www.example.com/"
       >
         Call To Action
@@ -110,6 +112,7 @@ exports[`CallToAction renders a medium size 1`] = `
     >
       <a
         className="button alternate large link primary responsive spacing"
+        data-testid="button"
         href="http://www.example.com/"
       >
         Call To Action
@@ -139,6 +142,7 @@ exports[`CallToAction renders a small size 1`] = `
     >
       <a
         className="button alternate large link primary responsive spacing"
+        data-testid="button"
         href="http://www.example.com/"
       >
         Call To Action

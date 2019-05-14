@@ -1,43 +1,25 @@
-//lendermatch FORM INPUTS
-
-//COMMON INPUT STYLES
-
-.inputContainer {
-  margin-bottom: 20px !important;
-}
-
-//TEXT INPUT
-.textInputContainer {
-  position: relative;
-  margin-bottom: 0 !important;
-}
-
 .textInput {
-  margin-bottom: 0 !important;
+  margin-bottom: 20px;
 }
 
-.textInputInvalid {
-  composes: textInput;
-  border: 1px solid $sba-red-light !important;
-  box-shadow: inset 0 0 0 1px $sba-red-light !important;
+.container {
+  position: relative;
 }
 
-.searchBar input {
-  height: 40px;
-  display: inline;
-  border-radius: 5px;
-  border-color: $sba-gray-light;
-  width: 12vw;
+input.input {
+  margin-bottom: 4px;
 }
 
-.searchBar a {
-  position: absolute;
-  right: 0.5vw;
-  top: 12px;
+input.invalid {
+  border: 2px solid $sba-red-light;
+
+  &:hover {
+    border-color: $sba-red-light;
+  }
 }
 
 .searchIconPadding {
-  padding-right: 40px !important;
+  padding-right: 40px;
 }
 
 .searchIcon {
@@ -45,4 +27,16 @@
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.optional {
+  bottom: 10px;
+  color: $sba-gray;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  // make "unclickable"
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
 }

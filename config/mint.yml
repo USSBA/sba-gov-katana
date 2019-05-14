@@ -6,6 +6,8 @@ googleAnalytics:
     debug: false
 foresee:
     environment: staging
+miscapi:
+  endpoint: mpmhqtea8g.execute-api.us-east-1.amazonaws.com/latest/
 server:
     fqdn: mint.ussba.io
 features:

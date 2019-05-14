@@ -2457,21 +2457,22 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="searchBox"
     >
       <div
-        className="inputContainer "
+        className="text-input textInput"
         id="document-lookup-container"
       >
         <label
-          className="controlLabel"
           htmlFor="document-lookup"
         />
         <div
-          className="textInputContainer"
+          className="container"
         >
           <input
-            className="textInput "
+            aria-labelledby="document-lookup"
+            className="input"
             id="document-lookup"
             onBlur={[Function]}
             onChange={[Function]}
+            onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="Search by title or number"
           />
@@ -2819,7 +2820,8 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="clear"
     />
     <button
-      className="button alternate large primary responsive spacing"
+      className="submitButton"
+      data-testid="button"
       onClick={[Function]}
     >
       Search

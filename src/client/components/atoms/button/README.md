@@ -6,6 +6,7 @@
 | `children`* | `array` \| `element` \| `string` \| | **Required**. Sets the content inside the button | -
 | `disabled` | `boolean` | Disables the button, preventing any interaction | -
 | `fullWidth` | `boolean` | Spans the button to the full width of its parent | -
+| `loading` | `boolean` | Replaces the button text with a spinner. The button is `disabled`  when `loading`  | -
 | `primary`* \| `secondary`* | `boolean` | If the button is not `disabled`, one of `primary` or `secondary` is **required**.<br><br> Sets the visual weight of the button: <ul><li>`primary` (*filled*) buttons are for primary actions, e.g. in heros</li><li>`secondary` (*outlined*) buttons are for lower priority actions, if there are already `primary` or `secondary` buttons nearby</li></ul> | -
 | `spacing` | `boolean` | Adds (*horizontal* or *vertical*) spacing to sibling (*default* or `fullWidth`) buttons | `true`
 | `small` | `boolean` | Decreases the font size and padding of the button | -

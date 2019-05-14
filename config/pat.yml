@@ -1,5 +1,7 @@
 foresee:
     environment: staging
+miscapi:
+  endpoint: lv3rqu1y3g.execute-api.us-east-1.amazonaws.com/latest/
 server:
     fqdn: pat.ussba.io
 features:

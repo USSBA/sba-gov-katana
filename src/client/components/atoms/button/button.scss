@@ -47,6 +47,10 @@
   }
 }
 
+.primary.loading[disabled] {
+  background-color: $sba-red-light;
+}
+
 .primary.alternate:not([disabled]) {
   background-color: $secondary-blue;
 
@@ -55,19 +59,30 @@
   }
 }
 
+.primary.alternate.loading[disabled] {
+  background-color: $secondary-blue-light;
+}
+
 // simulate inner border with box shadow
 @mixin inner-border($color) {
   box-shadow: inset 0 0 0 2px $color;
 }
 
 .secondary:not([disabled]) {
-  @include inner-border($sba-blue) background-color: transparent;
+  @include inner-border($sba-blue);
+  background-color: transparent;
   color: $sba-blue;
 
   &:hover {
-    @include inner-border($secondary-blue-light) color: $secondary-blue-light;
+    @include inner-border($secondary-blue-light);
     color: $secondary-blue-light;
   }
+}
+
+.secondary.loading[disabled] {
+  @include inner-border($secondary-blue-light);
+  background-color: transparent;
+  color: $secondary-blue-light;
 }
 
 // NOTE: This combination doesn't actually exist in the style guide.
@@ -79,6 +94,10 @@
     @include inner-border($sba-red-light);
     color: $sba-red-light;
   }
+}
+
+.secondary.alternate.loading[disabled] {
+  @include inner-border($sba-red-light) color: $sba-red-light;
 }
 
 // # Sizing -------------------------------------------------------------------

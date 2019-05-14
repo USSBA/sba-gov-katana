@@ -9,6 +9,8 @@ googleAnalytics:
     debug: false
 foresee:
     environment: staging
+miscapi:
+  endpoint: 9hculkgtb7.execute-api.us-east-1.amazonaws.com/latest/
 server:
     fqdn: avery.ussba.io
 features:

@@ -6,6 +6,8 @@ googleAnalytics:
     debug: false
 foresee:
     environment: staging
+miscapi:
+  endpoint: hcn9xuw0qc.execute-api.us-east-1.amazonaws.com/latest/
 server:
     fqdn: ryan.ussba.io
 features:

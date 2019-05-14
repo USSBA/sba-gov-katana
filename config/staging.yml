@@ -1,5 +1,7 @@
 foresee:
     environment: staging
+miscapi:
+  endpoint: ii16pmq7e6.execute-api.us-east-1.amazonaws.com/latest/
 server:
     fqdn: staging.sba.gov
 features:
