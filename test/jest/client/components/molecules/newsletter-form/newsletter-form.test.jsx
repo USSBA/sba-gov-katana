@@ -5,14 +5,15 @@ import 'react-testing-library/cleanup-after-each'
 
 import React from 'react'
 import userEvent from 'user-event'
+import { mount, shallow } from 'enzyme'
 import { fireEvent, render, wait } from 'react-testing-library'
-import { postMiscAction as mockPostMiscAction } from 'client/fetch-content-helper'
 
+import { postMiscAction as mockPostMiscAction } from 'client/fetch-content-helper'
 import { NewsletterForm } from 'molecules'
 
 jest.mock('client/fetch-content-helper', () => {
   return {
-    postMiscAction: jest.fn(() => Promise.resolve({ subscriber: 'id' }))
+    postMiscAction: jest.fn()
   }
 })
 
@@ -51,14 +52,21 @@ describe('NewsletterForm', () => {
     expect(button).toBeDisabled()
   })
 
+  // TODO: Get testing-library to work here instead of Enzyme
   it('should display success state on valid input', async () => {
-    const { debug, getByTestId, getByText, emailInput, zipInput, getByLabelText } = setup()
-    const button = getByTestId('button')
+    // jest.mock('client/fetch-content-helper', () => {
+    //   return {
+    //     postMiscAction: jest.fn(() => Promise.resolve({ subscriber: 'id' }))
+    //   }
+    // })
 
-    const mail = 'mail@mail.com'
-
-    userEvent.type(emailInput, mail)
-
+    // const { debug, getByTestId, getByText, emailInput, zipInput, getByLabelText } = setup()
+    // const button = getByTestId('button')
+    //
+    // const mail = 'mail@mail.com'
+    //
+    // userEvent.type(emailInput, mail)
+    //
     // wait for button to be enabled when form is valid
     // await wait(() => expect(button).toBeEnabled())
     //
@@ -66,10 +74,40 @@ describe('NewsletterForm', () => {
     //
     // expect(mockPostMiscAction).toHaveBeenCalled()
     //
-    // await wait(() => getByText(/you\'re all done here/i))
+    // await wait(() => getByText(/you\'re all done here!/i))
+
+    const wrapper = mount(<NewsletterForm />)
+    wrapper.find('#newsletter-email-address').simulate('change', { target: { value: 'mail@mail.com' } })
+
+    // TODO: state does not update with simulate('change', ...)
+    wrapper.setState({ isEmailAddressValid: true })
+
+    wrapper.find('form').simulate('submit', { preventDefault: () => ({}) })
+    mockPostMiscAction.mockImplementation(() => Promise.resolve({ subscriber: '123' }))
+    expect(mockPostMiscAction).toHaveBeenCalled()
+
+    // TODO: state does not update with simulate('submit', ...)
+    wrapper.setState({ formState: 'success' })
+
+    expect(wrapper.find('h3').text()).toMatch(/you're all done here!/i)
   })
 
-  // it('should display error state on network error', () => {
-  //
-  // })
+  it('should display error state on network error', () => {
+    const wrapper = mount(<NewsletterForm />)
+    wrapper.find('#newsletter-email-address').simulate('change', { target: { value: 'mail@mail.com' } })
+
+    // TODO: state does not update with simulate('change', ...)
+    wrapper.setState({ isEmailAddressValid: true })
+
+    wrapper.find('form').simulate('submit', { preventDefault: () => ({}) })
+    mockPostMiscAction.mockImplementation(() => {
+      throw Error()
+    })
+    expect(mockPostMiscAction).toThrow()
+
+    // TODO: state does not update with simulate('submit', ...)
+    wrapper.setState({ formState: 'error' })
+
+    expect(wrapper.find('h3').text()).toMatch(/sorry, we're having issues/i)
+  })
 })
