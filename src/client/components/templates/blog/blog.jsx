@@ -8,13 +8,48 @@ import moment from 'moment'
 class Blog extends Component {
   render() {
     const { blogData } = this.props
+    const blogParagraphs = blogData.blogBody
+    const categoryLink =
+      blogData.blogCategory === 'SBA News and Views' ? '/blogs/news-and-views' : '/blogs/industry-word'
+    const blogPage = blogParagraphs.map(function(item, index) {
+      return (
+        <div key={index.toString()} data-testid={'postBlogSection'}>
+          {!isEmpty(blogData.blogBody[index].blogSectionImage.url) && (
+            <img
+              className={styles.center}
+              data-testid={'postSectionImage'}
+              src={blogData.blogBody[index].blogSectionImage.url}
+              alt={blogData.blogBody[index].blogSectionImage.alt}
+              tabIndex="0"
+            />
+          )}
+          <div
+            data-testid={'postSectionText'}
+            tabIndex="0"
+            dangerouslySetInnerHTML={{ __html: blogData.blogBody[index].blogSectionText }}
+          />
+        </div>
+      )
+    })
+
     return (
       <div className={styles.container}>
-        <ByLine blogData={blogData} />
-        <p>{JSON.stringify(blogData)}</p>
+        <h1 data-testid={'postTitle'} tabIndex="0">
+          {blogData.title}
+        </h1>
+        <ByLine blogData={blogData} categoryLink={categoryLink} />
+        <h5 data-testid={'postSummary'} tabIndex="0">
+          {blogData.summary}
+        </h5>
+        <hr className={styles.hr} />
+        <div data-testid={'postBlogBody'} className={styles.postBlogBody}>
+          {blogPage}
+        </div>
         <br />
-        <p>AuthorCard.border=true</p>
+        <hr className={styles.hr} />
+        <h3 data-testid={'postAuthorSectionTitle'}>About the author</h3>
         <AuthorCard {...blogData.author} />
+        <br />
       </div>
     )
   }
@@ -28,15 +63,19 @@ Blog.propTypes = {
   blogData: PropTypes.object
 }
 
-const ByLine = ({ blogData }) => (
+const ByLine = ({ blogData, categoryLink }) => (
   <div data-testid={'byline'}>
     <p>
-      <span data-testid={'postAuthor'}>
+      <span data-testid={'postAuthor'} tabIndex="0">
         By <a href={blogData.author.url}>{blogData.author.name}</a>
       </span>{' '}
-      <span data-testid={'postDate'}>on {moment.unix(blogData.created).format('MM/DD/YYYY')}</span>
+      <span data-testid={'postDate'} tabIndex="0">
+        on {moment.unix(blogData.created).format('MMMM DD, YYYY')}
+      </span>
       <br />
-      <span data-testid={'postCategory'}>Category: {blogData.blogCategory}</span>
+      <span data-testid={'postCategory'} tabIndex="0">
+        Category: <a href={categoryLink}>{blogData.blogCategory}</a>
+      </span>
     </p>
   </div>
 )
