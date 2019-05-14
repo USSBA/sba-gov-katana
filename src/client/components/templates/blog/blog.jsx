@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { AuthorCard } from 'molecules'
-import { ImageSection } from 'atoms'
 import styles from './blog.scss'
 import { fetchRestContent } from '../../../fetch-content-helper'
 import { isEmpty } from 'lodash'
@@ -21,10 +20,12 @@ class Blog extends Component {
               data-testid={'postSectionImage'}
               src={blogData.blogBody[index].blogSectionImage.url}
               alt={blogData.blogBody[index].blogSectionImage.alt}
+              tabIndex="0"
             />
           )}
           <div
             data-testid={'postSectionText'}
+            tabIndex="0"
             dangerouslySetInnerHTML={{ __html: blogData.blogBody[index].blogSectionText }}
           />
         </div>
@@ -33,11 +34,15 @@ class Blog extends Component {
 
     return (
       <div className={styles.container}>
-        <h1 data-testid={'postTitle'}>{blogData.title}</h1>
+        <h1 data-testid={'postTitle'} tabIndex="0">
+          {blogData.title}
+        </h1>
         <ByLine blogData={blogData} categoryLink={categoryLink} />
-        <h5 data-testid={'postSummary'}>{blogData.summary}</h5>
+        <h5 data-testid={'postSummary'} tabIndex="0">
+          {blogData.summary}
+        </h5>
         <hr className={styles.hr} />
-        <div data-testid={'postBlogBody'} className={styles.postBlogBody}>
+        <div data-testid={'postBlogBody'} className={styles.postBlogBody} tabIndex="0">
           {blogPage}
         </div>
         <br />
