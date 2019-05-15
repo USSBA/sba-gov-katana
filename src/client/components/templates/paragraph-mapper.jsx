@@ -1,7 +1,7 @@
 import React from 'react'
 import { compact } from 'lodash'
 
-import { ImageSection, TextSection } from 'atoms'
+import { ImageSection, Spacing, TextSection } from 'atoms'
 import { ButtonCta, CallToAction, NewsletterForm, QuickLinks, ReadMoreSection } from 'molecules'
 import {
   CardCollection,
@@ -155,7 +155,13 @@ function makeParagraphs(
       } else if (item.type === 'ohaWestlawForm') {
         paragraph = <OHAWestlawForm title={item.formsTitle} />
       } else if (item.type === 'newsletterForm') {
-        paragraph = <NewsletterForm title={item.title} />
+        // TODO: good use-case for <React.Fragment> below
+        paragraph = (
+          <div>
+            <NewsletterForm title={item.title} />
+            <Spacing bottom={50} />
+          </div>
+        )
       }
     }
     return {
