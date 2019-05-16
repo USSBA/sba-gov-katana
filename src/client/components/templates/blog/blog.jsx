@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react'
-import { AuthorCard } from 'molecules'
-import styles from './blog.scss'
-import { fetchRestContent } from '../../../fetch-content-helper'
 import { isEmpty } from 'lodash'
 import moment from 'moment'
+
+import { AuthorCard } from 'molecules'
+import { TextSection } from 'atoms'
+import styles from './blog.scss'
 
 class Blog extends Component {
   render() {
@@ -23,11 +24,9 @@ class Blog extends Component {
               tabIndex="0"
             />
           )}
-          <div
-            data-testid={'postSectionText'}
-            tabIndex="0"
-            dangerouslySetInnerHTML={{ __html: blogData.blogBody[index].blogSectionText }}
-          />
+          <div data-testid={'postSectionText'} tabIndex="0">
+            <TextSection text={blogData.blogBody[index].blogSectionText} />
+          </div>
         </div>
       )
     })
