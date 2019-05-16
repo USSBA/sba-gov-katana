@@ -75,6 +75,6 @@ describe('Blogs landing page', () => {
     const buttonComponent = component.find(Button)
 
     expect(buttonComponent.length).toEqual(1)
-    expect(buttonComponent.render().text()).toEqual('SEE MORE POSTS')
+    expect(buttonComponent.render().text()).toMatch(/see more posts/i)
   })
 })
