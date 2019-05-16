@@ -133,12 +133,12 @@ describe('Event result', () => {
     customMockEvent.registrationUrl = 'https://www.eventbrite.com'
 
     const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
-    expect(component.find('.register-button')).toHaveLength(1)
+    expect(component.find('Button')).toHaveLength(1)
     const buttonText = component
-      .find('.register-button')
+      .find('Button')
       .render()
       .text()
-    expect(buttonText).toContain('REGISTER')
+    expect(buttonText).toMatch(/register/i)
   })
 
   // TODO: Modify or remove this test in the future in the case that

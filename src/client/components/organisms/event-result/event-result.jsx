@@ -92,13 +92,8 @@ class EventResult extends React.PureComponent {
     if (!isEmpty(item.registrationUrl)) {
       return (
         <div className={styles.registerButton}>
-          <Button
-            className="register-button"
-            tabIndex="0"
-            secondary
-            onClick={this.handleRegisterButtonClick.bind(this)}
-          >
-            REGISTER <i aria-hidden="true" className={iconClassName} />
+          <Button tabIndex="0" secondary onClick={this.handleRegisterButtonClick.bind(this)}>
+            Register <i aria-hidden="true" className={iconClassName} />
           </Button>
           <LeaveSbaModal
             closeLeaveSba={this.handleClose.bind(this)}

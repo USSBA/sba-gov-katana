@@ -143,12 +143,8 @@ class Event extends Component {
           <div className={styles.columnB} tabIndex="0">
             {!isEmpty(registrationUrl) && (
               <div className={styles.button} data-cy="registration">
-                <Button
-                  className="register-button"
-                  primary
-                  onClick={this.handleRegisterButtonClick.bind(this)}
-                >
-                  REGISTER <i aria-hidden="true" className={iconClassName} />
+                <Button primary onClick={this.handleRegisterButtonClick.bind(this)}>
+                  Register <i aria-hidden="true" className={iconClassName} />
                 </Button>
                 <LeaveSbaModal
                   closeLeaveSba={this.handleClose.bind(this)}
