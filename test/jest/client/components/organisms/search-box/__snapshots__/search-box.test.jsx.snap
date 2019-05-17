@@ -250,7 +250,6 @@ ShallowWrapper {
       />
       <Button
         alternate={true}
-        className="submitButton"
         onClick={[Function]}
         primary={true}
         responsive={true}
@@ -503,7 +502,6 @@ ShallowWrapper {
         />
         <Button
           alternate={true}
-          className="submitButton"
           onClick={[Function]}
           primary={true}
           responsive={true}
@@ -891,7 +889,6 @@ ShallowWrapper {
             />
             <Button
               alternate={true}
-              className="submitButton"
               onClick={[Function]}
               primary={true}
               responsive={true}
@@ -1144,7 +1141,6 @@ ShallowWrapper {
             />
             <Button
               alternate={true}
-              className="submitButton"
               onClick={[Function]}
               primary={true}
               responsive={true}
@@ -1470,7 +1466,6 @@ ShallowWrapper {
       />
       <Button
         alternate={true}
-        className="submitButton"
         onClick={[Function]}
         primary={true}
         responsive={true}
@@ -1723,7 +1718,6 @@ ShallowWrapper {
         />
         <Button
           alternate={true}
-          className="submitButton"
           onClick={[Function]}
           primary={true}
           responsive={true}
@@ -2111,7 +2105,6 @@ ShallowWrapper {
             />
             <Button
               alternate={true}
-              className="submitButton"
               onClick={[Function]}
               primary={true}
               responsive={true}
@@ -2364,7 +2357,6 @@ ShallowWrapper {
             />
             <Button
               alternate={true}
-              className="submitButton"
               onClick={[Function]}
               primary={true}
               responsive={true}
@@ -2823,7 +2815,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="clear"
     />
     <button
-      className="submitButton"
+      className="button alternate large primary responsive spacing"
       data-testid="button"
       onClick={[Function]}
     >
@@ -3083,7 +3075,6 @@ ShallowWrapper {
       />
       <Button
         alternate={true}
-        className="submitButton"
         onClick={[Function]}
         primary={true}
         responsive={true}
@@ -3336,7 +3327,6 @@ ShallowWrapper {
         />
         <Button
           alternate={true}
-          className="submitButton"
           onClick={[Function]}
           primary={true}
           responsive={true}
@@ -3724,7 +3714,6 @@ ShallowWrapper {
             />
             <Button
               alternate={true}
-              className="submitButton"
               onClick={[Function]}
               primary={true}
               responsive={true}
@@ -3977,7 +3966,6 @@ ShallowWrapper {
             />
             <Button
               alternate={true}
-              className="submitButton"
               onClick={[Function]}
               primary={true}
               responsive={true}
@@ -4303,7 +4291,6 @@ ShallowWrapper {
       />
       <Button
         alternate={true}
-        className="submitButton"
         onClick={[Function]}
         primary={true}
         responsive={true}
@@ -4556,7 +4543,6 @@ ShallowWrapper {
         />
         <Button
           alternate={true}
-          className="submitButton"
           onClick={[Function]}
           primary={true}
           responsive={true}
@@ -4944,7 +4930,6 @@ ShallowWrapper {
             />
             <Button
               alternate={true}
-              className="submitButton"
               onClick={[Function]}
               primary={true}
               responsive={true}
@@ -5197,7 +5182,6 @@ ShallowWrapper {
             />
             <Button
               alternate={true}
-              className="submitButton"
               onClick={[Function]}
               primary={true}
               responsive={true}

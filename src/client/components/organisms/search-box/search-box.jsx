@@ -171,7 +171,7 @@ class SearchBox extends React.Component {
             return this.renderMultiSelect(filterName)
           })}
           <div className={styles.clear} />
-          <Button alternate className={styles.submitButton} onClick={this.handleClick.bind(this)} primary>
+          <Button alternate onClick={this.handleClick.bind(this)} primary>
             Search
           </Button>
         </div>
