@@ -13,9 +13,11 @@ exports[`PersonLookupPage should render correctly 1`] = `
     >
       <div
         className="text-input textInput search"
+        data-testid="search-container"
         id="search-container"
       >
         <label
+          data-testid="search-label"
           htmlFor="search"
         >
           Search
@@ -27,6 +29,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
             aria-labelledby="search"
             className="input searchIconPadding"
             data-cy="search"
+            data-testid="search"
             id="search"
             onBlur={[Function]}
             onChange={[Function]}
