@@ -125,20 +125,26 @@ class NewsletterForm extends Component {
       case FORM_STATE.success:
         formContent = (
           <div className={styles[formState]}>
-            <i className="fa fa-check-circle" />
-            <h3>You're all done here!</h3>
-            <p>You're all signed up for the SBA newsletter.</p>
-            <Link onClick={this.reset}>Refresh</Link>
+            <i className="fa fa-check-circle" data-testid="newsletter-success-icon" />
+            <h3 data-testid="newsletter-success-title">You're all done here!</h3>
+            <p data-testid="newsletter-success-message">You're all signed up for the SBA newsletter.</p>
+            <Link data-testid="newsletter-refresh-link" onClick={this.reset}>
+              Refresh
+            </Link>
           </div>
         )
         break
       case FORM_STATE.error:
         formContent = (
-          <div className={styles[formState]}>
-            <i className="fa fa-times-circle" />
-            <h3>Sorry, we're having issues</h3>
-            <p>We are unable to subscribe you to the SBA newsletter. Please try again later.</p>
-            <Link onClick={this.reset}>Refresh</Link>
+          <div className={styles[formState]} data-testid="newsletter-error-info">
+            <i className="fa fa-times-circle" data-testid="newsletter-error-icon" />
+            <h3 data-testid="newsletter-error-title">Sorry, we're having issues</h3>
+            <p data-testid="newsletter-error-message">
+              We are unable to subscribe you to the SBA newsletter. Please try again later.
+            </p>
+            <Link data-testid="newsletter-refresh-link" onClick={this.reset}>
+              Refresh
+            </Link>
           </div>
         )
         break
