@@ -9,6 +9,7 @@ exports[`TextSection should render a simple paragraph 1`] = `
         "__html": "<p>test</p>",
       }
     }
+    data-testid="text section"
   />
   <noscript />
 </span>
@@ -23,6 +24,7 @@ exports[`TextSection should render several paragraphs 1`] = `
         "__html": "<p>test</p><p>test</p><p>test</p>",
       }
     }
+    data-testid="text section"
   />
   <noscript />
 </span>
@@ -37,6 +39,7 @@ exports[`TextSection should render several paragraphs with an unordered list in 
         "__html": "<p>test</p><ul><li>1</li>1<li></li></ul><p>test</p>",
       }
     }
+    data-testid="text section"
   />
   <noscript />
 </span>
