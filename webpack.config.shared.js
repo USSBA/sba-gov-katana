@@ -1,5 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
+// Rather than potentially deleting the node module for not being required directly anywhere,
+// we require css loader here, since css loader is used by webpack.  
+require('css-loader')
 
 const sassResources = {
   loader: 'sass-resources-loader',
