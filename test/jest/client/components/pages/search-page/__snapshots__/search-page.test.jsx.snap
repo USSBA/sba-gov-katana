@@ -19,9 +19,11 @@ exports[`SearchPage to match snapshot 1`] = `
         >
           <div
             className="text-input textInput"
+            data-testid="search-container"
             id="search-container"
           >
             <label
+              data-testid="search-label"
               htmlFor="search"
             >
               What are you looking for?
@@ -33,6 +35,7 @@ exports[`SearchPage to match snapshot 1`] = `
                 aria-controls="results-list"
                 aria-labelledby="search"
                 className="input"
+                data-testid="search"
                 defaultValue=""
                 id="search"
                 onBlur={[Function]}

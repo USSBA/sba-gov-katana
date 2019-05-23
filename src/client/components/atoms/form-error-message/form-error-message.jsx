@@ -3,9 +3,10 @@ import styles from './form-error-message.scss'
 
 class FormErrorMessage extends React.Component {
   render() {
+    const { errorFor, errorText } = this.props
     return (
-      <p id={this.props.errorFor + '-error'} className={styles.errorText}>
-        {this.props.errorText}
+      <p id={errorFor + '-error'} className={styles.errorText} data-testid={errorFor + '-error'}>
+        {errorText}
       </p>
     )
   }

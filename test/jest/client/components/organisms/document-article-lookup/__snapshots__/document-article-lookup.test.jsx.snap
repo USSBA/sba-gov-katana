@@ -16,9 +16,11 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       >
         <div
           className="text-input textInput"
+          data-testid="document-lookup-text-input-container"
           id="document-lookup-text-input-container"
         >
           <label
+            data-testid="document-lookup-text-input-label"
             htmlFor="document-lookup-text-input"
           >
             Search
@@ -29,6 +31,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <input
               aria-labelledby="document-lookup-text-input"
               className="input"
+              data-testid="document-lookup-text-input"
               id="document-lookup-text-input"
               onBlur={[Function]}
               onChange={[Function]}

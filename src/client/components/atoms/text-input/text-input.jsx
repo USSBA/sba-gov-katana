@@ -115,8 +115,9 @@ class TextInput extends React.Component {
           [className]: className
         })}
         hidden={hidden}
+        data-testid={kebabCase(`${id} container`)}
       >
-        <label htmlFor={id} className={labelStyle && labelStyle}>
+        <label htmlFor={id} className={labelStyle && labelStyle} data-testid={kebabCase(`${id} label`)}>
           {label}
         </label>
         <div className={styles.container}>
@@ -129,6 +130,7 @@ class TextInput extends React.Component {
               [styles.invalid]: validationState === 'error' || !isValid,
               [styles.searchIconPadding]: showSearchIcon
             })}
+            data-testid={id}
             onChange={this.handleChange.bind(this)}
             onBlur={this.handleBlur.bind(this)}
             onFocus={this.handleFocus.bind(this)}
