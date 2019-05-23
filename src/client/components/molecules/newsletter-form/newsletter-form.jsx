@@ -7,6 +7,8 @@ import { camelCase, capitalize, isEmpty, kebabCase } from 'lodash'
 import styles from './newsletter-form.scss'
 import { Button, CaptionText, Link, TextInput } from 'atoms'
 import { postMiscAction } from '../../../fetch-content-helper'
+import { TRANSLATIONS } from '../../../translations'
+import { getLanguageOverride } from '../../../services/utils'
 
 const FORM_STATE = {
   initial: 'initial',
@@ -83,6 +85,8 @@ class NewsletterForm extends Component {
       }
     ]
 
+    const langCode = getLanguageOverride(true)
+    const buttonText = TRANSLATIONS.govDelivery[langCode].buttonText
     let formContent
 
     switch (formState) {
@@ -111,7 +115,7 @@ class NewsletterForm extends Component {
                 <Button
                   primary
                   alternate
-                  children="Subscribe"
+                  children={buttonText}
                   disabled={!footer && !this.isValid()}
                   loading={!footer && formState === FORM_STATE.processing}
                   type={!footer && 'submit'}

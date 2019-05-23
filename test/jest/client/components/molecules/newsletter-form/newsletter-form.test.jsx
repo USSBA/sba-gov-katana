@@ -17,6 +17,10 @@ jest.mock('client/fetch-content-helper', () => {
   }
 })
 
+jest.mock('client/services/utils')
+import { getLanguageOverride } from 'client/services/utils'
+getLanguageOverride.mockImplementation(() => 'en')
+
 function setup(state = { isValid: false }) {
   const utils = render(<NewsletterForm />)
   const emailInput = utils.getByLabelText(/email address/i)

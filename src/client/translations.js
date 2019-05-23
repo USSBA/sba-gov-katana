@@ -256,6 +256,16 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-performance/open-government/foia'
     }
   },
+  govDelivery: {
+    en: {
+      footerTitle: 'Sign up for SBA email updates',
+      buttonText: 'Subscribe'
+    },
+    es: {
+      footerTitle: 'Reciba las noticias de SBA por email',
+      buttonText: 'Suscríbase'
+    }
+  },
   hearingsAndAppeals: {
     en: {
       text: 'Hearings and Appeals',
