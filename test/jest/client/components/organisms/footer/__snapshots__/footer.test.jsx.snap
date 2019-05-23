@@ -995,7 +995,9 @@ exports[`Front Page Hero should render correctly 1`] = `
       onSubmit={[Function]}
     >
       <div>
-        <p>
+        <p
+          data-testid="newsletter-footer-title"
+        >
           Sign up for SBA email updates
         </p>
         <div

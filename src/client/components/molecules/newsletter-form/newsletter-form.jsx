@@ -94,7 +94,11 @@ class NewsletterForm extends Component {
       case FORM_STATE.processing:
         formContent = (
           <div>
-            {!footer ? <h3>{title}</h3> : <p>{title}</p>}
+            {!footer ? (
+              <h3 data-testid="newsletter-title">{title}</h3>
+            ) : (
+              <p data-testid="newsletter-footer-title">{title}</p>
+            )}
             {!footer && <CaptionText>Please enter your zip code to receive local news.</CaptionText>}
             <div className={styles.inputs}>
               {!footer &&
