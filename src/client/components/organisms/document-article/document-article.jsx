@@ -195,12 +195,7 @@ export class DocumentArticle extends React.Component {
           <div className={style.summaryContainer}>
             <div className="column">
               {currentFile && !isEmpty(currentFile.fileUrl) && (
-                <Button
-                  className="document-article-pdf-download-btn"
-                  fullWidth
-                  onClick={e => this.downloadClick(currentFile)}
-                  primary
-                >
+                <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
                   {`Download ${currentFileExtension}`}
                 </Button>
               )}

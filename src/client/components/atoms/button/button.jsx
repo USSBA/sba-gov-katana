@@ -31,14 +31,15 @@ const Button = props => {
     [styles.responsive]: responsive,
     [styles.secondary]: secondary,
     [styles.small]: small,
-    [styles.spacing]: spacing
+    [styles.spacing]: spacing,
+    [nativeProps.className]: nativeProps?.className
   })
 
   // TODO: order is fragile
   const mergedProps = {
-    className,
     'data-testid': 'button',
     ...nativeProps,
+    className,
     disabled: nativeProps.disabled || loading,
     ...(url && { to: url })
   }
