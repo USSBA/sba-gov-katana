@@ -66,7 +66,10 @@ class TextSection extends React.Component {
       })
     })
     $('a').each((i, anchor) => {
-      if (anchor.attribs.href && !/https?:\/\/[a-zA-Z.0-9]+?\.gov\/.*/.test(anchor.attribs.href)) {
+      if (
+        anchor.attribs.href &&
+        !/(https?:\/\/[a-zA-Z.0-9]+?\.gov($|(\/.*)))|^\//.test(anchor.attribs.href)
+      ) {
         $(anchor).addClass('external-link-marker')
       }
     })
