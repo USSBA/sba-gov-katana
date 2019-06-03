@@ -66,7 +66,7 @@ class LeaveSbaModal extends React.Component {
         showCancel={true}
       >
         <div className={styles.linkContainer}>
-          <span>Link to website:</span>
+          <span tabIndex="0">Link to website:</span>
           <br />
           {this.renderLink()}
         </div>

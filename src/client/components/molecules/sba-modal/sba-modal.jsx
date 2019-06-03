@@ -47,6 +47,7 @@ class SbaModal extends React.Component {
           className={styles.closeIcon}
           src={ModalCloseIcon}
           data-cy="close button"
+          aria-label="Close this modal."
         />
         {logo}
         <h3 data-cy="title" id="alertTitle" tabIndex="0" className={styles.title}>
