@@ -5,7 +5,24 @@ import styles from './leave-sba-modal.scss'
 import { Link } from 'atoms'
 import { SbaModal } from 'molecules'
 
+let closeModal
+
 class LeaveSbaModal extends React.Component {
+
+  componentWillReceiveProps(props) {
+    const { isOpen } = props
+    if(isOpen) {
+      const _this = this
+      closeModal = e => {
+        if (e.keyCode === 27) {
+          _this.props.closeLeaveSba()
+          document.removeEventListener("keydown", closeModal)
+        }
+      }
+      document.addEventListener("keydown", closeModal)
+    }
+  }
+
   continueLink() {
     this.props.closeLeaveSba()
     document.location = this.props.url
