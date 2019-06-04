@@ -9,7 +9,8 @@ import { Button } from 'atoms'
 
 class SbaModal extends React.Component {
   handleEnter(e) {
-    if (e.keyCode === 13) {
+    const enterKeyCode = 13
+    if (e.keyCode === enterKeyCode) {
       this.props.onClose()
     }
   }
