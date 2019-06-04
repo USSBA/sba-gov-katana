@@ -17,7 +17,6 @@ class LeaveSbaModal extends React.Component {
           document.removeEventListener("keydown", this.closeModal)
         }
       }
-      this.closeModal = this.closeModal.bind(this)
       document.addEventListener("keydown", this.closeModal)
     }
   }
