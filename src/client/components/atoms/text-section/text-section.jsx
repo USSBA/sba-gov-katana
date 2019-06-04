@@ -66,7 +66,12 @@ class TextSection extends React.Component {
       })
     })
     $('a').each((i, anchor) => {
-      if (anchor.attribs.href && !/https?:\/\/[a-zA-Z.0-9]+?\.gov\/.*/.test(anchor.attribs.href)) {
+      // Regex will check for .gov link without a path or with a path OR a relative link.
+      // If none of the above cases are true then we add an external-link-marker class to the link.
+      if (
+        anchor.attribs.href &&
+        !/(https?:\/\/[a-zA-Z.0-9]+?\.gov($|(\/.*)))|^\//.test(anchor.attribs.href)
+      ) {
         $(anchor).addClass('external-link-marker')
       }
     })
