@@ -48,6 +48,11 @@
   margin: 4px 0 22px 0;
   text-align: center;
   padding: 0 30px;
+
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
 }
 
 .divider {
@@ -62,6 +67,11 @@
 
 .text {
   margin-bottom: 30px;
+
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
 }
 
 .btnContainer {
