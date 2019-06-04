@@ -70,6 +70,14 @@
   background-size: 100%;
 }
 
+.textSection a {
+  color: $secondary-blue;
+
+  &:hover {
+    color: $secondary-blue-light;
+  }
+}
+
 @include grid-media($sba-grid-small) {
   :global(.text-section-table) {
     & thead > tr {
