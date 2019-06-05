@@ -22,7 +22,7 @@ exports[`Card does not error check malformed link 1`] = `
     />
   </a>
   <div
-    className="content content-with-image"
+    className="content-with-image"
   >
     <h4
       className="itemTitle"
@@ -90,7 +90,7 @@ exports[`Card should render the spanish version correctly if the link is just a 
     />
   </a>
   <div
-    className="content content-with-image"
+    className="content-with-image"
   >
     <h4
       className="itemTitle"
@@ -156,7 +156,7 @@ exports[`Card to render correctly 1`] = `
     />
   </a>
   <div
-    className="content content-with-image"
+    className="content-with-image"
   >
     <h4
       className="itemTitle"
@@ -220,7 +220,7 @@ exports[`Card to render correctly if the link is just a string 1`] = `
     />
   </a>
   <div
-    className="content content-with-image"
+    className="content-with-image"
   >
     <h4
       className="itemTitle"
@@ -282,7 +282,7 @@ exports[`Card to render correctly with null link 1`] = `
     src="https://placekitten.com/588/364"
   />
   <div
-    className="content content-with-image"
+    className="content-with-image"
   >
     <h4
       className="itemTitle"

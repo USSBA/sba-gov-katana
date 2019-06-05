@@ -3,6 +3,7 @@
     @include grid-column(12);
   }
 
+  background-color: white;
   margin-bottom: 1.5em;
   margin-top: 1.5em;
 
@@ -19,10 +20,6 @@
   .itemItalic {
     font-style: italic;
   }
-}
-
-.content {
-  background-color: white;
 }
 
 .noImage {
