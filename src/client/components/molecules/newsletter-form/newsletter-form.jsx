@@ -99,7 +99,11 @@ class NewsletterForm extends Component {
             ) : (
               <p data-testid="newsletter-footer-title">{title}</p>
             )}
-            {!footer && <CaptionText>Please enter your zip code to receive local news.</CaptionText>}
+            {!footer && (
+              <CaptionText>
+                Please enter your zip code to get information about business news and events in your area.
+              </CaptionText>
+            )}
             <div className={styles.inputs}>
               {!footer &&
                 textInputs.map(({ name, optional, validate }) => (
@@ -135,7 +139,7 @@ class NewsletterForm extends Component {
           <div className={styles[formState]}>
             <i className="fa fa-check-circle" data-testid="newsletter-success-icon" />
             <h3 data-testid="newsletter-success-title">You're all done here!</h3>
-            <p data-testid="newsletter-success-message">You're all signed up for the SBA newsletter.</p>
+            <p data-testid="newsletter-success-message">You're all signed up for the SBA e-Newsletter.</p>
             <Link data-testid="newsletter-refresh-link" onClick={this.reset}>
               Refresh
             </Link>
