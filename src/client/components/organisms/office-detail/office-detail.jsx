@@ -15,10 +15,6 @@ class OfficeDetail extends React.PureComponent {
   }
 
   render() {
-    const officeDetailClassName = classNames({
-      [styles.detailView]: true
-    })
-
     const { selectedItem, hideDetailState } = this.props
     const { item, distance } = selectedItem
     const officeType = item.office_type ? item.office_type[0] : ''
@@ -33,6 +29,11 @@ class OfficeDetail extends React.PureComponent {
       fax: item.location_fax ? item.location_fax[0] : '',
       link: item.office_website ? item.office_website[0] : ''
     }
+
+    const officeDetailClassName = classNames({
+      [styles.detailView]: true,
+      [styles.additionalTitleMargin]: distance === null
+    })
 
     return (
       <div id="office-detail" className={officeDetailClassName} tabIndex="0">
