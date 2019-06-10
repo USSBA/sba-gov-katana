@@ -68,4 +68,9 @@ describe('Primary Search Bar', () => {
     const button = searchBar.find('Button')
     expect(button.props().disabled).toBeTruthy()
   })
+  it('will NOT disable the button if the button is set to active', () => {
+    const searchBar = mount(<PrimarySearchBar searchButtonText="foo" buttonActive={true} />)
+    const button = searchBar.find('Button')
+    expect(button.props().disabled).not.toBeTruthy()
+  })
 })
