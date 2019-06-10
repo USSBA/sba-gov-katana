@@ -1,12 +1,8 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
-import { render, cleanup, waitForElement, Simulate, fireEvent } from 'react-testing-library'
-import 'jest-dom/extend-expect'
+import { mount } from 'enzyme'
 
 import EventLookupPage from 'pages/event-lookup-page/event-lookup-page.jsx'
 import { MultiSelect } from 'atoms'
-
-afterEach(cleanup)
 
 describe('EventLookupPage', () => {
   // When a user enters a zip code containing characters are not equal to 5 digits, show an error
