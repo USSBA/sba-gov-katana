@@ -138,7 +138,7 @@ export class DocumentArticle extends React.Component {
       }
 
       let contactElement = null
-      if (mediaContact) {
+      if (pageType === 'article' && mediaContact) {
         const { emailAddress, phone } = mediaContact
         let emailAddressLink
         let phoneLink
