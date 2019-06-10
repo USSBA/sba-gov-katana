@@ -55,7 +55,6 @@ class EventLookupPage extends React.PureComponent {
 
     // set state variable shouldDisableDistance in event-lookup-page to false when there is input
     this.setState({ shouldDisableDistance: !input, shouldDisableSearchButton: result })
-    // this.setState({ shouldDisableSearchButton: result })
 
     return result
   }
