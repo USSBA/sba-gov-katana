@@ -55,6 +55,7 @@ class EventLookupPage extends React.PureComponent {
 
     // set state variable shouldDisableDistance in event-lookup-page to false when there is input
     this.setState({ shouldDisableDistance: !input })
+    this.setState({ shouldDisableSearchButton: result })
 
     return result
   }
@@ -78,7 +79,12 @@ class EventLookupPage extends React.PureComponent {
         defaultSearchParams={defaultSearchParams}
         showStatus={true}
       >
-        <PrimarySearchBar id="events-primary-search-bar" title="Find events" className={styles.searchBar}>
+        <PrimarySearchBar
+          id="events-primary-search-bar"
+          title="Find events"
+          className={styles.searchBar}
+          buttonActive={this.state.shouldDisableSearchButton}
+        >
           <TextInput
             id="keyword-search"
             queryParamName="q"

@@ -63,4 +63,9 @@ describe('Primary Search Bar', () => {
     searchBar.find('#testInput').simulate('change')
     expect(onChangeSpy).toHaveBeenCalledOnce
   })
+  it('will disable the button if the button is set to inactive', () => {
+    const searchBar = mount(<PrimarySearchBar searchButtonText="foo" buttonActive={false} />)
+    const button = searchBar.find('Button')
+    expect(button.props().disabled).toBeTruthy()
+  })
 })
