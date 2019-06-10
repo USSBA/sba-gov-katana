@@ -38,7 +38,7 @@ export class PrimarySearchBar extends React.PureComponent {
       })
       return clonedChild
     })
-    const { id } = this.props
+    const { id, buttonActive } = this.props
     const bannerClassName =
       styles.banner + (!isEmpty(this.props.className) ? ' ' + this.props.className : '')
 
@@ -61,6 +61,7 @@ export class PrimarySearchBar extends React.PureComponent {
                 id={`${id ? id : 'primary-search-bar'}-search-button`}
                 onClick={this.onSearch.bind(this)}
                 data-cy={'search button'}
+                disabled={!buttonActive}
               >
                 {this.props.searchButtonText}
               </Button>
@@ -85,7 +86,9 @@ PrimarySearchBar.propTypes = {
   title: PropTypes.string,
 
   // html id attribute for component
-  id: PropTypes.string
+  id: PropTypes.string,
+
+  buttonActive: PropTypes.bool
 }
 
 PrimarySearchBar.defaultProps = {
@@ -93,7 +96,8 @@ PrimarySearchBar.defaultProps = {
   onFieldChange: () => {},
   searchButtonText: 'Search',
   title: 'Search',
-  id: null
+  id: null,
+  buttonActive: true
 }
 
 export default PrimarySearchBar
