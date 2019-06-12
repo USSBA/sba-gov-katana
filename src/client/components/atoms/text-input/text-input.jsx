@@ -73,6 +73,15 @@ class TextInput extends React.Component {
     this.setState({ isFocused: true })
   }
 
+  handleKeyUp(event) {
+    const { isValid } = this.state
+    const isNewValueValid = this.isValid(event.target.value)
+
+    if (isNewValueValid !== isValid) {
+      this.setState({ isValid: isNewValueValid })
+    }
+  }
+
   isValid(value) {
     const { validationFunction } = this.props
     if (validationFunction) {
@@ -134,6 +143,7 @@ class TextInput extends React.Component {
             onChange={this.handleChange.bind(this)}
             onBlur={this.handleBlur.bind(this)}
             onFocus={this.handleFocus.bind(this)}
+            onKeyUp={this.handleKeyUp.bind(this)}
           />
           {optional && !isFocused && !value && <span className={styles.optional}>Optional</span>}
           {showSearchIcon ? (
