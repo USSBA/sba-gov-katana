@@ -693,7 +693,6 @@ const TRANSLATIONS = {
   socialMedia: {
     en: {
       text: 'Social Media',
-
       url: '/about-sba/open-government/about-sbagov-website/social-media'
     },
     es: {
