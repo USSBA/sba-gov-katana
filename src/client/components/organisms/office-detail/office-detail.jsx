@@ -27,7 +27,8 @@ class OfficeDetail extends React.PureComponent {
       email: item.location_email ? item.location_email[0] : '',
       phoneNumber: item.location_phone_number ? item.location_phone_number[0] : '',
       fax: item.location_fax ? item.location_fax[0] : '',
-      link: item.office_website ? item.office_website[0] : ''
+      link: item.office_website ? item.office_website[0] : '',
+      border: false
     }
 
     const officeDetailClassName = classNames({
@@ -103,12 +104,7 @@ class OfficeDetail extends React.PureComponent {
             </div>
           </div>
         )}
-        <ContactCard
-          {...contactProps}
-          className={{
-            [styles.contactCard]: true
-          }}
-        />
+        <ContactCard {...contactProps} />
       </div>
     )
   }
