@@ -64,18 +64,23 @@ Blog.propTypes = {
 
 const ByLine = ({ blogData, categoryLink }) => (
   <div data-testid={'byline'}>
-    <p>
-      <span data-testid={'postAuthor'} tabIndex="0">
-        By <a href={blogData.author.url}>{blogData.author.name}</a>
-      </span>{' '}
-      <span data-testid={'postDate'} tabIndex="0">
-        on {moment.unix(blogData.created).format('MMMM DD, YYYY')}
-      </span>
-      <br />
-      <span data-testid={'postCategory'} tabIndex="0">
-        Category: <a href={categoryLink}>{blogData.blogCategory}</a>
-      </span>
-    </p>
+    <div className={styles.bylineColA}>
+      <p>
+        <span data-testid={'postAuthor'} tabIndex="0">
+          By <a href={blogData.author.url}>{blogData.author.name}</a>
+        </span>{' '}
+        <span data-testid={'postDate'} tabIndex="0">
+          on {moment.unix(blogData.created).format('MMMM DD, YYYY')}
+        </span>
+      </p>
+    </div>
+    <div className={styles.bylineColB}>
+      <p>
+        <span data-testid={'postCategory'} tabIndex="0">
+          Category: <a href={categoryLink}>{blogData.blogCategory}</a>
+        </span>
+      </p>
+    </div>
   </div>
 )
 
