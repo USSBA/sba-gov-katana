@@ -34,6 +34,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            onKeyUp={[Function]}
             placeholder="Search by name, title, or office"
           />
           <div
