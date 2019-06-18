@@ -42,6 +42,7 @@ exports[`SearchPage to match snapshot 1`] = `
                 onChange={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
+                onKeyUp={[Function]}
               />
             </div>
           </div>
