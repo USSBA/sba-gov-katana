@@ -63,8 +63,8 @@ Blog.propTypes = {
 }
 
 const ByLine = ({ blogData, categoryLink }) => (
-  <div data-testid={'byline'}>
-    <div className={styles.bylineColA}>
+  <div data-testid={'byline'} className={styles.byline}>
+    <div>
       <p>
         <span data-testid={'postAuthor'} tabIndex="0">
           By <a href={blogData.author.url}>{blogData.author.name}</a>
@@ -74,7 +74,7 @@ const ByLine = ({ blogData, categoryLink }) => (
         </span>
       </p>
     </div>
-    <div className={styles.bylineColB}>
+    <div>
       <p>
         <span data-testid={'postCategory'} tabIndex="0">
           Category: <a href={categoryLink}>{blogData.blogCategory}</a>

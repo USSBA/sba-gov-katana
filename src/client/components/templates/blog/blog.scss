@@ -13,18 +13,14 @@
   }
 
   h1 {
-    font-size: 1.777rem;
+    font-size: 28px;
     font-weight: 400;
   }
 
   @media (min-width: 1200px) {
     h1 {
-      font-size: 2.25rem;
+      font-size: 36px;
     }
-  }
-
-  h5 {
-    clear: both;
   }
 }
 
@@ -45,14 +41,9 @@
   }
 }
 
-.bylineColA {
+.byline {
   @media (min-width: 768px) {
-    float: left;
-  }
-}
-
-.bylineColB {
-  @media (min-width: 768px) {
-    float: right;
+    display: flex;
+    justify-content: space-between;
   }
 }
