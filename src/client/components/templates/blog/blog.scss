@@ -2,25 +2,18 @@
   word-break: break-word;
   padding: 30px 30px 0 30px;
 
-  @include grid-media($sba-grid-medium) {
-    width: 700px;
-    margin: 0 auto;
-  }
-
-  @include grid-media($sba-grid-large) {
-    width: 700px;
-    margin: 0 auto;
-  }
-
   h1 {
     font-size: 28px;
     font-weight: 400;
-  }
 
-  @media (min-width: 1200px) {
-    h1 {
+    @include for-large-up {
       font-size: 36px;
     }
+  }
+
+  @include for-medium-up {
+    width: 700px;
+    margin: 0 auto;
   }
 }
 
