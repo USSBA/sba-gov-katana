@@ -5,6 +5,7 @@
   h1 {
     font-size: 28px;
     font-weight: 400;
+    margin-bottom: 0;
 
     @include for-large-up {
       font-size: 36px;
@@ -29,13 +30,18 @@
     margin: 0 auto;
   }
   
-  p {
+  * {
     font-size: 21px;
   }
 }
 
 .byline {
-  @media (min-width: 768px) {
+  @include for-small-only {
+    div:first-child {
+      margin-bottom: -20px;
+    }
+  }
+  @include for-medium-up {
     display: flex;
     justify-content: space-between;
   }
