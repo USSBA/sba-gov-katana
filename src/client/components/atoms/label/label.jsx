@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import styles from './label.scss'
@@ -21,7 +22,7 @@ const Label = props => {
   )
 }
 
-Label.PropTypes = {
+Label.propTypes = {
   // Secondary text that specifies the exact entity
   id: PropTypes.string,
 

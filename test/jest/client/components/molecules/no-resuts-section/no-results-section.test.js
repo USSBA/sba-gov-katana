@@ -35,30 +35,30 @@ describe('NoResultsSection molecule', () => {
 
   test('displays nothing when search tips are undefined', () => {
     const component = shallow(<NoResultsSection />)
-    const listNode = component.find('ul').node
-    expect(listNode).toBeUndefined()
+    const listNode = component.find('ul')
+    expect(listNode.exists()).toEqual(false)
   })
 
   test('displays nothing when there are 0 search tips', () => {
     const searchTips = []
     const component = shallow(<NoResultsSection searchTips={searchTips} />)
-    const listNode = component.find('ul').node
-    expect(listNode).toBeUndefined()
+    const listNode = component.find('ul')
+    expect(listNode.exists()).toEqual(false)
   })
 
   test('displays nothing when there are search tips and result items', () => {
     const items = ['item1', 'item2']
     const searchTips = ['tip1', 'tip2', 'tip3']
     const component = shallow(<NoResultsSection items={items} searchTips={searchTips} />)
-    const listNode = component.find('ul').node
-    expect(listNode).toBeUndefined()
+    const listNode = component.find('ul')
+    expect(listNode.exists()).toEqual(false)
   })
 
   test('displays nothing when there are search tips and the search is loading', () => {
     const isLoading = true
     const searchTips = ['tip1', 'tip2', 'tip3']
     const component = shallow(<NoResultsSection isLoading={isLoading} searchTips={searchTips} />)
-    const listNode = component.find('ul').node
-    expect(listNode).toBeUndefined()
+    const listNode = component.find('ul')
+    expect(listNode.exists()).toEqual(false)
   })
 })

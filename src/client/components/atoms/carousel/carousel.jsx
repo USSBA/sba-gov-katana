@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom'
 import styles from './styles.scss'
 import { Link } from 'atoms'
 
-var Slider = React.createClass({
+class Slider extends React.Component {
   getDefaultProps() {
     return {
       loop: false,
@@ -14,7 +14,7 @@ var Slider = React.createClass({
       navIsClickable: false,
       showNav: true
     }
-  },
+  }
 
   getInitialState() {
     return {
@@ -24,7 +24,7 @@ var Slider = React.createClass({
       lastIndex: 0,
       transition: false
     }
-  },
+  }
 
   componentWillMount() {
     const { selected } = this.props
@@ -33,7 +33,7 @@ var Slider = React.createClass({
       index: selected,
       lastIndex: selected
     })
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     const { selected } = this.props
@@ -41,11 +41,11 @@ var Slider = React.createClass({
     if (selected !== nextProps.selected) {
       this.goToSlide(nextProps.selected)
     }
-  },
+  }
 
   getDragX(event, isTouch) {
     return isTouch ? event.touches[0].pageX : event.pageX
-  },
+  }
 
   handleDragStart(event, isTouch) {
     /* eslint-disable-next-line id-length */
@@ -57,7 +57,7 @@ var Slider = React.createClass({
       transition: false,
       slideWidth: ReactDOM.findDOMNode(this.refs.slider).offsetWidth
     })
-  },
+  }
 
   handleDragMove(event, isTouch) {
     const { dragStart, lastIndex, slideWidth } = this.state
@@ -78,7 +78,7 @@ var Slider = React.createClass({
     this.setState({
       index: newIndex
     })
-  },
+  }
 
   handleDragEnd() {
     const { items } = this.props
@@ -106,7 +106,7 @@ var Slider = React.createClass({
       lastIndex: newIndex,
       transition: true
     })
-  },
+  }
 
   goToSlide(_index, event) {
     const { items, loop, navIsClickable } = this.props
@@ -130,7 +130,7 @@ var Slider = React.createClass({
         transition: true
       })
     }
-  },
+  }
 
   renderNav() {
     const { items, navIsClickable } = this.props
@@ -145,7 +145,7 @@ var Slider = React.createClass({
     })
 
     return <div className={styles.SliderNav}>{nav}</div>
-  },
+  }
 
   makeItem(item, index) {
     return (
@@ -155,7 +155,7 @@ var Slider = React.createClass({
         </Link>
       </div>
     )
-  },
+  }
 
   makeChildrenFromItems(items) {
     // in order to create the wrap around effect, we need to create a copy of the last element
@@ -165,15 +165,15 @@ var Slider = React.createClass({
     const newLastItem = this.makeItem(items[0], items.length)
     const childrenLoopable = [newFirstItem].concat(children.slice(0)).concat([newLastItem])
     return childrenLoopable
-  },
+  }
 
   calculateTotalWidth(numberOfChildren) {
     return numberOfChildren * 75 + (numberOfChildren - 1) * 4.2
-  },
+  }
 
   calculateTranslation(numberOfChildren, index) {
     return -1 * (numberOfChildren === 6 ? 14 : 16.5) + -1 * index * (100 / numberOfChildren)
-  },
+  }
 
   render() {
     const { items, showNav, navIsClickable } = this.props
@@ -211,6 +211,6 @@ var Slider = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Slider

@@ -1,11 +1,9 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { mount } from 'enzyme'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 import { TitleSection } from 'molecules/title-section/title-section'
-// Quiet warnings about OnTouchTap
-import injectTapEventPlugin from 'react-tap-event-plugin'
-injectTapEventPlugin()
 
 const options = {
   context: {

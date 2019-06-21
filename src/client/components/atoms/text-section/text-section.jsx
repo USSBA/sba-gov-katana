@@ -122,7 +122,7 @@ class TextSection extends React.Component {
 
 TextSection.propTypes = {
   // TODO: use children instead of text prop
-  text: React.PropTypes.string.isRequired
+  text: PropTypes.string.isRequired
 }
 
 export default TextSection

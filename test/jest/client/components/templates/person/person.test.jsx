@@ -89,14 +89,15 @@ describe('Person page', () => {
   test('heading renders correct text', () => {
     const component = shallow(<Person personData={personPropsWithPhoto} />)
     const heading = component.find('h1')
-    const headingText = heading.node.props.children
+    const headingText = heading.getElement().props.children
     expect(headingText).toEqual('Thomas A. Todt')
   })
 
   test('Subcomponent, ContactCard, renders correctly', () => {
     const component = shallow(<Person personData={personPropsWithoutPhoto} />)
     const subComponent = component.find('ContactCard')
-    const subComponentProps = subComponent.node.props
+    const subComponentProps = subComponent.getElement().props
+
     expect(Object.keys(subComponentProps).length).toEqual(3)
     expect(subComponentProps.phoneNumber).toEqual('205-290-7009')
     expect(subComponentProps.email).toEqual('thomas.todt@sba.gov')
@@ -104,7 +105,7 @@ describe('Person page', () => {
 
   test('renders person image and alt text', () => {
     const component = shallow(<Person personData={personPropsWithPhoto} />)
-    const imgProps = component.find('.person-page img').node.props
+    const imgProps = component.find('.person-page img').getElement().props
 
     expect(component.find('.person-page img').length).toEqual(1)
     expect(imgProps.alt).toEqual('image of Thomas Todt')

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Waypoint from 'react-waypoint'
 
 import styles from './long-scroll-section.scss'
@@ -49,7 +50,7 @@ class LongScrollSection extends React.Component {
 }
 
 LongScrollSection.propTypes = {
-  sectionItem: React.PropTypes.object
+  sectionItem: PropTypes.object
 }
 
 LongScrollSection.defaultProps = {

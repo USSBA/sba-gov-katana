@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { debounce, reverse } from 'lodash'
 
 import styles from './text-readmore-section.scss'
@@ -72,9 +73,9 @@ class TextReadMoreSection extends React.Component {
 }
 
 TextReadMoreSection.propTypes = {
-  textSectionItem: React.PropTypes.object.isRequired,
-  readMoreSectionItem: React.PropTypes.object.isRequired,
-  parentId: React.PropTypes.string.isRequired
+  textSectionItem: PropTypes.object.isRequired,
+  readMoreSectionItem: PropTypes.object.isRequired,
+  parentId: PropTypes.string.isRequired
 }
 
 export default TextReadMoreSection

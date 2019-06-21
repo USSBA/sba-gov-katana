@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './style-gray-background.scss'
 import * as paragraphMapper from '../../templates/paragraph-mapper.jsx'
@@ -29,7 +30,7 @@ class StyleGrayBackground extends React.Component {
 }
 
 StyleGrayBackground.propTypes = {
-  parentIndex: React.PropTypes.number
+  parentIndex: PropTypes.number
 }
 
 StyleGrayBackground.defaultProps = {

@@ -934,7 +934,6 @@ exports[`Front Page Hero should render correctly 1`] = `
             src="test-file-stub"
           />
         </a>
-        <noscript />
       </span>
       <span>
         <a
@@ -947,7 +946,6 @@ exports[`Front Page Hero should render correctly 1`] = `
             src="test-file-stub"
           />
         </a>
-        <noscript />
       </span>
       <span>
         <a
@@ -960,7 +958,6 @@ exports[`Front Page Hero should render correctly 1`] = `
             src="test-file-stub"
           />
         </a>
-        <noscript />
       </span>
       <span>
         <a
@@ -973,7 +970,6 @@ exports[`Front Page Hero should render correctly 1`] = `
             src="test-file-stub"
           />
         </a>
-        <noscript />
       </span>
       <span>
         <a
@@ -986,7 +982,6 @@ exports[`Front Page Hero should render correctly 1`] = `
             src="test-file-stub"
           />
         </a>
-        <noscript />
       </span>
     </div>
     <form
@@ -1013,7 +1008,6 @@ exports[`Front Page Hero should render correctly 1`] = `
               onClick={[Function]}
               style={Object {}}
               target="_self"
-              type={false}
             >
               Subscribe
             </a>

@@ -234,6 +234,7 @@ describe('Search Template', () => {
         })
       )
       const component = mount(<SearchTemplate searchType="none" loadDefaultResults={true} />)
+
       setImmediate(() => {
         try {
           expect(component.find('#no-results').length).toBe(1)

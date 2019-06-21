@@ -7,10 +7,6 @@ import { ModalController } from 'organisms/modal-controller/modal-controller.jsx
 import { MobileNav as MobileSectionNavModal } from 'organisms/modals/mobile-section-nav/mobile-section-nav.jsx'
 import SbaNewsModal from 'molecules/news-modal/news-modal.jsx'
 
-// Quiet warnings about OnTouchTap
-import injectTapEventPlugin from 'react-tap-event-plugin'
-injectTapEventPlugin()
-
 const mobileSectionNavProps = {
   modalType: 'MOBILE_SECTION_NAV',
   modalProps: {
