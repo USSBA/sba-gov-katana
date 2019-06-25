@@ -9,17 +9,11 @@ import { mount, shallow } from 'enzyme'
 import { fireEvent, render, wait } from 'react-testing-library'
 
 import { postMiscAction as mockPostMiscAction } from 'client/fetch-content-helper'
+import { getLanguageOverride as mockGetLanguageOverride} from 'client/services/utils'
 import { NewsletterForm } from 'molecules'
 
-jest.mock('client/fetch-content-helper', () => {
-  return {
-    postMiscAction: jest.fn()
-  }
-})
-
+jest.mock('client/fetch-content-helper')
 jest.mock('client/services/utils')
-import { getLanguageOverride } from 'client/services/utils'
-getLanguageOverride.mockImplementation(() => 'en')
 
 function setup(state = { isValid: false }) {
   const utils = render(<NewsletterForm />)
@@ -34,6 +28,10 @@ function setup(state = { isValid: false }) {
 }
 
 describe('NewsletterForm', () => {
+  beforeAll(() => {
+    mockGetLanguageOverride.mockImplementation(() => 'en')
+  })
+
   it('should have a title', () => {
     const titleText = 'Sign up for SBA email updates'
     const { getByTestId, getByText } = render(<NewsletterForm title={titleText} />)
@@ -56,62 +54,34 @@ describe('NewsletterForm', () => {
     expect(button).toBeDisabled()
   })
 
-  // TODO: Get testing-library to work here instead of Enzyme
   it('should display success state on valid input', async () => {
-    // jest.mock('client/fetch-content-helper', () => {
-    //   return {
-    //     postMiscAction: jest.fn(() => Promise.resolve({ subscriber: 'id' }))
-    //   }
-    // })
+    mockPostMiscAction.mockImplementation(() => Promise.resolve({ subscriber: 'id' }))
 
-    // const { debug, getByTestId, getByText, emailInput, zipInput, getByLabelText } = setup()
-    // const button = getByTestId('button')
-    //
-    // const mail = 'mail@mail.com'
-    //
-    // userEvent.type(emailInput, mail)
-    //
-    // wait for button to be enabled when form is valid
-    // await wait(() => expect(button).toBeEnabled())
-    //
-    // fireEvent.click(button)
-    //
-    // expect(mockPostMiscAction).toHaveBeenCalled()
-    //
-    // await wait(() => getByText(/you\'re all done here!/i))
+    const { getByTestId, getByText, emailInput } = setup()
+    const button = getByTestId('button')
 
-    const wrapper = mount(<NewsletterForm />)
-    wrapper.find('#newsletter-email-address').simulate('change', { target: { value: 'mail@mail.com' } })
+    const mail = 'mail@mail.com'
 
-    // TODO: state does not update with simulate('change', ...)
-    wrapper.setState({ isEmailAddressValid: true })
+    userEvent.type(emailInput, mail)
+    expect(button).toBeEnabled()
 
-    wrapper.find('form').simulate('submit', { preventDefault: () => ({}) })
-    mockPostMiscAction.mockImplementation(() => Promise.resolve({ subscriber: '123' }))
+    fireEvent.click(button)
+
     expect(mockPostMiscAction).toHaveBeenCalled()
 
-    // TODO: state does not update with simulate('submit', ...)
-    wrapper.setState({ formState: 'success' })
-
-    expect(wrapper.find('h3').text()).toMatch(/you're all done here!/i)
+    await wait(() => getByText(/you\'re all done here!/i))
   })
 
-  it('should display error state on network error', () => {
-    const wrapper = mount(<NewsletterForm />)
-    wrapper.find('#newsletter-email-address').simulate('change', { target: { value: 'mail@mail.com' } })
+  it('should display error state on network error', async () => {
+    mockPostMiscAction.mockImplementation(() => Promise.resolve(null))
 
-    // TODO: state does not update with simulate('change', ...)
-    wrapper.setState({ isEmailAddressValid: true })
+    const { getByTestId, getByText, emailInput } = setup()
+    const button = getByTestId('button')
+    const mail = 'mail@mail.com'
 
-    wrapper.find('form').simulate('submit', { preventDefault: () => ({}) })
-    mockPostMiscAction.mockImplementation(() => {
-      throw Error()
-    })
-    expect(mockPostMiscAction).toThrow()
+    userEvent.type(emailInput, mail)
+    fireEvent.click(button)
 
-    // TODO: state does not update with simulate('submit', ...)
-    wrapper.setState({ formState: 'error' })
-
-    expect(wrapper.find('h3').text()).toMatch(/sorry, we're having issues/i)
+    await wait(() => getByText(/sorry, we\'re having issues/i))
   })
 })

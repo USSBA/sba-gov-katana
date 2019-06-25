@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { last, size, take } from 'lodash'
 
@@ -17,7 +17,7 @@ class Breadcrumb extends React.Component {
     }
 
     return (
-      <span className={styles.last} key={20}>
+      <span className={styles.last} key={title}>
         <Link id={'breadcrumb-current'} to={url} data-cy="last-breadcrumb">
           {title}
         </Link>
@@ -48,12 +48,14 @@ class Breadcrumb extends React.Component {
                 url = spanishTranslation.url
               }
 
-              return [
-                <Link id={'breadcrumb-level' + index} data-cy={'navigation-breadcrumb-' + index} to={url}>
-                  {title}
-                </Link>,
-                <span className={styles.slash}>/</span>
-              ]
+              return (
+                <Fragment key={title}>
+                  <Link id={'breadcrumb-level' + index} data-cy={'navigation-breadcrumb-' + index} to={url}>
+                    {title}
+                  </Link>
+                  <span className={styles.slash}>/</span>
+                </Fragment>
+              )
             })
           ) : (
             <div />

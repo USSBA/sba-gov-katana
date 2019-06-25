@@ -174,7 +174,7 @@ describe('Event Template', () => {
       }
     }
     const component = mount(<Event {...props} />)
-    const breadcrumb = component.find('#breadcrumb-level0')
+    const breadcrumb = component.find('a#breadcrumb-level0')
     expect(breadcrumb.text()).toBe(findEventsBreadcrumb)
   })
   test('should render the event title in the breadcrumb', () => {
@@ -187,7 +187,7 @@ describe('Event Template', () => {
       }
     }
     const component = mount(<Event {...props} />)
-    const breadcrumbTitle = component.find('#breadcrumb-current')
+    const breadcrumbTitle = component.find('a#breadcrumb-current')
     expect(breadcrumbTitle.text()).toBe(eventTitle)
   })
 })
