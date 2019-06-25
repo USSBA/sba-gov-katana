@@ -1,7 +1,5 @@
 import React from 'react'
-// consider someday refactoring cheerio out and only use jquery (cheerio is a subset of jquery and we need jquery for the cross-cutting click handler)
-import cheerio from 'cheerio'
-import jquery from 'jquery'
+import $ from 'jquery'
 import styles from './text-section.scss'
 import { LeaveSbaModal } from 'organisms'
 
@@ -15,24 +13,26 @@ class TextSection extends React.Component {
   }
 
   parseTables() {
-    const $ = cheerio.load(this.props.text)
-    $('table').each((i, table) => {
+    const { text } = this.props
+    const textSectionHtml = $(`<div>${text}</div>`)
+
+    textSectionHtml.find('table').each((i, table) => {
       const headers = []
       $(table)
         .addClass('text-section-table')
         .find('thead > tr > th')
-        .each((_, theader) => {
-          headers.push(theader.children[0].data)
+        .each((j, theader) => {
+          headers.push(theader.innerText)
         })
 
       const trs = $(table).find('tbody > tr')
       const firstRowLength = $($(trs)[0]).find('td').length
 
-      $(trs).each((j, trow) => {
+      $(trs).each((k, trow) => {
         let tds = $(trow).find('td')
 
         if (tds.length !== firstRowLength) {
-          const prevRow = $(trs)[j - 1]
+          const prevRow = $(trs)[k - 1]
           const firstTdCopy = $($(prevRow).find('td')[0]).clone()
           firstTdCopy.removeAttr('rowspan')
           firstTdCopy.find('.table-header-label').remove()
@@ -65,17 +65,17 @@ class TextSection extends React.Component {
         }
       })
     })
-    $('a').each((i, anchor) => {
+
+    textSectionHtml.find('a').each((i, anchor) => {
       // Regex will check for .gov link without a path or with a path OR a relative link.
       // If none of the above cases are true then we add an external-link-marker class to the link.
-      if (
-        anchor.attribs.href &&
-        !/(https?:\/\/[a-zA-Z.0-9]+?\.gov($|(\/.*)))|^\//.test(anchor.attribs.href)
-      ) {
+      const href = $(anchor).attr('href')
+      if (href && !/(https?:\/\/[a-zA-Z.0-9]+?\.gov($|(\/.*)))|^\//.test(href)) {
         $(anchor).addClass('external-link-marker')
       }
     })
-    return $.html()
+
+    return textSectionHtml.html()
   }
 
   showModal(targetUrl) {
@@ -91,7 +91,7 @@ class TextSection extends React.Component {
 
   componentDidMount() {
     const _this = this
-    jquery('.external-link-marker')
+    $('.external-link-marker')
       .off('click')
       .on('click', e => {
         console.log('Click!', e.target.href)
