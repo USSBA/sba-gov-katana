@@ -9,7 +9,8 @@ import { Button } from 'atoms'
 
 class SbaModal extends React.Component {
   handleEnter(e) {
-    if (e.keyCode === 13) {
+    const enterKeyCode = 13
+    if (e.keyCode === enterKeyCode) {
       this.props.onClose()
     }
   }
@@ -27,13 +28,16 @@ class SbaModal extends React.Component {
       isOpen
     } = this.props
 
-    const logo = showLogo ? <img className={styles.logo} src={sbaLogo} /> : null
+    const logo = showLogo ? <img className={styles.logo} src={sbaLogo} aria-hidden="true"/> : null
     return (
       <Modal
         isOpen={isOpen}
         className={styles.content}
         overlayClassName={styles.overlay}
         contentLabel={title}
+        role="alertdialog"
+        aria-labelledby="alertTitle"
+        aria-describedby="alertText"
       >
         <img
           tabIndex={0}
@@ -44,13 +48,14 @@ class SbaModal extends React.Component {
           className={styles.closeIcon}
           src={ModalCloseIcon}
           data-cy="close button"
+          aria-label="Close this modal."
         />
         {logo}
-        <h3 className={styles.title} data-cy="title">
+        <h3 data-cy="title" id="alertTitle" tabIndex="0" className={styles.title}>
           {title}
         </h3>
         <div className={styles.divider} />
-        <p className={styles.text} data-cy="message text">
+        <p data-cy="message text" id="alertText" tabIndex="0" className={styles.text}>
           {text}
         </p>
         {children}

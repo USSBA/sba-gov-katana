@@ -6,6 +6,21 @@ import { Link } from 'atoms'
 import { SbaModal } from 'molecules'
 
 class LeaveSbaModal extends React.Component {
+
+  componentWillReceiveProps(props) {
+    const { isOpen } = props
+    if(isOpen) {
+      const escapeKeyCode = 27
+      this.closeModal = e => {
+        if (e.keyCode === escapeKeyCode) {
+          this.props.closeLeaveSba()
+          document.removeEventListener("keydown", this.closeModal)
+        }
+      }
+      document.addEventListener("keydown", this.closeModal)
+    }
+  }
+
   continueLink() {
     this.props.closeLeaveSba()
     document.location = this.props.url
@@ -49,7 +64,7 @@ class LeaveSbaModal extends React.Component {
         showCancel={true}
       >
         <div className={styles.linkContainer}>
-          <span>Link to website:</span>
+          <span tabIndex="0">Link to website:</span>
           <br />
           {this.renderLink()}
         </div>

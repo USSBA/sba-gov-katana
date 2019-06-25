@@ -109,7 +109,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -174,7 +174,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -239,7 +239,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -304,7 +304,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -378,7 +378,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -443,7 +443,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -508,7 +508,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -573,7 +573,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -647,7 +647,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -712,7 +712,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -777,7 +777,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -842,7 +842,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   />
                 </a>
                 <div
-                  className="content content-with-image"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"

@@ -39,7 +39,11 @@ img:focus {
   outline-offset: 3px;
 }
 
-.contactCard {
-  border: none;
-  padding: 0;
+.additionalTitleMargin {
+  @include grid-media($sba-grid-large) {
+    h2 {
+      margin-top: 26px;
+      display: block;
+    }
+  }
 }
