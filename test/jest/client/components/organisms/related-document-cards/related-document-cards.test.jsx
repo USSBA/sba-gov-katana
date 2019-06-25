@@ -1,7 +1,9 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
 import { RelatedDocumentCards, DetailCardCollection } from 'organisms'
-import * as helper from 'client/fetch-content-helper'
+import { fetchRestContent as mockFetchRestContent } from 'client/fetch-content-helper'
+
+jest.mock('client/fetch-content-helper')
 
 // TODO: write test(s) for sortRelatedDocuments function
 
@@ -19,18 +21,16 @@ const data = JSON.stringify({
 })
 
 describe('RelatedDocumentCards', () => {
-  let mockFetchSiteContent
-
   beforeEach(() => {
-    mockFetchSiteContent = jest.spyOn(helper, 'fetchRestContent')
+    mockFetchRestContent.mockImplementation(() => jest.fn())
   })
   afterEach(() => {
-    mockFetchSiteContent.mockRestore()
+    mockFetchRestContent.mockRestore()
   })
 
   test('should not render DetailDocumentCards component when there are no related documents', async () => {
     const customData = JSON.parse(data)
-    mockFetchSiteContent.mockReturnValue('')
+    mockFetchRestContent.mockReturnValue('')
 
     const component = shallow(<RelatedDocumentCards data={customData} />)
     await component.instance().componentDidMount()
@@ -41,7 +41,7 @@ describe('RelatedDocumentCards', () => {
     const customData = JSON.parse(data)
     customData.relatedDocuments.push(2222)
 
-    mockFetchSiteContent.mockReturnValue(customData)
+    mockFetchRestContent.mockReturnValue(customData)
 
     const component = shallow(<RelatedDocumentCards data={customData} />)
     await component.instance().componentDidMount()
@@ -52,11 +52,10 @@ describe('RelatedDocumentCards', () => {
     const customData = JSON.parse(data)
     customData.relatedDocuments.push(2222, 3333)
 
-    mockFetchSiteContent.mockReturnValue(customData)
+    mockFetchRestContent.mockReturnValue(Promise.resolve(customData))
 
-    const component = shallow(<RelatedDocumentCards data={customData} />)
-    await component.instance().componentDidMount()
-    expect(mockFetchSiteContent).toHaveBeenCalledTimes(customData.relatedDocuments.length)
+    const component = await shallow(<RelatedDocumentCards data={customData} />)
+    expect(mockFetchRestContent).toHaveBeenCalledTimes(customData.relatedDocuments.length)
   })
 
   test('should update state with the related document data', async () => {
@@ -71,8 +70,8 @@ describe('RelatedDocumentCards', () => {
     const mainDocumentData = JSON.parse(data)
     mainDocumentData.relatedDocuments.push(2222, 3333)
 
-    mockFetchSiteContent.mockReturnValueOnce(firstRelatedDocumentData)
-    mockFetchSiteContent.mockReturnValueOnce(secondRelatedDocumentData)
+    mockFetchRestContent.mockReturnValueOnce(firstRelatedDocumentData)
+    mockFetchRestContent.mockReturnValueOnce(secondRelatedDocumentData)
 
     const mockSortedDocumentsInState = {
       'Alternative form': [
@@ -103,9 +102,8 @@ describe('RelatedDocumentCards', () => {
       ]
     }
 
-    const component = shallow(<RelatedDocumentCards data={mainDocumentData} />)
-    await component.instance().componentDidMount()
-    const updatedState = component.state('sortedDocuments')
+    const component = await shallow(<RelatedDocumentCards data={mainDocumentData} />)
+    const updatedState = (await component.update()).state('sortedDocuments')
     expect(updatedState).toMatchObject(mockSortedDocumentsInState)
   })
 })
