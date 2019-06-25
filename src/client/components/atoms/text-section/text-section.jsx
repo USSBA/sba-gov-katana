@@ -12,8 +12,7 @@ class TextSection extends React.Component {
     }
   }
 
-  parseTables() {
-    const { text } = this.props
+  parseTables(text) {
     const textSectionHtml = $(`<div>${text}</div>`)
 
     textSectionHtml.find('table').each((i, table) => {
@@ -22,7 +21,7 @@ class TextSection extends React.Component {
         .addClass('text-section-table')
         .find('thead > tr > th')
         .each((j, theader) => {
-          headers.push(theader.innerText)
+          headers.push($(theader).text())
         })
 
       const trs = $(table).find('tbody > tr')
@@ -66,6 +65,7 @@ class TextSection extends React.Component {
       })
     })
 
+    // TODO: Consider abstracting out this section of code into it's own function
     textSectionHtml.find('a').each((i, anchor) => {
       // Regex will check for .gov link without a path or with a path OR a relative link.
       // If none of the above cases are true then we add an external-link-marker class to the link.
@@ -101,12 +101,13 @@ class TextSection extends React.Component {
   }
 
   render() {
+    const { className, text } = this.props
     return (
       <span>
         <div
           data-testid="text section"
-          className={styles.textSection + (this.props.className ? ' ' + this.props.className : '')}
-          dangerouslySetInnerHTML={{ __html: this.parseTables() }}
+          className={styles.textSection + (className ? ' ' + className : '')}
+          dangerouslySetInnerHTML={{ __html: this.parseTables(text) }}
         />
         <LeaveSbaModal
           url={this.state.targetUrl}
