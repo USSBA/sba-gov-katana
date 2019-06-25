@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { mount } from 'enzyme'
-import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 import { TitleSection } from 'molecules/title-section/title-section'
 
@@ -51,7 +50,7 @@ describe('Content section', () => {
 
 describe('Content section', () => {
   test("should not render 'Content' word and any subject header links", () => {
-    const component = shallow(
+    const component = mount(
       <TitleSection
         location={{ pathname: '/' }}
         title={'List of for partners'}
@@ -59,10 +58,8 @@ describe('Content section', () => {
         sectionHeaders={[]}
       />
     )
-    const para = component.find('#titleSectionContentId').first()
-    const listElement = component.find('#titleSectionLinkId0')
 
-    expect(para.text()).toBe('')
-    expect(listElement).toHaveLength(0)
+    expect(component.find('#titleSectionContentId').exists()).toEqual(false)
+    expect(component.find('#titleSectionLinkId0')).toHaveLength(0)
   })
 })
