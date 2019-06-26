@@ -40,7 +40,6 @@
     "axios": "0.16.1",
     "bluebird": "3.4.6",
     "body-parser": "1.18.3",
-    "cheerio": "0.22.0",
     "config": "1.24.0",
     "cookie-parser": "1.4.3",
     "css-loader": "1.0.0",
