@@ -1,5 +1,6 @@
-import React from 'react'
 import $ from 'jquery'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './text-section.scss'
 import { LeaveSbaModal } from 'organisms'
 
