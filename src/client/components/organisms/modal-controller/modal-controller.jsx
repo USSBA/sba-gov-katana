@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { SbaNewsModal } from 'molecules'
 import { MobileSectionNavModal } from 'organisms'
 
-const ModalController = ({ modalType, modalProps }) => {
+export const ModalController = ({ modalType, modalProps }) => {
   if (!modalType) {
     return <div />
   } else if (modalType === 'MOBILE_SECTION_NAV') {
@@ -19,5 +19,3 @@ const ModalController = ({ modalType, modalProps }) => {
 export default connect(state => {
   return state.modalReducer
 })(ModalController)
-
-export { ModalController }

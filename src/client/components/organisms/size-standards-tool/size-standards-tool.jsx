@@ -49,45 +49,50 @@ class SizeStandardsTool extends PureComponent {
   }
 
   componentDidMount() {
-    axios.get('/naics').then(response => {
-      const naicsCodes = response.data.filter(object => {
-        let result
-        let isDisabled
-        const { id, assetLimit } = object
-        const { disabledNaicsCodes } = this.props
+    axios
+      .get('/naics')
+      .then(response => {
+        const naicsCodes = response.data.filter(object => {
+          let result
+          let isDisabled
+          const { id, assetLimit } = object
+          const { disabledNaicsCodes } = this.props
 
-        // if
-        // - this naicsCode is not in the disabled list
-        // - assetLimit is NOT set
-        // - - create code property that matches id property
-        // - - return result
+          // if
+          // - this naicsCode is not in the disabled list
+          // - assetLimit is NOT set
+          // - - create code property that matches id property
+          // - - return result
 
-        if (
-          disabledNaicsCodes.find(disabledCode => {
-            let bln
+          if (
+            disabledNaicsCodes.find(disabledCode => {
+              let bln
 
-            if (id === disabledCode) {
-              bln = true
-            }
+              if (id === disabledCode) {
+                bln = true
+              }
 
-            return bln
-          })
-        ) {
-          isDisabled = true
-        } else if (!isEmpty(assetLimit)) {
-          isDisabled = true
-        }
+              return bln
+            })
+          ) {
+            isDisabled = true
+          } else if (!isEmpty(assetLimit)) {
+            isDisabled = true
+          }
 
-        if (!isDisabled) {
-          result = object
-          result.code = id
-        }
+          if (!isDisabled) {
+            result = object
+            result.code = id
+          }
 
-        return result
+          return result
+        })
+
+        this.setState({ naicsCodes })
       })
-
-      this.setState({ naicsCodes })
-    })
+      .catch(error => {
+        // console.error(error)
+      })
   }
 
   gotoSection(section) {
@@ -799,6 +804,9 @@ class ResultsScreen extends PureComponent {
           if (isSmallBusiness) {
             this.setState({ isEligibleForContractingPrograms: true })
           }
+        })
+        .catch(error => {
+          // console.error(error)
         })
     })
 
