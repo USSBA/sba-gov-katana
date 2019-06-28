@@ -109,7 +109,7 @@ class MiniNav extends React.Component {
           {['sbaEnEspanol', 'forPartners', 'newsroom', 'contactUs'].map(link)}
           {userLoggedOn
             ? ['adminTool', size(userRoles) && 'myAccount', 'logout'].map(link)
-            : ['register', 'login'].map(link)}
+            : ['login'].map(link)}
           <SearchBar onExpand={isExpanded => this.onSearchBarExpand(isExpanded)} />
         </ul>
       </div>
