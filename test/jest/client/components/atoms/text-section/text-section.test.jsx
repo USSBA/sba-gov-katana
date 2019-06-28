@@ -2,6 +2,7 @@
 
 import React from 'react'
 import renderer from 'react-test-renderer'
+import { cleanup, render } from 'react-testing-library'
 import { TextSection } from 'atoms'
 
 jest.mock('client/services/client-config.js', function() {
@@ -34,21 +35,72 @@ describe('TextSection', () => {
     expect(tree).toMatchSnapshot()
   })
 
+  afterEach(cleanup)
+
   describe('.parseTables(text)', () => {
-    test('should add classes onto table tag', () => {
+    test('should add class of "text-section-table" to the table tag', () => {
+      const text = '<table></table>'
+      const tableClass = 'text-section-table'
+      const { container } = render(<TextSection text={text} />)
+      const table = container.querySelector(`table.${tableClass}`)
+      expect(table).not.toBe(null)
+    })
+
+    test('should add class of "text-section-table" to each table tag when there are multiple tables', () => {
+      const text = '<table></table><table></table>'
+      const tableClass = 'text-section-table'
+
+      const { container } = render(<TextSection text={text} />)
+      const table1 = container.querySelector(`table:nth-of-type(1).${tableClass}`)
+      const table2 = container.querySelector(`table:nth-of-type(2).${tableClass}`)
+      expect(table1).not.toBe(null)
+      expect(table2).not.toBe(null)
+    })
+
+    test('adds class with indexed value(s) to td tags if there is no th header tag', () => {
+      const text = '<table><tr><td>First Title</td><td>Second Title</td></tr></table>'
+      const td1Class = 'index-0'
+      const td2Class = 'index-1'
+
+      const { container } = render(<TextSection text={text} />)
+      const td1 = container.querySelector(`td:nth-of-type(1).${td1Class}`)
+      const td2 = container.querySelector(`td:nth-of-type(2).${td2Class}`)
+      expect(td1).not.toBe(null)
+      expect(td2).not.toBe(null)
+    })
+
+    test('reformats td tags to include div header of class "table-header-label" and div wrapper of class "table-data-wrapper"', () => {
       const text =
-        '<p>You\'ll need to get a federal license or permit if your business activities are regulated by a federal agency.</p> <table> <thead> <tr> <th scope="col">Business activity</th> <th scope="col">Description</th> <th scope="col">Issuing agency</th> </tr> </thead> <tbody> <tr> <td>Agriculture</td> <td>If you import or transport animals, animal products, biologics, biotechnology or plants across state line.</td> <td><a href="https://www.aphis.usda.gov/aphis/resources/permits">U.S. Department of Agriculture</a></td> </tr> <tr> <td>Alcoholic beverages</td> <td>If you manufacture, wholesale, import, or sell alcoholic beverages at a retail location.</td> <td> <p><a href="https://www.ttb.gov/ponl/permits-online.shtml">Alcohol and Tobacco Tax and Trade Bureau</a></p> <p><a href="http://www.ttb.gov/wine/control_board.shtml">Local Alcohol Beverage Control Board</a></p> </td> </tr> </tbody> </table> <p>Check to see if any of your business activities are listed here.</p>'
-      const expected =
-        '<p>You\'ll need to get a federal license or permit if your business activities are regulated by a federal agency.</p> <table class="text-section-table"> <thead> <tr> <th scope="col">Business activity</th> <th scope="col">Description</th> <th scope="col">Issuing agency</th> </tr> </thead> <tbody> <tr> <td><div class="table-header-label">Business activity:</div><div class="table-data-wrapper">Agriculture</div></td> <td><div class="table-header-label">Description:</div><div class="table-data-wrapper">If you import or transport animals, animal products, biologics, biotechnology or plants across state line.</div></td> <td><div class="table-header-label">Issuing agency:</div><div class="table-data-wrapper"><a href="https://www.aphis.usda.gov/aphis/resources/permits">U.S. Department of Agriculture</a></div></td> </tr> <tr> <td><div class="table-header-label">Business activity:</div><div class="table-data-wrapper">Alcoholic beverages</div></td> <td><div class="table-header-label">Description:</div><div class="table-data-wrapper">If you manufacture, wholesale, import, or sell alcoholic beverages at a retail location.</div></td> <td><div class="table-header-label">Issuing agency:</div><div class="table-data-wrapper"> <p><a href="https://www.ttb.gov/ponl/permits-online.shtml">Alcohol and Tobacco Tax and Trade Bureau</a></p> <p><a href="http://www.ttb.gov/wine/control_board.shtml">Local Alcohol Beverage Control Board</a></p> </div></td> </tr> </tbody> </table> <p>Check to see if any of your business activities are listed here.</p>'
-      const result = TextSection.prototype.parseTables(text)
-      expect(result).toEqual(expected)
+        '<table><thead><tr><th>Column 1 Header</th></tr></thead><tbody><tr><td>Test Title</td></tr></tbody></table>'
+      const headerClass = 'table-header-label'
+      const headerText = 'Column 1 Header'
+      const wrapperClass = 'table-data-wrapper'
+      const wrapperText = 'Test Title'
+
+      const { container, getByText } = render(<TextSection text={text} />)
+      const divHeader = container.querySelector(`div.${headerClass}`)
+      const divWrapper = container.querySelector(`div.${wrapperClass}`)
+      const divHeaderText = getByText(headerText)
+      const divWrapperText = getByText(wrapperText)
+
+      expect(divHeader).not.toBe(null)
+      expect(divHeaderText).not.toBe(null)
+      expect(divWrapper).not.toBe(null)
+      expect(divWrapperText).not.toBe(null)
     })
 
     test('should add external-link-marker onto anchor tag with a non-government link', () => {
-      const text =
-        '<p>You\'ll need to get a federal license or permit if your business activities are regulated by a federal agency. <a href="https://www.google.com">External Link</a></p>'
+      const text = '<p>Test paragraph. <a href="https://www.google.com">External Link</a></p>'
+      const linkClass = 'external-link-marker'
+      const { container } = render(<TextSection text={text} />)
+      const link = container.querySelector(`a.${linkClass}`)
+      expect(link).not.toBe(null)
+    })
+
+    test('should add external-link-marker onto anchor tag with a non-government link', () => {
+      const text = '<p>Test paragraph. <a href="https://www.google.com">External Link</a></p>'
       const expected =
-        '<p>You\'ll need to get a federal license or permit if your business activities are regulated by a federal agency. <a href="https://www.google.com" class="external-link-marker">External Link</a></p>'
+        '<p>Test paragraph. <a href="https://www.google.com" class="external-link-marker">External Link</a></p>'
       const result = TextSection.prototype.parseTables(text)
       expect(result).toEqual(expected)
     })
