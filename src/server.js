@@ -70,6 +70,7 @@ app.use(function(req, res, next) {
         sbaOfficeNames: config.get('features.office.sbaOfficeNames'),
         searchUrl: config.get('features.searchUrl'),
         showSbic: config.get('features.showSbic'),
+        showRegisterLink: config.get('features.showRegisterLink'),
         localAssistMenuHeight: config.get('features.localAssistMenuHeight')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign

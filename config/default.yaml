@@ -27,6 +27,7 @@ counselorCta:
     nodeId: 6
 features:
     localAssistMenuHeight: true
+    showRegisterLink: true
     showSbic: false
     geoLocator: false
     searchUrl: "/search/?q="
