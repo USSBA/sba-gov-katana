@@ -7,7 +7,7 @@ class DocumentLookupPage extends React.Component {
     const documentProps = {
       title: 'Documentation Lookup',
       type: 'documents',
-      taxonomyFilters: ['documentType', 'program', 'documentActivity'],
+      taxonomyFilters: ['documentType', 'program', 'documentActivity', 'office'],
       fieldsToShowInDetails: ['Activity', 'Program', 'Summary'],
       defaultSortBy: 'Effective Date',
       sortByOptions: ['Effective Date', 'Last Updated', 'Title', 'Number']

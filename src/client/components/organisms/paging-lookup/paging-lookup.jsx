@@ -17,6 +17,7 @@ const fieldNameMap = {
   documentType: 'Type',
   program: 'Program',
   documentActivity: 'Activity',
+  office: 'Office',
   sortBy: 'sortBy'
 }
 
@@ -54,6 +55,7 @@ class PagingLookup extends React.Component {
       searchTerm: queryParams.search || queryParams.q,
       documentType: queryParams.type,
       documentActivity: queryParams.activity,
+      office: queryParams.office,
       page: Number(queryParams.page) || 1
     })
 
@@ -82,6 +84,7 @@ class PagingLookup extends React.Component {
           documentActivity: 'All',
           documentType: 'All',
           program: 'All',
+          office: 'All',
           sortBy: this.props.defaultSortBy
         },
         taxonomies: this.state.taxonomies,
