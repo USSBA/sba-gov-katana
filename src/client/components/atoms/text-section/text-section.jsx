@@ -30,6 +30,7 @@ class TextSection extends React.Component {
       $(trs).each((k, trow) => {
         let tds = $(trow).find('td')
 
+        // TODO: This if statement functionality should be checked to see if it needs to be modified or removed
         if (tds.length !== firstRowLength) {
           const prevRow = $(trs)[k - 1]
           const firstTdCopy = $($(prevRow).find('td')[0]).clone()
