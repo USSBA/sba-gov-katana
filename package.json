@@ -15,7 +15,9 @@
     "test-jest": "NODE_ENV=test jest -w 1 test/jest",
     "test-mocha": "NODE_ENV=test mocha --compilers js:@babel/register --require @babel/polyfill --require ignore-styles ./test/mocha/helpers/globals.js \"test/mocha/**/*.test.js\"",
     "test-int-mocha": "NODE_ENV=test mocha --compilers js:@babel/register  --require @babel/polyfill --require  ignore-styles ./test/mocha/helpers/globals.js \"test/mocha/**/*.integration-test.js\"",
-    "precommit": "npm run test && lint-staged"
+    "precommit": "npm run test && lint-staged",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "url": "git+https://github.com/sba-ds/sba-gov.git",
@@ -63,7 +65,8 @@
     "url-loader": "1.1.2",
     "uuid": "3.0.1",
     "validator": "^10.11.0",
-    "winston": "2.3.1"
+    "winston": "2.3.1",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
@@ -167,5 +170,6 @@
     "webpack-dev-server": "~3.1.10",
     "webpack-hot-middleware": "~2.24.3",
     "webpack-merge": "~4.1.4"
-  }
+  },
+  "snyk": true
 }
