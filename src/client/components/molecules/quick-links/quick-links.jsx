@@ -51,7 +51,7 @@ class QuickLinks extends PureComponent {
     const { typeOfLinks } = this.props.data
 
     for (const [index, quickLink] of typeOfLinks.entries()) {
-      const { documentActivity, documentType, documentProgram, type } = quickLink
+      const { documentActivity, documentOffice, documentType, documentProgram, type } = quickLink
 
       if (type === 'documentLookup') {
         results[`documents-${index}`] = await fetchSiteContent('documents', {
@@ -59,6 +59,7 @@ class QuickLinks extends PureComponent {
           type: valueOrAll(documentType),
           program: valueOrAll(documentProgram),
           activity: valueOrAll(documentActivity),
+          office: documentOffice || 'all',
           start: 0,
           end: 3
         })
@@ -130,7 +131,7 @@ class QuickLinks extends PureComponent {
 
   render() {
     return (
-      <div className={style.collection}>
+      <div className={style.collection} data-testid="quick-links">
         {this.props.data ? this.renderQuickLinks() : <div>loading</div>}
       </div>
     )
@@ -139,15 +140,18 @@ class QuickLinks extends PureComponent {
 
 const LatestDocumentsCard = props => {
   const eventCategory = `${props.sectionHeaderText.toLowerCase()}-module`
-
   return (
-    <div className={props.classname}>
+    <div data-testid="documents-card" className={props.classname}>
       <div className={style.titleContainer}>
-        <h4 className={style.title}>{props.sectionHeaderText}</h4>
+        <h4 data-testid="header" className={style.title}>
+          {props.sectionHeaderText}{' '}
+        </h4>
         <Link
+          data-testid="see-all-link"
           to={`/document?${queryString.stringify({
             type: props.documentType,
-            program: props.documentProgram
+            program: props.documentProgram,
+            office: props.documentOffice || 'all'
           })}`}
         >
           See all
@@ -176,9 +180,14 @@ const LatestDocumentsCard = props => {
                 : doc.title)
             return (
               <div key={index}>
-                <Link to={doc.url}>{linkTitle}</Link>
-
-                {effectiveDate && <div className={style.date}>{formatDate(effectiveDate)}</div>}
+                <Link data-testid="document-link" to={doc.url}>
+                  {linkTitle}
+                </Link>
+                {effectiveDate && (
+                  <div data-testid="document-date" className={style.date}>
+                    {formatDate(effectiveDate)}
+                  </div>
+                )}
               </div>
             )
           })
@@ -212,10 +221,13 @@ const ArticlesCard = props => {
   const { articles } = props
 
   return (
-    <div className={props.classname}>
+    <div data-testid="articles-card" className={props.classname}>
       <div className={style.titleContainer}>
-        <h4 className={style.title}>{props.sectionHeaderText}</h4>
+        <h4 data-testid="header" className={style.title}>
+          {props.sectionHeaderText}
+        </h4>
         <Link
+          data-testid="see-all-link"
           to={`/article?${queryString.stringify({
             articleCategory: props.articleCategory,
             program: props.articleProgram
@@ -238,8 +250,12 @@ const ArticlesCard = props => {
 
               return (
                 <div key={index}>
-                  <Link to={article.url}>{linkTitle}</Link>
-                  <div className={style.date}>{moment.unix(article.updated).format('MMM D, YYYY')}</div>
+                  <Link data-testid="article-url" to={article.url}>
+                    {linkTitle}
+                  </Link>
+                  <div data-testid="article-date" className={style.date}>
+                    {moment.unix(article.updated).format('MMM D, YYYY')}
+                  </div>
                 </div>
               )
             })}
