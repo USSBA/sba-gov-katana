@@ -10,7 +10,7 @@ import { SectionNav } from 'organisms'
 import { getLanguageOverride } from '../../../services/utils.js'
 import { TRANSLATIONS } from '../../../translations.js'
 
-class BasicPage extends React.Component {
+export class BasicPage extends React.Component {
   constructor(props) {
     super()
     this.state = {

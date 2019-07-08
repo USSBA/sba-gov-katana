@@ -60,7 +60,10 @@ describe('Primary Search Bar', () => {
         <TextInput id="testInput" />
       </PrimarySearchBar>
     )
-    searchBar.find('#testInput').simulate('change')
+    searchBar
+      .find('#testInput')
+      .at(1)
+      .simulate('change')
     expect(onChangeSpy).toHaveBeenCalledOnce
   })
   it('will disable the button if the button is set to inactive', () => {

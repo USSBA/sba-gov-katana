@@ -9,12 +9,16 @@ describe('EventLookupPage', () => {
   it('should show a zip code error when characters are not equal to 5 digits', () => {
     const component = mount(<EventLookupPage />)
     const incorrectlyFormattedZipCode = 'slkd'
-    const zipInput = component.find('#zip')
+    const zipInput = component.find('input#zip')
     zipInput.simulate('focus')
     zipInput.simulate('change', { target: { value: incorrectlyFormattedZipCode } })
     zipInput.simulate('blur')
+    // console.log(zipInput.debug())
+    // console.log(zipInput.find('input').get(0).value)
     const expected = 1
     const result = component.find('#zip-error')
+    component.update()
+    // console.log(zipInput.debug())
     expect(result).toHaveLength(expected)
   })
 
@@ -22,7 +26,7 @@ describe('EventLookupPage', () => {
   it('should not show a zip code error when characters are equal to 5 digits', () => {
     const component = mount(<EventLookupPage />)
     const correctlyFormattedZipCode = '23938'
-    const zipInput = component.find('#zip')
+    const zipInput = component.find('input#zip')
     zipInput.simulate('focus')
     zipInput.simulate('change', { target: { value: correctlyFormattedZipCode } })
     zipInput.simulate('blur')
@@ -34,7 +38,7 @@ describe('EventLookupPage', () => {
   it('should disable the distance dropdown when zip code input is empty', () => {
     const component = mount(<EventLookupPage />)
     const zipCode = ''
-    const zipInput = component.find('#zip')
+    const zipInput = component.find('input#zip')
     zipInput.simulate('focus')
     zipInput.simulate('change', { target: { value: zipCode } })
     zipInput.simulate('blur')
@@ -47,7 +51,7 @@ describe('EventLookupPage', () => {
   it('should NOT disable the distance dropdown when zip code input is NOT empty', () => {
     const component = mount(<EventLookupPage />)
     const zipCode = '23938'
-    const zipInput = component.find('#zip')
+    const zipInput = component.find('input#zip')
     zipInput.simulate('focus')
     zipInput.simulate('change', { target: { value: zipCode } })
     zipInput.simulate('blur')

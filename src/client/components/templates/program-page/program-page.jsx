@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 
 import styles from './program-page.scss'
@@ -63,7 +64,7 @@ React.defaultProps = {
   paragraphs: []
 }
 
-React.propTypes = {
+ProgramPage.propTypes = {
   lineage: PropTypes.array,
   heroData: PropTypes.object,
   paragraphs: PropTypes.array

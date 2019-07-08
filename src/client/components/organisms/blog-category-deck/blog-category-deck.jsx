@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import moment from 'moment'
 
 import { Button } from 'atoms'
@@ -47,10 +48,10 @@ BlogCategoryDeck.defaultProps = {
 }
 
 BlogCategoryDeck.propTypes = {
-  cards: React.PropTypes.array,
-  categoryTitle: React.PropTypes.string,
-  categorySubtitle: React.PropTypes.string,
-  categoryUrl: React.PropTypes.string
+  cards: PropTypes.array,
+  categoryTitle: PropTypes.string,
+  categorySubtitle: PropTypes.string,
+  categoryUrl: PropTypes.string
 }
 
 export default BlogCategoryDeck

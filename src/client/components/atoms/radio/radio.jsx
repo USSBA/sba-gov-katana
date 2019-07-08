@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './radio.scss'
 import { FormErrorMessage } from 'atoms'
@@ -96,8 +97,8 @@ class RadioButtonGroup extends React.Component {
 }
 /* options is array of name/value/text triples */
 RadioButtonGroup.propTypes = {
-  value: React.PropTypes.string.isRequired,
-  options: React.PropTypes.array.isRequired
+  value: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired
 }
 
 export default RadioButtonGroup

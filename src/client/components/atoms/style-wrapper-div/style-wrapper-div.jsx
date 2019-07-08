@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 /* A wrapper for styling search components since divs don't do prop pass through */
 class StyleWrapperDiv extends React.Component {
   render() {
@@ -14,7 +15,7 @@ class StyleWrapperDiv extends React.Component {
 }
 
 StyleWrapperDiv.propTypes = {
-  style: React.PropTypes.string
+  style: PropTypes.string
 }
 
 export default StyleWrapperDiv

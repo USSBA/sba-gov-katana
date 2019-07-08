@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { debounce } from 'lodash'
 
 import scrollIcon from 'assets/svg/scroll.svg'

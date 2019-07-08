@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Event from '../../templates/event/event.jsx'
 import ErrorPage from '../error-page/error-page.jsx'
 import { Loader } from 'atoms'

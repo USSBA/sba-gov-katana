@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './courses-layout.scss'
 import { ClientPagingMultiviewLayout, CardCollection } from 'organisms'
 
@@ -55,8 +56,8 @@ CoursesLayout.defaultProps = {
 }
 
 CoursesLayout.propTypes = {
-  onReset: React.PropTypes.func,
-  items: React.PropTypes.array
+  onReset: PropTypes.func,
+  items: PropTypes.array
 }
 
 export default CoursesLayout

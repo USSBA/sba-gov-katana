@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import BasicPage from '../templates/basic-page/basic-page.jsx'
 import ProgramPage from '../templates/program-page/program-page.jsx'
 import { fetchRestContent } from '../../fetch-content-helper.js'

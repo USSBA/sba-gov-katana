@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { assign } from 'lodash'
 import { ContactCard, ContactCardLookup } from 'molecules'
 import { SbicLookup, SuretyLookup } from 'organisms'
@@ -74,9 +75,9 @@ class Lookup extends React.Component {
 }
 
 Lookup.propTypes = {
-  title: React.PropTypes.string,
-  type: React.PropTypes.string,
-  display: React.PropTypes.string
+  title: PropTypes.string,
+  type: PropTypes.string,
+  display: PropTypes.string
 }
 
 Lookup.defaultProps = {

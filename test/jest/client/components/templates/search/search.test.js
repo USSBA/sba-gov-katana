@@ -4,20 +4,18 @@ import { shallow, mount } from 'enzyme'
 import { stub } from 'sinon'
 import SearchTemplate from 'client/components/templates/search/search.jsx'
 import { AssertionError } from 'assert'
-import * as helper from 'client/fetch-content-helper'
+import { fetchSiteContent as mockFetchSiteContent } from 'client/fetch-content-helper'
+
+jest.mock('client/fetch-content-helper')
 
 const searchTemplateWrapper = shallow(<SearchTemplate searchType="myType" />)
 const searchTemplateInstance = searchTemplateWrapper.instance()
 
 describe('Search Template', () => {
-  var mockFetchSiteContent
   beforeEach(() => {
     global.scrollTo = jest.fn()
-    mockFetchSiteContent = jest.spyOn(helper, 'fetchSiteContent')
   })
-  afterEach(() => {
-    mockFetchSiteContent.mockRestore()
-  })
+
   it('updates query parameter values when onchange is called', () => {
     const queryParamName = 'myQueryParam'
     const userEnteredText = 'user entered text'
@@ -227,22 +225,16 @@ describe('Search Template', () => {
   })
 
   describe('No Results', () => {
-    it('displays the "No Results" messaging when a result set comes back empty', done => {
-      mockFetchSiteContent.mockReturnValue(
-        Promise.resolve({
-          found: 0
-        })
-      )
-      const component = mount(<SearchTemplate searchType="none" loadDefaultResults={true} />)
-      setImmediate(() => {
-        try {
-          expect(component.find('#no-results').length).toBe(1)
-          done()
-        } catch (e) {
-          done()
-          return fail(e)
-        }
+    it('displays the "No Results" messaging when a result set comes back empty', () => {
+      mockFetchSiteContent.mockImplementation(() => Promise.resolve({ found: 0 }))
+
+      const component = shallow(<SearchTemplate searchType="none" loadDefaultResults={true} />)
+      component.setState({
+        isLoading: false,
+        hasNoResults: true
       })
+
+      expect(component.update().find('#no-results').length).toBe(1)
     })
   })
 })

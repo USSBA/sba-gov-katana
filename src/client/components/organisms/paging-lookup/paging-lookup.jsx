@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { browserHistory } from 'react-router'
 import { assign, chain, find, includes, map, mapValues, pickBy } from 'lodash'
 import { DocumentArticleLookup } from 'organisms'
@@ -253,11 +254,11 @@ class PagingLookup extends React.Component {
 }
 
 PagingLookup.propTypes = {
-  title: React.PropTypes.string,
-  type: React.PropTypes.string,
-  taxonomyFilters: React.PropTypes.array,
-  fieldsToShowInDetails: React.PropTypes.array,
-  sortByOptions: React.PropTypes.array
+  title: PropTypes.string,
+  type: PropTypes.string,
+  taxonomyFilters: PropTypes.array,
+  fieldsToShowInDetails: PropTypes.array,
+  sortByOptions: PropTypes.array
 }
 
 PagingLookup.defaultProps = {

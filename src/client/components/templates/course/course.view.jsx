@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import isMobile from 'ismobilejs'
 import { isEmpty } from 'lodash'
 
@@ -238,14 +239,14 @@ const CTA = props => {
 }
 
 CourseView.propTypes = {
-  breadcrumbs: React.PropTypes.arrayOf(React.PropTypes.object),
-  title: React.PropTypes.string,
-  summary: React.PropTypes.string,
-  course: React.PropTypes.object,
-  readMoreSectionItem: React.PropTypes.object,
-  tags: React.PropTypes.arrayOf(React.PropTypes.object),
-  relatedCourses: React.PropTypes.arrayOf(React.PropTypes.object),
-  relatedArticles: React.PropTypes.arrayOf(React.PropTypes.object)
+  breadcrumbs: PropTypes.arrayOf(PropTypes.object),
+  title: PropTypes.string,
+  summary: PropTypes.string,
+  course: PropTypes.object,
+  readMoreSectionItem: PropTypes.object,
+  tags: PropTypes.arrayOf(PropTypes.object),
+  relatedCourses: PropTypes.arrayOf(PropTypes.object),
+  relatedArticles: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default CourseView

@@ -1,5 +1,6 @@
-import React from 'react'
 import $ from 'jquery'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './text-section.scss'
 import { LeaveSbaModal } from 'organisms'
 
@@ -122,7 +123,7 @@ class TextSection extends React.Component {
 
 TextSection.propTypes = {
   // TODO: use children instead of text prop
-  text: React.PropTypes.string.isRequired
+  text: PropTypes.string.isRequired
 }
 
 export default TextSection
