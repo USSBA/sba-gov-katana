@@ -7,7 +7,7 @@ import sbaLogo from 'assets/images/logo.png'
 import styles from './sba-modal.scss'
 import { Button } from 'atoms'
 
-class SbaModal extends React.Component {
+export class SbaModal extends React.Component {
   handleEnter(e) {
     const enterKeyCode = 13
     if (e.keyCode === enterKeyCode) {
@@ -28,7 +28,7 @@ class SbaModal extends React.Component {
       isOpen
     } = this.props
 
-    const logo = showLogo ? <img className={styles.logo} src={sbaLogo} aria-hidden="true"/> : null
+    const logo = showLogo ? <img className={styles.logo} src={sbaLogo} aria-hidden="true" /> : null
     return (
       <Modal
         isOpen={isOpen}

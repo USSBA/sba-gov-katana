@@ -1,8 +1,11 @@
 /* eslint-disable */
+const { isEmpty } = require('lodash')
+
 function findByUrl(haystack, needle, langCode) {
-  if (!haystack) {
+  if (isEmpty(haystack)) {
     return null
   }
+
   const found = haystack.find(item => {
     if (langCode === 'es' && item.spanishTranslation && item.spanishTranslation.url === needle) {
       return item.spanishTranslation.url === needle

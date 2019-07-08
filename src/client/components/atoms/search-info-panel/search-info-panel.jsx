@@ -83,7 +83,7 @@ SearchInfoPanel.defaultProps = {
   setWhiteBackground: false
 }
 
-SearchInfoPanel.PropTypes = {
+SearchInfoPanel.propTypes = {
   id: PropTypes.string,
   pageNumber: PropTypes.number,
   pageSize: PropTypes.number,

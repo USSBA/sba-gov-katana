@@ -102,10 +102,12 @@ describe('SbicContactsCsv', () => {
         // if there is a timeout then that means this assert evaluated to false
         const expected = HttpStatus.OK
         result.should.equal(expected)
-        done()
+
+        return { send: () => {} }
       })
 
       SbicContactsCsv.downloadCsv({}, response)
+      done()
     })
 
     it('should provide csv file to be downloaded', done => {

@@ -132,14 +132,20 @@ describe('ModalController', () => {
   })
 
   test('should invoke SbaNewsProps and show store error', () => {
+    // silence (intentional) error logged by redux by disabling error logging
+    const consoleError = console.error
+    console.error = jest.fn()
+
     const expectedValue = 'Invariant Violation'
     let returnedValue
     try {
       const props = _.clone(SbaNewsModalProps)
       const component = mount(<ModalController {...props} />)
     } catch (e) {
-      returnedValue = e.name
+      expect(expectedValue).toEqual(e.name)
     }
-    expect(returnedValue).toEqual(expectedValue)
+
+    // restore error logging
+    console.error = consoleError
   })
 })
