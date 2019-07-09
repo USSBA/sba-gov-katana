@@ -4,7 +4,7 @@ import moment from 'moment'
 import queryString from 'querystring'
 import { chain, isEmpty } from 'lodash'
 import { DecorativeDash, Link } from 'atoms'
-import style from './quick-links.scss'
+import styles from './quick-links.scss'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 
 const MAX_TITLE_LENGTH = 80
@@ -91,8 +91,8 @@ class QuickLinks extends PureComponent {
   }
 
   generateGrid(length) {
-    const gridClass = { 1: style.oneCard, 2: style.twoCards }
-    return length > 2 ? style.manyCards : gridClass[length]
+    const gridClass = { 1: styles.oneCard, 2: styles.twoCards }
+    return length > 2 ? styles.manyCards : gridClass[length]
   }
 
   renderQuickLinks() {
@@ -107,18 +107,18 @@ class QuickLinks extends PureComponent {
         return (
           <LatestDocumentsCard
             key={index}
-            classname={style.card + ' ' + gridClass}
+            className={styles.card + ' ' + gridClass}
             documents={documents['documents-' + index]}
             {...quickLink}
           />
         )
       } else if (quickLink.type === 'ratesList') {
-        return <RatesCard key={index} {...quickLink} classname={style.card + ' ' + gridClass} />
+        return <RatesCard key={index} {...quickLink} className={styles.card + ' ' + gridClass} />
       } else if (quickLink.type === 'articleLookup') {
         return (
           <ArticlesCard
             key={index}
-            classname={style.card + ' ' + gridClass}
+            className={styles.card + ' ' + gridClass}
             articles={articles['articles-' + index]}
             {...quickLink}
           />
@@ -131,7 +131,7 @@ class QuickLinks extends PureComponent {
 
   render() {
     return (
-      <div className={style.collection} data-testid="quick-links">
+      <div className={styles.collection} data-testid="quick-links">
         {this.props.data ? this.renderQuickLinks() : <div>loading</div>}
       </div>
     )
@@ -141,9 +141,9 @@ class QuickLinks extends PureComponent {
 const LatestDocumentsCard = props => {
   const eventCategory = `${props.sectionHeaderText.toLowerCase()}-module`
   return (
-    <div data-testid="documents-card" className={props.classname}>
-      <div className={style.titleContainer}>
-        <h4 data-testid="header" className={style.title}>
+    <div data-testid="documents-card" className={props.className}>
+      <div className={styles.titleContainer}>
+        <h4 data-testid="header" className={styles.title}>
           {props.sectionHeaderText}
         </h4>
         <Link
@@ -184,7 +184,7 @@ const LatestDocumentsCard = props => {
                   {linkTitle}
                 </Link>
                 {effectiveDate && (
-                  <div data-testid="document-date" className={style.date}>
+                  <div data-testid="document-date" className={styles.date}>
                     {formatDate(effectiveDate)}
                   </div>
                 )}
@@ -201,14 +201,14 @@ const LatestDocumentsCard = props => {
 
 const RatesCard = props => {
   return (
-    <div className={props.classname}>
-      <h4 className={style.title}>Rates</h4>
+    <div className={props.className}>
+      <h4 className={styles.title}>Rates</h4>
       <DecorativeDash width={30} />
       {props.rate.map((rate, index) => {
         return (
-          <div key={index} className={style.rateContainer}>
+          <div key={index} className={styles.rateContainer}>
             {rate.name}
-            <div className={style.rate}>{rate.percent}%</div>
+            <div className={styles.rate}>{rate.percent}%</div>
           </div>
         )
       })}
@@ -221,9 +221,9 @@ const ArticlesCard = props => {
   const { articles } = props
 
   return (
-    <div data-testid="articles-card" className={props.classname}>
-      <div className={style.titleContainer}>
-        <h4 data-testid="header" className={style.title}>
+    <div data-testid="articles-card" className={props.className}>
+      <div className={styles.titleContainer}>
+        <h4 data-testid="header" className={styles.title}>
           {props.sectionHeaderText}
         </h4>
         <Link
@@ -232,7 +232,7 @@ const ArticlesCard = props => {
             articleCategory: props.articleCategory,
             program: props.articleProgram
           })}`}
-          className={style.seeAll}
+          className={styles.seeAll}
         >
           See all
         </Link>
@@ -253,7 +253,7 @@ const ArticlesCard = props => {
                   <Link data-testid="article-url" to={article.url}>
                     {linkTitle}
                   </Link>
-                  <div data-testid="article-date" className={style.date}>
+                  <div data-testid="article-date" className={styles.date}>
                     {moment.unix(article.updated).format('MMM D, YYYY')}
                   </div>
                 </div>
