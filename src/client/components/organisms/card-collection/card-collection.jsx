@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { chunk, size } from 'lodash'
 
 import styles from './card-collection.scss'
@@ -56,11 +57,11 @@ class CardCollection extends React.Component {
 }
 
 CardCollection.propTypes = {
-  cardAriaLabel: React.PropTypes.string,
-  cards: React.PropTypes.array,
-  numberOverride: React.PropTypes.number,
-  parentIndex: React.PropTypes.number,
-  leftAligned: React.PropTypes.bool
+  cardAriaLabel: PropTypes.string,
+  cards: PropTypes.array,
+  numberOverride: PropTypes.number,
+  parentIndex: PropTypes.number,
+  leftAligned: PropTypes.bool
 }
 
 CardCollection.defaultProps = {

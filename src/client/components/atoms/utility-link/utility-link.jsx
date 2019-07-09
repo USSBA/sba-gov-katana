@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './utility-link.scss'
 import { Link } from 'atoms'
@@ -26,14 +27,14 @@ UtilityLink.defaultProps = {
 
 // either url or onClick should be set
 UtilityLink.propTypes = {
-  text: React.PropTypes.string.isRequired,
-  id: React.PropTypes.string,
-  url: React.PropTypes.string,
-  onClick: React.PropTypes.func,
-  visible: React.PropTypes.bool,
-  onKeyDown: React.PropTypes.func,
-  onFocus: React.PropTypes.func,
-  onBlur: React.PropTypes.func
+  text: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  url: PropTypes.string,
+  onClick: PropTypes.func,
+  visible: PropTypes.bool,
+  onKeyDown: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func
 }
 
 export default UtilityLink

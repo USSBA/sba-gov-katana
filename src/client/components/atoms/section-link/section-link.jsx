@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './section-link.scss'
 import { Link } from 'atoms'
@@ -42,12 +43,12 @@ SectionLink.defaultProps = {
 }
 
 SectionLink.propTypes = {
-  text: React.PropTypes.string.isRequired,
-  url: React.PropTypes.string.isRequired,
-  enableTriangleMarker: React.PropTypes.bool,
-  shouldForceTriangleMarkerVisibility: React.PropTypes.bool,
-  showUnderline: React.PropTypes.bool,
-  onKeyDown: React.PropTypes.func
+  text: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  enableTriangleMarker: PropTypes.bool,
+  shouldForceTriangleMarkerVisibility: PropTypes.bool,
+  showUnderline: PropTypes.bool,
+  onKeyDown: PropTypes.func
 }
 
 export default SectionLink

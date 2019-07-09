@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './social-media-link.scss'
 import { Link } from 'atoms'
@@ -43,9 +44,9 @@ class SocialMediaLink extends React.Component {
 }
 
 SocialMediaLink.propTypes = {
-  image: React.PropTypes.string.isRequired,
-  altText: React.PropTypes.string.isRequired,
-  url: React.PropTypes.string.isRequired
+  image: PropTypes.string.isRequired,
+  altText: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
 }
 
 export default SocialMediaLink

@@ -45,7 +45,7 @@ describe('Results', () => {
           displaySearchTipsOnNoResults={displaySearchTipsOnNoResults}
         />
       )
-      const noResultsSection = component.find(NoResultsSection).node
+      const noResultsSection = component.find(NoResultsSection).get(0)
       expect(noResultsSection).not.toBeUndefined()
     })
 
@@ -60,7 +60,7 @@ describe('Results', () => {
           displaySearchTipsOnNoResults={displaySearchTipsOnNoResults}
         />
       )
-      const noResultsSection = component.find(NoResultsSection).node
+      const noResultsSection = component.find(NoResultsSection).get(0)
       expect(noResultsSection).toBeUndefined()
     })
   })
@@ -72,7 +72,7 @@ describe('Results', () => {
       const component = shallow(
         <Results paginate items={items} hidePaginatorOnNoResults={hidePaginatorOnNoResults} />
       )
-      const paginatorNode = component.find(Paginator).node
+      const paginatorNode = component.find(Paginator).get(0)
       expect(paginatorNode).toBeUndefined()
     })
 
@@ -82,7 +82,7 @@ describe('Results', () => {
       const component = shallow(
         <Results items={items} paginate hidePaginatorOnNoResults={hidePaginatorOnNoResults} />
       )
-      const paginatorNode = component.find(Paginator).node
+      const paginatorNode = component.find(Paginator).get(0)
       expect(paginatorNode).not.toBeUndefined()
     })
 
@@ -92,14 +92,14 @@ describe('Results', () => {
       const component = shallow(
         <Results items={items} paginate hidePaginatorOnNoResults={hidePaginatorOnNoResults} />
       )
-      const paginatorNode = component.find(Paginator).node
+      const paginatorNode = component.find(Paginator).get(0)
       expect(paginatorNode).not.toBeUndefined()
     })
 
     test('Hides Paginator when pagination is disabled', () => {
       const items = ['item1']
       const component = shallow(<Results items={items} />)
-      const paginatorNode = component.find(Paginator).node
+      const paginatorNode = component.find(Paginator).get(0)
       expect(paginatorNode).toBeUndefined()
     })
   })

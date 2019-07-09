@@ -5,7 +5,7 @@ const sinon = require('sinon')
 
 import { OHAWestlawForm } from 'organisms'
 
-describe.only('OHA Westlaw Form', () => {
+describe('OHA Westlaw Form', () => {
   let spyChangeLocation
 
   beforeEach(() => {
@@ -29,7 +29,7 @@ describe.only('OHA Westlaw Form', () => {
     input.simulate('change', { target: { name: 'appealNumber', value: 5248 } })
 
     const button = component.find('#appeal-number-submit')
-    button.simulate('submit')
+    button.at(0).simulate('submit')
 
     const changeLocationArg = spyChangeLocation.args[0][0]
     expect(changeLocationArg).toEqual(expectedValue)
@@ -43,7 +43,7 @@ describe.only('OHA Westlaw Form', () => {
     input.simulate('change', { target: { name: 'appellantName', value: 'ACME' } })
 
     const button = component.find('#appellant-name-submit')
-    button.simulate('submit')
+    button.at(0).simulate('submit')
 
     const changeLocationArg = spyChangeLocation.args[0][0]
     expect(changeLocationArg).toEqual(expectedValue)
@@ -58,7 +58,7 @@ describe.only('OHA Westlaw Form', () => {
     input.simulate('change', { target: { name: 'winText', value: 'ostensible subcontractor' } })
 
     const button = component.find('#win-text-submit')
-    button.simulate('submit')
+    button.at(0).simulate('submit')
 
     const changeLocationArg = spyChangeLocation.args[0][0]
     expect(changeLocationArg).toEqual(expectedValue)
@@ -75,7 +75,7 @@ describe.only('OHA Westlaw Form', () => {
     input.simulate('change', { target: { name: 'tncDate', value: 'last 3 months' } })
 
     const button = component.find('#tnc-text-submit')
-    button.simulate('submit')
+    button.at(0).simulate('submit')
 
     const changeLocationArg = spyChangeLocation.args[0][0]
     expect(changeLocationArg).toEqual(expectedValue)

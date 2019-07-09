@@ -4,12 +4,15 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Waypoint from 'react-waypoint'
 
-import { SectionNav } from 'organisms'
 import { TitleSection, Breadcrumb, FeedbackForm, PreviousNextSection, RemoveMainLoader } from 'molecules'
-import BasicPage from 'templates/basic-page/basic-page.jsx'
+import { SectionNav } from 'organisms'
+import { listenForOverlap as mockListenForOverlap } from 'element-overlap'
+import { BasicPage } from 'templates/basic-page/basic-page.jsx'
 
 const title = 'My Basic Page'
 const summary = 'My Basic Page Summary'
+
+jest.mock('element-overlap')
 
 describe('BasicPage', () => {
   beforeAll(() => {
@@ -111,6 +114,7 @@ describe('BasicPage', () => {
   })
 
   test('has no previous and next buttons when there is no lineage', () => {
+    mockListenForOverlap.mockImplementation(() => null)
     const component = shallow(<BasicPage title={title} summary={summary} />)
     const sectionNav = component.find(PreviousNextSection)
 

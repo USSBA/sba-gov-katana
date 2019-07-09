@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import renderer from 'react-test-renderer'
 import sinon from 'sinon'
 import { mount, shallow } from 'enzyme'
@@ -421,7 +421,7 @@ describe('PersonLookupPage', () => {
     component.setState({ isLoading: false, initialPersons: persons, persons })
 
     const expectedLength = 12
-    expect(component.find('DetailCardCollection').children()).toHaveLength(expectedLength)
+    expect(component.find('DetailCardCollection').getElement().props.cards).toHaveLength(expectedLength)
   })
 
   it('should add query parameters to the pathname after applying filters', () => {

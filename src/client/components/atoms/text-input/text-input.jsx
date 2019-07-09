@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { kebabCase } from 'lodash'
 
@@ -126,7 +127,7 @@ class TextInput extends React.Component {
         hidden={hidden}
         data-testid={kebabCase(`${id} container`)}
       >
-        <label htmlFor={id} className={labelStyle && labelStyle} data-testid={kebabCase(`${id} label`)}>
+        <label htmlFor={id} className={labelStyle ? labelStyle : undefined} data-testid={kebabCase(`${id} label`)}>
           {label}
         </label>
         <div className={styles.container}>

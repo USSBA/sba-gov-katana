@@ -5,6 +5,17 @@ import { shallow } from 'enzyme'
 import { Hero } from 'organisms'
 import { Button } from 'atoms'
 
+// fixes 'TypeError: window.matchMedia is not a function'
+window.matchMedia = jest.fn().mockImplementation(query => {
+  return {
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
+  };
+});
+
 describe('Hero Organism', () => {
   test('displays title in an H1 tag', () => {
     const titleText = 'My Title'

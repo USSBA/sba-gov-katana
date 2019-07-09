@@ -40,7 +40,7 @@ describe('Disaster Alert', () => {
     const component = mount(<DisasterAlert {...alertProps1} />)
     expect(component.find('#disaster-alert').exists()).toEqual(true)
     expect(component.find('img').exists()).toEqual(true)
-    expect(component.find('.alertLink').text()).toEqual('Learn more')
+    expect(component.find('.alertLink').at(0).text()).toEqual('Learn more')
   })
 
   it('should not render', () => {
