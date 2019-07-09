@@ -36,7 +36,7 @@ const valueOrAll = value => {
 class QuickLinks extends PureComponent {
   constructor(props) {
     super(props)
-    this.state = { article: [], documents: [] }
+    this.state = { articles: [], documents: [] }
   }
 
   async componentDidMount() {
@@ -144,7 +144,7 @@ const LatestDocumentsCard = props => {
     <div data-testid="documents-card" className={props.classname}>
       <div className={style.titleContainer}>
         <h4 data-testid="header" className={style.title}>
-          {props.sectionHeaderText}{' '}
+          {props.sectionHeaderText}
         </h4>
         <Link
           data-testid="see-all-link"
@@ -159,7 +159,7 @@ const LatestDocumentsCard = props => {
       </div>
       <DecorativeDash width={30} />
       <div>
-        {props.documents && props.documents.items.length ? (
+        {!isEmpty(props.documents) && props.documents.items.length ? (
           props.documents.items.map((doc, index) => {
             const currentFile = getCurrentFile(doc.files)
             let effectiveDate
