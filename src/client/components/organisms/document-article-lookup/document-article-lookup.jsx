@@ -24,6 +24,12 @@ const createSlug = str => {
 // };
 
 export class DocumentArticleLookup extends React.PureComponent {
+  constructor() {
+    super()
+    this.state = {
+      office: 'all'
+    }
+  }
   renderMultiSelects() {
     const _multiselects = this.props.taxonomies.map(taxonomy => {
       const { name } = taxonomy
@@ -68,6 +74,22 @@ export class DocumentArticleLookup extends React.PureComponent {
         </div>
       )
     })
+  }
+
+  renderSbaOfficeMultiSelect() {
+    return (
+      <div className={styles.multiSelect} >
+          <MultiSelect
+            id='office'
+            label="Office"
+            options={this.props.sbaOffices}
+            onChange={event => {this.handleChange(event, 'office')}}
+            // onChange={({ value }) => this.setState({ office: value })}
+            // value={this.state.office}
+            value={this.props.queryState['office']}
+          />
+        </div>
+    )
   }
 
   // Sorts the list by placing 'All' at the top (if applicable) with the remaining list items sorted alphabetically
@@ -198,6 +220,7 @@ export class DocumentArticleLookup extends React.PureComponent {
             <div>
               {this.renderSearchInput()}
               {this.renderMultiSelects()}
+              {this.renderSbaOfficeMultiSelect()}
               <div className={styles.applyButton}>
                 <Button primary alternate onClick={this.props.onSubmit}>
                   Apply
