@@ -77,6 +77,9 @@ export class DocumentArticleLookup extends React.PureComponent {
   }
 
   renderSbaOfficeMultiSelect() {
+    if (this.props.sbaOffices === null) {
+      return
+    } else {
     return (
       <div className={styles.multiSelect} >
           <MultiSelect
@@ -89,7 +92,7 @@ export class DocumentArticleLookup extends React.PureComponent {
             value={this.props.queryState['office']}
           />
         </div>
-    )
+    )}
   }
 
   // Sorts the list by placing 'All' at the top (if applicable) with the remaining list items sorted alphabetically
