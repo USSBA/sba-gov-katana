@@ -43,9 +43,7 @@ class PagingLookup extends React.Component {
 
   createQueryParams(ownProps){
     let query = this.createQueryFromProps(ownProps)
-    console.log('initial query', query)
-    query['office'] = query['office'] | 'All'
-    console.log('new final query', query)
+    query['office'] = query['office'] || 'All'
     return query
   }
 
@@ -156,23 +154,23 @@ class PagingLookup extends React.Component {
       value:'All'
     }]
     sbaOffices.forEach(office => {
-      if (office['officeType'] === 'SBA Alternetive Work Site') {
-        return
-      }
+      // if (office['officeType'] === 'SBA Alternetive Work Site') {
+      //   return
+      // }
       var filterFormattedOffice = {}
       filterFormattedOffice['label'] = office['title']
       filterFormattedOffice['value'] = office['id']
       filteredOffices.push(filterFormattedOffice)
     })
-
-    // console.log('filter props', this.props.sbaOffices)
-    // console.log('filter work', sbaOffices)
-    // return sbaOffices
-    return filteredOffices
+    return filteredOffices.sort(function(a, b){
+      // Sort alphabetically and push "All" to the top of the list of options
+      if(a['label'] < b['label'] || a['label'] === 'All') { return -1}
+      if(a['label'] > b['label']) { return 1}
+      return 0 
+    })
   }
 
   handleSubmit() {
-    // console.log('query', this.state.query)
     const queryObject = this.state.query
 
     this.fireDocumentationLookupEvent(`Apply CTA: Term: ${queryObject.searchTerm}`)

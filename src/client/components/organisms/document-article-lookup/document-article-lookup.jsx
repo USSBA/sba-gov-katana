@@ -87,8 +87,7 @@ export class DocumentArticleLookup extends React.PureComponent {
             label="Office"
             options={this.props.sbaOffices}
             onChange={event => {this.handleChange(event, 'office')}}
-            // onChange={({ value }) => this.setState({ office: value })}
-            // value={this.state.office}
+            data-testid="office-search-dropdown"
             value={this.props.queryState['office']}
           />
         </div>
