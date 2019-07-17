@@ -92,9 +92,12 @@ describe('DocumentArticleLookup', () => {
     ]
 
     const component = shallow(<DocumentArticleLookup {...props} />)
-    expect(component.find(MultiSelect)).toHaveLength(1)
+    expect(component.find(MultiSelect)).toHaveLength(2)
 
-    const options = component.find(MultiSelect).prop('options')
+    const options = component
+      .find(MultiSelect)
+      .first()
+      .prop('options')
     expect(options[0].label).toBe('All')
     expect(options[0].value).toBe('All')
   })
@@ -109,9 +112,12 @@ describe('DocumentArticleLookup', () => {
     ]
 
     const component = shallow(<DocumentArticleLookup {...props} />)
-    expect(component.find(MultiSelect)).toHaveLength(1)
+    expect(component.find(MultiSelect)).toHaveLength(2)
 
-    const options = component.find(MultiSelect).prop('options')
+    const options = component
+      .find(MultiSelect)
+      .first()
+      .prop('options')
     expect(options[0].label).toBe('All')
     expect(options[0].value).toBe('All')
   })
@@ -126,9 +132,12 @@ describe('DocumentArticleLookup', () => {
     ]
 
     const component = shallow(<DocumentArticleLookup {...props} />)
-    expect(component.find(MultiSelect)).toHaveLength(1)
+    expect(component.find(MultiSelect)).toHaveLength(2)
 
-    const options = component.find(MultiSelect).prop('options')
+    const options = component
+      .find(MultiSelect)
+      .first()
+      .prop('options')
     expect(options.map(term => term.label)).not.toContain('All')
     expect(options.map(term => term.value)).not.toContain('All')
   })
