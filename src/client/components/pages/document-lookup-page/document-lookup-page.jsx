@@ -6,9 +6,9 @@ import { PagingLookup } from 'organisms'
 class DocumentLookupPage extends React.Component {
   constructor() {
     super()
-    this.state = ({
+    this.state = {
       sbaOffices: []
-    })
+    }
   }
 
   async componentDidMount() {

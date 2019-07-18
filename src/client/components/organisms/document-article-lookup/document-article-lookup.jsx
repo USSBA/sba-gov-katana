@@ -77,21 +77,22 @@ export class DocumentArticleLookup extends React.PureComponent {
   }
 
   renderSbaOfficeMultiSelect() {
-    if (this.props.sbaOffices === null) {
-      return
-    } else {
-    return (
-      <div className={styles.multiSelect} >
+    if (this.props.sbaOffices !== null) {
+      return (
+        <div className={styles.multiSelect}>
           <MultiSelect
-            id='office'
+            id="office"
             label="Office"
             options={this.props.sbaOffices}
-            onChange={event => {this.handleChange(event, 'office')}}
+            onChange={event => {
+              this.handleChange(event, 'office')
+            }}
             data-testid="office-search-dropdown"
-            value={this.props.queryState['office']}
+            value={this.props.queryState.office}
           />
         </div>
-    )}
+      )
+    }
   }
 
   // Sorts the list by placing 'All' at the top (if applicable) with the remaining list items sorted alphabetically
@@ -213,10 +214,67 @@ export class DocumentArticleLookup extends React.PureComponent {
     )
   }
 
-  render() {
+  numberOfMultiSelects() {
+    let count = this.props.taxonomies.length
+    this.props.sbaOffices !== null && count++
+    return count
+  }
+
+  renderBanner() {
+    if (this.numberOfMultiSelects() >= 5) {
+      return (
+        <div className={styles.twoLineBanner}>
+          <h2 className={styles.header}>{this.props.title}</h2>
+          {this.renderBannerContent()}
+        </div>
+      )
+    } else {
+      return (
+        <div className={styles.oneLineBanner}>
+          <h2 className={styles.header}>{this.props.title}</h2>
+          {this.renderBannerContent()}
+        </div>
+      )
+    }
+  }
+
+  renderBannerContent() {
+    if (this.props.taxonomies.length > 0) {
+      return (
+        <div>
+          {this.renderSearchInput()}
+          {this.renderMultiSelects()}
+          {this.renderSbaOfficeMultiSelect()}
+          {this.renderButton()}
+        </div>
+      )
+    }
+  }
+
+  renderButton() {
+    if (this.numberOfMultiSelects() >= 5) {
+      return (
+        <div className={styles.leftApplyButton}>
+          <Button primary alternate onClick={this.props.onSubmit}>
+            Apply
+          </Button>
+        </div>
+      )
+    } else {
+      return (
+        <div className={styles.rightApplyButton}>
+          <Button primary alternate onClick={this.props.onSubmit}>
+            Apply
+          </Button>
+        </div>
+      )
+    }
+  }
+
+  dontrender() {
     return (
       <div>
-        <div className={styles.banner}>
+        <div className={styles.twoLineBanner}>
           <h2 className={styles.header}>{this.props.title}</h2>
           {this.props.taxonomies.length > 0 && (
             <div>
@@ -231,6 +289,19 @@ export class DocumentArticleLookup extends React.PureComponent {
             </div>
           )}
         </div>
+        <div className={styles.result}>
+          {this.renderPaginator()}
+          {this.renderCards()}
+          {this.renderPaginator()}
+        </div>
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        {this.renderBanner()}
         <div className={styles.result}>
           {this.renderPaginator()}
           {this.renderCards()}

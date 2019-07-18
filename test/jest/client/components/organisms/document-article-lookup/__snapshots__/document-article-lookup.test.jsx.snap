@@ -3,7 +3,7 @@
 exports[`DocumentArticleLookup should render with all the information 1`] = `
 <div>
   <div
-    className="banner"
+    className="oneLineBanner"
   >
     <h2
       className="header"
@@ -314,7 +314,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         </div>
       </div>
       <div
-        className="applyButton"
+        className="rightApplyButton"
       >
         <button
           className="button alternate large primary responsive spacing"
