@@ -271,33 +271,6 @@ export class DocumentArticleLookup extends React.PureComponent {
     }
   }
 
-  dontrender() {
-    return (
-      <div>
-        <div className={styles.twoLineBanner}>
-          <h2 className={styles.header}>{this.props.title}</h2>
-          {this.props.taxonomies.length > 0 && (
-            <div>
-              {this.renderSearchInput()}
-              {this.renderMultiSelects()}
-              {this.renderSbaOfficeMultiSelect()}
-              <div className={styles.applyButton}>
-                <Button primary alternate onClick={this.props.onSubmit}>
-                  Apply
-                </Button>
-              </div>
-            </div>
-          )}
-        </div>
-        <div className={styles.result}>
-          {this.renderPaginator()}
-          {this.renderCards()}
-          {this.renderPaginator()}
-        </div>
-      </div>
-    )
-  }
-
   render() {
     return (
       <div>
