@@ -20,7 +20,7 @@ class DocumentLookupPage extends React.Component {
   }
 
   render() {
-    const sbaOffices = this.state.sbaOffices
+    const { sbaOffices } = this.state
 
     const documentProps = {
       title: 'Documentation Lookup',

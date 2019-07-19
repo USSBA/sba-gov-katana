@@ -92,7 +92,7 @@ describe('DocumentArticleLookup', () => {
     ]
 
     const component = shallow(<DocumentArticleLookup {...props} />)
-    expect(component.find(MultiSelect)).toHaveLength(2)
+    expect(component.find(MultiSelect)).toHaveLength(1)
 
     const options = component
       .find(MultiSelect)
@@ -112,7 +112,7 @@ describe('DocumentArticleLookup', () => {
     ]
 
     const component = shallow(<DocumentArticleLookup {...props} />)
-    expect(component.find(MultiSelect)).toHaveLength(2)
+    expect(component.find(MultiSelect)).toHaveLength(1)
 
     const options = component
       .find(MultiSelect)
@@ -132,7 +132,7 @@ describe('DocumentArticleLookup', () => {
     ]
 
     const component = shallow(<DocumentArticleLookup {...props} />)
-    expect(component.find(MultiSelect)).toHaveLength(2)
+    expect(component.find(MultiSelect)).toHaveLength(1)
 
     const options = component
       .find(MultiSelect)
