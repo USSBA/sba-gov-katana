@@ -567,7 +567,7 @@ exports[`Front Page Hero should render correctly 1`] = `
             style={Object {}}
             target="_self"
           >
-            Create a Business Plan
+            Find Events
           </a>
         </li>
         <li
@@ -581,20 +581,6 @@ exports[`Front Page Hero should render correctly 1`] = `
             style={Object {}}
             target="_self"
           >
-            Find Events
-          </a>
-        </li>
-        <li
-          className="pageLink "
-        >
-          <a
-            className="link "
-            id="footer-group-5-3"
-            onBlur={[Function]}
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
             Qualify for Government Contracts
           </a>
         </li>
@@ -603,7 +589,7 @@ exports[`Front Page Hero should render correctly 1`] = `
         >
           <a
             className="link "
-            id="footer-group-5-4"
+            id="footer-group-5-3"
             onBlur={[Function]}
             onClick={[Function]}
             style={Object {}}
