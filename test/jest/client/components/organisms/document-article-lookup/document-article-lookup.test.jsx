@@ -57,6 +57,14 @@ const lookupProps = {
     {
       name: 'LightsaberColor',
       terms: ['Red', 'Green', 'Blue', 'Yellow']
+    },
+    {
+      name: 'Movie',
+      terms: ['I', 'II', 'III', 'IV', 'V', 'VI']
+    },
+    {
+      name: 'Status',
+      terms: ['Alive', 'Dead', 'Force Ghost']
     }
   ],
   onSubmit: submit,
@@ -147,4 +155,41 @@ describe('DocumentArticleLookup', () => {
   //   const component = shallow(<DocumentArticleLookup {...props}/>);
   //   expect(component.find("Paginator").prop("pageNumber")).toEqual(props.pageNumber);
   // });
+  test('should render with SBA Offices when provided', () => {
+    const props = _.clone(lookupProps)
+    props.sbaOffices = [
+      {
+        value: 1,
+        label: 'aaaaa'
+      },
+      {
+        value: 2,
+        label: 'bbbbb'
+      }
+    ]
+    const component = renderer.create(<DocumentArticleLookup {...props} />)
+    const tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+  test('should properly render the page with SBA offices', () => {
+    const props = _.clone(lookupProps)
+    props.sbaOffices = [
+      {
+        value: 1,
+        label: 'aaaaa'
+      },
+      {
+        value: 2,
+        label: 'bbbbb'
+      }
+    ]
+    const component = shallow(<DocumentArticleLookup {...props} />)
+    expect(component.find(MultiSelect)).toHaveLength(5)
+    const options = component
+      .find(MultiSelect)
+      .last()
+      .prop('options')
+    expect(options[0].label).toBe('aaaaa')
+    expect(options[0].value).toBe(1)
+  })
 })
