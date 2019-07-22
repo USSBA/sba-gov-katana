@@ -55,6 +55,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
         <div
           className="select"
           data-cy="title-select"
+          data-testid="title-select"
         >
           <label
             htmlFor="title-select"
@@ -143,6 +144,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
         <div
           className="select"
           data-cy="lightsabercolor-select"
+          data-testid="lightsabercolor-select"
         >
           <label
             htmlFor="lightsabercolor-select"
@@ -231,6 +233,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
         <div
           className="select"
           data-cy="movie-select"
+          data-testid="movie-select"
         >
           <label
             htmlFor="movie-select"
@@ -319,6 +322,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
         <div
           className="select"
           data-cy="status-select"
+          data-testid="status-select"
         >
           <label
             htmlFor="status-select"
@@ -407,6 +411,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
         <div
           className="select"
           data-cy="office"
+          data-testid="office"
         >
           <label
             htmlFor="office"
@@ -889,6 +894,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         <div
           className="select"
           data-cy="title-select"
+          data-testid="title-select"
         >
           <label
             htmlFor="title-select"
@@ -977,6 +983,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         <div
           className="select"
           data-cy="lightsabercolor-select"
+          data-testid="lightsabercolor-select"
         >
           <label
             htmlFor="lightsabercolor-select"
@@ -1065,6 +1072,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         <div
           className="select"
           data-cy="movie-select"
+          data-testid="movie-select"
         >
           <label
             htmlFor="movie-select"
@@ -1153,6 +1161,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         <div
           className="select"
           data-cy="status-select"
+          data-testid="status-select"
         >
           <label
             htmlFor="status-select"
