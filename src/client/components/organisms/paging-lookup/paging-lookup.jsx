@@ -140,7 +140,7 @@ class PagingLookup extends React.Component {
   }
 
   createSbaOfficeFilterList() {
-    const sbaOffices = this.props.sbaOffices
+    const { sbaOffices } = this.props
 
     if (sbaOffices === null || sbaOffices.length === 0) {
       return sbaOffices

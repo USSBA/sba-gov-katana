@@ -78,6 +78,7 @@ export class DocumentArticleLookup extends React.PureComponent {
   }
 
   renderSbaOfficeMultiSelect() {
+    const { office } = this.props.queryState
     return (
       <div className={styles.multiSelect}>
         <MultiSelect
@@ -88,7 +89,7 @@ export class DocumentArticleLookup extends React.PureComponent {
             this.handleChange(event, 'office')
           }}
           data-testid="office-search-dropdown"
-          value={this.props.queryState.office}
+          value={office}
         />
       </div>
     )
@@ -221,6 +222,7 @@ export class DocumentArticleLookup extends React.PureComponent {
 
   renderBanner() {
     const count = this.numberOfMultiSelects()
+    const { taxonomies } = this.props
     const className = classNames({
       [styles.twoLineBanner]: count >= 5,
       [styles.oneLineBanner]: count < 5
@@ -228,17 +230,18 @@ export class DocumentArticleLookup extends React.PureComponent {
     return (
       <div className={className}>
         <h2 className={styles.header}>{this.props.title}</h2>
-        {this.props.taxonomies.length > 0 && this.renderBannerContent()}
+        {taxonomies.length > 0 && this.renderBannerContent()}
       </div>
     )
   }
 
   renderBannerContent() {
+    const { sbaOffices } = this.props
     return (
       <div>
         {this.renderSearchInput()}
         {this.renderMultiSelects()}
-        {this.props.sbaOffices && this.renderSbaOfficeMultiSelect()}
+        {sbaOffices && this.renderSbaOfficeMultiSelect()}
         {this.renderButton()}
       </div>
     )
