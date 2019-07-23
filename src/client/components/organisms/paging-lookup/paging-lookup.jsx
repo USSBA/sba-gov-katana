@@ -153,10 +153,7 @@ class PagingLookup extends React.Component {
       }
     ]
     sbaOffices.forEach(office => {
-      // if (office['officeType'] === 'SBA Alternetive Work Site') {
-      //   return
-      // }
-      var filterFormattedOffice = {}
+      const filterFormattedOffice = {}
       filterFormattedOffice.label = office.title
       filterFormattedOffice.value = office.id
       filteredOffices.push(filterFormattedOffice)
