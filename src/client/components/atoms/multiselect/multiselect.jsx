@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import ReactSelect from 'react-select-v1'
 import classNames from 'classnames'

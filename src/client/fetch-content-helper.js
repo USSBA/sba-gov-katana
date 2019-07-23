@@ -10,7 +10,12 @@ async function fetchRestContent(id, langOverride) {
       '/api/content' + (id ? '/' + id : '') + '.json',
       langOverride && { headers: { 'accept-language': langOverride } }
     )
-    data = response.data
+
+    if (langOverride === 'es') {
+      data = response.data.spanishTranslation
+    } else {
+      data = response.data
+    }
   } catch (error) {
     console.error('fetchRestContent', error)
   }

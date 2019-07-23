@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import cookie from 'react-cookie'
 
 import styles from '../organisms/header-footer/header/header.scss'
@@ -46,7 +46,7 @@ class Main extends React.Component {
     } = this.state
 
     return (
-      <div className={visible && !disasterAlertCookieExists && styles.alertIsActive}>
+      <div className={visible && !disasterAlertCookieExists ? styles.alertIsActive : undefined}>
         <DisasterAlert
           description={description}
           visible={visible && !disasterAlertCookieExists}

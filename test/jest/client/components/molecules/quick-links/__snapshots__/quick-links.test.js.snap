@@ -1,21 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`QuickLinks Future effective date is not displayed 1`] = `
+exports[`QuickLinks snapshot tests Future effective date is not displayed 1`] = `
 <div
   className="collection"
+  data-testid="quick-links"
 >
   <div
     className="card oneCard"
+    data-testid="documents-card"
   >
     <div
       className="titleContainer"
     >
       <h4
         className="title"
+        data-testid="header"
       >
         SOPs
       </h4>
       <a
+        data-testid="see-all-link"
         onClick={[Function]}
         style={Object {}}
         target="_self"
@@ -40,22 +44,26 @@ exports[`QuickLinks Future effective date is not displayed 1`] = `
 </div>
 `;
 
-exports[`QuickLinks Most recent effective date displayed 1`] = `
+exports[`QuickLinks snapshot tests Most recent effective date displayed 1`] = `
 <div
   className="collection"
+  data-testid="quick-links"
 >
   <div
     className="card oneCard"
+    data-testid="documents-card"
   >
     <div
       className="titleContainer"
     >
       <h4
         className="title"
+        data-testid="header"
       >
         SOPs
       </h4>
       <a
+        data-testid="see-all-link"
         onClick={[Function]}
         style={Object {}}
         target="_self"
@@ -80,22 +88,26 @@ exports[`QuickLinks Most recent effective date displayed 1`] = `
 </div>
 `;
 
-exports[`QuickLinks No SOP number so it is not displayed 1`] = `
+exports[`QuickLinks snapshot tests No SOP number so it is not displayed 1`] = `
 <div
   className="collection"
+  data-testid="quick-links"
 >
   <div
     className="card oneCard"
+    data-testid="documents-card"
   >
     <div
       className="titleContainer"
     >
       <h4
         className="title"
+        data-testid="header"
       >
         SOPs
       </h4>
       <a
+        data-testid="see-all-link"
         onClick={[Function]}
         style={Object {}}
         target="_self"
@@ -120,22 +132,26 @@ exports[`QuickLinks No SOP number so it is not displayed 1`] = `
 </div>
 `;
 
-exports[`QuickLinks SOP number exists and is displayed 1`] = `
+exports[`QuickLinks snapshot tests SOP number exists and is displayed 1`] = `
 <div
   className="collection"
+  data-testid="quick-links"
 >
   <div
     className="card oneCard"
+    data-testid="documents-card"
   >
     <div
       className="titleContainer"
     >
       <h4
         className="title"
+        data-testid="header"
       >
         SOPs
       </h4>
       <a
+        data-testid="see-all-link"
         onClick={[Function]}
         style={Object {}}
         target="_self"

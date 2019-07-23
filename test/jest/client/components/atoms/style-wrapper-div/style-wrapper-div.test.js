@@ -24,9 +24,9 @@ describe('Style Wrapper Div', () => {
       </StyleWrapperDiv>
     )
 
-    expect(componentWrapper.childAt(0).props()).toEqual(props)
-    expect(componentWrapper.childAt(1).props()).toEqual(props)
-    expect(componentWrapper.childAt(2).props()).toEqual(props)
+    expect(componentWrapper.childAt(0).props().children[0].props).toEqual(props)
+    expect(componentWrapper.childAt(0).props().children[1].props).toEqual(props)
+    expect(componentWrapper.childAt(0).props().children[2].props).toEqual(props)
   })
   it('Contains a div with the passed in class name', () => {
     const className = 'style'
@@ -71,13 +71,13 @@ describe('Style Wrapper Div', () => {
       </StyleWrapperDiv>
     )
     // check that className wasn't passed to children
-    expect(componentWrapper.childAt(0).prop('className')).toBeUndefined()
-    expect(componentWrapper.childAt(1).prop('className')).toBeUndefined()
-    expect(componentWrapper.childAt(2).prop('className')).toBeUndefined()
+    expect(componentWrapper.childAt(0).props().children[0].props.className).toBeUndefined()
+    expect(componentWrapper.childAt(0).props().children[1].props.className).toBeUndefined()
+    expect(componentWrapper.childAt(0).props().children[2].props.className).toBeUndefined()
 
     // check that all other props are there
-    expect(componentWrapper.childAt(0).props()).toEqual(props)
-    expect(componentWrapper.childAt(1).props()).toEqual(props)
-    expect(componentWrapper.childAt(2).props()).toEqual(props)
+    expect(componentWrapper.childAt(0).props().children[0].props).toEqual(props)
+    expect(componentWrapper.childAt(0).props().children[1].props).toEqual(props)
+    expect(componentWrapper.childAt(0).props().children[2].props).toEqual(props)
   })
 })

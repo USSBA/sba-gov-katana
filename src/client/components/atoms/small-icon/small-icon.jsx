@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 
 class SmallIcon extends React.Component {
@@ -31,12 +32,12 @@ class SmallIcon extends React.Component {
 /* esfmt-ignore-end */
 /* options is array of name/value/text triples */
 SmallIcon.propTypes = {
-  id: React.PropTypes.string,
-  altText: React.PropTypes.string,
-  fontAwesomeIconClassName: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func,
-  onKeyDown: React.PropTypes.func,
-  tabbable: React.PropTypes.bool
+  id: PropTypes.string,
+  altText: PropTypes.string,
+  fontAwesomeIconClassName: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  tabbable: PropTypes.bool
 }
 
 SmallIcon.defaultProps = {

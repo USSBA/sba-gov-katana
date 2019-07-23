@@ -202,8 +202,8 @@ describe('All Versions', () => {
       component
         .find('.allVersionsList li')
         .at(fileIndex)
-        .html()
-    ).toBe(null)
+        .exists()
+    ).toEqual(false)
   })
 
   test('versions list is not rendered when there are no files', function() {

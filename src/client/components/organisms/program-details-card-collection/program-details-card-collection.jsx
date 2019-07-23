@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './program-details-card-collection.scss'
 import { CardCollection } from 'organisms'
@@ -73,9 +74,9 @@ ProgramDetailsCardCollection.defaultProps = {
 }
 
 ProgramDetailsCardCollection.propTypes = {
-  cards: React.PropTypes.array,
-  leftAligned: React.PropTypes.bool,
-  currentLanguage: React.PropTypes.string
+  cards: PropTypes.array,
+  leftAligned: PropTypes.bool,
+  currentLanguage: PropTypes.string
 }
 
 export default ProgramDetailsCardCollection

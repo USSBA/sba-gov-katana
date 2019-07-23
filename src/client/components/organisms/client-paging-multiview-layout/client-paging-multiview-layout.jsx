@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './client-paging-multiview-layout.scss'
 import { PagingMultiviewLayout } from 'organisms'
 
@@ -68,14 +69,14 @@ ClientPagingMultiviewLayout.defaultProps = {
 }
 
 ClientPagingMultiviewLayout.propTypes = {
-  onReset: React.PropTypes.func,
-  items: React.PropTypes.array,
-  pageSize: React.PropTypes.number,
-  rendererOne: React.PropTypes.func,
-  rendererTwo: React.PropTypes.func,
-  rendererOneName: React.PropTypes.string,
-  rendererTwoName: React.PropTypes.string,
-  type: React.PropTypes.string
+  onReset: PropTypes.func,
+  items: PropTypes.array,
+  pageSize: PropTypes.number,
+  rendererOne: PropTypes.func,
+  rendererTwo: PropTypes.func,
+  rendererOneName: PropTypes.string,
+  rendererTwoName: PropTypes.string,
+  type: PropTypes.string
 }
 
 export default ClientPagingMultiviewLayout

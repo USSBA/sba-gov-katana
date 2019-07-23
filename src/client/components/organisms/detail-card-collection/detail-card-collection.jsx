@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './detail-card-collection.scss'
 import { DetailCard } from 'molecules'
@@ -38,8 +39,8 @@ class DetailCardCollection extends React.Component {
 }
 
 DetailCardCollection.propTypes = {
-  cards: React.PropTypes.array,
-  fieldsToShowInDetails: React.PropTypes.array
+  cards: PropTypes.array,
+  fieldsToShowInDetails: PropTypes.array
 }
 
 DetailCardCollection.defaultProps = {

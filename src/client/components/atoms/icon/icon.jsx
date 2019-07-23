@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
 // TODO: import icon svgs from anoter folder
 // TODO: define enum of icon imports

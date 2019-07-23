@@ -7,10 +7,6 @@ import { ModalController } from 'organisms/modal-controller/modal-controller.jsx
 import { MobileNav as MobileSectionNavModal } from 'organisms/modals/mobile-section-nav/mobile-section-nav.jsx'
 import SbaNewsModal from 'molecules/news-modal/news-modal.jsx'
 
-// Quiet warnings about OnTouchTap
-import injectTapEventPlugin from 'react-tap-event-plugin'
-injectTapEventPlugin()
-
 const mobileSectionNavProps = {
   modalType: 'MOBILE_SECTION_NAV',
   modalProps: {
@@ -136,14 +132,20 @@ describe('ModalController', () => {
   })
 
   test('should invoke SbaNewsProps and show store error', () => {
+    // silence (intentional) error logged by redux by disabling error logging
+    const consoleError = console.error
+    console.error = jest.fn()
+
     const expectedValue = 'Invariant Violation'
     let returnedValue
     try {
       const props = _.clone(SbaNewsModalProps)
       const component = mount(<ModalController {...props} />)
     } catch (e) {
-      returnedValue = e.name
+      expect(expectedValue).toEqual(e.name)
     }
-    expect(returnedValue).toEqual(expectedValue)
+
+    // restore error logging
+    console.error = consoleError
   })
 })

@@ -1,5 +1,6 @@
-import React from 'react'
 import $ from 'jquery'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './text-section.scss'
 import { LeaveSbaModal } from 'organisms'
 
@@ -30,6 +31,7 @@ class TextSection extends React.Component {
       $(trs).each((k, trow) => {
         let tds = $(trow).find('td')
 
+        // TODO: This if statement functionality should be checked to see if it needs to be modified or removed
         if (tds.length !== firstRowLength) {
           const prevRow = $(trs)[k - 1]
           const firstTdCopy = $($(prevRow).find('td')[0]).clone()
@@ -121,7 +123,7 @@ class TextSection extends React.Component {
 
 TextSection.propTypes = {
   // TODO: use children instead of text prop
-  text: React.PropTypes.string.isRequired
+  text: PropTypes.string.isRequired
 }
 
 export default TextSection

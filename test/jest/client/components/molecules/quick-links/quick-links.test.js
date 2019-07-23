@@ -1,7 +1,10 @@
 import React from 'react'
-import { QuickLinks } from 'client/components/molecules/quick-links/quick-links.jsx'
-import { shallow } from 'enzyme'
+import { cleanup, render, waitForElement } from 'react-testing-library'
 import renderer from 'react-test-renderer'
+import 'jest-dom/extend-expect'
+
+import { QuickLinks } from 'client/components/molecules/quick-links/quick-links.jsx'
+import * as fetchContentHelper from 'client/fetch-content-helper.js'
 
 jest.mock('client/services/client-config.js', function() {
   return {
@@ -11,9 +14,7 @@ jest.mock('client/services/client-config.js', function() {
   }
 })
 
-const fetchContentIfNeeded = jest.fn()
-
-describe('QuickLinks', () => {
+describe('QuickLinks snapshot tests', () => {
   var mockFetchDocuments
   beforeEach(() => {
     mockFetchDocuments = jest.spyOn(QuickLinks.prototype, 'fetchDocuments')
@@ -23,59 +24,10 @@ describe('QuickLinks', () => {
     mockFetchDocuments.mockRestore()
   })
 
-  test('to match snapshot', () => {
-    const testProps = {
-      navigation: {
-        locationChange: {}
-      }
-    }
-
-    const mockItem = {
-      type: 'quickLinks',
-      typeOfLinks: [
-        {
-          type: 'documentLookup',
-          documentActivity: [],
-          documentProgram: ['CDC/504'],
-          documentType: ['SOP'],
-          sectionHeaderText: 'SOPs'
-        },
-        {
-          type: 'documentLookup',
-          documentActivity: [],
-          documentProgram: ['7(a)'],
-          documentType: ['Information notice'],
-          sectionHeaderText: 'Policy guidance'
-        },
-        {
-          type: 'ratesList',
-          rate: [
-            {
-              type: 'rate',
-              name: 'SBA LIBOR Base Rate',
-              percent: 4.08
-            },
-            {
-              type: 'rate',
-              name: 'SBA Peg Rate',
-              percent: 6.08
-            },
-            {
-              type: 'rate',
-              name: 'SBA FIXED Base Rate',
-              percent: 2.625
-            }
-          ],
-          sectionHeaderText: 'Rates'
-        },
-        {
-          type: 'articleLookup',
-          articleProgram: null,
-          sectionHeaderText: 'Articles'
-        }
-      ]
-    }
+  afterAll(() => {
+    mockFetchDocuments.mockReset()
   })
+
   test('Most recent effective date displayed', () => {
     const mockData = {
       type: 'quickLinks',
@@ -431,5 +383,86 @@ describe('QuickLinks', () => {
     const component = renderer.create(<QuickLinks {...testProps} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
+  })
+})
+
+afterEach(cleanup)
+
+describe('Quick Links unit tests', () => {
+  test('makes fetch request for documents using given office id', async () => {
+    const mockPropsData = {
+      type: 'quickLinks',
+      typeOfLinks: [
+        {
+          documentActivity: [],
+          documentProgram: [],
+          documentType: [],
+          type: 'documentLookup',
+          documentOffice: 3000,
+          sectionHeaderText: 'Document List for Office'
+        }
+      ]
+    }
+
+    const mockFetchSiteContent = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+    mockFetchSiteContent.mockReturnValue({})
+
+    render(<QuickLinks data={mockPropsData} />)
+
+    const expectedQueryParams = {
+      activity: 'all',
+      end: 3,
+      office: 3000,
+      program: 'all',
+      sortBy: 'Last Updated',
+      start: 0,
+      type: 'all'
+    }
+    expect(mockFetchSiteContent).toHaveBeenCalledOnce
+    expect(mockFetchSiteContent).toHaveBeenCalledWith('documents', expectedQueryParams)
+
+    mockFetchSiteContent.mockRestore()
+    mockFetchSiteContent.mockReset()
+  })
+
+  test('displays document for an office when given an office id', async () => {
+    const mockPropsData = {
+      type: 'quickLinks',
+      typeOfLinks: [
+        {
+          documentActivity: [],
+          documentProgram: [],
+          documentType: [],
+          type: 'documentLookup',
+          documentOffice: 3000,
+          sectionHeaderText: 'Document List for Office'
+        }
+      ]
+    }
+
+    const mockResponse = {
+      count: 1,
+      items: [
+        {
+          files: [{ id: 10 }],
+          id: 200,
+          office: 3000,
+          title: 'Test Document for Office',
+          type: 'document',
+          url: '/document/test-document-for-office'
+        }
+      ]
+    }
+
+    const mockFetchSiteContent = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+    mockFetchSiteContent.mockReturnValue(mockResponse)
+
+    const { getAllByTestId } = render(<QuickLinks data={mockPropsData} />)
+    const documentLink = await waitForElement(() => getAllByTestId('document-link'))
+
+    expect(documentLink.length).toEqual(1)
+    expect(documentLink[0]).toHaveTextContent('Test Document for Office')
+
+    mockFetchSiteContent.mockReset()
   })
 })

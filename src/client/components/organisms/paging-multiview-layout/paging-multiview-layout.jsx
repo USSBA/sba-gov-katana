@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 
 import styles from './paging-multiview-layout.scss'
@@ -111,18 +112,18 @@ PagingMultiviewLayout.defaultProps = {
 }
 
 PagingMultiviewLayout.propTypes = {
-  onPageChange: React.PropTypes.func,
-  onReset: React.PropTypes.func,
-  itemCount: React.PropTypes.number,
-  items: React.PropTypes.array,
-  pageNumber: React.PropTypes.number,
-  pageSize: React.PropTypes.number,
-  rendererOne: React.PropTypes.func,
-  rendererTwo: React.PropTypes.func,
-  rendererOneName: React.PropTypes.string,
-  rendererTwoName: React.PropTypes.string,
-  googleAnalyticsCategory: React.PropTypes.string,
-  type: React.PropTypes.string
+  onPageChange: PropTypes.func,
+  onReset: PropTypes.func,
+  itemCount: PropTypes.number,
+  items: PropTypes.array,
+  pageNumber: PropTypes.number,
+  pageSize: PropTypes.number,
+  rendererOne: PropTypes.func,
+  rendererTwo: PropTypes.func,
+  rendererOneName: PropTypes.string,
+  rendererTwoName: PropTypes.string,
+  googleAnalyticsCategory: PropTypes.string,
+  type: PropTypes.string
 }
 
 export default PagingMultiviewLayout

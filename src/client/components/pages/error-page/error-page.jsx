@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import clientConfig from '../../../services/client-config.js'
 import errorImage from 'assets/images/error-page/moon.png'
 import styles from './error-page.scss'

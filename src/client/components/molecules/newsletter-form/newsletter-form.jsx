@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import isEmail from 'validator/lib/isEmail'
 import isPostalCode from 'validator/lib/isPostalCode'
@@ -126,7 +127,7 @@ class NewsletterForm extends Component {
                   children={buttonText}
                   disabled={!footer && !this.isValid()}
                   loading={!footer && formState === FORM_STATE.processing}
-                  type={!footer && 'submit'}
+                  type={!footer ? 'submit' : undefined}
                   url={footer ? '/updates' : null}
                 />
               </span>

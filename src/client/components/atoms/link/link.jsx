@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import path from 'path'
 import { isString, startsWith } from 'lodash'
 import { Link as ReactRouterLink } from 'react-router'
