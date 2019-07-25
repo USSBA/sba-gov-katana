@@ -112,8 +112,15 @@ class PagingLookup extends React.Component {
 
     this.setState(
       {
-        taxonomies: this.reArrangeTaxonomyOrder(taxonomies),
-        sbaOfficeFilters: this.createSbaOfficeFilterList()
+        taxonomies: this.reArrangeTaxonomyOrder(taxonomies)
+      }
+    )
+  }
+
+  componentWillReceiveProps({sbaOffices}) {
+    this.setState(
+      {
+        sbaOfficeFilters: this.createSbaOfficeFilterList(sbaOffices)
       },
       () => this.submit()
     )
@@ -139,8 +146,7 @@ class PagingLookup extends React.Component {
     return rearrangedTaxonomyOrder
   }
 
-  createSbaOfficeFilterList() {
-    const { sbaOffices } = this.props
+  createSbaOfficeFilterList(sbaOffices) {
 
     if (sbaOffices === null || sbaOffices.length === 0) {
       return sbaOffices
