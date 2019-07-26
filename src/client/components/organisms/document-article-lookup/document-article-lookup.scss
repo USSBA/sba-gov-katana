@@ -5,7 +5,7 @@
   height: 20vw;
 }
 
-.banner {
+.oneLineBanner {
   background-color: $sba-blue;
   color: white;
   position: relative;
@@ -19,6 +19,24 @@
   }
   @include grid-media($sba-grid-large) {
     height: 220px;
+    padding: 40px 28px 20px 28px;
+  }
+}
+
+.twoLineBanner {
+  background-color: $sba-blue;
+  color: white;
+  position: relative;
+  width: 100%;
+
+  @include grid-media($sba-grid-small) {
+    padding: 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 20px 30px 20px 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    height: 280px;
     padding: 40px 28px 20px 28px;
   }
 }
@@ -98,6 +116,28 @@
   font-size: 22px;
   margin-top: 34px;
   vertical-align: top;
+
+  > button {
+    padding: 13px 26px;
+  }
+}
+
+.rightApplyButton {
+  display: inline-block;
+  font-size: 22px;
+  margin-top: 34px;
+  vertical-align: top;
+
+  > button {
+    padding: 13px 26px;
+  }
+}
+
+.leftApplyButton {
+  display: block;
+  font-size: 22px;
+  margin-top: 20px;
+  // vertical-align: top;
 
   > button {
     padding: 13px 26px;

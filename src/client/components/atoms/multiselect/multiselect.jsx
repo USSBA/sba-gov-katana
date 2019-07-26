@@ -48,9 +48,10 @@ class MultiSelect extends React.Component {
     })
 
     const langCode = getLanguageOverride()
+    const testId = dataCy ? dataCy : id
 
     return (
-      <div className={selectClassName} data-cy={dataCy ? dataCy : id}>
+      <div className={selectClassName} data-cy={dataCy ? dataCy : id} data-testid={testId}>
         <label htmlFor={id}>{label}</label>
         <ReactSelect
           ref={input => (this.select = input)}

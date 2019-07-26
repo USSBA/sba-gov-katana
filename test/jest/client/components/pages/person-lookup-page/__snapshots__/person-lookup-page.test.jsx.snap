@@ -49,6 +49,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
       <div
         className="select"
         data-cy="office"
+        data-testid="office"
       >
         <label
           htmlFor="office"
@@ -133,6 +134,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
       <div
         className="select"
         data-cy="sort-by"
+        data-testid="sort-by"
       >
         <label
           htmlFor="sort-by"
