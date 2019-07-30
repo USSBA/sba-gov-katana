@@ -46,26 +46,22 @@ class EventLookupPage extends React.PureComponent {
     })
   }
 
-  getDateRange(range) {
+  getDateRange(baseTime, range) {
     function calculateStartDate(startDay) {
       let date
       if (startDay === 'tomorrow') {
-        date = moment()
-          .utc()
+        date = moment(baseTime)
           .add(1, 'd')
           .startOf('day')
           .format()
       } else {
-        date = moment()
-          .utc()
-          .format()
+        date = moment(baseTime).format()
       }
       return date
     }
 
     function calculateEndDate(dayOffset) {
-      return moment()
-        .utc()
+      return moment(baseTime)
         .add(dayOffset, 'd')
         .endOf('day')
         .format()
@@ -108,6 +104,7 @@ class EventLookupPage extends React.PureComponent {
 
   render() {
     const { shouldDisableDistance, shouldDisableSearchButton } = this.state
+    const baseTime = moment().utc()
     const defaultSearchParams = {
       dateRange: 'all',
       distance: '200',
@@ -151,23 +148,23 @@ class EventLookupPage extends React.PureComponent {
             options={[
               {
                 label: 'All Upcoming',
-                value: this.getDateRange('all')
+                value: this.getDateRange(baseTime, 'all')
               },
               {
                 label: 'Today',
-                value: this.getDateRange('today')
+                value: this.getDateRange(baseTime, 'today')
               },
               {
                 label: 'Tomorrow',
-                value: this.getDateRange('tomorrow')
+                value: this.getDateRange(baseTime, 'tomorrow')
               },
               {
                 label: 'Next 7 Days',
-                value: this.getDateRange('7days')
+                value: this.getDateRange(baseTime, '7days')
               },
               {
                 label: 'Next 30 Days',
-                value: this.getDateRange('30days')
+                value: this.getDateRange(baseTime, '30days')
               }
             ]}
             dataCy="date"
