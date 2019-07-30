@@ -6,6 +6,7 @@ import styles from './event-lookup-page.scss'
 import { StyleWrapperDiv, TextInput, MultiSelect } from 'atoms'
 import { EventResult, PrimarySearchBar, Results, PagingLookup } from 'organisms'
 import SearchTemplate from '../../templates/search/search'
+import moment from 'moment'
 
 class EventLookupPage extends React.PureComponent {
   constructor() {
@@ -43,6 +44,52 @@ class EventLookupPage extends React.PureComponent {
         defaultResults
       }
     })
+  }
+
+  getDateRange(range) {
+    function calculateStartDate(startDay) {
+      let date
+      if (startDay === 'tomorrow') {
+        date = moment()
+          .utc()
+          .add(1, 'd')
+          .startOf('day')
+          .format()
+      } else {
+        date = moment()
+          .utc()
+          .format()
+      }
+      return date
+    }
+
+    function calculateEndDate(dayOffset) {
+      return moment()
+        .utc()
+        .add(dayOffset, 'd')
+        .endOf('day')
+        .format()
+    }
+
+    let result
+    switch (range) {
+      case 'all':
+        result = calculateStartDate('today')
+        break
+      case 'today':
+        result = calculateStartDate('today') + ',' + calculateEndDate(0)
+        break
+      case 'tomorrow':
+        result = calculateStartDate('tomorrow') + ',' + calculateEndDate(1)
+        break
+      case '7days':
+        result = calculateStartDate('today') + ',' + calculateEndDate(6)
+        break
+      case '30days':
+        result = calculateStartDate('today') + ',' + calculateEndDate(29)
+        break
+    }
+    return result
   }
 
   validateZipCode(input) {
@@ -104,23 +151,23 @@ class EventLookupPage extends React.PureComponent {
             options={[
               {
                 label: 'All Upcoming',
-                value: 'all'
+                value: this.getDateRange('all')
               },
               {
                 label: 'Today',
-                value: 'today'
+                value: this.getDateRange('today')
               },
               {
                 label: 'Tomorrow',
-                value: 'tomorrow'
+                value: this.getDateRange('tomorrow')
               },
               {
                 label: 'Next 7 Days',
-                value: '7days'
+                value: this.getDateRange('7days')
               },
               {
                 label: 'Next 30 Days',
-                value: '30days'
+                value: this.getDateRange('30days')
               }
             ]}
             dataCy="date"
