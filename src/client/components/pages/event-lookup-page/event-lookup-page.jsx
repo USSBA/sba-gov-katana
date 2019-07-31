@@ -105,8 +105,9 @@ class EventLookupPage extends React.PureComponent {
   render() {
     const { shouldDisableDistance, shouldDisableSearchButton } = this.state
     const baseTime = moment().utc()
+    const defaultDateRange = baseTime.format()
     const defaultSearchParams = {
-      dateRange: 'all',
+      dateRange: defaultDateRange,
       distance: '200',
       pageSize: 10
     }
