@@ -1,8 +1,9 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import EventLookupPage from 'pages/event-lookup-page/event-lookup-page.jsx'
+import EventLookupPage, { getDateRange } from 'pages/event-lookup-page/event-lookup-page.jsx'
 import { MultiSelect } from 'atoms'
+import moment from 'moment'
 
 describe('EventLookupPage', () => {
   // When a user enters a zip code containing characters are not equal to 5 digits, show an error
@@ -59,5 +60,42 @@ describe('EventLookupPage', () => {
     // distance is the second MultiSelect component on the page
     const distanceComponent = component.find(MultiSelect).get(1)
     expect(distanceComponent.props.disabled).toBe(false)
+  })
+
+  describe('getDateRange function', () => {
+    it('should return the formatted start date for the all option', () => {
+      const baseTime = moment('2019-07-31T18:18:36Z').utc()
+      const result = getDateRange(baseTime, 'all')
+      const expectedResult = '2019-07-31T18:18:36Z'
+      expect(result).toBe(expectedResult)
+    })
+
+    it('should return the formatted date range for the today option', () => {
+      const baseTime = moment('2019-07-31T18:18:36Z').utc()
+      const result = getDateRange(baseTime, 'today')
+      const expectedResult = '2019-07-31T18:18:36Z,2019-07-31T23:59:59Z'
+      expect(result).toBe(expectedResult)
+    })
+
+    it('should return the formatted date range for the tomorrow option', () => {
+      const baseTime = moment('2019-07-31T18:18:36Z').utc()
+      const result = getDateRange(baseTime, 'tomorrow')
+      const expectedResult = '2019-08-01T00:00:00Z,2019-08-01T23:59:59Z'
+      expect(result).toBe(expectedResult)
+    })
+
+    it('should return the formatted date range for the next 7 days option', () => {
+      const baseTime = moment('2019-07-31T18:18:36Z').utc()
+      const result = getDateRange(baseTime, '7days')
+      const expectedResult = '2019-07-31T18:18:36Z,2019-08-06T23:59:59Z'
+      expect(result).toBe(expectedResult)
+    })
+
+    it('should return the formatted date range for the next 30 days option', () => {
+      const baseTime = moment('2019-07-31T18:18:36Z').utc()
+      const result = getDateRange(baseTime, '30days')
+      const expectedResult = '2019-07-31T18:18:36Z,2019-08-29T23:59:59Z'
+      expect(result).toBe(expectedResult)
+    })
   })
 })
