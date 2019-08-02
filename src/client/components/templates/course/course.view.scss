@@ -69,45 +69,28 @@
   margin-bottom: 44px;
 }
 
-.downloadFlash {
+.alert {
   margin-top: 50px;
-  padding: 15px;
-  vertical-align: middle;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
   text-align: center;
-  background: #d6ecfc;
+  background-color: $sba-blue-lighter;
 
-  .icon {
-    display: inline-block;
-    margin-right: 10px;
-    position: relative;
-    width: 28px;
-    height: 28px;
-  }
+  @include for-medium-up {
+    display: grid;
+    grid-template-columns: 1fr 9fr 2fr;
+    text-align: left;
 
-  i {
-    position: absolute;
-    top: 8px;
-    left: 0;
-    font-size: 29px;
-  }
-
-  p {
-    display: inline-block;
-    font-size: 16px;
-    padding-right: 8px;
-  }
-
-  @include grid-media($sba-grid-medium-and-small) {
-    p {
-      margin-right: 10px;
-      margin-bottom: 0;
+    .alertText {
+      padding: 10px;
     }
-  }
 
-  @include grid-media($sba-grid-large) {
-    p {
-      margin-right: 10px;
-      margin-bottom: 0;
+    :global(.button),
+    .alertIcon {
+      align-self: center;
+      justify-self: center;
     }
   }
 }

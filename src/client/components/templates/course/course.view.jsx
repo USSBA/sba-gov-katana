@@ -98,6 +98,9 @@ const TableOfContents = props => {
           <a href="#course-content">Course</a>
         </li>
         <li role="menuitem">
+          <a href="#course-transcript">Course Transcript</a>
+        </li>
+        <li role="menuitem">
           <a href="#worksheets">Worksheets</a>
         </li>
       </ul>
@@ -108,12 +111,14 @@ const TableOfContents = props => {
 const DownloadFlash = props => {
   if (!isMobile.any) {
     return (
-      <div className={styles.downloadFlash + ' download-flash'}>
-        <div className={styles.icon}>
-          <i className="fa fa-info-circle" />
-        </div>
-        <p>
+      <div className={styles.alert + ' download-flash'}>
+        <p className={styles.alertIcon}>
+          <i className="fa fa-info-circle fa-2x" />
+        </p>
+        <p className={styles.alertText}>
           This course uses Adobe Flash. Please make sure you have it installed and enabled before beginning.
+          If you unable to use Flash to access this course, the{' '}
+          <a href="#course-transcript">course transcript</a> is available in text.
         </p>
         <Button secondary small target="_blank" url="https://get.adobe.com/flashplayer/">
           Install Flash
