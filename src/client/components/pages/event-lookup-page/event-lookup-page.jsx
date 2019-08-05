@@ -6,6 +6,72 @@ import styles from './event-lookup-page.scss'
 import { StyleWrapperDiv, TextInput, MultiSelect } from 'atoms'
 import { EventResult, PrimarySearchBar, Results, PagingLookup } from 'organisms'
 import SearchTemplate from '../../templates/search/search'
+import clientConfig from '../../../services/client-config.js'
+import moment from 'moment'
+
+const getDateRange = (baseTime, range) => {
+  function calculateStartDate(startDay) {
+    let date
+    if (startDay === 'tomorrow') {
+      date = moment(baseTime)
+        .add(1, 'd')
+        .startOf('day')
+        .format()
+    } else {
+      date = moment(baseTime).format()
+    }
+    return date
+  }
+
+  function calculateEndDate(dayOffset) {
+    return moment(baseTime)
+      .add(dayOffset, 'd')
+      .endOf('day')
+      .format()
+  }
+
+  let result
+
+  if (clientConfig.useD8EventsBackend) {
+    //TODO cleanup when we switch to D8 backend
+    switch (range) {
+      case 'all':
+        result = calculateStartDate('today')
+        break
+      case 'today':
+        result = calculateStartDate('today') + ',' + calculateEndDate(0)
+        break
+      case 'tomorrow':
+        result = calculateStartDate('tomorrow') + ',' + calculateEndDate(1)
+        break
+      case '7days':
+        result = calculateStartDate('today') + ',' + calculateEndDate(6)
+        break
+      case '30days':
+        result = calculateStartDate('today') + ',' + calculateEndDate(29)
+        break
+    }
+  } else {
+    switch (range) {
+      case 'all':
+        result = 'all'
+        break
+      case 'today':
+        result = 'today'
+        break
+      case 'tomorrow':
+        result = 'tomorrow'
+        break
+      case '7days':
+        result = '7days'
+        break
+      case '30days':
+        result = '30days'
+        break
+    }
+  }
+  return result
+}
 
 class EventLookupPage extends React.PureComponent {
   constructor() {
@@ -61,8 +127,10 @@ class EventLookupPage extends React.PureComponent {
 
   render() {
     const { shouldDisableDistance, shouldDisableSearchButton } = this.state
+    const baseTime = moment().utc()
+    const defaultDateRange = clientConfig.useD8EventsBackend ? baseTime.format() : 'all' //TODO cleanup when we switch to D8 backend
     const defaultSearchParams = {
-      dateRange: 'all',
+      dateRange: defaultDateRange,
       distance: '200',
       pageSize: 10
     }
@@ -104,23 +172,23 @@ class EventLookupPage extends React.PureComponent {
             options={[
               {
                 label: 'All Upcoming',
-                value: 'all'
+                value: getDateRange(baseTime, 'all')
               },
               {
                 label: 'Today',
-                value: 'today'
+                value: getDateRange(baseTime, 'today')
               },
               {
                 label: 'Tomorrow',
-                value: 'tomorrow'
+                value: getDateRange(baseTime, 'tomorrow')
               },
               {
                 label: 'Next 7 Days',
-                value: '7days'
+                value: getDateRange(baseTime, '7days')
               },
               {
                 label: 'Next 30 Days',
-                value: '30days'
+                value: getDateRange(baseTime, '30days')
               }
             ]}
             dataCy="date"
@@ -182,3 +250,4 @@ class EventLookupPage extends React.PureComponent {
 }
 
 export default EventLookupPage
+export { getDateRange }
