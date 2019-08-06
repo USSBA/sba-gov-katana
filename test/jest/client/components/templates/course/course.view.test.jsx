@@ -70,7 +70,7 @@ describe('<CourseView />', () => {
     test('has a table of contents', () => {
       const component = shallow(<TableOfContents />)
       const result = component.find('li').length
-      const expected = 2
+      const expected = 3
 
       expect(result).toEqual(expected)
     })
