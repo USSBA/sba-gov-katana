@@ -77,6 +77,10 @@ const BlogCategoryPage = props => (
   <Async componentProps={props} load={import('./pages/blog-category/blog-category-page.jsx')} />
 )
 
+const DistrictOfficePage = props => (
+  <Async componentProps={props} load={import('./pages/district-office-page/district-office-page.jsx')} />
+)
+
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
 import clientConfig from '../services/client-config.js'
@@ -110,6 +114,8 @@ const mainRoutes = [
   <Redirect key={65} from="/blogs" to="/blogs/" />,
   <Route key={66} path="/blogs/:category/" component={BlogCategoryPage} />,
   <Redirect key={67} from="/blogs/:category" to="/blogs/:category/" />,
+  <Route key={68} path="/offices/district/:officeId/" component={DistrictOfficePage} />,
+  <Redirect key={69} from="/offices/district/:officeId" to="/offices/district/:officeId/" />,
   <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
   <Route
     key={13}
