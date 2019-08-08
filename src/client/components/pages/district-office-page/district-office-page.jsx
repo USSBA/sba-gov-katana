@@ -9,8 +9,8 @@ class DistrictOfficePage extends React.Component {
   constructor() {
     super()
     this.state = {
-      loading: false,
-      office: {}
+      office: {},
+      LOADING_STATE: 'unloaded'
     }
   }
 
@@ -18,54 +18,55 @@ class DistrictOfficePage extends React.Component {
     await this.fetchOfficeInfo(this.props.params.officeId)
   }
 
-  validOffice(office) {
-    let valid = false
-    if (office !== null) {
-      if (office.officeType !== null && office.officeType === 'SBA District Office') {
-        valid = true
-      }
+  async componentWillReceiveProps(nextProps) {
+    const { id } = this.props
+    const { id: nextId } = nextProps
+
+    // Re-render the page with new blog data when we remain on `/blog`
+    // and the BlogPage but the location has changed.
+    if (id !== nextId) {
+      await this.fetchOfficeInfo(this.props.params.officeId)
     }
-    return valid
   }
 
   render() {
-    const { officeId } = this.props.params
-    const { office } = this.state
+    const { office, LOADING_STATE } = this.state
 
-    if (officeId && office) {
-      if (this.validOffice(office)) {
-        return (
-          <div>
-            <DistrictOffice office={office} />
+    return (
+      <div>
+        {LOADING_STATE === 'isLoading' && (
+          <div data-testid={'office-loader'}>
+            <Loader />
           </div>
-        )
-      } else {
-        return (
-          <ErrorPage
-            linkUrl="/local-assistance/find/?type=SBA District Office"
-            linkMessage="find offices page"
-          />
-        )
-      }
-    } else {
-      return (
-        <div>
-          <Loader />
-        </div>
-      )
-    }
+        )}
+        {LOADING_STATE === 'isLoaded' && (
+          <div>
+            {!isEmpty(office) ? (
+              <div data-testid={'office-content'}>
+                <DistrictOffice office={office} />
+              </div>
+            ) : (
+              <div data-testid={'office-error'}>
+                <ErrorPage />
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    )
   }
 
   async fetchOfficeInfo(officeId) {
     if (officeId) {
-      try {
-        const office = await fetchRestContent(officeId)
-        if (office) {
-          this.setState({ office })
+      this.setState(
+        {
+          LOADING_STATE: 'isLoading'
+        },
+        async () => {
+          const office = await fetchRestContent(officeId)
+          this.setState({ office, LOADING_STATE: 'isLoaded' })
         }
-      } catch (e) {
-        console.error(e)
-      }
+      )
     }
   }
 }
