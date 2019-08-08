@@ -25,8 +25,8 @@ class DistrictOfficePage extends React.Component {
     const { id } = this.props
     const { id: nextId } = nextProps
 
-    // Re-render the page with new blog data when we remain on `/blog`
-    // and the BlogPage but the location has changed.
+    // Re-render the page with new office data when we remain on `/offices/district`
+    // and the DistrictOfficePage but the location has changed.
     if (id !== nextId) {
       await this.fetchOfficeInfo(this.props.params.officeId)
     }
