@@ -5,6 +5,9 @@ import { Loader } from 'atoms'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper.js'
 import ErrorPage from '../error-page/error-page.jsx'
 
+const errorUrl = '/local-assistance'
+const errorMessage = 'local assistance page'
+
 class DistrictOfficePage extends React.Component {
   constructor() {
     super()
@@ -47,7 +50,7 @@ class DistrictOfficePage extends React.Component {
               </div>
             ) : (
               <div data-testid={'office-error'}>
-                <ErrorPage />
+                <ErrorPage linkUrl={errorUrl} linkMessage={errorMessage} />
               </div>
             )}
           </div>
