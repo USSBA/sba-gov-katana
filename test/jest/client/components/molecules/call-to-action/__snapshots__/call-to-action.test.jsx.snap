@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CallToAction renders a button only 1`] = `
+exports[`CallToAction snapshot tests renders a button only 1`] = `
 <div
   className="callToAction buttonOnlyVariation"
   data-testid="call-to-action"
@@ -24,7 +24,7 @@ exports[`CallToAction renders a button only 1`] = `
 </div>
 `;
 
-exports[`CallToAction renders a large size 1`] = `
+exports[`CallToAction snapshot tests renders a large size 1`] = `
 <div
   className="callToAction largeVariation"
   data-testid="call-to-action"
@@ -32,6 +32,7 @@ exports[`CallToAction renders a large size 1`] = `
 >
   <div
     className="image"
+    data-testid="image"
     style={
       Object {
         "backgroundImage": "url(http://example.com/someImage.jpg)",
@@ -45,7 +46,9 @@ exports[`CallToAction renders a large size 1`] = `
     <div
       className="column"
     >
-      <h3>
+      <h3
+        data-testid="headline"
+      >
         This is the headline for the CTA.
       </h3>
     </div>
@@ -60,6 +63,7 @@ exports[`CallToAction renders a large size 1`] = `
       />
       <p
         className="blurb"
+        data-testid="blurb"
       >
         This is the blurb for the CTA.
       </p>
@@ -79,7 +83,7 @@ exports[`CallToAction renders a large size 1`] = `
 </div>
 `;
 
-exports[`CallToAction renders a medium size 1`] = `
+exports[`CallToAction snapshot tests renders a medium size 1`] = `
 <div
   className="callToAction mediumVariation"
   data-testid="call-to-action"
@@ -91,7 +95,9 @@ exports[`CallToAction renders a medium size 1`] = `
     <div
       className="column"
     >
-      <h3>
+      <h3
+        data-testid="headline"
+      >
         This is the headline for the CTA.
       </h3>
     </div>
@@ -106,6 +112,7 @@ exports[`CallToAction renders a medium size 1`] = `
       />
       <p
         className="blurb"
+        data-testid="blurb"
       >
         This is the blurb for the CTA.
       </p>
@@ -125,7 +132,7 @@ exports[`CallToAction renders a medium size 1`] = `
 </div>
 `;
 
-exports[`CallToAction renders a small size 1`] = `
+exports[`CallToAction snapshot tests renders a small size 1`] = `
 <div
   className="callToAction smallVariation"
   data-testid="call-to-action"
@@ -137,7 +144,9 @@ exports[`CallToAction renders a small size 1`] = `
     <div
       className="column"
     >
-      <h3>
+      <h3
+        data-testid="headline"
+      >
         This is the headline for the CTA.
       </h3>
     </div>

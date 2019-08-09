@@ -53,5 +53,3 @@ DistrictOfficeTemplate.propTypes = {
 }
 
 export default DistrictOfficeTemplate
-
-export { CTA }
