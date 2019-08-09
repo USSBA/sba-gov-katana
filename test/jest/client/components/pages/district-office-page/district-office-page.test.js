@@ -3,6 +3,8 @@
 import React from 'react'
 import { render, cleanup, waitForElement } from 'react-testing-library'
 import DistrictOfficePage from 'pages/district-office-page/district-office-page.jsx'
+// import { getLanguageOverride as mockGetLanguageOverride } from 'client/services/utils'
+// import { getLanguageOverride } from 'client/services/utils'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
@@ -17,6 +19,10 @@ const mockOfficeData = {
 afterEach(cleanup)
 
 describe('District Office page', () => {
+  // beforeAll(() => {
+  //   getLanguageOverride.mockImplementation(() => 'en')
+  // })
+
   it('renders the office info when it recieves data back from the api', async () => {
     const initialState = undefined
     const enhancer = applyMiddleware(thunk)

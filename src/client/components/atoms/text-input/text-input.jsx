@@ -127,7 +127,11 @@ class TextInput extends React.Component {
         hidden={hidden}
         data-testid={kebabCase(`${id} container`)}
       >
-        <label htmlFor={id} className={labelStyle ? labelStyle : undefined} data-testid={kebabCase(`${id} label`)}>
+        <label
+          htmlFor={id}
+          className={labelStyle ? labelStyle : undefined}
+          data-testid={kebabCase(`${id} label`)}
+        >
           {label}
         </label>
         <div className={styles.container}>

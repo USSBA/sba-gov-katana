@@ -96,7 +96,7 @@
     "no-shadow-restricted-names": ["error"],
     "no-shadow": ["error"],
     "no-undef-init": ["error"],
-    "no-undefined": ["error"],
+    "no-undefined": ["warn"],
     "no-use-before-define": ["off"],
 
     "callback-return": ["error"],
