@@ -21,17 +21,6 @@ class DistrictOfficePage extends React.Component {
     await this.fetchOfficeInfo(this.props.params.officeId)
   }
 
-  async componentWillReceiveProps(nextProps) {
-    const { id } = this.props
-    const { id: nextId } = nextProps
-
-    // Re-render the page with new office data when we remain on `/offices/district`
-    // and the DistrictOfficePage but the location has changed.
-    if (id !== nextId) {
-      await this.fetchOfficeInfo(this.props.params.officeId)
-    }
-  }
-
   render() {
     const { office, loadingState } = this.state
 

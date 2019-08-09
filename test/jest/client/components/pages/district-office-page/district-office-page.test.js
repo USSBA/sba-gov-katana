@@ -39,7 +39,7 @@ describe('District Office page', () => {
     const content = await waitForElement(() => getByTestId('office-content'))
     expect(content).toBeInTheDocument()
   })
-  it('renders an error page when DistrictOfficePage is given an invalid office id', async () => {
+  it('renders an error page when DistrictOfficePage does NOT recieve back office information from the content API', async () => {
     const initialState = undefined
     const enhancer = applyMiddleware(thunk)
     const store = createStore(reducers, initialState, enhancer)
