@@ -13,7 +13,7 @@ class DistrictOfficePage extends React.Component {
     super()
     this.state = {
       office: {},
-      LOADING_STATE: 'unloaded'
+      loadingState: 'unloaded'
     }
   }
 
@@ -33,16 +33,16 @@ class DistrictOfficePage extends React.Component {
   }
 
   render() {
-    const { office, LOADING_STATE } = this.state
+    const { office, loadingState } = this.state
 
     return (
       <div>
-        {LOADING_STATE === 'isLoading' && (
+        {loadingState === 'isLoading' && (
           <div data-testid={'office-loader'}>
             <Loader />
           </div>
         )}
-        {LOADING_STATE === 'isLoaded' && (
+        {loadingState === 'isLoaded' && (
           <div>
             {!isEmpty(office) ? (
               <div data-testid={'office-content'}>
@@ -63,11 +63,11 @@ class DistrictOfficePage extends React.Component {
     if (officeId) {
       this.setState(
         {
-          LOADING_STATE: 'isLoading'
+          loadingState: 'isLoading'
         },
         async () => {
           const office = await fetchRestContent(officeId)
-          this.setState({ office, LOADING_STATE: 'isLoaded' })
+          this.setState({ office, loadingState: 'isLoaded' })
         }
       )
     }
