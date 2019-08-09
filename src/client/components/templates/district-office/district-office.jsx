@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { CallToAction, NewsletterForm } from 'molecules'
 import styles from './district-office.scss'
 
@@ -45,6 +46,10 @@ const CTA = () => {
       image={image}
     />
   )
+}
+
+DistrictOfficeTemplate.propTypes = {
+  office: PropTypes.object.isRequired
 }
 
 export default DistrictOfficeTemplate

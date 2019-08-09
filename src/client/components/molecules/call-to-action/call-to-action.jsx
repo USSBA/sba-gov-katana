@@ -39,7 +39,7 @@ const CallToAction = props => {
   }
 
   return (
-    <div id="call-to-action" className={className}>
+    <div data-testid="call-to-action" id="call-to-action" className={className}>
       {startsWith(variation, 'large') ? (
         <div className={styles.image} title={imageAlt} style={backgroundImageStyle} />
       ) : null}

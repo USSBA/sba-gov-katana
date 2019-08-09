@@ -3,6 +3,7 @@
 exports[`CallToAction renders a button only 1`] = `
 <div
   className="callToAction buttonOnlyVariation"
+  data-testid="call-to-action"
   id="call-to-action"
 >
   <div
@@ -26,6 +27,7 @@ exports[`CallToAction renders a button only 1`] = `
 exports[`CallToAction renders a large size 1`] = `
 <div
   className="callToAction largeVariation"
+  data-testid="call-to-action"
   id="call-to-action"
 >
   <div
@@ -80,6 +82,7 @@ exports[`CallToAction renders a large size 1`] = `
 exports[`CallToAction renders a medium size 1`] = `
 <div
   className="callToAction mediumVariation"
+  data-testid="call-to-action"
   id="call-to-action"
 >
   <div
@@ -125,6 +128,7 @@ exports[`CallToAction renders a medium size 1`] = `
 exports[`CallToAction renders a small size 1`] = `
 <div
   className="callToAction smallVariation"
+  data-testid="call-to-action"
   id="call-to-action"
 >
   <div
