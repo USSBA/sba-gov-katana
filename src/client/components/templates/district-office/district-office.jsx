@@ -4,9 +4,10 @@ import styles from './district-office.scss'
 
 class DistrictOfficeTemplate extends React.Component {
   renderSignUpComponent() {
+    const newsletterTitle = 'Sign up for SBA email updates'
     return (
-      <div className={styles.officeNewsletter}>
-        <NewsletterForm />
+      <div className={styles.officeNewsletter} data-testid={'office-newsletter'}>
+        <NewsletterForm title={newsletterTitle} />
       </div>
     )
   }

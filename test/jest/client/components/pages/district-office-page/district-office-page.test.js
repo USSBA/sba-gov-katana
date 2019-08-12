@@ -45,6 +45,28 @@ describe('District Office page', () => {
     const content = await waitForElement(() => getByTestId('office-content'))
     expect(content).toBeInTheDocument()
   })
+  it('renders the newsletter sign up component', async () => {
+    const initialState = undefined
+    const enhancer = applyMiddleware(thunk)
+    const store = createStore(reducers, initialState, enhancer)
+
+    const mockOfficeResponse = {
+      response: 200,
+      data: {
+        mockOfficeData
+      }
+    }
+    axiosMock.get.mockResolvedValueOnce(mockOfficeResponse)
+
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <DistrictOfficePage params={{ officeId: 12345 }} />
+      </Provider>
+    )
+
+    const content = await waitForElement(() => getByTestId('office-newsletter'))
+    expect(content).toBeInTheDocument()
+  })
   it('renders an error page when DistrictOfficePage does NOT recieve back office information from the content API', async () => {
     const initialState = undefined
     const enhancer = applyMiddleware(thunk)
