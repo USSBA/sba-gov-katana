@@ -19,3 +19,4 @@ aws:
     zipCodeDynamoDBTableName: ZipCodesUpper
 content:
     cloudfront: d1ibwq49g7xqd4.cloudfront.net
+    useD8EventsBackend: false
