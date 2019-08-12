@@ -54,22 +54,14 @@ describe('Front Page Hero', () => {
     const component = mount(<FrontPageHero hero={heroProps} button={buttonProps[0]} />)
     const props = component.props()
 
-    expect(props.hero.title).toEqual(
-      'Start and grow your business'
-    )
-    expect(props.hero.caption).toEqual(
-      'Want to be an entrepreneur?'
-    )
+    expect(props.hero.title).toEqual('Start and grow your business')
+    expect(props.hero.caption).toEqual('Want to be an entrepreneur?')
     expect(props.hero.imageLarge.url).toEqual('/largeImage.jpg')
-    expect(props.hero.imageLarge.alt).toEqual(
-      'Start and grow your business'
-    )
+    expect(props.hero.imageLarge.alt).toEqual('Start and grow your business')
     expect(props.hero.imageLarge.width).toEqual(1920)
     expect(props.hero.imageLarge.height).toEqual(768)
 
-    expect(props.hero.imageMedium.url).toEqual(
-      '/mediumImage.jpg'
-    )
+    expect(props.hero.imageMedium.url).toEqual('/mediumImage.jpg')
     expect(props.hero.imageMedium.alt).toEqual('medium image')
     expect(props.hero.imageMedium.width).toEqual(1446)
     expect(props.hero.imageMedium.height).toEqual(768)

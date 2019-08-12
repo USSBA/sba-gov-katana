@@ -1,0 +1,5 @@
+.officeNewsletter {
+  @include for-medium-up {
+    padding: 50px;
+  }
+}
