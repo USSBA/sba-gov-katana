@@ -11,6 +11,7 @@ import BlogsLandingPage from '../pages/blogs-landing/blogs-landing.jsx'
 import { getConfig } from '../../services/client-config.js'
 import { fetchSiteContent } from '../../fetch-content-helper.js'
 import { getLanguageOverride } from '../../services/utils.js'
+import DistrictOfficePage from '../pages/district-office-page/district-office-page.jsx'
 
 export class RootPage extends React.Component {
   constructor() {
