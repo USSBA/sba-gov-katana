@@ -91,7 +91,7 @@ function getLanguageOverride(excludeVariants = false) {
   if (langOverride && excludeVariants) {
     langOverride = langOverride.split('-')[0]
   }
-  // Defaults language to english is langOverride is null
+  // Defaults language to english if langOverride is null
   return langOverride || 'en'
 }
 
