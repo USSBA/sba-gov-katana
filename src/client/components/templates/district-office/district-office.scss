@@ -1,17 +1,23 @@
-.officeNewsletter {
-  @include for-medium-up {
-    padding: 50px;
+.content {
+  @include grid-media($sba-grid-small) {
+    padding: 0 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 0 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 0 80px;
   }
 }
 
-.content {
+.section {
   @include grid-media($sba-grid-small) {
-    padding: 20px;
+    padding: 50px 0;
   }
   @include grid-media($sba-grid-medium) {
-    padding: 30px;
+    padding: 50px 0;
   }
   @include grid-media($sba-grid-large) {
-    padding: 80px;
+    padding: 50px 0;
   }
 }

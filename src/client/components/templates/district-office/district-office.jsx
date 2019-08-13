@@ -9,8 +9,12 @@ class DistrictOfficeTemplate extends React.Component {
     return (
       <div className={styles.content}>
         <p>{office.title}</p>
-        <NewsletterSignup />
-        <CTA />
+        <div className={styles.section}>
+          <NewsletterSignup />
+        </div>
+        <div className={styles.section}>
+          <CTA />
+        </div>
       </div>
     )
   }
