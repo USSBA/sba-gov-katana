@@ -21,4 +21,12 @@ describe('District Office template', () => {
     const cta = getByTestId('call-to-action')
     expect(cta).toBeInTheDocument()
   })
+
+  it('renders the lender match component for any district office', async () => {
+    const mockOfficeData = { title: 'Fearless HQ' }
+    const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+    const lenderMatch = getByTestId('office-lender-match')
+    expect(lenderMatch).toBeInTheDocument()
+  })
 })

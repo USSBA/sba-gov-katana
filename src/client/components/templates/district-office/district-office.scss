@@ -23,12 +23,15 @@
 }
 
 .lenderMatch {
-  @include for-medium-up {
-    margin: 50px;
-    padding: 50px;
+  @include grid-media($sba-grid-large) {
+    padding: 30px 40px;
   }
 
-  border-top: 2px solid $sba-blue;
+  @include grid-media($sba-grid-medium-and-small) {
+    padding: 30px;
+  }
+
+  border-top: 3px solid $sba-blue;
   box-shadow: $box-shadow;
 
   p {
