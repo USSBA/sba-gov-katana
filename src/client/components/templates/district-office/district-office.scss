@@ -3,3 +3,19 @@
     padding: 50px;
   }
 }
+
+.lenderMatch {
+  @include for-medium-up {
+    margin: 50px;
+    padding: 50px;
+  }
+
+  border-top: 2px solid $sba-blue;
+  box-shadow: $box-shadow;
+
+  p {
+    @include lede-type;
+
+    font-size: 18px;
+  }
+}
