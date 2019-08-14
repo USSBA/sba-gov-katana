@@ -1,0 +1,31 @@
+.container {
+  @include grid-media($sba-grid-small) {
+    padding: 20px 0;
+    text-align: left;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 20px 0;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 20px 0 0;
+  }
+}
+
+.events {
+  h2 {
+    margin-left: 30px;
+    margin-bottom: 0;
+  }
+
+  background-color: $sba-gray-lighter;
+  overflow: hidden;
+  @include grid-media($sba-grid-small) {
+    padding: 40px 20px 40px 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 45px 0px 45px 0px;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 40px 0px 40px 0px;
+  }
+}

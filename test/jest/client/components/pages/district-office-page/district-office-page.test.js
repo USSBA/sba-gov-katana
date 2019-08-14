@@ -9,6 +9,7 @@ import thunk from 'redux-thunk'
 import reducers from 'client/reducers'
 import 'jest-dom/extend-expect'
 import axiosMock from 'axios'
+import * as fetchContentHelper from 'client/fetch-content-helper.js'
 
 const mockOfficeData = {
   title: 'State District Office'
@@ -55,6 +56,64 @@ describe('District Office page', () => {
       </Provider>
     )
     const content = await waitForElement(() => getByTestId('office-error'))
+    expect(content).toBeInTheDocument()
+  })
+  it.only('contains an Events Component', async () => {
+    const initialState = undefined
+    const enhancer = applyMiddleware(thunk)
+    const store = createStore(reducers, initialState, enhancer)
+
+    const mockOfficeResponse = {
+      "leadership": {},
+      "location": [{
+          "id": 11803,
+          "type": "location",
+          "city": "Appleton",
+          "email": "score.foxcities@scorevolunteer.org",
+          "fax": null,
+          "geocode": {
+              "id": 19718,
+              "type": "geocode",
+              "latitude": "44.262804",
+              "longitude": "-88.409144"
+          },
+          "hoursOfOperation": null,
+          "name": "Fox Cities SCORE",
+          "phoneNumber": "920-831-4904",
+          "state": "WI",
+          "streetAddress": "125 N. Superior Street",
+          "zipCode": 54911
+      }],
+      "mediaContact": {},
+      "officeService": {},
+      "officeType": "SCORE Business Mentor",
+      "pims": {
+          "id": "107126",
+          "type": "pims",
+          "location": "282725"
+      },
+      "relatedDisaster": {},
+      "summary": {},
+      "website": {
+          "url": "https://foxcities.score.org",
+          "title": ""
+      },
+      "type": "office",
+      "title": "Fox Cities SCORE",
+      "id": 16008,
+      "updated": 1562852606,
+      "created": 1543957391,
+      "langCode": "en"
+    }
+    const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+    fetchRestContentStub.mockImplementationOnce(() => Promise.resolve(mockOfficeResponse))
+
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <DistrictOfficePage params={{ officeId: '16008' }} />
+      </Provider>
+    )
+    const content = await waitForElement(() => getByTestId('events'))
     expect(content).toBeInTheDocument()
   })
 })
