@@ -60,7 +60,7 @@ const CTA = () => {
 const LenderMatch = () => {
   const lenderHeadline = 'Lender Match'
   const lenderBlurb =
-    'Lender Match is a free online referral tool that connects small businesses with particpating SBA-approved lenders.'
+    'Lender Match is a free online referral tool that connects small businesses with particpating SBA-approved lenders'
   const lenderButton = {
     url: '/lendermatch',
     title: 'Learn More'
