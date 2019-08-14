@@ -13,6 +13,7 @@ class DistrictOfficeTemplate extends React.Component {
 
 	async componentDidMount() {
 		const { items:events } = await fetchSiteContent('events')
+		console.log('A--', events)
 		this.setState({ events })
 	}
 

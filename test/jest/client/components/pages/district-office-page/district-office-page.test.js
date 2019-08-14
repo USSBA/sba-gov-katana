@@ -10,6 +10,7 @@ import reducers from 'client/reducers'
 import 'jest-dom/extend-expect'
 import axiosMock from 'axios'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
+import eventsTestData from '../../test-data/events.json'
 
 const mockOfficeData = {
   title: 'State District Office'
@@ -30,6 +31,9 @@ describe('District Office page', () => {
       }
     }
     axiosMock.get.mockResolvedValueOnce(mockOfficeResponse)
+
+    const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+    fetchSiteContentStub.mockImplementationOnce(() => Promise.resolve(eventsTestData))
 
     const { getByTestId } = render(
       <Provider store={store}>
@@ -58,7 +62,7 @@ describe('District Office page', () => {
     const content = await waitForElement(() => getByTestId('office-error'))
     expect(content).toBeInTheDocument()
   })
-  it.only('contains an Events Component', async () => {
+  it('contains an Events Component', async () => {
     const initialState = undefined
     const enhancer = applyMiddleware(thunk)
     const store = createStore(reducers, initialState, enhancer)
@@ -107,6 +111,9 @@ describe('District Office page', () => {
     }
     const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
     fetchRestContentStub.mockImplementationOnce(() => Promise.resolve(mockOfficeResponse))
+
+    const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+    fetchSiteContentStub.mockImplementationOnce(() => Promise.resolve(eventsTestData))
 
     const { getByTestId } = render(
       <Provider store={store}>

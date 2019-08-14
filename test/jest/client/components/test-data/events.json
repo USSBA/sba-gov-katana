@@ -1,0 +1,334 @@
+{
+    "count": 2169,
+    "items": [{
+        "title": "Boots to Business - Barksdale, AFB - Shreveport, LA ",
+        "type": "event",
+        "description": "Boots to Business is an entrepreneurial education and training program offered by the U.S. Small Business Administration (SBA) as part of the Department of Defense’s Transition Assistance Program (TAP). Boots to Business | Reboot is an entrepreneurial training program designed for Veterans and their dependents that have already made the transition back to civilian life. The curriculum continuum includes steps for evaluating business concepts, the foundational knowledge required to develop a business plan and information on SBA resources available to help access start-up capital and additional technical assistance. Veterans of all eras, Service members (including National Guard and Reserves) and their spouses are eligible to enroll in classes.",
+        "id": "1630875",
+        "registrationUrl": "https://sbavets.force.com/s/",
+        "startDate": "2019-08-14T08:00:00Z",
+        "endDate": "2019-08-15T16:30:00Z",
+        "timezone": "CDT",
+        "cost": "0.00",
+        "locationType": "In Person",
+        "location": {
+            "name": "Airman and Family Readiness Center",
+            "address": "413 Curtiss Rd, BAFB, LA 71110",
+            "address_additional": "",
+            "city": "Barksdale, AFB",
+            "zipcode": "71110",
+            "state": "Louisiana",
+            "latitude": "32.477994",
+            "longitude": "-93.619180"
+        },
+        "contact": {
+            "name": "Alec Banks",
+            "email": "alec.banksjr@sba.gov",
+            "phone": null
+        },
+        "sponsor": {
+            "type": "District Office",
+            "sponsorName": "Louisiana"
+        },
+        "organizer": "Small Business Administration ",
+        "recurring": "No",
+        "recurringType": null
+    }, {
+        "title": "Federal Contracting Conference",
+        "type": "event",
+        "description": "The agenda includes a keynote address by Congressman Bill Posey, Matchmaker meetings and/or Expo presentations by the following: Melbourne Regional Chamber of Commerce, Greater Palm Bay Chamber of Commerce, Cocoa Beach Regional Chamber of Commerce, Titusville Area Chamber of Commerce, U.S. Special Operations Command, the Boeing Company, CareerSource Brevard, DRS, FL Business & Manufacturing Solutions, Inc., Florida 8(a) Alliance, GCAT, Harris, IAP, Lockheed Martin, Northrop Grumman, AFTAC, Space Coast WID, NOTU, NAVFAC, Florida’s Turnpike Enterprise and Port Canaveral. SBA representatives Ray Lewis and Vince LoPresti will also be in attendance to discuss programs and services available from the U.S. Small Business Administration.\r\n\r\nWho:\r\nThis conference is free and open to business owners who want to:\r\n1) Meet procurement representatives\r\n2) Learn the federal procurement process\r\nRSVP\r\nNo later than August 7 at https://posey.house.gov/rsvp/",
+        "id": "1643033",
+        "registrationUrl": "https://posey.house.gov/rsvp/",
+        "startDate": "2019-08-14T08:00:00Z",
+        "endDate": "2019-08-14T17:00:00Z",
+        "timezone": "EDT",
+        "cost": "0.00",
+        "locationType": "In Person",
+        "location": {
+            "name": "Florida Solar Energy Center",
+            "address": "1679 Clearlake Road",
+            "address_additional": "",
+            "city": "Cocoa",
+            "zipcode": "32922",
+            "state": "Florida",
+            "latitude": "28.366284",
+            "longitude": "-80.741960"
+        },
+        "contact": {
+            "name": null,
+            "email": null,
+            "phone": null
+        },
+        "sponsor": {
+            "type": "District Office",
+            "sponsorName": "Florida (South)"
+        },
+        "organizer": "Office of Congressman Bill Posey",
+        "recurring": "No",
+        "recurringType": null
+    }, {
+        "title": "SBA Day",
+        "type": "event",
+        "description": "Traditional rural sectors continue to anchor the economies of more than half of the nation’s counties, and the SBA and its resource partners stand ready to be your partner and help you start, grow, or expand your small business. Attend this free, half-day workshop to learn about loan programs, including those with reduced fees, federal contracting opportunities, and other initiatives especially designed to empower America’s rural entrepreneurs.",
+        "id": "1645718",
+        "registrationUrl": "https://www.eventbrite.com/e/sba-day-in-dixon-tickets-66692796951",
+        "startDate": "2019-08-14T08:00:00Z",
+        "endDate": "2019-08-14T12:30:00Z",
+        "timezone": "CDT",
+        "cost": "0.00",
+        "locationType": "In Person",
+        "location": {
+            "name": "Sauk Valley College",
+            "address": "173 Illinois Route 2",
+            "address_additional": "",
+            "city": "Dixon",
+            "zipcode": "61021",
+            "state": "Illinois",
+            "latitude": "41.843702",
+            "longitude": "-89.476360"
+        },
+        "contact": {
+            "name": "Carole Harris",
+            "email": "carole.harris@sba.gov",
+            "phone": null
+        },
+        "sponsor": {
+            "type": "District Office",
+            "sponsorName": "Illinois"
+        },
+        "organizer": null,
+        "recurring": "No",
+        "recurringType": null
+    }, {
+        "title": "Frontline Leadership Training - Speaking Up and Down the Organization",
+        "type": "event",
+        "description": "We fear speaking in public more than we fear spiders, deep water, and death. (Death! “Oh, wow. I’d rather die than give that talk.”)\r\n\r\nBut there’s a connection between speaking skills and leadership: Winston Churchill. Dr. Martin Luther King, Jr., John Kennedy.\r\n\r\nYou cannot lead if you cannot communicate.\r\n\r\nThe Workshop\r\n\r\nWe’ll explore many key concepts:\r\n\r\nHow to deal with the fears of speaking.\r\n\r\nHow to create, organize, and deliver powerful messages.\r\n\r\nHow to gesture, move, and make eye contact to generate confidence.\r\n\r\nHow to interact with your audience. How to ask and answer questions—again, with confidence.\r\n\r\nSpeaker(s): Kurt Weiland",
+        "id": "1645850",
+        "registrationUrl": "https://clients.utahsbdc.org/workshop.aspx?ekey=5390006",
+        "startDate": "2019-08-14T08:00:00Z",
+        "endDate": "2019-08-14T12:00:00Z",
+        "timezone": "MDT",
+        "cost": "98.00",
+        "locationType": "In Person",
+        "location": {
+            "name": "Tooele Technology College",
+            "address": "88 South Tooele Blvd.",
+            "address_additional": "",
+            "city": "Tooele",
+            "zipcode": "84074",
+            "state": "Utah",
+            "latitude": "40.560528",
+            "longitude": "-112.294550"
+        },
+        "contact": {
+            "name": null,
+            "email": "jrobinson@tooeletech.edu",
+            "phone": "435-248-1893"
+        },
+        "sponsor": {
+            "type": "District Office",
+            "sponsorName": "Utah"
+        },
+        "organizer": "SBDC",
+        "recurring": "No",
+        "recurringType": null
+    }, {
+        "title": "Accelerating Your Growth An Export Strategy Workshop",
+        "type": "event",
+        "description": "Is your export strategy reactive or proactive?  Is your export strategy documented?  Are you a new exporter?  In this workshop, we will incorporate GrowthWheel, a visual planning tool.  Led by a Certified GrowthWheell Business Advisor, we will break down the export planning process and highlight areas of focus.  We will also incorporate additional resources to aid in your research and planning  process.  GrowthWheelk is a cloud-based program, so you will have access to all of the tools used in the workshop when you return to the office. Bring your own laptop to utilize the tools live. GrowthWheel works with tablets, however, you may not be able to save data into the PDF tools.  Cost $50 includes breakfast and lunch.  Pre-registration is required.    Registration deadline August 9, 2019 by 12 noon.",
+        "id": "1646396",
+        "registrationUrl": "https://pasbdc.ecenterdirect.com/events/26056",
+        "startDate": "2019-08-14T08:00:00Z",
+        "endDate": "2019-08-14T14:00:00Z",
+        "timezone": "EDT",
+        "cost": "50.00",
+        "locationType": "In Person",
+        "location": {
+            "name": "Ben Franklin TechVentures",
+            "address": "116 Research Dr.",
+            "address_additional": "",
+            "city": "Bethlehem ",
+            "zipcode": "PA",
+            "state": "Pennsylvania",
+            "latitude": "0.000000",
+            "longitude": "0.000000"
+        },
+        "contact": {
+            "name": "Brett Smith",
+            "email": null,
+            "phone": "610-758-3980"
+        },
+        "sponsor": {
+            "type": "District Office",
+            "sponsorName": "Pennsylvania (Philadelphia)"
+        },
+        "organizer": "Lehigh University SBDC",
+        "recurring": "No",
+        "recurringType": null
+    }, {
+        "title": "Proposal Preparation - Writing Winning Proposals",
+        "type": "event",
+        "description": "In this proposal preparation training, we will help you demystify the nuances of RFPs, exposed you to a proposal preparation process that helps you submit a proposal offer that complies with the federal agency’s RFP terms and conditions, give you tips and tools of the trade, and position you to increase your chances of winning your next contract.  Training provided by the El Paso Community College Contract Opportunities Center.)",
+        "id": "1645138",
+        "registrationUrl": "https://www.elpasococ-events.org/proposalprep",
+        "startDate": "2019-08-14T08:00:00Z",
+        "endDate": "2019-08-14T16:00:00Z",
+        "timezone": "MDT",
+        "cost": "25.00",
+        "locationType": "In Person",
+        "location": {
+            "name": "El Paso Community College Administrative Services Center",
+            "address": "9050 Viscount Blvd.",
+            "address_additional": "Bldg. B-445 Conference Room",
+            "city": "El Paso",
+            "zipcode": "79925",
+            "state": "Texas",
+            "latitude": "31.782408",
+            "longitude": "-106.363530"
+        },
+        "contact": {
+            "name": "Suzanne Aguirre",
+            "email": "suzanne.aguirre@sba.gov",
+            "phone": null
+        },
+        "sponsor": {
+            "type": "District Office",
+            "sponsorName": "Texas (El Paso)"
+        },
+        "organizer": null,
+        "recurring": "No",
+        "recurringType": null
+    }, {
+        "title": "Marketing Your Business & Selling to the Government Made Easy",
+        "type": "event",
+        "description": "This workshop will tell you how to find the opportunities and market your business to the government.",
+        "id": "1644821",
+        "registrationUrl": "https://nbdc.ecenterdirect.com/events/9159",
+        "startDate": "2019-08-14T08:30:00Z",
+        "endDate": "2019-08-14T10:30:00Z",
+        "timezone": "CDT",
+        "cost": "0.00",
+        "locationType": "In Person",
+        "location": {
+            "name": "Bellevue University",
+            "address": "1102 S Galvin Road",
+            "address_additional": "",
+            "city": "Bellevue",
+            "zipcode": "68005",
+            "state": "Nebraska",
+            "latitude": "41.146848",
+            "longitude": "-95.907960"
+        },
+        "contact": {
+            "name": "Mary Graff",
+            "email": null,
+            "phone": "402-554-6254"
+        },
+        "sponsor": {
+            "type": "District Office",
+            "sponsorName": "Nebraska"
+        },
+        "organizer": "NBDC PTAC",
+        "recurring": "No",
+        "recurringType": null
+    }, {
+        "title": "Spokane - Business Plan 101 - Core 2",
+        "type": "event",
+        "description": "Discover why successful businesses operate with a plan. Learn how to write a comprehensive business plan. Get assistance from a SCORE counselor to review and help refine your plan.",
+        "id": "1643185",
+        "registrationUrl": "https://spokane.score.org/Write-a-Business-Plan-0",
+        "startDate": "2019-08-14T08:30:00Z",
+        "endDate": "2019-08-14T12:30:00Z",
+        "timezone": "PDT",
+        "cost": "25.00",
+        "locationType": "In Person",
+        "location": {
+            "name": "SBA Training Room",
+            "address": "801 West Riverside Ave, 4th Floor",
+            "address_additional": "Suite # 444",
+            "city": "Spokane",
+            "zipcode": "99201",
+            "state": "Washington",
+            "latitude": "47.663945",
+            "longitude": "-117.431850"
+        },
+        "contact": {
+            "name": "Dorie Jarrad",
+            "email": "scorespokane@gmail.com",
+            "phone": "509-353-3614"
+        },
+        "sponsor": {
+            "type": "District Office",
+            "sponsorName": "Washington (Seattle)"
+        },
+        "organizer": "Score",
+        "recurring": "No",
+        "recurringType": null
+    }, {
+        "title": "New Venture Series for Start-Up Businesses - 4 Weeks Series ",
+        "type": "event",
+        "description": "This 4-part training series provides essential information to individuals thinking about starting a business, and new business owners. Topics include: Legal Requirements, e-filing & e-paying with EDD, Market and Cost Analysis, Funding Your Business, and Overview of the Business Plan - bringing it all together.  You will learn the legal requirements for starting a business, how to assess your market and plan for direction, how to obtain funding, types of funding available, calculate your start-up costs, and best practice for completing a business plan. ",
+        "id": "1643909",
+        "registrationUrl": "https://www.buttecollegesbdc.com/calendar",
+        "startDate": "2019-08-14T08:30:00Z",
+        "endDate": "2019-08-14T10:30:00Z",
+        "timezone": "PDT",
+        "cost": "50.00",
+        "locationType": "In Person",
+        "location": {
+            "name": "Butte College Small Business Development Center ",
+            "address": "2480 Notre Dame Blvd.",
+            "address_additional": "",
+            "city": "Chico",
+            "zipcode": "95828",
+            "state": "California",
+            "latitude": "38.484747",
+            "longitude": "-121.402400"
+        },
+        "contact": {
+            "name": "Sophie Konuwa",
+            "email": "KonuwaSo@butte.edu",
+            "phone": "(530) 895-9017"
+        },
+        "sponsor": {
+            "type": "District Office",
+            "sponsorName": "California (Sacramento)"
+        },
+        "organizer": "Small Business Development Center",
+        "recurring": "Yes",
+        "recurringType": "Recurs weekly"
+    }, {
+        "title": "Sales for the Non Salesperson (Session 1 of 2)",
+        "type": "event",
+        "description": "Most company founders will be their company’s only salesperson for the first few years in business. Sales skills are vital to the company’s success, but most founders admit they could be better. Our expert will give you proven tips and action steps to help you set more meetings, close more deals, and drive higher revenue in 2019.\r\nThis session will cover essential steps in the sales process and key concepts to know and use. As with manufacturing, missing a step means everything. Here’s where to learn if you’re getting the basics right and how you can improve immediately.",
+        "id": "1633184",
+        "registrationUrl": "https://fsbdc.net/EventsUR/575390017",
+        "startDate": "2019-08-14T08:30:00Z",
+        "endDate": "2019-08-14T10:00:00Z",
+        "timezone": "EDT",
+        "cost": "0.00",
+        "locationType": "In Person",
+        "location": {
+            "name": "Lake Sumter State College Leesburg",
+            "address": "9909 US Highway 441",
+            "address_additional": "Blg M, Executive Conference Room",
+            "city": "Leesburg",
+            "zipcode": "34788",
+            "state": "Florida",
+            "latitude": "28.857425",
+            "longitude": "-81.784500"
+        },
+        "contact": {
+            "name": "Theresa Davis",
+            "email": "theresa.davis@ucf.edu",
+            "phone": "3526024575"
+        },
+        "sponsor": {
+            "type": "District Office",
+            "sponsorName": "Florida (North)"
+        },
+        "organizer": "FSBDC at UCF-Lake County",
+        "recurring": "No",
+        "recurringType": null
+    }]
+}
