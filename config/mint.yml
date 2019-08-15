@@ -22,5 +22,5 @@ features:
         tableName: UrlToUrlRedirectIntegration
 content:
     cloudfront: d32xeasjw66w65.cloudfront.net
-    useD8EventsBackend: true
+    useD8EventsBackend: false
 
