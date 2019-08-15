@@ -64,15 +64,13 @@ const NewsletterSignup = () => {
 
 const Events = ({ items }) => {
 	return (
-		<div data-testid="events">
-			<div className={styles.events}>
-				<h2>Upcoming events and workshops</h2>
-				{ items.length > 0 && <Results items={items}><EventResult /></Results>}
-				<div className={styles.button} data-testid="events-button">
-					<a href="/events/">
-						<Button primary>Find More Events</Button>
-					</a>
-				</div>
+		<div data-testid="events" className={styles.events}>
+			<h2>Upcoming events and workshops</h2>
+			{ items.length > 0 && <Results items={items}><EventResult /></Results>}
+			<div className={styles.button} data-testid="events-button">
+				<a href="/events/">
+					<Button primary>Find More Events</Button>
+				</a>
 			</div>
 		</div>
 	)
