@@ -39,3 +39,46 @@
     text-decoration: none;
   }
 }
+
+.content {
+  @include grid-media($sba-grid-small) {
+    padding: 0 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 0 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 0 80px;
+  }
+}
+
+.section {
+  @include grid-media($sba-grid-small) {
+    padding: 50px 0;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 50px 0;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 50px 0;
+  }
+}
+
+.lenderMatch {
+  @include grid-media($sba-grid-large) {
+    padding: 30px 40px;
+  }
+
+  @include grid-media($sba-grid-medium-and-small) {
+    padding: 30px;
+  }
+
+  border-top: 3px solid $sba-blue;
+  box-shadow: $box-shadow;
+
+  p {
+    @include lede-type;
+
+    font-size: 18px;
+  }
+}

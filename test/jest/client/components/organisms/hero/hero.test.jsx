@@ -12,9 +12,9 @@ window.matchMedia = jest.fn().mockImplementation(query => {
     media: query,
     onchange: null,
     addListener: jest.fn(),
-    removeListener: jest.fn(),
-  };
-});
+    removeListener: jest.fn()
+  }
+})
 
 describe('Hero Organism', () => {
   test('displays title in an H1 tag', () => {

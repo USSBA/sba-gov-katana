@@ -9,7 +9,7 @@ import { mount, shallow } from 'enzyme'
 import { fireEvent, render, wait } from 'react-testing-library'
 
 import { postMiscAction as mockPostMiscAction } from 'client/fetch-content-helper'
-import { getLanguageOverride as mockGetLanguageOverride} from 'client/services/utils'
+import { getLanguageOverride as mockGetLanguageOverride } from 'client/services/utils'
 import { NewsletterForm } from 'molecules'
 
 jest.mock('client/fetch-content-helper')
