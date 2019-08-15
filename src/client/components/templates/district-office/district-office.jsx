@@ -2,23 +2,51 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'atoms'
 import { CallToAction, NewsletterForm } from 'molecules'
+import { EventResult, Results } from 'organisms'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './district-office.scss'
 
 class DistrictOfficeTemplate extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      events: []
+    }
+  }
+
+  async componentDidMount() {
+    const { office } = this.props
+    const { items } = await fetchSiteContent('events', {
+      pageSize: 5,
+      officeId: office.id
+    })
+    // when the events content api is set to D8, then pageSize=5 will do the work for us
+    // but since the events content api is set to D7, slice the first 5 items off the response
+    const events = items.slice(0, 5)
+    this.setState({ events })
+  }
   render() {
+    const { events } = this.state
     const { office } = this.props
     return (
-      <div className={styles.content}>
-        <p>{office.title}</p>
+      <div>
+        <div className={styles.content}>
+          <p>{office.title}</p>
 
-        <div className={styles.section}>
-          <NewsletterSignup />
+          <div className={styles.section}>
+            <NewsletterSignup />
+          </div>
         </div>
         <div className={styles.section}>
-          <CTA />
+          <Events items={events} />
         </div>
-        <div className={styles.section}>
-          <LenderMatch />
+        <div className={styles.content}>
+          <div className={styles.section}>
+            <CTA />
+          </div>
+          <div className={styles.section}>
+            <LenderMatch />
+          </div>
         </div>
       </div>
     )
@@ -30,6 +58,24 @@ const NewsletterSignup = () => {
   return (
     <div className={styles.officeNewsletter} data-testid={'office-newsletter'}>
       <NewsletterForm title={newsletterTitle} />
+    </div>
+  )
+}
+
+const Events = ({ items }) => {
+  return (
+    <div data-testid="events" className={styles.events}>
+      <h2>Upcoming events and workshops</h2>
+      {items.length > 0 && (
+        <Results items={items}>
+          <EventResult />
+        </Results>
+      )}
+      <div className={styles.button} data-testid="events-button">
+        <a href="/events/">
+          <Button primary>Find More Events</Button>
+        </a>
+      </div>
     </div>
   )
 }

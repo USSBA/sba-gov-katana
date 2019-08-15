@@ -9,6 +9,8 @@ import thunk from 'redux-thunk'
 import reducers from 'client/reducers'
 import 'jest-dom/extend-expect'
 import axiosMock from 'axios'
+import * as fetchContentHelper from 'client/fetch-content-helper.js'
+import eventsTestData from '../../test-data/events.json'
 
 const mockOfficeData = {
   title: 'State District Office'
@@ -29,6 +31,9 @@ describe('District Office page', () => {
       }
     }
     axiosMock.get.mockResolvedValueOnce(mockOfficeResponse)
+
+    const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+    fetchSiteContentStub.mockImplementationOnce(() => Promise.resolve(eventsTestData))
 
     const { getByTestId } = render(
       <Provider store={store}>
