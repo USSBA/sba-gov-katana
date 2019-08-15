@@ -120,7 +120,10 @@ describe('District Office page', () => {
         <DistrictOfficePage params={{ officeId: '16008' }} />
       </Provider>
     )
-    const content = await waitForElement(() => getByTestId('events'))
+    let content = await waitForElement(() => getByTestId('events'))
+    expect(content).toBeInTheDocument()
+
+    content = await waitForElement(() => getByTestId('events-button'))
     expect(content).toBeInTheDocument()
   })
 })
