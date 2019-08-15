@@ -29,22 +29,26 @@ class DistrictOfficeTemplate extends React.Component {
     const { events } = this.state
 		const { office } = this.props
     return (
-      <div className={styles.content}>
-        <p>{office.title}</p>
+    	<div>
+		    <div className={styles.content}>
+		        <p>{office.title}</p>
 
-        <div className={styles.section}>
-          <NewsletterSignup />
-        </div>
-        <div className={styles.section}>
-          <Events items={events} />
-        </div>
-        <div className={styles.section}>
-          <CTA />
-        </div>
-        <div className={styles.section}>
-          <LenderMatch />
-        </div>
-      </div>
+		        <div className={styles.section}>
+		          <NewsletterSignup />
+		        </div>
+	    	</div>
+	        <div className={styles.section}>
+	          <Events items={events} />
+	        </div>
+	        <div className={styles.content}>
+		        <div className={styles.section}>
+		          <CTA />
+		        </div>
+		        <div className={styles.section}>
+		          <LenderMatch />
+		        </div>
+	      	</div>
+	    </div>
     )
   }
 }
@@ -60,7 +64,7 @@ const NewsletterSignup = () => {
 
 const Events = ({ items }) => {
 	return (
-		<div data-testid="events" className={styles.container}>
+		<div data-testid="events">
 			<div className={styles.events}>
 				<h2>Upcoming events and workshops</h2>
 				{ items.length > 0 && <Results items={items}><EventResult /></Results>}
