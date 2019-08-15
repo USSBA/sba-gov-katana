@@ -1,6 +1,11 @@
 .events {
   h2 {
-    margin-left: 30px;
+    @include grid-media($sba-grid-medium) {
+      margin-left: 30px;
+    }
+    @include grid-media($sba-grid-large) {
+      margin-left: 30px;
+    }
     margin-bottom: 0;
   }
 
