@@ -39,20 +39,22 @@ const CallToAction = props => {
   }
 
   return (
-    <div id="call-to-action" className={className}>
+    <div data-testid="call-to-action" id="call-to-action" className={className}>
       {startsWith(variation, 'large') ? (
-        <div className={styles.image} title={imageAlt} style={backgroundImageStyle} />
+        <div data-testid="image" className={styles.image} title={imageAlt} style={backgroundImageStyle} />
       ) : null}
       <div className={styles.content}>
         {!startsWith(variation, 'buttonOnly') ? (
           <div className="column">
-            <h3>{headline}</h3>
+            <h3 data-testid="headline">{headline}</h3>
           </div>
         ) : null}
         {startsWith(variation, 'medium') || startsWith(variation, 'large') ? (
           <div>
             <DecorativeDash width={29} />
-            <p className={styles.blurb}>{blurb}</p>
+            <p data-testid="blurb" className={styles.blurb}>
+              {blurb}
+            </p>
           </div>
         ) : null}
         <div className="column">

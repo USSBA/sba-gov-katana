@@ -128,16 +128,6 @@ const TRANSLATIONS = {
     en: 'Content',
     es: 'Contenidos'
   },
-  createABusinessPlan: {
-    en: {
-      text: 'Create a Business Plan',
-      url: '/tools/business-plan'
-    },
-    es: {
-      text: 'Cree un plan de negocios',
-      url: '/tools/business-plan'
-    }
-  },
   customerService: {
     en: {
       text: 'Customer Service'

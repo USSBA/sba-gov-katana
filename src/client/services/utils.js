@@ -88,10 +88,11 @@ function getLanguageOverride(excludeVariants = false) {
     langOverride = window.langOverride
   }
 
-  if (excludeVariants) {
+  if (langOverride && excludeVariants) {
     langOverride = langOverride.split('-')[0]
   }
-  return langOverride
+  // Defaults language to english if langOverride is null
+  return langOverride || 'en'
 }
 
 function getFileExtension(fileUrl) {

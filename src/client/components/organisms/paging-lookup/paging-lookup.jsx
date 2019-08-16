@@ -17,6 +17,7 @@ const fieldNameMap = {
   documentType: 'Type',
   program: 'Program',
   documentActivity: 'Activity',
+  office: 'Office',
   sortBy: 'sortBy'
 }
 
@@ -28,7 +29,7 @@ class PagingLookup extends React.Component {
 
   createOriginalState(ownProps) {
     return {
-      query: this.createQueryFromProps(ownProps),
+      query: this.createQueryParams(ownProps),
       taxonomies: [],
       pageNumber: 1,
       isFetching: false,
@@ -37,6 +38,12 @@ class PagingLookup extends React.Component {
         count: 0
       }
     }
+  }
+
+  createQueryParams(ownProps) {
+    const query = this.createQueryFromProps(ownProps)
+    query.office = query.office || 'All'
+    return query
   }
 
   createQueryFromProps(ownProps) {
@@ -54,6 +61,7 @@ class PagingLookup extends React.Component {
       searchTerm: queryParams.search || queryParams.q,
       documentType: queryParams.type,
       documentActivity: queryParams.activity,
+      office: queryParams.office,
       page: Number(queryParams.page) || 1
     })
 
@@ -82,6 +90,7 @@ class PagingLookup extends React.Component {
           documentActivity: 'All',
           documentType: 'All',
           program: 'All',
+          office: 'All',
           sortBy: this.props.defaultSortBy
         },
         taxonomies: this.state.taxonomies,
@@ -101,9 +110,15 @@ class PagingLookup extends React.Component {
 
     const taxonomies = await fetchSiteContent('taxonomys', queryArgs)
 
+    this.setState({
+      taxonomies: this.reArrangeTaxonomyOrder(taxonomies)
+    })
+  }
+
+  componentWillReceiveProps({ sbaOffices }) {
     this.setState(
       {
-        taxonomies: this.reArrangeTaxonomyOrder(taxonomies)
+        sbaOfficeFilters: this.createSbaOfficeFilterList(sbaOffices)
       },
       () => this.submit()
     )
@@ -127,6 +142,35 @@ class PagingLookup extends React.Component {
       terms: this.props.sortByOptions
     })
     return rearrangedTaxonomyOrder
+  }
+
+  createSbaOfficeFilterList(sbaOffices) {
+    if (sbaOffices === null || sbaOffices.length === 0) {
+      return sbaOffices
+    }
+
+    const filteredOffices = [
+      {
+        label: 'All',
+        value: 'All'
+      }
+    ]
+    sbaOffices.forEach(office => {
+      const filterFormattedOffice = {}
+      filterFormattedOffice.label = office.title
+      filterFormattedOffice.value = office.id
+      filteredOffices.push(filterFormattedOffice)
+    })
+    return filteredOffices.sort(function(a, b) {
+      // Sort alphabetically and push "All" to the top of the list of options
+      if (a.label < b.label || a.label === 'All') {
+        return -1
+      }
+      if (a.label > b.label) {
+        return 1
+      }
+      return 0
+    })
   }
 
   handleSubmit() {
@@ -241,6 +285,7 @@ class PagingLookup extends React.Component {
       pageNumber: this.state.query.page,
       pageSize: config.pageSize,
       taxonomies: this.state.taxonomies,
+      sbaOffices: this.state.sbaOfficeFilters,
       onSubmit: this.handleSubmit.bind(this),
       onReset: this.handleReset.bind(this),
       onQueryChange: this.handleQueryChange.bind(this),
@@ -265,6 +310,7 @@ PagingLookup.defaultProps = {
   title: '',
   type: '',
   taxonomyFilters: [],
+  sbaOffices: null,
   fieldsToShowInDetails: [],
   sortByOptions: []
 }

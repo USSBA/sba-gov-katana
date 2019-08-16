@@ -132,7 +132,6 @@ class Footer extends React.Component {
         title: TRANSLATIONS.toolsAndFeatures,
         links: [
           TRANSLATIONS.onlineTraining,
-          TRANSLATIONS.createABusinessPlan,
           TRANSLATIONS.findEvents,
           TRANSLATIONS.qualifyForGovernmentContracts,
           TRANSLATIONS.sbaVideos

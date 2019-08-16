@@ -6,7 +6,6 @@ import * as clientConfig from 'client/services/client-config'
 import * as helpers from 'client/fetch-content-helper'
 import { RootPage } from 'client/components/pages/root-page'
 
-
 describe('RootPage', () => {
   describe('404 Page', () => {
     test('shows the 404 page', () => {

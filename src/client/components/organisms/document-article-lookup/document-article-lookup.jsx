@@ -6,6 +6,7 @@ import { Button, Loader, MultiSelect, SearchIcon, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import { DetailCardCollection } from 'organisms'
 import { logPageEvent } from '../../../services/analytics.js'
+import classNames from 'classnames'
 
 const createSlug = str => {
   return str
@@ -24,6 +25,12 @@ const createSlug = str => {
 // };
 
 export class DocumentArticleLookup extends React.PureComponent {
+  constructor() {
+    super()
+    this.state = {
+      office: 'all'
+    }
+  }
   renderMultiSelects() {
     const _multiselects = this.props.taxonomies.map(taxonomy => {
       const { name } = taxonomy
@@ -68,6 +75,24 @@ export class DocumentArticleLookup extends React.PureComponent {
         </div>
       )
     })
+  }
+
+  renderSbaOfficeMultiSelect() {
+    const { office } = this.props.queryState
+    return (
+      <div className={styles.multiSelect}>
+        <MultiSelect
+          id="office"
+          label="Office"
+          options={this.props.sbaOffices}
+          onChange={event => {
+            this.handleChange(event, 'office')
+          }}
+          data-testid="office-search-dropdown"
+          value={office}
+        />
+      </div>
+    )
   }
 
   // Sorts the list by placing 'All' at the top (if applicable) with the remaining list items sorted alphabetically
@@ -189,23 +214,58 @@ export class DocumentArticleLookup extends React.PureComponent {
     )
   }
 
+  numberOfMultiSelects() {
+    let count = this.props.taxonomies.length
+    this.props.sbaOffices && count++
+    return count
+  }
+
+  renderBanner() {
+    const count = this.numberOfMultiSelects()
+    const { taxonomies } = this.props
+    const className = classNames({
+      [styles.twoLineBanner]: count >= 5,
+      [styles.oneLineBanner]: count < 5
+    })
+    return (
+      <div className={className}>
+        <h2 className={styles.header}>{this.props.title}</h2>
+        {taxonomies.length > 0 && this.renderBannerContent()}
+      </div>
+    )
+  }
+
+  renderBannerContent() {
+    const { sbaOffices } = this.props
+    return (
+      <div>
+        {this.renderSearchInput()}
+        {this.renderMultiSelects()}
+        {sbaOffices && this.renderSbaOfficeMultiSelect()}
+        {this.renderButton()}
+      </div>
+    )
+  }
+
+  renderButton() {
+    const count = this.numberOfMultiSelects()
+    const className = classNames({
+      [styles.leftApplyButton]: count >= 5,
+      [styles.rightApplyButton]: count < 5
+    })
+    return (
+      <div className={className}>
+        <Button primary alternate onClick={this.props.onSubmit}>
+          Apply
+        </Button>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div>
-        <div className={styles.banner}>
-          <h2 className={styles.header}>{this.props.title}</h2>
-          {this.props.taxonomies.length > 0 && (
-            <div>
-              {this.renderSearchInput()}
-              {this.renderMultiSelects()}
-              <div className={styles.applyButton}>
-                <Button primary alternate onClick={this.props.onSubmit}>
-                  Apply
-                </Button>
-              </div>
-            </div>
-          )}
-        </div>
+        {this.renderBanner()}
         <div className={styles.result}>
           {this.renderPaginator()}
           {this.renderCards()}

@@ -54,7 +54,7 @@ class CourseContent extends React.PureComponent {
           <Overlay isStarted={isStarted} onClick={this.onClick.bind(this)} />
           <iframe className={styles.iframe} src={src} allowFullScreen frameBorder="0" />
         </div>
-        <div className={styles.transcriptBox + ' transcript-box'}>
+        <div className={styles.transcriptBox + ' transcript-box'} id="course-transcript">
           <ReadMore
             parentId="01-read-more"
             onToggleStatus={onToggleStatus}

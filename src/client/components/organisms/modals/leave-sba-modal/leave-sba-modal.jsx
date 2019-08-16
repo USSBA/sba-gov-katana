@@ -6,18 +6,17 @@ import { Link } from 'atoms'
 import { SbaModal } from 'molecules'
 
 class LeaveSbaModal extends React.Component {
-
   componentWillReceiveProps(props) {
     const { isOpen } = props
-    if(isOpen) {
+    if (isOpen) {
       const escapeKeyCode = 27
       this.closeModal = e => {
         if (e.keyCode === escapeKeyCode) {
           this.props.closeLeaveSba()
-          document.removeEventListener("keydown", this.closeModal)
+          document.removeEventListener('keydown', this.closeModal)
         }
       }
-      document.addEventListener("keydown", this.closeModal)
+      document.addEventListener('keydown', this.closeModal)
     }
   }
 

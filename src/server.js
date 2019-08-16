@@ -71,7 +71,8 @@ app.use(function(req, res, next) {
         searchUrl: config.get('features.searchUrl'),
         showSbic: config.get('features.showSbic'),
         showRegisterLink: config.get('features.showRegisterLink'),
-        localAssistMenuHeight: config.get('features.localAssistMenuHeight')
+        localAssistMenuHeight: config.get('features.localAssistMenuHeight'),
+        useD8EventsBackend: config.get('content.useD8EventsBackend')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
       req.nodeId = nodeId //eslint-disable-line no-param-reassign
