@@ -72,7 +72,7 @@ const Events = ({ items }) => {
         </Results>
       )}
       <div className={styles.button} data-testid="events-button">
-        <a href="/events/">
+        <a href="/events/find/">
           <Button primary>Find More Events</Button>
         </a>
       </div>
