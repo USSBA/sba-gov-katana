@@ -70,6 +70,7 @@ app.use(function(req, res, next) {
         sbaOfficeNames: config.get('features.office.sbaOfficeNames'),
         searchUrl: config.get('features.searchUrl'),
         showSbic: config.get('features.showSbic'),
+        showRegisterLink: config.get('features.showRegisterLink'),
         localAssistMenuHeight: config.get('features.localAssistMenuHeight'),
         useD8EventsBackend: config.get('content.useD8EventsBackend')
       }
