@@ -40,8 +40,6 @@ export class DocumentArticle extends React.Component {
 
   renderDateLine(file) {
     const { effectiveDate, updated } = file
-    const { data } = this.props
-
     const dateFormat = 'MMM D, YYYY'
     const dates = []
 

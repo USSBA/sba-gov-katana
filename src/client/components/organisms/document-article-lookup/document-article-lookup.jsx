@@ -111,7 +111,8 @@ export class DocumentArticleLookup extends React.PureComponent {
   }
 
   handleChange(event, selectStateKey) {
-    this.props.onQueryChange(selectStateKey, event.value)
+    const value = event ? event.value : null
+    this.props.onQueryChange(selectStateKey, value)
   }
 
   handleKeyUp(event) {
