@@ -229,7 +229,7 @@ export class DocumentArticleLookup extends React.PureComponent {
       [styles.oneLineBanner]: count < 5
     })
     return (
-      <div className={className}>
+      <div data-testid="lookup-field-section" className={className}>
         <h2 className={styles.header}>{this.props.title}</h2>
         {taxonomies.length > 0 && this.renderBannerContent()}
       </div>

@@ -23,7 +23,7 @@ class ArticleLookupPage extends React.Component {
     const { sbaOffices } = this.state
 
     const articleProps = {
-      title: 'Article lookup',
+      title: 'Article Lookup',
       type: 'articles',
       taxonomyFilters: ['articleCategory', 'program'],
       sbaOffices,

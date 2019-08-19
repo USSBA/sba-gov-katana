@@ -4,6 +4,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
 <div>
   <div
     className="twoLineBanner"
+    data-testid="lookup-field-section"
   >
     <h2
       className="header"
@@ -843,6 +844,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
 <div>
   <div
     className="oneLineBanner"
+    data-testid="lookup-field-section"
   >
     <h2
       className="header"
