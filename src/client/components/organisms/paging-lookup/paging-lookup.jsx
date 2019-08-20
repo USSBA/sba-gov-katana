@@ -145,7 +145,7 @@ class PagingLookup extends React.Component {
   }
 
   createSbaOfficeFilterList(sbaOffices) {
-    if (Array.isArray(sbaOffices) === true && sbaOffices.length > 0) {
+    if (Array.isArray(sbaOffices) && sbaOffices.length > 0) {
       const filteredOffices = []
 
       sbaOffices.forEach(office => {
