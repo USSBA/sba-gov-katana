@@ -144,11 +144,13 @@ export class DocumentArticleLookup extends React.PureComponent {
     } else if (typeof items !== 'undefined' && !isFetching) {
       result = (
         <div className={styles.emptyDocuments}>
-          <p className={styles.emptyDocumentsMessage}>
+          <p className={styles.emptyDocumentsMessage} tabIndex="0">
             Sorry, we couldn't find any {this.props.type} matching that query.
           </p>
           <p>
-            <a onClick={this.props.onReset}>Clear all search filters</a>
+            <a onClick={this.props.onReset} tabIndex="0">
+              Clear all search filters
+            </a>
           </p>
         </div>
       )
@@ -230,7 +232,9 @@ export class DocumentArticleLookup extends React.PureComponent {
     })
     return (
       <div data-testid="lookup-field-section" className={className}>
-        <h2 className={styles.header}>{this.props.title}</h2>
+        <h2 className={styles.header} tabIndex="0">
+          {this.props.title}
+        </h2>
         {taxonomies.length > 0 && this.renderBannerContent()}
       </div>
     )
