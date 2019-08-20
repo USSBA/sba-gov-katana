@@ -145,32 +145,37 @@ class PagingLookup extends React.Component {
   }
 
   createSbaOfficeFilterList(sbaOffices) {
-    if (sbaOffices === null || sbaOffices.length === 0) {
-      return sbaOffices
-    }
+    if (Array.isArray(sbaOffices) && sbaOffices.length > 0) {
+      const filteredOffices = []
 
-    const filteredOffices = [
-      {
+      sbaOffices.forEach(office => {
+        const filterFormattedOffice = {}
+        filterFormattedOffice.label = office.title
+        filterFormattedOffice.value = office.id
+        filteredOffices.push(filterFormattedOffice)
+      })
+
+      // Sort list of offices alphabetically
+      filteredOffices.sort(function(a, b) {
+        if (a.label < b.label) {
+          return -1
+        }
+        if (a.label > b.label) {
+          return 1
+        }
+        return 0
+      })
+
+      // Add "All" to the top of the offices list
+      filteredOffices.unshift({
         label: 'All',
         value: 'All'
-      }
-    ]
-    sbaOffices.forEach(office => {
-      const filterFormattedOffice = {}
-      filterFormattedOffice.label = office.title
-      filterFormattedOffice.value = office.id
-      filteredOffices.push(filterFormattedOffice)
-    })
-    return filteredOffices.sort(function(a, b) {
-      // Sort alphabetically and push "All" to the top of the list of options
-      if (a.label < b.label || a.label === 'All') {
-        return -1
-      }
-      if (a.label > b.label) {
-        return 1
-      }
-      return 0
-    })
+      })
+
+      return filteredOffices
+    }
+
+    return null
   }
 
   handleSubmit() {
