@@ -146,21 +146,18 @@ class PagingLookup extends React.Component {
 
   createSbaOfficeFilterList(sbaOffices) {
     if (Array.isArray(sbaOffices) === true && sbaOffices.length > 0) {
-      const filteredOffices = [
-        {
-          label: 'All',
-          value: 'All'
-        }
-      ]
+      const filteredOffices = []
+
       sbaOffices.forEach(office => {
         const filterFormattedOffice = {}
         filterFormattedOffice.label = office.title
         filterFormattedOffice.value = office.id
         filteredOffices.push(filterFormattedOffice)
       })
-      return filteredOffices.sort(function(a, b) {
-        // Sort alphabetically and push "All" to the top of the list of options
-        if (a.label < b.label || a.label === 'All') {
+
+      // Sort list of offices alphabetically
+      filteredOffices.sort(function(a, b) {
+        if (a.label < b.label) {
           return -1
         }
         if (a.label > b.label) {
@@ -168,6 +165,14 @@ class PagingLookup extends React.Component {
         }
         return 0
       })
+
+      // Add "All" to the top of the offices list
+      filteredOffices.unshift({
+        label: 'All',
+        value: 'All'
+      })
+
+      return filteredOffices
     }
 
     return null
