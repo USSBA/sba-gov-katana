@@ -16,6 +16,7 @@ import GlobalSearch from './global-search/global-search.jsx'
 import Hero from './hero/hero.jsx'
 import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
+import NewsReleases from './news-releases/news-releases.jsx'
 import OfficeDetail from './office-detail/office-detail.jsx'
 import OfficesLayout from './offices-layout/offices-layout.jsx'
 import OfficeMap from './office-map/office-map.jsx'
@@ -75,6 +76,7 @@ export {
   Hero,
   Lookup,
   ModalController,
+  NewsReleases,
   OfficeResult,
   OfficeDetail,
   OfficesLayout,

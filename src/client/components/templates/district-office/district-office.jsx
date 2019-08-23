@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'atoms'
 import { CallToAction, NewsletterForm } from 'molecules'
-import { EventResult, Results } from 'organisms'
+import { NewsReleases, EventResult, Results } from 'organisms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './district-office.scss'
 
@@ -23,16 +23,24 @@ class DistrictOfficeTemplate extends React.Component {
     // when the events content api is set to D8, then pageSize=5 will do the work for us
     // but since the events content api is set to D7, slice the first 5 items off the response
     const events = items.slice(0, 5)
-    this.setState({ events })
+    this.setState({ 
+      events 
+    })
   }
+
   render() {
     const { events } = this.state
     const { office } = this.props
+    
     return (
       <div>
         <div className={styles.content}>
           <p>{office.title}</p>
-
+        </div>
+        <div className={styles.section}>
+          <NewsReleases officeId={office.id} />
+        </div>
+        <div className={styles.content}>
           <div className={styles.section}>
             <NewsletterSignup />
           </div>
