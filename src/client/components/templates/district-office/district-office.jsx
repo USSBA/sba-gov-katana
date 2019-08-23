@@ -23,9 +23,7 @@ class DistrictOfficeTemplate extends React.Component {
     // when the events content api is set to D8, then pageSize=5 will do the work for us
     // but since the events content api is set to D7, slice the first 5 items off the response
     const events = items.slice(0, 5)
-    this.setState({ 
-      events 
-    })
+    this.setState({ events })
   }
 
   render() {

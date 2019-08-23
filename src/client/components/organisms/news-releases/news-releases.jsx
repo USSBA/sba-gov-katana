@@ -52,8 +52,8 @@ class NewsReleases extends React.Component {
   }
 }
 
-NewsReleases.PropTypes = {
-  officeId: PropTypes.number.isRequired
+NewsReleases.propTypes = {
+  officeId: PropTypes.number
 }
 
 export default NewsReleases
