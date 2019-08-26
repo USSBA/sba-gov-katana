@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { DetailCardCollection } from 'organisms'
+import { DetailCardCollection, CardCollection } from 'organisms'
 import { Button } from 'atoms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './news-releases.scss'
@@ -39,7 +39,7 @@ class NewsReleases extends React.Component {
             <DetailCardCollection
               type={'article'}
               cards={articles}
-              fieldsToShowInDetails={['Program', 'Published', 'Summary']}
+              fieldsToShowInDetails={['Published', 'Summary']}
             />
             <div className={styles.button} data-testid="news-button">
               <a href={articleLink}>
