@@ -18,6 +18,7 @@ class NewsReleases extends React.Component {
     const { items } = await fetchSiteContent('articles', {
       // office: officeId,
       // articleCategory: 'News Releases',
+      sortBy: 'Last Updated',
       start: 0,
       end: 3
     })
@@ -27,7 +28,7 @@ class NewsReleases extends React.Component {
 
   render() {
     const { articles } = this.state
-    const{ officeId } = this.props
+    const { officeId } = this.props
     const articleLink = `/article?office=${officeId}&articleCategory=News Releases`
 
     return (
@@ -36,7 +37,7 @@ class NewsReleases extends React.Component {
           <div className={styles.newsReleases}>
             <h2>News Releases</h2>
             <DetailCardCollection
-              type={'articles'}
+              type={'article'}
               cards={articles}
               fieldsToShowInDetails={['Program', 'Published', 'Summary']}
             />
