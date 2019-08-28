@@ -16,8 +16,8 @@ class NewsReleases extends React.Component {
   async componentDidMount() {
     const { officeId } = this.props
     const { items } = await fetchSiteContent('articles', {
-      // office: officeId,
-      // articleCategory: 'News Releases',
+      office: officeId,
+      articleCategory: 'News Releases',
       sortBy: 'Last Updated',
       start: 0,
       end: 3
