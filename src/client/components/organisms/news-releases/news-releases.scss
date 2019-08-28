@@ -10,6 +10,12 @@
   @include grid-media($sba-grid-large) {
     padding: 40px 50px;
   }
+
+  h2 {
+    @include grid-media($sba-grid-large) {
+      padding-left: 30px;
+    }
+  }
 }
 
 .button {

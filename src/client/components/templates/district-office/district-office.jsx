@@ -37,7 +37,7 @@ class DistrictOfficeTemplate extends React.Component {
         <div className={styles.content}>
           <p>{office.title}</p>
         </div>
-        <div className={styles.section}>
+        <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />
         </div>
         <div className={styles.content}>

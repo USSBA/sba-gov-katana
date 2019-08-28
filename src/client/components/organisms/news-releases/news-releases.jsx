@@ -33,15 +33,15 @@ class NewsReleases extends React.Component {
 
     return (
       <div>
-        {articles.length > 0 && (
-          <div className={styles.newsReleases}>
+        {articles && articles.length > 0 && (
+          <div className={styles.newsReleases} data-testid="news-cards">
             <h2>News Releases</h2>
             <DetailCardCollection
               type={'article'}
               cards={articles}
               fieldsToShowInDetails={['Published', 'Summary']}
             />
-            <div className={styles.button} data-testid="news-button">
+            <div className={styles.button} data-testid="news-more-button">
               <a href={articleLink}>
                 <Button primary>View All</Button>
               </a>
