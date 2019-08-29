@@ -9,21 +9,9 @@ import thunk from 'redux-thunk'
 import reducers from 'client/reducers'
 import 'jest-dom/extend-expect'
 import axiosMock from 'axios'
+import '../../test-data/matchMedia.mock'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 import eventsTestData from '../../test-data/events.json'
-
-// We need to mock the function window.matchMedia located in the Hero component
-// that gets executed via the render in react testing library
-window.matchMedia = jest.fn().mockImplementation(query => {
-  return {
-    matches: false,
-    media: query,
-    onchange: null,
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn()
-  }
-})
 
 const mockOfficeData = {
   title: 'State District Office'
