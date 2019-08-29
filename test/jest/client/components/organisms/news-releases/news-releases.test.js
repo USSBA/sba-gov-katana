@@ -16,14 +16,10 @@ describe('News releases', () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
     fetchSiteContentStub.mockImplementationOnce(() => Promise.resolve(noNewsReleaseData))
 
-    const { getByTestId } = render(<NewsReleases officeId={12345} />)
+    const { queryByTestId } = render(<NewsReleases officeId={12345} />)
 
-    expect(() => {
-      getByTestId('news-cards')
-    }).toThrow()
-    expect(() => {
-      getByTestId('news-more-button')
-    }).toThrow()
+    expect(queryByTestId('news-cards')).toBeNull()
+    expect(queryByTestId('news-more-button')).toBeNull()
   })
   it('renders only 1 news release card when only 1 news release is returned', async () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
@@ -42,12 +38,14 @@ describe('News releases', () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
     fetchSiteContentStub.mockImplementationOnce(() => Promise.resolve(threeNewsReleaseData))
 
-    const { getByTestId } = render(<NewsReleases officeId={12345} />)
+    const { getByTestId, getAllByTestId } = render(<NewsReleases officeId={12345} />)
 
-    const newsCards = await waitForElement(() => getByTestId('news-cards'))
+    const newsCardsSection = await waitForElement(() => getByTestId('news-cards'))
+    const newsCards = await waitForElement(() => getAllByTestId('detail-card'))
     const newsButton = await waitForElement(() => getByTestId('news-more-button'))
 
-    expect(newsCards).toBeInTheDocument()
+    expect(newsCardsSection).toBeInTheDocument()
+    expect(newsCards).toHaveLength(3)
     expect(newsButton).toBeInTheDocument()
     expect(newsButton).toHaveTextContent('View All')
   })
@@ -55,13 +53,9 @@ describe('News releases', () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
     fetchSiteContentStub.mockImplementationOnce(() => Promise.resolve(errorNewsReleaseData))
 
-    const { getByTestId } = render(<NewsReleases officeId={12345} />)
+    const { queryByTestId } = render(<NewsReleases officeId={12345} />)
 
-    expect(() => {
-      getByTestId('news-cards')
-    }).toThrow()
-    expect(() => {
-      getByTestId('news-more-button')
-    }).toThrow()
+    expect(queryByTestId('news-cards')).toBeNull()
+    expect(queryByTestId('news-more-button')).toBeNull()
   })
 })

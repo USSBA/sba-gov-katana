@@ -127,7 +127,7 @@ class DetailCard extends React.Component {
       }
 
       return (
-        <div className={className}>
+        <div className={className} data-testid="detail-card">
           <Label type={type} id={!isEmpty(doc.documentIdNumber) ? doc.documentIdNumber : null} small />
           <h6>
             <Link to={doc.url}>{doc.title}</Link>
