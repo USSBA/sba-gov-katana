@@ -605,6 +605,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
         >
           <div
             className="detail-card detailCard"
+            data-testid="detail-card"
           >
             <div
               className="label small"
@@ -647,6 +648,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
         >
           <div
             className="detail-card detailCard"
+            data-testid="detail-card"
           >
             <div
               className="label small"
@@ -689,6 +691,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
         >
           <div
             className="detail-card detailCard"
+            data-testid="detail-card"
           >
             <div
               className="label small"
@@ -731,6 +734,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
         >
           <div
             className="detail-card detailCard"
+            data-testid="detail-card"
           >
             <div
               className="label small"
@@ -1345,6 +1349,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         >
           <div
             className="detail-card detailCard"
+            data-testid="detail-card"
           >
             <div
               className="label small"
@@ -1387,6 +1392,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         >
           <div
             className="detail-card detailCard"
+            data-testid="detail-card"
           >
             <div
               className="label small"
@@ -1429,6 +1435,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         >
           <div
             className="detail-card detailCard"
+            data-testid="detail-card"
           >
             <div
               className="label small"
@@ -1471,6 +1478,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         >
           <div
             className="detail-card detailCard"
+            data-testid="detail-card"
           >
             <div
               className="label small"

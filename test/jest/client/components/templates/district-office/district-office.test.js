@@ -8,6 +8,14 @@ import eventsTestData from '../../test-data/events.json'
 afterEach(cleanup)
 
 describe('District Office template', () => {
+  it('renders the latest news release component', () => {
+    const mockOfficeData = { title: 'State District Office' }
+    const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+    const content = getByTestId('news-release-section')
+    expect(content).toBeInTheDocument()
+  })
+
   it('renders the newsletter sign up component', () => {
     const mockOfficeData = { title: 'State District Office' }
     const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
@@ -33,46 +41,48 @@ describe('District Office template', () => {
   })
   it('contains an Events Component', async () => {
     const mockOfficeResponse = {
-      "leadership": {},
-      "location": [{
-          "id": 11803,
-          "type": "location",
-          "city": "Appleton",
-          "email": "score.foxcities@scorevolunteer.org",
-          "fax": null,
-          "geocode": {
-              "id": 19718,
-              "type": "geocode",
-              "latitude": "44.262804",
-              "longitude": "-88.409144"
+      leadership: {},
+      location: [
+        {
+          id: 11803,
+          type: 'location',
+          city: 'Appleton',
+          email: 'score.foxcities@scorevolunteer.org',
+          fax: null,
+          geocode: {
+            id: 19718,
+            type: 'geocode',
+            latitude: '44.262804',
+            longitude: '-88.409144'
           },
-          "hoursOfOperation": null,
-          "name": "Fox Cities SCORE",
-          "phoneNumber": "920-831-4904",
-          "state": "WI",
-          "streetAddress": "125 N. Superior Street",
-          "zipCode": 54911
-      }],
-      "mediaContact": {},
-      "officeService": {},
-      "officeType": "SCORE Business Mentor",
-      "pims": {
-          "id": "107126",
-          "type": "pims",
-          "location": "282725"
+          hoursOfOperation: null,
+          name: 'Fox Cities SCORE',
+          phoneNumber: '920-831-4904',
+          state: 'WI',
+          streetAddress: '125 N. Superior Street',
+          zipCode: 54911
+        }
+      ],
+      mediaContact: {},
+      officeService: {},
+      officeType: 'SCORE Business Mentor',
+      pims: {
+        id: '107126',
+        type: 'pims',
+        location: '282725'
       },
-      "relatedDisaster": {},
-      "summary": {},
-      "website": {
-          "url": "https://foxcities.score.org",
-          "title": ""
+      relatedDisaster: {},
+      summary: {},
+      website: {
+        url: 'https://foxcities.score.org',
+        title: ''
       },
-      "type": "office",
-      "title": "Fox Cities SCORE",
-      "id": 16008,
-      "updated": 1562852606,
-      "created": 1543957391,
-      "langCode": "en"
+      type: 'office',
+      title: 'Fox Cities SCORE',
+      id: 16008,
+      updated: 1562852606,
+      created: 1543957391,
+      langCode: 'en'
     }
 
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')

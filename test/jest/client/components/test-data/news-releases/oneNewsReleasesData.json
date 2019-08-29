@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "articleId": {},
+      "category": {},
+      "mediaContact": {},
+      "office": 12345,
+      "officeLink": {},
+      "file": {},
+      "programs": [],
+      "summary": {},
+      "type": "article",
+      "title": "Test Article ",
+      "id": 19301,
+      "updated": 1563826928,
+      "created": 1563826909,
+      "langCode": "en",
+      "url": "/article/2019/jul/22/test-article"
+    }
+  ],
+  "count": 113
+}

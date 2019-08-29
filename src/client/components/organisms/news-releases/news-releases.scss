@@ -1,0 +1,29 @@
+.newsReleases {
+  background-color: $sba-gray-lighter;
+
+  @include grid-media($sba-grid-small) {
+    padding: 40px 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 45px 0px;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 40px 50px;
+  }
+
+  h2 {
+    @include grid-media($sba-grid-large) {
+      padding-left: 30px;
+    }
+  }
+}
+
+.button {
+  text-align: center;
+  padding-top: 15px;
+  clear: both;
+
+  a {
+    text-decoration: none;
+  }
+}
