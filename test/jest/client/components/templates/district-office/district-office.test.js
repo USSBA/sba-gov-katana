@@ -245,4 +245,134 @@ describe('District Office template', () => {
     content = await waitForElement(() => getByTestId('events-button'))
     expect(content).toBeInTheDocument()
   })
+  it('contains a Leadership Component', async () => {
+    
+    const mockOfficeResponse = {
+        "alternateLocations": {},
+        "areasServed": {},
+        "bannerImage": {},
+        "buttons": {},
+        "hoursOfOperation": {},
+        "leadership": null,
+        "location": [{
+            "id": 9881,
+            "type": "location",
+            "city": "Birmingham",
+            "email": "alabama@sba.gov",
+            "fax": "205-290-7404",
+            "geocode": {
+                "id": 19752,
+                "type": "geocode",
+                "latitude": "33.5133658",
+                "longitude": "-86.8057535"
+            },
+            "hoursOfOperation": "Monday through Friday from 8 a.m. to 4:30 p.m.",
+            "name": "Birmingham District Office",
+            "phoneNumber": "205-290-7101",
+            "state": "AL",
+            "streetAddress": "2 North 20th Street Suite #325",
+            "zipCode": 35203
+        }],
+        "mediaContact": 6381,
+        "office": {},
+        "officeLeadership": [6975, 6475, 6477],
+        "officeService": {},
+        "officeServices": {},
+        "officeType": "SBA District Office",
+        "paragraphs": [],
+        "pims": {
+            "id": null,
+            "type": "pims",
+            "location": null
+        },
+        "relatedDisaster": {},
+        "summary": {},
+        "twitterLink": {},
+        "website": {
+            "url": "/offices/district/al/birmingham",
+            "title": ""
+        },
+        "type": "office",
+        "title": "Alabama District Office",
+        "id": 6386,
+        "updated": 1567018155,
+        "created": 1526587109,
+        "langCode": "en"
+    }
+
+    const mockLeadershipResponse = [{
+      "bio": {},
+      "emailAddress": "Brooke.decubellis@sba.gov",
+      "fax": "202-481-1593",
+      "firstName": "Brooke",
+      "highResolutionPhoto": {},
+      "lastName": "DeCubellis",
+      "office": 6443,
+      "phone": "614-469-6860 x238",
+      "picture": {},
+      "shortBio": {},
+      "title": "Public Affairs Specialist",
+      "type": "person",
+      "url": "/person/brooke-decubellis",
+      "name": "Brooke DeCubellis",
+      "id": 6975,
+      "updated": 1550777460,
+      "created": 1527676054,
+      "langCode": "en"
+    },{
+      "bio": {},
+      "emailAddress": "Marichu.Relativo@sba.gov",
+      "fax": {},
+      "firstName": "Marichu",
+      "highResolutionPhoto": {},
+      "lastName": "Relativo",
+      "office": {},
+      "phone": "907-271-4861",
+      "picture": {},
+      "shortBio": {},
+      "title": "Deputy District Director",
+      "type": "person",
+      "url": "/person/marichu-relativo",
+      "name": "Marichu Relativo",
+      "id": 6475,
+      "updated": 1550778305,
+      "created": 1527675677,
+      "langCode": "en"
+    },{
+      "bio": {},
+      "emailAddress": "Ryan.Zachry@sba.gov",
+      "fax": {},
+      "firstName": "Ryan",
+      "highResolutionPhoto": {},
+      "lastName": "Zachry",
+      "office": 6387,
+      "phone": "907-271-4842",
+      "picture": {},
+      "shortBio": {},
+      "title": "Business Opportunity Specialist",
+      "type": "person",
+      "url": "/person/ryan-zachry",
+      "name": "Ryan Zachry",
+      "id": 6477,
+      "updated": 1551469444,
+      "created": 1527675680,
+      "langCode": "en"
+    }]
+    
+    const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+    
+    fetchSiteContentStub.mockImplementationOnce(() => {
+      return Promise.resolve(eventsTestData)
+    })
+
+    const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+    fetchRestContentStub.mockImplementationOnce(() => Promise.resolve(mockLeadershipResponse[0]))
+    fetchRestContentStub.mockImplementationOnce(() => Promise.resolve(mockLeadershipResponse[1]))
+    fetchRestContentStub.mockImplementationOnce(() => Promise.resolve(mockLeadershipResponse[2]))
+
+    const { getByTestId } = render(<DistrictOffice office={mockOfficeResponse} />)
+    const content = await waitForElement(() => getByTestId('office-leadership'))
+    expect(content).toBeInTheDocument()
+
+  })
 })

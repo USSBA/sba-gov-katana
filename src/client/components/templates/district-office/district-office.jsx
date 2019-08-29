@@ -1,19 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
-
 import { Button, SocialMediaLink } from 'atoms'
-import { CallToAction, NewsletterForm } from 'molecules'
-import { Hero, EventResult, NewsReleases, Results } from 'organisms'
-import { fetchSiteContent } from '../../../fetch-content-helper'
+import { AuthorCard, CallToAction, NewsletterForm } from 'molecules'
+import { Hero, NewsReleases, EventResult, Results } from 'organisms'
+import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
+
 
 class DistrictOfficeTemplate extends React.Component {
   constructor() {
     super()
     this.state = {
-      events: []
+      events: [],
+      leaders: []
     }
   }
 
@@ -25,10 +26,20 @@ class DistrictOfficeTemplate extends React.Component {
     })
     // when the events content api is set to D8, then pageSize=5 will do the work for us
     // but since the events content api is set to D7, slice the first 5 items off the response
+    
+    let events = []
     if (items && items.length > 0) {
-      const events = items.slice(0, 5)
-      this.setState({ events })
+      events = items.slice(0, 5)
     }
+
+    const leaders = []
+    if (office.officeLeadership && office.officeLeadership.length > 0) {
+      for (let i = 0; i < office.officeLeadership.length; i++) {
+        leaders[i] = await fetchRestContent(office.officeLeadership[i])
+      }
+    }
+
+    this.setState({ events , leaders})
   }
 
   // Validate that the officeServices field is a valid String with content
@@ -38,7 +49,7 @@ class DistrictOfficeTemplate extends React.Component {
   }
 
   render() {
-    const { events } = this.state
+    const { events, leaders } = this.state
     const { office } = this.props
     const { twitterLink } = office
 
@@ -54,6 +65,11 @@ class DistrictOfficeTemplate extends React.Component {
             </div>
           </div>
         </div>
+        {leaders.length > 0 && <div className={styles.content}>
+          <div className={styles.section}>
+            <Leadership items={leaders} />
+          </div>
+        </div>}
         <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />
         </div>
@@ -84,6 +100,33 @@ const ServicesProvided = ({ office }) => {
     <div data-testid="office-services-section">
       <h3>Services Provided</h3>
       <div className={styles.servicesProvidedList} dangerouslySetInnerHTML={{ __html: officeServices }} />
+    </div>
+  )
+}
+
+const Leadership = ({ items }) => {
+  const cards = items.map( ({name, title, shortBio, url}, index) => {
+    const props = {
+      name,
+      title,
+      shortBio
+    }
+    return (
+      <div key={index} className={styles.threeColumn}>
+        <AuthorCard
+          name={name}
+          title={title}
+          shortBio={shortBio}
+          url={url}
+        />
+      </div>
+    )
+  })
+  return (
+    <div data-testid={'office-leadership'} className={styles.leadership}>
+      <h3>Leadership</h3>
+      {cards}
+      <div className={styles.clear} />
     </div>
   )
 }
