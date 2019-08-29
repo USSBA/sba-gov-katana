@@ -35,6 +35,18 @@ describe('District Office template', () => {
       expect(heroButton).toBeInTheDocument()
       expect(heroTitle).toBeInTheDocument()
       expect(heroSummary).toBeInTheDocument()
+      expect(heroBackground).toHaveProperty('className', 'image')
+    })
+
+    it('renders the hero without a background image when there is no banner image in the office data', () => {
+      const mockOfficeData = {
+        title: 'State District Office'
+      }
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+      const hero = getByTestId('hero')
+      const heroBackground = within(hero).getByTestId('background')
+      expect(heroBackground).toHaveProperty('className', 'noImage')
     })
 
     it('renders the hero without a summary when there is no summary in the office data', () => {
