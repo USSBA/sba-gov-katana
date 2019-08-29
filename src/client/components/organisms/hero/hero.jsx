@@ -41,11 +41,11 @@ class Hero extends React.Component {
     }
 
     return (
-      <div className={`hero ${styles.hero}`}>
+      <div data-testid="hero" className={`hero ${styles.hero}`}>
         <div aria-label={alt} className={imageUrl ? styles.image : styles.noImage} style={style}>
           <div className={styles.callout} ref={ref => (this.callout = ref)}>
-            <h1>{title}</h1>
-            <h5>{message}</h5>
+            <h1 data-testid="title">{title}</h1>
+            <h5 data-testid="message">{message}</h5>
             {buttons &&
               buttons.map((item, index) => (
                 <Button
@@ -60,7 +60,14 @@ class Hero extends React.Component {
               ))}
           </div>
         </div>
-        {imageUrl && <img className={styles.arrow} ref={ref => (this.arrow = ref)} src={scrollIcon} />}
+        {imageUrl && (
+          <img
+            data-testid="image"
+            className={styles.arrow}
+            ref={ref => (this.arrow = ref)}
+            src={scrollIcon}
+          />
+        )}
       </div>
     )
   }

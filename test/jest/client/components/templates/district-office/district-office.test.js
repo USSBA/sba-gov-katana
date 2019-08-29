@@ -5,6 +5,19 @@ import 'jest-dom/extend-expect'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 import eventsTestData from '../../test-data/events.json'
 
+// We need to mock the function window.matchMedia located in the Hero component
+// that gets executed via the render in react testing library
+window.matchMedia = jest.fn().mockImplementation(query => {
+  return {
+    matches: false,
+    media: query,
+    onchange: null,
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn()
+  }
+})
+
 afterEach(cleanup)
 
 describe('District Office template', () => {
@@ -14,6 +27,33 @@ describe('District Office template', () => {
 
     const content = getByTestId('news-release-section')
     expect(content).toBeInTheDocument()
+  })
+  it('renders the hero component', () => {
+    const mockOfficeData = {
+      bannerImage: {
+        image: {
+          url: '/sites/default/files/2019-08/Screen%20Shot%202019-01-10%20at%2010.38.27%20AM.png',
+          alt: 'office building exterior'
+        },
+        link: {
+          url: '/blog/what-are-business-plan-events'
+        }
+      },
+      summary: 'We are a cool office.',
+      title: 'State District Office'
+    }
+    const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+    const hero = getByTestId('hero')
+    const title = getByTestId('title')
+    const summary = getByTestId('message')
+    const image = getByTestId('image')
+    // const button = getByTestId('button')
+    expect(hero).toBeInTheDocument()
+    expect(title).toBeInTheDocument()
+    expect(summary).toBeInTheDocument()
+    expect(image).toBeInTheDocument()
+    // expect(button).toBeInTheDocument()
   })
 
   it('renders the newsletter sign up component', () => {
