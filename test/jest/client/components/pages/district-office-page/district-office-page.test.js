@@ -11,12 +11,17 @@ import 'jest-dom/extend-expect'
 import axiosMock from 'axios'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 import eventsTestData from '../../test-data/events.json'
+import newsReleaseData from '../../test-data/news-releases/oneNewsReleasesData.json'
+import { when, resetAllWhenMocks } from 'jest-when'
 
 const mockOfficeData = {
   title: 'State District Office'
 }
 
-afterEach(cleanup)
+afterEach(function() {
+  cleanup()
+  resetAllWhenMocks()
+})
 
 describe('District Office page', () => {
   it('renders the office info when it recieves data back from the api', async () => {
@@ -33,7 +38,12 @@ describe('District Office page', () => {
     axiosMock.get.mockResolvedValueOnce(mockOfficeResponse)
 
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-    fetchSiteContentStub.mockImplementationOnce(() => Promise.resolve(eventsTestData))
+    when(fetchSiteContentStub)
+      .calledWith('events')
+      .mockImplementationOnce(() => Promise.resolve(eventsTestData))
+    when(fetchSiteContentStub)
+      .calledWith('articles')
+      .mockImplementationOnce(() => Promise.resolve(newsReleaseData))
 
     const { getByTestId } = render(
       <Provider store={store}>
