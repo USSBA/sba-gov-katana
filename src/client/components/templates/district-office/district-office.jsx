@@ -43,15 +43,17 @@ class DistrictOfficeTemplate extends React.Component {
         <div className={styles.content}>
           <p>{office.title}</p>
         </div>
-        {this.validateOfficeServices(office) && (
-          <div className={styles.section} data-testid="office-services-section">
-            <div className={styles.officeInfo}>
-              <h2>Office Information</h2>
-              <h3>Services Provided</h3>
-              <div dangerouslySetInnerHTML={{ __html: office.officeServices }} />
-            </div>
+        <div className={styles.section} data-testid="office-information-section">
+          <div className={styles.officeInfo}>
+            <h2>Office Information</h2>
+            {this.validateOfficeServices(office) && (
+              <div data-testid="office-services-section">
+                <h3>Services Provided</h3>
+                <div dangerouslySetInnerHTML={{ __html: office.officeServices }} />
+              </div>
+            )}
           </div>
-        )}
+        </div>
         <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />
         </div>
