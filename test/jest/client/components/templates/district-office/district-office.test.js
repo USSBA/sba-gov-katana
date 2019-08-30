@@ -14,7 +14,7 @@ describe('District Office template', () => {
       const mockOfficeData = {
         bannerImage: {
           image: {
-            url: '/sites/default/files/2019-08/Screen%20Shot%202019-01-10%20at%2010.38.27%20AM.png',
+            url: '/files/heroImage.png',
             alt: 'office building exterior'
           },
           link: {
@@ -31,14 +31,20 @@ describe('District Office template', () => {
       const heroTitle = within(hero).getByTestId('title')
       const heroSummary = within(hero).getByTestId('message')
       const heroBackground = within(hero).getByTestId('background')
+
       expect(hero).toBeInTheDocument()
       expect(heroButton).toBeInTheDocument()
-      expect(heroTitle).toBeInTheDocument()
-      expect(heroSummary).toBeInTheDocument()
-      expect(heroBackground).toHaveProperty('className', 'image')
+      expect(heroTitle).toHaveTextContent(mockOfficeData.title)
+      expect(heroSummary).toHaveTextContent(mockOfficeData.summary)
+      expect(heroBackground).toHaveClass('image')
+      expect(heroBackground).toHaveAttribute('aria-label', mockOfficeData.bannerImage.image.alt)
+      expect(heroBackground).toHaveAttribute(
+        'style',
+        `background-image: url(${mockOfficeData.bannerImage.image.url});`
+      )
     })
 
-    it('renders the hero without a background image when there is no banner image in the office data', () => {
+    it('renders the hero without a background image when there is no bannerImage in the office data', () => {
       const mockOfficeData = {
         title: 'State District Office'
       }
@@ -46,7 +52,25 @@ describe('District Office template', () => {
 
       const hero = getByTestId('hero')
       const heroBackground = within(hero).getByTestId('background')
-      expect(heroBackground).toHaveProperty('className', 'noImage')
+      expect(heroBackground).toHaveClass('noImage')
+    })
+
+    it('renders the hero without a button when there is no bannerImage.link.url in the office data', () => {
+      const mockOfficeData = {
+        bannerImage: {
+          image: {
+            url: '/files/heroImage.png',
+            alt: 'office building exterior'
+          }
+        },
+        title: 'State District Office'
+      }
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      const hero = getByTestId('hero')
+      expect(hero).toBeInTheDocument()
+
+      const heroButton = within(hero).queryByTestId('button')
+      expect(heroButton).not.toBeInTheDocument()
     })
 
     it('renders the hero without a summary when there is no summary in the office data', () => {
@@ -59,24 +83,6 @@ describe('District Office template', () => {
 
       const heroSummary = within(hero).queryByTestId('message')
       expect(heroSummary).not.toHaveTextContent()
-    })
-
-    it('renders the hero without a button when there is no banner image link url', () => {
-      const mockOfficeData = {
-        bannerImage: {
-          image: {
-            url: '/sites/default/files/2019-08/Screen%20Shot%202019-01-10%20at%2010.38.27%20AM.png',
-            alt: 'office building exterior'
-          }
-        },
-        title: 'State District Office'
-      }
-      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
-      const hero = getByTestId('hero')
-      expect(hero).toBeInTheDocument()
-
-      const heroButton = within(hero).queryByTestId('button')
-      expect(heroButton).not.toBeInTheDocument()
     })
   })
 
