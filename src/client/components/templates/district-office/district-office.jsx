@@ -28,10 +28,10 @@ class DistrictOfficeTemplate extends React.Component {
     }
   }
 
-  // Checks that the office services section has valid content that won't break the district office page when rendered in the browser. Since this section involves taking content and placing it directly on the DOM this check is required to make sure the page doesn't break itself
+  // Validate that the officeServices field is a valid String with content
   validateOfficeServices(office) {
     const { officeServices } = office
-    return officeServices && typeof officeServices === String && officeServices.length > 0
+    return officeServices && typeof officeServices === 'string' && officeServices.length > 0
   }
 
   render() {
@@ -47,6 +47,7 @@ class DistrictOfficeTemplate extends React.Component {
           <div className={styles.section} data-testid="office-services-section">
             <div className={styles.officeInfo}>
               <h2>Office Information</h2>
+              <h3>Services Provided</h3>
               <div dangerouslySetInnerHTML={{ __html: office.officeServices }} />
             </div>
           </div>
