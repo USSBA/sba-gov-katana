@@ -2,7 +2,7 @@
   "items": [
     {
       "articleId": {},
-      "category": {},
+      "category": [],
       "mediaContact": {},
       "office": 12345,
       "officeLink": {},
@@ -19,7 +19,7 @@
     },
     {
       "articleId": {},
-      "category": {},
+      "category": [],
       "mediaContact": {},
       "office": 12345,
       "officeLink": {
@@ -39,7 +39,7 @@
     },
     {
       "articleId": {},
-      "category": {},
+      "category": [],
       "mediaContact": {},
       "office": 12345,
       "officeLink": {},
