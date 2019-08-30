@@ -3,6 +3,15 @@
   overflow: hidden;
 }
 
+.officeInfo {
+  @include grid-media($sba-grid-medium) {
+    margin-left: 60px;
+  }
+  @include grid-media($sba-grid-large) {
+    margin-left: 80px;
+  }
+}
+
 .pressReleases {
   @extend .greyBackground;
 
@@ -34,7 +43,7 @@
     margin-bottom: 0;
   }
 
-  background-color: $sba-gray-lighter;
+  @extend .greyBackground;
   overflow: hidden;
   @include grid-media($sba-grid-small) {
     padding: 40px 20px;
