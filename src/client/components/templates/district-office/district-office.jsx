@@ -8,7 +8,6 @@ import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helpe
 import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
 
-
 class DistrictOfficeTemplate extends React.Component {
   constructor() {
     super()
@@ -26,20 +25,21 @@ class DistrictOfficeTemplate extends React.Component {
     })
     // when the events content api is set to D8, then pageSize=5 will do the work for us
     // but since the events content api is set to D7, slice the first 5 items off the response
-    
+
     let events = []
     if (items && items.length > 0) {
       events = items.slice(0, 5)
     }
 
-    const leaders = []
+    let leaders = []
     if (office.officeLeadership && office.officeLeadership.length > 0) {
-      for (let i = 0; i < office.officeLeadership.length; i++) {
+      const officeLeadership = office.officeLeadership.slice(0, 3)
+      for (let i = 0; i < officeLeadership.length; i++) {
         leaders[i] = await fetchRestContent(office.officeLeadership[i])
       }
     }
 
-    this.setState({ events , leaders})
+    this.setState({ events, leaders })
   }
 
   // Validate that the officeServices field is a valid String with content
@@ -55,6 +55,7 @@ class DistrictOfficeTemplate extends React.Component {
 
     return (
       <div>
+<<<<<<< HEAD
         <HeroBanner office={office} />
         <div className={styles.content}>
           <div data-testid="office-information-section" className={styles.officeInfo}>
@@ -68,6 +69,17 @@ class DistrictOfficeTemplate extends React.Component {
         {leaders.length > 0 && <div className={styles.content}>
           <div className={styles.section}>
             <Leadership items={leaders} />
+=======
+        <div className={styles.content}>
+          <p>{office.title}</p>
+          {leaders.length > 0 && (
+            <div className={styles.section}>
+              <Leadership items={leaders} />
+            </div>
+          )}
+          <div className={styles.section} data-testid="news-release-section">
+            <NewsReleases officeId={office.id} />
+>>>>>>> TA-2915 added length test and max limit of 3
           </div>
         </div>}
         <div className={styles.section} data-testid="news-release-section">
@@ -105,20 +117,10 @@ const ServicesProvided = ({ office }) => {
 }
 
 const Leadership = ({ items }) => {
-  const cards = items.map( ({name, title, shortBio, url}, index) => {
-    const props = {
-      name,
-      title,
-      shortBio
-    }
+  const cards = items.map(({ name, title, shortBio, url }, index) => {
     return (
-      <div key={index} className={styles.threeColumn}>
-        <AuthorCard
-          name={name}
-          title={title}
-          shortBio={shortBio}
-          url={url}
-        />
+      <div data-testid={`leader-card`} key={index} className={styles.threeColumn}>
+        <AuthorCard name={name} title={title} shortBio={shortBio} url={url} />
       </div>
     )
   })

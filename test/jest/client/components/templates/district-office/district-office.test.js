@@ -370,9 +370,12 @@ describe('District Office template', () => {
     fetchRestContentStub.mockImplementationOnce(() => Promise.resolve(mockLeadershipResponse[1]))
     fetchRestContentStub.mockImplementationOnce(() => Promise.resolve(mockLeadershipResponse[2]))
 
-    const { getByTestId } = render(<DistrictOffice office={mockOfficeResponse} />)
-    const content = await waitForElement(() => getByTestId('office-leadership'))
+    const { getByTestId, getAllByTestId } = render(<DistrictOffice office={mockOfficeResponse} />)
+    let content = await waitForElement(() => getByTestId('office-leadership'))
     expect(content).toBeInTheDocument()
+
+    content = await waitForElement(() => getAllByTestId('leader-card'))
+    expect(content.length).toEqual(3)
 
   })
 })
