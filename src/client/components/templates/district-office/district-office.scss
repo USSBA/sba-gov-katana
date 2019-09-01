@@ -97,12 +97,22 @@
 
 .socialMedia {
   display: flex;
-  justify-content: flex-end;
+
   h4 {
     padding-right: 11px;
   }
   img {
     width: 30px;
+  }
+
+  @include grid-media($sba-grid-small) {
+    justify-content: flex-start;
+  }
+  @include grid-media($sba-grid-medium) {
+    justify-content: flex-end;
+  }
+  @include grid-media($sba-grid-large) {
+    justify-content: flex-end;
   }
 }
 
