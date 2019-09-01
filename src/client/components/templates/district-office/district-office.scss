@@ -95,6 +95,17 @@
   }
 }
 
+.socialMedia {
+  display: flex;
+  justify-content: flex-end;
+  h4 {
+    padding-right: 11px;
+  }
+  img {
+    width: 30px;
+  }
+}
+
 .lenderMatch {
   @include grid-media($sba-grid-large) {
     padding: 30px 40px;

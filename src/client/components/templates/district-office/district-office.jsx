@@ -2,10 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 
-import { Button } from 'atoms'
+import { Button, SocialMediaLink } from 'atoms'
 import { CallToAction, NewsletterForm } from 'molecules'
 import { Hero, EventResult, NewsReleases, Results } from 'organisms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
+import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
 
 class DistrictOfficeTemplate extends React.Component {
@@ -48,6 +49,9 @@ class DistrictOfficeTemplate extends React.Component {
             <h2>Office Information</h2>
             {this.validateOfficeServices(office) && <ServicesProvided office={office} />}
           </div>
+        </div>
+        <div className={styles.content}>
+          <SocialMedia twitterLink={office.twitterLink} />
         </div>
         <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />
@@ -111,6 +115,16 @@ const HeroBanner = ({ office }) => {
   }
 
   return <Hero {...heroProps} />
+}
+
+const SocialMedia = ({ twitterLink }) => {
+  const altText = 'link to twitter'
+  return (
+    <div className={styles.socialMedia}>
+      <h4>Follow us</h4>
+      <SocialMediaLink image={twitterThumbnail} altText={altText} url={twitterLink} />
+    </div>
+  )
 }
 
 const NewsletterSignup = () => {
