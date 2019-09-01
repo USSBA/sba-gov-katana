@@ -40,6 +40,7 @@ class DistrictOfficeTemplate extends React.Component {
   render() {
     const { events } = this.state
     const { office } = this.props
+    const { twitterLink } = office
 
     return (
       <div>
@@ -50,9 +51,11 @@ class DistrictOfficeTemplate extends React.Component {
             {this.validateOfficeServices(office) && <ServicesProvided office={office} />}
           </div>
         </div>
-        <div className={styles.content}>
-          <SocialMedia twitterLink={office.twitterLink} />
-        </div>
+        {typeof twitterLink === 'string' && (
+          <div className={styles.content}>
+            <SocialMedia twitterLink={twitterLink} />
+          </div>
+        )}
         <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />
         </div>
@@ -120,7 +123,7 @@ const HeroBanner = ({ office }) => {
 const SocialMedia = ({ twitterLink }) => {
   const altText = 'link to twitter'
   return (
-    <div className={styles.socialMedia}>
+    <div data-testid="social-media-section" className={styles.socialMedia}>
       <h4>Follow us</h4>
       <SocialMediaLink image={twitterThumbnail} altText={altText} url={twitterLink} />
     </div>
