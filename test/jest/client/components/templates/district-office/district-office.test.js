@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, cleanup, waitForElement } from 'react-testing-library'
+import { render, cleanup, waitForElement, within } from 'react-testing-library'
+import '../../test-data/matchMedia.mock'
 import DistrictOffice from 'templates/district-office/district-office.jsx'
 import 'jest-dom/extend-expect'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
@@ -35,20 +36,97 @@ describe('District Office template', () => {
       expect(officeInfo).toBeInTheDocument()
       expect(officeServices).toBeNull()
     })
+  })
 
-    it('will NOT render the services section if service information is not in a String data type', () => {
-      const mockOfficeData = {
-        title: 'State District Office',
-        officeServices: {
-          key: 'value'
-        }
+  it('will NOT render the services section if service information is not in a String data type', () => {
+    const mockOfficeData = {
+      title: 'State District Office',
+      officeServices: {
+        key: 'value'
       }
-      const { getByTestId, queryByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+    }
+    const { getByTestId, queryByTestId } = render(<DistrictOffice office={mockOfficeData} />)
 
-      const officeInfo = getByTestId('office-information-section')
-      const officeServices = queryByTestId('office-services-section')
-      expect(officeInfo).toBeInTheDocument()
-      expect(officeServices).toBeNull()
+    const officeInfo = getByTestId('office-information-section')
+    const officeServices = queryByTestId('office-services-section')
+    expect(officeInfo).toBeInTheDocument()
+    expect(officeServices).toBeNull()
+  })
+
+  describe('Hero section', () => {
+    it('renders the hero component with office data', () => {
+      const mockOfficeData = {
+        bannerImage: {
+          image: {
+            url: '/files/heroImage.png',
+            alt: 'office building exterior'
+          },
+          link: {
+            url: '/blog/what-are-business-plan-events'
+          }
+        },
+        summary: 'We are a cool office.',
+        title: 'State District Office'
+      }
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+      const hero = getByTestId('hero')
+      const heroButton = within(hero).getByTestId('button')
+      const heroTitle = within(hero).getByTestId('title')
+      const heroSummary = within(hero).getByTestId('message')
+      const heroBackground = within(hero).getByTestId('background')
+
+      expect(hero).toBeInTheDocument()
+      expect(heroButton).toBeInTheDocument()
+      expect(heroTitle).toHaveTextContent(mockOfficeData.title)
+      expect(heroSummary).toHaveTextContent(mockOfficeData.summary)
+      expect(heroBackground).toHaveClass('image')
+      expect(heroBackground).toHaveAttribute('aria-label', mockOfficeData.bannerImage.image.alt)
+      expect(heroBackground).toHaveAttribute(
+        'style',
+        `background-image: url(${mockOfficeData.bannerImage.image.url});`
+      )
+    })
+
+    it('renders the hero without a background image when there is no bannerImage in the office data', () => {
+      const mockOfficeData = {
+        title: 'State District Office'
+      }
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+      const hero = getByTestId('hero')
+      const heroBackground = within(hero).getByTestId('background')
+      expect(heroBackground).toHaveClass('noImage')
+    })
+
+    it('renders the hero without a button when there is no bannerImage.link.url in the office data', () => {
+      const mockOfficeData = {
+        bannerImage: {
+          image: {
+            url: '/files/heroImage.png',
+            alt: 'office building exterior'
+          }
+        },
+        title: 'State District Office'
+      }
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      const hero = getByTestId('hero')
+      expect(hero).toBeInTheDocument()
+
+      const heroButton = within(hero).queryByTestId('button')
+      expect(heroButton).not.toBeInTheDocument()
+    })
+
+    it('renders the hero without a summary when there is no summary in the office data', () => {
+      const mockOfficeData = {
+        title: 'State District Office'
+      }
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      const hero = getByTestId('hero')
+      expect(hero).toBeInTheDocument()
+
+      const heroSummary = within(hero).queryByTestId('message')
+      expect(heroSummary).not.toHaveTextContent()
     })
   })
 

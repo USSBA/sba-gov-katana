@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { isEmpty } from 'lodash'
+
 import { Button } from 'atoms'
 import { CallToAction, NewsletterForm } from 'molecules'
-import { NewsReleases, EventResult, Results } from 'organisms'
+import { Hero, EventResult, NewsReleases, Results } from 'organisms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './district-office.scss'
 
@@ -40,9 +42,7 @@ class DistrictOfficeTemplate extends React.Component {
 
     return (
       <div>
-        <div className={styles.content}>
-          <p>{office.title}</p>
-        </div>
+        <HeroBanner office={office} />
         <div className={styles.section} data-testid="office-information-section">
           <div className={styles.officeInfo}>
             <h2>Office Information</h2>
@@ -81,6 +81,36 @@ const ServicesProvided = ({ office }) => {
       <div dangerouslySetInnerHTML={{ __html: officeServices }} />
     </div>
   )
+}
+
+const HeroBanner = ({ office }) => {
+  const heroProps = {
+    alt: null,
+    buttons: null,
+    imageUrl: null,
+    message: null,
+    title: null
+  }
+
+  heroProps.message = typeof office.summary === 'string' && office.summary
+  heroProps.title = typeof office.title === 'string' && office.title
+
+  if (!isEmpty(office.bannerImage)) {
+    if (!isEmpty(office.bannerImage.link)) {
+      heroProps.buttons = typeof office.bannerImage.link.url === 'string' && [
+        {
+          url: office.bannerImage.link.url,
+          btnText: 'Learn More'
+        }
+      ]
+    }
+    if (!isEmpty(office.bannerImage.image)) {
+      heroProps.alt = typeof office.bannerImage.image.alt === 'string' && office.bannerImage.image.alt
+      heroProps.imageUrl = typeof office.bannerImage.image.url === 'string' && office.bannerImage.image.url
+    }
+  }
+
+  return <Hero {...heroProps} />
 }
 
 const NewsletterSignup = () => {
