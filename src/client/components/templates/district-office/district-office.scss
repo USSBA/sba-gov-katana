@@ -10,6 +10,10 @@
   @include grid-media($sba-grid-large) {
     margin-left: 80px;
   }
+
+  ul {
+    list-style-type: circle;
+  }
 }
 
 .pressReleases {
