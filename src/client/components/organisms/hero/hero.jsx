@@ -41,11 +41,16 @@ class Hero extends React.Component {
     }
 
     return (
-      <div className={`hero ${styles.hero}`}>
-        <div aria-label={alt} className={imageUrl ? styles.image : styles.noImage} style={style}>
+      <div data-testid="hero" className={`hero ${styles.hero}`}>
+        <div
+          data-testid="background"
+          aria-label={alt}
+          className={imageUrl ? styles.image : styles.noImage}
+          style={style}
+        >
           <div className={styles.callout} ref={ref => (this.callout = ref)}>
-            <h1>{title}</h1>
-            <h5>{message}</h5>
+            <h1 data-testid="title">{title}</h1>
+            <h5 data-testid="message">{message}</h5>
             {buttons &&
               buttons.map((item, index) => (
                 <Button

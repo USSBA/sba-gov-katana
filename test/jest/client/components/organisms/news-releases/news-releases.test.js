@@ -25,7 +25,7 @@ describe('News releases', () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
     fetchSiteContentStub.mockImplementationOnce(() => Promise.resolve(oneNewsReleaseData))
 
-    const { getByTestId } = render(<NewsReleases officeId={'12345'} />)
+    const { getByTestId } = render(<NewsReleases officeId={12345} />)
 
     const newsCards = await waitForElement(() => getByTestId('news-cards'))
     const newsButton = await waitForElement(() => getByTestId('news-more-button'))
