@@ -169,3 +169,8 @@
 .clear {
   clear: both;
 }
+.document {
+  @include grid-media($sba-grid-large) {
+    @include grid-column(6);
+  }
+}
