@@ -2,18 +2,19 @@
 
 import React from 'react'
 import { render, cleanup, waitForElement } from 'react-testing-library'
-import DistrictOfficePage from 'pages/district-office-page/district-office-page.jsx'
+import { when, resetAllWhenMocks } from 'jest-when'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducers from 'client/reducers'
-import 'jest-dom/extend-expect'
 import axiosMock from 'axios'
-import '../../test-data/matchMedia.mock'
+import 'jest-dom/extend-expect'
+
+import DistrictOfficePage from 'pages/district-office-page/district-office-page.jsx'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 import eventsTestData from '../../test-data/events.json'
 import newsReleaseData from '../../test-data/news-releases/oneNewsReleasesData.json'
-import { when, resetAllWhenMocks } from 'jest-when'
+import '../../test-data/matchMedia.mock'
 
 const mockOfficeData = {
   title: 'State District Office'

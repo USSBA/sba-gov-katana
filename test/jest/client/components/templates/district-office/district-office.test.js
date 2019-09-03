@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, cleanup, waitForElement, within } from 'react-testing-library'
+import { when, resetAllWhenMocks } from 'jest-when'
 import '../../test-data/matchMedia.mock'
 import DistrictOffice from 'templates/district-office/district-office.jsx'
 import 'jest-dom/extend-expect'
@@ -164,7 +165,9 @@ describe('District Office template', () => {
     }
 
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-    fetchSiteContentStub.mockImplementationOnce(() => Promise.resolve(eventsTestData))
+    when(fetchSiteContentStub)
+      .calledWith('events')
+      .mockImplementationOnce(() => Promise.resolve(eventsTestData))
 
     const { getByTestId } = render(<DistrictOffice office={mockOfficeResponse} />)
     let content = await waitForElement(() => getByTestId('events'))
