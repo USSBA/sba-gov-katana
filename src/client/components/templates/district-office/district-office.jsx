@@ -55,7 +55,6 @@ class DistrictOfficeTemplate extends React.Component {
 
     return (
       <div>
-<<<<<<< HEAD
         <HeroBanner office={office} />
         <div className={styles.content}>
           <div data-testid="office-information-section" className={styles.officeInfo}>
@@ -69,17 +68,6 @@ class DistrictOfficeTemplate extends React.Component {
         {leaders.length > 0 && <div className={styles.content}>
           <div className={styles.section}>
             <Leadership items={leaders} />
-=======
-        <div className={styles.content}>
-          <p>{office.title}</p>
-          {leaders.length > 0 && (
-            <div className={styles.section}>
-              <Leadership items={leaders} />
-            </div>
-          )}
-          <div className={styles.section} data-testid="news-release-section">
-            <NewsReleases officeId={office.id} />
->>>>>>> TA-2915 added length test and max limit of 3
           </div>
         </div>}
         <div className={styles.section} data-testid="news-release-section">
