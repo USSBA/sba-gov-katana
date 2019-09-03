@@ -245,4 +245,110 @@ describe('District Office template', () => {
     content = await waitForElement(() => getByTestId('events-button'))
     expect(content).toBeInTheDocument()
   })
+  describe('Leadership Component', () => {
+    it('contains leaders', async () => {
+      
+      const mockOfficeResponse = {
+          "officeLeadership": [6975, 6475, 6477],
+          "title": "Alabama District Office",
+          "id": 6386,
+      }
+
+      const mockLeadershipResponse = [{
+        "bio": {},
+        "emailAddress": "Brooke.decubellis@sba.gov",
+        "fax": "202-481-1593",
+        "firstName": "Brooke",
+        "highResolutionPhoto": {},
+        "lastName": "DeCubellis",
+        "office": 6443,
+        "phone": "614-469-6860 x238",
+        "picture": {},
+        "shortBio": {},
+        "title": "Public Affairs Specialist",
+        "type": "person",
+        "url": "/person/brooke-decubellis",
+        "name": "Brooke DeCubellis",
+        "id": 6975,
+        "updated": 1550777460,
+        "created": 1527676054,
+        "langCode": "en"
+      },{
+        "bio": {},
+        "emailAddress": "Marichu.Relativo@sba.gov",
+        "fax": {},
+        "firstName": "Marichu",
+        "highResolutionPhoto": {},
+        "lastName": "Relativo",
+        "office": {},
+        "phone": "907-271-4861",
+        "picture": {},
+        "shortBio": {},
+        "title": "Deputy District Director",
+        "type": "person",
+        "url": "/person/marichu-relativo",
+        "name": "Marichu Relativo",
+        "id": 6475,
+        "updated": 1550778305,
+        "created": 1527675677,
+        "langCode": "en"
+      },{
+        "bio": {},
+        "emailAddress": "Ryan.Zachry@sba.gov",
+        "fax": {},
+        "firstName": "Ryan",
+        "highResolutionPhoto": {},
+        "lastName": "Zachry",
+        "office": 6387,
+        "phone": "907-271-4842",
+        "picture": {},
+        "shortBio": {},
+        "title": "Business Opportunity Specialist",
+        "type": "person",
+        "url": "/person/ryan-zachry",
+        "name": "Ryan Zachry",
+        "id": 6477,
+        "updated": 1551469444,
+        "created": 1527675680,
+        "langCode": "en"
+      }]
+      
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      
+      fetchSiteContentStub.mockImplementationOnce(() => {
+        return Promise.resolve(eventsTestData)
+      })
+
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      fetchRestContentStub.mockImplementationOnce(() => Promise.resolve(mockLeadershipResponse[0]))
+      fetchRestContentStub.mockImplementationOnce(() => Promise.resolve(mockLeadershipResponse[1]))
+      fetchRestContentStub.mockImplementationOnce(() => Promise.resolve(mockLeadershipResponse[2]))
+
+      const { getByTestId, getAllByTestId } = render(<DistrictOffice office={mockOfficeResponse} />)
+      let content = await waitForElement(() => getByTestId('office-leadership'))
+      expect(content).toBeInTheDocument()
+
+      content = await waitForElement(() => getAllByTestId('leader-card'))
+      expect(content.length).toEqual(3)
+
+    })
+    it('contains no leaders', () => {
+      
+      const mockOfficeResponse = {
+          "officeLeadership": {},
+          "title": "Alabama District Office",
+          "id": 6386,
+      }
+      
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      
+      fetchSiteContentStub.mockImplementationOnce(() => {
+        return Promise.resolve(eventsTestData)
+      })
+
+      const { queryByTestId } = render(<DistrictOffice office={mockOfficeResponse} />)
+      const content = queryByTestId('office-leadership')
+      expect(content).not.toBeInTheDocument()
+    })
+  })
 })

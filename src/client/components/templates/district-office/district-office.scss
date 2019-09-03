@@ -144,3 +144,28 @@
     font-size: 18px;
   }
 }
+
+.threeColumn {
+  @include for-medium-up {
+    @include grid-column(4);
+  }
+}
+
+.leadership {
+  @include for-medium-up {
+    margin-left: -20px;
+    margin-right: -20px;
+
+    h3 {
+      margin-left: 20px;
+    }
+  }
+
+  h3 {
+    margin-bottom: 20px;
+  }
+}
+
+.clear {
+  clear: both;
+}
