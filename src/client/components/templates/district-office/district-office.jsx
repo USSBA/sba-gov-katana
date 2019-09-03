@@ -39,6 +39,8 @@ class DistrictOfficeTemplate extends React.Component {
       }
     }
 
+    leaders = leaders.filter(item => item)
+
     this.setState({ events, leaders })
   }
 
