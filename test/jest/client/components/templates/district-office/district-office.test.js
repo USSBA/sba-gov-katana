@@ -13,6 +13,50 @@ afterEach(function() {
 })
 
 describe('District Office template', () => {
+  describe('the office information section', () => {
+    it('will render the services section if service information is provided from the office request', () => {
+      const servicesEntry = '<p>Some content</p>'
+      const mockOfficeData = {
+        title: 'State District Office',
+        officeServices: servicesEntry
+      }
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+      const officeInfo = getByTestId('office-information-section')
+      const officeServices = getByTestId('office-services-section')
+      expect(officeInfo).toBeInTheDocument()
+      expect(officeServices).toBeInTheDocument()
+      expect(officeServices).toContainHTML(servicesEntry)
+    })
+
+    it('will NOT render the services section if service information is not available from office request', () => {
+      const mockOfficeData = {
+        title: 'State District Office'
+      }
+      const { getByTestId, queryByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+      const officeInfo = getByTestId('office-information-section')
+      const officeServices = queryByTestId('office-services-section')
+      expect(officeInfo).toBeInTheDocument()
+      expect(officeServices).toBeNull()
+    })
+  })
+
+  it('will NOT render the services section if service information is not in a String data type', () => {
+    const mockOfficeData = {
+      title: 'State District Office',
+      officeServices: {
+        key: 'value'
+      }
+    }
+    const { getByTestId, queryByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+    const officeInfo = getByTestId('office-information-section')
+    const officeServices = queryByTestId('office-services-section')
+    expect(officeInfo).toBeInTheDocument()
+    expect(officeServices).toBeNull()
+  })
+
   describe('Hero section', () => {
     it('renders the hero component with office data', () => {
       const mockOfficeData = {

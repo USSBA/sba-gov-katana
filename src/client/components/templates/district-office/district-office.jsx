@@ -30,6 +30,12 @@ class DistrictOfficeTemplate extends React.Component {
     }
   }
 
+  // Validate that the officeServices field is a valid String with content
+  validateOfficeServices(office) {
+    const { officeServices } = office
+    return officeServices && typeof officeServices === 'string' && officeServices.length > 0
+  }
+
   render() {
     const { events } = this.state
     const { office } = this.props
@@ -37,6 +43,12 @@ class DistrictOfficeTemplate extends React.Component {
     return (
       <div>
         <HeroBanner office={office} />
+        <div className={styles.section} data-testid="office-information-section">
+          <div className={styles.officeInfo}>
+            <h2>Office Information</h2>
+            {this.validateOfficeServices(office) && <ServicesProvided office={office} />}
+          </div>
+        </div>
         <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />
         </div>
@@ -59,6 +71,16 @@ class DistrictOfficeTemplate extends React.Component {
       </div>
     )
   }
+}
+
+const ServicesProvided = ({ office }) => {
+  const { officeServices } = office
+  return (
+    <div data-testid="office-services-section">
+      <h3>Services Provided</h3>
+      <div dangerouslySetInnerHTML={{ __html: officeServices }} />
+    </div>
+  )
 }
 
 const HeroBanner = ({ office }) => {
