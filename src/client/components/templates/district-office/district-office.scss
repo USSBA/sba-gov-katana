@@ -169,8 +169,9 @@
 .clear {
   clear: both;
 }
-.document {
+.documents {
   @include grid-media($sba-grid-large) {
     @include grid-column(6);
+    margin-left: 0;
   }
 }

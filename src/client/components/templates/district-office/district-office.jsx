@@ -90,10 +90,8 @@ class DistrictOfficeTemplate extends React.Component {
           <div className={styles.section}>
             <LenderMatch />
           </div>
-          <div className={styles.content}>
-            <div className={styles.section}>
-              <Docs office={office} />
-            </div>
+          <div className={styles.section}>
+            <Docs office={office} />
           </div>
         </div>
       </div>
@@ -234,7 +232,7 @@ const Docs = ({ office }) => {
     ]
   }
   return (
-    <div className={styles.document} data-testid={'office-document-links'}>
+    <div className={styles.documents} data-testid={'office-document-links'}>
       <QuickLinks data={linkProps} />
     </div>
   )
