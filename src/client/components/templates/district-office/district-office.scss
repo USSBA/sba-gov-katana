@@ -4,13 +4,6 @@
 }
 
 .officeInfo {
-  @include grid-media($sba-grid-medium) {
-    margin-left: 60px;
-  }
-  @include grid-media($sba-grid-large) {
-    margin-left: 80px;
-  }
-
   ul {
     list-style-type: circle;
     padding-left: 15px;
@@ -92,6 +85,44 @@
   }
   @include grid-media($sba-grid-large) {
     padding: 50px 0;
+  }
+}
+
+.servicesAndSocialMediaContainer {
+  @include grid-media($sba-grid-medium) {
+    display: flex;
+    justify-content: space-between;
+  }
+  @include grid-media($sba-grid-large) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.servicesProvidedList {
+  padding-left: 7px;
+}
+
+.socialMedia {
+  display: flex;
+  min-width: 130px;
+
+  h4 {
+    padding-right: 11px;
+  }
+  img {
+    width: 30px;
+  }
+
+  @include grid-media($sba-grid-small) {
+    padding-top: 20px;
+    justify-content: flex-start;
+  }
+  @include grid-media($sba-grid-medium) {
+    justify-content: flex-end;
+  }
+  @include grid-media($sba-grid-large) {
+    justify-content: flex-end;
   }
 }
 

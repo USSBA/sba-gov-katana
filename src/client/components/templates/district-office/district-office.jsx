@@ -2,10 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 
-import { Button } from 'atoms'
+import { Button, SocialMediaLink } from 'atoms'
 import { CallToAction, NewsletterForm } from 'molecules'
 import { Hero, EventResult, NewsReleases, Results } from 'organisms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
+import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
 
 class DistrictOfficeTemplate extends React.Component {
@@ -39,14 +40,18 @@ class DistrictOfficeTemplate extends React.Component {
   render() {
     const { events } = this.state
     const { office } = this.props
+    const { twitterLink } = office
 
     return (
       <div>
         <HeroBanner office={office} />
-        <div className={styles.section} data-testid="office-information-section">
-          <div className={styles.officeInfo}>
+        <div className={styles.content}>
+          <div data-testid="office-information-section" className={styles.officeInfo}>
             <h2>Office Information</h2>
-            {this.validateOfficeServices(office) && <ServicesProvided office={office} />}
+            <div className={styles.servicesAndSocialMediaContainer}>
+              {this.validateOfficeServices(office) && <ServicesProvided office={office} />}
+              {typeof twitterLink === 'string' && <SocialMedia twitterLink={twitterLink} />}
+            </div>
           </div>
         </div>
         <div className={styles.section} data-testid="news-release-section">
@@ -78,7 +83,7 @@ const ServicesProvided = ({ office }) => {
   return (
     <div data-testid="office-services-section">
       <h3>Services Provided</h3>
-      <div dangerouslySetInnerHTML={{ __html: officeServices }} />
+      <div className={styles.servicesProvidedList} dangerouslySetInnerHTML={{ __html: officeServices }} />
     </div>
   )
 }
@@ -111,6 +116,16 @@ const HeroBanner = ({ office }) => {
   }
 
   return <Hero {...heroProps} />
+}
+
+const SocialMedia = ({ twitterLink }) => {
+  const altText = 'link to twitter'
+  return (
+    <div data-testid="social-media-section" className={styles.socialMedia}>
+      <h4>Follow us</h4>
+      <SocialMediaLink image={twitterThumbnail} altText={altText} url={twitterLink} />
+    </div>
+  )
 }
 
 const NewsletterSignup = () => {

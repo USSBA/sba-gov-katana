@@ -130,6 +130,33 @@ describe('District Office template', () => {
     })
   })
 
+  describe('Social media section', () => {
+    it('renders social media when there is a twitterLink in the office data', () => {
+      const mockOfficeData = {
+        title: 'State District Office',
+        twitterLink: 'https://twitter.com/sbagov'
+      }
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+      const socialMediaSection = getByTestId('social-media-section')
+      expect(socialMediaSection).toBeInTheDocument()
+
+      within(socialMediaSection).getByText('Follow us')
+      within(socialMediaSection).getByAltText('link to twitter')
+    })
+
+    it('does NOT render social media when twitterLink is NOT a string', () => {
+      const mockOfficeData = {
+        title: 'State District Office',
+        twitterLink: {}
+      }
+      const { queryByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+      const socialMediaSection = queryByTestId('social-media-section')
+      expect(socialMediaSection).not.toBeInTheDocument()
+    })
+  })
+
   it('renders the latest news release component', () => {
     const mockOfficeData = { title: 'State District Office' }
     const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
@@ -161,6 +188,7 @@ describe('District Office template', () => {
     const lenderMatch = getByTestId('office-lender-match')
     expect(lenderMatch).toBeInTheDocument()
   })
+
   it('contains an Events Component', async () => {
     const mockOfficeResponse = {
       leadership: {},
