@@ -45,17 +45,15 @@ class DistrictOfficeTemplate extends React.Component {
     return (
       <div>
         <HeroBanner office={office} />
-        <div className={styles.section} data-testid="office-information-section">
-          <div className={styles.officeInfo}>
+        <div className={styles.content}>
+          <div data-testid="office-information-section" className={styles.officeInfo}>
             <h2>Office Information</h2>
-            {this.validateOfficeServices(office) && <ServicesProvided office={office} />}
+            <div className={styles.servicesAndSocialMediaContainer}>
+              {this.validateOfficeServices(office) && <ServicesProvided office={office} />}
+              {typeof twitterLink === 'string' && <SocialMedia twitterLink={twitterLink} />}
+            </div>
           </div>
         </div>
-        {typeof twitterLink === 'string' && (
-          <div className={styles.content}>
-            <SocialMedia twitterLink={twitterLink} />
-          </div>
-        )}
         <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />
         </div>
@@ -85,7 +83,7 @@ const ServicesProvided = ({ office }) => {
   return (
     <div data-testid="office-services-section">
       <h3>Services Provided</h3>
-      <div dangerouslySetInnerHTML={{ __html: officeServices }} />
+      <div className={styles.servicesProvidedList} dangerouslySetInnerHTML={{ __html: officeServices }} />
     </div>
   )
 }
