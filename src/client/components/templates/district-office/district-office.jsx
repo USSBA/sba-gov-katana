@@ -234,7 +234,7 @@ const Docs = ({ office }) => {
     ]
   }
   return (
-    <div className={styles.document}>
+    <div className={styles.document} data-testid={'office-document-links'}>
       <QuickLinks data={linkProps} />
     </div>
   )
