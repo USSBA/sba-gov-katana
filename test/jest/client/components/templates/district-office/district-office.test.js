@@ -7,7 +7,10 @@ import 'jest-dom/extend-expect'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 import eventsTestData from '../../test-data/events.json'
 
-afterEach(cleanup)
+afterEach(function() {
+  cleanup()
+  resetAllWhenMocks()
+})
 
 describe('District Office template', () => {
   describe('Hero section', () => {
