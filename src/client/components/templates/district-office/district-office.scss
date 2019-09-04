@@ -173,5 +173,7 @@
   @include grid-media($sba-grid-large) {
     @include grid-column(6);
     margin-left: 0;
+    position: relative;
+    left: -20px;
   }
 }
