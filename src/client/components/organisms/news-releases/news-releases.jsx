@@ -17,7 +17,7 @@ class NewsReleases extends React.Component {
     const { officeId } = this.props
     const { items } = await fetchSiteContent('articles', {
       office: officeId,
-      articleCategory: 'Press Release',
+      articleCategory: 'Press release',
       sortBy: 'Last Updated',
       start: 0,
       end: 3
