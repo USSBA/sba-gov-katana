@@ -17,7 +17,7 @@ class NewsReleases extends React.Component {
     const { officeId } = this.props
     const { items } = await fetchSiteContent('articles', {
       office: officeId,
-      articleCategory: 'News Releases',
+      articleCategory: 'Press Release',
       sortBy: 'Last Updated',
       start: 0,
       end: 3
@@ -29,7 +29,7 @@ class NewsReleases extends React.Component {
   render() {
     const { articles } = this.state
     const { officeId } = this.props
-    const articleLink = `/article?office=${officeId}&articleCategory=News Releases`
+    const articleLink = `/article?office=${officeId}&articleCategory=Press Release`
 
     return (
       <div>
