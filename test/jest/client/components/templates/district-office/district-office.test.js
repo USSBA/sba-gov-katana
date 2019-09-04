@@ -2,6 +2,7 @@ import React from 'react'
 import { render, cleanup, waitForElement, within } from 'react-testing-library'
 import '../../test-data/matchMedia.mock'
 import DistrictOffice from 'templates/district-office/district-office.jsx'
+import { when, resetAllWhenMocks } from 'jest-when'
 import 'jest-dom/extend-expect'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 import eventsTestData from '../../test-data/events.json'
@@ -247,74 +248,77 @@ describe('District Office template', () => {
   })
   describe('Leadership Component', () => {
     it('contains leaders', async () => {
-      
       const mockOfficeResponse = {
-          "officeLeadership": [6975, 6475, 6477],
-          "title": "Alabama District Office",
-          "id": 6386,
+        officeLeadership: [6975, 6475, 6477],
+        title: 'Alabama District Office',
+        id: 6386
       }
 
-      const mockLeadershipResponse = [{
-        "bio": {},
-        "emailAddress": "Brooke.decubellis@sba.gov",
-        "fax": "202-481-1593",
-        "firstName": "Brooke",
-        "highResolutionPhoto": {},
-        "lastName": "DeCubellis",
-        "office": 6443,
-        "phone": "614-469-6860 x238",
-        "picture": {},
-        "shortBio": {},
-        "title": "Public Affairs Specialist",
-        "type": "person",
-        "url": "/person/brooke-decubellis",
-        "name": "Brooke DeCubellis",
-        "id": 6975,
-        "updated": 1550777460,
-        "created": 1527676054,
-        "langCode": "en"
-      },{
-        "bio": {},
-        "emailAddress": "Marichu.Relativo@sba.gov",
-        "fax": {},
-        "firstName": "Marichu",
-        "highResolutionPhoto": {},
-        "lastName": "Relativo",
-        "office": {},
-        "phone": "907-271-4861",
-        "picture": {},
-        "shortBio": {},
-        "title": "Deputy District Director",
-        "type": "person",
-        "url": "/person/marichu-relativo",
-        "name": "Marichu Relativo",
-        "id": 6475,
-        "updated": 1550778305,
-        "created": 1527675677,
-        "langCode": "en"
-      },{
-        "bio": {},
-        "emailAddress": "Ryan.Zachry@sba.gov",
-        "fax": {},
-        "firstName": "Ryan",
-        "highResolutionPhoto": {},
-        "lastName": "Zachry",
-        "office": 6387,
-        "phone": "907-271-4842",
-        "picture": {},
-        "shortBio": {},
-        "title": "Business Opportunity Specialist",
-        "type": "person",
-        "url": "/person/ryan-zachry",
-        "name": "Ryan Zachry",
-        "id": 6477,
-        "updated": 1551469444,
-        "created": 1527675680,
-        "langCode": "en"
-      }]
-      
+      const mockLeadershipResponse = [
+        {
+          bio: {},
+          emailAddress: 'Brooke.decubellis@sba.gov',
+          fax: '202-481-1593',
+          firstName: 'Brooke',
+          highResolutionPhoto: {},
+          lastName: 'DeCubellis',
+          office: 6443,
+          phone: '614-469-6860 x238',
+          picture: {},
+          shortBio: {},
+          title: 'Public Affairs Specialist',
+          type: 'person',
+          url: '/person/brooke-decubellis',
+          name: 'Brooke DeCubellis',
+          id: 6975,
+          updated: 1550777460,
+          created: 1527676054,
+          langCode: 'en'
+        },
+        {
+          bio: {},
+          emailAddress: 'Marichu.Relativo@sba.gov',
+          fax: {},
+          firstName: 'Marichu',
+          highResolutionPhoto: {},
+          lastName: 'Relativo',
+          office: {},
+          phone: '907-271-4861',
+          picture: {},
+          shortBio: {},
+          title: 'Deputy District Director',
+          type: 'person',
+          url: '/person/marichu-relativo',
+          name: 'Marichu Relativo',
+          id: 6475,
+          updated: 1550778305,
+          created: 1527675677,
+          langCode: 'en'
+        },
+        {
+          bio: {},
+          emailAddress: 'Ryan.Zachry@sba.gov',
+          fax: {},
+          firstName: 'Ryan',
+          highResolutionPhoto: {},
+          lastName: 'Zachry',
+          office: 6387,
+          phone: '907-271-4842',
+          picture: {},
+          shortBio: {},
+          title: 'Business Opportunity Specialist',
+          type: 'person',
+          url: '/person/ryan-zachry',
+          name: 'Ryan Zachry',
+          id: 6477,
+          updated: 1551469444,
+          created: 1527675680,
+          langCode: 'en'
+        }
+      ]
+
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-      
+
       fetchSiteContentStub.mockImplementationOnce(() => {
         return Promise.resolve(eventsTestData)
       })
@@ -330,18 +334,16 @@ describe('District Office template', () => {
 
       content = await waitForElement(() => getAllByTestId('leader-card'))
       expect(content.length).toEqual(3)
-
     })
     it('contains no leaders', () => {
-      
       const mockOfficeResponse = {
-          "officeLeadership": {},
-          "title": "Alabama District Office",
-          "id": 6386,
+        officeLeadership: {},
+        title: 'Alabama District Office',
+        id: 6386
       }
-      
+
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-      
+
       fetchSiteContentStub.mockImplementationOnce(() => {
         return Promise.resolve(eventsTestData)
       })
@@ -350,5 +352,48 @@ describe('District Office template', () => {
       const content = queryByTestId('office-leadership')
       expect(content).not.toBeInTheDocument()
     })
+  })
+  it('renders document quicklinks section', async () => {
+    const mockDocumentResults = {
+      count: 1,
+      items: [
+        {
+          activitys: ['Application'],
+          documentIdNumber: {},
+          documentIdType: 'Support',
+          files: [
+            {
+              id: 21395,
+              type: 'docFile',
+              effectiveDate: '2013-06-01',
+              expirationDate: null,
+              fileUrl: '/sites/default/files/2019-08/ODA%20Newsletter_June%202013.pdf',
+              version: null
+            }
+          ],
+          office: 7322,
+          officeLink: {},
+          ombNumber: {},
+          programs: ['Disaster'],
+          summary: 'ODA Newsletter June 2013',
+          type: 'document',
+          title: 'ODA Newsletter June 2013',
+          id: 19484,
+          updated: 1565727230,
+          created: 1370116340,
+          langCode: 'en',
+          url: '/document/support--oda-newsletter-june-2013'
+        }
+      ]
+    }
+    const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+    when(fetchSiteContentStub)
+      .calledWith('documents')
+      .mockImplementationOnce(() => Promise.resolve(mockDocumentResults))
+    const mockOfficeData = { title: 'Fearless HQ', officeId: 99999 }
+    const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+    const documentLinks = getByTestId('office-document-links')
+    expect(documentLinks).toBeInTheDocument()
   })
 })

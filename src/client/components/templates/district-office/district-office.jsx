@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import { Button, SocialMediaLink } from 'atoms'
-import { AuthorCard, CallToAction, NewsletterForm } from 'molecules'
+import { AuthorCard, CallToAction, NewsletterForm, QuickLinks } from 'molecules'
 import { Hero, NewsReleases, EventResult, Results } from 'organisms'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import twitterThumbnail from 'assets/images/footer/twitter.png'
@@ -89,6 +89,9 @@ class DistrictOfficeTemplate extends React.Component {
           </div>
           <div className={styles.section}>
             <LenderMatch />
+          </div>
+          <div className={styles.section}>
+            <Docs office={office} />
           </div>
         </div>
       </div>
@@ -210,6 +213,28 @@ const CTA = () => {
       buttonAction={buttonAction}
       image={image}
     />
+  )
+}
+
+const Docs = ({ office }) => {
+  const officeID = office.id
+  console.log(officeID)
+  const linkProps = {
+    typeOfLinks: [
+      {
+        type: 'documentLookup',
+        documentActivity: [],
+        sectionHeaderText: 'Documents',
+        documentProgram: [],
+        documentOffice: officeID,
+        documentType: []
+      }
+    ]
+  }
+  return (
+    <div className={styles.documents} data-testid={'office-document-links'}>
+      <QuickLinks data={linkProps} />
+    </div>
   )
 }
 

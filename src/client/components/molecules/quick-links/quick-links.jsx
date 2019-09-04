@@ -52,7 +52,6 @@ class QuickLinks extends PureComponent {
 
     for (const [index, quickLink] of typeOfLinks.entries()) {
       const { documentActivity, documentOffice, documentType, documentProgram, type } = quickLink
-
       if (type === 'documentLookup') {
         results[`documents-${index}`] = await fetchSiteContent('documents', {
           sortBy: 'Last Updated',
