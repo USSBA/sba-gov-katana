@@ -29,7 +29,7 @@ class NewsReleases extends React.Component {
   render() {
     const { articles } = this.state
     const { officeId } = this.props
-    const articleLink = `/article?office=${officeId}&articleCategory=Press Release`
+    const articleLink = `/article?office=${officeId}&articleCategory=Press release`
 
     return (
       <div>
