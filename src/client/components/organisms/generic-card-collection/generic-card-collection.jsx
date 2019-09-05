@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { chunk, size } from 'lodash'
 
 import styles from './generic-card-collection.scss'
-import { CardContainer } from 'molecules'
+import { CardContainer } from 'atoms'
 
 const cardsPerRowMap = {
   '2': 2,
