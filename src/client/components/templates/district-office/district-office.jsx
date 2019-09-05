@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import { Button, SocialMediaLink } from 'atoms'
-import { AuthorCard, CallToAction, NewsletterForm, QuickLinks } from 'molecules'
-import { Hero, NewsReleases, EventResult, Results } from 'organisms'
+import { AuthorCard, ContactCard, CallToAction, NewsletterForm, QuickLinks } from 'molecules'
+import { GenericCardCollection, Hero, NewsReleases, EventResult, Results } from 'organisms'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
@@ -66,12 +66,15 @@ class DistrictOfficeTemplate extends React.Component {
               {typeof twitterLink === 'string' && <SocialMedia twitterLink={twitterLink} />}
             </div>
           </div>
-        </div>
-        {leaders.length > 0 && <div className={styles.content}>
           <div className={styles.section}>
-            <Leadership items={leaders} />
+            <LocationInfo office={office} />
           </div>
-        </div>}
+          {leaders.length > 0 && (
+            <div className={styles.section}>
+              <Leadership items={leaders} />
+            </div>
+          )}
+        </div>
         <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />
         </div>
@@ -107,6 +110,41 @@ const ServicesProvided = ({ office }) => {
       <div className={styles.servicesProvidedList} dangerouslySetInnerHTML={{ __html: officeServices }} />
     </div>
   )
+}
+
+const LocationInfo = ({ office }) => {
+  const cardsContent = []
+
+  // adding main office to location info
+  if (Array.isArray(office.location) && office.location.length > 0) {
+    const mainLocation = office.location[0]
+    const mainCardContent = (
+      <ContactCard
+        border={false}
+        city={mainLocation.city}
+        fax={mainLocation.fax}
+        email={mainLocation.emailAddress}
+        phoneNumber={mainLocation.phoneNumber}
+        title={mainLocation.name}
+        state={mainLocation.state}
+        streetAddress={mainLocation.streetAddress}
+        zipCode={mainLocation.zipCode}
+      />
+    )
+    // ensures that main location will be the first element in the array
+    cardsContent.unshift(mainCardContent)
+  }
+
+  if (cardsContent.length > 0) {
+    return (
+      <div className={styles.locationInfo}>
+        <h3>Location Information</h3>
+        <GenericCardCollection cardsContent={cardsContent} />
+      </div>
+    )
+  } else {
+    return null
+  }
 }
 
 const Leadership = ({ items }) => {
@@ -218,7 +256,6 @@ const CTA = () => {
 
 const Docs = ({ office }) => {
   const officeID = office.id
-  console.log(officeID)
   const linkProps = {
     typeOfLinks: [
       {

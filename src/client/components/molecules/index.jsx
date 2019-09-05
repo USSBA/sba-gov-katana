@@ -4,6 +4,7 @@ import Breadcrumb from './breadcrumb/breadcrumb'
 import ButtonCta from './button-cta/button-cta'
 import CallToAction from './call-to-action/call-to-action'
 import Card from './card/card'
+import CardContainer from './card-container/card-container'
 import CardGrid from './card-grid/card-grid'
 import ContactCard from './contact-card/contact-card'
 import ContactCardLookup from './contact-card-lookup/contact-card-lookup'
@@ -40,6 +41,7 @@ export {
   ButtonCta,
   CallToAction,
   Card,
+  CardContainer,
   CardGrid,
   ContactCard,
   ContactCardLookup,

@@ -1,0 +1,49 @@
+.card {
+  background-color: white;
+  padding: 30px;
+
+  @include for-small-only {
+    @include grid-column(12);
+  }
+}
+
+.topBorder {
+  border-top: 3px solid $sba-blue;
+}
+
+.shadow {
+  box-shadow: $box-shadow;
+  margin-bottom: 25px;
+}
+
+.twoColumn {
+  @include for-medium-up {
+    @include grid-column(6);
+  }
+}
+
+.threeColumn {
+  @include for-medium-up {
+    @include grid-column(4);
+  }
+}
+
+.fourColumn {
+  @include for-medium-only {
+    @include grid-column(6);
+  }
+
+  @include for-large-up {
+    @include grid-column(3);
+  }
+}
+
+.sixColumn {
+  @include for-medium-only {
+    @include grid-column(4);
+  }
+
+  @include for-large-up {
+    @include grid-column(2);
+  }
+}
