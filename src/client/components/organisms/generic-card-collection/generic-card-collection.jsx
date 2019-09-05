@@ -40,10 +40,11 @@ class GenericCardCollection extends React.Component {
         />
       )
     })
+
     const cardsPerRow = cardsPerRowMap[cardComponents.length]
     const rows = chunk(cardComponents, cardsPerRow)
     return (
-      <div className={styles.cardCollection}>
+      <div data-testid="generic-card-collection" className={styles.cardCollection}>
         {rows.map(function(item, index) {
           return (
             <div id={'card-row-' + parentIndex + '-' + index} key={index} className={styles.cardRow}>

@@ -21,15 +21,13 @@ const CardContainer = props => {
 
   return (
     <div
-      className={className}
+      data-testid="card-container"
       id={`card-${parentIndex}-${index + 1}`}
-      data-testid="card"
-      tabIndex="0"
       aria-label={`${cardAriaLabel} ${index + 1}`}
+      tabIndex="0"
+      className={className}
     >
-      {/* <div> */}
       {cardContent}
-      {/* </div> */}
     </div>
   )
 }
