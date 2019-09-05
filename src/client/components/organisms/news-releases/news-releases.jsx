@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { DetailCardCollection, CardCollection } from 'organisms'
+import { DetailCardCollection } from 'organisms'
 import { Button } from 'atoms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './news-releases.scss'
