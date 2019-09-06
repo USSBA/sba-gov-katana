@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { isEmpty } from 'lodash'
 import { Button, SocialMediaLink } from 'atoms'
-import { AuthorCard, ContactCard, CallToAction, NewsletterForm, QuickLinks } from 'molecules'
+import { AuthorCard, ContactCard, CallToAction, NewsletterForm, QuickLinks, Card } from 'molecules'
 import { GenericCardCollection, Hero, NewsReleases, EventResult, Results } from 'organisms'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import twitterThumbnail from 'assets/images/footer/twitter.png'
@@ -13,7 +14,8 @@ class DistrictOfficeTemplate extends React.Component {
     super()
     this.state = {
       events: [],
-      leaders: []
+      leaders: [],
+      blogs: []
     }
   }
 
@@ -41,7 +43,16 @@ class DistrictOfficeTemplate extends React.Component {
 
     leaders = leaders.filter(item => item)
 
-    this.setState({ events, leaders })
+    let { blogs = [] } = await fetchSiteContent('blogs', {
+      category: 'Success Story',
+      office: office.id
+    })
+
+    if (blogs.length > 0) {
+      blogs = blogs.slice(0, 3)
+    }
+    
+    this.setState({ events, leaders, blogs })
   }
 
   // Validate that the officeServices field is a valid String with content
@@ -51,7 +62,7 @@ class DistrictOfficeTemplate extends React.Component {
   }
 
   render() {
-    const { events, leaders } = this.state
+    const { events, leaders, blogs } = this.state
     const { office } = this.props
     const { twitterLink } = office
 
@@ -75,6 +86,11 @@ class DistrictOfficeTemplate extends React.Component {
             </div>
           )}
         </div>
+        {blogs.length > 0 && <div className={styles.content}>
+          <div className={styles.section}>
+            <SuccessStories items={blogs} />
+          </div>
+        </div>}
         <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />
         </div>
@@ -123,6 +139,41 @@ const Leadership = ({ items }) => {
   return (
     <div data-testid={'office-leadership'} className={styles.leadership}>
       <h3>Leadership</h3>
+      {cards}
+      <div className={styles.clear} />
+    </div>
+  )
+}
+
+const SuccessStories = ({ items }) => {
+  const cards = items.map(({ title, summary, blogBody, created, url }, index) => {
+
+    const item = {
+      image: {
+        alt: blogBody[0].blogSectionImage.alt,
+        url: blogBody[0].blogSectionImage.url
+      },
+      italicText: moment.unix(created).format('MMMM D, YYYY'),
+      link: {
+        url,
+        title: 'Read full post'
+      },
+      subtitleText: summary,
+      titleText: title
+    }
+    return (
+      <div data-testid={`success-story-card`} key={index}>
+        <Card
+          index={index}
+          item={item}
+          numCards={3}
+        />
+      </div>
+    )
+  })
+  return (
+    <div data-testid={'success-stories'} className={styles.leadership}>
+      <h2>Success Stories</h2>
       {cards}
       <div className={styles.clear} />
     </div>
