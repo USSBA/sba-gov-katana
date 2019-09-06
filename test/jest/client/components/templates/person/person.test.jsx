@@ -98,7 +98,7 @@ describe('Person page', () => {
     const subComponent = component.find('ContactCard')
     const subComponentProps = subComponent.getElement().props
 
-    expect(Object.keys(subComponentProps).length).toEqual(3)
+    expect(Object.keys(subComponentProps).length).toEqual(4)
     expect(subComponentProps.phoneNumber).toEqual('205-290-7009')
     expect(subComponentProps.email).toEqual('thomas.todt@sba.gov')
   })

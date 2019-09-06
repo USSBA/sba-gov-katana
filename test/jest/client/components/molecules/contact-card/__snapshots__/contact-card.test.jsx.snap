@@ -3,6 +3,7 @@
 exports[`ContactCard should render with all the information 1`] = `
 <div
   className="contact-card box contactCard"
+  data-testid="contact-card"
 >
   <h6
     data-cy="contact card title"

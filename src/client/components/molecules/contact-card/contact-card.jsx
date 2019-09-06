@@ -22,7 +22,8 @@ const ContactCard = props => {
     streetAddress,
     title,
     zipCode,
-    className: cn
+    className: cn,
+    testId
   } = props
   const linkText = 'Visit website'
 
@@ -97,7 +98,7 @@ const ContactCard = props => {
   }
 
   return (
-    <div className={contactCardClassName}>
+    <div data-testid={testId} className={contactCardClassName}>
       <h6 data-cy="contact card title">{title}</h6>
       {/* TODO: cleanup double filter */}
       {fields
@@ -130,11 +131,13 @@ ContactCard.propTypes = {
   state: PropTypes.string,
   streetAddress: PropTypes.string,
   title: PropTypes.string,
-  zipCode: PropTypes.number
+  zipCode: PropTypes.number,
+  testId: PropTypes.string
 }
 
 ContactCard.defaultProps = {
-  border: true
+  border: true,
+  testId: 'contact-card'
 }
 
 export default ContactCard

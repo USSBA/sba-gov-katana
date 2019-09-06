@@ -112,41 +112,6 @@ const ServicesProvided = ({ office }) => {
   )
 }
 
-const LocationInfo = ({ office }) => {
-  const cardsContent = []
-
-  // adding main office to location info
-  if (Array.isArray(office.location) && office.location.length > 0) {
-    const mainLocation = office.location[0]
-    const mainCardContent = (
-      <ContactCard
-        border={false}
-        city={mainLocation.city}
-        fax={mainLocation.fax}
-        email={mainLocation.emailAddress}
-        phoneNumber={mainLocation.phoneNumber}
-        title={mainLocation.name}
-        state={mainLocation.state}
-        streetAddress={mainLocation.streetAddress}
-        zipCode={mainLocation.zipCode}
-      />
-    )
-    // ensures that main location will be the first element in the array
-    cardsContent.unshift(mainCardContent)
-  }
-
-  if (cardsContent.length > 0) {
-    return (
-      <div className={styles.locationInfo}>
-        <h3>Location Information</h3>
-        <GenericCardCollection cardsContent={cardsContent} />
-      </div>
-    )
-  } else {
-    return null
-  }
-}
-
 const Leadership = ({ items }) => {
   const cards = items.map(({ name, title, shortBio, url }, index) => {
     return (
@@ -202,6 +167,52 @@ const SocialMedia = ({ twitterLink }) => {
       <SocialMediaLink image={twitterThumbnail} altText={altText} url={twitterLink} />
     </div>
   )
+}
+
+const LocationInfo = ({ office }) => {
+  const cardsContent = []
+
+  if (Array.isArray(office.location) && office.location.length > 0) {
+    const mainLocation = office.location[0]
+    const mainContactCardProps = {
+      testId: 'main-location',
+      border: false,
+      city: null,
+      fax: null,
+      email: null,
+      phoneNumber: null,
+      title: null,
+      state: null,
+      streetAddress: null,
+      zipCode: null
+    }
+
+    mainContactCardProps.city = typeof mainLocation.city === 'string' && mainLocation.city
+    mainContactCardProps.fax = typeof mainLocation.fax === 'string' && mainLocation.fax
+    mainContactCardProps.email = typeof mainLocation.email === 'string' && mainLocation.email
+    mainContactCardProps.phoneNumber =
+      typeof mainLocation.phoneNumber === 'string' && mainLocation.phoneNumber
+    mainContactCardProps.title = typeof mainLocation.name === 'string' && mainLocation.name
+    mainContactCardProps.state = typeof mainLocation.state === 'string' && mainLocation.state
+    mainContactCardProps.streetAddress =
+      typeof mainLocation.streetAddress === 'string' && mainLocation.streetAddress
+    mainContactCardProps.zipCode = typeof mainLocation.zipCode === 'number' && mainLocation.zipCode
+
+    const mainContactCard = <ContactCard {...mainContactCardProps} />
+    // ensures that main location will be the first element in the array
+    cardsContent.unshift(mainContactCard)
+  }
+
+  if (cardsContent.length > 0) {
+    return (
+      <div data-testid="location-info" className={styles.locationInfo}>
+        <h3>Location Information</h3>
+        <GenericCardCollection cardsContent={cardsContent} />
+      </div>
+    )
+  } else {
+    return null
+  }
 }
 
 const NewsletterSignup = () => {

@@ -158,6 +158,49 @@ describe('District Office template', () => {
     })
   })
 
+  describe('Location information', () => {
+    const mockMainLocation = {
+      city: 'Baltimore',
+      email: 'officeemail@mail.com',
+      fax: '999-999-9999',
+      hoursOfOperation: 'M-F 8am to 6pm\r\nSa closed\r\nSu by appointment only',
+      name: 'Baltimore District Office',
+      phoneNumber: '100-200-3000',
+      state: 'MD',
+      streetAddress: '123 Cool Street',
+      zipCode: 21215
+    }
+
+    it('renders the location information section', async () => {
+      const mockOfficeData = { location: [mockMainLocation] }
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      const locationInfo = getByTestId('location-info')
+      expect(locationInfo).toBeInTheDocument()
+    })
+
+    it('does NOT render the location information section when there is no location in the data', async () => {
+      const mockOfficeData = { title: 'Fearless HQ' }
+      const { queryByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      const locationInfo = queryByTestId('location-info')
+      expect(locationInfo).not.toBeInTheDocument()
+    })
+
+    it('renders the main office location info', async () => {
+      const mockOfficeData = { location: [mockMainLocation] }
+      const mainLocation = mockOfficeData.location[0]
+      const expectedAddress = `${mainLocation.streetAddress}${mainLocation.city}, ${mainLocation.state} ${mainLocation.zipCode}`
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+
+      const locationInfo = getByTestId('main-location')
+      expect(locationInfo).toBeInTheDocument()
+      within(locationInfo).getByText(mainLocation.name)
+      within(locationInfo).getByText(mainLocation.phoneNumber)
+      within(locationInfo).getByText(mainLocation.fax)
+      within(locationInfo).getByText(mainLocation.email)
+      within(locationInfo).getByText(expectedAddress)
+    })
+  })
+
   it('renders the latest news release component', () => {
     const mockOfficeData = { title: 'State District Office' }
     const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
