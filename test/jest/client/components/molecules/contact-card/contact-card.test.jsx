@@ -141,7 +141,7 @@ describe('ContactCard', () => {
       expect(hours).toBe(hoursOfOperation)
     })
 
-    it('should return undefined an empty string is passed in', () => {
+    it('should return undefined when an empty string is passed in', () => {
       const hoursOfOperation = ''
       const hours = formatHours(hoursOfOperation)
       // eslint-disable-next-line no-undefined
