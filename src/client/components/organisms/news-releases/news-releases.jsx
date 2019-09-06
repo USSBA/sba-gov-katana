@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { DetailCardCollection, CardCollection } from 'organisms'
+import { DetailCardCollection } from 'organisms'
 import { Button } from 'atoms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './news-releases.scss'
@@ -17,7 +17,7 @@ class NewsReleases extends React.Component {
     const { officeId } = this.props
     const { items } = await fetchSiteContent('articles', {
       office: officeId,
-      articleCategory: 'News Releases',
+      articleCategory: 'Press release',
       sortBy: 'Last Updated',
       start: 0,
       end: 3
@@ -29,7 +29,7 @@ class NewsReleases extends React.Component {
   render() {
     const { articles } = this.state
     const { officeId } = this.props
-    const articleLink = `/article?office=${officeId}&articleCategory=News Releases`
+    const articleLink = `/article?office=${officeId}&articleCategory=Press release`
 
     return (
       <div>
