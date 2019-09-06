@@ -43,10 +43,12 @@ exports[`Person page renders correctly 1`] = `
       >
         <h6
           data-cy="contact card title"
+          data-testid="contact card title"
         />
         <div
           className="row"
           data-cy="contact phone"
+          data-testid="contact phone"
         >
           <div
             className="firstColumn"
@@ -75,6 +77,7 @@ exports[`Person page renders correctly 1`] = `
         <div
           className="row"
           data-cy="contact fax"
+          data-testid="contact fax"
         >
           <div
             className="firstColumn"
@@ -101,6 +104,7 @@ exports[`Person page renders correctly 1`] = `
         <div
           className="row"
           data-cy="contact email"
+          data-testid="contact email"
         >
           <div
             className="firstColumn"

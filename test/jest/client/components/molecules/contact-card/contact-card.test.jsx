@@ -1,85 +1,127 @@
-/*global expect*/
-
 import React from 'react'
-import ContactCard from 'client/components/molecules/contact-card/contact-card.jsx'
-import { shallow } from 'enzyme'
-import renderer from 'react-test-renderer'
+import { render, cleanup, within } from 'react-testing-library'
+import 'jest-dom/extend-expect'
 import _ from 'lodash'
+import { ContactCard } from 'molecules'
 
-const card = {
-  type: 'contact',
-  cdcNumber: '12345',
+afterEach(cleanup)
+
+const mockProps = {
   city: 'Galactic City',
   contactName: null,
   email: 'tarkin@deathstar.org',
-  firsNumber: '1234',
+  hoursOfOperation: 'Mon-Fri: 9am-5pm',
   link: 'http://starwars.wikia.com/wiki/Wilhuff_Tarkin',
   phoneNumber: '123-456-5665',
   state: 'MD',
-  stateServed: 'Maryland',
   streetAddress: '123 Death Star Street, Suite 1',
-  category: 'CDC/504',
   zipCode: 12345,
   title: 'Grand Moff Tarkin',
   id: 2974
 }
 
 describe('ContactCard', () => {
-  test('should render with all the information', () => {
-    const cardData = _.clone(card)
-    const component = renderer.create(<ContactCard {...cardData} />)
-    const tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+  it('should render with all the information', () => {
+    const expectedAddress = `${mockProps.streetAddress}${mockProps.city}, ${mockProps.state} ${mockProps.zipCode}`
+    const { getByTestId } = render(<ContactCard {...mockProps} />)
+
+    getByTestId('contact-card')
+    const title = getByTestId('contact card title')
+    const address = getByTestId('contact address')
+    const email = getByTestId('contact email')
+    const phoneNumber = getByTestId('contact phone')
+    const link = getByTestId('contact link')
+    const hoursOfOperation = getByTestId('hours of operation')
+
+    expect(title).toHaveTextContent(mockProps.title)
+    within(address).findByText(expectedAddress)
+    within(email).findByText(mockProps.email)
+    within(phoneNumber).findByText(mockProps.phoneNumber)
+    within(hoursOfOperation).findByText(mockProps.hoursOfOperation)
+    within(link).findByText(mockProps.link)
   })
 
-  test('should render without an address ', () => {
-    const cardData = _.omit(card, 'streetAddress')
-    const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card').children()).toHaveLength(4)
+  it('should NOT render the title section when NO title is passed in', () => {
+    const props = _.omit(mockProps, 'title')
+    const { getByTestId, queryByTestId } = render(<ContactCard {...props} />)
+
+    getByTestId('contact-card')
+    const title = queryByTestId('contact card title')
+    expect(title).not.toHaveTextContent()
   })
 
-  test('should render without a zip code ', () => {
-    const cardData = _.omit(card, 'zipCode')
-    const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card').children()).toHaveLength(4)
+  it('should NOT render the address section when NO streetAddress is passed in', () => {
+    const props = _.omit(mockProps, 'streetAddress')
+    const { getByTestId, queryByTestId } = render(<ContactCard {...props} />)
+
+    getByTestId('contact-card')
+    const address = queryByTestId('contact address')
+    expect(address).not.toBeInTheDocument()
   })
 
-  test('should render without a phone number ', () => {
-    const cardData = _.omit(card, 'phoneNumber')
-    const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card').children()).toHaveLength(4)
+  it('should NOT render the phoneNumber section when NO phoneNumber is passed in', () => {
+    const props = _.omit(mockProps, 'phoneNumber')
+    const { getByTestId, queryByTestId } = render(<ContactCard {...props} />)
+
+    getByTestId('contact-card')
+    const phone = queryByTestId('contact phone')
+    expect(phone).not.toBeInTheDocument()
   })
 
-  test('should render without a website link ', () => {
-    const cardData = _.omit(card, 'link')
-    const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card').children()).toHaveLength(4)
+  it('should NOT render the email section when NO email is passed in', () => {
+    const props = _.omit(mockProps, 'email')
+    const { getByTestId, queryByTestId } = render(<ContactCard {...props} />)
+
+    getByTestId('contact-card')
+    const email = queryByTestId('contact email')
+    expect(email).not.toBeInTheDocument()
   })
 
-  test('should render without a website link if link is an empty object', () => {
-    const cardData = _.clone(card)
-    _.set(cardData, 'link', {})
-    const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card').children()).toHaveLength(4)
+  it('should NOT render the link section when NO link is passed in', () => {
+    const props = _.omit(mockProps, 'link')
+    const { getByTestId, queryByTestId } = render(<ContactCard {...props} />)
+
+    getByTestId('contact-card')
+    const link = queryByTestId('contact link')
+    expect(link).not.toBeInTheDocument()
   })
 
-  test('should render without a website link if link is an empty string', () => {
-    const cardData = _.clone(card)
-    _.set(cardData, 'link', '')
-    const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card').children()).toHaveLength(4)
+  it('should NOT render the link section when link is an empty string', () => {
+    const props = _.clone(mockProps)
+    props.link = ''
+    const { getByTestId, queryByTestId } = render(<ContactCard {...props} />)
+
+    getByTestId('contact-card')
+    const link = queryByTestId('contact link')
+    expect(link).not.toBeInTheDocument()
   })
 
-  test('should render without a website link if link is null', () => {
-    const cardData = _.clone(card)
-    _.set(cardData, 'link', null)
-    const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card').children()).toHaveLength(4)
+  it('should NOT render the link section when link is an empty object', () => {
+    const props = _.clone(mockProps)
+    props.link = {}
+    const { getByTestId, queryByTestId } = render(<ContactCard {...props} />)
+
+    getByTestId('contact-card')
+    const link = queryByTestId('contact link')
+    expect(link).not.toBeInTheDocument()
   })
 
-  test('should render without the state served (which is normally invisible)', () => {
-    const cardData = _.omit(card, 'stateServed')
-    const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card').children()).toHaveLength(5)
+  it('should NOT render the hours section when NO hoursOfOperation is passed in', () => {
+    const props = _.omit(mockProps, 'hoursOfOperation')
+    const { getByTestId, queryByTestId } = render(<ContactCard {...props} />)
+
+    getByTestId('contact-card')
+    const hours = queryByTestId('hours of operation')
+    expect(hours).not.toBeInTheDocument()
+  })
+
+  it('should NOT render the hours section when hoursOfOperation is an empty string', () => {
+    const props = _.clone(mockProps)
+    props.hoursOfOperation = ''
+    const { getByTestId, queryByTestId } = render(<ContactCard {...props} />)
+
+    getByTestId('contact-card')
+    const hours = queryByTestId('hours of operation')
+    expect(hours).not.toBeInTheDocument()
   })
 })

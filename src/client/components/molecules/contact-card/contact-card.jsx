@@ -14,6 +14,7 @@ const ContactCard = props => {
     city,
     email,
     fax,
+    hoursOfOperation,
     link,
     office,
     personTitle,
@@ -70,6 +71,11 @@ const ContactCard = props => {
       text: email,
       icon: 'envelope-o',
       href: `mailto:${email}`
+    },
+    {
+      name: 'hours of operation',
+      text: hoursOfOperation,
+      icon: 'clock-o'
     }
   ]
 
@@ -99,13 +105,15 @@ const ContactCard = props => {
 
   return (
     <div data-testid={testId} className={contactCardClassName}>
-      <h6 data-cy="contact card title">{title}</h6>
+      <h6 data-testid="contact card title" data-cy="contact card title">
+        {title}
+      </h6>
       {/* TODO: cleanup double filter */}
       {fields
         .filter(emptyFieldFilter)
         .filter(({ text }) => !isEmpty(text))
         .map(({ href, icon, name, text }, index) => (
-          <div className={styles.row} key={index} data-cy={name}>
+          <div data-testid={name} data-cy={name} className={styles.row} key={index}>
             <div className={styles.firstColumn}>
               <i alt={text} aria-hidden="true" className={`fa fa-${icon}`} />
             </div>
@@ -126,6 +134,7 @@ ContactCard.propTypes = {
   city: PropTypes.string,
   email: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   fax: PropTypes.string,
+  hoursOfOperation: PropTypes.string,
   link: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   phoneNumber: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   state: PropTypes.string,

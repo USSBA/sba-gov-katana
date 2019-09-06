@@ -176,29 +176,24 @@ const LocationInfo = ({ office }) => {
     const mainLocation = office.location[0]
     const mainContactCardProps = {
       testId: 'main-location',
-      border: false,
-      city: null,
-      fax: null,
-      email: null,
-      phoneNumber: null,
-      title: null,
-      state: null,
-      streetAddress: null,
-      zipCode: null
+      border: false
     }
 
-    mainContactCardProps.city = typeof mainLocation.city === 'string' && mainLocation.city
-    mainContactCardProps.fax = typeof mainLocation.fax === 'string' && mainLocation.fax
-    mainContactCardProps.email = typeof mainLocation.email === 'string' && mainLocation.email
-    mainContactCardProps.phoneNumber =
-      typeof mainLocation.phoneNumber === 'string' && mainLocation.phoneNumber
-    mainContactCardProps.title = typeof mainLocation.name === 'string' && mainLocation.name
-    mainContactCardProps.state = typeof mainLocation.state === 'string' && mainLocation.state
-    mainContactCardProps.streetAddress =
-      typeof mainLocation.streetAddress === 'string' && mainLocation.streetAddress
-    mainContactCardProps.zipCode = typeof mainLocation.zipCode === 'number' && mainLocation.zipCode
+    typeof mainLocation.city === 'string' && (mainContactCardProps.city = mainLocation.city)
+    typeof mainLocation.email === 'string' && (mainContactCardProps.email = mainLocation.email)
+    typeof mainLocation.fax === 'string' && (mainContactCardProps.fax = mainLocation.fax)
+    typeof mainLocation.hoursOfOperation === 'string' &&
+      (mainContactCardProps.hoursOfOperation = mainLocation.hoursOfOperation)
+    typeof mainLocation.name === 'string' && (mainContactCardProps.title = mainLocation.name)
+    typeof mainLocation.phoneNumber === 'string' &&
+      (mainContactCardProps.phoneNumber = mainLocation.phoneNumber)
+    typeof mainLocation.state === 'string' && (mainContactCardProps.state = mainLocation.state)
+    typeof mainLocation.streetAddress === 'string' &&
+      (mainContactCardProps.streetAddress = mainLocation.streetAddress)
+    typeof mainLocation.zipCode === 'number' && (mainContactCardProps.zipCode = mainLocation.zipCode)
 
     const mainContactCard = <ContactCard {...mainContactCardProps} />
+
     // ensures that main location will be the first element in the array
     cardsContent.unshift(mainContactCard)
   }
