@@ -6,6 +6,14 @@ import styles from './contact-card.scss'
 import classNames from 'classnames'
 import { Link } from 'atoms'
 
+const formatHours = hoursOfOperation => {
+  let hours
+  if (hoursOfOperation && hoursOfOperation.length > 0) {
+    hours = hoursOfOperation.replace(/\r\n/g, '<br />')
+  }
+  return hours
+}
+
 // TODO: The link card component has overlapping functionality and should be
 // combined with the contact card.
 const ContactCard = props => {
@@ -74,7 +82,7 @@ const ContactCard = props => {
     },
     {
       name: 'hours of operation',
-      text: hoursOfOperation,
+      text: formatHours(hoursOfOperation),
       icon: 'clock-o'
     }
   ]
@@ -148,5 +156,7 @@ ContactCard.defaultProps = {
   border: true,
   testId: 'contact-card'
 }
+
+export { formatHours }
 
 export default ContactCard

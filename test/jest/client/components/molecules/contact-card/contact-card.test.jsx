@@ -2,7 +2,9 @@ import React from 'react'
 import { render, cleanup, within } from 'react-testing-library'
 import 'jest-dom/extend-expect'
 import _ from 'lodash'
-import { ContactCard } from 'molecules'
+import ContactCard, {
+  formatHours
+} from '../../../../../../src/client/components/molecules/contact-card/contact-card'
 
 afterEach(cleanup)
 
@@ -123,5 +125,27 @@ describe('ContactCard', () => {
     getByTestId('contact-card')
     const hours = queryByTestId('hours of operation')
     expect(hours).not.toBeInTheDocument()
+  })
+
+  describe('formatHours function', () => {
+    it('should replace all /r/n line breaks with <br /> line breaks', () => {
+      const hoursOfOperation = 'M-F 8am to 6pm\r\nSa closed\r\nSu by appointment only'
+      const expectedHours = 'M-F 8am to 6pm<br />Sa closed<br />Su by appointment only'
+      const hours = formatHours(hoursOfOperation)
+      expect(hours).toBe(expectedHours)
+    })
+
+    it('should return original string if there are no /r/n line breaks', () => {
+      const hoursOfOperation = 'M-F 8am to 6pm, Sa closed, Su by appointment only'
+      const hours = formatHours(hoursOfOperation)
+      expect(hours).toBe(hoursOfOperation)
+    })
+
+    it('should return undefined an empty string is passed in', () => {
+      const hoursOfOperation = ''
+      const hours = formatHours(hoursOfOperation)
+      // eslint-disable-next-line no-undefined
+      expect(hours).toBe(undefined)
+    })
   })
 })
