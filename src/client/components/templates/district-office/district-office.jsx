@@ -9,10 +9,31 @@ import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helpe
 import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
 
+function getContactCardProps(locationInfo, testId) {
+  const cardProps = {
+    testId: testId,
+    border: false
+  }
+
+  typeof locationInfo.city === 'string' && (cardProps.city = locationInfo.city)
+  typeof locationInfo.email === 'string' && (cardProps.email = locationInfo.email)
+  typeof locationInfo.fax === 'string' && (cardProps.fax = locationInfo.fax)
+  typeof locationInfo.hoursOfOperation === 'string' &&
+    (cardProps.hoursOfOperation = locationInfo.hoursOfOperation)
+  typeof locationInfo.name === 'string' && (cardProps.title = locationInfo.name)
+  typeof locationInfo.phoneNumber === 'string' && (cardProps.phoneNumber = locationInfo.phoneNumber)
+  typeof locationInfo.state === 'string' && (cardProps.state = locationInfo.state)
+  typeof locationInfo.streetAddress === 'string' && (cardProps.streetAddress = locationInfo.streetAddress)
+  typeof locationInfo.zipCode === 'number' && (cardProps.zipCode = locationInfo.zipCode)
+
+  return cardProps
+}
+
 class DistrictOfficeTemplate extends React.Component {
   constructor() {
     super()
     this.state = {
+      alternateLocations: [],
       events: [],
       leaders: []
     }
@@ -20,13 +41,21 @@ class DistrictOfficeTemplate extends React.Component {
 
   async componentDidMount() {
     const { office } = this.props
+
+    const alternateLocations = []
+    if (office.alternateLocations && office.alternateLocations.length > 0) {
+      const alternateOfficeIds = office.alternateLocations.slice(0, 2)
+      for (let i = 0; i < alternateOfficeIds.length; i++) {
+        alternateLocations[i] = await fetchRestContent(alternateOfficeIds[i])
+      }
+    }
+
     const { items } = await fetchSiteContent('events', {
       pageSize: 5,
       officeId: office.id
     })
     // when the events content api is set to D8, then pageSize=5 will do the work for us
     // but since the events content api is set to D7, slice the first 5 items off the response
-
     let events = []
     if (items && items.length > 0) {
       events = items.slice(0, 5)
@@ -61,14 +90,14 @@ class DistrictOfficeTemplate extends React.Component {
         <HeroBanner office={office} />
         <div className={styles.content}>
           <div data-testid="office-information-section" className={styles.officeInfo}>
-            <h2>Office Information</h2>
+            <h2>Office information</h2>
             <div className={styles.servicesAndSocialMediaContainer}>
               {this.validateOfficeServices(office) && <ServicesProvided office={office} />}
               {typeof twitterLink === 'string' && <SocialMedia twitterLink={twitterLink} />}
             </div>
           </div>
           <div className={styles.section}>
-            <LocationInfo office={office} />
+            <LocationInfo office={office} alternateLocations={alternateLocations} />
           </div>
           {leaders.length > 0 && <div className={styles.section}>
               <Leadership items={leaders} />
@@ -110,7 +139,7 @@ const ServicesProvided = ({ office }) => {
   const { officeServices } = office
   return (
     <div data-testid="office-services-section">
-      <h3>Services Provided</h3>
+      <h3>Services provided</h3>
       <div className={styles.servicesProvidedList} dangerouslySetInnerHTML={{ __html: officeServices }} />
     </div>
   )
@@ -173,39 +202,31 @@ const SocialMedia = ({ twitterLink }) => {
   )
 }
 
-const LocationInfo = ({ office }) => {
+const LocationInfo = ({ office, alternateLocations }) => {
+  const officesForCards = []
+
+  /*eslint-disable no-param-reassign*/
+  office.testId = 'main-location'
+  officesForCards.push(office)
+
+  alternateLocations.forEach(alternateLocation => {
+    alternateLocation.testId = 'alternate-location'
+    officesForCards.push(alternateLocation)
+  })
+  /*eslint-enable no-param-reassign*/
+
   const cardsContent = []
-
-  if (Array.isArray(office.location) && office.location.length > 0) {
-    const mainLocation = office.location[0]
-    const mainContactCardProps = {
-      testId: 'main-location',
-      border: false
+  officesForCards.forEach(officeInfo => {
+    if (Array.isArray(officeInfo.location) && officeInfo.location.length > 0) {
+      const cardProps = getContactCardProps(officeInfo.location[0], officeInfo.testId)
+      cardsContent.push(<ContactCard {...cardProps} />)
     }
-
-    typeof mainLocation.city === 'string' && (mainContactCardProps.city = mainLocation.city)
-    typeof mainLocation.email === 'string' && (mainContactCardProps.email = mainLocation.email)
-    typeof mainLocation.fax === 'string' && (mainContactCardProps.fax = mainLocation.fax)
-    typeof mainLocation.hoursOfOperation === 'string' &&
-      (mainContactCardProps.hoursOfOperation = mainLocation.hoursOfOperation)
-    typeof mainLocation.name === 'string' && (mainContactCardProps.title = mainLocation.name)
-    typeof mainLocation.phoneNumber === 'string' &&
-      (mainContactCardProps.phoneNumber = mainLocation.phoneNumber)
-    typeof mainLocation.state === 'string' && (mainContactCardProps.state = mainLocation.state)
-    typeof mainLocation.streetAddress === 'string' &&
-      (mainContactCardProps.streetAddress = mainLocation.streetAddress)
-    typeof mainLocation.zipCode === 'number' && (mainContactCardProps.zipCode = mainLocation.zipCode)
-
-    const mainContactCard = <ContactCard {...mainContactCardProps} />
-
-    // ensures that main location will be the first element in the array
-    cardsContent.unshift(mainContactCard)
-  }
+  })
 
   if (cardsContent.length > 0) {
     return (
       <div data-testid="location-info" className={styles.locationInfo}>
-        <h3>Location Information</h3>
+        <h3>Location information</h3>
         <GenericCardCollection cardsContent={cardsContent} />
       </div>
     )
