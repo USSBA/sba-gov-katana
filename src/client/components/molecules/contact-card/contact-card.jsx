@@ -6,6 +6,14 @@ import styles from './contact-card.scss'
 import classNames from 'classnames'
 import { Link } from 'atoms'
 
+const formatHours = hoursOfOperation => {
+  let hours
+  if (hoursOfOperation && hoursOfOperation.length > 0) {
+    hours = hoursOfOperation.replace(/\r\n/g, '<br />')
+  }
+  return hours
+}
+
 // TODO: The link card component has overlapping functionality and should be
 // combined with the contact card.
 const ContactCard = props => {
@@ -14,6 +22,7 @@ const ContactCard = props => {
     city,
     email,
     fax,
+    hoursOfOperation,
     link,
     office,
     personTitle,
@@ -22,7 +31,8 @@ const ContactCard = props => {
     streetAddress,
     title,
     zipCode,
-    className: cn
+    className: cn,
+    testId
   } = props
   const linkText = 'Visit website'
 
@@ -69,6 +79,11 @@ const ContactCard = props => {
       text: email,
       icon: 'envelope-o',
       href: `mailto:${email}`
+    },
+    {
+      name: 'hours of operation',
+      text: formatHours(hoursOfOperation),
+      icon: 'clock-o'
     }
   ]
 
@@ -97,14 +112,16 @@ const ContactCard = props => {
   }
 
   return (
-    <div className={contactCardClassName}>
-      <h6 data-cy="contact card title">{title}</h6>
+    <div data-testid={testId} className={contactCardClassName}>
+      <h6 data-testid="contact card title" data-cy="contact card title">
+        {title}
+      </h6>
       {/* TODO: cleanup double filter */}
       {fields
         .filter(emptyFieldFilter)
         .filter(({ text }) => !isEmpty(text))
         .map(({ href, icon, name, text }, index) => (
-          <div className={styles.row} key={index} data-cy={name}>
+          <div data-testid={name} data-cy={name} className={styles.row} key={index}>
             <div className={styles.firstColumn}>
               <i alt={text} aria-hidden="true" className={`fa fa-${icon}`} />
             </div>
@@ -125,16 +142,21 @@ ContactCard.propTypes = {
   city: PropTypes.string,
   email: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   fax: PropTypes.string,
+  hoursOfOperation: PropTypes.string,
   link: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   phoneNumber: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   state: PropTypes.string,
   streetAddress: PropTypes.string,
   title: PropTypes.string,
-  zipCode: PropTypes.number
+  zipCode: PropTypes.number,
+  testId: PropTypes.string
 }
 
 ContactCard.defaultProps = {
-  border: true
+  border: true,
+  testId: 'contact-card'
 }
+
+export { formatHours }
 
 export default ContactCard

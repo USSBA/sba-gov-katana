@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import { Button, SocialMediaLink } from 'atoms'
-import { AuthorCard, CallToAction, NewsletterForm, QuickLinks } from 'molecules'
-import { Hero, NewsReleases, EventResult, Results } from 'organisms'
+import { AuthorCard, ContactCard, CallToAction, NewsletterForm, QuickLinks } from 'molecules'
+import { GenericCardCollection, Hero, NewsReleases, EventResult, Results } from 'organisms'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
@@ -66,12 +66,15 @@ class DistrictOfficeTemplate extends React.Component {
               {typeof twitterLink === 'string' && <SocialMedia twitterLink={twitterLink} />}
             </div>
           </div>
-        </div>
-        {leaders.length > 0 && <div className={styles.content}>
           <div className={styles.section}>
-            <Leadership items={leaders} />
+            <LocationInfo office={office} />
           </div>
-        </div>}
+          {leaders.length > 0 && (
+            <div className={styles.section}>
+              <Leadership items={leaders} />
+            </div>
+          )}
+        </div>
         <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />
         </div>
@@ -166,6 +169,47 @@ const SocialMedia = ({ twitterLink }) => {
   )
 }
 
+const LocationInfo = ({ office }) => {
+  const cardsContent = []
+
+  if (Array.isArray(office.location) && office.location.length > 0) {
+    const mainLocation = office.location[0]
+    const mainContactCardProps = {
+      testId: 'main-location',
+      border: false
+    }
+
+    typeof mainLocation.city === 'string' && (mainContactCardProps.city = mainLocation.city)
+    typeof mainLocation.email === 'string' && (mainContactCardProps.email = mainLocation.email)
+    typeof mainLocation.fax === 'string' && (mainContactCardProps.fax = mainLocation.fax)
+    typeof mainLocation.hoursOfOperation === 'string' &&
+      (mainContactCardProps.hoursOfOperation = mainLocation.hoursOfOperation)
+    typeof mainLocation.name === 'string' && (mainContactCardProps.title = mainLocation.name)
+    typeof mainLocation.phoneNumber === 'string' &&
+      (mainContactCardProps.phoneNumber = mainLocation.phoneNumber)
+    typeof mainLocation.state === 'string' && (mainContactCardProps.state = mainLocation.state)
+    typeof mainLocation.streetAddress === 'string' &&
+      (mainContactCardProps.streetAddress = mainLocation.streetAddress)
+    typeof mainLocation.zipCode === 'number' && (mainContactCardProps.zipCode = mainLocation.zipCode)
+
+    const mainContactCard = <ContactCard {...mainContactCardProps} />
+
+    // ensures that main location will be the first element in the array
+    cardsContent.unshift(mainContactCard)
+  }
+
+  if (cardsContent.length > 0) {
+    return (
+      <div data-testid="location-info" className={styles.locationInfo}>
+        <h3>Location Information</h3>
+        <GenericCardCollection cardsContent={cardsContent} />
+      </div>
+    )
+  } else {
+    return null
+  }
+}
+
 const NewsletterSignup = () => {
   const newsletterTitle = 'Sign up for national and local SBA newsletters'
   return (
@@ -218,7 +262,6 @@ const CTA = () => {
 
 const Docs = ({ office }) => {
   const officeID = office.id
-  console.log(officeID)
   const linkProps = {
     typeOfLinks: [
       {
