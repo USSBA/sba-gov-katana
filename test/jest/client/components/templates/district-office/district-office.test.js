@@ -531,5 +531,34 @@ describe('District Office template', () => {
       const content = queryByTestId('success-stories')
       expect(content).not.toBeInTheDocument()
     })
+    it('should have "View All Posts" button', async () => {
+      const mockOfficeResponse = {
+        officeLeadership: {},
+        title: 'Alabama District Office',
+        id: 6386
+      }
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+
+      when(fetchSiteContentStub).calledWith('articles').mockImplementationOnce(props => {
+        return Promise.resolve({
+          items: []
+        })
+      })
+
+      when(fetchSiteContentStub).calledWith('documents').mockImplementationOnce(props => {
+        return Promise.resolve(mockDocumentResults)
+      })
+
+      when(fetchSiteContentStub).calledWith('events').mockImplementationOnce(props => {
+        return Promise.resolve(eventsTestData)
+      })
+
+      when(fetchSiteContentStub).calledWith('blogs').mockImplementationOnce(props => {
+        return Promise.resolve(blogsTestData)
+       })
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeResponse} />)
+      const content = await waitForElement(() => getByTestId('success-stories-button'))
+      expect(content).toBeInTheDocument()
+    })
   })
 })

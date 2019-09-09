@@ -88,7 +88,7 @@ class DistrictOfficeTemplate extends React.Component {
         </div>
         {blogs.length > 0 && <div className={styles.content}>
           <div className={styles.section}>
-            <SuccessStories items={blogs} />
+            <SuccessStories items={blogs} officeId={office.id} />
           </div>
         </div>}
         <div className={styles.section} data-testid="news-release-section">
@@ -145,7 +145,7 @@ const Leadership = ({ items }) => {
   )
 }
 
-const SuccessStories = ({ items }) => {
+const SuccessStories = ({ items, officeId }) => {
   const cards = items.map(({ title, summary, blogBody, created, url }, index) => {
 
     const item = {
@@ -176,6 +176,11 @@ const SuccessStories = ({ items }) => {
       <h2>Success Stories</h2>
       {cards}
       <div className={styles.clear} />
+      <div className={styles.button} data-testid="success-stories-button">
+        <a href={`/blogs/success-stories/${officeId}`}>
+          <Button primary>View All Posts</Button>
+        </a>
+      </div>
     </div>
   )
 }
