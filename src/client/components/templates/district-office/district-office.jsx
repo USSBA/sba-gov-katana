@@ -173,7 +173,7 @@ const SuccessStories = ({ items, officeId }) => {
   })
   return (
     <div data-testid={'success-stories'} className={styles.leadership}>
-      <h2>Success Stories</h2>
+      <h2>Success Stories posts</h2>
       {cards}
       <div className={styles.clear} />
       <div className={styles.button} data-testid="success-stories-button">
