@@ -57,7 +57,7 @@ class SuccessStories extends PureComponent {
         </div>)
       })
     return (
-      <div data-testid={'success-stories'} className={styles.leadership}>
+      <div data-testid={'success-stories'} className={styles.successStories}>
         <h2>Success Stories posts</h2>
         {cards}
         <div className={styles.clear} />
