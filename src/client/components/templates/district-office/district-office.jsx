@@ -34,6 +34,7 @@ class DistrictOfficeTemplate extends React.Component {
     super()
     this.state = {
       alternateLocations: [],
+      region: null,
       events: [],
       leaders: []
     }
@@ -48,6 +49,11 @@ class DistrictOfficeTemplate extends React.Component {
       for (let i = 0; i < alternateOfficeIds.length; i++) {
         alternateLocations[i] = await fetchRestContent(alternateOfficeIds[i])
       }
+    }
+
+    let region
+    if (office.office && typeof office.office === 'number') {
+      region = await fetchRestContent(office.office)
     }
 
     const { items } = await fetchSiteContent('events', {
@@ -97,7 +103,7 @@ class DistrictOfficeTemplate extends React.Component {
             </div>
           </div>
           <div className={styles.section}>
-            <LocationInfo office={office} alternateLocations={alternateLocations} />
+            <LocationInfo office={office} alternateLocations={alternateLocations} region={region} />
           </div>
           {leaders.length > 0 && <div className={styles.section}>
               <Leadership items={leaders} />
@@ -202,17 +208,24 @@ const SocialMedia = ({ twitterLink }) => {
   )
 }
 
-const LocationInfo = ({ office, alternateLocations }) => {
+const LocationInfo = ({ office, alternateLocations, region }) => {
   const officesForCards = []
 
   /*eslint-disable no-param-reassign*/
   office.testId = 'main-location'
   officesForCards.push(office)
 
-  alternateLocations.forEach(alternateLocation => {
-    alternateLocation.testId = 'alternate-location'
-    officesForCards.push(alternateLocation)
-  })
+  if (alternateLocations.length > 0) {
+    alternateLocations.forEach(alternateLocation => {
+      alternateLocation.testId = 'alternate-location'
+      officesForCards.push(alternateLocation)
+    })
+  }
+
+  if (region) {
+    region.testId = 'region-location'
+    officesForCards.push(region)
+  }
   /*eslint-enable no-param-reassign*/
 
   const cardsContent = []
