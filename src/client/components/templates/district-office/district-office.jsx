@@ -9,7 +9,7 @@ import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helpe
 import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
 
-function getContactCardProps(locationInfo, testId) {
+function getContactCardProps(locationInfo, areasServed, testId) {
   const cardProps = {
     testId: testId,
     border: false
@@ -25,6 +25,10 @@ function getContactCardProps(locationInfo, testId) {
   typeof locationInfo.state === 'string' && (cardProps.state = locationInfo.state)
   typeof locationInfo.streetAddress === 'string' && (cardProps.streetAddress = locationInfo.streetAddress)
   typeof locationInfo.zipCode === 'number' && (cardProps.zipCode = locationInfo.zipCode)
+
+  if (testId === 'region-location' && typeof areasServed === 'string' && areasServed.length > 0) {
+    cardProps.message = areasServed
+  }
 
   return cardProps
 }
@@ -231,7 +235,11 @@ const LocationInfo = ({ office, alternateLocations, region }) => {
   const cardsContent = []
   officesForCards.forEach(officeInfo => {
     if (Array.isArray(officeInfo.location) && officeInfo.location.length > 0) {
-      const cardProps = getContactCardProps(officeInfo.location[0], officeInfo.testId)
+      const cardProps = getContactCardProps(
+        officeInfo.location[0],
+        officeInfo.areasServed,
+        officeInfo.testId
+      )
       cardsContent.push(<ContactCard {...cardProps} />)
     }
   })
