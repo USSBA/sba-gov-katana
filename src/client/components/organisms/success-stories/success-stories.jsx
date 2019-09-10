@@ -57,15 +57,17 @@ class SuccessStories extends PureComponent {
         </div>)
       })
     return (
-      <div data-testid={'success-stories'} className={styles.successStories}>
-        <h2>Success Stories posts</h2>
-        {cards}
-        <div className={styles.clear} />
-        <div className={styles.button} data-testid="success-stories-button">
-          <a href={`/blogs/success-stories/${officeId}`}>
-            <Button primary>View All Posts</Button>
-          </a>
-        </div>
+      <div>
+        {cards.length > 0 && <div data-testid={'success-stories'} className={styles.successStories}>
+          <h2>Success Stories posts</h2>
+          {cards}
+          <div className={styles.clear} />
+          <div className={styles.button} data-testid="success-stories-button">
+            <a href={`/blogs/success-stories/${officeId}`}>
+              <Button primary>View All Posts</Button>
+            </a>
+          </div>
+        </div>}
       </div>
     )
   }
