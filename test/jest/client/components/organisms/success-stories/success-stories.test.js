@@ -33,6 +33,18 @@ describe('Sucess Stories Component', () => {
       content = await waitForElement(() => getAllByTestId('success-story-card'))
       expect(content.length).toEqual(3)
     })
+    it('should not render because there is no blogs data', async () => {
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      when(fetchSiteContentStub).calledWith('blogs').mockImplementationOnce(props => {
+        return Promise.resolve({
+          blogs: []
+        })
+      })
+
+      const { queryByTestId } = render(<SuccessStories officeId={1000} />)
+      const content = queryByTestId('success-stories')
+      expect(content).not.toBeInTheDocument()
+    })
     it('should have "View All Posts" button', async () => {
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
       when(fetchSiteContentStub).calledWith('blogs').mockImplementationOnce(props => {
