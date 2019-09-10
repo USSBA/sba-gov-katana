@@ -4,7 +4,7 @@ import moment from 'moment'
 import { isEmpty } from 'lodash'
 import { Button, SocialMediaLink } from 'atoms'
 import { AuthorCard, ContactCard, CallToAction, NewsletterForm, QuickLinks, Card } from 'molecules'
-import { GenericCardCollection, Hero, NewsReleases, EventResult, Results } from 'organisms'
+import { GenericCardCollection, Hero, NewsReleases, EventResult, Results, SuccessStories } from 'organisms'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
@@ -14,8 +14,7 @@ class DistrictOfficeTemplate extends React.Component {
     super()
     this.state = {
       events: [],
-      leaders: [],
-      blogs: []
+      leaders: []
     }
   }
 
@@ -42,17 +41,8 @@ class DistrictOfficeTemplate extends React.Component {
     }
 
     leaders = leaders.filter(item => item)
-
-    let { blogs = [] } = await fetchSiteContent('blogs', {
-      category: 'Success Story',
-      office: office.id
-    })
-
-    if (blogs.length > 0) {
-      blogs = blogs.slice(0, 3)
-    }
     
-    this.setState({ events, leaders, blogs })
+    this.setState({ events, leaders })
   }
 
   // Validate that the officeServices field is a valid String with content
@@ -80,17 +70,15 @@ class DistrictOfficeTemplate extends React.Component {
           <div className={styles.section}>
             <LocationInfo office={office} />
           </div>
-          {leaders.length > 0 && (
-            <div className={styles.section}>
+          {leaders.length > 0 && <div className={styles.section}>
               <Leadership items={leaders} />
-            </div>
-          )}
+          </div>}
         </div>
-        {blogs.length > 0 && <div className={styles.content}>
+        <div className={styles.content}>
           <div className={styles.section}>
-            <SuccessStories items={blogs} officeId={office.id} />
+            <SuccessStories officeId={office.id} />
           </div>
-        </div>}
+        </div>
         <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />
         </div>
@@ -141,46 +129,6 @@ const Leadership = ({ items }) => {
       <h3>Leadership</h3>
       {cards}
       <div className={styles.clear} />
-    </div>
-  )
-}
-
-const SuccessStories = ({ items, officeId }) => {
-  const cards = items.map(({ title, summary, blogBody, created, url }, index) => {
-
-    const item = {
-      image: {
-        alt: blogBody[0].blogSectionImage.alt,
-        url: blogBody[0].blogSectionImage.url
-      },
-      italicText: moment.unix(created).format('MMMM D, YYYY'),
-      link: {
-        url,
-        title: 'Read full post'
-      },
-      subtitleText: summary,
-      titleText: title
-    }
-    return (
-      <div data-testid={`success-story-card`} key={index}>
-        <Card
-          index={index}
-          item={item}
-          numCards={3}
-        />
-      </div>
-    )
-  })
-  return (
-    <div data-testid={'success-stories'} className={styles.leadership}>
-      <h2>Success Stories posts</h2>
-      {cards}
-      <div className={styles.clear} />
-      <div className={styles.button} data-testid="success-stories-button">
-        <a href={`/blogs/success-stories/${officeId}`}>
-          <Button primary>View All Posts</Button>
-        </a>
-      </div>
     </div>
   )
 }

@@ -1,0 +1,24 @@
+.leadership {
+  @include for-medium-up {
+    margin-left: -20px;
+    margin-right: -20px;
+
+    h3 {
+      margin-left: 20px;
+    }
+  }
+
+  h3 {
+    margin-bottom: 20px;
+  }
+}
+
+.button {
+  text-align: center;
+  padding-top: 15px;
+  clear: both;
+
+  a {
+    text-decoration: none;
+  }
+}
