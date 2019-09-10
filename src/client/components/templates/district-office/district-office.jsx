@@ -3,42 +3,16 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { isEmpty } from 'lodash'
 import { Button, SocialMediaLink } from 'atoms'
-import { AuthorCard, ContactCard, CallToAction, NewsletterForm, QuickLinks, Card } from 'molecules'
-import { GenericCardCollection, Hero, NewsReleases, EventResult, Results, SuccessStories } from 'organisms'
+import { AuthorCard, CallToAction, NewsletterForm, QuickLinks } from 'molecules'
+import { Hero, LocationInfoSection, NewsReleases, EventResult, Results, SuccessStories } from 'organisms'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
-
-function getContactCardProps(locationInfo, areasServed, testId) {
-  const cardProps = {
-    testId: testId,
-    border: false
-  }
-
-  typeof locationInfo.city === 'string' && (cardProps.city = locationInfo.city)
-  typeof locationInfo.email === 'string' && (cardProps.email = locationInfo.email)
-  typeof locationInfo.fax === 'string' && (cardProps.fax = locationInfo.fax)
-  typeof locationInfo.hoursOfOperation === 'string' &&
-    (cardProps.hoursOfOperation = locationInfo.hoursOfOperation)
-  typeof locationInfo.name === 'string' && (cardProps.title = locationInfo.name)
-  typeof locationInfo.phoneNumber === 'string' && (cardProps.phoneNumber = locationInfo.phoneNumber)
-  typeof locationInfo.state === 'string' && (cardProps.state = locationInfo.state)
-  typeof locationInfo.streetAddress === 'string' && (cardProps.streetAddress = locationInfo.streetAddress)
-  typeof locationInfo.zipCode === 'number' && (cardProps.zipCode = locationInfo.zipCode)
-
-  if (testId === 'region-location' && typeof areasServed === 'string' && areasServed.length > 0) {
-    cardProps.message = areasServed
-  }
-
-  return cardProps
-}
 
 class DistrictOfficeTemplate extends React.Component {
   constructor() {
     super()
     this.state = {
-      alternateLocations: [],
-      region: null,
       events: [],
       leaders: []
     }
@@ -46,19 +20,6 @@ class DistrictOfficeTemplate extends React.Component {
 
   async componentDidMount() {
     const { office } = this.props
-
-    const alternateLocations = []
-    if (office.alternateLocations && office.alternateLocations.length > 0) {
-      const alternateOfficeIds = office.alternateLocations.slice(0, 2)
-      for (let i = 0; i < alternateOfficeIds.length; i++) {
-        alternateLocations[i] = await fetchRestContent(alternateOfficeIds[i])
-      }
-    }
-
-    let region
-    if (office.office && typeof office.office === 'number') {
-      region = await fetchRestContent(office.office)
-    }
 
     const { items } = await fetchSiteContent('events', {
       pageSize: 5,
@@ -80,7 +41,6 @@ class DistrictOfficeTemplate extends React.Component {
     }
 
     leaders = leaders.filter(item => item)
-    
     this.setState({ events, leaders })
   }
 
@@ -91,7 +51,7 @@ class DistrictOfficeTemplate extends React.Component {
   }
 
   render() {
-    const { events, leaders, blogs } = this.state
+    const { events, leaders } = this.state
     const { office } = this.props
     const { twitterLink } = office
 
@@ -107,7 +67,7 @@ class DistrictOfficeTemplate extends React.Component {
             </div>
           </div>
           <div className={styles.section}>
-            <LocationInfo office={office} alternateLocations={alternateLocations} region={region} />
+            <LocationInfoSection office={office} />
           </div>
           {leaders.length > 0 && <div className={styles.section}>
               <Leadership items={leaders} />
@@ -210,50 +170,6 @@ const SocialMedia = ({ twitterLink }) => {
       <SocialMediaLink image={twitterThumbnail} altText={altText} url={twitterLink} />
     </div>
   )
-}
-
-const LocationInfo = ({ office, alternateLocations, region }) => {
-  const officesForCards = []
-
-  /*eslint-disable no-param-reassign*/
-  office.testId = 'main-location'
-  officesForCards.push(office)
-
-  if (alternateLocations.length > 0) {
-    alternateLocations.forEach(alternateLocation => {
-      alternateLocation.testId = 'alternate-location'
-      officesForCards.push(alternateLocation)
-    })
-  }
-
-  if (region) {
-    region.testId = 'region-location'
-    officesForCards.push(region)
-  }
-  /*eslint-enable no-param-reassign*/
-
-  const cardsContent = []
-  officesForCards.forEach(officeInfo => {
-    if (Array.isArray(officeInfo.location) && officeInfo.location.length > 0) {
-      const cardProps = getContactCardProps(
-        officeInfo.location[0],
-        officeInfo.areasServed,
-        officeInfo.testId
-      )
-      cardsContent.push(<ContactCard {...cardProps} />)
-    }
-  })
-
-  if (cardsContent.length > 0) {
-    return (
-      <div data-testid="location-info" className={styles.locationInfo}>
-        <h3>Location information</h3>
-        <GenericCardCollection cardsContent={cardsContent} />
-      </div>
-    )
-  } else {
-    return null
-  }
 }
 
 const NewsletterSignup = () => {
