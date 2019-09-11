@@ -68,6 +68,7 @@ class DistrictOfficeTemplate extends React.Component {
           </div>
           <div className={styles.section}>
             <LocationInfoSection office={office} />
+            <div className={styles.clear} />
           </div>
           {leaders.length > 0 && <div className={styles.section}>
               <Leadership items={leaders} />

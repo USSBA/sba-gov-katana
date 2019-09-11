@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { chunk } from 'lodash'
+
 import { ContactCard } from 'molecules'
 import { GenericCardCollection } from 'organisms'
 import { fetchRestContent } from '../../../fetch-content-helper'
@@ -92,16 +94,29 @@ class LocationInfoSection extends React.Component {
         cardsContent.push(<ContactCard {...cardProps} />)
       }
     })
+    const cardsContent2 = cardsContent.slice(0, 1)
 
-    if (cardsContent.length > 0) {
+    if (cardsContent2.length <= 0) {
+      return null
+    } else if (cardsContent2.length === 4) {
+      const cardsContentSections = chunk(cardsContent2, 2)
       return (
         <div data-testid="location-info" className={styles.locationInfo}>
           <h3>Location information</h3>
-          <GenericCardCollection cardsContent={cardsContent} />
+          {cardsContentSections.map(cardsContentSection => (
+            <div className={styles.cardCollection}>
+              <GenericCardCollection cardsContent={cardsContentSection} />
+            </div>
+          ))}
         </div>
       )
     } else {
-      return null
+      return (
+        <div data-testid="location-info" className={styles.locationInfo}>
+          <h3>Location information</h3>
+          <GenericCardCollection cardsContent={cardsContent2} />
+        </div>
+      )
     }
   }
 }

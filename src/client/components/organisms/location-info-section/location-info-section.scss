@@ -3,3 +3,15 @@
     margin-bottom: 20px;
   }
 }
+
+.cardCollection {
+  @include grid-media($sba-grid-large) {
+    @include grid-column(6);
+    &:nth-child(2n) {
+      margin-left: 0px;
+    }
+    &:nth-child(2n-1) {
+      margin-left: 20px;
+    }
+  }
+}
