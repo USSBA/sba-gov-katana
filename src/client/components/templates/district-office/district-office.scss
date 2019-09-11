@@ -126,6 +126,21 @@
   }
 }
 
+.leadership {
+  @include for-medium-up {
+    margin-left: -20px;
+    margin-right: -20px;
+
+    h3 {
+      margin-left: 20px;
+    }
+  }
+
+  h3 {
+    margin-bottom: 20px;
+  }
+}
+
 .lenderMatch {
   @include grid-media($sba-grid-large) {
     padding: 30px 40px;
@@ -152,21 +167,6 @@
 }
 
 .locationInfo {
-  h3 {
-    margin-bottom: 20px;
-  }
-}
-
-.leadership {
-  @include for-medium-up {
-    margin-left: -20px;
-    margin-right: -20px;
-
-    h3 {
-      margin-left: 20px;
-    }
-  }
-
   h3 {
     margin-bottom: 20px;
   }

@@ -36,6 +36,7 @@ import SectionNav from './section-nav/section-nav.jsx'
 import SizeStandardsTool from './size-standards-tool/size-standards-tool.jsx'
 import StyleGrayBackground from './style-gray-background/style-gray-background.jsx'
 import SubMenu from './sub-menu/sub-menu'
+import SuccessStories from './success-stories/success-stories.jsx'
 import SuretyLookup from './surety-lookup/surety-lookup'
 import LongScrollSection from './long-scroll-section/long-scroll-section'
 import TextReadMoreSection from './text-readmore-section/text-readmore-section'
@@ -98,6 +99,7 @@ export {
   StyleGrayBackground,
   SubMenu,
   SuretyLookup,
+  SuccessStories,
   LongScrollSection,
   TextReadMoreSection,
   TileCollection,

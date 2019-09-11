@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { isEmpty } from 'lodash'
 import { Button, SocialMediaLink } from 'atoms'
-import { AuthorCard, ContactCard, CallToAction, NewsletterForm, QuickLinks } from 'molecules'
-import { GenericCardCollection, Hero, NewsReleases, EventResult, Results } from 'organisms'
+import { AuthorCard, ContactCard, CallToAction, NewsletterForm, QuickLinks, Card } from 'molecules'
+import { GenericCardCollection, Hero, NewsReleases, EventResult, Results, SuccessStories } from 'organisms'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
@@ -40,7 +41,7 @@ class DistrictOfficeTemplate extends React.Component {
     }
 
     leaders = leaders.filter(item => item)
-
+    
     this.setState({ events, leaders })
   }
 
@@ -51,7 +52,7 @@ class DistrictOfficeTemplate extends React.Component {
   }
 
   render() {
-    const { events, leaders } = this.state
+    const { events, leaders, blogs } = this.state
     const { office } = this.props
     const { twitterLink } = office
 
@@ -69,11 +70,14 @@ class DistrictOfficeTemplate extends React.Component {
           <div className={styles.section}>
             <LocationInfo office={office} />
           </div>
-          {leaders.length > 0 && (
-            <div className={styles.section}>
+          {leaders.length > 0 && <div className={styles.section}>
               <Leadership items={leaders} />
-            </div>
-          )}
+          </div>}
+        </div>
+        <div className={styles.content}>
+          <div className={styles.section}>
+            <SuccessStories officeId={office.id} />
+          </div>
         </div>
         <div className={styles.section} data-testid="news-release-section">
           <NewsReleases officeId={office.id} />

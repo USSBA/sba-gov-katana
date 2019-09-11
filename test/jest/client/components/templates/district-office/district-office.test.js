@@ -6,8 +6,42 @@ import { when, resetAllWhenMocks } from 'jest-when'
 import 'jest-dom/extend-expect'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 import eventsTestData from '../../test-data/events.json'
+import blogsTestData from '../../test-data/district-office-blogs.json'
 
 afterEach(cleanup)
+
+const mockDocumentResults = {
+  count: 1,
+  items: [
+    {
+      activitys: ['Application'],
+      documentIdNumber: {},
+      documentIdType: 'Support',
+      files: [
+        {
+          id: 21395,
+          type: 'docFile',
+          effectiveDate: '2013-06-01',
+          expirationDate: null,
+          fileUrl: '/sites/default/files/2019-08/ODA%20Newsletter_June%202013.pdf',
+          version: null
+        }
+      ],
+      office: 7322,
+      officeLink: {},
+      ombNumber: {},
+      programs: ['Disaster'],
+      summary: 'ODA Newsletter June 2013',
+      type: 'document',
+      title: 'ODA Newsletter June 2013',
+      id: 19484,
+      updated: 1565727230,
+      created: 1370116340,
+      langCode: 'en',
+      url: '/document/support--oda-newsletter-june-2013'
+    }
+  ]
+}
 
 describe('District Office template', () => {
   describe('the office information section', () => {
@@ -389,38 +423,7 @@ describe('District Office template', () => {
     })
   })
   it('renders document quicklinks section', async () => {
-    const mockDocumentResults = {
-      count: 1,
-      items: [
-        {
-          activitys: ['Application'],
-          documentIdNumber: {},
-          documentIdType: 'Support',
-          files: [
-            {
-              id: 21395,
-              type: 'docFile',
-              effectiveDate: '2013-06-01',
-              expirationDate: null,
-              fileUrl: '/sites/default/files/2019-08/ODA%20Newsletter_June%202013.pdf',
-              version: null
-            }
-          ],
-          office: 7322,
-          officeLink: {},
-          ombNumber: {},
-          programs: ['Disaster'],
-          summary: 'ODA Newsletter June 2013',
-          type: 'document',
-          title: 'ODA Newsletter June 2013',
-          id: 19484,
-          updated: 1565727230,
-          created: 1370116340,
-          langCode: 'en',
-          url: '/document/support--oda-newsletter-june-2013'
-        }
-      ]
-    }
+
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
     when(fetchSiteContentStub)
       .calledWith('documents')
