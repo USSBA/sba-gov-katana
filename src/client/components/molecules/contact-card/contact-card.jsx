@@ -135,7 +135,7 @@ const ContactCard = props => {
             </div>
           </div>
         ))}
-      {message && <p>{message}</p>}
+      {message && <p data-testid="message">{message}</p>}
     </div>
   )
 }
