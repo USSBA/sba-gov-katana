@@ -102,8 +102,8 @@ class LocationInfoSection extends React.Component {
       return (
         <div data-testid="location-info" className={styles.locationInfo}>
           <h3>Location information</h3>
-          {cardsContentSections.map(cardsContentSection => (
-            <div className={styles.cardCollection}>
+          {cardsContentSections.map((cardsContentSection, index) => (
+            <div className={styles.cardCollection} key={index}>
               <GenericCardCollection cardsContent={cardsContentSection} />
             </div>
           ))}
