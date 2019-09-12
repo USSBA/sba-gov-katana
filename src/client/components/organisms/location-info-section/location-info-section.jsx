@@ -94,12 +94,11 @@ class LocationInfoSection extends React.Component {
         cardsContent.push(<ContactCard {...cardProps} />)
       }
     })
-    const cardsContent2 = cardsContent.slice(0, 1)
 
-    if (cardsContent2.length <= 0) {
+    if (cardsContent.length <= 0) {
       return null
-    } else if (cardsContent2.length === 4) {
-      const cardsContentSections = chunk(cardsContent2, 2)
+    } else if (cardsContent.length === 4) {
+      const cardsContentSections = chunk(cardsContent, 2)
       return (
         <div data-testid="location-info" className={styles.locationInfo}>
           <h3>Location information</h3>
@@ -114,7 +113,7 @@ class LocationInfoSection extends React.Component {
       return (
         <div data-testid="location-info" className={styles.locationInfo}>
           <h3>Location information</h3>
-          <GenericCardCollection cardsContent={cardsContent2} />
+          <GenericCardCollection cardsContent={cardsContent} />
         </div>
       )
     }
