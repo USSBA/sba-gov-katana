@@ -13,6 +13,7 @@ const mockProps = {
   contactName: null,
   email: 'tarkin@deathstar.org',
   hoursOfOperation: 'Mon-Fri: 9am-5pm',
+  message: 'We serve the galaxy.',
   link: 'http://starwars.wikia.com/wiki/Wilhuff_Tarkin',
   phoneNumber: '123-456-5665',
   state: 'MD',
@@ -34,6 +35,7 @@ describe('ContactCard', () => {
     const phoneNumber = getByTestId('contact phone')
     const link = getByTestId('contact link')
     const hoursOfOperation = getByTestId('hours of operation')
+    const message = getByTestId('message')
 
     expect(title).toHaveTextContent(mockProps.title)
     within(address).findByText(expectedAddress)
@@ -41,6 +43,7 @@ describe('ContactCard', () => {
     within(phoneNumber).findByText(mockProps.phoneNumber)
     within(hoursOfOperation).findByText(mockProps.hoursOfOperation)
     within(link).findByText(mockProps.link)
+    expect(message).toHaveTextContent(mockProps.message)
   })
 
   it('should NOT render the title section when NO title is passed in', () => {
@@ -125,6 +128,16 @@ describe('ContactCard', () => {
     getByTestId('contact-card')
     const hours = queryByTestId('hours of operation')
     expect(hours).not.toBeInTheDocument()
+  })
+
+  it('should NOT render the message section when message is an empty string', () => {
+    const props = _.clone(mockProps)
+    props.message = ''
+    const { getByTestId, queryByTestId } = render(<ContactCard {...props} />)
+
+    getByTestId('contact-card')
+    const message = queryByTestId('message')
+    expect(message).not.toBeInTheDocument()
   })
 
   describe('formatHours function', () => {
