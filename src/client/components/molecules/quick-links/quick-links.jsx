@@ -141,7 +141,7 @@ class QuickLinks extends PureComponent {
   render() {
     return (
       <div className={styles.collection} data-testid="quick-links">
-        {this.props.data ? this.renderQuickLinks() : <div>loading A</div>}
+        {this.props.data ? this.renderQuickLinks() : <div>loading</div>}
       </div>
     )
   }
