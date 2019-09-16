@@ -23,46 +23,14 @@ class MiniNav extends React.Component {
 
     this.state = {
       translateIsExpanded: false,
-      userId: '',
-      userEmail: '',
-      userLoggedOn: false,
       isSearchExpanded: false
     }
-  }
-
-  componentWillMount() {
-    this.setState({
-      userId: cookie.load('DRUPAL_UID'),
-      userLoggedOn: clientConfig.isUserLoggedIn
-    })
   }
 
   componentDidMount() {
     const {
       modalActions: { showSbaNewsletter }
     } = this.props
-    const { userId, userLoggedOn } = this.state
-
-    if (userId) {
-      runMiscAction(userId + '/roles').then(roles => this.setState({ roles }))
-      if (userLoggedOn) {
-        // check whether email is already provided
-        runMiscAction(userId + '/email').then(userEmail =>
-          this.setState({ userEmail }, () => {
-            if (!this.state.userEmail && config.govdelivery) {
-              /* eslint-disable-next-line no-magic-numbers */
-              this.timerId = setTimeout(() => showSbaNewsletter(userEmail), 5000)
-            }
-          })
-        )
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.timerId !== null) {
-      clearTimeout(this.timerId)
-    }
   }
 
   onSearchBarExpand(isSearchExpanded) {
@@ -72,8 +40,7 @@ class MiniNav extends React.Component {
   }
 
   render() {
-    const { userRoles } = this.state
-    const { isSearchExpanded, userLoggedOn, userId } = this.state
+    const { isSearchExpanded } = this.state
 
     // e.g. get just "en" if given "en-US"
     const langCode = getLanguageOverride(true)
@@ -87,13 +54,7 @@ class MiniNav extends React.Component {
       const { text, url } = TRANSLATIONS[key][langCode]
 
       return (
-        <UtilityLink
-          id={kebabCase(`desktop-mini-nav ${text}`)}
-          key={text}
-          text={text}
-          gray
-          url={isFunction(url) ? url(userId) : url}
-        />
+        <UtilityLink id={kebabCase(`desktop-mini-nav ${text}`)} key={text} text={text} gray url={url} />
       )
     }
 
@@ -107,9 +68,6 @@ class MiniNav extends React.Component {
         <ul id="deskop-mini-nav" aria-label="mini-navigation">
           <GoogleTranslate text={translate[langCode].text} />
           {['sbaEnEspanol', 'forPartners', 'newsroom', 'contactUs'].map(link)}
-          {userLoggedOn
-            ? ['adminTool', size(userRoles) && 'myAccount', 'logout'].map(link)
-            : [clientConfig.showRegisterLink && 'register', 'login'].map(link)}
           <SearchBar onExpand={isExpanded => this.onSearchBarExpand(isExpanded)} />
         </ul>
       </div>
