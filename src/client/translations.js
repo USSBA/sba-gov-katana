@@ -340,26 +340,6 @@ const TRANSLATIONS = {
       text: 'Ubicación'
     }
   },
-  login: {
-    en: {
-      text: 'Login',
-      url: '/user/login'
-    },
-    es: {
-      text: 'Ingresar',
-      url: '/user/login'
-    }
-  },
-  logOut: {
-    en: {
-      text: 'Log Out',
-      url: '/user/logout'
-    },
-    es: {
-      text: 'Cerrar sesión',
-      url: '/user/logout'
-    }
-  },
   lookUpYourState: {
     en: {
       text: 'Look up your state'
