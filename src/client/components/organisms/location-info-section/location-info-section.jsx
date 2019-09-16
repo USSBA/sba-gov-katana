@@ -64,11 +64,14 @@ class LocationInfoSection extends React.Component {
     const { office } = this.props
     const { alternateLocations, region } = this.state
 
+    // storage for entire office json for any office that needs to display location
     const officesForCards = []
 
     /*eslint-disable no-param-reassign*/
-    office.testId = 'main-location'
-    officesForCards.push(office)
+    if (office.location && office.location.length > 0) {
+      office.testId = 'main-location'
+      officesForCards.push(office)
+    }
 
     if (alternateLocations.length > 0) {
       alternateLocations.forEach(alternateLocation => {

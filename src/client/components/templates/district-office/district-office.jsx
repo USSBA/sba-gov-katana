@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
 import { isEmpty } from 'lodash'
 import { Button, SocialMediaLink } from 'atoms'
 import { AuthorCard, CallToAction, NewsletterForm, QuickLinks } from 'molecules'
@@ -70,9 +69,11 @@ class DistrictOfficeTemplate extends React.Component {
             <LocationInfoSection office={office} />
             <div className={styles.clear} />
           </div>
-          {leaders.length > 0 && <div className={styles.section}>
+          {leaders.length > 0 && (
+            <div className={styles.section}>
               <Leadership items={leaders} />
-          </div>}
+            </div>
+          )}
         </div>
         <div className={styles.content}>
           <div className={styles.section}>
