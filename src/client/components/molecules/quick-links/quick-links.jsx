@@ -36,13 +36,22 @@ const valueOrAll = value => {
 class QuickLinks extends PureComponent {
   constructor(props) {
     super(props)
-    this.state = { articles: [], documents: [] }
+    this.state = {
+      articles: [],
+      documents: [],
+      LOADING_STATE: 'unloaded'
+    }
   }
 
   async componentDidMount() {
     this.setState({
-      documents: await this.fetchDocuments(),
-      articles: await this.fetchArticles()
+      LOADING_STATE: 'isLoading'
+    }, async () => {
+      this.setState({
+        documents: await this.fetchDocuments(),
+        articles: await this.fetchArticles(),
+        LOADING_STATE: 'isLoaded'
+      })
     })
   }
 
@@ -98,7 +107,7 @@ class QuickLinks extends PureComponent {
     const {
       data: { typeOfLinks }
     } = this.props
-    const { documents, articles } = this.state
+    const { documents, articles, LOADING_STATE } = this.state
     const gridClass = this.generateGrid(typeOfLinks.length)
 
     return typeOfLinks.map((quickLink, index) => {
@@ -108,6 +117,7 @@ class QuickLinks extends PureComponent {
             key={index}
             className={styles.card + ' ' + gridClass}
             documents={documents['documents-' + index]}
+            LOADING_STATE={LOADING_STATE}
             {...quickLink}
           />
         )
@@ -139,6 +149,7 @@ class QuickLinks extends PureComponent {
 
 const LatestDocumentsCard = props => {
   const eventCategory = `${props.sectionHeaderText.toLowerCase()}-module`
+  const { LOADING_STATE } = props
   return (
     <div data-testid="documents-card" className={props.className}>
       <div className={styles.titleContainer}>
@@ -158,41 +169,44 @@ const LatestDocumentsCard = props => {
       </div>
       <DecorativeDash width={30} />
       <div>
-        {!isEmpty(props.documents) && props.documents.items.length ? (
-          props.documents.items.map((doc, index) => {
-            const currentFile = getCurrentFile(doc.files)
-            let effectiveDate
-            if (currentFile && currentFile.effectiveDate) {
-              effectiveDate = currentFile.effectiveDate
-            }
+        {LOADING_STATE === 'isLoading' && <div>Loading</div>}
+        {LOADING_STATE === 'isLoaded' && <div>
+          {!isEmpty(props.documents) && props.documents.items.length > 0 ? (
+            props.documents.items.map((doc, index) => {
+              const currentFile = getCurrentFile(doc.files)
+              let effectiveDate
+              if (currentFile && currentFile.effectiveDate) {
+                effectiveDate = currentFile.effectiveDate
+              }
 
-            // Add a prefix to SOPs with the format {DOC_TYPE} {DOC_NUMBER} ({DOC_VERSION}) - {DOC_TITLE}
-            let titlePrefix = ''
-            if (doc.documentIdType === 'SOP' && !isEmpty(doc.documentIdNumber)) {
-              titlePrefix = doc.documentIdType + ' ' + doc.documentIdNumber + ' - '
-            }
-            const linkTitle =
-              /* eslint-disable-next-line no-magic-number */
-              titlePrefix +
-              (doc.title.length > MAX_TITLE_LENGTH
-                ? doc.title.slice(0, MAX_TITLE_LENGTH + 10) + '...'
-                : doc.title)
-            return (
-              <div key={index}>
-                <Link data-testid="document-link" to={doc.url}>
-                  {linkTitle}
-                </Link>
-                {effectiveDate && (
-                  <div data-testid="document-date" className={styles.date}>
-                    {formatDate(effectiveDate)}
-                  </div>
-                )}
-              </div>
-            )
-          })
-        ) : (
-          <div>loading</div>
-        )}
+              // Add a prefix to SOPs with the format {DOC_TYPE} {DOC_NUMBER} ({DOC_VERSION}) - {DOC_TITLE}
+              let titlePrefix = ''
+              if (doc.documentIdType === 'SOP' && !isEmpty(doc.documentIdNumber)) {
+                titlePrefix = doc.documentIdType + ' ' + doc.documentIdNumber + ' - '
+              }
+              const linkTitle =
+                /* eslint-disable-next-line no-magic-number */
+                titlePrefix +
+                (doc.title.length > MAX_TITLE_LENGTH
+                  ? doc.title.slice(0, MAX_TITLE_LENGTH + 10) + '...'
+                  : doc.title)
+              return (
+                <div key={index}>
+                  <Link data-testid="document-link" to={doc.url}>
+                    {linkTitle}
+                  </Link>
+                  {effectiveDate && (
+                    <div data-testid="document-date" className={styles.date}>
+                      {formatDate(effectiveDate)}
+                    </div>
+                  )}
+                </div>
+              )
+            })
+          ) : (
+            <div data-testid="no-results">No documents found</div>
+          )}
+          </div>}
       </div>
     </div>
   )

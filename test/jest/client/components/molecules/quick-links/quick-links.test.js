@@ -465,4 +465,33 @@ describe('Quick Links unit tests', () => {
 
     mockFetchSiteContent.mockReset()
   })
+  test('should not have any document links because no documents have returned', async () => {
+    const mockPropsData = {
+      type: 'quickLinks',
+      typeOfLinks: [
+        {
+          documentActivity: [],
+          documentProgram: [],
+          documentType: [],
+          type: 'documentLookup',
+          documentOffice: 3000,
+          sectionHeaderText: 'Document List for Office'
+        }
+      ]
+    }
+
+    const mockResponse = {
+      count: 0,
+      items: []
+    }
+
+    const mockFetchSiteContent = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+    mockFetchSiteContent.mockReturnValue(mockResponse)
+
+    const { getByTestId } = render(<QuickLinks data={mockPropsData} />)
+    const content = await waitForElement(() => getByTestId('no-results'))
+    expect(content).toBeInTheDocument()
+
+    mockFetchSiteContent.mockReset()
+  })
 })
