@@ -35,34 +35,34 @@ class LocationInfoSection extends React.Component {
   constructor() {
     super()
     this.state = {
-      alternateLocations: [],
-      region: null
+      alternateOffices: [],
+      regionalOffice: null
     }
   }
 
   async componentDidMount() {
-    const { office } = this.props
+    const { alternateLocations, office } = this.props.office
 
     // restricts to a maximum of two alternate locations
-    const alternateLocations = []
-    if (office.alternateLocations && office.alternateLocations.length > 0) {
-      const alternateOfficeIds = office.alternateLocations.slice(0, 2)
+    const alternateOffices = []
+    if (alternateLocations && alternateLocations.length > 0) {
+      const alternateOfficeIds = alternateLocations.slice(0, 2)
       for (let i = 0; i < alternateOfficeIds.length; i++) {
-        alternateLocations[i] = await fetchRestContent(alternateOfficeIds[i])
+        alternateOffices[i] = await fetchRestContent(alternateOfficeIds[i])
       }
     }
 
-    let region
-    if (office.office && typeof office.office === 'number') {
-      region = await fetchRestContent(office.office)
+    let regionalOffice
+    if (office && typeof office === 'number') {
+      regionalOffice = await fetchRestContent(office)
     }
 
-    this.setState({ alternateLocations, region })
+    this.setState({ alternateOffices, regionalOffice })
   }
 
   render() {
     const { office } = this.props
-    const { alternateLocations, region } = this.state
+    const { alternateOffices, regionalOffice } = this.state
 
     // storage for entire office json for any office that needs to display location
     const officesForCards = []
@@ -71,16 +71,16 @@ class LocationInfoSection extends React.Component {
     office.testId = 'main-location'
     officesForCards.push(office)
 
-    if (alternateLocations.length > 0) {
-      alternateLocations.forEach(alternateLocation => {
-        alternateLocation.testId = 'alternate-location'
-        officesForCards.push(alternateLocation)
+    if (alternateOffices.length > 0) {
+      alternateOffices.forEach(alternateOffice => {
+        alternateOffice.testId = 'alternate-location'
+        officesForCards.push(alternateOffice)
       })
     }
 
-    if (region) {
-      region.testId = 'region-location'
-      officesForCards.push(region)
+    if (regionalOffice) {
+      regionalOffice.testId = 'region-location'
+      officesForCards.push(regionalOffice)
     }
     /*eslint-enable no-param-reassign*/
 
