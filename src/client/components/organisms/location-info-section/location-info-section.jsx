@@ -7,18 +7,18 @@ import { GenericCardCollection } from 'organisms'
 import { fetchRestContent } from '../../../fetch-content-helper'
 import styles from './location-info-section.scss'
 
-function getContactCardProps(locationInfo, areasServed, testId) {
+function getContactCardProps(title, locationInfo, areasServed, testId) {
   const cardProps = {
     testId: testId,
     border: false
   }
 
+  typeof title === 'string' && (cardProps.title = title)
   typeof locationInfo.city === 'string' && (cardProps.city = locationInfo.city)
   typeof locationInfo.email === 'string' && (cardProps.email = locationInfo.email)
   typeof locationInfo.fax === 'string' && (cardProps.fax = locationInfo.fax)
   typeof locationInfo.hoursOfOperation === 'string' &&
     (cardProps.hoursOfOperation = locationInfo.hoursOfOperation)
-  typeof locationInfo.name === 'string' && (cardProps.title = locationInfo.name)
   typeof locationInfo.phoneNumber === 'string' && (cardProps.phoneNumber = locationInfo.phoneNumber)
   typeof locationInfo.state === 'string' && (cardProps.state = locationInfo.state)
   typeof locationInfo.streetAddress === 'string' && (cardProps.streetAddress = locationInfo.streetAddress)
@@ -88,6 +88,7 @@ class LocationInfoSection extends React.Component {
     officesForCards.forEach(officeInfo => {
       if (Array.isArray(officeInfo.location) && officeInfo.location.length > 0) {
         const cardProps = getContactCardProps(
+          officeInfo.title,
           officeInfo.location[0],
           officeInfo.areasServed,
           officeInfo.testId
