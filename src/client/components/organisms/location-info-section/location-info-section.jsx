@@ -68,10 +68,8 @@ class LocationInfoSection extends React.Component {
     const officesForCards = []
 
     /*eslint-disable no-param-reassign*/
-    if (office.location && office.location.length > 0) {
-      office.testId = 'main-location'
-      officesForCards.push(office)
-    }
+    office.testId = 'main-location'
+    officesForCards.push(office)
 
     if (alternateLocations.length > 0) {
       alternateLocations.forEach(alternateLocation => {
@@ -98,7 +96,7 @@ class LocationInfoSection extends React.Component {
       }
     })
 
-    if (cardsContent.length <= 0) {
+    if (cardsContent.length === 0) {
       return null
     } else if (cardsContent.length === 4) {
       const cardsContentSections = chunk(cardsContent, 2)
