@@ -15,6 +15,7 @@ import EventResult from './event-result/event-result.jsx'
 import GenericCardCollection from './generic-card-collection/generic-card-collection.jsx'
 import GlobalSearch from './global-search/global-search.jsx'
 import Hero from './hero/hero.jsx'
+import LocationInfoSection from './location-info-section/location-info-section.jsx'
 import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
 import NewsReleases from './news-releases/news-releases.jsx'
@@ -77,6 +78,7 @@ export {
   GenericCardCollection,
   GlobalSearch,
   Hero,
+  LocationInfoSection,
   Lookup,
   ModalController,
   NewsReleases,

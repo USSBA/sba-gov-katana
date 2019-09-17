@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
 import { isEmpty } from 'lodash'
 import { Button, SocialMediaLink } from 'atoms'
-import { AuthorCard, ContactCard, CallToAction, NewsletterForm, QuickLinks, Card } from 'molecules'
-import { GenericCardCollection, Hero, NewsReleases, EventResult, Results, SuccessStories } from 'organisms'
+import { AuthorCard, CallToAction, NewsletterForm, QuickLinks } from 'molecules'
+import { Hero, LocationInfoSection, NewsReleases, EventResult, Results, SuccessStories } from 'organisms'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import twitterThumbnail from 'assets/images/footer/twitter.png'
 import styles from './district-office.scss'
@@ -20,13 +19,13 @@ class DistrictOfficeTemplate extends React.Component {
 
   async componentDidMount() {
     const { office } = this.props
+
     const { items } = await fetchSiteContent('events', {
       pageSize: 5,
       officeId: office.id
     })
     // when the events content api is set to D8, then pageSize=5 will do the work for us
     // but since the events content api is set to D7, slice the first 5 items off the response
-
     let events = []
     if (items && items.length > 0) {
       events = items.slice(0, 5)
@@ -41,7 +40,6 @@ class DistrictOfficeTemplate extends React.Component {
     }
 
     leaders = leaders.filter(item => item)
-    
     this.setState({ events, leaders })
   }
 
@@ -52,7 +50,7 @@ class DistrictOfficeTemplate extends React.Component {
   }
 
   render() {
-    const { events, leaders, blogs } = this.state
+    const { events, leaders } = this.state
     const { office } = this.props
     const { twitterLink } = office
 
@@ -61,18 +59,21 @@ class DistrictOfficeTemplate extends React.Component {
         <HeroBanner office={office} />
         <div className={styles.content}>
           <div data-testid="office-information-section" className={styles.officeInfo}>
-            <h2>Office Information</h2>
+            <h2>Office information</h2>
             <div className={styles.servicesAndSocialMediaContainer}>
               {this.validateOfficeServices(office) && <ServicesProvided office={office} />}
               {typeof twitterLink === 'string' && <SocialMedia twitterLink={twitterLink} />}
             </div>
           </div>
           <div className={styles.section}>
-            <LocationInfo office={office} />
+            <LocationInfoSection office={office} />
+            <div className={styles.clear} />
           </div>
-          {leaders.length > 0 && <div className={styles.section}>
+          {leaders.length > 0 && (
+            <div className={styles.section}>
               <Leadership items={leaders} />
-          </div>}
+            </div>
+          )}
         </div>
         <div className={styles.content}>
           <div className={styles.section}>
@@ -110,7 +111,7 @@ const ServicesProvided = ({ office }) => {
   const { officeServices } = office
   return (
     <div data-testid="office-services-section">
-      <h3>Services Provided</h3>
+      <h3>Services provided</h3>
       <div className={styles.servicesProvidedList} dangerouslySetInnerHTML={{ __html: officeServices }} />
     </div>
   )
@@ -171,47 +172,6 @@ const SocialMedia = ({ twitterLink }) => {
       <SocialMediaLink image={twitterThumbnail} altText={altText} url={twitterLink} />
     </div>
   )
-}
-
-const LocationInfo = ({ office }) => {
-  const cardsContent = []
-
-  if (Array.isArray(office.location) && office.location.length > 0) {
-    const mainLocation = office.location[0]
-    const mainContactCardProps = {
-      testId: 'main-location',
-      border: false
-    }
-
-    typeof mainLocation.city === 'string' && (mainContactCardProps.city = mainLocation.city)
-    typeof mainLocation.email === 'string' && (mainContactCardProps.email = mainLocation.email)
-    typeof mainLocation.fax === 'string' && (mainContactCardProps.fax = mainLocation.fax)
-    typeof mainLocation.hoursOfOperation === 'string' &&
-      (mainContactCardProps.hoursOfOperation = mainLocation.hoursOfOperation)
-    typeof mainLocation.name === 'string' && (mainContactCardProps.title = mainLocation.name)
-    typeof mainLocation.phoneNumber === 'string' &&
-      (mainContactCardProps.phoneNumber = mainLocation.phoneNumber)
-    typeof mainLocation.state === 'string' && (mainContactCardProps.state = mainLocation.state)
-    typeof mainLocation.streetAddress === 'string' &&
-      (mainContactCardProps.streetAddress = mainLocation.streetAddress)
-    typeof mainLocation.zipCode === 'number' && (mainContactCardProps.zipCode = mainLocation.zipCode)
-
-    const mainContactCard = <ContactCard {...mainContactCardProps} />
-
-    // ensures that main location will be the first element in the array
-    cardsContent.unshift(mainContactCard)
-  }
-
-  if (cardsContent.length > 0) {
-    return (
-      <div data-testid="location-info" className={styles.locationInfo}>
-        <h3>Location Information</h3>
-        <GenericCardCollection cardsContent={cardsContent} />
-      </div>
-    )
-  } else {
-    return null
-  }
 }
 
 const NewsletterSignup = () => {

@@ -24,6 +24,7 @@ const ContactCard = props => {
     fax,
     hoursOfOperation,
     link,
+    message,
     office,
     personTitle,
     phoneNumber,
@@ -134,6 +135,7 @@ const ContactCard = props => {
             </div>
           </div>
         ))}
+      {message && <p data-testid="message">{message}</p>}
     </div>
   )
 }
@@ -144,6 +146,7 @@ ContactCard.propTypes = {
   fax: PropTypes.string,
   hoursOfOperation: PropTypes.string,
   link: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  message: PropTypes.string,
   phoneNumber: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   state: PropTypes.string,
   streetAddress: PropTypes.string,
