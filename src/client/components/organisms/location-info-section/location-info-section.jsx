@@ -51,7 +51,7 @@ class LocationInfoSection extends React.Component {
         alternateOffices[i] = await fetchRestContent(alternateOfficeIds[i])
       }
     }
-
+// Region office IDs are stored under the 'office' key
     let regionalOffice
     if (office && typeof office === 'number') {
       regionalOffice = await fetchRestContent(office)
