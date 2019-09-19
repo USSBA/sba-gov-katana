@@ -26,6 +26,8 @@ class BlogCategoryPage extends Component {
       category = 'SBA News and Views'
     } else if (categoryParam === 'industry-word') {
       category = 'Industry Word'
+    } else if (categoryParam === 'success-story') {
+      category = 'Success Story'
     }
     return category
   }
@@ -43,7 +45,11 @@ class BlogCategoryPage extends Component {
   }
 
   categoryValidation() {
-    return this.props.params.category === 'news-and-views' || this.props.params.category === 'industry-word'
+    return (
+      this.props.params.category === 'news-and-views' ||
+      this.props.params.category === 'industry-word' ||
+      this.props.params.category === 'success-story'
+    )
   }
 
   setHeader() {
@@ -55,6 +61,9 @@ class BlogCategoryPage extends Component {
     } else if (this.props.params.category === 'industry-word') {
       title = 'Industry Word posts'
       subtitle = 'Commentary and advice from leaders in the small business industry.'
+    } else if (this.props.params.category === 'success-story') {
+      title = 'Success Story posts'
+      subtitle = 'Success stories from small business owners.'
     }
     return { title, subtitle }
   }
