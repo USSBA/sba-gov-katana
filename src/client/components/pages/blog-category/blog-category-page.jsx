@@ -56,7 +56,9 @@ class BlogCategoryPage extends Component {
 
   async fetchOfficeName(officeId) {
     const office = await fetchRestContent(officeId)
-    this.setState({ officeName: office.title })
+    if (office && office.title) {
+      this.setState({ officeName: office.title })
+    }
   }
 
   categoryValidation() {
