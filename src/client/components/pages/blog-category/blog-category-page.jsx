@@ -7,7 +7,7 @@ import { CardCollection } from 'organisms'
 import ErrorPage from '../error-page/error-page.jsx'
 
 import styles from './blog-category-page.scss'
-import { fetchSiteContent } from '../../../fetch-content-helper'
+import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 
 class BlogCategoryPage extends Component {
   constructor() {
@@ -16,7 +16,16 @@ class BlogCategoryPage extends Component {
     this.state = {
       page: 1,
       blogs: [],
-      total: 0
+      total: 0,
+      officeName: ''
+    }
+  }
+
+  componentDidMount() {
+    this.fetchBlogs(0, 12)
+
+    if (this.props.params.officeId) {
+      this.fetchOfficeName(this.props.params.officeId)
     }
   }
 
@@ -26,7 +35,7 @@ class BlogCategoryPage extends Component {
       category = 'SBA News and Views'
     } else if (categoryParam === 'industry-word') {
       category = 'Industry Word'
-    } else if (categoryParam === 'success-story') {
+    } else if (categoryParam === 'success-stories') {
       category = 'Success Story'
     }
     return category
@@ -45,12 +54,29 @@ class BlogCategoryPage extends Component {
     })
   }
 
+  async fetchOfficeName(officeId) {
+    const office = await fetchRestContent(officeId)
+    this.setState({ officeName: office.title })
+  }
+
   categoryValidation() {
     return (
       this.props.params.category === 'news-and-views' ||
       this.props.params.category === 'industry-word' ||
-      this.props.params.category === 'success-story'
+      this.props.params.category === 'success-stories'
     )
+  }
+
+  reformatSubtitle(subtitle) {
+    const { officeName } = this.state
+    let reformattedSubtite = ''
+
+    if (officeName) {
+      reformattedSubtite = `${subtitle} out of the ${officeName}.`
+    } else {
+      reformattedSubtite = `${subtitle}.`
+    }
+    return reformattedSubtite
   }
 
   setHeader() {
@@ -58,19 +84,16 @@ class BlogCategoryPage extends Component {
     let subtitle = ''
     if (this.props.params.category === 'news-and-views') {
       title = 'SBA News and Views posts'
-      subtitle = "Insights and updates from SBA's small business experts."
+      subtitle = "Insights and updates from SBA's small business experts"
     } else if (this.props.params.category === 'industry-word') {
       title = 'Industry Word posts'
-      subtitle = 'Commentary and advice from leaders in the small business industry.'
-    } else if (this.props.params.category === 'success-story') {
+      subtitle = 'Commentary and advice from leaders in the small business industry'
+    } else if (this.props.params.category === 'success-stories') {
       title = 'Success Story posts'
-      subtitle = 'Success stories from small business owners.'
+      subtitle = 'Success stories from small business owners'
     }
+    subtitle = this.reformatSubtitle(subtitle)
     return { title, subtitle }
-  }
-
-  componentDidMount() {
-    this.fetchBlogs(0, 12)
   }
 
   reformatBlog(blog) {

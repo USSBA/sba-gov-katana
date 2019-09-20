@@ -1,17 +1,18 @@
 /*eslint-disable no-undefined*/
 
 import React from 'react'
-import BlogCategoryPage from 'pages/blog-category/blog-category-page.jsx'
 import { render, cleanup, waitForElement, fireEvent } from 'react-testing-library'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducers from 'client/reducers'
 import 'jest-dom/extend-expect'
+import axiosMock from 'axios'
+
+import BlogCategoryPage from 'pages/blog-category/blog-category-page.jsx'
 import '../../test-data/matchMedia.mock'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 import { blogQueryResponse } from './blog-category-response-faker.js'
-import axiosMock from 'axios'
 
 const validBlogCategories = [
   {
@@ -27,7 +28,7 @@ const validBlogCategories = [
     queryTerm: 'Industry Word'
   },
   {
-    name: 'success-story',
+    name: 'success-stories',
     title: 'Success Story posts',
     subtitle: 'Success stories from small business owners',
     queryTerm: 'Success Story'
