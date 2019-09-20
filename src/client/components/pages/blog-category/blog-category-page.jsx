@@ -71,16 +71,16 @@ class BlogCategoryPage extends Component {
 
   reformatSubtitle(subtitle, appendedTextWhenNoOffice = null) {
     const { officeName } = this.state
-    let reformattedSubtite = ''
+    let reformattedSubtitle = ''
 
     if (officeName) {
-      reformattedSubtite = `${subtitle} out of the ${officeName}.`
+      reformattedSubtitle = `${subtitle} out of the ${officeName}.`
     } else if (appendedTextWhenNoOffice && !this.props.params.officeId) {
-      reformattedSubtite = `${subtitle} ${appendedTextWhenNoOffice}.`
+      reformattedSubtitle = `${subtitle} ${appendedTextWhenNoOffice}.`
     } else {
-      reformattedSubtite = `${subtitle}.`
+      reformattedSubtitle = `${subtitle}.`
     }
-    return reformattedSubtite
+    return reformattedSubtitle
   }
 
   setHeader() {

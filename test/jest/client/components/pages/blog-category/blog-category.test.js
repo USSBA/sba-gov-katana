@@ -7,6 +7,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducers from 'client/reducers'
 import 'jest-dom/extend-expect'
+import { when } from 'jest-when'
 import axiosMock from 'axios'
 
 import BlogCategoryPage from 'pages/blog-category/blog-category-page.jsx'
@@ -30,7 +31,7 @@ const validBlogCategories = [
   {
     name: 'success-stories',
     title: 'Success Story posts',
-    subtitle: 'Success stories from small business owners',
+    subtitle: 'Success stories from small business owners across the country',
     queryTerm: 'Success Story'
   }
 ]
@@ -142,6 +143,58 @@ describe('Blog Category Page', () => {
           expect(blogCards).toHaveLength(12)
         }
       )
+    })
+  })
+
+  describe('when visiting a blog category type for an office', () => {
+    it('will make the fetch call for the office json', () => {
+      const blogCategoryPageParams = {
+        category: 'success-stories',
+        officeId: 1234
+      }
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      render(<BlogCategoryPage params={blogCategoryPageParams} />)
+      expect(fetchRestContentStub).toHaveBeenCalledWith(blogCategoryPageParams.officeId)
+    })
+
+    it('will make the fetch call for the blogs json using the given category and office id', () => {
+      const blogCategoryPageParams = {
+        category: 'success-stories',
+        officeId: 1234
+      }
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      render(<BlogCategoryPage params={blogCategoryPageParams} />)
+
+      const expectedFetchParams = {
+        category: 'Success Story',
+        end: 12,
+        office: blogCategoryPageParams.officeId,
+        start: 0
+      }
+      expect(fetchSiteContentStub).toHaveBeenCalledWith('blogs', expectedFetchParams)
+    })
+
+    it('will display the custom subtitle for that office', async () => {
+      const blogCategoryPageParams = {
+        category: 'success-stories',
+        officeId: 1234
+      }
+      const mockOfficeResponse = {
+        id: 1234,
+        title: 'Fearless HQ',
+        type: 'office'
+      }
+
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      when(fetchRestContentStub)
+        .calledWith(blogCategoryPageParams.officeId)
+        .mockImplementationOnce(() => mockOfficeResponse)
+
+      const { getByTestId } = render(<BlogCategoryPage params={blogCategoryPageParams} />)
+      const subtitle = await waitForElement(() => getByTestId('blog-category-subtitle'))
+
+      const expectedSubtitleText = `Success stories from small business owners out of the ${mockOfficeResponse.title}.`
+      expect(subtitle).toHaveTextContent(expectedSubtitleText)
     })
   })
 
