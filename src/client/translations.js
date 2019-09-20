@@ -382,7 +382,7 @@ const TRANSLATIONS = {
   },
   nationalResourceGuides: {
     en: {
-      text: 'National Resource Guides(English/Spanish)',
+      text: 'National Resource Guides (English/Spanish)',
       url: '/document?search=national%20resource%20guide'
     },
     es: {
