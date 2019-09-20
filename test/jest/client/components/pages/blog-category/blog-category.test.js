@@ -16,15 +16,21 @@ import axiosMock from 'axios'
 const validBlogCategories = [
   {
     name: 'news-and-views',
-    title: 'SBA News and Views',
+    title: 'SBA News and Views posts',
     subtitle: "Insights and updates from SBA's small business experts",
     queryTerm: 'SBA News and Views'
   },
   {
     name: 'industry-word',
-    title: 'Industry Word',
+    title: 'Industry Word posts',
     subtitle: 'Commentary and advice from leaders in the small business industry',
     queryTerm: 'Industry Word'
+  },
+  {
+    name: 'success-story',
+    title: 'Success Story posts',
+    subtitle: 'Success stories from small business owners',
+    queryTerm: 'Success Story'
   }
 ]
 
@@ -40,6 +46,7 @@ describe('Blog Category Page', () => {
         const subtitle = await waitForElement(() => getByTestId('blog-category-subtitle'))
         expect(subtitle).toHaveTextContent(blogCategory.subtitle)
       })
+
       it('will get the blog posts for ' + blogCategory.title, async () => {
         const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
 
@@ -58,6 +65,7 @@ describe('Blog Category Page', () => {
 
         const firstQueryParams = {
           category: blogCategory.queryTerm,
+          office: '',
           start: 0,
           end: 12
         }
@@ -72,6 +80,7 @@ describe('Blog Category Page', () => {
         expect(bottomPaginator).toBeInTheDocument()
         expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
       })
+
       it(
         'will properly paginate the and make the appropriate requests for ' + blogCategory.title,
         async () => {
@@ -99,11 +108,13 @@ describe('Blog Category Page', () => {
 
           const firstQueryParams = {
             category: blogCategory.queryTerm,
+            office: '',
             start: 0,
             end: 12
           }
           const secondQueryParams = {
             category: blogCategory.queryTerm,
+            office: '',
             start: 12,
             end: 24
           }
@@ -132,6 +143,7 @@ describe('Blog Category Page', () => {
       )
     })
   })
+
   describe('when visiting an invalid blog category type', () => {
     it('will render the error page', async () => {
       const initialState = undefined

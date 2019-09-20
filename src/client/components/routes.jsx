@@ -114,7 +114,7 @@ const mainRoutes = [
   <Redirect key={65} from="/blogs" to="/blogs/" />,
   <Route key={66} path="/blogs/:category/" component={BlogCategoryPage} />,
   <Redirect key={67} from="/blogs/:category" to="/blogs/:category/" />,
-  <Route key={68} from="/blogs/:category/:officeId/" component={BlogCategoryPage} />,
+  <Route key={68} path="/blogs/:category/:officeId/" component={BlogCategoryPage} />,
   <Redirect key={69} from="/blogs/:category/:officeId" to="/blogs/:category/:officeId/" />,
   <Route key={70} path="/offices/district/:officeId/" component={DistrictOfficePage} />,
   <Redirect key={71} from="/offices/district/:officeId" to="/offices/district/:officeId/" />,

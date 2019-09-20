@@ -35,6 +35,7 @@ class BlogCategoryPage extends Component {
   async fetchBlogs(start, end) {
     const { total = 0, blogs = [] } = await fetchSiteContent('blogs', {
       category: this.blogCategoryCorrection(this.props.params.category),
+      office: this.props.params.officeId || '',
       start: start,
       end: end
     })
