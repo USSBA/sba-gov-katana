@@ -56,7 +56,7 @@ class BlogCategoryPage extends Component {
 
   async fetchOfficeName(officeId) {
     const office = await fetchRestContent(officeId)
-    if (office && office.title) {
+    if (office && office.type === 'office' && office.title) {
       this.setState({ officeName: office.title })
     }
   }
@@ -69,12 +69,14 @@ class BlogCategoryPage extends Component {
     )
   }
 
-  reformatSubtitle(subtitle) {
+  reformatSubtitle(subtitle, appendedTextWhenNoOffice = null) {
     const { officeName } = this.state
     let reformattedSubtite = ''
 
     if (officeName) {
       reformattedSubtite = `${subtitle} out of the ${officeName}.`
+    } else if (appendedTextWhenNoOffice && !this.props.params.officeId) {
+      reformattedSubtite = `${subtitle} ${appendedTextWhenNoOffice}.`
     } else {
       reformattedSubtite = `${subtitle}.`
     }
@@ -84,6 +86,7 @@ class BlogCategoryPage extends Component {
   setHeader() {
     let title = ''
     let subtitle = ''
+    let appendedText = ''
     if (this.props.params.category === 'news-and-views') {
       title = 'SBA News and Views posts'
       subtitle = "Insights and updates from SBA's small business experts"
@@ -93,8 +96,9 @@ class BlogCategoryPage extends Component {
     } else if (this.props.params.category === 'success-stories') {
       title = 'Success Story posts'
       subtitle = 'Success stories from small business owners'
+      appendedText = 'across the country'
     }
-    subtitle = this.reformatSubtitle(subtitle)
+    subtitle = this.reformatSubtitle(subtitle, appendedText)
     return { title, subtitle }
   }
 
