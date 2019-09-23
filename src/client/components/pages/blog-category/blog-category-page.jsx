@@ -41,13 +41,23 @@ class BlogCategoryPage extends Component {
     return category
   }
 
-  async fetchBlogs(start, end) {
-    const { total = 0, blogs = [] } = await fetchSiteContent('blogs', {
+  getQueryParams(start, end) {
+    const queryParams = {
       category: this.blogCategoryCorrection(this.props.params.category),
-      office: this.props.params.officeId || '',
       start: start,
       end: end
-    })
+    }
+
+    if (this.props.params.officeId) {
+      queryParams.office = this.props.params.officeId
+    }
+
+    return queryParams
+  }
+
+  async fetchBlogs(start, end) {
+    const queryParams = this.getQueryParams(start, end)
+    const { total = 0, blogs = [] } = await fetchSiteContent('blogs', queryParams)
     this.setState({
       total: total,
       blogs: blogs

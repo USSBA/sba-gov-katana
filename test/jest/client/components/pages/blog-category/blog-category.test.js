@@ -67,7 +67,6 @@ describe('Blog Category Page', () => {
 
         const firstQueryParams = {
           category: blogCategory.queryTerm,
-          office: '',
           start: 0,
           end: 12
         }
@@ -110,13 +109,11 @@ describe('Blog Category Page', () => {
 
           const firstQueryParams = {
             category: blogCategory.queryTerm,
-            office: '',
             start: 0,
             end: 12
           }
           const secondQueryParams = {
             category: blogCategory.queryTerm,
-            office: '',
             start: 12,
             end: 24
           }
@@ -172,6 +169,21 @@ describe('Blog Category Page', () => {
         start: 0
       }
       expect(fetchSiteContentStub).toHaveBeenCalledWith('blogs', expectedFetchParams)
+    })
+
+    it('will NOT include the office key to make the fetch call for blogs when there is NO office', () => {
+      const blogCategoryPageParamsWithoutOffice = {
+        category: 'success-stories'
+      }
+      const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      render(<BlogCategoryPage params={blogCategoryPageParamsWithoutOffice} />)
+
+      const expectedFetchParamsWithoutOfficeKey = {
+        category: 'Success Story',
+        end: 12,
+        start: 0
+      }
+      expect(fetchSiteContentStub).toHaveBeenCalledWith('blogs', expectedFetchParamsWithoutOfficeKey)
     })
 
     it('will display the custom subtitle for that office', async () => {
