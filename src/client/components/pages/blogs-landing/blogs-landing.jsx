@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
-import { AuthorCardCollection, BlogCategoryDeck, Hero, SuccessStories } from 'organisms'
+import { AuthorCardCollection, BlogCategoryDeck, Hero } from 'organisms'
 import { compact } from 'lodash'
 
 class BlogsLandingPage extends Component {
@@ -37,7 +37,7 @@ class BlogsLandingPage extends Component {
       },
       {
         category: 'Success Story',
-        title: 'Success Stories posts',
+        title: 'Success Story posts',
         subtitle: 'Stories from small business owners across the country.',
         url: '/blogs/success-stories',
         cards: []
