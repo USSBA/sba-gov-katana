@@ -103,7 +103,8 @@ class Footer extends React.Component {
           TRANSLATIONS.noFearAct,
           TRANSLATIONS.reportFraudWasteAndAbuse,
           TRANSLATIONS.initiatives,
-          TRANSLATIONS.plainLanguage
+          TRANSLATIONS.plainLanguage,
+          TRANSLATIONS.nationalResourceGuides
         ]
       },
       {

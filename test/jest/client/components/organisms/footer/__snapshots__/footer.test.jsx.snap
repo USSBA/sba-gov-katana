@@ -326,6 +326,20 @@ exports[`Front Page Hero should render correctly 1`] = `
             Plain Language
           </a>
         </li>
+        <li
+          className="pageLink "
+        >
+          <a
+            className="link "
+            id="footer-group-2-5"
+            onBlur={[Function]}
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            National Resource Guides (English/Spanish)
+          </a>
+        </li>
       </ul>
     </div>
     <div

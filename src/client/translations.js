@@ -380,6 +380,16 @@ const TRANSLATIONS = {
       text: 'Nombre'
     }
   },
+  nationalResourceGuides: {
+    en: {
+      text: 'National Resource Guides (English/Spanish)',
+      url: '/document?search=national%20resource%20guide'
+    },
+    es: {
+      text: 'Guías de Recursos Edición Nacional (español/inglés)',
+      url: '/document?search=national%20resource%20guide'
+    }
+  },
   newsroom: {
     en: {
       text: 'Newsroom',
