@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
-import { AuthorCardCollection, BlogCategoryDeck, Hero } from 'organisms'
+import { AuthorCardCollection, BlogCategoryDeck, Hero, SuccessStories } from 'organisms'
 import { compact } from 'lodash'
 
 class BlogsLandingPage extends Component {
@@ -33,6 +33,13 @@ class BlogsLandingPage extends Component {
         title: 'Industry Word posts',
         subtitle: 'Commentary and advice from leaders in the small business industry.',
         url: '/blogs/industry-word',
+        cards: []
+      },
+      {
+        category: 'Success Story',
+        title: 'Success Stories posts',
+        subtitle: 'Stories from small business owners across the country.',
+        url: '/blogs/success-stories',
         cards: []
       }
     ]

@@ -46,6 +46,35 @@ const mockIndustryWordData = [
   }
 ]
 
+const mockSuccessStoryData = [
+  {
+    "author": 6377,
+    "blogBody": [{
+        "id": 21591,
+        "type": "blogPost",
+        "blogSectionImage": {
+            "url": "/sites/default/files/2019-09/Success%20Story%202.jpg",
+            "alt": "family",
+            "width": 1218,
+            "height": 813
+        },
+        "blogSectionText": "<p>oh boy</p>\r\n"
+    }],
+    "blogCategory": "Success Story",
+    "blogTags": "Business Laws",
+    "featuredImage": {},
+    "office": 6386,
+    "summary": "yep",
+    "type": "blog",
+    "title": "My Success",
+    "id": 19603,
+    "updated": 1567708951,
+    "created": 1567699392,
+    "langCode": "en",
+    "url": "/blog/my-success-0"
+  }
+]
+
 const mockAuthorData = [
   {
     bio: '<p>Pradeep serves as Chief of Staff.',
@@ -102,6 +131,8 @@ const fetchSiteContentStubCallback = (node, { category }) => {
     result.blogs = mockNewsAndViewsData
   } else if (category === 'Industry Word') {
     result.blogs = mockIndustryWordData
+  } else if (category === 'Success Story') {
+    result.blogs = mockSuccessStoryData
   }
   return result
 }
@@ -115,15 +146,17 @@ describe('Blogs landing page', () => {
     fetchSiteContentStub
       .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
       .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
       .mockImplementationOnce(() => Promise.resolve([]))
     const { getByTestId } = render(<BlogsLandingPage />)
 
     expect(getByTestId('blogs-hero')).toBeInTheDocument()
   })
 
-  it('renders the blog category deck component twice', async () => {
+  it('renders the blog category deck component thrice', async () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
     fetchSiteContentStub
+      .mockImplementationOnce(fetchSiteContentStubCallback)
       .mockImplementationOnce(fetchSiteContentStubCallback)
       .mockImplementationOnce(fetchSiteContentStubCallback)
       // mock authors call to return nothing
@@ -132,13 +165,14 @@ describe('Blogs landing page', () => {
     const { getAllByTestId } = render(<BlogsLandingPage />)
     const content = await waitForElement(() => getAllByTestId('blog category deck'))
 
-    expect(content.length).toEqual(2)
+    expect(content.length).toEqual(3)
   })
 
   it('makes a fetchSiteContent call for each category with defined query params', async () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
     // mocking both blog category calls and authors call
     fetchSiteContentStub
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
       .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
       .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
       .mockImplementationOnce(() => Promise.resolve([]))
@@ -161,6 +195,9 @@ describe('Blogs landing page', () => {
         .mockImplementationOnce(() => {
           return { blogs: [] }
         })
+        .mockImplementationOnce(() => {
+          return { blogs: [] }
+        })
         // fetchAuthors
         .mockImplementationOnce(() => {
           const mockResponse = [101, 102]
@@ -175,10 +212,13 @@ describe('Blogs landing page', () => {
       const content = await waitForElement(() => getAllByTestId('authorCardCollection'))
       expect(content[0]).toBeInTheDocument()
     })
-    it('should contain 2 AuthorCard components', async () => {
+    it('should contain 3 AuthorCard components', async () => {
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
       fetchSiteContentStub
         // fetchBlogs (there are two calls made inside the component so mock both)
+        .mockImplementationOnce(() => {
+          return { blogs: [] }
+        })
         .mockImplementationOnce(() => {
           return { blogs: [] }
         })
