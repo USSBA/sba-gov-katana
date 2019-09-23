@@ -5,9 +5,8 @@ import moment from 'moment'
 import { Paginator } from 'molecules'
 import { CardCollection } from 'organisms'
 import ErrorPage from '../error-page/error-page.jsx'
-
+import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './blog-category-page.scss'
-import { fetchSiteContent } from '../../../fetch-content-helper'
 
 class BlogCategoryPage extends Component {
   constructor() {
@@ -16,7 +15,16 @@ class BlogCategoryPage extends Component {
     this.state = {
       page: 1,
       blogs: [],
-      total: 0
+      total: 0,
+      officeName: ''
+    }
+  }
+
+  componentDidMount() {
+    this.fetchBlogs(0, 12)
+
+    if (this.props.params.officeId) {
+      this.fetchOfficeName(this.props.params.officeId)
     }
   }
 
@@ -26,41 +34,81 @@ class BlogCategoryPage extends Component {
       category = 'SBA News and Views'
     } else if (categoryParam === 'industry-word') {
       category = 'Industry Word'
+    } else if (categoryParam === 'success-stories') {
+      category = 'Success Story'
     }
     return category
   }
 
-  async fetchBlogs(start, end) {
-    const { total = 0, blogs = [] } = await fetchSiteContent('blogs', {
+  getQueryParams(start, end) {
+    const queryParams = {
       category: this.blogCategoryCorrection(this.props.params.category),
       start: start,
       end: end
-    })
+    }
+
+    if (this.props.params.officeId) {
+      queryParams.office = this.props.params.officeId
+    }
+
+    return queryParams
+  }
+
+  async fetchBlogs(start, end) {
+    const queryParams = this.getQueryParams(start, end)
+    const { total = 0, blogs = [] } = await fetchSiteContent('blogs', queryParams)
     this.setState({
       total: total,
       blogs: blogs
     })
   }
 
+  async fetchOfficeName(officeId) {
+    const office = await fetchRestContent(officeId)
+    if (office && office.type === 'office' && office.title) {
+      this.setState({ officeName: office.title })
+    }
+  }
+
   categoryValidation() {
-    return this.props.params.category === 'news-and-views' || this.props.params.category === 'industry-word'
+    return (
+      this.props.params.category === 'news-and-views' ||
+      this.props.params.category === 'industry-word' ||
+      this.props.params.category === 'success-stories'
+    )
+  }
+
+  reformatSubtitle(subtitle, appendedTextWhenNoOffice = null) {
+    const { officeName } = this.state
+    let reformattedSubtitle = ''
+
+    if (officeName) {
+      reformattedSubtitle = `${subtitle} out of the ${officeName}.`
+    } else if (appendedTextWhenNoOffice && !this.props.params.officeId) {
+      reformattedSubtitle = `${subtitle} ${appendedTextWhenNoOffice}.`
+    } else {
+      reformattedSubtitle = `${subtitle}.`
+    }
+    return reformattedSubtitle
   }
 
   setHeader() {
     let title = ''
     let subtitle = ''
+    let appendedText = ''
     if (this.props.params.category === 'news-and-views') {
       title = 'SBA News and Views posts'
-      subtitle = "Insights and updates from SBA's small business experts."
+      subtitle = "Insights and updates from SBA's small business experts"
     } else if (this.props.params.category === 'industry-word') {
       title = 'Industry Word posts'
-      subtitle = 'Commentary and advice from leaders in the small business industry.'
+      subtitle = 'Commentary and advice from leaders in the small business industry'
+    } else if (this.props.params.category === 'success-stories') {
+      title = 'Success Story posts'
+      subtitle = 'Success stories from small business owners'
+      appendedText = 'across the country'
     }
+    subtitle = this.reformatSubtitle(subtitle, appendedText)
     return { title, subtitle }
-  }
-
-  componentDidMount() {
-    this.fetchBlogs(0, 12)
   }
 
   reformatBlog(blog) {
