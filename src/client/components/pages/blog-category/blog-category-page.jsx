@@ -5,9 +5,8 @@ import moment from 'moment'
 import { Paginator } from 'molecules'
 import { CardCollection } from 'organisms'
 import ErrorPage from '../error-page/error-page.jsx'
-
-import styles from './blog-category-page.scss'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
+import styles from './blog-category-page.scss'
 
 class BlogCategoryPage extends Component {
   constructor() {
