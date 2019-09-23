@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, cleanup, waitForElement } from 'react-testing-library'
+import { when } from 'jest-when'
 import 'jest-dom/extend-expect'
 import '../../test-data/matchMedia.mock'
 import BlogsLandingPage from 'pages/blogs-landing/blogs-landing.jsx'
@@ -142,25 +143,37 @@ afterEach(cleanup)
 describe('Blogs landing page', () => {
   it('renders the blog landing page hero', () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-    // mocking both blog category calls and authors call
-    fetchSiteContentStub
-      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
-      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
-      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
-      .mockImplementationOnce(() => Promise.resolve([]))
-    const { getByTestId } = render(<BlogsLandingPage />)
+    when(fetchSiteContentStub)
+    .calledWith('blogs', 'SBA News and Views')
+    .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+    when(fetchSiteContentStub)
+    .calledWith('blogs', 'Industry Word')
+    .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+    when(fetchSiteContentStub)
+    .calledWith('blogs', 'Success Story')
+    .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+    when(fetchSiteContentStub)
+    .calledWith('authors')
+    .mockImplementationOnce(() => Promise.resolve([]))
 
+    const { getByTestId } = render(<BlogsLandingPage />)
     expect(getByTestId('blogs-hero')).toBeInTheDocument()
   })
 
   it('renders the blog category deck component thrice', async () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-    fetchSiteContentStub
-      .mockImplementationOnce(fetchSiteContentStubCallback)
-      .mockImplementationOnce(fetchSiteContentStubCallback)
-      .mockImplementationOnce(fetchSiteContentStubCallback)
-      // mock authors call to return nothing
-      .mockImplementationOnce(() => Promise.resolve([]))
+    when(fetchSiteContentStub)
+    .calledWith('blogs', 'SBA News and Views')
+    .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+    when(fetchSiteContentStub)
+    .calledWith('blogs', 'Industry Word')
+    .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+    when(fetchSiteContentStub)
+    .calledWith('blogs', 'Success Story')
+    .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+    when(fetchSiteContentStub)
+    .calledWith('authors')
+    .mockImplementationOnce(() => Promise.resolve([]))
 
     const { getAllByTestId } = render(<BlogsLandingPage />)
     const content = await waitForElement(() => getAllByTestId('blog category deck'))
@@ -170,12 +183,18 @@ describe('Blogs landing page', () => {
 
   it('makes a fetchSiteContent call for each category with defined query params', async () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-    // mocking both blog category calls and authors call
-    fetchSiteContentStub
-      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
-      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
-      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
-      .mockImplementationOnce(() => Promise.resolve([]))
+    when(fetchSiteContentStub)
+    .calledWith('blogs', 'SBA News and Views')
+    .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+    when(fetchSiteContentStub)
+    .calledWith('blogs', 'Industry Word')
+    .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+    when(fetchSiteContentStub)
+    .calledWith('blogs', 'Success Story')
+    .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+    when(fetchSiteContentStub)
+    .calledWith('authors')
+    .mockImplementationOnce(() => Promise.resolve([]))
 
     const firstCategoryQueryParams = { category: 'SBA News and Views', end: 3, order: 'desc' }
     const secondCategoryQueryParams = { category: 'Industry Word', end: 3, order: 'desc' }
@@ -187,22 +206,23 @@ describe('Blogs landing page', () => {
   describe('AuthorCardCollection', () => {
     it('should exist', async () => {
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-      fetchSiteContentStub
-        // fetchBlogs (there are two calls made inside the component so mock both)
-        .mockImplementationOnce(() => {
-          return { blogs: [] }
-        })
-        .mockImplementationOnce(() => {
-          return { blogs: [] }
-        })
-        .mockImplementationOnce(() => {
-          return { blogs: [] }
-        })
-        // fetchAuthors
-        .mockImplementationOnce(() => {
-          const mockResponse = [101, 102]
-          return Promise.resolve(mockResponse)
-        })
+
+      when(fetchSiteContentStub)
+      .calledWith('blogs', 'SBA News and Views')
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+      when(fetchSiteContentStub)
+      .calledWith('blogs', 'Industry Word')
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+      when(fetchSiteContentStub)
+      .calledWith('blogs', 'Success Story')
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+      when(fetchSiteContentStub)
+      .calledWith('authors')
+      .mockImplementationOnce(() => {
+        const mockResponse = [101, 102]
+        return Promise.resolve(mockResponse)
+      })
+      
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
       fetchRestContentStub.mockImplementation(nodeId => {
         const mockResponse = mockAuthorData.find(author => author.id === nodeId)
@@ -214,22 +234,22 @@ describe('Blogs landing page', () => {
     })
     it('should contain 3 AuthorCard components', async () => {
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-      fetchSiteContentStub
-        // fetchBlogs (there are two calls made inside the component so mock both)
-        .mockImplementationOnce(() => {
-          return { blogs: [] }
-        })
-        .mockImplementationOnce(() => {
-          return { blogs: [] }
-        })
-        .mockImplementationOnce(() => {
-          return { blogs: [] }
-        })
-        // fetchAuthors
-        .mockImplementationOnce(() => {
-          const mockResponse = [101, 102]
-          return Promise.resolve(mockResponse)
-        })
+      when(fetchSiteContentStub)
+      .calledWith('blogs', 'SBA News and Views')
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+      when(fetchSiteContentStub)
+      .calledWith('blogs', 'Industry Word')
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+      when(fetchSiteContentStub)
+      .calledWith('blogs', 'Success Story')
+      .mockImplementationOnce(() => Promise.resolve({ blogs: [] }))
+      when(fetchSiteContentStub)
+      .calledWith('authors')
+      .mockImplementationOnce(() => {
+        const mockResponse = [101, 102]
+        return Promise.resolve(mockResponse)
+      })
+      
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
       fetchRestContentStub.mockImplementation(nodeId => {
         const mockResponse = mockAuthorData.find(author => author.id === nodeId)
