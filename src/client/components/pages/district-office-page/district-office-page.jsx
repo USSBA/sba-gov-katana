@@ -4,6 +4,7 @@ import DistrictOffice from '../../templates/district-office/district-office.jsx'
 import { Loader } from 'atoms'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper.js'
 import ErrorPage from '../error-page/error-page.jsx'
+import styles from './district-office-page.scss'
 
 const errorUrl = '/local-assistance'
 const errorMessage = 'local assistance page'
@@ -27,7 +28,7 @@ class DistrictOfficePage extends React.Component {
     return (
       <div>
         {loadingState === 'isLoading' && (
-          <div data-testid={'office-loader'}>
+          <div className={styles.loaderContainer} data-testid={'office-loader'}>
             <Loader />
           </div>
         )}
