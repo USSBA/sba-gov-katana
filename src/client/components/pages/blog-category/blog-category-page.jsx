@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import { isEmpty } from 'lodash'
 
 import { Paginator } from 'molecules'
 import { CardCollection } from 'organisms'
@@ -112,7 +113,7 @@ class BlogCategoryPage extends Component {
   }
 
   reformatBlog(blog) {
-    return {
+    const reformattedBlog = {
       italicText: moment.unix(blog.created).format('MMMM D, YYYY'),
       link: {
         title: 'Read full post',
@@ -121,6 +122,14 @@ class BlogCategoryPage extends Component {
       subtitleText: blog.summary,
       titleText: blog.title
     }
+
+    if (typeof blog.featuredImage === 'string' && blog.featuredImage.length > 0) {
+      reformattedBlog.image = {
+        url: blog.featuredImage
+      }
+    }
+
+    return reformattedBlog
   }
 
   onBack() {
