@@ -44,6 +44,7 @@ import TextReadMoreSection from './text-readmore-section/text-readmore-section'
 import Tile from './tile-collection/tile.jsx'
 import TileCollection from './tile-collection/tile-collection.jsx'
 import MenuTileCollection from './menu-tile-collection/menu-tile-collection.jsx'
+import Video from './video/video.jsx'
 
 // header-footer organisms
 import Footer from './header-footer/footer/footer.jsx'
@@ -106,7 +107,8 @@ export {
   TextReadMoreSection,
   TileCollection,
   Tile,
-  MenuTileCollection
+  MenuTileCollection,
+  Video
 }
 
 // header-footer organisms
