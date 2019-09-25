@@ -38,15 +38,19 @@ exports[`Card does not error check malformed link 1`] = `
       </a>
     </h4>
     <div>
-      <hr
-        className="dash dash"
-        id="hr-4-0"
-        style={
-          Object {
-            "width": "30px",
+      <div
+        className="dashContainer"
+      >
+        <hr
+          className="dash dash"
+          id="hr-4-0"
+          style={
+            Object {
+              "width": "30px",
+            }
           }
-        }
-      />
+        />
+      </div>
       <p
         className="itemSubTitle"
         data-testid="card subtitle text"
@@ -106,15 +110,19 @@ exports[`Card should render the spanish version correctly if the link is just a 
       </a>
     </h4>
     <div>
-      <hr
-        className="dash dash"
-        id="hr-4-0"
-        style={
-          Object {
-            "width": "30px",
+      <div
+        className="dashContainer"
+      >
+        <hr
+          className="dash dash"
+          id="hr-4-0"
+          style={
+            Object {
+              "width": "30px",
+            }
           }
-        }
-      />
+        />
+      </div>
       <p
         className="itemSubTitle"
         data-testid="card subtitle text"
@@ -170,15 +178,19 @@ exports[`Card to render correctly 1`] = `
       </a>
     </h4>
     <div>
-      <hr
-        className="dash dash"
-        id="hr-4-0"
-        style={
-          Object {
-            "width": "30px",
+      <div
+        className="dashContainer"
+      >
+        <hr
+          className="dash dash"
+          id="hr-4-0"
+          style={
+            Object {
+              "width": "30px",
+            }
           }
-        }
-      />
+        />
+      </div>
       <p
         className="itemSubTitle"
         data-testid="card subtitle text"
@@ -236,15 +248,19 @@ exports[`Card to render correctly if the link is just a string 1`] = `
       </a>
     </h4>
     <div>
-      <hr
-        className="dash dash"
-        id="hr-4-0"
-        style={
-          Object {
-            "width": "30px",
+      <div
+        className="dashContainer"
+      >
+        <hr
+          className="dash dash"
+          id="hr-4-0"
+          style={
+            Object {
+              "width": "30px",
+            }
           }
-        }
-      />
+        />
+      </div>
       <p
         className="itemSubTitle"
         data-testid="card subtitle text"
@@ -292,15 +308,19 @@ exports[`Card to render correctly with null link 1`] = `
       Kitten
     </h4>
     <div>
-      <hr
-        className="dash dash"
-        id="hr-4-0"
-        style={
-          Object {
-            "width": "30px",
+      <div
+        className="dashContainer"
+      >
+        <hr
+          className="dash dash"
+          id="hr-4-0"
+          style={
+            Object {
+              "width": "30px",
+            }
           }
-        }
-      />
+        />
+      </div>
       <p
         className="itemSubTitle"
         data-testid="card subtitle text"

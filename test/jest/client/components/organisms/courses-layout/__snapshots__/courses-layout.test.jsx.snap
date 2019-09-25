@@ -125,15 +125,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-1-0"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-1-0"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"
@@ -190,15 +194,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-1-1"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-1-1"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"
@@ -255,15 +263,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-1-2"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-1-2"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"
@@ -320,15 +332,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-1-3"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-1-3"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"
@@ -394,15 +410,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-2-0"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-2-0"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"
@@ -459,15 +479,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-2-1"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-2-1"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"
@@ -524,15 +548,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-2-2"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-2-2"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"
@@ -589,15 +617,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-2-3"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-2-3"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"
@@ -663,15 +695,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-3-0"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-3-0"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"
@@ -728,15 +764,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-3-1"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-3-1"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"
@@ -793,15 +833,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-3-2"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-3-2"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"
@@ -858,15 +902,19 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </a>
                   </h4>
                   <div>
-                    <hr
-                      className="dash dash"
-                      id="hr-3-3"
-                      style={
-                        Object {
-                          "width": "30px",
+                    <div
+                      className="dashContainer"
+                    >
+                      <hr
+                        className="dash dash"
+                        id="hr-3-3"
+                        style={
+                          Object {
+                            "width": "30px",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </div>
                     <p
                       className="itemSubTitle"
                       data-testid="card subtitle text"

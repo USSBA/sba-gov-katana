@@ -13,14 +13,18 @@ exports[`ReadMore should render expanded ReadMore component 1`] = `
     className="preview"
     id="text-readmore-section-3-read-more-preview"
   />
-  <hr
-    className="dash dash"
-    style={
-      Object {
-        "width": "1.75px",
+  <div
+    className="dashContainer"
+  >
+    <hr
+      className="dash dash"
+      style={
+        Object {
+          "width": "1.75px",
+        }
       }
-    }
-  />
+    />
+  </div>
   <p
     className="expandedCopyText"
   >
@@ -69,14 +73,18 @@ exports[`ReadMore should render expanded ReadMore component 2`] = `
     className="preview"
     id="text-readmore-section-3-read-more-preview"
   />
-  <hr
-    className="dash dash"
-    style={
-      Object {
-        "width": "1.75px",
+  <div
+    className="dashContainer"
+  >
+    <hr
+      className="dash dash"
+      style={
+        Object {
+          "width": "1.75px",
+        }
       }
-    }
-  />
+    />
+  </div>
   <p
     className="expandedCopyText"
   >

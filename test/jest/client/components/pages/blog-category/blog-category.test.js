@@ -118,26 +118,31 @@ describe('Blog Category Page', () => {
             end: 24
           }
 
-          let blogCards = await waitForElement(() => findAllByTestId('card'))
-          const forwardButton = await waitForElement(() => getAllByTestId('next button')[0])
-          const backwardButton = await waitForElement(() => getAllByTestId('previous button')[0])
+          setImmediate(async () => {
 
-          expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
-          expect(blogCards).toHaveLength(12)
+            let blogCards = await waitForElement(() => findAllByTestId('card'))
+            const forwardButton = await waitForElement(() => getAllByTestId('next button')[0])
+            const backwardButton = await waitForElement(() => getAllByTestId('previous button')[0])
 
-          axiosMock.get.mockResolvedValueOnce(mockSecondBlogResponse)
-          fireEvent.click(forwardButton)
-          expect(fetchSiteContentStub).toBeCalledWith('blogs', secondQueryParams)
-          await waitForElement(() => findAllByText('older blogs'))
-          blogCards = await waitForElement(() => findAllByTestId('card'))
-          expect(blogCards).toHaveLength(8)
+            expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
+            expect(blogCards).toHaveLength(12)
 
-          axiosMock.get.mockResolvedValueOnce(mockFirstBlogResponse)
-          fireEvent.click(backwardButton)
-          expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
-          await waitForElement(() => findAllByText('newer blogs'))
-          blogCards = await waitForElement(() => findAllByTestId('card'))
-          expect(blogCards).toHaveLength(12)
+            axiosMock.get.mockResolvedValueOnce(mockSecondBlogResponse)
+            fireEvent.click(forwardButton)
+            expect(fetchSiteContentStub).toBeCalledWith('blogs', secondQueryParams)
+            await waitForElement(() => findAllByText('older blogs'))
+            blogCards = await waitForElement(() => findAllByTestId('card'))
+            expect(blogCards).toHaveLength(8)
+
+            axiosMock.get.mockResolvedValueOnce(mockFirstBlogResponse)
+            fireEvent.click(backwardButton)
+            expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
+            await waitForElement(() => findAllByText('newer blogs'))
+            blogCards = await waitForElement(() => findAllByTestId('card'))
+            expect(blogCards).toHaveLength(12)
+
+          })
+
         }
       )
     })

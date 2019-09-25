@@ -1,24 +1,18 @@
 .contactCard {
   .firstColumn {
     color: $sba-blue;
-    grid-column: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
     padding-top: 5px;
+    float: left;
+    padding-right: 15px;
   }
   .secondColumn {
-    grid-column: 2;
+    padding-top: 3px;
     padding-left: 5px;
+    min-height: 35px;
   }
 }
 
 .box {
   border: 2px solid $sba-gray-lighter;
   padding: 30px;
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 28px 1fr;
 }
