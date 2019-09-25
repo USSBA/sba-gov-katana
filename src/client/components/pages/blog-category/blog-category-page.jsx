@@ -123,9 +123,10 @@ class BlogCategoryPage extends Component {
       titleText: blog.title
     }
 
-    if (typeof blog.featuredImage === 'string' && blog.featuredImage.length > 0) {
+    if (!isEmpty(blog.featuredImage)) {
       reformattedBlog.image = {
-        url: blog.featuredImage
+        url: blog.featuredImage.url,
+        alt: blog.featuredImage.alt
       }
     }
 
