@@ -53,14 +53,18 @@ exports[`CallToAction snapshot tests renders a large size 1`] = `
       </h3>
     </div>
     <div>
-      <hr
-        className="dash dash"
-        style={
-          Object {
-            "width": "29px",
+      <div
+        className="dashContainer"
+      >
+        <hr
+          className="dash dash"
+          style={
+            Object {
+              "width": "29px",
+            }
           }
-        }
-      />
+        />
+      </div>
       <p
         className="blurb"
         data-testid="blurb"
@@ -102,14 +106,18 @@ exports[`CallToAction snapshot tests renders a medium size 1`] = `
       </h3>
     </div>
     <div>
-      <hr
-        className="dash dash"
-        style={
-          Object {
-            "width": "29px",
+      <div
+        className="dashContainer"
+      >
+        <hr
+          className="dash dash"
+          style={
+            Object {
+              "width": "29px",
+            }
           }
-        }
-      />
+        />
+      </div>
       <p
         className="blurb"
         data-testid="blurb"

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import styles from './decorative-dash.scss'
 
 const Dash = ({ width, ...nativeProps }) => (
-  <hr {...nativeProps} className={`dash ${styles.dash}`} style={{ width: `${width}px` }} />
+  <div className={styles.dashContainer}>
+  	<hr {...nativeProps} className={`dash ${styles.dash}`} style={{ width: `${width}px` }} />
+  </div>
 )
 
 Dash.propTypes = {
