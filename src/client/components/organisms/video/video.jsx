@@ -4,7 +4,7 @@ import styles from './video.scss'
 
 class Video extends React.Component {
   render() {
-    const { title, size, youtubeId } = this.props
+    const { size, title, youtubeId } = this.props
 
     const videoClassName = classNames({
       video: true,
