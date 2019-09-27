@@ -7,16 +7,24 @@ import { CardCollection } from 'organisms'
 import styles from './blog-category-deck.scss'
 
 class BlogCategoryDeck extends React.Component {
-  reformatCard(card) {
-    return {
-      italicText: moment.unix(card.created).format('MMMM D, YYYY'),
+  reformatCard({created, url, summary, title, blogBody}) {
+    const props = {
+      italicText: moment.unix(created).format('MMMM D, YYYY'),
       link: {
         title: 'Read full post',
-        uri: card.url
+        uri: url
       },
-      subtitleText: card.summary,
-      titleText: card.title
+      subtitleText: summary,
+      titleText: title
     }
+
+    if (blogBody && blogBody[0].blogSectionImage) {
+      props.image = {
+        alt: blogBody[0].blogSectionImage.alt,
+        url: blogBody[0].blogSectionImage.url
+      }
+    }
+    return props
   }
 
   render() {
@@ -51,7 +59,7 @@ BlogCategoryDeck.propTypes = {
   cards: PropTypes.array,
   categoryTitle: PropTypes.string,
   categorySubtitle: PropTypes.string,
-  categoryUrl: PropTypes.string
+  categoryUrl: PropTypes.string,
 }
 
 export default BlogCategoryDeck

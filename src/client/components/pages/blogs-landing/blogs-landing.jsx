@@ -34,6 +34,13 @@ class BlogsLandingPage extends Component {
         subtitle: 'Commentary and advice from leaders in the small business industry.',
         url: '/blogs/industry-word',
         cards: []
+      },
+      {
+        category: 'Success Story',
+        title: 'Success Story posts',
+        subtitle: 'Stories from small business owners across the country.',
+        url: '/blogs/success-stories',
+        cards: []
       }
     ]
 
