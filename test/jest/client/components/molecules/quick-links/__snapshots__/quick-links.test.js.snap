@@ -27,14 +27,18 @@ exports[`QuickLinks snapshot tests Future effective date is not displayed 1`] = 
         See all
       </a>
     </div>
-    <hr
-      className="dash dash"
-      style={
-        Object {
-          "width": "30px",
+    <div
+      className="dashContainer"
+    >
+      <hr
+        className="dash dash"
+        style={
+          Object {
+            "width": "30px",
+          }
         }
-      }
-    />
+      />
+    </div>
     <div>
       <div>
         Loading
@@ -71,14 +75,18 @@ exports[`QuickLinks snapshot tests Most recent effective date displayed 1`] = `
         See all
       </a>
     </div>
-    <hr
-      className="dash dash"
-      style={
-        Object {
-          "width": "30px",
+    <div
+      className="dashContainer"
+    >
+      <hr
+        className="dash dash"
+        style={
+          Object {
+            "width": "30px",
+          }
         }
-      }
-    />
+      />
+    </div>
     <div>
       <div>
         Loading
@@ -115,14 +123,18 @@ exports[`QuickLinks snapshot tests No SOP number so it is not displayed 1`] = `
         See all
       </a>
     </div>
-    <hr
-      className="dash dash"
-      style={
-        Object {
-          "width": "30px",
+    <div
+      className="dashContainer"
+    >
+      <hr
+        className="dash dash"
+        style={
+          Object {
+            "width": "30px",
+          }
         }
-      }
-    />
+      />
+    </div>
     <div>
       <div>
         Loading
@@ -159,14 +171,18 @@ exports[`QuickLinks snapshot tests SOP number exists and is displayed 1`] = `
         See all
       </a>
     </div>
-    <hr
-      className="dash dash"
-      style={
-        Object {
-          "width": "30px",
+    <div
+      className="dashContainer"
+    >
+      <hr
+        className="dash dash"
+        style={
+          Object {
+            "width": "30px",
+          }
         }
-      }
-    />
+      />
+    </div>
     <div>
       <div>
         Loading

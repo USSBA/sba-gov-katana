@@ -204,7 +204,7 @@ const LatestDocumentsCard = props => {
               )
             })
           ) : (
-            <div data-testid="no-results">No documents found</div>
+            <div data-testid="no-results"><p>No documents found</p></div>
           )}
           </div>}
       </div>

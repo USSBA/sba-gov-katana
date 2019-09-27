@@ -1,6 +1,9 @@
+.dashContainer {
+	position: relative;
+	height: 10px;
+}
+
 .dash {
   border-top: 2px solid $sba-red;
-  margin-bottom: -9px;
-  margin-left: 0;
-  margin-top: 3.5px;
+  position: absolute;
 }
