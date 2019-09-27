@@ -164,7 +164,7 @@ function makeParagraphs(
           </div>
         )
       } else if (item.type === 'video') {
-        paragraph = <Video title={item.title} youtubeId={item.youtubeId} />
+        paragraph = <Video size={item.size} title={item.title} youtubeId={item.youtubeId} />
       }
     }
     return {

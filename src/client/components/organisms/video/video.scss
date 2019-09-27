@@ -1,0 +1,41 @@
+.video {
+  position: relative;
+  margin-bottom: 50px;
+  padding-top: 25px;
+  padding-bottom: 56.25% /* 16:9 */;
+  height: 0;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@include for-large-up {
+  .medium {
+    padding-bottom: 32%;
+
+    iframe {
+      left: 20%;
+      width: 60%;
+    }
+  }
+
+  .small {
+    margin-bottom: 110px;
+    padding-bottom: 16%;
+
+    iframe {
+      left: 30%;
+      width: 40%;
+      height: 127%;
+    }
+  }
+}
+
+.videoTitle {
+  padding-bottom: 20px;
+}
