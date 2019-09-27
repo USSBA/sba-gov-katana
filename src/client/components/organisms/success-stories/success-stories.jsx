@@ -33,11 +33,11 @@ class SuccessStories extends PureComponent {
     const { blogs } = this.state
     const { officeId } = this.props
 
-    const cards = blogs.map(({ title, summary, blogBody, created, url }, index) => {
+    const cards = blogs.map(({ title, summary, featuredImage, created, url }, index) => {
       const item = {
         image: {
-          alt: blogBody[0].blogSectionImage.alt,
-          url: blogBody[0].blogSectionImage.url
+          alt: featuredImage.alt,
+          url: featuredImage.url
         },
         italicText: moment.unix(created).format('MMMM D, YYYY'),
         link: {
