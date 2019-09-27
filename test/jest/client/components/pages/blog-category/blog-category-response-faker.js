@@ -12,6 +12,7 @@ function blogBuilder(blogTitle) {
     blogBody: [],
     blogCategory: 'SBA News and Views',
     blogTags: 'Business Laws',
+    featuredImage: {},
     summary:
       'The U.S. Small Business Administration recently proposed new regulations to make it easier for small businesses to understand and comply with the Historically Underutilized Business Zone (HUBZone) Program’s requirements.',
     type: 'blog',
