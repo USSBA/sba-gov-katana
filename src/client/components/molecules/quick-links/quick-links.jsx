@@ -169,7 +169,7 @@ const LatestDocumentsCard = props => {
       </div>
       <DecorativeDash width={30} />
       <div>
-        {LOADING_STATE === 'isLoading' && <div>Loading</div>}
+        {LOADING_STATE === 'isLoading' && <div><p>Loading</p></div>}
         {LOADING_STATE === 'isLoaded' && <div>
           {!isEmpty(props.documents) && props.documents.items.length > 0 ? (
             props.documents.items.map((doc, index) => {
@@ -278,7 +278,7 @@ const ArticlesCard = props => {
             })}
           </div>
         ) : (
-          <div>loading</div>
+          <div><p>Loading</p></div>
         )}
       </div>
     </div>
