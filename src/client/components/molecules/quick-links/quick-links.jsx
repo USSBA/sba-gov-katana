@@ -192,9 +192,11 @@ const LatestDocumentsCard = props => {
                   : doc.title)
               return (
                 <div key={index}>
-                  <Link data-testid="document-link" to={doc.url}>
-                    {linkTitle}
-                  </Link>
+                  <p>
+                    <Link data-testid="document-link" to={doc.url}>
+                      {linkTitle}
+                    </Link>
+                  </p>
                   {effectiveDate && (
                     <div data-testid="document-date" className={styles.date}>
                       {formatDate(effectiveDate)}
@@ -263,9 +265,11 @@ const ArticlesCard = props => {
 
               return (
                 <div key={index}>
-                  <Link data-testid="article-url" to={article.url}>
-                    {linkTitle}
-                  </Link>
+                  <p>
+                    <Link data-testid="article-url" to={article.url}>
+                      {linkTitle}
+                    </Link>
+                  </p>
                   <div data-testid="article-date" className={styles.date}>
                     {moment.unix(article.updated).format('MMM D, YYYY')}
                   </div>
