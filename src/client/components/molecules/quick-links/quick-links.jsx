@@ -169,7 +169,7 @@ const LatestDocumentsCard = props => {
       </div>
       <DecorativeDash width={30} />
       <div>
-        {LOADING_STATE === 'isLoading' && <div>Loading</div>}
+        {LOADING_STATE === 'isLoading' && <div><p>Loading</p></div>}
         {LOADING_STATE === 'isLoaded' && <div>
           {!isEmpty(props.documents) && props.documents.items.length > 0 ? (
             props.documents.items.map((doc, index) => {
@@ -192,9 +192,11 @@ const LatestDocumentsCard = props => {
                   : doc.title)
               return (
                 <div key={index}>
-                  <Link data-testid="document-link" to={doc.url}>
-                    {linkTitle}
-                  </Link>
+                  <p>
+                    <Link data-testid="document-link" to={doc.url}>
+                      {linkTitle}
+                    </Link>
+                  </p>
                   {effectiveDate && (
                     <div data-testid="document-date" className={styles.date}>
                       {formatDate(effectiveDate)}
@@ -263,9 +265,11 @@ const ArticlesCard = props => {
 
               return (
                 <div key={index}>
-                  <Link data-testid="article-url" to={article.url}>
-                    {linkTitle}
-                  </Link>
+                  <p>
+                    <Link data-testid="article-url" to={article.url}>
+                      {linkTitle}
+                    </Link>
+                  </p>
                   <div data-testid="article-date" className={styles.date}>
                     {moment.unix(article.updated).format('MMM D, YYYY')}
                   </div>
@@ -274,7 +278,7 @@ const ArticlesCard = props => {
             })}
           </div>
         ) : (
-          <div>loading</div>
+          <div><p>Loading</p></div>
         )}
       </div>
     </div>
