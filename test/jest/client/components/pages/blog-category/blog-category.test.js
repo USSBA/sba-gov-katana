@@ -1,7 +1,7 @@
 /*eslint-disable no-undefined*/
 
 import React from 'react'
-import { render, cleanup, waitForElement, fireEvent } from 'react-testing-library'
+import { render, cleanup, waitForElement, fireEvent, within } from 'react-testing-library'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
@@ -41,15 +41,18 @@ afterEach(cleanup)
 describe('Blog Category Page', () => {
   describe('when visiting a valid blog category type', () => {
     validBlogCategories.forEach(function(blogCategory) {
-      it('will show the correct header for ' + blogCategory.title, async () => {
-        const { getByTestId } = render(<BlogCategoryPage params={{ category: blogCategory.name }} />)
-        const title = await waitForElement(() => getByTestId('blog-category-title'))
-        expect(title).toHaveTextContent(blogCategory.title)
-        const subtitle = await waitForElement(() => getByTestId('blog-category-subtitle'))
-        expect(subtitle).toHaveTextContent(blogCategory.subtitle)
+      it('will show the correct header for ' + blogCategory.title, done => {
+        setImmediate(async () => {
+          const { getByTestId } = render(<BlogCategoryPage params={{ category: blogCategory.name }} />)
+          const title = await waitForElement(() => getByTestId('blog-category-title'))
+          expect(title).toHaveTextContent(blogCategory.title)
+          const subtitle = await waitForElement(() => getByTestId('blog-category-subtitle'))
+          expect(subtitle).toHaveTextContent(blogCategory.subtitle)
+          done()
+        })
       })
 
-      it('will get the blog posts for ' + blogCategory.title, async () => {
+      it('will get the blog posts for ' + blogCategory.title, done => {
         const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
 
         const mockBlogResponse = {
@@ -71,53 +74,55 @@ describe('Blog Category Page', () => {
           end: 12
         }
 
-        const blogPosts = await waitForElement(() => getByTestId('blog-card-collections'))
-        const blogCards = await waitForElement(() => findAllByTestId('card'))
-        const topPaginator = await waitForElement(() => getByTestId('blog-top-paginator'))
-        const bottomPaginator = await waitForElement(() => getByTestId('blog-bottom-paginator'))
-        expect(blogPosts).toBeInTheDocument()
-        expect(blogCards).toHaveLength(12)
-        expect(topPaginator).toBeInTheDocument()
-        expect(bottomPaginator).toBeInTheDocument()
-        expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
+        setImmediate(async () => {
+          const blogPosts = await waitForElement(() => getByTestId('blog-card-collections'))
+          const blogCards = await waitForElement(() => findAllByTestId('card'))
+          const topPaginator = await waitForElement(() => getByTestId('blog-top-paginator'))
+          const bottomPaginator = await waitForElement(() => getByTestId('blog-bottom-paginator'))
+          expect(blogPosts).toBeInTheDocument()
+          expect(blogCards).toHaveLength(12)
+          expect(topPaginator).toBeInTheDocument()
+          expect(bottomPaginator).toBeInTheDocument()
+          expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
+          done()
+        })
       })
 
-      it(
-        'will properly paginate the and make the appropriate requests for ' + blogCategory.title,
-        async () => {
-          const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+      it('will properly paginate the and make the appropriate requests for ' + blogCategory.title, done => {
+        const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
 
-          const mockFirstBlogResponse = {
-            response: 200,
-            data: {
-              total: 20,
-              blogs: blogQueryResponse(12, 'newer blogs')
-            }
+        const mockFirstBlogResponse = {
+          response: 200,
+          data: {
+            total: 20,
+            blogs: blogQueryResponse(12, 'newer blogs')
           }
-          const mockSecondBlogResponse = {
-            response: 200,
-            data: {
-              total: 20,
-              blogs: blogQueryResponse(8, 'older blogs')
-            }
+        }
+        const mockSecondBlogResponse = {
+          response: 200,
+          data: {
+            total: 20,
+            blogs: blogQueryResponse(8, 'older blogs')
           }
-          axiosMock.get.mockResolvedValueOnce(mockFirstBlogResponse)
+        }
+        axiosMock.get.mockResolvedValueOnce(mockFirstBlogResponse)
 
-          const { getAllByTestId, findAllByTestId, findAllByText } = render(
-            <BlogCategoryPage params={{ category: blogCategory.name }} />
-          )
+        const { getAllByTestId, findAllByTestId, findAllByText } = render(
+          <BlogCategoryPage params={{ category: blogCategory.name }} />
+        )
 
-          const firstQueryParams = {
-            category: blogCategory.queryTerm,
-            start: 0,
-            end: 12
-          }
-          const secondQueryParams = {
-            category: blogCategory.queryTerm,
-            start: 12,
-            end: 24
-          }
+        const firstQueryParams = {
+          category: blogCategory.queryTerm,
+          start: 0,
+          end: 12
+        }
+        const secondQueryParams = {
+          category: blogCategory.queryTerm,
+          start: 12,
+          end: 24
+        }
 
+        setImmediate(async () => {
           let blogCards = await waitForElement(() => findAllByTestId('card'))
           const forwardButton = await waitForElement(() => getAllByTestId('next button')[0])
           const backwardButton = await waitForElement(() => getAllByTestId('previous button')[0])
@@ -138,9 +143,42 @@ describe('Blog Category Page', () => {
           await waitForElement(() => findAllByText('newer blogs'))
           blogCards = await waitForElement(() => findAllByTestId('card'))
           expect(blogCards).toHaveLength(12)
-        }
-      )
+          done()
+        })
+      })
     })
+  })
+
+  it('displays a featured image on the blog card when it exists', done => {
+    const blogCategory = 'success-stories'
+    const mockBlogWithFeaturedImage = {
+      title: 'Some Title',
+      featuredImage: {
+        url: '/foo',
+        alt: 'foo text'
+      }
+    }
+    const mockBlogsResponse = {
+      total: 1,
+      blogs: [mockBlogWithFeaturedImage]
+    }
+
+    const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
+    when(fetchSiteContentStub)
+      .calledWith('blogs')
+      .mockImplementationOnce(() => mockBlogsResponse)
+
+    const { getByTestId } = render(<BlogCategoryPage params={{ category: blogCategory }} />)
+
+    setImmediate(async () => {
+      const blogCard = await waitForElement(() => getByTestId('card'))
+      const cardImage = within(blogCard).getByTestId('card image')
+      expect(cardImage).toHaveAttribute('alt', mockBlogWithFeaturedImage.featuredImage.alt)
+      expect(cardImage).toHaveAttribute('src', mockBlogWithFeaturedImage.featuredImage.url)
+      done()
+    })
+
+    fetchSiteContentStub.mockRestore()
   })
 
   describe('when visiting a blog category type for an office', () => {

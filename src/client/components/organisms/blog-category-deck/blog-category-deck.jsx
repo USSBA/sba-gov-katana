@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import { isEmpty } from 'lodash'
 
 import { Button } from 'atoms'
 import { CardCollection } from 'organisms'
 import styles from './blog-category-deck.scss'
 
 class BlogCategoryDeck extends React.Component {
-  reformatCard({created, url, summary, title, blogBody}) {
+  reformatCard({created, url, summary, title, featuredImage}) {
     const props = {
       italicText: moment.unix(created).format('MMMM D, YYYY'),
       link: {
@@ -18,10 +19,10 @@ class BlogCategoryDeck extends React.Component {
       titleText: title
     }
 
-    if (blogBody && blogBody[0].blogSectionImage) {
+    if (!isEmpty(featuredImage)) {
       props.image = {
-        alt: blogBody[0].blogSectionImage.alt,
-        url: blogBody[0].blogSectionImage.url
+        alt: featuredImage.alt,
+        url: featuredImage.url
       }
     }
     return props

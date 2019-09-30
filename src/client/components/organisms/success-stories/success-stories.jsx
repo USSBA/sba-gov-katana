@@ -35,10 +35,8 @@ class SuccessStories extends PureComponent {
     const cards = blogs.map(({ title, summary, featuredImage, created, url }, index) => {
       const item = {
         image: {
-          // alt: blogBody[0].blogSectionImage.alt,
-          // url: blogBody[0].blogSectionImage.url
-          url: featuredImage.url,
-          alt: featuredImage.alt
+          alt: featuredImage.alt,
+          url: featuredImage.url
         },
         italicText: moment.unix(created).format('MMMM D, YYYY'),
         link: {
