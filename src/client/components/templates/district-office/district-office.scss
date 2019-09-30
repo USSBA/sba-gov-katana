@@ -78,13 +78,13 @@
 
 .section {
   @include grid-media($sba-grid-small) {
-    padding: 50px 0;
+    padding: 15px 0;
   }
   @include grid-media($sba-grid-medium) {
-    padding: 50px 0;
+    padding: 20px 0;
   }
   @include grid-media($sba-grid-large) {
-    padding: 50px 0;
+    padding: 15px 0;
   }
 }
 
@@ -96,6 +96,7 @@
   @include grid-media($sba-grid-large) {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 30px;
   }
 }
 
@@ -187,10 +188,16 @@
   clear: both;
 }
 .documents {
+  > div {
+    margin-bottom: 30px;
+  }
   @include grid-media($sba-grid-large) {
     @include grid-column(6);
     margin-left: 0;
     position: relative;
     left: -20px;
   }
+}
+.officeNewsletter {
+  margin-top: 10px;
 }
