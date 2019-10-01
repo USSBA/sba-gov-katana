@@ -168,8 +168,8 @@ const LatestDocumentsCard = props => {
         </Link>
       </div>
       <DecorativeDash width={30} />
-      <div>
-        {LOADING_STATE === 'isLoading' && <div><p>Loading</p></div>}
+      <div className={styles.list}>
+        {LOADING_STATE === 'isLoading' && <div>Loading</div>}
         {LOADING_STATE === 'isLoaded' && <div>
           {!isEmpty(props.documents) && props.documents.items.length > 0 ? (
             props.documents.items.map((doc, index) => {
@@ -192,11 +192,9 @@ const LatestDocumentsCard = props => {
                   : doc.title)
               return (
                 <div key={index}>
-                  <p>
-                    <Link data-testid="document-link" to={doc.url}>
-                      {linkTitle}
-                    </Link>
-                  </p>
+                  <Link data-testid="document-link" to={doc.url}>
+                    {linkTitle}
+                  </Link>
                   {effectiveDate && (
                     <div data-testid="document-date" className={styles.date}>
                       {formatDate(effectiveDate)}
@@ -219,6 +217,7 @@ const RatesCard = props => {
     <div className={props.className}>
       <h4 className={styles.title}>Rates</h4>
       <DecorativeDash width={30} />
+      <div className={styles.list}>
       {props.rate.map((rate, index) => {
         return (
           <div key={index} className={styles.rateContainer}>
@@ -227,6 +226,7 @@ const RatesCard = props => {
           </div>
         )
       })}
+      </div>
     </div>
   )
 }
@@ -253,7 +253,7 @@ const ArticlesCard = props => {
         </Link>
       </div>
       <DecorativeDash width={30} />
-      <div>
+      <div className={styles.list}>
         {articles && articles.items.length ? (
           <div>
             {articles.items.map((article, index) => {
@@ -265,11 +265,9 @@ const ArticlesCard = props => {
 
               return (
                 <div key={index}>
-                  <p>
-                    <Link data-testid="article-url" to={article.url}>
-                      {linkTitle}
-                    </Link>
-                  </p>
+                  <Link data-testid="article-url" to={article.url}>
+                    {linkTitle}
+                  </Link>
                   <div data-testid="article-date" className={styles.date}>
                     {moment.unix(article.updated).format('MMM D, YYYY')}
                   </div>
@@ -278,7 +276,7 @@ const ArticlesCard = props => {
             })}
           </div>
         ) : (
-          <div><p>Loading</p></div>
+          <div>loading</div>
         )}
       </div>
     </div>

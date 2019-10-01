@@ -39,11 +39,11 @@ exports[`QuickLinks snapshot tests Future effective date is not displayed 1`] = 
         }
       />
     </div>
-    <div>
+    <div
+      className="list"
+    >
       <div>
-        <p>
-          Loading
-        </p>
+        Loading
       </div>
     </div>
   </div>
@@ -89,11 +89,11 @@ exports[`QuickLinks snapshot tests Most recent effective date displayed 1`] = `
         }
       />
     </div>
-    <div>
+    <div
+      className="list"
+    >
       <div>
-        <p>
-          Loading
-        </p>
+        Loading
       </div>
     </div>
   </div>
@@ -139,11 +139,11 @@ exports[`QuickLinks snapshot tests No SOP number so it is not displayed 1`] = `
         }
       />
     </div>
-    <div>
+    <div
+      className="list"
+    >
       <div>
-        <p>
-          Loading
-        </p>
+        Loading
       </div>
     </div>
   </div>
@@ -189,11 +189,11 @@ exports[`QuickLinks snapshot tests SOP number exists and is displayed 1`] = `
         }
       />
     </div>
-    <div>
+    <div
+      className="list"
+    >
       <div>
-        <p>
-          Loading
-        </p>
+        Loading
       </div>
     </div>
   </div>
