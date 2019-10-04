@@ -13,6 +13,7 @@ class Blog extends Component {
     const blogParagraphs = blogData.blogBody
     const categoryLink =
       blogData.blogCategory === 'SBA News and Views' ? '/blogs/news-and-views' : '/blogs/industry-word'
+    const { featuredImage } = this.props.blogData
     const blogPage = blogParagraphs.map(function(item, index) {
       return (
         <div key={index.toString()} data-testid={'postBlogSection'}>
@@ -41,6 +42,7 @@ class Blog extends Component {
         <h5 data-testid={'postSummary'} tabIndex="0">
           {blogData.summary}
         </h5>
+        {!isEmpty(featuredImage) && <img data-testid="featuredImage" src={featuredImage.url} alt={featuredImage.alt} />}
         <hr className={styles.hr} />
         <div data-testid={'postBlogBody'} className={styles.postBlogBody}>
           {blogPage}
