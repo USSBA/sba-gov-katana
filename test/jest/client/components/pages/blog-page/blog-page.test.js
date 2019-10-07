@@ -23,6 +23,12 @@ const mockBlogData = {
   ],
   blogCategory: 'SBA News and Views',
   blogTags: 'International',
+  "featuredImage": {
+    "url": "/sites/default/files/2019-09/hdcropfeild.jpg",
+    "alt": "grain field",
+    "width": 1600,
+    "height": 1000
+  },
   office: {},
   summary: 'Some stuff',
   type: 'blog',
@@ -192,6 +198,46 @@ describe('Blog page', () => {
       expect(content).toBeInTheDocument()
       content = await waitForElement(() => getByTestId('postAuthorSectionTitle'))
       expect(content).toBeInTheDocument()
+    })
+  })
+  describe('featuredImage', () => {
+    it('should exist', async () => {
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
+
+      const initialState = undefined
+      const enhancer = applyMiddleware(thunk)
+      const store = createStore(reducers, initialState, enhancer)
+
+      const { getByTestId } = render(
+        <Provider store={store}>
+          <BlogPage id="1" />
+        </Provider>
+      )
+
+      const content = await waitForElement(() => getByTestId('featuredImage'))
+      expect(content).toBeInTheDocument()
+    })
+    it('should not exist', async () => {
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
+
+      const initialState = undefined
+      const enhancer = applyMiddleware(thunk)
+      const store = createStore(reducers, initialState, enhancer)
+
+      const origFeaturedImage = Object.assign({}, mockBlogData.featuredImage)
+      mockBlogData.featuredImage = {}
+
+      const { queryByTestId } = render(
+        <Provider store={store}>
+          <BlogPage id="1" />
+        </Provider>
+      )
+
+      const content = queryByTestId('featuredImage')
+      expect(content).not.toBeInTheDocument()
+      mockBlogData.featuredImage = origFeaturedImage
     })
   })
   describe('AuthorCard', () => {
