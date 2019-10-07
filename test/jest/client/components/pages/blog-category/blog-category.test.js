@@ -41,12 +41,15 @@ afterEach(cleanup)
 describe('Blog Category Page', () => {
   describe('when visiting a valid blog category type', () => {
     validBlogCategories.forEach(function(blogCategory) {
-      it('will show the correct header for ' + blogCategory.title, async () => {
-        const { getByTestId } = render(<BlogCategoryPage params={{ category: blogCategory.name }} />)
-        const title = await waitForElement(() => getByTestId('blog-category-title'))
-        expect(title).toHaveTextContent(blogCategory.title)
-        const subtitle = await waitForElement(() => getByTestId('blog-category-subtitle'))
-        expect(subtitle).toHaveTextContent(blogCategory.subtitle)
+      it('will show the correct header for ' + blogCategory.title, done => {
+        setImmediate(async () => {
+          const { getByTestId } = render(<BlogCategoryPage params={{ category: blogCategory.name }} />)
+          const title = await waitForElement(() => getByTestId('blog-category-title'))
+          expect(title).toHaveTextContent(blogCategory.title)
+          const subtitle = await waitForElement(() => getByTestId('blog-category-subtitle'))
+          expect(subtitle).toHaveTextContent(blogCategory.subtitle)
+          done()
+        })
       })
 
       it('will get the blog posts for ' + blogCategory.title, done => {

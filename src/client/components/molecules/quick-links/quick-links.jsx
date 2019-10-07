@@ -168,7 +168,7 @@ const LatestDocumentsCard = props => {
         </Link>
       </div>
       <DecorativeDash width={30} />
-      <div>
+      <div className={styles.list}>
         {LOADING_STATE === 'isLoading' && <div>Loading</div>}
         {LOADING_STATE === 'isLoaded' && <div>
           {!isEmpty(props.documents) && props.documents.items.length > 0 ? (
@@ -217,6 +217,7 @@ const RatesCard = props => {
     <div className={props.className}>
       <h4 className={styles.title}>Rates</h4>
       <DecorativeDash width={30} />
+      <div className={styles.list}>
       {props.rate.map((rate, index) => {
         return (
           <div key={index} className={styles.rateContainer}>
@@ -225,6 +226,7 @@ const RatesCard = props => {
           </div>
         )
       })}
+      </div>
     </div>
   )
 }
@@ -251,7 +253,7 @@ const ArticlesCard = props => {
         </Link>
       </div>
       <DecorativeDash width={30} />
-      <div>
+      <div className={styles.list}>
         {articles && articles.items.length ? (
           <div>
             {articles.items.map((article, index) => {

@@ -246,7 +246,7 @@ const Docs = ({ office }) => {
 }
 
 const LenderMatch = () => {
-  const lenderHeadline = 'Lender Match'
+  const lenderHeadline = 'Lender match'
   const lenderBlurb =
     'Lender Match is a free online referral tool that connects small businesses with particpating SBA-approved lenders.'
   const lenderButton = {

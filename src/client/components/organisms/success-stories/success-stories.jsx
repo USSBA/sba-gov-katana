@@ -24,20 +24,19 @@ class SuccessStories extends PureComponent {
     if (blogs.length > 0) {
       blogs = blogs.slice(0, 3)
     }
-    
+
     this.setState({ blogs })
   }
 
   render() {
-
     const { blogs } = this.state
     const { officeId } = this.props
 
-    const cards = blogs.map(({ title, summary, blogBody, created, url }, index) => {
+    const cards = blogs.map(({ title, summary, featuredImage, created, url }, index) => {
       const item = {
         image: {
-          alt: blogBody[0].blogSectionImage.alt,
-          url: blogBody[0].blogSectionImage.url
+          alt: featuredImage.alt,
+          url: featuredImage.url
         },
         italicText: moment.unix(created).format('MMMM D, YYYY'),
         link: {
@@ -49,25 +48,24 @@ class SuccessStories extends PureComponent {
       }
       return (
         <div data-testid={`success-story-card`} key={index}>
-          <Card
-            index={index}
-            item={item}
-            numCards={3}
-          />
-        </div>)
-      })
+          <Card index={index} item={item} numCards={3} />
+        </div>
+      )
+    })
     return (
       <div>
-        {cards.length > 0 && <div data-testid={'success-stories'} className={styles.successStories}>
-          <h2>Success Stories posts</h2>
-          {cards}
-          <div className={styles.clear} />
-          <div className={styles.button} data-testid="success-stories-button">
-            <a href={`/blogs/success-stories/${officeId}`}>
-              <Button primary>View All Posts</Button>
-            </a>
+        {cards.length > 0 && (
+          <div data-testid={'success-stories'} className={styles.successStories}>
+            <h2>Success Story posts</h2>
+            {cards}
+            <div className={styles.clear} />
+            <div className={styles.button} data-testid="success-stories-button">
+              <a href={`/blogs/success-stories/${officeId}`}>
+                <Button primary>View All Posts</Button>
+              </a>
+            </div>
           </div>
-        </div>}
+        )}
       </div>
     )
   }
