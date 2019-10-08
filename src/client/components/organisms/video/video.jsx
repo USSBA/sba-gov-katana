@@ -15,7 +15,7 @@ class Video extends React.Component {
 
     return (
       <div>
-        <h2 className={styles.videoTitle}>{title}</h2>
+        {title && <h2 className={styles.videoTitle}>{title}</h2>}
         <div className={videoClassName}>
           <iframe src={`https://www.youtube.com/embed/${youtubeId}`} frameBorder="0" />
         </div>
