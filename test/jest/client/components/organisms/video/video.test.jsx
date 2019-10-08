@@ -6,16 +6,6 @@ import { mount, shallow } from 'enzyme'
 import { Video } from 'organisms'
 
 describe('Video Organism', () => {
-  // let spyChangeLocation
-
-  // beforeEach(() => {
-  //   spyChangeLocation = sinon.spy(OHAWestlawForm.prototype, 'changeLocation')
-  // })
-
-  // afterEach(() => {
-  //   spyChangeLocation.restore()
-  // })
-
   test('should render correctly', () => {
     const component = shallow(<Video />)
     expect(component).toMatchSnapshot()
@@ -57,11 +47,11 @@ describe('Video Organism', () => {
     expect(tree.children[1].children[0].props.src).toBe('https://www.youtube.com/embed/4oE6nEt3uRM')
   })
 
-  test('should render with correct size class name', () => {
+  test('should render with small size class name', () => {
     const testProps = {
       id: 21768,
       type: 'video',
-      size: 'medium',
+      size: 'small',
       title: 'videoTitleTest3',
       youtubeId: 'EozeSDeV3Vo'
     }
@@ -71,6 +61,40 @@ describe('Video Organism', () => {
     )
 
     const tree = component.toJSON()
+    expect(tree.children[1].props.className).toBe('video small')
+  })
+
+  test('should render with medium size class name', () => {
+    const testProps = {
+      id: 21768,
+      type: 'video',
+      size: 'medium',
+      title: 'videoTitleTest4',
+      youtubeId: 'EozeSDeV3Vo'
+    }
+
+    const component = renderer.create(
+      <Video size={testProps.size} title={testProps.title} youtubeId={testProps.youtubeId} />
+    )
+
+    const tree = component.toJSON()
     expect(tree.children[1].props.className).toBe('video medium')
+  })
+
+  test('should render with large size class name', () => {
+    const testProps = {
+      id: 21768,
+      type: 'video',
+      size: 'large',
+      title: 'videoTitleTest5',
+      youtubeId: 'EozeSDeV3Vo'
+    }
+
+    const component = renderer.create(
+      <Video size={testProps.size} title={testProps.title} youtubeId={testProps.youtubeId} />
+    )
+
+    const tree = component.toJSON()
+    expect(tree.children[1].props.className).toBe('video')
   })
 })
