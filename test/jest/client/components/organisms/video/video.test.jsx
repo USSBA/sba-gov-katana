@@ -29,6 +29,23 @@ describe('Video Organism', () => {
     expect(tree.children[0].children[0]).toBe('videoTitleTest1')
   })
 
+  test('should not be h2 if title is not provided in props', () => {
+    const testProps = {
+      id: 21768,
+      type: 'video',
+      size: 'small',
+      youtubeId: 'RW1JN8a30NE'
+    }
+
+    const component = renderer.create(
+      <Video size={testProps.size} title={testProps.title} youtubeId={testProps.youtubeId} />
+    )
+
+    const tree = component.toJSON()
+    expect(tree.children).toHaveLength(1)
+    expect(tree.children[0].type).toBe('div')
+  })
+
   test('should render with correct url and in an iframe', () => {
     const testProps = {
       id: 21768,
