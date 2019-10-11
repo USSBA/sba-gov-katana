@@ -11,7 +11,8 @@ import {
   ProgramDetailsCardCollection,
   SearchBox,
   StyleGrayBackground,
-  TextReadMoreSection
+  TextReadMoreSection,
+  Video
 } from 'organisms'
 import { panelMenuContainer } from './homepage/homepage.scss'
 import { getLanguageOverride } from '../../services/utils.js'
@@ -162,6 +163,8 @@ function makeParagraphs(
             <Spacing bottom={50} />
           </div>
         )
+      } else if (item.type === 'video') {
+        paragraph = <Video size={item.size} title={item.title} youtubeId={item.youtubeId} />
       }
     }
     return {
