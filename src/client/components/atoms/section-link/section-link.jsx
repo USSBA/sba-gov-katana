@@ -11,6 +11,7 @@ class SectionLink extends React.Component {
     return (
       <span
         id={this.props.id + '-container'}
+        role="menuitem"
         className={styles.link + highlightLink}
         onMouseOver={this.props.onMouseOver}
         onMouseOut={this.props.onMouseOut}
