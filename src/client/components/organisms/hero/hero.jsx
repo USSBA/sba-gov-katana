@@ -59,13 +59,22 @@ class Hero extends React.Component {
                   secondary={index > 0}
                   spacing={!imageUrl}
                   url={item.url}
+                  data-testid="button"
                 >
                   {item.btnText}
                 </Button>
               ))}
           </div>
         </div>
-        {imageUrl && <img className={styles.arrow} ref={ref => (this.arrow = ref)} src={scrollIcon} />}
+        {imageUrl && (
+          <img
+            className={styles.arrow}
+            data-testid="hero-arrow"
+            aria-hidden="true"
+            ref={ref => (this.arrow = ref)}
+            src={scrollIcon}
+          />
+        )}
       </div>
     )
   }
