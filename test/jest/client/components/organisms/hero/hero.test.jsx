@@ -1,9 +1,11 @@
 /* eslint-env jest */
-
 import React from 'react'
-import { shallow } from 'enzyme'
 import { Hero } from 'organisms'
-import { Button } from 'atoms'
+import 'jest-dom/extend-expect'
+
+import { render, cleanup } from 'react-testing-library'
+
+afterEach(cleanup)
 
 // fixes 'TypeError: window.matchMedia is not a function'
 window.matchMedia = jest.fn().mockImplementation(query => {
@@ -16,42 +18,41 @@ window.matchMedia = jest.fn().mockImplementation(query => {
   }
 })
 
-describe('Hero Organism', () => {
-  test('displays title in an H1 tag', () => {
+describe('Hero component', () => {
+  it('displays title in an H1 tag', () => {
     const titleText = 'My Title'
-    const component = shallow(<Hero title={titleText} />)
-    const titleElement = component.find('h1')
-    expect(titleElement.text()).toEqual(titleText)
+    const { queryByTestId } = render(<Hero title={titleText} />)
+    const content = queryByTestId('title')
+    expect(content).toHaveTextContent(titleText)
   })
 
-  test('displays message in an H5 tag', () => {
+  it('displays message in an H5 tag', () => {
     const message = 'My message'
-    const component = shallow(<Hero message={message} />)
-    const messageElement = component.find('h5')
-    expect(messageElement.text()).toEqual(message)
+    const { queryByTestId } = render(<Hero message={message} />)
+    const content = queryByTestId('message')
+    expect(content).toHaveTextContent(message)
   })
 
-  test('displays a single button', () => {
+  it('displays a single button', () => {
     const buttonData = [
       {
         url: '/somewhere',
         btnText: 'Find Somewhere'
       }
     ]
-    const component = shallow(<Hero buttons={buttonData} />)
-    const button = component.find(Button)
-    expect(button).toHaveLength(buttonData.length)
-    expect(button.prop('url')).toEqual(buttonData[0].url)
-    expect(button.childAt(0).text()).toEqual(buttonData[0].btnText)
+    const { queryAllByTestId } = render(<Hero buttons={buttonData} />)
+    const content = queryAllByTestId('button')
+    expect(content).toHaveLength(buttonData.length)
+    expect(content[0]).toHaveTextContent(buttonData[0].btnText)
   })
 
-  test('displays no buttons', () => {
-    const component = shallow(<Hero />)
-    const button = component.find(Button)
-    expect(button).toHaveLength(0)
+  it('displays no buttons', () => {
+    const { queryAllByTestId } = render(<Hero />)
+    const content = queryAllByTestId('button')
+    expect(content).toHaveLength(0)
   })
 
-  test('displays multiple buttons', () => {
+  it('displays multiple buttons', () => {
     const buttonData = [
       {
         url: '/somewhere',
@@ -66,8 +67,19 @@ describe('Hero Organism', () => {
         btnText: 'Find Nowhere'
       }
     ]
-    const component = shallow(<Hero buttons={buttonData} />)
-    const buttons = component.find(Button)
-    expect(buttons).toHaveLength(buttonData.length)
+    const { queryAllByTestId } = render(<Hero buttons={buttonData} />)
+    const content = queryAllByTestId('button')
+    expect(content).toHaveLength(buttonData.length)
+  })
+
+  it('has a decorative arrow if an image URL is provided', () => {
+    const { queryByTestId } = render(<Hero imageUrl="/foo" />)
+    const content = queryByTestId('hero-arrow')
+    expect(content).toHaveAttribute('aria-hidden', 'true')
+  })
+  it('DOES NOT have a decorative arrow if an image URL is provided', () => {
+    const { queryByTestId } = render(<Hero />)
+    const content = queryByTestId('hero-arrow')
+    expect(content).toBe(null)
   })
 })
