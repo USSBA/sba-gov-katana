@@ -70,7 +70,6 @@ class Hero extends React.Component {
           <img
             className={styles.arrow}
             data-testid="hero-arrow"
-            role="presentation"
             aria-hidden="true"
             ref={ref => (this.arrow = ref)}
             src={scrollIcon}
