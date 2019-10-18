@@ -35,7 +35,7 @@ class MenuTileCollection extends React.Component {
   }
 
   makeTile(object, index) {
-    // TODO: better error checking here and determine why some icons are coming up as undefined TA-3328
+    // TODO: better error checking here and determine why some icons are coming up as undefined (see TA-3330)
     try {
       const sectionName = object.fullUrl.slice(
         1,
