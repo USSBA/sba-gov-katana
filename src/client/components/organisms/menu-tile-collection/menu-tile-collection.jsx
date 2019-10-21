@@ -35,40 +35,45 @@ class MenuTileCollection extends React.Component {
   }
 
   makeTile(object, index) {
-    const sectionName = object.fullUrl.slice(
-      1,
-      object.fullUrl.indexOf('/', object.fullUrl.indexOf('/') + 1)
-    )
-    const iconElement = icons[sectionName][index]
-    const tileProps = {
-      id: 'tile-' + index,
-      key: index,
-      data: object,
-      icon: iconElement.icon,
-      backgroundLines: iconElement.background,
-      iconWhite: iconElement.iconWhite,
-      pathname: this.props.pathname,
-      size: icons[sectionName].length,
-      uppercaseFirstWord: this.props.uppercaseFirstWord,
-      smallTile: this.props.smallTile,
-      splitTitle: this.props.splitTitle,
-      onFocus: () => {
-        this.onFocus(index)
-      },
-      onBlur: () => {
-        this.onBlur(index)
-      },
-      onMouseExit: () => {
-        this.onBlur(index)
-      },
-      onTabBackwards: () => {
-        this.onTabBackwards(index)
-      },
-      enteringInReverse: this.state.enteringInReverse,
-      showHover: index === this.state.panelShowingHoverState,
-      neverDisplayChildrenOnHoverOverride: this.props.neverDisplayChildrenOnHoverOverride
+    // TODO: better error checking here and determine why some icons are coming up as undefined (see TA-3330)
+    try {
+      const sectionName = object.fullUrl.slice(
+        1,
+        object.fullUrl.indexOf('/', object.fullUrl.indexOf('/') + 1)
+      )
+      const iconElement = icons[sectionName][index]
+      const tileProps = {
+        id: 'tile-' + index,
+        key: index,
+        data: object,
+        icon: iconElement.icon,
+        backgroundLines: iconElement.background,
+        iconWhite: iconElement.iconWhite,
+        pathname: this.props.pathname,
+        size: icons[sectionName].length,
+        uppercaseFirstWord: this.props.uppercaseFirstWord,
+        smallTile: this.props.smallTile,
+        splitTitle: this.props.splitTitle,
+        onFocus: () => {
+          this.onFocus(index)
+        },
+        onBlur: () => {
+          this.onBlur(index)
+        },
+        onMouseExit: () => {
+          this.onBlur(index)
+        },
+        onTabBackwards: () => {
+          this.onTabBackwards(index)
+        },
+        enteringInReverse: this.state.enteringInReverse,
+        showHover: index === this.state.panelShowingHoverState,
+        neverDisplayChildrenOnHoverOverride: this.props.neverDisplayChildrenOnHoverOverride
+      }
+      return <Tile {...tileProps} />
+    } catch {
+      console.log('Error with creating icons')
     }
-    return <Tile {...tileProps} />
   }
 
   render() {
