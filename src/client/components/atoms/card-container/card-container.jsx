@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import styles from './card-container.scss'
 
 const CardContainer = props => {
-  const { cardContent, cardAriaLabel, index, numCards, parentIndex } = props
+  const { cardContent, cardAriaLabel, index, numCards } = props
 
   /* eslint-disable no-magic-numbers */
   const className = classNames({
@@ -22,7 +22,6 @@ const CardContainer = props => {
   return (
     <div
       data-testid="card-container"
-      id={`card-${parentIndex}-${index + 1}`}
       aria-label={`${cardAriaLabel} ${index + 1}`}
       tabIndex="0"
       className={className}
@@ -36,16 +35,14 @@ CardContainer.defaultProps = {
   cardAriaLabel: 'card',
   item: {},
   index: -1,
-  numCards: -1,
-  parentIndex: -1
+  numCards: -1
 }
 
 CardContainer.propTypes = {
   cardContent: PropTypes.element.isRequired,
   cardAriaLabel: PropTypes.string,
   index: PropTypes.number,
-  numCards: PropTypes.number,
-  parentIndex: PropTypes.number
+  numCards: PropTypes.number
 }
 
 export default CardContainer
