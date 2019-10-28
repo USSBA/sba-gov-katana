@@ -25,13 +25,12 @@ class GenericCardCollection extends React.Component {
     this.state = {}
   }
   render() {
-    const { leftAligned, parentIndex, cardsContent, numberOverride, cardAriaLabel } = this.props
+    const { leftAligned, cardsContent, numberOverride, cardAriaLabel } = this.props
     const numCards = numberOverride ? numberOverride : size(this.props.cardsContent)
     const cardComponents = cardsContent.map(function(cardContent, index) {
       return (
         <CardContainer
           cardContent={cardContent}
-          parentIndex={parentIndex}
           key={index}
           index={index}
           numCards={numCards}
@@ -47,7 +46,7 @@ class GenericCardCollection extends React.Component {
       <div data-testid="generic-card-collection" className={styles.cardCollection}>
         {rows.map(function(item, index) {
           return (
-            <div id={'card-row-' + parentIndex + '-' + index} key={index} className={styles.cardRow}>
+            <div key={index} className={styles.cardRow}>
               {item}
             </div>
           )
@@ -61,14 +60,12 @@ GenericCardCollection.propTypes = {
   cardAriaLabel: PropTypes.string,
   cardsContent: PropTypes.arrayOf(PropTypes.element),
   numberOverride: PropTypes.number,
-  parentIndex: PropTypes.number,
   leftAligned: PropTypes.bool
 }
 
 GenericCardCollection.defaultProps = {
   cardsContent: [],
   numberOverride: null,
-  parentIndex: -1,
   leftAligned: false
 }
 
