@@ -38,7 +38,7 @@ describe('LeadershipCards', () => {
 		const leaders = await waitForElement(() => getAllByTestId('leader-card'))
 		expect(leaders.length).toEqual(3)
 	})
-	it('should display no LeadershipCards', async () => {
+	it('should display no LeadershipCards when no data is passed in', async () => {
 		const { queryByTestId } = render(<LeadershipCards />)
 		const leaders = queryByTestId('leader-card')
 		expect(leaders).not.toBeInTheDocument()
