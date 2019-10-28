@@ -41,10 +41,6 @@ exports[`Person page renders correctly 1`] = `
         className="contact-card box contactCard"
         data-testid="contact-card"
       >
-        <h6
-          data-cy="contact card title"
-          data-testid="contact card title"
-        />
         <div
           className="row"
           data-cy="contact phone"
@@ -54,9 +50,9 @@ exports[`Person page renders correctly 1`] = `
             className="firstColumn"
           >
             <i
-              alt="205-290-7009"
-              aria-hidden="true"
+              aria-label="phone icon"
               className="fa fa-phone"
+              tabIndex="0"
             />
           </div>
           <div
@@ -83,9 +79,9 @@ exports[`Person page renders correctly 1`] = `
             className="firstColumn"
           >
             <i
-              alt="202-292-3808"
-              aria-hidden="true"
+              aria-label="fax icon"
               className="fa fa-fax"
+              tabIndex="0"
             />
           </div>
           <div
@@ -110,9 +106,9 @@ exports[`Person page renders correctly 1`] = `
             className="firstColumn"
           >
             <i
-              alt="thomas.todt@sba.gov"
-              aria-hidden="true"
+              aria-label="email icon"
               className="fa fa-envelope-o"
+              tabIndex="0"
             />
           </div>
           <div

@@ -52,7 +52,7 @@ describe('ContactCard', () => {
 
     getByTestId('contact-card')
     const title = queryByTestId('contact card title')
-    expect(title).not.toHaveTextContent()
+    expect(title).not.toBeInTheDocument()
   })
 
   it('should NOT render the address section when NO streetAddress is passed in', () => {
