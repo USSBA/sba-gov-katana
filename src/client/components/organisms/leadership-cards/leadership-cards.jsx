@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { GenericCardCollection } from 'organisms'
 import { AuthorCard } from 'molecules'
 import styles from './leadership-cards.scss'
 import { fetchRestContent } from '../../../fetch-content-helper'
