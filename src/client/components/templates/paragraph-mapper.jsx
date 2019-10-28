@@ -167,7 +167,7 @@ function makeParagraphs(
       } else if (item.type === 'video') {
         paragraph = <Video size={item.size} title={item.title} youtubeId={item.youtubeId} />
       } else if (item.type === 'leadershipCards') {
-        <LeadershipCards data={item.leadership} />
+        paragraph = <LeadershipCards data={item.leadership} />
       }
     }
     return {
