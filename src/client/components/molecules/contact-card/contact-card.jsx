@@ -45,46 +45,54 @@ const ContactCard = props => {
     {
       name: 'person title',
       text: personTitle,
-      icon: 'user'
+      icon: 'user',
+      ariaLabel: 'person icon'
     },
     {
       name: 'person office',
       text: office,
-      icon: 'building'
+      icon: 'building',
+      ariaLabel: 'office building icon'
     },
     {
       name: 'contact address',
       text: streetAddress && city && state && zipCode && address('<br />'),
       icon: 'map-marker',
-      href: `https://maps.google.com?q=${encodeURIComponent(address('\n'))}`
+      href: `https://maps.google.com?q=${encodeURIComponent(address('\n'))}`,
+      ariaLabel: 'address icon'
     },
     {
       name: 'contact phone',
       text: phoneNumber,
       icon: 'phone',
-      href: `tel:${phoneNumber}`
+      href: `tel:${phoneNumber}`,
+      ariaLabel: 'phone icon'
     },
     {
       name: 'contact fax',
       text: fax,
-      icon: 'fax'
+      icon: 'fax',
+      ariaLabel: 'fax icon'
     },
     {
       name: 'contact link',
       text: linkText,
       icon: 'external-link-square',
-      href: link
+      href: link,
+      ariaLabel: 'website icon'
     },
     {
       name: 'contact email',
       text: email,
       icon: 'envelope-o',
-      href: `mailto:${email}`
+      href: `mailto:${email}`,
+      ariaLabel: 'email icon'
     },
     {
       name: 'hours of operation',
       text: formatHours(hoursOfOperation),
-      icon: 'clock-o'
+      icon: 'clock-o',
+      ariaLabel: 'clock icon for hours of operation'
     }
   ]
 
@@ -114,17 +122,19 @@ const ContactCard = props => {
 
   return (
     <div data-testid={testId} className={contactCardClassName}>
-      <h6 data-testid="contact card title" data-cy="contact card title">
-        {title}
-      </h6>
+      {title && (
+        <h6 data-testid="contact card title" data-cy="contact card title" tabIndex="0">
+          {title}
+        </h6>
+      )}
       {/* TODO: cleanup double filter */}
       {fields
         .filter(emptyFieldFilter)
         .filter(({ text }) => !isEmpty(text))
-        .map(({ href, icon, name, text }, index) => (
+        .map(({ href, icon, name, text, ariaLabel }, index) => (
           <div data-testid={name} data-cy={name} className={styles.row} key={index}>
             <div className={styles.firstColumn}>
-              <i alt={text} aria-hidden="true" className={`fa fa-${icon}`} />
+              <i aria-label={ariaLabel} className={`fa fa-${icon}`} tabIndex="0" />
             </div>
             <div className={styles.secondColumn}>
               {isEmpty(href) ? (
