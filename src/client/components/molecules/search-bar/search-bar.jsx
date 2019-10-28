@@ -70,7 +70,7 @@ class SearchBar extends React.Component {
           <i
             alt="search button"
             aria-hidden="true"
-            className=" fa fa-search"
+            className="fa fa-search"
             id="search-button"
             onClick={this.submitSearch.bind(this)}
           />
@@ -80,6 +80,7 @@ class SearchBar extends React.Component {
       return (
         <Link
           aria-label={toggleLabel}
+          aria-expanded={expanded}
           onClick={this.handleSearchToggle.bind(this)}
           onKeyDown={this.handleSearchKeypress.bind(this)}
         >
