@@ -10,6 +10,7 @@ const selectOptions = {
     option: [
       { value: '', label: 'All' },
       { value: 'BDP! MSB!', label: '8(a) Business Development' },
+      { value: 'CVE!', label: 'Center for Verification and Evaluation' },
       { value: 'DEV', label: 'Development Company' },
       { value: 'WOSB!', label: 'Economically-Disadvantaged Women-Owned Small Business' },
       { value: 'NAI! SIC!', label: 'NAICS & SIC' },
