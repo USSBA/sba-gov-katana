@@ -30,7 +30,7 @@ class LeadershipCards extends PureComponent {
 		const cardsContent = items.map(({ name, title, shortBio, url }, index) => {
 			return (
 			<div data-testid={'leader-card'} className={styles.leaderCard} key={index}>
-				<AuthorCard name={name} title={title} shortBio={shortBio} url={url} border={false} mode={'grid'} />
+				<AuthorCard name={name} title={title} shortBio={shortBio} url={url} border={false} />
 			</div>
 			)
 		})
