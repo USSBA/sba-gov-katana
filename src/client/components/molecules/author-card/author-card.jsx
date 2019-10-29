@@ -7,7 +7,7 @@ import styles from './author-card.scss'
 
 class AuthorCard extends PureComponent {
   render() {
-    const { name, title, shortBio: bio, picture, url, border, mode } = this.props
+    const { name, title, shortBio: bio, picture, url, border, mode, containerTabIndex } = this.props
 
     const className = classNames({
       [styles.card]: true,
@@ -52,7 +52,7 @@ class AuthorCard extends PureComponent {
           <h4 data-testid={'name'}>
             <a href={url}>{name}</a>
           </h4>
-          <div data-testid={'title'} tabIndex="0" className={styles.title}>
+          <div data-testid={'title'} tabIndex={containerTabIndex} className={styles.title}>
             <i>{authorTitle}</i>
           </div>
           <DecorativeDash width={30} />
@@ -73,7 +73,8 @@ AuthorCard.propTypes = {
   title: PropTypes.string,
   url: PropTypes.string,
   border: PropTypes.bool,
-  mode: PropTypes.string
+  mode: PropTypes.string,
+  containerTabIndex: PropTypes.string
 }
 
 AuthorCard.defaultProps = {
@@ -82,7 +83,8 @@ AuthorCard.defaultProps = {
   picture: {},
   shortBio: '',
   border: true,
-  mode: 'single' // single | grid
+  mode: 'single', // single | grid
+  containerTabIndex: '0'
 }
 
 export default AuthorCard

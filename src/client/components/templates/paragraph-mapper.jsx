@@ -5,6 +5,7 @@ import { ImageSection, Spacing, TextSection } from 'atoms'
 import { ButtonCta, CallToAction, NewsletterForm, QuickLinks, ReadMoreSection } from 'molecules'
 import {
   CardCollection,
+  LeadershipCards,
   Lookup,
   MenuTileCollection,
   OHAWestlawForm,
@@ -165,6 +166,8 @@ function makeParagraphs(
         )
       } else if (item.type === 'video') {
         paragraph = <Video size={item.size} title={item.title} youtubeId={item.youtubeId} />
+      } else if (item.type === 'leadershipCards') {
+        paragraph = <LeadershipCards data={item.leadership} />
       }
     }
     return {

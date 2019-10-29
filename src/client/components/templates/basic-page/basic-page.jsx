@@ -6,7 +6,7 @@ import { listenForOverlap } from 'element-overlap'
 import styles from './basic-page.scss'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
 import { Breadcrumb, FeedbackForm, PreviousNextSection, RemoveMainLoader, TitleSection } from 'molecules'
-import { SectionNav } from 'organisms'
+import { GenericCardCollection, SectionNav } from 'organisms'
 import { getLanguageOverride } from '../../../services/utils.js'
 import { TRANSLATIONS } from '../../../translations.js'
 

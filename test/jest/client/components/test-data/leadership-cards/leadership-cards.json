@@ -1,0 +1,30 @@
+{
+	"paragraphs": [ {}, {
+		"id": 22789,
+		"type": "leadershipCards",
+		"leadership": [{
+		        "id": 22786,
+		        "type": "person",
+		        "person": 6380
+		    },
+		    {
+		        "id": 22787,
+		        "type": "person",
+		        "person": 6708
+		    },
+		    {
+		        "id": 22788,
+		        "type": "person",
+		        "person": 18230
+		    }
+		]
+	}],
+	"summary": "these are our leaders",
+	"type": "page",
+	"title": "Leadership Test",
+	"id": 20215,
+	"updated": 1571942336,
+	"created": 1571864906,
+	"langCode": "en",
+	"url": "/learning-center/leadership-test"
+}
