@@ -71,6 +71,7 @@ class Hero extends React.Component {
             className={styles.arrow}
             data-testid="hero-arrow"
             aria-hidden="true"
+            alt=""
             ref={ref => (this.arrow = ref)}
             src={scrollIcon}
           />
