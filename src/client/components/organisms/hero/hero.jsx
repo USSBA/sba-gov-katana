@@ -47,6 +47,7 @@ class Hero extends React.Component {
           aria-label={alt}
           className={imageUrl ? styles.image : styles.noImage}
           style={style}
+          alt={alt}
         >
           <div className={styles.callout} ref={ref => (this.callout = ref)}>
             <h1 data-testid="title">{title}</h1>
