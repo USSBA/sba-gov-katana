@@ -123,9 +123,9 @@ const ContactCard = props => {
   return (
     <div data-testid={testId} className={contactCardClassName}>
       {title && (
-        <h6 data-testid="contact card title" data-cy="contact card title" tabIndex="0">
+        <h4 data-testid="contact card title" data-cy="contact card title" tabIndex="0" className={styles.h4}>
           {title}
-        </h6>
+        </h4>
       )}
       {/* TODO: cleanup double filter */}
       {fields
