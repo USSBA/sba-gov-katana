@@ -58,12 +58,6 @@ describe('BasicPage', () => {
     expect(BasicPageComponent.find(Breadcrumb).prop('items')).toBeDefined()
   })
 
-  test('renders feedback form component when langCode is set to English', () => {
-    history.pushState({}, null, '?lang=en')
-    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
-    expect(BasicPageComponent.find(FeedbackForm).length).toEqual(1)
-  })
-
   test("doesn't render feedback form component when langCode is set to Spanish", () => {
     history.pushState({}, null, '?lang=es')
     const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
