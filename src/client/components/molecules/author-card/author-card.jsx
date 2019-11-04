@@ -24,7 +24,7 @@ class AuthorCard extends PureComponent {
     })
 
     const spanClassName = classNames({
-      [styles.linkSpan]: isEmpty(bio)
+      [styles.linkSpan]: !isEmpty(bio)
     })
 
     //Empty author titles come out of drupal as empty objects, but is a string when valid
@@ -35,7 +35,7 @@ class AuthorCard extends PureComponent {
       link = (
         <div data-testid={'read-more'} className={linkClassName}>
           <a href={url}>
-            <span className={spanClassName}>bio</span>Read More
+            <span className={spanClassName}>{bio.toString()}</span>Read More
           </a>
         </div>
       )
