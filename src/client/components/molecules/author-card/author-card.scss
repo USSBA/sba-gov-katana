@@ -1,5 +1,4 @@
 .card {
-  
   background: #ffffff;
   padding: 30px 20px 30px 30px;
 
@@ -18,7 +17,6 @@
     margin: auto 0 2em;
     width: 100%;
   }
-
 }
 
 .border {
@@ -27,18 +25,15 @@
 }
 
 .title {
-    margin-bottom:  10px;
-  }
+  margin-bottom: 10px;
+}
 
 .bio {
-
   margin-top: 20px;
   margin-bottom: 5px;
-
 }
 
 .image {
-
   display: inline-block;
   vertical-align: top;
 
@@ -46,14 +41,11 @@
     width: 100%;
   }
 
-
   @include for-small-only {
-
     display: block;
     margin: 0 auto 20px;
     width: 100%;
     max-width: 280px;
-
   }
 
   @include grid-media($sba-grid-medium) {
@@ -63,17 +55,13 @@
   @include grid-media($sba-grid-large) {
     width: 35%;
   }
-  
 }
 
 .info {
-  
   display: inline-block;
-
 }
 
 .imageMode {
-
   @include grid-media($sba-grid-medium) {
     width: 65%;
     padding-left: 30px;
@@ -83,11 +71,16 @@
     width: 65%;
     padding-left: 30px;
   }
-  
 }
 
 .linkAdditionalMargin {
   margin-top: 25px;
 }
 
-
+.linkSpan {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -10px;
+}
