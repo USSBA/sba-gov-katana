@@ -23,7 +23,9 @@ const initialState = {
   isEmailAddressValid: false,
   isZipCodeValid: true,
   formState: FORM_STATE.initial,
-  zipCode: ''
+  zipCode: '',
+  ariaEmailAddressErrorMessage: '',
+  ariaZipCodeErrorMessage: ''
 }
 
 class NewsletterForm extends Component {
@@ -55,7 +57,7 @@ class NewsletterForm extends Component {
 
   render() {
     const { footer, title } = this.props
-    const { formState } = this.state
+    const { formState, ariaEmailAddressErrorMessage, ariaZipCodeErrorMessage } = this.state
 
     const className = classNames({
       newsletter: true,
@@ -64,23 +66,36 @@ class NewsletterForm extends Component {
       [styles.footer]: footer
     })
 
+    const textInputErrorMessages = {
+      'emailAddress': 'Enter a valid email address',
+      'zipCode': 'Enter a valid zip code',
+    }
+
     const textInputs = [
       {
         name: 'email address',
+        errorText: textInputErrorMessages.emailAddress,
         optional: false,
         validate: value => {
           const isEmailAddressValid = isEmail(value)
-          this.setState({ isEmailAddressValid })
+          this.setState({
+              isEmailAddressValid,
+              ariaEmailAddressErrorMessage: !isEmailAddressValid ? textInputErrorMessages.emailAddress : ''
+          })
           return isEmailAddressValid
         }
       },
       {
         name: 'zip code',
+        errorText: textInputErrorMessages.zipCode,
         optional: true,
         validate: value => {
           // only checks U.S. zip codes
           const isZipCodeValid = isEmpty(value) || isPostalCode(value, 'US')
-          this.setState({ isZipCodeValid })
+          this.setState({
+            isZipCodeValid,
+            ariaZipCodeErrorMessage: !isZipCodeValid ? textInputErrorMessages.zipCode : ''
+          })
           return isZipCodeValid
         }
       }
@@ -107,9 +122,9 @@ class NewsletterForm extends Component {
             )}
             <div className={styles.inputs}>
               {!footer &&
-                textInputs.map(({ name, optional, validate }) => (
+                textInputs.map(({ name, errorText, optional, validate }) => (
                   <TextInput
-                    errorText={`Enter a valid ${name}`}
+                    errorText={errorText}
                     id={kebabCase(`newsletter ${name}`)}
                     key={name}
                     label={capitalize(name)}
@@ -149,7 +164,7 @@ class NewsletterForm extends Component {
         break
       case FORM_STATE.error:
         formContent = (
-          <div className={styles[formState]} data-testid="newsletter-error-info" aria-live="assertive" aria-atomic="true">
+          <div className={styles[formState]} data-testid="newsletter-error-info">
             <i className="fa fa-times-circle" data-testid="newsletter-error-icon" />
             <h3 data-testid="newsletter-error-title">Sorry, we're having issues</h3>
             <p data-testid="newsletter-error-message">
@@ -188,9 +203,13 @@ class NewsletterForm extends Component {
         }}
       >
         {formContent}
+        <AriaMessage message={ariaEmailAddressErrorMessage} />
+        <AriaMessage message={ariaZipCodeErrorMessage} />
       </form>
     )
   }
 }
+
+const AriaMessage = ({ message }) => <p className={styles.ariaMessage} aria-live="assertive" aria-atomic="true">{message}</p>
 
 export default NewsletterForm
