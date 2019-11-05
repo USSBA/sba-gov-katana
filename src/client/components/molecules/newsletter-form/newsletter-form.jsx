@@ -149,7 +149,7 @@ class NewsletterForm extends Component {
         break
       case FORM_STATE.error:
         formContent = (
-          <div className={styles[formState]} data-testid="newsletter-error-info">
+          <div className={styles[formState]} data-testid="newsletter-error-info" aria-live="assertive" aria-atomic="true">
             <i className="fa fa-times-circle" data-testid="newsletter-error-icon" />
             <h3 data-testid="newsletter-error-title">Sorry, we're having issues</h3>
             <p data-testid="newsletter-error-message">
