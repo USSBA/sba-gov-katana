@@ -1014,6 +1014,20 @@ exports[`Front Page Hero should render correctly 1`] = `
           </span>
         </div>
       </div>
+      <p
+        aria-atomic="true"
+        aria-live="assertive"
+        className="ariaMessage"
+      >
+        
+      </p>
+      <p
+        aria-atomic="true"
+        aria-live="assertive"
+        className="ariaMessage"
+      >
+        
+      </p>
     </form>
     <hr
       className="mobileRule"
