@@ -37,11 +37,13 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
             className="input"
             data-testid="document-lookup"
             id="document-lookup"
+            inputMode="text"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="Search by title or number"
+            type="text"
           />
         </div>
       </div>

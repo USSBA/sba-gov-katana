@@ -31,11 +31,13 @@ exports[`PersonLookupPage should render correctly 1`] = `
             data-cy="search"
             data-testid="search"
             id="search"
+            inputMode="text"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="Search by name, title, or office"
+            type="text"
           />
           <div
             className="searchIcon"

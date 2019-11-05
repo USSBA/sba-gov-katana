@@ -109,6 +109,8 @@ class TextInput extends React.Component {
       className,
       queryParamName,
       validationFunction,
+      inputType,
+      inputMode,
       ...rest
     } = this.props
     const { isFocused, isValid, value } = this.state
@@ -129,7 +131,8 @@ class TextInput extends React.Component {
       >
         <label
           htmlFor={id}
-          className={labelStyle ? labelStyle : undefined}
+          // className={labelStyle ? labelStyle : undefined}
+          className={labelStyle ? labelStyle : null}
           data-testid={kebabCase(`${id} label`)}
         >
           {label}
@@ -145,6 +148,8 @@ class TextInput extends React.Component {
               [styles.searchIconPadding]: showSearchIcon
             })}
             data-testid={id}
+            type={inputType || 'text'}
+            inputMode={inputMode || 'text'}
             onChange={this.handleChange.bind(this)}
             onBlur={this.handleBlur.bind(this)}
             onFocus={this.handleFocus.bind(this)}
@@ -172,6 +177,8 @@ TextInput.defaultProps = {
   showSuccessIcon: true,
   showErrorIcon: false,
   id: null
+  // inputType: 'text',
+  // inputMode: 'text'
 }
 
 TextInput.propTypes = {
@@ -194,6 +201,9 @@ TextInput.propTypes = {
   showErrorIcon: PropTypes.bool,
 
   validationFunction: PropTypes.func,
+
+  inputType: PropTypes.string,
+  inputMode: PropTypes.string,
 
   // Passed to iconValidation() and returns SuccessIcon or FailureIcon
   validationState: PropTypes.oneOf(['success', 'error', ''])
