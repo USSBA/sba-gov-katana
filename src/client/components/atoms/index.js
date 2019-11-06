@@ -1,3 +1,4 @@
+import AriaErrorMessage from './aria-error-message/aria-error-message'
 import Button from './button/button'
 import CaptionText from './caption-text/caption-text'
 import CardContainer from './card-container/card-container'
@@ -39,6 +40,7 @@ import ValidationIcon from './validation-icon/validation-icon'
 import VersionsList from './versions-list/versions-list'
 
 export {
+  AriaErrorMessage,
   Button,
   CaptionText,
   CardContainer,

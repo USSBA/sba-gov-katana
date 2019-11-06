@@ -6,7 +6,7 @@ import isPostalCode from 'validator/lib/isPostalCode'
 import { camelCase, capitalize, isEmpty, kebabCase } from 'lodash'
 
 import styles from './newsletter-form.scss'
-import { Button, CaptionText, Link, TextInput } from 'atoms'
+import { AriaErrorMessage, Button, CaptionText, Link, TextInput } from 'atoms'
 import { postMiscAction } from '../../../fetch-content-helper'
 import { TRANSLATIONS } from '../../../translations'
 import { getLanguageOverride } from '../../../services/utils'
@@ -23,7 +23,9 @@ const initialState = {
   isEmailAddressValid: false,
   isZipCodeValid: true,
   formState: FORM_STATE.initial,
-  zipCode: ''
+  zipCode: '',
+  ariaEmailAddressErrorMessage: '',
+  ariaZipCodeErrorMessage: ''
 }
 
 class NewsletterForm extends Component {
@@ -55,7 +57,7 @@ class NewsletterForm extends Component {
 
   render() {
     const { footer, title } = this.props
-    const { formState } = this.state
+    const { formState, ariaEmailAddressErrorMessage, ariaZipCodeErrorMessage } = this.state
 
     const className = classNames({
       newsletter: true,
@@ -64,23 +66,36 @@ class NewsletterForm extends Component {
       [styles.footer]: footer
     })
 
+    const textInputErrorMessages = {
+      'emailAddress': 'Enter a valid email address',
+      'zipCode': 'Enter a valid zip code',
+    }
+
     const textInputs = [
       {
         name: 'email address',
+        errorText: textInputErrorMessages.emailAddress,
         optional: false,
         validate: value => {
           const isEmailAddressValid = isEmail(value)
-          this.setState({ isEmailAddressValid })
+          this.setState({
+              isEmailAddressValid,
+              ariaEmailAddressErrorMessage: !isEmailAddressValid ? textInputErrorMessages.emailAddress : ''
+          })
           return isEmailAddressValid
         }
       },
       {
         name: 'zip code',
+        errorText: textInputErrorMessages.zipCode,
         optional: true,
         validate: value => {
           // only checks U.S. zip codes
           const isZipCodeValid = isEmpty(value) || isPostalCode(value, 'US')
-          this.setState({ isZipCodeValid })
+          this.setState({
+            isZipCodeValid,
+            ariaZipCodeErrorMessage: !isZipCodeValid ? textInputErrorMessages.zipCode : ''
+          })
           return isZipCodeValid
         }
       }
@@ -107,9 +122,9 @@ class NewsletterForm extends Component {
             )}
             <div className={styles.inputs}>
               {!footer &&
-                textInputs.map(({ name, optional, validate }) => (
+                textInputs.map(({ name, errorText, optional, validate }) => (
                   <TextInput
-                    errorText={`Enter a valid ${name}`}
+                    errorText={errorText}
                     id={kebabCase(`newsletter ${name}`)}
                     key={name}
                     label={capitalize(name)}
@@ -188,6 +203,8 @@ class NewsletterForm extends Component {
         }}
       >
         {formContent}
+        <AriaErrorMessage message={ariaEmailAddressErrorMessage} />
+        <AriaErrorMessage message={ariaZipCodeErrorMessage} />
       </form>
     )
   }
