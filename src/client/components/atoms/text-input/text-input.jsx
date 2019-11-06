@@ -131,7 +131,6 @@ class TextInput extends React.Component {
       >
         <label
           htmlFor={id}
-          // className={labelStyle ? labelStyle : undefined}
           className={labelStyle ? labelStyle : null}
           data-testid={kebabCase(`${id} label`)}
         >
@@ -177,8 +176,6 @@ TextInput.defaultProps = {
   showSuccessIcon: true,
   showErrorIcon: false,
   id: null
-  // inputType: 'text',
-  // inputMode: 'text'
 }
 
 TextInput.propTypes = {

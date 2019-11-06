@@ -149,7 +149,6 @@ class NewsletterForm extends Component {
                   children={buttonText}
                   disabled={!footer && !this.isValid()}
                   loading={!footer && formState === FORM_STATE.processing}
-                  // type={!footer ? 'submit' : undefined}
                   type={!footer ? 'submit' : null}
                   url={footer ? '/updates' : null}
                 />
