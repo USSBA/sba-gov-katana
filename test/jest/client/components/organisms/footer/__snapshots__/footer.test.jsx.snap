@@ -1017,14 +1017,16 @@ exports[`Front Page Hero should render correctly 1`] = `
       <p
         aria-atomic="true"
         aria-live="assertive"
-        className="ariaMessage"
+        className="ariaErrorMessage"
+        data-testid="aria-error-message"
       >
         
       </p>
       <p
         aria-atomic="true"
         aria-live="assertive"
-        className="ariaMessage"
+        className="ariaErrorMessage"
+        data-testid="aria-error-message"
       >
         
       </p>
