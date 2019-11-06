@@ -210,6 +210,4 @@ class NewsletterForm extends Component {
   }
 }
 
-const AriaMessage = ({ message }) => <p className={styles.ariaMessage} aria-live="assertive" aria-atomic="true">{message}</p>
-
 export default NewsletterForm
