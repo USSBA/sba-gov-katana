@@ -76,7 +76,7 @@ class NewsletterForm extends Component {
         name: 'email address',
         errorText: textInputErrorMessages.emailAddress,
         type: 'email',
-        inputMode: 'text',
+        inputMode: 'email',
         optional: false,
         validate: value => {
           const isEmailAddressValid = isEmail(value)
