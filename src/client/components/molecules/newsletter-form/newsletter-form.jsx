@@ -6,7 +6,7 @@ import isPostalCode from 'validator/lib/isPostalCode'
 import { camelCase, capitalize, isEmpty, kebabCase } from 'lodash'
 
 import styles from './newsletter-form.scss'
-import { Button, CaptionText, Link, TextInput } from 'atoms'
+import { AriaErrorMessage, Button, CaptionText, Link, TextInput } from 'atoms'
 import { postMiscAction } from '../../../fetch-content-helper'
 import { TRANSLATIONS } from '../../../translations'
 import { getLanguageOverride } from '../../../services/utils'
@@ -203,13 +203,11 @@ class NewsletterForm extends Component {
         }}
       >
         {formContent}
-        <AriaMessage message={ariaEmailAddressErrorMessage} />
-        <AriaMessage message={ariaZipCodeErrorMessage} />
+        <AriaErrorMessage message={ariaEmailAddressErrorMessage} />
+        <AriaErrorMessage message={ariaZipCodeErrorMessage} />
       </form>
     )
   }
 }
-
-const AriaMessage = ({ message }) => <p className={styles.ariaMessage} aria-live="assertive" aria-atomic="true">{message}</p>
 
 export default NewsletterForm
