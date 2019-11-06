@@ -22,6 +22,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
           id="document-lookup-text-input-container"
         >
           <label
+            className={null}
             data-testid="document-lookup-text-input-label"
             htmlFor="document-lookup-text-input"
           >
@@ -885,6 +886,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           id="document-lookup-text-input-container"
         >
           <label
+            className={null}
             data-testid="document-lookup-text-input-label"
             htmlFor="document-lookup-text-input"
           >

@@ -8,7 +8,7 @@ import { CardCollection } from 'organisms'
 import styles from './blog-category-deck.scss'
 
 class BlogCategoryDeck extends React.Component {
-  reformatCard({created, url, summary, title, featuredImage}) {
+  reformatCard({ created, url, summary, title, featuredImage }) {
     const props = {
       italicText: moment.unix(created).format('MMMM D, YYYY'),
       link: {
@@ -60,7 +60,7 @@ BlogCategoryDeck.propTypes = {
   cards: PropTypes.array,
   categoryTitle: PropTypes.string,
   categorySubtitle: PropTypes.string,
-  categoryUrl: PropTypes.string,
+  categoryUrl: PropTypes.string
 }
 
 export default BlogCategoryDeck

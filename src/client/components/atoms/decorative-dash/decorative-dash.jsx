@@ -4,7 +4,7 @@ import styles from './decorative-dash.scss'
 
 const Dash = ({ width, ...nativeProps }) => (
   <div className={styles.dashContainer}>
-  	<hr {...nativeProps} className={`dash ${styles.dash}`} style={{ width: `${width}px` }} />
+    <hr {...nativeProps} className={`dash ${styles.dash}`} style={{ width: `${width}px` }} />
   </div>
 )
 

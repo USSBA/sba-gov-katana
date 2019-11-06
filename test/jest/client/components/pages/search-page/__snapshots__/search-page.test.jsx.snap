@@ -23,6 +23,7 @@ exports[`SearchPage to match snapshot 1`] = `
             id="search-container"
           >
             <label
+              className={null}
               data-testid="search-label"
               htmlFor="search"
             >

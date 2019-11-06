@@ -44,15 +44,18 @@ class QuickLinks extends PureComponent {
   }
 
   async componentDidMount() {
-    this.setState({
-      LOADING_STATE: 'isLoading'
-    }, async () => {
-      this.setState({
-        documents: await this.fetchDocuments(),
-        articles: await this.fetchArticles(),
-        LOADING_STATE: 'isLoaded'
-      })
-    })
+    this.setState(
+      {
+        LOADING_STATE: 'isLoading'
+      },
+      async () => {
+        this.setState({
+          documents: await this.fetchDocuments(),
+          articles: await this.fetchArticles(),
+          LOADING_STATE: 'isLoaded'
+        })
+      }
+    )
   }
 
   async fetchDocuments() {
@@ -170,43 +173,47 @@ const LatestDocumentsCard = props => {
       <DecorativeDash width={30} />
       <div className={styles.list}>
         {LOADING_STATE === 'isLoading' && <div>Loading</div>}
-        {LOADING_STATE === 'isLoaded' && <div>
-          {!isEmpty(props.documents) && props.documents.items.length > 0 ? (
-            props.documents.items.map((doc, index) => {
-              const currentFile = getCurrentFile(doc.files)
-              let effectiveDate
-              if (currentFile && currentFile.effectiveDate) {
-                effectiveDate = currentFile.effectiveDate
-              }
+        {LOADING_STATE === 'isLoaded' && (
+          <div>
+            {!isEmpty(props.documents) && props.documents.items.length > 0 ? (
+              props.documents.items.map((doc, index) => {
+                const currentFile = getCurrentFile(doc.files)
+                let effectiveDate
+                if (currentFile && currentFile.effectiveDate) {
+                  effectiveDate = currentFile.effectiveDate
+                }
 
-              // Add a prefix to SOPs with the format {DOC_TYPE} {DOC_NUMBER} ({DOC_VERSION}) - {DOC_TITLE}
-              let titlePrefix = ''
-              if (doc.documentIdType === 'SOP' && !isEmpty(doc.documentIdNumber)) {
-                titlePrefix = doc.documentIdType + ' ' + doc.documentIdNumber + ' - '
-              }
-              const linkTitle =
-                /* eslint-disable-next-line no-magic-number */
-                titlePrefix +
-                (doc.title.length > MAX_TITLE_LENGTH
-                  ? doc.title.slice(0, MAX_TITLE_LENGTH + 10) + '...'
-                  : doc.title)
-              return (
-                <div key={index}>
-                  <Link data-testid="document-link" to={doc.url}>
-                    {linkTitle}
-                  </Link>
-                  {effectiveDate && (
-                    <div data-testid="document-date" className={styles.date}>
-                      {formatDate(effectiveDate)}
-                    </div>
-                  )}
-                </div>
-              )
-            })
-          ) : (
-            <div data-testid="no-results"><p>No documents found</p></div>
-          )}
-          </div>}
+                // Add a prefix to SOPs with the format {DOC_TYPE} {DOC_NUMBER} ({DOC_VERSION}) - {DOC_TITLE}
+                let titlePrefix = ''
+                if (doc.documentIdType === 'SOP' && !isEmpty(doc.documentIdNumber)) {
+                  titlePrefix = doc.documentIdType + ' ' + doc.documentIdNumber + ' - '
+                }
+                const linkTitle =
+                  /* eslint-disable-next-line no-magic-number */
+                  titlePrefix +
+                  (doc.title.length > MAX_TITLE_LENGTH
+                    ? doc.title.slice(0, MAX_TITLE_LENGTH + 10) + '...'
+                    : doc.title)
+                return (
+                  <div key={index}>
+                    <Link data-testid="document-link" to={doc.url}>
+                      {linkTitle}
+                    </Link>
+                    {effectiveDate && (
+                      <div data-testid="document-date" className={styles.date}>
+                        {formatDate(effectiveDate)}
+                      </div>
+                    )}
+                  </div>
+                )
+              })
+            ) : (
+              <div data-testid="no-results">
+                <p>No documents found</p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -218,14 +225,14 @@ const RatesCard = props => {
       <h4 className={styles.title}>Rates</h4>
       <DecorativeDash width={30} />
       <div className={styles.list}>
-      {props.rate.map((rate, index) => {
-        return (
-          <div key={index} className={styles.rateContainer}>
-            {rate.name}
-            <div className={styles.rate}>{rate.percent}%</div>
-          </div>
-        )
-      })}
+        {props.rate.map((rate, index) => {
+          return (
+            <div key={index} className={styles.rateContainer}>
+              {rate.name}
+              <div className={styles.rate}>{rate.percent}%</div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

@@ -17,6 +17,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
         id="search-container"
       >
         <label
+          className={null}
           data-testid="search-label"
           htmlFor="search"
         >

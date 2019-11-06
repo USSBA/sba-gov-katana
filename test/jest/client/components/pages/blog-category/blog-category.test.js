@@ -243,7 +243,9 @@ describe('Blog Category Page', () => {
       const { getByTestId } = render(<BlogCategoryPage params={blogCategoryPageParams} />)
       const subtitle = await waitForElement(() => getByTestId('blog-category-subtitle'))
 
-      const expectedSubtitleText = `Success stories from small business owners out of the ${mockOfficeResponse.title}.`
+      const expectedSubtitleText = `Success stories from small business owners out of the ${
+        mockOfficeResponse.title
+      }.`
       expect(subtitle).toHaveTextContent(expectedSubtitleText)
     })
   })
