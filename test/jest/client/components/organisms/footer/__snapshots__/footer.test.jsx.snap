@@ -1008,6 +1008,7 @@ exports[`Front Page Hero should render correctly 1`] = `
               onClick={[Function]}
               style={Object {}}
               target="_self"
+              type={null}
             >
               Subscribe
             </a>

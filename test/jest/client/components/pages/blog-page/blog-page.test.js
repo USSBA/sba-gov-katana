@@ -23,11 +23,11 @@ const mockBlogData = {
   ],
   blogCategory: 'SBA News and Views',
   blogTags: 'International',
-  "featuredImage": {
-    "url": "/sites/default/files/2019-09/hdcropfeild.jpg",
-    "alt": "grain field",
-    "width": 1600,
-    "height": 1000
+  featuredImage: {
+    url: '/sites/default/files/2019-09/hdcropfeild.jpg',
+    alt: 'grain field',
+    width: 1600,
+    height: 1000
   },
   office: {},
   summary: 'Some stuff',

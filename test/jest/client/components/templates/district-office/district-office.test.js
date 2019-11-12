@@ -388,7 +388,6 @@ describe('District Office template', () => {
     })
   })
   it('renders document quicklinks section', async () => {
-
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
     when(fetchSiteContentStub)
       .calledWith('documents')

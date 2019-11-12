@@ -25,7 +25,9 @@ const mockProps = {
 
 describe('ContactCard', () => {
   it('should render with all the information', () => {
-    const expectedAddress = `${mockProps.streetAddress}${mockProps.city}, ${mockProps.state} ${mockProps.zipCode}`
+    const expectedAddress = `${mockProps.streetAddress}${mockProps.city}, ${mockProps.state} ${
+      mockProps.zipCode
+    }`
     const { getByTestId } = render(<ContactCard {...mockProps} />)
 
     getByTestId('contact-card')

@@ -23,6 +23,7 @@ exports[`SearchPage to match snapshot 1`] = `
             id="search-container"
           >
             <label
+              className={null}
               data-testid="search-label"
               htmlFor="search"
             >
@@ -38,11 +39,14 @@ exports[`SearchPage to match snapshot 1`] = `
                 data-testid="search"
                 defaultValue=""
                 id="search"
+                inputMode="text"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
+                required={true}
+                type="text"
               />
             </div>
           </div>
