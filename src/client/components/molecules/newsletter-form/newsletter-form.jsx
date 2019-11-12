@@ -67,8 +67,8 @@ class NewsletterForm extends Component {
     })
 
     const textInputErrorMessages = {
-      'emailAddress': 'Enter a valid email address',
-      'zipCode': 'Enter a valid zip code',
+      emailAddress: 'Enter a valid email address',
+      zipCode: 'Enter a valid zip code'
     }
 
     const textInputs = [
@@ -81,8 +81,8 @@ class NewsletterForm extends Component {
         validate: value => {
           const isEmailAddressValid = isEmail(value)
           this.setState({
-              isEmailAddressValid,
-              ariaEmailAddressErrorMessage: !isEmailAddressValid ? textInputErrorMessages.emailAddress : ''
+            isEmailAddressValid,
+            ariaEmailAddressErrorMessage: !isEmailAddressValid ? textInputErrorMessages.emailAddress : ''
           })
           return isEmailAddressValid
         }
@@ -126,8 +126,7 @@ class NewsletterForm extends Component {
             )}
             <div className={styles.inputs}>
               {!footer &&
-
-                textInputs.map(({ name, type, inputMode, optional, validate }) => (
+                textInputs.map(({ name, type, inputMode, errorText, optional, validate }) => (
                   <TextInput
                     errorText={errorText}
                     id={kebabCase(`newsletter ${name}`)}
