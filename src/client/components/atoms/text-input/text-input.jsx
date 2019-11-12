@@ -118,6 +118,11 @@ class TextInput extends React.Component {
     const validationIcon = this.iconValidation(validationState)
     const errorMessage = this.errorMessage(validationState)
 
+    const optionalPlaceholderProp = {}
+    if (optional && !isFocused && !value) {
+      optionalPlaceholderProp.placeholder = "Optional"
+    }
+
     return (
       <div
         id={kebabCase(`${id} container`)}
@@ -140,6 +145,7 @@ class TextInput extends React.Component {
           <input
             id={id}
             {...rest}
+            {...optionalPlaceholderProp}
             aria-labelledby={id}
             className={classNames({
               [styles.input]: true,
@@ -155,7 +161,6 @@ class TextInput extends React.Component {
             onKeyUp={this.handleKeyUp.bind(this)}
             required={!this.props.optional}
           />
-          {optional && !isFocused && !value && <span className={styles.optional}>Optional</span>}
           {showSearchIcon ? (
             <div className={styles.searchIcon}>
               <SearchIcon aria-hidden="true" />
