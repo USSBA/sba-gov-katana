@@ -4,7 +4,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Waypoint from 'react-waypoint'
 
-import { TitleSection, Breadcrumb, FeedbackForm, PreviousNextSection, RemoveMainLoader } from 'molecules'
+import { TitleSection, Breadcrumb, PreviousNextSection, RemoveMainLoader } from 'molecules'
 import { SectionNav } from 'organisms'
 import { listenForOverlap as mockListenForOverlap } from 'element-overlap'
 import { BasicPage } from 'templates/basic-page/basic-page.jsx'
@@ -56,18 +56,6 @@ describe('BasicPage', () => {
     const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} lineage={lineage} />)
     expect(BasicPageComponent.find(Breadcrumb).length).toEqual(1)
     expect(BasicPageComponent.find(Breadcrumb).prop('items')).toBeDefined()
-  })
-
-  test('renders feedback form component when langCode is set to English', () => {
-    history.pushState({}, null, '?lang=en')
-    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
-    expect(BasicPageComponent.find(FeedbackForm).length).toEqual(1)
-  })
-
-  test("doesn't render feedback form component when langCode is set to Spanish", () => {
-    history.pushState({}, null, '?lang=es')
-    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
-    expect(BasicPageComponent.find(FeedbackForm).length).toEqual(0)
   })
 
   test('renders RemoveMainLoader component', () => {
