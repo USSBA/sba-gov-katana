@@ -6,8 +6,34 @@
   position: relative;
 }
 
+@mixin placeholder {
+  display:inline-block;
+  padding-right: 4px;  
+  color: $sba-gray-dark;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  text-align: right;
+}
+
 input.input {
   margin-bottom: 4px;
+
+  &::-webkit-input-placeholder {
+    @include placeholder;
+  }
+
+  &::-moz-placeholder {
+    @include placeholder;
+  }
+
+  &:-ms-input-placeholder {
+    @include placeholder;
+  }
+
+  &:-moz-placeholder {
+    @include placeholder;
+  }
 }
 
 input.invalid {
@@ -29,14 +55,3 @@ input.invalid {
   transform: translateY(-50%);
 }
 
-.optional {
-  bottom: 10px;
-  color: $sba-gray-dark;
-  font-size: 14px;
-  font-style: italic;
-  font-weight: 300;
-  // make "unclickable"
-  pointer-events: none;
-  position: absolute;
-  right: 10px;
-}
