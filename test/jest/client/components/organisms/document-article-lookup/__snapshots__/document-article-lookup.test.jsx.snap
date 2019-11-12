@@ -22,6 +22,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
           id="document-lookup-text-input-container"
         >
           <label
+            className={null}
             data-testid="document-lookup-text-input-label"
             htmlFor="document-lookup-text-input"
           >
@@ -35,11 +36,14 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
               className="input"
               data-testid="document-lookup-text-input"
               id="document-lookup-text-input"
+              inputMode="text"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyUp={[Function]}
               placeholder="Search by title or number"
+              required={true}
+              type="text"
             />
           </div>
         </div>
@@ -883,6 +887,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           id="document-lookup-text-input-container"
         >
           <label
+            className={null}
             data-testid="document-lookup-text-input-label"
             htmlFor="document-lookup-text-input"
           >
@@ -896,11 +901,14 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
               className="input"
               data-testid="document-lookup-text-input"
               id="document-lookup-text-input"
+              inputMode="text"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onKeyUp={[Function]}
               placeholder="Search by title or number"
+              required={true}
+              type="text"
             />
           </div>
         </div>

@@ -67,20 +67,22 @@ class NewsletterForm extends Component {
     })
 
     const textInputErrorMessages = {
-      'emailAddress': 'Enter a valid email address',
-      'zipCode': 'Enter a valid zip code',
+      emailAddress: 'Enter a valid email address',
+      zipCode: 'Enter a valid zip code'
     }
 
     const textInputs = [
       {
         name: 'email address',
         errorText: textInputErrorMessages.emailAddress,
+        type: 'email',
+        inputMode: 'email',
         optional: false,
         validate: value => {
           const isEmailAddressValid = isEmail(value)
           this.setState({
-              isEmailAddressValid,
-              ariaEmailAddressErrorMessage: !isEmailAddressValid ? textInputErrorMessages.emailAddress : ''
+            isEmailAddressValid,
+            ariaEmailAddressErrorMessage: !isEmailAddressValid ? textInputErrorMessages.emailAddress : ''
           })
           return isEmailAddressValid
         }
@@ -88,6 +90,8 @@ class NewsletterForm extends Component {
       {
         name: 'zip code',
         errorText: textInputErrorMessages.zipCode,
+        type: 'text',
+        inputMode: 'numeric',
         optional: true,
         validate: value => {
           // only checks U.S. zip codes
@@ -122,12 +126,14 @@ class NewsletterForm extends Component {
             )}
             <div className={styles.inputs}>
               {!footer &&
-                textInputs.map(({ name, errorText, optional, validate }) => (
+                textInputs.map(({ name, type, inputMode, errorText, optional, validate }) => (
                   <TextInput
                     errorText={errorText}
                     id={kebabCase(`newsletter ${name}`)}
                     key={name}
                     label={capitalize(name)}
+                    inputType={type}
+                    inputMode={inputMode}
                     onChange={event => this.setState({ [camelCase(name)]: event.target.value })}
                     optional={optional}
                     validationFunction={validate}
@@ -142,7 +148,7 @@ class NewsletterForm extends Component {
                   children={buttonText}
                   disabled={!footer && !this.isValid()}
                   loading={!footer && formState === FORM_STATE.processing}
-                  type={!footer ? 'submit' : undefined}
+                  type={!footer ? 'submit' : null}
                   url={footer ? '/updates' : null}
                 />
               </span>

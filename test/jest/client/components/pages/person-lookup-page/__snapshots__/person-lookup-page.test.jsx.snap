@@ -17,6 +17,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
         id="search-container"
       >
         <label
+          className={null}
           data-testid="search-label"
           htmlFor="search"
         >
@@ -31,11 +32,14 @@ exports[`PersonLookupPage should render correctly 1`] = `
             data-cy="search"
             data-testid="search"
             id="search"
+            inputMode="text"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="Search by name, title, or office"
+            required={true}
+            type="text"
           />
           <div
             className="searchIcon"
