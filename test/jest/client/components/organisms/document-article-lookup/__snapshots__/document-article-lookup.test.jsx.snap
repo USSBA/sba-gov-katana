@@ -42,6 +42,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
               onFocus={[Function]}
               onKeyUp={[Function]}
               placeholder="Search by title or number"
+              required={true}
               type="text"
             />
           </div>
@@ -906,6 +907,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
               onFocus={[Function]}
               onKeyUp={[Function]}
               placeholder="Search by title or number"
+              required={true}
               type="text"
             />
           </div>

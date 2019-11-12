@@ -38,6 +38,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="Search by name, title, or office"
+            required={true}
             type="text"
           />
           <div

@@ -44,6 +44,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
             onFocus={[Function]}
             onKeyUp={[Function]}
             placeholder="Search by title or number"
+            required={true}
             type="text"
           />
         </div>
