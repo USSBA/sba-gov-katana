@@ -64,6 +64,9 @@ class Hero extends React.Component {
                   url={item.url}
                   data-testid="button"
                 >
+                  {typeof message === 'string' && (
+                    <span className={styles.accessibilityText}>{message}</span>
+                  )}
                   {item.btnText}
                 </Button>
               ))}
