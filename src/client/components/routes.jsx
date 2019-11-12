@@ -81,6 +81,10 @@ const DistrictOfficePage = props => (
   <Async componentProps={props} load={import('./pages/district-office-page/district-office-page.jsx')} />
 )
 
+const DistrictOfficeSubPageTemplate = props => (
+  <Async componentProps={props} load={import('./templates/district-office-subpage/district-office-subpage.jsx')} />
+)
+
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
 import clientConfig from '../services/client-config.js'
@@ -118,6 +122,8 @@ const mainRoutes = [
   <Redirect key={69} from="/blogs/:category/:officeId" to="/blogs/:category/:officeId/" />,
   <Route key={70} path="/offices/district/:officeId/" component={DistrictOfficePage} />,
   <Redirect key={71} from="/offices/district/:officeId" to="/offices/district/:officeId/" />,
+  <Route key={72} path="/offices/district/:officeId/:subPageId/" component={DistrictOfficeSubPageTemplate} />,
+  <Redirect key={73} from="/offices/district/:officeId/:subPageId" to="/offices/district/:officeId/:subPageId/" />,
   <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
   <Route
     key={13}
