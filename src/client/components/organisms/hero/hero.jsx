@@ -50,8 +50,10 @@ class Hero extends React.Component {
           alt={alt}
         >
           <div className={styles.callout} ref={ref => (this.callout = ref)}>
-            <h1 data-testid="title">{title}</h1>
-            <h2 className={styles.message} data-testid="message">
+            <h1 tabIndex="0" data-testid="title">
+              {title}
+            </h1>
+            <h2 className={styles.message} tabIndex="0" data-testid="message">
               {message}
             </h2>
             {buttons &&
