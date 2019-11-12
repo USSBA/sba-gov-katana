@@ -153,6 +153,7 @@ class TextInput extends React.Component {
             onBlur={this.handleBlur.bind(this)}
             onFocus={this.handleFocus.bind(this)}
             onKeyUp={this.handleKeyUp.bind(this)}
+            required={!this.props.optional}
           />
           {optional && !isFocused && !value && <span className={styles.optional}>Optional</span>}
           {showSearchIcon ? (
