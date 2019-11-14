@@ -13,5 +13,5 @@ features:
         tableName: UrlToNodeBrian
         enabled: true
 content:
-    cloudfront: dj898ero1amg0.cloudfront.net
+    cloudfront: d24l989bmg52r3.cloudfront.net
     useD8EventsBackend: true
