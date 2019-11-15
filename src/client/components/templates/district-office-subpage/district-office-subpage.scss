@@ -1,0 +1,15 @@
+.content {
+	h1 {
+		margin-top: 15px;
+	}
+}
+
+.loaderContainer {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	height: 20vw;
+	@include for-small-only {
+		margin: 30px 0;
+	}
+}
