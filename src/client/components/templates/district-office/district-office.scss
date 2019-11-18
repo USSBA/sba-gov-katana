@@ -187,6 +187,7 @@
 .clear {
   clear: both;
 }
+
 .documents {
   > div {
     margin-bottom: 30px;
@@ -198,6 +199,11 @@
     left: -20px;
   }
 }
+
 .officeNewsletter {
   margin-top: 10px;
+}
+
+.buttonLinkText {
+  color: $sba-white;
 }
