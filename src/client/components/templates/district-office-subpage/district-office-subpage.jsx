@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Waypoint from 'react-waypoint'
 import { isEmpty, compact } from 'lodash'
 import { listenForOverlap } from 'element-overlap'
@@ -136,9 +137,8 @@ class DistrictOfficeSubPage extends Component {
 			langCode = getLanguageOverride()
 			paragraphs = this.makeParagraphs(data.paragraphs)
 			sectionHeaders = this.makeSectionHeaders(data.paragraphs)
-
 			className = classNames({
-			    "district-office-subpage-basicpage-titlesection": true,
+			    "district-office-subpage-titlesection": true,
 			    [styles.content]: true
 			})
 		}
@@ -175,6 +175,11 @@ class DistrictOfficeSubPage extends Component {
 			</div>
 		)
 	}
+}
+
+DistrictOfficeSubPage.propTypes = {
+  params: PropTypes.object,
+  lineage: PropTypes.object
 }
 
 export default DistrictOfficeSubPage
