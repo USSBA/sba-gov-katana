@@ -156,7 +156,7 @@ class DistrictOfficeSubPage extends Component {
 					          onLeave={this.handleTopWaypointLeave}
 					        />
 					        <div className="district-office-subpage-sectionnavigation">{this.sectionNavigation(langCode)}</div>
-		              		<div className={className}>
+		              		<div data-testid="district-office-subpage-titlesection" className={className}>
 								<TitleSection
 									key={1}
 									gridClass={basicPageStyles.titleSection}

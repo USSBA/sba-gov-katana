@@ -1,11 +1,13 @@
 import React from 'react'
+import { render, cleanup, waitForElement, within } from 'react-testing-library'
+import DistrictOfficeSubPageTemplate from 'templates/district-office-subpage/district-office-subpage.jsx'
 import { when, resetAllWhenMocks } from 'jest-when'
 import 'jest-dom/extend-expect'
-import { mount } from 'enzyme'
-import PropTypes from 'prop-types'
-import DistrictOfficeSubPageTemplate from 'templates/district-office-subpage/district-office-subpage.jsx'
-import { TitleSection } from 'molecules'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
+
+
+
+afterEach(cleanup)
 
 const mockData = {
     "paragraphs": [{
@@ -28,44 +30,25 @@ const mockData = {
     "langCode": "en"
 }
 
-const options = {
-	context: {
-		router: {
-			createHref: () => {},
-			getCurrentLocation: () => ({ pathname: '' }),
-			go: () => {},
-			goBack: () => {},
-			goForward: () => {},
-			isActive: () => {},
-			push: () => {},
-			replace: () => {},
-			setRouteLeaveHook: () => {}
-		}
-	},
-	childContextTypes: { router: PropTypes.object }
-}
+jest.mock('atoms/link/link.jsx', () => {
+	return {
+		__esModule: true,
+		default: () => <div />
+	}
+})
 
 describe('DistrictOfficeSubPageTemplate', () => {
-	it('should render content', async done => {
+	it('should render content', async () => {
 		const params = {
 			subPageId: 20242
 		}
 		const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
-		when(fetchRestContentStub)
-		.calledWith(20242)
-		fetchRestContentStub.mockImplementationOnce(() => {
+		when(fetchRestContentStub).calledWith(20242).mockImplementationOnce(() => {
 			return Promise.resolve(mockData)
 		})
 
-
-    	const component = mount(<DistrictOfficeSubPageTemplate params={params} />, options)
-    	setImmediate(() => {
-    		// THIS SPITS OUT THE PROPER HTML
-    		const result = component.html()
-    		// BUT THIS EVALUATES TO 0, AND IT SHOULD EVALUATE TO 1
-    		console.log('A--', component.find(TitleSection).length)
-    		//expect(component.html()).toEqual(expected)
-    		done()
-    	})
+    	const { getByTestId, getAllByTestId } = render(<DistrictOfficeSubPageTemplate params={params} />)
+	    let content = await waitForElement(() => getByTestId('district-office-subpage-titlesection'))
+	    expect(content).toBeInTheDocument()
 	})
 })
