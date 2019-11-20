@@ -14,14 +14,21 @@ class NewsReleases extends React.Component {
   }
 
   async componentDidMount() {
-    const { officeId } = this.props
-    const { items } = await fetchSiteContent('articles', {
-      office: officeId,
+    const { officeId, national, region } = this.props
+
+    const queryParams = {
       articleCategory: 'Press release',
       sortBy: 'Last Updated',
       start: 0,
       end: 3
-    })
+    }
+
+    // if these optional props were passed in, then add them as query params
+    officeId && (queryParams.office = officeId)
+    national && (queryParams.national = national)
+    region && (queryParams.region = region)
+
+    const { items } = await fetchSiteContent('articles', queryParams)
     const articles = items
     this.setState({ articles })
   }
@@ -54,7 +61,9 @@ class NewsReleases extends React.Component {
 }
 
 NewsReleases.propTypes = {
-  officeId: PropTypes.number
+  officeId: PropTypes.number,
+  national: PropTypes.bool,
+  region: PropTypes.string
 }
 
 export default NewsReleases
