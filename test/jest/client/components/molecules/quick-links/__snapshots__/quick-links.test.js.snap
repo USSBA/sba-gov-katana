@@ -12,12 +12,12 @@ exports[`QuickLinks snapshot tests Future effective date is not displayed 1`] = 
     <div
       className="titleContainer"
     >
-      <h4
+      <p
         className="title"
         data-testid="header"
       >
         SOPs
-      </h4>
+      </p>
       <a
         data-testid="see-all-link"
         onClick={[Function]}
@@ -62,12 +62,12 @@ exports[`QuickLinks snapshot tests Most recent effective date displayed 1`] = `
     <div
       className="titleContainer"
     >
-      <h4
+      <p
         className="title"
         data-testid="header"
       >
         SOPs
-      </h4>
+      </p>
       <a
         data-testid="see-all-link"
         onClick={[Function]}
@@ -112,12 +112,12 @@ exports[`QuickLinks snapshot tests No SOP number so it is not displayed 1`] = `
     <div
       className="titleContainer"
     >
-      <h4
+      <p
         className="title"
         data-testid="header"
       >
         SOPs
-      </h4>
+      </p>
       <a
         data-testid="see-all-link"
         onClick={[Function]}
@@ -162,12 +162,12 @@ exports[`QuickLinks snapshot tests SOP number exists and is displayed 1`] = `
     <div
       className="titleContainer"
     >
-      <h4
+      <p
         className="title"
         data-testid="header"
       >
         SOPs
-      </h4>
+      </p>
       <a
         data-testid="see-all-link"
         onClick={[Function]}
