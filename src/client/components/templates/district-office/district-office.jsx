@@ -193,8 +193,8 @@ const Events = ({ items }) => {
         </Results>
       )}
       <div className={styles.button} data-testid="events-button">
-        <a href="/events/find/">
-          <Button primary>Find More Events</Button>
+        <a href="/events/find/" className={styles.buttonLink}>
+          Find More Events
         </a>
       </div>
     </div>
