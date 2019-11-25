@@ -74,7 +74,8 @@ describe('News releases', () => {
     const officeRegion = 'Region I'
 
     const expectedQueryParams = {
-      office: officeId,
+      mode: 'districtOffice',
+      relatedOffice: officeId,
       articleCategory: 'Press release',
       national: true,
       region: officeRegion,
@@ -94,6 +95,7 @@ describe('News releases', () => {
     fetchSiteContentStub.mockImplementationOnce(() => Promise.resolve(oneNewsReleaseData))
 
     const expectedQueryParams = {
+      mode: 'districtOffice',
       articleCategory: 'Press release',
       sortBy: 'Last Updated',
       start: 0,
