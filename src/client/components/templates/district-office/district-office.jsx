@@ -256,7 +256,7 @@ const LenderMatch = () => {
 
   return (
     <div className={styles.lenderMatch} data-testid={'office-lender-match'}>
-      <h3>{lenderHeadline}</h3>
+      <h2>{lenderHeadline}</h2>
       <p>{lenderBlurb}</p>
       <Button primary alternate url={lenderButton.url}>
         {lenderButton.title}
