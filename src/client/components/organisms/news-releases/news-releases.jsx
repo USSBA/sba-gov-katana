@@ -5,6 +5,31 @@ import { Button } from 'atoms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './news-releases.scss'
 
+// This function remaps cloudsearch's schema to a schema that Katana is already using for articles
+function remapArticlesToBetterSchema(articles) {
+  const remappedArticles = []
+  for (let i = 0; i < articles.length; i++) {
+    const { fields } = articles[i]
+    const remappedArticle = {
+      id: Number(articles[i].id),
+      category: fields.article_category ? fields.article_category : [],
+      office: fields.office ? Number(fields.office[0]) : {},
+      programs: fields.article_programs ? fields.article_programs : [],
+      region: fields.region ? fields.region : [],
+      relatedOffices: fields.related_offices ? fields.related_offices.map(office => Number(office)) : [],
+      summary: fields.summary ? fields.summary[0] : '',
+      type: 'article',
+      title: fields.title ? fields.title[0] : '',
+      created: fields.created ? Number(fields.created[0]) : {},
+      updated: fields.updated ? Number(fields.updated[0]) : {},
+      url: fields.url ? fields.url[0] : ''
+    }
+
+    remappedArticles.push(remappedArticle)
+  }
+  return remappedArticles
+}
+
 class NewsReleases extends React.Component {
   constructor() {
     super()
@@ -13,7 +38,7 @@ class NewsReleases extends React.Component {
     }
   }
 
-  async componentDidMount() {
+  buildArticleQueryParams() {
     const { officeId, national, region } = this.props
 
     const queryParams = {
@@ -32,8 +57,19 @@ class NewsReleases extends React.Component {
     national && (queryParams.national = national)
     region && (queryParams.region = region)
 
-    const { items } = await fetchSiteContent('articles', queryParams)
-    const articles = items
+    return queryParams
+  }
+
+  async componentDidMount() {
+    let articles = []
+
+    const queryParams = this.buildArticleQueryParams()
+    const { items, count } = await fetchSiteContent('articles', queryParams)
+
+    if (count > 0) {
+      articles = remapArticlesToBetterSchema(items)
+    }
+
     this.setState({ articles })
   }
 
@@ -69,5 +105,8 @@ NewsReleases.propTypes = {
   national: PropTypes.bool,
   region: PropTypes.string
 }
+
+// for testing purposes
+export { remapArticlesToBetterSchema }
 
 export default NewsReleases
