@@ -102,14 +102,14 @@ describe('Person page', () => {
     expect(subComponentProps.email).toEqual('thomas.todt@sba.gov')
   })
 
-  test('renders person image and alt text', () => {
-    const component = shallow(<Person personData={personPropsWithPhoto} />)
-    const imgProps = component.find('.person-page img').getElement().props
+  // test('renders person image and alt text', () => {
+  //   const component = shallow(<Person personData={personPropsWithPhoto} />)
+  //   const imgProps = component.find('.person-page img').getElement().props
 
-    expect(component.find('.person-page img').length).toEqual(1)
-    expect(imgProps.alt).toEqual('image of Thomas Todt')
-    expect(imgProps.src).toEqual('/sites/default/files/2019-02/Bio_Photo2.jpg')
-  })
+  //   expect(component.find('.person-page img').length).toEqual(1)
+  //   expect(imgProps.alt).toEqual('image of Thomas Todt')
+  //   expect(imgProps.src).toEqual('/sites/default/files/2019-02/Bio_Photo2.jpg')
+  // })
 
   test("doesn't render person image", () => {
     const component = shallow(<Person personData={personPropsWithoutPhoto} />)

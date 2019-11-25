@@ -132,11 +132,16 @@ exports[`Person page renders correctly 1`] = `
   <div
     className="content hasPicture"
   >
-    <img
-      alt="image of Thomas Todt"
-      className="avatar"
-      src="/sites/default/files/2019-02/Bio_Photo2.jpg"
-    />
+    <div>
+      <img
+        alt="image of Thomas Todt"
+        className="imageSection"
+        src="/sites/default/files/2019-02/Bio_Photo2.jpg"
+      />
+      <p
+        className="caption"
+      />
+    </div>
     <div
       dangerouslySetInnerHTML={
         Object {
