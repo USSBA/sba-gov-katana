@@ -136,10 +136,12 @@ exports[`Person page renders correctly 1`] = `
       <img
         alt="image of Thomas Todt"
         className="imageSection"
+        data-testid="image-section"
         src="/sites/default/files/2019-02/Bio_Photo2.jpg"
       />
       <p
         className="caption"
+        data-testid="image-caption"
       />
     </div>
     <div

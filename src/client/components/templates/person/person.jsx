@@ -187,7 +187,6 @@ class Person extends Component {
           )}
         </div>
         <div className={contentClassName}>
-          {/* {!isEmpty(picture) && <img alt={picture.alt} className={styles.avatar} src={picture.src} />} */}
           {!isEmpty(picture) && <ImageSection alt={picture.alt} src={picture.src} />}
           {!isEmpty(bio) && <div dangerouslySetInnerHTML={{ __html: bio }} />}
         </div>
