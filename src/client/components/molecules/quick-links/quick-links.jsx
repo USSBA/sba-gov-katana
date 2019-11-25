@@ -156,9 +156,9 @@ const LatestDocumentsCard = props => {
   return (
     <div data-testid="documents-card" className={props.className}>
       <div className={styles.titleContainer}>
-        <h4 data-testid="header" className={styles.title}>
+        <p data-testid="header" className={styles.title}>
           {props.sectionHeaderText}
-        </h4>
+        </p>
         <Link
           data-testid="see-all-link"
           to={`/document?${queryString.stringify({
@@ -222,7 +222,7 @@ const LatestDocumentsCard = props => {
 const RatesCard = props => {
   return (
     <div className={props.className}>
-      <h4 className={styles.title}>Rates</h4>
+      <p className={styles.title}>Rates</p>
       <DecorativeDash width={30} />
       <div className={styles.list}>
         {props.rate.map((rate, index) => {
@@ -245,9 +245,9 @@ const ArticlesCard = props => {
   return (
     <div data-testid="articles-card" className={props.className}>
       <div className={styles.titleContainer}>
-        <h4 data-testid="header" className={styles.title}>
+        <p data-testid="header" className={styles.title}>
           {props.sectionHeaderText}
-        </h4>
+        </p>
         <Link
           data-testid="see-all-link"
           to={`/article?${queryString.stringify({

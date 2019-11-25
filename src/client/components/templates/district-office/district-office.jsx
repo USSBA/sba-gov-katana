@@ -249,7 +249,7 @@ const Docs = ({ office }) => {
 const LenderMatch = () => {
   const lenderHeadline = 'Lender match'
   const lenderBlurb =
-    'Lender Match is a free online referral tool that connects small businesses with particpating SBA-approved lenders.'
+    'Lender Match is a free online referral tool that connects small businesses with participating SBA-approved lenders.'
   const lenderButton = {
     url: '/lendermatch',
     title: 'Learn More'
@@ -257,9 +257,10 @@ const LenderMatch = () => {
 
   return (
     <div className={styles.lenderMatch} data-testid={'office-lender-match'}>
-      <h3>{lenderHeadline}</h3>
-      <p>{lenderBlurb}</p>
+      <h3 tabIndex="0">{lenderHeadline}</h3>
+      <p tabIndex="0">{lenderBlurb}</p>
       <Button primary alternate url={lenderButton.url}>
+        <span className={styles.accessibilityText}>{lenderBlurb}</span>
         {lenderButton.title}
       </Button>
     </div>
