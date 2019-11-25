@@ -154,16 +154,16 @@
   border-top: 3px solid $sba-blue;
   box-shadow: $box-shadow;
 
-  p {
-    @include lede-type;
-
-    font-size: 18px;
-  }
-
   h2 {
     font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: -0.3px;
+  }
+
+  p {
+    @include lede-type;
+
+    font-size: 18px;
   }
 }
 
