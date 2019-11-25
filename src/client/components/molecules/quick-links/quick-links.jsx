@@ -161,6 +161,7 @@ const LatestDocumentsCard = props => {
         </p>
         <Link
           data-testid="see-all-link"
+          aria-label="See all documents"
           to={`/document?${queryString.stringify({
             type: props.documentType,
             program: props.documentProgram,
@@ -250,6 +251,7 @@ const ArticlesCard = props => {
         </p>
         <Link
           data-testid="see-all-link"
+          aria-label="See all articles"
           to={`/article?${queryString.stringify({
             articleCategory: props.articleCategory,
             program: props.articleProgram
