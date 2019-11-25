@@ -230,3 +230,13 @@
     padding: 13px 18px;
   }
 }
+
+// Accessibility text for screen readers
+// text is present but forced out of visual display
+.accessibilityText {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -10px;
+}
