@@ -19,6 +19,7 @@ exports[`QuickLinks snapshot tests Future effective date is not displayed 1`] = 
         SOPs
       </p>
       <a
+        aria-label="See all documents"
         data-testid="see-all-link"
         onClick={[Function]}
         style={Object {}}
@@ -69,6 +70,7 @@ exports[`QuickLinks snapshot tests Most recent effective date displayed 1`] = `
         SOPs
       </p>
       <a
+        aria-label="See all documents"
         data-testid="see-all-link"
         onClick={[Function]}
         style={Object {}}
@@ -119,6 +121,7 @@ exports[`QuickLinks snapshot tests No SOP number so it is not displayed 1`] = `
         SOPs
       </p>
       <a
+        aria-label="See all documents"
         data-testid="see-all-link"
         onClick={[Function]}
         style={Object {}}
@@ -169,6 +172,7 @@ exports[`QuickLinks snapshot tests SOP number exists and is displayed 1`] = `
         SOPs
       </p>
       <a
+        aria-label="See all documents"
         data-testid="see-all-link"
         onClick={[Function]}
         style={Object {}}
