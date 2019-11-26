@@ -1,21 +1,24 @@
 {
   "items": [
     {
-      "articleId": {},
-      "category": [],
-      "mediaContact": {},
-      "office": 12345,
-      "officeLink": {},
-      "file": {},
-      "programs": [],
-      "summary": {},
-      "type": "article",
-      "title": "Test Article ",
-      "id": 19301,
-      "updated": 1563826928,
-      "created": 1563826909,
-      "langCode": "en",
-      "url": "/article/2019/jul/22/test-article"
+      "id": "20352",
+      "fields": {
+        "related_offices": ["15903", "15941", "15885", "6472", "6422"],
+        "updated": ["1574192812"],
+        "office": ["6453"],
+        "created": ["1574192626"],
+        "url": ["/article/2019/nov/19/cst-article-2-multiple-input-fields"],
+        "region": ["National (all regions)", "Region I", "Region V", "Region VI", "Region X"],
+        "title": ["CST Article 2 (multiple input fields)"],
+        "summary": ["summary and stuff"],
+        "article_category": [
+          "Congressional Testimony",
+          "Disaster Press Release",
+          "Media advisory",
+          "Policy notice"
+        ],
+        "article_programs": ["7(a)", "8(a)", "Agency Management", "CDC/504", "SBIC", "Surety Bonds"]
+      }
     }
   ],
   "count": 113

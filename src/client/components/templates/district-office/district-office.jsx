@@ -53,6 +53,7 @@ class DistrictOfficeTemplate extends React.Component {
     const { events, leaders } = this.state
     const { office } = this.props
     const { twitterLink } = office
+    const officeRegion = !isEmpty(office.region) ? office.region : null
 
     return (
       <div>
@@ -81,7 +82,7 @@ class DistrictOfficeTemplate extends React.Component {
           </div>
         </div>
         <div className={styles.section} data-testid="news-release-section">
-          <NewsReleases officeId={office.id} />
+          <NewsReleases officeId={office.id} national={true} region={officeRegion} />
         </div>
         <div className={styles.content}>
           <div className={styles.section}>
