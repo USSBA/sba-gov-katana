@@ -7,7 +7,7 @@ import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './person.scss'
 import { CardCollection } from 'organisms'
 import { Breadcrumb, ContactCard, Paginator } from 'molecules'
-import { Label } from 'atoms'
+import { Label, ImageSection } from 'atoms'
 
 const numBlogsPerPage = 6
 
@@ -187,7 +187,7 @@ class Person extends Component {
           )}
         </div>
         <div className={contentClassName}>
-          {!isEmpty(picture) && <img alt={picture.alt} className={styles.avatar} src={picture.src} />}
+          {!isEmpty(picture) && <ImageSection alt={picture.alt} src={picture.src} />}
           {!isEmpty(bio) && <div dangerouslySetInnerHTML={{ __html: bio }} />}
         </div>
         {isPersonBlogAuthor && (

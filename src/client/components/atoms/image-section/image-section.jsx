@@ -4,8 +4,10 @@ import styles from './image-section.scss'
 
 const ImageSection = ({ alt, caption, src }) => (
   <div>
-    <img className={styles.imageSection} alt={alt} src={src} />
-    <p className={styles.caption}>{caption}</p>
+    <img data-testid="image-section" className={styles.imageSection} alt={alt} src={src} />
+    <p data-testid="image-caption" className={styles.caption}>
+      {caption}
+    </p>
   </div>
 )
 
