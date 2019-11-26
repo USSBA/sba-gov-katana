@@ -103,12 +103,13 @@ describe('Person page', () => {
   })
 
   test('renders person image and alt text', () => {
-    const component = shallow(<Person personData={personPropsWithPhoto} />)
-    const imgProps = component.find('.person-page img').getElement().props
+    const { queryByTestId } = render(<Person personData={personPropsWithPhoto} />)
+    const image = queryByTestId('image-section')
+    const caption = queryByTestId('image-caption')
 
-    expect(component.find('.person-page img').length).toEqual(1)
-    expect(imgProps.alt).toEqual('image of Thomas Todt')
-    expect(imgProps.src).toEqual('/sites/default/files/2019-02/Bio_Photo2.jpg')
+    expect(image).toHaveAttribute('src', '/sites/default/files/2019-02/Bio_Photo2.jpg')
+    expect(image).toHaveAttribute('alt', 'image of Thomas Todt')
+    expect(caption).toBeEmpty()
   })
 
   test("doesn't render person image", () => {
