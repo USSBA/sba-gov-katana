@@ -86,7 +86,7 @@ class BlogsLandingPage extends Component {
 
     if (nodeIds.length === authors.length) {
       // since map function returns promises from fetchSiteContent calls
-      // so we need to wait for all promises to resolve before setting the state
+      // we need to wait for all promises to resolve before setting the state
       authors = await Promise.all(authors)
       this.setState({ authors: compact(authors) })
     }
