@@ -8,7 +8,7 @@ import styles from './author-card.scss'
 class AuthorCard extends PureComponent {
   readMoreAltText(text) {
     let altText = ''
-    if (text && text.length > 0) {
+    if (text && !isEmpty(text)) {
       altText = text
     }
 
@@ -44,7 +44,7 @@ class AuthorCard extends PureComponent {
       link = (
         <div data-testid={'read-more'} className={linkClassName}>
           <a href={url}>
-            <span className={spanClassName}>{this.readMoreAltText(bio.toString())}</span>Read More
+            <span className={spanClassName}>{this.readMoreAltText(bio)}</span>Read More
           </a>
         </div>
       )
