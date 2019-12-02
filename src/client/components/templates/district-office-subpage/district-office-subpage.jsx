@@ -220,7 +220,7 @@ const SectionNav = ({ officeId, pageConnectorId, subPageId, sectionTitle, data, 
         className={sectionNavStyles.backLink}
         href={`/offices/district/${officeId}/`}
       >
-        Back to District Office Main Page
+        Back to main page
       </a>
       <span id="article-navigation-title-desktop">
         <h3>{sectionTitle}</h3>
