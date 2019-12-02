@@ -6,12 +6,10 @@ import { DecorativeDash, Link } from 'atoms'
 import styles from './author-card.scss'
 
 class AuthorCard extends PureComponent {
-  readMoreAltText(text, fallback) {
+  readMoreAltText(text) {
     let altText = ''
     if (text && !isEmpty(text)) {
       altText = text
-    } else {
-      altText = fallback
     }
 
     return altText
@@ -46,7 +44,7 @@ class AuthorCard extends PureComponent {
       link = (
         <div data-testid={'read-more'} className={linkClassName}>
           <a href={url}>
-            <span className={spanClassName}>{this.readMoreAltText(bio, name)}</span>Read More
+            <span className={spanClassName}>{this.readMoreAltText(bio)}</span>Read More
           </a>
         </div>
       )
