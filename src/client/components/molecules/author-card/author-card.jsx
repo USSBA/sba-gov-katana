@@ -6,6 +6,14 @@ import { DecorativeDash, Link } from 'atoms'
 import styles from './author-card.scss'
 
 class AuthorCard extends PureComponent {
+  renderReadMoreAltText(text) {
+    let renderedAltText
+    if (text && !isEmpty(text)) {
+      renderedAltText = <span className={styles.linkSpan}>{text}</span>
+    }
+    return renderedAltText
+  }
+
   render() {
     const { name, title, shortBio: bio, picture, url, border, mode, containerTabIndex } = this.props
 
@@ -23,10 +31,6 @@ class AuthorCard extends PureComponent {
       [styles.linkAdditionalMargin]: isEmpty(bio)
     })
 
-    const spanClassName = classNames({
-      [styles.linkSpan]: !isEmpty(bio)
-    })
-
     //Empty author titles come out of drupal as empty objects, but is a string when valid
     const authorTitle = typeof title === 'object' ? '' : title
 
@@ -35,7 +39,8 @@ class AuthorCard extends PureComponent {
       link = (
         <div data-testid={'read-more'} className={linkClassName}>
           <a href={url}>
-            <span className={spanClassName}>{bio.toString()}</span>Read More
+            {this.renderReadMoreAltText(bio)}
+            Read More
           </a>
         </div>
       )
