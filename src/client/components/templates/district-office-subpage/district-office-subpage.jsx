@@ -152,7 +152,6 @@ class DistrictOfficeSubPage extends Component {
                 </div>
                 <div data-testid="district-office-subpage-titlesection" className={className}>
                   <TitleSection
-                    key={1}
                     gridClass={basicPageStyles.titleSection}
                     sectionHeaders={sectionHeaders}
                     title={currentPage.title}
