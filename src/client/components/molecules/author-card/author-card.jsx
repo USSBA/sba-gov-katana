@@ -9,10 +9,7 @@ class AuthorCard extends PureComponent {
   renderReadMoreAltText(text) {
     let renderedAltText
     if (text && !isEmpty(text)) {
-      const spanClassName = classNames({
-        [styles.linkSpan]: true
-      })
-      renderedAltText = <span className={spanClassName}>{text}</span>
+      renderedAltText = <span className={styles.linkSpan}>{text}</span>
     }
     return renderedAltText
   }
