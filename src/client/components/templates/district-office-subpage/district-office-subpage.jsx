@@ -46,14 +46,14 @@ class DistrictOfficeSubPage extends Component {
           for (let i = 0; i < subpages.length; i++) {
             data.push(await fetchRestContent(subpages[i].id))
           }
-          this.setState({ title, data, loadingState: 'isLoaded' })
+          this.setState({ title, data, loadingState: 'isLoaded' }, () => {
+            listenForOverlap('#article-navigation-desktop', '#sba-footer', this.handleOverlap, {
+              listenOn: 'scroll'
+            })
+          })
         }
       )
     }
-
-    listenForOverlap('#article-navigation-desktop', '#sba-footer', this.handleOverlap, {
-      listenOn: 'scroll'
-    })
   }
   handleTopWaypointEnter() {
     this.setState({ currentPosition: 'top' })
