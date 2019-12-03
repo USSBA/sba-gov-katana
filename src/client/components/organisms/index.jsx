@@ -7,6 +7,7 @@ import CoursesLayout from './courses-layout/courses-layout.jsx'
 import DefaultOfficeResult from './office-result/default-office-result.jsx'
 import DeveloperTester from './developer-tester/developer-tester.jsx'
 import DisasterAlert from './header-footer/disaster-alert/disaster-alert.jsx'
+import DistrictOfficeSectionNav from './district-office-section-nav/district-office-section-nav.jsx'
 import DocumentArticle from './document-article/document-article.jsx'
 import DocumentArticleLookup from './document-article-lookup/document-article-lookup.jsx'
 import DetailCardCollection from './detail-card-collection/detail-card-collection.jsx'
@@ -72,6 +73,7 @@ export {
   DefaultOfficeResult,
   DeveloperTester,
   DisasterAlert,
+  DistrictOfficeSectionNav,
   DocumentArticle,
   DocumentArticleLookup,
   DetailCardCollection,

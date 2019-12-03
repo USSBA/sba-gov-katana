@@ -5,31 +5,31 @@ import { isEmpty, compact } from 'lodash'
 import { listenForOverlap } from 'element-overlap'
 import classNames from 'classnames'
 import { Loader } from 'atoms'
-import { TitleSection } from 'molecules'
+import { DistrictOfficePreviousNextSection, TitleSection } from 'molecules'
+import { DistrictOfficeSectionNav } from 'organisms'
 import basicPageStyles from '../basic-page/basic-page.scss'
 import styles from './district-office-subpage.scss'
-import sectionNavStyles from '../../organisms/section-nav/section-nav.scss'
+import previousNextSectionStyles from '../../molecules/previous-next/previous-next.scss'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper.js'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
 import { getLanguageOverride } from '../../../services/utils.js'
 
+const config = {
+  backLinkText: 'Back to main page'
+}
 class DistrictOfficeSubPage extends Component {
   constructor() {
     super()
     this.state = {
-      sectionTitle: '',
+      title: '',
       data: {},
       loadingState: 'unloaded',
-      slideLeftNavIn: false,
-      slideContentIn: false,
-      displayMobileNav: false,
       currentPosition: 'top'
     }
 
     this.handleSectionNavigationEnter = this.handleSectionNavigationEnter.bind(this)
     this.handleTopWaypointEnter = this.handleTopWaypointEnter.bind(this)
     this.handleTopWaypointLeave = this.handleTopWaypointLeave.bind(this)
-    this.handleBackLinkClicked = this.handleBackLinkClicked.bind(this)
     this.handleOverlap = this.handleOverlap.bind(this)
   }
   async componentDidMount() {
@@ -41,26 +41,18 @@ class DistrictOfficeSubPage extends Component {
           loadingState: 'isLoading'
         },
         async () => {
-          const { title: sectionTitle, subpages } = await fetchRestContent(pageConnectorId)
+          const { title, subpages } = await fetchRestContent(pageConnectorId)
           const data = []
           for (let i = 0; i < subpages.length; i++) {
             data.push(await fetchRestContent(subpages[i].id))
           }
-          this.setState({ sectionTitle, data, loadingState: 'isLoaded' })
+          this.setState({ title, data, loadingState: 'isLoaded' })
         }
       )
     }
 
     listenForOverlap('#article-navigation-desktop', '#sba-footer', this.handleOverlap, {
       listenOn: 'scroll'
-    })
-  }
-  handleBackLinkClicked(e) {
-    e.preventDefault()
-    this.setState({
-      slideLeftNavIn: false,
-      slideContentIn: false,
-      displayMobileNav: true
     })
   }
   handleTopWaypointEnter() {
@@ -112,7 +104,7 @@ class DistrictOfficeSubPage extends Component {
   }
   render() {
     const { officeId, pageConnectorId, subPageId } = this.props.params
-    const { sectionTitle, data, loadingState, currentPosition, displayMobileNav } = this.state
+    const { title, data, loadingState, currentPosition } = this.state
     let currentPage, className, langCode, paragraphs, sectionHeaders
 
     if (!isEmpty(data)) {
@@ -146,16 +138,16 @@ class DistrictOfficeSubPage extends Component {
                   data-testid="district-office-subpage-sectionnavigation"
                   className="district-office-subpage-sectionnavigation"
                 >
-                  <SectionNav
+                  <DistrictOfficeSectionNav
                     onTopEnter={this.handleSectionNavigationEnter}
                     position={currentPosition}
-                    displayMobileNav={displayMobileNav}
                     data={data}
-                    sectionTitle={sectionTitle}
+                    title={title}
                     langCode={langCode}
                     officeId={officeId}
                     pageConnectorId={pageConnectorId}
                     subPageId={!isEmpty(subPageId) ? subPageId : data[0].id}
+                    backLinkText={config.backLinkText}
                   />
                 </div>
                 <div data-testid="district-office-subpage-titlesection" className={className}>
@@ -167,6 +159,19 @@ class DistrictOfficeSubPage extends Component {
                     summary={currentPage.summary}
                   />{' '}
                   {paragraphs}
+                  {data.length > 1 && (
+                    <div className="district-office-subpage-previousnext">
+                      <div className={basicPageStyles.previousNext}>
+                        <DistrictOfficePreviousNextSection
+                          data={data}
+                          currentPage={currentPage}
+                          officeId={officeId}
+                          pageConnectorId={pageConnectorId}
+                          backLinkText={config.backLinkText}
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ) : (
@@ -180,54 +185,7 @@ class DistrictOfficeSubPage extends Component {
 }
 
 DistrictOfficeSubPage.propTypes = {
-  params: PropTypes.object,
-  lineage: PropTypes.object
-}
-
-const SectionNav = ({ officeId, pageConnectorId, subPageId, sectionTitle, data, position, onTopEnter }) => {
-  const stickyFunctionTop = () => {
-    return position === 'middle' ? sectionNavStyles.stickyTop : null
-  }
-  const stickyFunctionBottom = () => {
-    return position === 'bottom' ? sectionNavStyles.stickyBottom : null
-  }
-  const makeNavLinks = (_data, id) => {
-    const result = _data.map(function(item, index) {
-      const currentLinkClass = String(id) === String(item.id) ? sectionNavStyles.currentNavLink : ''
-      return (
-        <li className={currentLinkClass} key={index}>
-          <a
-            className="article-navigation-article-link-desktop"
-            id={'desktop-article-link-' + index}
-            href={`/offices/district/${officeId}/${pageConnectorId}/${item.id}`}
-          >
-            {item.title}
-          </a>
-        </li>
-      )
-    })
-    return result
-  }
-  const navLinks = makeNavLinks(data, subPageId)
-  return (
-    <div
-      id="article-navigation-desktop"
-      className={sectionNavStyles.sectionNav + ' ' + stickyFunctionTop() + ' ' + stickyFunctionBottom()}
-    >
-      <Waypoint topOffset="30px" onEnter={onTopEnter} />
-      <a
-        id="article-navigation-back-button-desktop"
-        className={sectionNavStyles.backLink}
-        href={`/offices/district/${officeId}/`}
-      >
-        Back to main page
-      </a>
-      <span id="article-navigation-title-desktop">
-        <h3>{sectionTitle}</h3>
-      </span>
-      <ul>{navLinks}</ul>
-    </div>
-  )
+  params: PropTypes.object
 }
 
 export default DistrictOfficeSubPage
