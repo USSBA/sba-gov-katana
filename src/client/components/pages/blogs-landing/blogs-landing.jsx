@@ -76,15 +76,20 @@ class BlogsLandingPage extends Component {
   async fetchAuthors() {
     // fetch author ids from content search api
     // then fetch author objects from content node api by ids
-    const authors = []
     const nodeIds = await fetchSiteContent('authors')
-    nodeIds.forEach(async nodeId => {
-      const author = await fetchRestContent(nodeId)
-      authors.push(author)
-      if (nodeIds.length === authors.length) {
-        this.setState({ authors: compact(authors) })
-      }
+
+    // map function returns promises from fetchSiteContent calls
+    // but preserves order of nodeIds to authors in array
+    let authors = nodeIds.map(async nodeId => {
+      return await fetchRestContent(nodeId)
     })
+
+    if (nodeIds.length === authors.length) {
+      // since map function returns promises from fetchSiteContent calls
+      // we need to wait for all promises to resolve before setting the state
+      authors = await Promise.all(authors)
+      this.setState({ authors: compact(authors) })
+    }
   }
 
   render() {
