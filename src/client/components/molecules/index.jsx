@@ -8,6 +8,7 @@ import CardGrid from './card-grid/card-grid'
 import ContactCard from './contact-card/contact-card'
 import ContactCardLookup from './contact-card-lookup/contact-card-lookup'
 import DetailCard from './detail-card/detail-card'
+import DistrictOfficePreviousNextSection from './district-office-previous-next/district-office-previous-next'
 import FeedbackForm from './feedback-form/feedback-form'
 import FormPageButtons from './form-page-buttons/form-page-buttons'
 import GoogleTranslate from './google-translate/google-translate'
@@ -44,6 +45,7 @@ export {
   ContactCard,
   ContactCardLookup,
   DetailCard,
+  DistrictOfficePreviousNextSection,
   FeedbackForm,
   FormPageButtons,
   GoogleTranslate,
