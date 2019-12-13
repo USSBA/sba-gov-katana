@@ -22,5 +22,5 @@ features:
         enabled: true
         tableName: UrlToUrlRedirectAvery
 content:
-    cloudfront: d15dl68v0dt33i.cloudfront.net
+    cloudfront: d8ptg6c733nbj.cloudfront.net
     useD8EventsBackend: true
