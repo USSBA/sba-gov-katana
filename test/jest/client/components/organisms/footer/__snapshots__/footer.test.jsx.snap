@@ -741,7 +741,7 @@ exports[`Front Page Hero should render correctly 1`] = `
           style={Object {}}
           target="_self"
         >
-          Oversight & Advocacy
+          Inspector General
         </a>
       </li>
       <li
@@ -881,7 +881,7 @@ exports[`Front Page Hero should render correctly 1`] = `
           style={Object {}}
           target="_self"
         >
-          Oversight & Advocacy
+          Inspector General
         </a>
       </li>
       <li
