@@ -197,7 +197,7 @@ class Footer extends React.Component {
             links={[
               TRANSLATIONS.sbaTeam,
               TRANSLATIONS.sbaPerformance,
-              TRANSLATIONS.oversightAndAdvocacy,
+              TRANSLATIONS.inspectorGeneral,
               TRANSLATIONS.privacyPolicy,
               TRANSLATIONS.blog
             ]}
