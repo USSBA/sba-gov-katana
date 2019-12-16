@@ -174,7 +174,7 @@ class Footer extends React.Component {
             id="tablet-footer-group-3"
             key={22}
             langCode={langCode}
-            links={[TRANSLATIONS.newsroom, TRANSLATIONS.oversightAndAdvocacy, TRANSLATIONS.sbaEnEspanol]}
+            links={[TRANSLATIONS.newsroom, TRANSLATIONS.inspectorGeneral, TRANSLATIONS.sbaEnEspanol]}
           />
         </div>
         <div key={3} className={styles.mobileFooterLinks}>
