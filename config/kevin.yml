@@ -13,5 +13,5 @@ features:
         enabled: true
         tableName: UrlToUrlRedirectKevin
 content:
-    cloudfront: duvf2qi8dallh.cloudfront.net
+    cloudfront: d3f48ijg0l2tm.cloudfront.net
     useD8EventsBackend: true
