@@ -15,7 +15,11 @@
 # master             | HOLD -> prod
 #
 
-version: 2
+version: 2.1
+
+orbs:
+  snyk: snyk/snyk@0.0.8
+
 workflows:
   version: 2
   test-build-deploy:
@@ -261,6 +265,7 @@ jobs:
             - katana-lambda.zip
             - build
             - assets
+      - snyk/scan
   upload-package:
     docker:
       - image: ussba/cc-docker-git-aws:latest
