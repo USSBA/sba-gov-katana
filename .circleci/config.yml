@@ -252,6 +252,8 @@ jobs:
       - image: circleci/node:8.10
     steps:
       - checkout
+      - snyk/scan:
+        token variable: "3f129672-50d8-4e0c-b40a-b3460cac1be7"
       - restore_cache:
           keys:
           - v1-webpack-{{ .Revision }}
@@ -265,8 +267,6 @@ jobs:
             - katana-lambda.zip
             - build
             - assets
-      - snyk/scan:
-            token variable: "3f129672-50d8-4e0c-b40a-b3460cac1be7"
   upload-package:
     docker:
       - image: ussba/cc-docker-git-aws:latest
