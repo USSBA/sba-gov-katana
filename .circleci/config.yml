@@ -250,10 +250,12 @@ jobs:
     working_directory: /home/circleci/project
     docker:
       - image: circleci/node:8.10
+    environment:
+      - SNYK_TOKEN: 3f129672-50d8-4e0c-b40a-b3460cac1be7
     steps:
       - checkout
       - snyk/scan:
-        token variable: "3f129672-50d8-4e0c-b40a-b3460cac1be7"
+        token variable: SNYK_TOKEN
       - restore_cache:
           keys:
           - v1-webpack-{{ .Revision }}
