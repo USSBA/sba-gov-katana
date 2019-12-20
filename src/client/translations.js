@@ -577,11 +577,11 @@ const TRANSLATIONS = {
   sbaEnEspanol: {
     en: {
       text: 'SBA en Español',
-      url: '/bienvenido-a-la-en-espanol'
+      url: '/espanol'
     },
     es: {
       text: 'SBA en español',
-      url: '/bienvenido-a-la-en-espanol'
+      url: '/espanol'
     }
   },
   sbaInformation: {
