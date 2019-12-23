@@ -28,6 +28,8 @@ workflows:
           branches:
             only:
             - /.*/
+            ignore:
+            - Feature-TA-814-integrate-snyk-into-build
           tags:
             only:
             - mint
@@ -39,6 +41,7 @@ workflows:
           branches:
             only:
             - master
+            - Feature-TA-814-integrate-snyk-into-build
           tags:
             only:
             - staging
