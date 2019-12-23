@@ -19,8 +19,6 @@ version: 2.1
 workflows:
   version: 2.1
   test-build-deploy:
-    orbs:
-      snyk: snyk/snyk@0.0.8
     jobs:
     - cache-dependencies:
         filters:
@@ -424,5 +422,6 @@ jobs:
             export LAMBDA_NAME="${TARGET_ENVIRONMENT}-KatanaLambda"
 
             aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${TARGET_ENVIRONMENT}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
-
-
+            
+orbs:
+  snyk: snyk/snyk@0.0.8
