@@ -253,6 +253,9 @@ jobs:
       - image: circleci/node:8.10
     steps:
       - checkout
+      - run 
+        - command: |
+            npm install
       - snyk/scan:
         token variable: SNYK_TOKEN
         fail-on-issues: false
