@@ -174,7 +174,7 @@ workflows:
             - staging
         context: sba-gov-upper
 jobs:
-  cache-dependencies:
+  cache-dependencies-lower:
     docker:
     - image: circleci/node:8.10
     steps:
@@ -191,8 +191,7 @@ jobs:
           paths:
             - ./node_modules
           key: v2-dependencies-{{ checksum "package.json" }}
-
-  cache-dependencies:
+  cache-dependencies-upper:
     docker:
     - image: circleci/node:8.10
     steps:
