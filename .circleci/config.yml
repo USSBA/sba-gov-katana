@@ -31,6 +31,7 @@ workflows:
           tags:
             only:
             - /.*/
+        context: snyk   
     - test-jest:
         requires: [cache-dependencies]
         filters:
@@ -108,7 +109,7 @@ workflows:
             - pat
             - /int-\w+/
             - /RELEASE-\d+/
-        context: snyk 
+        # context: snyk 
     - upload-package:
         requires: [build-package]
         filters:
@@ -175,6 +176,9 @@ jobs:
     - image: circleci/node:8.10
     steps:
       - checkout
+      - snyk/scan:
+        token-variable: SNYK
+        fail-on-issues: false
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -261,9 +265,6 @@ jobs:
       - image: circleci/node:8.10
     steps:
       - checkout
-      - snyk/scan:
-          token-variable: SNYK
-          fail-on-issues: false
       - restore_cache:
           keys:
           - v1-webpack-{{ .Revision }}
