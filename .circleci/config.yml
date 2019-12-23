@@ -18,10 +18,10 @@
 version: 2.1
 
 orbs:
-  snyk: snyk/snyk@0.0.8
+snyk: snyk/snyk@0.0.8
 
 workflows:
-  version: 2
+  version: 2.1
   test-build-deploy:
     jobs:
     - cache-dependencies:
@@ -68,6 +68,15 @@ workflows:
           tags:
             only:
             - /.*/
+    # - test-snyk:
+    #     requires: [cache-dependencies]
+    #     filters:
+    #       tags:
+    #         only:
+    #           - production
+    #           - staging
+    #           - pat 
+    #     context: snyk      
     - build-webpack:
         requires: [test-jest, test-mocha, test-format, test-poirot]
         filters:
@@ -100,7 +109,7 @@ workflows:
             - pat
             - /int-\w+/
             - /RELEASE-\d+/
-      #  context: snyk
+        context: snyk 
     - upload-package:
         requires: [build-package]
         filters:
@@ -253,9 +262,6 @@ jobs:
       - image: circleci/node:8.10
     steps:
       - checkout
-      - run:
-        - command: |
-            npm install
       - snyk/scan:
         token variable: SNYK_TOKEN
         fail-on-issues: false
