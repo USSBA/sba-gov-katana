@@ -23,17 +23,29 @@ orbs:
 workflows:
   test-build-deploy:
     jobs:
-    - cache-dependencies:
+    - cache-dependencies-lower:
         filters:
           branches:
             only:
             - /.*/
           tags:
             only:
+            - mint
+            - amy
+            - pat
+            - /int-\w+/ 
+    - cache-dependencies-upper:
+        filters:
+          branches:
+            only:
             - /.*/
+          tags:
+            only:
+            - staging
+            - production
         context: snyk   
     - test-jest:
-        requires: [cache-dependencies]
+        requires: [cache-dependencies-*]
         filters:
           branches:
             only:
@@ -42,7 +54,7 @@ workflows:
             only:
             - /.*/
     - test-poirot:
-        requires: [cache-dependencies]
+        requires: [cache-dependencies-*]
         filters:
           branches:
             only:
@@ -51,7 +63,7 @@ workflows:
             only:
             - /.*/
     - test-mocha:
-        requires: [cache-dependencies]
+        requires: [cache-dependencies-*]
         filters:
           branches:
             only:
@@ -60,23 +72,14 @@ workflows:
             only:
             - /.*/
     - test-format:
-        requires: [cache-dependencies]
+        requires: [cache-dependencies-*]
         filters:
           branches:
             only:
             - /.*/
           tags:
             only:
-            - /.*/
-    # - test-snyk:
-    #     requires: [cache-dependencies]
-    #     filters:
-    #       tags:
-    #         only:
-    #           - production
-    #           - staging
-    #           - pat 
-    #     context: snyk      
+            - /.*/    
     - build-webpack:
         requires: [test-jest, test-mocha, test-format, test-poirot]
         filters:
@@ -188,9 +191,28 @@ jobs:
           paths:
             - ./node_modules
           key: v2-dependencies-{{ checksum "package.json" }}
+
+  cache-dependencies:
+    docker:
+    - image: circleci/node:8.10
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: install dependencies
+          command: |
+            npm install --silent --no-save
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: v2-dependencies-{{ checksum "package.json" }}
       - snyk/scan:
           token-variable: SNYK
           fail-on-issues: false
+    
   test-jest:
     docker:
     - image: circleci/node:8.10
