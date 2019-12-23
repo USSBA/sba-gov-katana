@@ -100,7 +100,7 @@ workflows:
             - pat
             - /int-\w+/
             - /RELEASE-\d+/
-        context: snyk
+      #  context: snyk
     - upload-package:
         requires: [build-package]
         filters:
