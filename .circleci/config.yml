@@ -15,14 +15,12 @@
 # master             | HOLD -> prod
 #
 
-
+version: 2.1
 workflows:
   version: 2.1
-
-  orbs:
-    snyk: snyk/snyk@0.0.8
-
   test-build-deploy:
+    orbs:
+      snyk: snyk/snyk@0.0.8
     jobs:
     - cache-dependencies:
         filters:
