@@ -176,9 +176,6 @@ jobs:
     - image: circleci/node:8.10
     steps:
       - checkout
-      - snyk/scan:
-        token-variable: SNYK
-        fail-on-issues: false
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -191,6 +188,9 @@ jobs:
           paths:
             - ./node_modules
           key: v2-dependencies-{{ checksum "package.json" }}
+      - snyk/scan:
+          token-variable: SNYK
+          fail-on-issues: false
   test-jest:
     docker:
     - image: circleci/node:8.10
