@@ -46,7 +46,8 @@ workflows:
         context: snyk   
     - test-jest:
         requires: 
-          - cache-dependencies-.*
+          - cache-dependencies-lower
+          - cache-dependencies-upper
         filters:
           branches:
             only:
@@ -56,7 +57,8 @@ workflows:
             - /.*/
     - test-poirot:
         requires: 
-          - cache-dependencies-.*
+          - cache-dependencies-lower
+          - cache-dependencies-upper
         filters:
           branches:
             only:
@@ -66,7 +68,8 @@ workflows:
             - /.*/
     - test-mocha:
         requires: 
-          - cache-dependencies-.*
+          - cache-dependencies-lower
+          - cache-dependencies-upper
         filters:
           branches:
             only:
@@ -76,7 +79,8 @@ workflows:
             - /.*/
     - test-format:
         requires:
-          - cache-dependencies-.*
+          - cache-dependencies-lower
+          - cache-dependencies-upper
         filters:
           branches:
             only:
