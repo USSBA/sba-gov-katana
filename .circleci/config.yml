@@ -262,7 +262,7 @@ jobs:
     steps:
       - checkout
       - snyk/scan:
-          token-variable: SNYK_AUTH
+          token-variable: SNYK
           fail-on-issues: false
       - restore_cache:
           keys:
