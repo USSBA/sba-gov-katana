@@ -253,7 +253,7 @@ jobs:
       - image: circleci/node:8.10
     steps:
       - checkout
-      - run 
+      - run:
         - command: |
             npm install
       - snyk/scan:
