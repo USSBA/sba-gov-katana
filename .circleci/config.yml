@@ -36,6 +36,9 @@ workflows:
             - /int-\w+/ 
     - cache-dependencies-upper:
         filters:
+          branches:
+            only:
+            - master
           tags:
             only:
             - staging
