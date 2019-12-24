@@ -120,7 +120,6 @@ workflows:
             - pat
             - /int-\w+/
             - /RELEASE-\d+/
-        # context: snyk 
     - upload-package:
         requires: [build-package]
         filters:
@@ -219,7 +218,6 @@ jobs:
       - snyk/scan:
           token-variable: SNYK
           fail-on-issues: false
-    
   test-jest:
     docker:
     - image: circleci/node:8.10
