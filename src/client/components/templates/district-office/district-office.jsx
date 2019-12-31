@@ -184,22 +184,24 @@ const NewsletterSignup = () => {
   )
 }
 
+// Events component temporarily removed as per TA-3466. Uncomment when events backend is completed.
 const Events = ({ items }) => {
-  return (
-    <div data-testid="events" className={styles.events}>
-      <h2>Upcoming events and workshops</h2>
-      {items.length > 0 && (
-        <Results items={items}>
-          <EventResult />
-        </Results>
-      )}
-      <div className={styles.button} data-testid="events-button">
-        <a href="/events/find/" className={styles.buttonLink}>
-          Find More Events
-        </a>
-      </div>
-    </div>
-  )
+  // return (
+  //   <div data-testid="events" className={styles.events}>
+  //     <h2>Upcoming events and workshops</h2>
+  //     {items.length > 0 && (
+  //       <Results items={items}>
+  //         <EventResult />
+  //       </Results>
+  //     )}
+  //     <div className={styles.button} data-testid="events-button">
+  //       <a href="/events/find/" className={styles.buttonLink}>
+  //         Find More Events
+  //       </a>
+  //     </div>
+  //   </div>
+  // )
+  return <div />
 }
 
 const CTA = () => {
