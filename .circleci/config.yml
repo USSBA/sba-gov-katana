@@ -183,7 +183,7 @@ workflows:
 jobs:
   cache-dependencies-lower:
     docker:
-    - image: circleci/node:8.10
+    - image: circleci/node:12.14
     steps:
       - checkout
       # Download and cache dependencies
