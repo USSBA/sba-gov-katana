@@ -185,7 +185,7 @@ const NewsletterSignup = () => {
   )
 }
 
-// Events component temporarily removed as per TA-3466. Uncomment when events backend is completed.
+// Events component temporarily removed as per TA-3466. Remove flag when events backend is completed.
 const Events = ({ items }) => {
   if (clientConfig.useD8EventsBackend) {
     return (
