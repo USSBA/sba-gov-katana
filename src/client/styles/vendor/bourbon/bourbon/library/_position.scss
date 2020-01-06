@@ -42,7 +42,6 @@
 
 @mixin position($position, $box-edge-values) {
   $box-edge-values: _unpack-shorthand($box-edge-values);
-
   $offsets: (
     top: nth($box-edge-values, 1),
     right: nth($box-edge-values, 2),

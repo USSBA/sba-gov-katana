@@ -9,14 +9,14 @@
 ///
 /// @argument {string} $file-path
 ///
+/// @argument {string | list} $file-formats [("ttf", "woff2", "woff")]
+///   List of the font file formats to include. Can also be set globally using
+///   the `global-font-file-formats` key in the Bourbon settings.
+///
 /// @argument {string} $asset-pipeline [false]
 ///   Set to `true` if you’re using the Rails Asset Pipeline (place the fonts
 ///   in `app/assets/fonts/`). Can also be set globally using the
 ///   `rails-asset-pipeline` key in the Bourbon settings.
-///
-/// @argument {string | list} $file-formats [("ttf", "woff2", "woff")]
-///   List of the font file formats to include. Can also be set globally using
-///   the `global-font-file-formats` key in the Bourbon settings.
 ///
 /// @content
 ///   Any additional CSS properties that are included in the `@include`
@@ -25,10 +25,10 @@
 ///
 /// @example scss
 ///   @include font-face(
-///       "source-sans-pro",
-///       "fonts/source-sans-pro-regular",
-///       ("woff2", "woff")
-///     ) {
+///     "source-sans-pro",
+///     "fonts/source-sans-pro-regular",
+///     ("woff2", "woff")
+///   ) {
 ///     font-style: normal;
 ///     font-weight: 400;
 ///   }
@@ -44,13 +44,13 @@
 ///
 /// @require {function} _font-source-declaration
 ///
-/// @require {function} _retrieve-bourbon-setting
+/// @require {function} _fetch-bourbon-setting
 
 @mixin font-face(
   $font-family,
   $file-path,
-  $file-formats: _retrieve-bourbon-setting('global-font-file-formats'),
-  $asset-pipeline: _retrieve-bourbon-setting('rails-asset-pipeline')
+  $file-formats: _fetch-bourbon-setting('global-font-file-formats'),
+  $asset-pipeline: _fetch-bourbon-setting('rails-asset-pipeline')
 ) {
   @font-face {
     font-family: $font-family;
