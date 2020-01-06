@@ -1,3 +1,8 @@
+// TODO: Refactoring of this file to resolve the eslint max-statements error.
+// Then remove the eslint-disable (on following line) and eslint-enable (on last line of file)
+
+/* eslint-disable max-statements */
+
 import React from 'react'
 import classNames from 'classnames'
 import moment from 'moment'
@@ -137,9 +142,14 @@ export class DocumentArticle extends React.Component {
 
       let contactElement = null
       if (pageType === 'article' && mediaContact) {
-        const { emailAddress, phone } = mediaContact
+        const { name, emailAddress, phone } = mediaContact
+        let contactText = 'Contact'
         let emailAddressLink
         let phoneLink
+
+        if (!isEmpty(name)) {
+          contactText = `Contact ${name} at`
+        }
 
         if (!isEmpty(emailAddress)) {
           emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
@@ -152,13 +162,21 @@ export class DocumentArticle extends React.Component {
         if (emailAddressLink && phoneLink) {
           contactElement = (
             <span>
-              Contact {emailAddressLink} or {phoneLink}
+              {contactText} {emailAddressLink} or {phoneLink}
             </span>
           )
         } else if (emailAddressLink) {
-          contactElement = <span>Contact {emailAddressLink}</span>
+          contactElement = (
+            <span>
+              {contactText} {emailAddressLink}
+            </span>
+          )
         } else if (phoneLink) {
-          contactElement = <span>Contact {phoneLink}</span>
+          contactElement = (
+            <span>
+              {contactText} {phoneLink}
+            </span>
+          )
         }
       }
 
@@ -268,7 +286,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DocumentArticle)
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
+
+/* eslint-enable max-statements */
