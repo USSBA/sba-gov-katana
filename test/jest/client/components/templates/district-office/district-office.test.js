@@ -223,8 +223,8 @@ describe('District Office template', () => {
     const lenderMatch = getByTestId('office-lender-match')
     expect(lenderMatch).toBeInTheDocument()
   })
-
-  it('contains an Events Component', async () => {
+  // Events component temporarily removed as per TA-3466. Remove skip when events backend is completed.
+  it.skip('contains an Events Component', async () => {
     const mockOfficeResponse = {
       leadership: {},
       location: [
