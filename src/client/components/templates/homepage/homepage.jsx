@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux'
 
 import styles from './homepage.scss'
 import * as LoadingActions from '../../../actions/loading'
+import { getLanguageOverride } from '../../../services/utils.js'
 import { fetchSiteContent, fetchRestContent } from '../../../fetch-content-helper'
 import { FrontPageHero } from 'organisms'
 import { makeParagraphs, wrapParagraphs } from '../paragraph-mapper'
@@ -39,13 +40,17 @@ class Homepage extends React.Component {
   }
 
   render() {
+    const langCode = getLanguageOverride()
     const { data, siteMap } = this.state
+    let homepageData
 
     if (!data) {
       return null
     }
 
-    const { buttons, hero, paragraphs } = data
+    langCode === 'es' ? (homepageData = data.spanishTranslation) : (homepageData = data)
+    console.log('1', homepageData)
+    const { buttons, hero, paragraphs } = homepageData
 
     // Get the menu tile collection content
     const [{ siteSection }] = paragraphs.filter(({ type }) => type === 'panelMenu')
