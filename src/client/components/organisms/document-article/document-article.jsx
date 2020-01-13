@@ -208,6 +208,9 @@ export class DocumentArticle extends React.Component {
           )}
 
           <hr className={style.hr} />
+          <div className="column">
+            {!isEmpty(data.subtitle) && <p>{data.subtitle}</p>}
+          </div>
           <div className={style.summaryContainer}>
             <div className="column">
               {currentFile && !isEmpty(currentFile.fileUrl) && (
