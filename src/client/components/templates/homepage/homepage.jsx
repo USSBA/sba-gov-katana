@@ -49,7 +49,7 @@ class Homepage extends React.Component {
     }
 
     langCode === 'es' ? (homepageData = data.spanishTranslation) : (homepageData = data)
-    console.log('1', homepageData)
+
     const { buttons, hero, paragraphs } = homepageData
 
     // Get the menu tile collection content
