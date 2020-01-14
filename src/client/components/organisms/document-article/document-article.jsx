@@ -190,6 +190,7 @@ export class DocumentArticle extends React.Component {
         <div className={'document-article ' + style.page}>
           <Label type={type} id={!isEmpty(data.documentIdNumber) && data.documentIdNumber} />
           <h1 className={titleClassName}>{data.title}</h1>
+          {!isEmpty(data.subtitle) && <p>{data.subtitle}</p>}
           {includes(data.category, PRESS_RELEASE) && (
             <h5>
               Last updated {moment.unix(data.updated).format('MMMM D, YYYY')}
