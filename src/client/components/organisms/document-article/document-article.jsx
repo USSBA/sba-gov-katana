@@ -76,8 +76,47 @@ export class DocumentArticle extends React.Component {
     return <div className={style.dates}> {dateLine} </div>
   }
 
+  renderContactElement(mediaContacts) {
+    console.log('foo')
+    console.log(mediaContacts)
+    let contacts = 'Contact '
+    for (let i = 0; i < mediaContacts.length; i++) {
+      const { name, emailAddress, phone } = mediaContacts[i]
+      let contactText = ''
+      let emailAddressLink
+      let phoneLink
+
+      if (!isEmpty(name)) {
+        contactText = ` ${name}`
+      }
+
+      if (!isEmpty(emailAddress)) {
+        emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
+      }
+
+      if (!isEmpty(phone)) {
+        phoneLink = <Link to={`tel:${phone}`}>{phone}</Link>
+      }
+
+      if (emailAddressLink && phoneLink) {
+        contactText = `{contactText} at {emailAddressLink} or {phoneLink}`
+      } else if (emailAddressLink) {
+        contactText = `{contactText} at {emailAddressLink}`
+      } else if (phoneLink) {
+        contactText = `{contactText} at {phoneLink}`
+      }
+
+      contacts = contacts + contactText
+      if (i !== mediaContacts.length) {
+        contacts = contacts + '; '
+      }
+    }
+
+    return <span>{contacts}</span>
+  }
+
   render() {
-    const { data, mediaContact, office, officeLink } = this.props
+    const { data, mediaContacts, office, officeLink } = this.props
 
     const body = data.body && typeof data.body === 'string' ? data.body : ''
 
@@ -141,43 +180,44 @@ export class DocumentArticle extends React.Component {
       }
 
       let contactElement = null
-      if (pageType === 'article' && mediaContact) {
-        const { name, emailAddress, phone } = mediaContact
-        let contactText = 'Contact'
-        let emailAddressLink
-        let phoneLink
+      if (pageType === 'article' && !mediaContacts.length !== 0) {
+        contactElement = this.renderContactElement(mediaContacts)
+        // const { name, emailAddress, phone } = mediaContact
+        // let contactText = 'Contact'
+        // let emailAddressLink
+        // let phoneLink
 
-        if (!isEmpty(name)) {
-          contactText = `Contact ${name} at`
-        }
+        // if (!isEmpty(name)) {
+        //   contactText = `Contact ${name} at`
+        // }
 
-        if (!isEmpty(emailAddress)) {
-          emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
-        }
+        // if (!isEmpty(emailAddress)) {
+        //   emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
+        // }
 
-        if (!isEmpty(phone)) {
-          phoneLink = <Link to={`tel:${phone}`}>{phone}</Link>
-        }
+        // if (!isEmpty(phone)) {
+        //   phoneLink = <Link to={`tel:${phone}`}>{phone}</Link>
+        // }
 
-        if (emailAddressLink && phoneLink) {
-          contactElement = (
-            <span>
-              {contactText} {emailAddressLink} or {phoneLink}
-            </span>
-          )
-        } else if (emailAddressLink) {
-          contactElement = (
-            <span>
-              {contactText} {emailAddressLink}
-            </span>
-          )
-        } else if (phoneLink) {
-          contactElement = (
-            <span>
-              {contactText} {phoneLink}
-            </span>
-          )
-        }
+        // if (emailAddressLink && phoneLink) {
+        //   contactElement = (
+        //     <span>
+        //       {contactText} {emailAddressLink} or {phoneLink}
+        //     </span>
+        //   )
+        // } else if (emailAddressLink) {
+        //   contactElement = (
+        //     <span>
+        //       {contactText} {emailAddressLink}
+        //     </span>
+        //   )
+        // } else if (phoneLink) {
+        //   contactElement = (
+        //     <span>
+        //       {contactText} {phoneLink}
+        //     </span>
+        //   )
+        // }
       }
 
       const titleClassName = classNames({
@@ -258,25 +298,38 @@ function mapStateToProps(state, ownProps) {
     contentReducer: { officesRaw: offices, persons }
   } = state
   const {
-    data: { office: officeId, mediaContact: mediaContactId }
+    data: { office: officeId, mediaContacts: mediaContactIds }
   } = ownProps
 
   let office
-  let mediaContact
+  const mediaContacts = []
 
   if (offices && typeof officeId === 'number') {
     office = offices.find(({ id }) => id === officeId)
   }
 
-  if (persons && typeof mediaContactId === 'number') {
-    mediaContact = persons.find(({ id }) => id === mediaContactId)
-  } else if (persons && office && typeof office.mediaContact === 'number') {
-    mediaContact = persons.find(({ id }) => id === office.mediaContact)
+  if (mediaContactIds) {
+    for (let i = 0; i < mediaContactIds.length; i++) {
+      const mediaContactId = mediaContactIds[i]
+      if (persons && typeof mediaContactId === 'number') {
+        mediaContacts.push(persons.find(({ id }) => id === mediaContactId))
+      }
+    }
+
+    // mediaContactIds.forEach(mediaContactId => {
+    //   if (persons && typeof mediaContactId === 'number'){
+    //     mediaContacts.push(persons.find(({ id }) => id === mediaContactId))
+    //   }
+    // })
+  }
+
+  if (persons && mediaContacts.length === 0) {
+    mediaContacts.push(persons.find(({ id }) => id === office.mediaContact))
   }
 
   return {
     office,
-    mediaContact
+    mediaContacts
   }
 }
 
@@ -287,6 +340,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DocumentArticle)
 
 /* eslint-enable max-statements */
