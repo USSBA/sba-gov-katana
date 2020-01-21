@@ -231,7 +231,7 @@ const EventsCTA = () => {
     <CallToAction
       size="Large"
       headline="Upcoming Events and Workshops"
-      blurb="SBA and its resource partners host events to help you start, manage , and grow your business. Find events in your area."
+      blurb="SBA and its resource partners host events to help you start, manage, and grow your business. Find events in your area."
       buttonAction={buttonAction}
       image={image}
     />
