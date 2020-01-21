@@ -76,6 +76,12 @@ export class DocumentArticle extends React.Component {
     return <div className={style.dates}> {dateLine} </div>
   }
 
+  isValidMediaContact(mediaContact) {
+    const validEmail = !isEmpty(mediaContact.emailAddress)
+    const validPhone = !isEmpty(mediaContact.emailAddress)
+    return validEmail || validPhone
+  }
+
   renderContactElement(mediaContacts) {
     const contacts = ['Contact ']
     for (let i = 0; i < mediaContacts.length; i++) {
@@ -88,13 +94,7 @@ export class DocumentArticle extends React.Component {
       let emailAddressLink
       let phoneLink
 
-      console.log('Last', mediaContacts[i - 1])
-
-      if (
-        mediaContacts[i - 1] &&
-        (!isEmpty(mediaContacts[i - 1].emailAddress) || !isEmpty(mediaContacts[i - 1].phone))
-      ) {
-        console.log('&&&&&&', mediaContacts[i - 1].emailAddress)
+      if (mediaContacts[i - 1] && this.isValidMediaContact(mediaContacts[i - 1])) {
         contacts.push(', ')
       }
 
@@ -205,7 +205,6 @@ export class DocumentArticle extends React.Component {
             <p className={style.meta}>
               {officeElement}
               <br />
-              {/* { contactElement} */}
               {pageType === 'article' &&
                 mediaContacts.length !== 0 &&
                 this.renderContactElement(mediaContacts)}
