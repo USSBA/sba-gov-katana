@@ -17,10 +17,6 @@ class NewsReleases extends React.Component {
     const { officeId, national, region } = this.props
 
     const queryParams = {
-      // mode: 'districtOffice' utilizes content api's feature flag to find articles via cloudsearch
-      // when/if the content api combines search functionality for articles into one place,
-      // then this query param can be removed
-      mode: 'districtOffice',
       articleCategory: 'Press release',
       sortBy: 'Last Updated',
       start: 0,
