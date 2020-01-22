@@ -76,6 +76,7 @@ export class DocumentArticle extends React.Component {
     return <div className={style.dates}> {dateLine} </div>
   }
 
+  // Checks if a given media contact is valid to be displayed on the article page
   isValidMediaContact(mediaContact) {
     const validEmail = !isEmpty(mediaContact.emailAddress)
     const validPhone = !isEmpty(mediaContact.emailAddress)
@@ -83,7 +84,7 @@ export class DocumentArticle extends React.Component {
   }
 
   renderContactElement(mediaContacts) {
-    const contacts = ['Contact ']
+    const contacts = []
     for (let i = 0; i < mediaContacts.length; i++) {
       // // if entry is undefined then the it is skipped
       // if (!mediaContacts[i]){
@@ -94,7 +95,10 @@ export class DocumentArticle extends React.Component {
       let emailAddressLink
       let phoneLink
 
-      if (mediaContacts[i - 1] && this.isValidMediaContact(mediaContacts[i - 1])) {
+      // Appends the media contact with the correct string as needed
+      if (contacts.length === 0 && this.isValidMediaContact(mediaContacts[i])) {
+        contacts.push('Contact ')
+      } else if (mediaContacts[i - 1] && this.isValidMediaContact(mediaContacts[i - 1])) {
         contacts.push(', ')
       }
 
