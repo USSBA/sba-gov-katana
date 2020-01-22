@@ -271,11 +271,12 @@ function mapStateToProps(state, ownProps) {
   }
 
   if (mediaContactIds) {
-    mediaContactIds.forEach(mediaContactId => {
-      if (persons && typeof mediaContactId === 'number') {
-        mediaContacts.push(persons.find(({ id }) => id === mediaContactId))
-      }
-    })
+    mediaContactIds.length > 0 &&
+      mediaContactIds.forEach(mediaContactId => {
+        if (persons && typeof mediaContactId === 'number') {
+          mediaContacts.push(persons.find(({ id }) => id === mediaContactId))
+        }
+      })
   }
 
   if (persons && office && mediaContacts.length === 0) {
