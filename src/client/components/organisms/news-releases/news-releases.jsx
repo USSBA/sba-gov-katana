@@ -24,7 +24,7 @@ class NewsReleases extends React.Component {
     }
 
     // if these optional props were passed in, then add them as query params
-    officeId && (queryParams.relatedOffice = officeId)
+    officeId && (queryParams.relatedOffice = officeId) && (queryParams.office = officeId)
     national && (queryParams.national = national)
     region && (queryParams.region = region)
 
@@ -40,7 +40,7 @@ class NewsReleases extends React.Component {
   render() {
     const { articles } = this.state
     const { officeId } = this.props
-    const articleLink = `/article?office=${officeId}&articleCategory=Press release`
+    const articleLink = `/article?office=${officeId}&relatedOffice=${officeId}&articleCategory=Press release`
 
     return (
       <div>

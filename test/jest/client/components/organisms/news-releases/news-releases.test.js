@@ -76,6 +76,7 @@ describe('News releases', () => {
 
     const expectedQueryParams = {
       relatedOffice: officeId,
+      office: officeId,
       articleCategory: 'Press release',
       national: true,
       region: officeRegion,
