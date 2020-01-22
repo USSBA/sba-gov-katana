@@ -185,7 +185,7 @@ const NewsletterSignup = () => {
   )
 }
 
-// Events component temporarily removed as per TA-3466. Remove flag when events backend is completed.
+// TODO: Events component temporarily displays EventsCTA as per TA-3491. Remove flag when events backend is completed.
 const Events = ({ items }) => {
   if (clientConfig.useD8EventsBackend) {
     return (
@@ -204,8 +204,38 @@ const Events = ({ items }) => {
       </div>
     )
   } else {
-    return <div />
+    return (
+      <div data-testid="events" className={styles.content}>
+        <EventsCTA />
+      </div>
+    )
   }
+}
+
+// TODO: Events component temporarily displays EventsCTA as per TA-3491.
+// Remove EventsCTA component when events backend is completed.
+// Remove temp-events-section folder and image that's referenced here: /assets/images/temp-events-section
+const EventsCTA = () => {
+  const buttonAction = {
+    link: {
+      title: 'Find Events',
+      url: '/events/find'
+    },
+    type: 'link'
+  }
+  const image = {
+    url: '/assets/images/temp-events-section/Temporary_Events_CTA.jpg',
+    alt: 'A pen on a contract'
+  }
+  return (
+    <CallToAction
+      size="Large"
+      headline="Upcoming Events and Workshops"
+      blurb="SBA and its resource partners host events to help you start, manage, and grow your business. Find events in your area."
+      buttonAction={buttonAction}
+      image={image}
+    />
+  )
 }
 
 const CTA = () => {
