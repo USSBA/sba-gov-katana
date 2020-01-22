@@ -76,8 +76,48 @@ export class DocumentArticle extends React.Component {
     return <div className={style.dates}> {dateLine} </div>
   }
 
+  // Checks if a given media contact is valid to be displayed on the article page
+  isValidMediaContact(mediaContact) {
+    const validEmail = !isEmpty(mediaContact.emailAddress)
+    const validPhone = !isEmpty(mediaContact.emailAddress)
+    return validEmail || validPhone
+  }
+
+  renderContactElement(mediaContacts) {
+    const contacts = []
+    for (let i = 0; i < mediaContacts.length; i++) {
+      const { name, emailAddress, phone } = mediaContacts[i]
+      let emailAddressLink
+      let phoneLink
+
+      // Appends the media contact with the correct string as needed
+      if (contacts.length === 0 && this.isValidMediaContact(mediaContacts[i])) {
+        contacts.push('Contact ')
+      } else if (mediaContacts[i - 1] && this.isValidMediaContact(mediaContacts[i - 1])) {
+        contacts.push(', ')
+      }
+
+      if (!isEmpty(emailAddress)) {
+        emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
+      }
+
+      if (!isEmpty(phone)) {
+        phoneLink = <Link to={`tel:${phone}`}>{phone}</Link>
+      }
+
+      if (emailAddressLink && phoneLink) {
+        contacts.push(`${name} at `, emailAddressLink, ' or ', phoneLink)
+      } else if (emailAddressLink) {
+        contacts.push(`${name} at `, emailAddressLink)
+      } else if (phoneLink) {
+        contacts.push(`${name} at `, phoneLink)
+      }
+    }
+    return contacts
+  }
+
   render() {
-    const { data, mediaContact, office, officeLink } = this.props
+    const { data, mediaContacts, office, officeLink } = this.props
 
     const body = data.body && typeof data.body === 'string' ? data.body : ''
 
@@ -140,46 +180,6 @@ export class DocumentArticle extends React.Component {
         )
       }
 
-      let contactElement = null
-      if (pageType === 'article' && mediaContact) {
-        const { name, emailAddress, phone } = mediaContact
-        let contactText = 'Contact'
-        let emailAddressLink
-        let phoneLink
-
-        if (!isEmpty(name)) {
-          contactText = `Contact ${name} at`
-        }
-
-        if (!isEmpty(emailAddress)) {
-          emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
-        }
-
-        if (!isEmpty(phone)) {
-          phoneLink = <Link to={`tel:${phone}`}>{phone}</Link>
-        }
-
-        if (emailAddressLink && phoneLink) {
-          contactElement = (
-            <span>
-              {contactText} {emailAddressLink} or {phoneLink}
-            </span>
-          )
-        } else if (emailAddressLink) {
-          contactElement = (
-            <span>
-              {contactText} {emailAddressLink}
-            </span>
-          )
-        } else if (phoneLink) {
-          contactElement = (
-            <span>
-              {contactText} {phoneLink}
-            </span>
-          )
-        }
-      }
-
       const titleClassName = classNames({
         'document-article-title': true,
         [style.title]: true,
@@ -204,7 +204,9 @@ export class DocumentArticle extends React.Component {
             <p className={style.meta}>
               {officeElement}
               <br />
-              {contactElement}
+              {pageType === 'article' &&
+                mediaContacts.length !== 0 &&
+                this.renderContactElement(mediaContacts)}
             </p>
           )}
 
@@ -258,25 +260,32 @@ function mapStateToProps(state, ownProps) {
     contentReducer: { officesRaw: offices, persons }
   } = state
   const {
-    data: { office: officeId, mediaContact: mediaContactId }
+    data: { office: officeId, mediaContacts: mediaContactIds }
   } = ownProps
 
   let office
-  let mediaContact
+  const mediaContacts = []
 
   if (offices && typeof officeId === 'number') {
     office = offices.find(({ id }) => id === officeId)
   }
 
-  if (persons && typeof mediaContactId === 'number') {
-    mediaContact = persons.find(({ id }) => id === mediaContactId)
-  } else if (persons && office && typeof office.mediaContact === 'number') {
-    mediaContact = persons.find(({ id }) => id === office.mediaContact)
+  if (mediaContactIds) {
+    mediaContactIds.length > 0 &&
+      mediaContactIds.forEach(mediaContactId => {
+        if (persons && typeof mediaContactId === 'number') {
+          mediaContacts.push(persons.find(({ id }) => id === mediaContactId))
+        }
+      })
+  }
+
+  if (persons && office && mediaContacts.length === 0) {
+    mediaContacts.push(persons.find(({ id }) => id === office.mediaContact))
   }
 
   return {
     office,
-    mediaContact
+    mediaContacts
   }
 }
 
@@ -287,6 +296,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DocumentArticle)
 
 /* eslint-enable max-statements */
