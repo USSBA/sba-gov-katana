@@ -86,11 +86,6 @@ export class DocumentArticle extends React.Component {
   renderContactElement(mediaContacts) {
     const contacts = []
     for (let i = 0; i < mediaContacts.length; i++) {
-      // // if entry is undefined then the it is skipped
-      // if (!mediaContacts[i]){
-      //   continue
-      // }
-
       const { name, emailAddress, phone } = mediaContacts[i]
       let emailAddressLink
       let phoneLink
