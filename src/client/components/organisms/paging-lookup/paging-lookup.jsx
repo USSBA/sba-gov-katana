@@ -43,6 +43,7 @@ class PagingLookup extends React.Component {
   createQueryParams(ownProps) {
     const query = this.createQueryFromProps(ownProps)
     query.office = query.office || 'All'
+    query.relatedOffice = query.relatedOffice || 'All'
     return query
   }
 
@@ -62,6 +63,7 @@ class PagingLookup extends React.Component {
       documentType: queryParams.type,
       documentActivity: queryParams.activity,
       office: queryParams.office,
+      relatedOffice: queryParams.relatedOffice,
       page: Number(queryParams.page) || 1
     })
 
@@ -265,6 +267,9 @@ class PagingLookup extends React.Component {
     newQueryFieldValue[field] = value
     const currentQuery = this.state.query
     const newQuery = assign({}, currentQuery, newQueryFieldValue)
+    if (field === 'office') {
+      newQuery.relatedOffice = value
+    }
     this.setState({ query: newQuery })
   }
 
