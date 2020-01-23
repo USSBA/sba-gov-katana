@@ -97,14 +97,14 @@ $base-timing: ease;
 $sba-grid-large: (
   columns: 12,
   gutter: 30px,
-  media: '(min-width: $breakpoint-large)'
+  media: '(min-width: #{$breakpoint-large})'
 );
 
 // TODO: rename to $grid-medium-up
 $sba-grid-medium: (
   columns: 12,
   gutter: 30px,
-  media: '(min-width: $breakpoint-medium)'
+  media: '(min-width: #{$breakpoint-medium})'
 );
 
 // TODO: refactor to $grid-small-up and $grid-large-only
@@ -125,13 +125,13 @@ $sba-grid-small: (
 $desktop-0gutter: (
   columns: 12,
   gutter: 0px,
-  media: '(min-width: $breakpoint-large)'
+  media: '(min-width: #{$breakpoint-large})'
 );
 
 $tablet-0gutter: (
   columns: 12,
   gutter: 0,
-  media: '(min-width: $breakpoint-medium) and (max-width: 1199px)'
+  media: '(min-width: #{$breakpoint-medium}) and (max-width: 1199px)'
 );
 
 $tablet-mobile-0gutter: (
@@ -149,13 +149,13 @@ $mobile-0gutter: (
 $desktop-nav: (
   columns: 12,
   gutter: 0,
-  media: '(min-width: $breakpoint-large)'
+  media: '(min-width: #{$breakpoint-large})'
 );
 
 $tablet-nav: (
   columns: 12,
   gutter: 0,
-  media: '(min-width: $breakpoint-medium) and (max-width: 1199px)'
+  media: '(min-width: #{$breakpoint-medium}) and (max-width: 1199px)'
 );
 
 $mobile-nav: (
