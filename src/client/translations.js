@@ -217,7 +217,7 @@ const TRANSLATIONS = {
     },
     es: {
       text: 'Para los socios',
-      url: '/para-los-socios'
+      url: '/partners?lang=es'
     }
   },
   fund: {
