@@ -8,11 +8,22 @@ import { TextSection } from 'atoms'
 import styles from './blog.scss'
 
 class Blog extends Component {
+  setBlogCategory(category) {
+    let blogCategoryLink
+    if (category === 'SBA News and Views') {
+      blogCategoryLink = '/blogs/news-and-views'
+    } else if (category === 'Industry Word') {
+      blogCategoryLink = '/blogs/industry-word'
+    } else if (category === 'Success Story') {
+      blogCategoryLink = '/blogs/success-stories'
+    }
+    return blogCategoryLink
+  }
+
   render() {
     const { blogData } = this.props
     const blogParagraphs = blogData.blogBody
-    const categoryLink =
-      blogData.blogCategory === 'SBA News and Views' ? '/blogs/news-and-views' : '/blogs/industry-word'
+    const categoryLink = this.setBlogCategory(blogData.blogCategory)
     const { featuredImage } = this.props.blogData
     const blogPage = blogParagraphs.map(function(item, index) {
       return (
