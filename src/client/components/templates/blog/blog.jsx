@@ -8,7 +8,7 @@ import { TextSection } from 'atoms'
 import styles from './blog.scss'
 
 class Blog extends Component {
-  setBlogCategory(category) {
+  getBlogCategory(category) {
     let blogCategoryLink
     if (category === 'SBA News and Views') {
       blogCategoryLink = '/blogs/news-and-views'
@@ -23,7 +23,7 @@ class Blog extends Component {
   render() {
     const { blogData } = this.props
     const blogParagraphs = blogData.blogBody
-    const categoryLink = this.setBlogCategory(blogData.blogCategory)
+    const categoryLink = this.getBlogCategory(blogData.blogCategory)
     const { featuredImage } = this.props.blogData
     const blogPage = blogParagraphs.map(function(item, index) {
       return (
