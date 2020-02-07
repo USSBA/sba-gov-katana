@@ -81,7 +81,7 @@ class AuthorCard extends PureComponent {
 }
 
 AuthorCard.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   title: PropTypes.string,
   url: PropTypes.string,
   border: PropTypes.bool,
@@ -90,8 +90,7 @@ AuthorCard.propTypes = {
 }
 
 AuthorCard.defaultProps = {
-  name: 'Full Name',
-  title: 'title',
+  title: '',
   picture: {},
   shortBio: '',
   border: true,

@@ -43,6 +43,69 @@ const mockDocumentResults = {
   ]
 }
 
+const mockLeadershipResponse = [
+  {
+    bio: {},
+    emailAddress: 'Brooke.decubellis@sba.gov',
+    fax: '202-481-1593',
+    firstName: 'Brooke',
+    highResolutionPhoto: {},
+    lastName: 'DeCubellis',
+    office: 6443,
+    phone: '614-469-6860 x238',
+    picture: {},
+    shortBio: {},
+    title: 'Public Affairs Specialist',
+    type: 'person',
+    url: '/person/brooke-decubellis',
+    name: 'Brooke DeCubellis',
+    id: 6975,
+    updated: 1550777460,
+    created: 1527676054,
+    langCode: 'en'
+  },
+  {
+    bio: {},
+    emailAddress: 'Marichu.Relativo@sba.gov',
+    fax: {},
+    firstName: 'Marichu',
+    highResolutionPhoto: {},
+    lastName: 'Relativo',
+    office: {},
+    phone: '907-271-4861',
+    picture: {},
+    shortBio: {},
+    title: 'Deputy District Director',
+    type: 'person',
+    url: '/person/marichu-relativo',
+    name: 'Marichu Relativo',
+    id: 6475,
+    updated: 1550778305,
+    created: 1527675677,
+    langCode: 'en'
+  },
+  {
+    bio: {},
+    emailAddress: 'Ryan.Zachry@sba.gov',
+    fax: {},
+    firstName: 'Ryan',
+    highResolutionPhoto: {},
+    lastName: 'Zachry',
+    office: 6387,
+    phone: '907-271-4842',
+    picture: {},
+    shortBio: {},
+    title: 'Business Opportunity Specialist',
+    type: 'person',
+    url: '/person/ryan-zachry',
+    name: 'Ryan Zachry',
+    id: 6477,
+    updated: 1551469444,
+    created: 1527675680,
+    langCode: 'en'
+  }
+]
+
 describe('District Office template', () => {
   describe('the office information section', () => {
     it('will render the services section if service information is provided from the office request', () => {
@@ -223,7 +286,8 @@ describe('District Office template', () => {
     const lenderMatch = getByTestId('office-lender-match')
     expect(lenderMatch).toBeInTheDocument()
   })
-  // Events component temporarily removed as per TA-3466. Remove skip when events backend is completed.
+
+  // Events component temporarily removed as per TA-3466. Remove skip when events backend is completed. (tag: useD8EventsBackend)
   it.skip('contains an Events Component', async () => {
     const mockOfficeResponse = {
       leadership: {},
@@ -280,6 +344,7 @@ describe('District Office template', () => {
     content = await waitForElement(() => getByTestId('events-button'))
     expect(content).toBeInTheDocument()
   })
+
   describe('Leadership Component', () => {
     it('contains leaders', async () => {
       const mockOfficeResponse = {
@@ -287,69 +352,6 @@ describe('District Office template', () => {
         title: 'Alabama District Office',
         id: 6386
       }
-
-      const mockLeadershipResponse = [
-        {
-          bio: {},
-          emailAddress: 'Brooke.decubellis@sba.gov',
-          fax: '202-481-1593',
-          firstName: 'Brooke',
-          highResolutionPhoto: {},
-          lastName: 'DeCubellis',
-          office: 6443,
-          phone: '614-469-6860 x238',
-          picture: {},
-          shortBio: {},
-          title: 'Public Affairs Specialist',
-          type: 'person',
-          url: '/person/brooke-decubellis',
-          name: 'Brooke DeCubellis',
-          id: 6975,
-          updated: 1550777460,
-          created: 1527676054,
-          langCode: 'en'
-        },
-        {
-          bio: {},
-          emailAddress: 'Marichu.Relativo@sba.gov',
-          fax: {},
-          firstName: 'Marichu',
-          highResolutionPhoto: {},
-          lastName: 'Relativo',
-          office: {},
-          phone: '907-271-4861',
-          picture: {},
-          shortBio: {},
-          title: 'Deputy District Director',
-          type: 'person',
-          url: '/person/marichu-relativo',
-          name: 'Marichu Relativo',
-          id: 6475,
-          updated: 1550778305,
-          created: 1527675677,
-          langCode: 'en'
-        },
-        {
-          bio: {},
-          emailAddress: 'Ryan.Zachry@sba.gov',
-          fax: {},
-          firstName: 'Ryan',
-          highResolutionPhoto: {},
-          lastName: 'Zachry',
-          office: 6387,
-          phone: '907-271-4842',
-          picture: {},
-          shortBio: {},
-          title: 'Business Opportunity Specialist',
-          type: 'person',
-          url: '/person/ryan-zachry',
-          name: 'Ryan Zachry',
-          id: 6477,
-          updated: 1551469444,
-          created: 1527675680,
-          langCode: 'en'
-        }
-      ]
 
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
 
@@ -369,6 +371,7 @@ describe('District Office template', () => {
       content = await waitForElement(() => getAllByTestId('leader-card'))
       expect(content.length).toEqual(3)
     })
+
     it('contains no leaders', () => {
       const mockOfficeResponse = {
         officeLeadership: {},
@@ -386,7 +389,44 @@ describe('District Office template', () => {
       const content = queryByTestId('office-leadership')
       expect(content).not.toBeInTheDocument()
     })
+
+    it('only displays the url (for the Read More link) for the first member in the leadership', async () => {
+      const firstLeaderId = 6975
+      const secondLeaderId = 6475
+      const thirdLeaderId = 6477
+      const mockOffice = {
+        officeLeadership: [firstLeaderId, secondLeaderId, thirdLeaderId],
+        title: 'Alabama District Office',
+        id: 6386
+      }
+
+      const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+      when(fetchRestContentStub)
+        .calledWith(firstLeaderId)
+        .mockImplementationOnce(() => Promise.resolve(mockLeadershipResponse[0]))
+      when(fetchRestContentStub)
+        .calledWith(secondLeaderId)
+        .mockImplementationOnce(() => Promise.resolve(mockLeadershipResponse[1]))
+      when(fetchRestContentStub)
+        .calledWith(thirdLeaderId)
+        .mockImplementationOnce(() => Promise.resolve(mockLeadershipResponse[2]))
+
+      const { getAllByTestId } = render(<DistrictOffice office={mockOffice} />)
+
+      const leadershipCards = await waitForElement(() => getAllByTestId('leader-card'))
+      expect(leadershipCards.length).toEqual(3)
+
+      const readMoreLinkFirstLeader = within(leadershipCards[0]).getByText('Read More')
+      expect(readMoreLinkFirstLeader).toBeInTheDocument()
+      const readMoreLinkSecondLeader = within(leadershipCards[1]).queryByText('Read More')
+      expect(readMoreLinkSecondLeader).not.toBeInTheDocument()
+      const readMoreLinkThirdLeader = within(leadershipCards[2]).queryByText('Read More')
+      expect(readMoreLinkThirdLeader).not.toBeInTheDocument()
+
+      fetchRestContentStub.mockRestore()
+    })
   })
+
   it('renders document quicklinks section', async () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
     when(fetchSiteContentStub)

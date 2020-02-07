@@ -84,4 +84,27 @@ describe('AuthorCard', () => {
     const readMoreLink = within(readMoreSection).getByText('Read More')
     expect(readMoreLink).toHaveAttribute('href', url)
   })
+
+  it('should NOT contain a link in the name when there is NO url in the person data', () => {
+    const props = Object.assign({}, mockPersonData)
+    props.url = ''
+
+    const { getByTestId } = render(<AuthorCard {...props} />)
+
+    const nameSection = getByTestId('name')
+    const name = within(nameSection).getByText(props.name)
+    expect(name).not.toHaveAttribute('href')
+  })
+
+  it('should contain a link in the name when there is a url in the person data', () => {
+    const url = '/someurl'
+    const props = Object.assign({}, mockPersonData)
+    props.url = url
+
+    const { getByTestId } = render(<AuthorCard {...props} />)
+
+    const nameSection = getByTestId('name')
+    const name = within(nameSection).getByText(props.name)
+    expect(name).toHaveAttribute('href', url)
+  })
 })
