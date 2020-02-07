@@ -14,6 +14,31 @@ class AuthorCard extends PureComponent {
     return renderedAltText
   }
 
+  renderReadMoreLink() {
+    const { url, bio, mode } = this.props
+
+    const linkClassName = classNames({
+      [styles.linkAdditionalMargin]: isEmpty(bio)
+    })
+
+    if (mode === 'single') {
+      return (
+        <div data-testid={'read-more'} className={linkClassName}>
+          <a href={url}>
+            {this.renderReadMoreAltText(bio)}
+            Read More
+          </a>
+        </div>
+      )
+    } else if (mode === 'grid') {
+      return (
+        <div data-testid={'see-all-posts'} className={linkClassName}>
+          <a href={`${url}/#posts`}>See all posts</a>
+        </div>
+      )
+    }
+  }
+
   render() {
     const { name, title, shortBio: bio, picture, url, border, mode, containerTabIndex } = this.props
 
@@ -27,30 +52,8 @@ class AuthorCard extends PureComponent {
       [styles.imageMode]: mode === 'single' && !isEmpty(picture)
     })
 
-    const linkClassName = classNames({
-      [styles.linkAdditionalMargin]: isEmpty(bio)
-    })
-
     //Empty author titles come out of drupal as empty objects, but is a string when valid
     const authorTitle = typeof title === 'object' ? '' : title
-
-    let link
-    if (mode === 'single') {
-      link = (
-        <div data-testid={'read-more'} className={linkClassName}>
-          <a href={url}>
-            {this.renderReadMoreAltText(bio)}
-            Read More
-          </a>
-        </div>
-      )
-    } else if (mode === 'grid') {
-      link = (
-        <div data-testid={'see-all-posts'} className={linkClassName}>
-          <a href={`${url}/#posts`}>See all posts</a>
-        </div>
-      )
-    }
 
     return (
       <div data-testid={'authorCard'} tabIndex="0" className={className}>
@@ -60,9 +63,7 @@ class AuthorCard extends PureComponent {
           </div>
         )}
         <div className={infoClassName}>
-          <h4 data-testid={'name'}>
-            <a href={url}>{name}</a>
-          </h4>
+          <h4 data-testid={'name'}>{url ? <a href={url}>{name}</a> : name}</h4>
           <div data-testid={'title'} tabIndex={containerTabIndex} className={styles.title}>
             <i>{authorTitle}</i>
           </div>
@@ -72,7 +73,7 @@ class AuthorCard extends PureComponent {
               {bio}
             </div>
           )}
-          {link}
+          {url && this.renderReadMoreLink()}
         </div>
       </div>
     )

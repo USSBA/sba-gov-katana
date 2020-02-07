@@ -1,7 +1,7 @@
 /*eslint-disable no-undefined*/
 
 import React from 'react'
-import { render, cleanup, waitForElement } from 'react-testing-library'
+import { render, cleanup, waitForElement, within } from 'react-testing-library'
 import 'jest-dom/extend-expect'
 import { AuthorCard } from 'molecules'
 
@@ -63,12 +63,25 @@ describe('AuthorCard', () => {
     expect(content).not.toBeInTheDocument()
   })
 
-  it('should display a read-more link', () => {
+  it('should NOT display a read more section when there is NO url in the person data', () => {
     const props = Object.assign({}, mockPersonData)
+    props.url = ''
+
+    const { queryByTestId } = render(<AuthorCard {...props} />)
+
+    const readMoreSection = queryByTestId('read-more')
+    expect(readMoreSection).not.toBeInTheDocument()
+  })
+
+  it('should display a read more section with link when there is a url in the person data', () => {
+    const url = '/someurl'
+    const props = Object.assign({}, mockPersonData)
+    props.url = url
 
     const { getByTestId } = render(<AuthorCard {...props} />)
 
-    const content = getByTestId('read-more')
-    expect(content).toBeInTheDocument()
+    const readMoreSection = getByTestId('read-more')
+    const readMoreLink = within(readMoreSection).getByText('Read More')
+    expect(readMoreLink).toHaveAttribute('href', url)
   })
 })
