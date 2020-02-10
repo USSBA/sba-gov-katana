@@ -121,12 +121,24 @@ const ServicesProvided = ({ office }) => {
 
 const Leadership = ({ items }) => {
   const cards = items.map(({ name, title, shortBio, url }, index) => {
+    const authorCardProps = {
+      name,
+      title,
+      shortBio
+    }
+
+    // only include the url for the first person (AuthorCard) in the list
+    if (index === 0) {
+      authorCardProps.url = url
+    }
+
     return (
       <div data-testid={`leader-card`} key={index} className={styles.threeColumn}>
-        <AuthorCard name={name} title={title} shortBio={shortBio} url={url} />
+        <AuthorCard {...authorCardProps} />
       </div>
     )
   })
+
   return (
     <div data-testid={'office-leadership'} className={styles.leadership}>
       <h3>Leadership</h3>
