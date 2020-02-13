@@ -194,10 +194,13 @@ export class DocumentArticle extends React.Component {
       if (!isEmpty(data.documentIdNumber)) {
         labelProps.id = String(data.documentIdNumber)
       }
+      if (!isEmpty(type)) {
+        labelProps.type = type
+      }
 
       return (
         <div className={'document-article ' + style.page}>
-          <Label type={type} {...labelProps} />
+          <Label {...labelProps} />
           <h1 className={titleClassName}>{data.title}</h1>
           {!isEmpty(data.subtitle) && <p>{data.subtitle}</p>}
           {includes(data.category, PRESS_RELEASE) && (
