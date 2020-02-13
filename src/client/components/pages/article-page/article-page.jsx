@@ -5,7 +5,7 @@ import DocumentArticle from '../../templates/document-article/document-article.j
 import ErrorPage from '../error-page/error-page.jsx'
 import styles from './article-page.scss'
 import { Loader } from 'atoms'
-import { fetchSiteContent, fetchRestContent } from '../../../fetch-content-helper'
+import { fetchRestContent } from '../../../fetch-content-helper'
 
 class ArticlePage extends React.Component {
   constructor() {
@@ -16,25 +16,8 @@ class ArticlePage extends React.Component {
   }
 
   async componentDidMount() {
-    const {
-      location: { pathname }
-    } = this.props
-
-    if (pathname) {
-      try {
-        const { items } = await fetchSiteContent('articles', {
-          url: pathname
-        })
-
-        if (size(items)) {
-          const { id } = items[0]
-          const article = await fetchRestContent(id)
-          this.setState({ article })
-        }
-      } catch (e) {
-        console.error(e)
-      }
-    }
+    const article = await fetchRestContent(this.props.id)
+    this.setState({ article })
   }
 
   render() {

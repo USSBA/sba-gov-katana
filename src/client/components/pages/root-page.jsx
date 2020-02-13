@@ -35,7 +35,7 @@ export class RootPage extends React.Component {
     } else if (first === 'document') {
       return <DocumentPage location={this.props.location} />
     } else if (first === 'article') {
-      return <ArticlePage location={this.props.location} />
+      return <ArticlePage location={this.props.location} id={window.nodeId} />
     } else if (first === 'event') {
       return <EventPage id={window.nodeId} />
     } else if (first === 'blog') {
