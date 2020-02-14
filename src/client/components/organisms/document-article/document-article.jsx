@@ -86,31 +86,35 @@ export class DocumentArticle extends React.Component {
   renderContactElement(mediaContacts) {
     const contacts = []
     for (let i = 0; i < mediaContacts.length; i++) {
-      const { name, emailAddress, phone } = mediaContacts[i]
-      let emailAddressLink
-      let phoneLink
+      // As a temporary fix, we can prevent this code from running when an entry in the mediaContacts array is undefined.
+      // When we do a refactor of this file, we should prevent falsey values from getting into the mediaContacts array to begin with.
+      if (mediaContacts[i]) {
+        const { name, emailAddress, phone } = mediaContacts[i]
+        let emailAddressLink
+        let phoneLink
 
-      // Appends the media contact with the correct string as needed
-      if (contacts.length === 0 && this.isValidMediaContact(mediaContacts[i])) {
-        contacts.push('Contact ')
-      } else if (mediaContacts[i - 1] && this.isValidMediaContact(mediaContacts[i - 1])) {
-        contacts.push(', ')
-      }
+        // Appends the media contact with the correct string as needed
+        if (contacts.length === 0 && this.isValidMediaContact(mediaContacts[i])) {
+          contacts.push('Contact ')
+        } else if (mediaContacts[i - 1] && this.isValidMediaContact(mediaContacts[i - 1])) {
+          contacts.push(', ')
+        }
 
-      if (!isEmpty(emailAddress)) {
-        emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
-      }
+        if (!isEmpty(emailAddress)) {
+          emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
+        }
 
-      if (!isEmpty(phone)) {
-        phoneLink = <Link to={`tel:${phone}`}>{phone}</Link>
-      }
+        if (!isEmpty(phone)) {
+          phoneLink = <Link to={`tel:${phone}`}>{phone}</Link>
+        }
 
-      if (emailAddressLink && phoneLink) {
-        contacts.push(`${name} at `, emailAddressLink, ' or ', phoneLink)
-      } else if (emailAddressLink) {
-        contacts.push(`${name} at `, emailAddressLink)
-      } else if (phoneLink) {
-        contacts.push(`${name} at `, phoneLink)
+        if (emailAddressLink && phoneLink) {
+          contacts.push(`${name} at `, emailAddressLink, ' or ', phoneLink)
+        } else if (emailAddressLink) {
+          contacts.push(`${name} at `, emailAddressLink)
+        } else if (phoneLink) {
+          contacts.push(`${name} at `, phoneLink)
+        }
       }
     }
     return contacts
@@ -186,9 +190,17 @@ export class DocumentArticle extends React.Component {
         [style.titleMarginBottom]: type
       })
 
+      const labelProps = {}
+      if (!isEmpty(data.documentIdNumber)) {
+        labelProps.id = String(data.documentIdNumber)
+      }
+      if (!isEmpty(type)) {
+        labelProps.type = type
+      }
+
       return (
         <div className={'document-article ' + style.page}>
-          <Label type={type} id={!isEmpty(data.documentIdNumber) && data.documentIdNumber} />
+          <Label {...labelProps} />
           <h1 className={titleClassName}>{data.title}</h1>
           {!isEmpty(data.subtitle) && <p>{data.subtitle}</p>}
           {includes(data.category, PRESS_RELEASE) && (
@@ -205,6 +217,7 @@ export class DocumentArticle extends React.Component {
               {officeElement}
               <br />
               {pageType === 'article' &&
+                !isEmpty(mediaContacts) &&
                 mediaContacts.length !== 0 &&
                 this.renderContactElement(mediaContacts)}
             </p>
@@ -296,9 +309,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DocumentArticle)
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
 
 /* eslint-enable max-statements */
