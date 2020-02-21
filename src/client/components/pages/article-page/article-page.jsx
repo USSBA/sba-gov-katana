@@ -1,6 +1,4 @@
 import React from 'react'
-import { size } from 'lodash'
-
 import DocumentArticle from '../../templates/document-article/document-article.jsx'
 import ErrorPage from '../error-page/error-page.jsx'
 import styles from './article-page.scss'
@@ -43,4 +41,3 @@ class ArticlePage extends React.Component {
 }
 
 export default ArticlePage
-export { ArticlePage }
