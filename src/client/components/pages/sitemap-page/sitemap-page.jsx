@@ -41,7 +41,12 @@ class SiteMapPage extends Component {
     }
 
     const linkTree = renderLinkList(siteMap)
-    return <div>{linkTree}</div>
+    return (
+      <div data-testid="sitemap" className={styles.container}>
+        <h1>Site Map</h1>
+        {linkTree}
+      </div>
+    )
   }
 }
 
