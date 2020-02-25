@@ -21,15 +21,22 @@ class DistrictOfficeTemplate extends React.Component {
   async componentDidMount() {
     const { office } = this.props
 
-    const { items } = await fetchSiteContent('events', {
+    const results = await fetchSiteContent('events', {
       pageSize: 5,
       officeId: office.id
     })
-    // when the events content api is set to D8, then pageSize=5 will do the work for us
-    // but since the events content api is set to D7, slice the first 5 items off the response
     let events = []
-    if (items && items.length > 0) {
-      events = items.slice(0, 5)
+    if (clientConfig.useD8EventsBackend) {
+      if (results && results.found > 0) {
+        events = results.hit
+      }
+    } else {
+      // when the events content api is set to D8, then pageSize=5 will do the work for us
+      // but since the events content api is set to D7, slice the first 5 items off the response
+      const { items } = results
+      if (items && items.length > 0) {
+        events = items.slice(0, 5)
+      }
     }
 
     let leaders = []
