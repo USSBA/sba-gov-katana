@@ -1,66 +1,81 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
-import { DocumentArticle } from 'organisms'
+import { render, cleanup, waitForElement } from 'react-testing-library'
+import 'jest-dom/extend-expect'
+import { DocumentArticle } from '../../../../../../src/client/components/organisms/document-article/document-article.jsx'
+import * as fetchContentHelper from 'client/fetch-content-helper.js'
 
-// This test will not run without proper redux set up
-describe.skip('DocumentArticle', () => {
-  describe('Render', () => {
-    const mockArticle = [
-      {
-        body: '<p>Body Text</p>',
-        category: ['Offering Circular - Debenture'],
-        officeLink: {
-          url: 'http://sba.gov/office',
-          title: 'Office Title'
-        },
-        pdfVersion: {},
-        programs: ['SBIC'],
-        relatedDocuments: [
-          {
-            activitys: ['Liquidation'],
-            body: '<p> Test Related Document Body </p>',
-            documentIdType: 'SOP',
-            documentIdNumber: '10 07 1',
-            files: [
-              {
-                type: 'docFile',
-                effectiveDate: '2007-12-21',
-                expirationDate: '2017-07-21',
-                fileUrl: '/sites/default/files/2007-12/testpdf1.pdf',
-                version: '2'
-              },
-              {
-                type: 'docFile',
-                effectiveDate: '1987-04-21',
-                expirationDate: '2007-12-20',
-                fileUrl: '/sites/default/files/2017-07/testpdf2.pdf',
-                version: null
-              }
-            ],
-            officeLink: {
-              url: 'https://www.sba.gov/',
-              title: 'Office of Testing'
-            },
-            ombNumber: {},
-            programs: ['SBIC'],
-            summary: 'A related document summary',
-            type: 'document',
-            title: 'TEST TEST Liquidation',
-            id: 2904,
-            updated: 1501604859,
-            url: 'sop-10-07-1-test-test-liquidation'
-          }
-        ],
-        summary: 'This is a sumary',
-        type: 'article',
-        title: 'This is a title',
-        id: 2905,
-        updated: 1503068893,
-        url: '2017/7/18/this-summary'
+let fetchRestContentStub
+
+beforeEach(function() {
+  fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+})
+
+afterEach(function() {
+  fetchRestContentStub.mockReset()
+  cleanup()
+})
+
+afterAll(function() {
+  fetchRestContentStub.mockRestore()
+})
+
+describe('DocumentArticle', () => {
+  // renders both article type and document type
+  describe('fetchRestContent calls for data', () => {
+    it('should make a fetchRestContent call for office data when the officeId is a number', async () => {
+      const officeId = 7426
+      const mockArticleData = {
+        office: officeId,
+        programs: [],
+        id: 3948
       }
-    ]
-    const component = renderer.create(<DocumentArticle data={mockArticle} />)
-    const tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+
+      const { getByTestId } = render(<DocumentArticle data={mockArticleData} type="article" />)
+      await waitForElement(() => getByTestId('document-article'))
+      expect(fetchRestContentStub).toBeCalledTimes(1)
+      expect(fetchRestContentStub).toBeCalledWith(officeId)
+    })
+
+    it('should NOT make a fetchRestContent call for office data when the officeId is an object', async () => {
+      const officeId = {}
+      const mockArticleData = {
+        office: officeId,
+        programs: [],
+        id: 3948
+      }
+
+      const { getByTestId } = render(<DocumentArticle data={mockArticleData} type="article" />)
+      await waitForElement(() => getByTestId('document-article'))
+      expect(fetchRestContentStub).not.toBeCalled()
+    })
+
+    it('should make a fetchRestContent call for media contact data when the [article] data contains a mediaContacts array with an id', async () => {
+      const mediaContacts = [123]
+      const mockArticleData = {
+        mediaContacts: mediaContacts,
+        programs: [],
+        id: 3948
+      }
+
+      const { getByTestId } = render(<DocumentArticle data={mockArticleData} type="article" />)
+      await waitForElement(() => getByTestId('document-article'))
+      expect(fetchRestContentStub).toBeCalledTimes(1)
+      expect(fetchRestContentStub).toBeCalledWith(mediaContacts[0])
+    })
+
+    it('should make MULTIPLE fetchRestContent calls for media contact data when the [article] data contains MULTIPLE mediaContacts array of ids', async () => {
+      const mediaContacts = [123, 456]
+      const mockArticleData = {
+        mediaContacts: mediaContacts,
+        programs: [],
+        id: 3948
+      }
+
+      const { getByTestId } = render(<DocumentArticle data={mockArticleData} type="article" />)
+      await waitForElement(() => getByTestId('document-article'))
+      expect(fetchRestContentStub).toBeCalledTimes(2)
+      expect(fetchRestContentStub).toHaveBeenNthCalledWith(1, mediaContacts[0])
+      expect(fetchRestContentStub).toHaveBeenNthCalledWith(2, mediaContacts[1])
+    })
   })
 })

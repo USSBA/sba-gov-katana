@@ -40,7 +40,7 @@ export class DocumentArticle extends React.Component {
       const officeData = {
         mediaContact: rawOfficeData.mediaContact,
         title: rawOfficeData.title,
-        url: rawOfficeData.website.url
+        url: rawOfficeData.website && rawOfficeData.website.url
       }
       this.setState({ officeData })
     }
@@ -58,7 +58,7 @@ export class DocumentArticle extends React.Component {
         const mediaContact = await fetchRestContent(mediaContacts[i])
         mediaContactsData.push(mediaContact)
       }
-    } else if (isEmpty(mediaContacts) && officeData && typeof officeData.mediaContact === 'number') {
+    } else if (officeData && typeof officeData.mediaContact === 'number') {
       const mediaContact = await fetchRestContent(officeData.mediaContact)
       mediaContactsData.push(mediaContact)
     }
@@ -242,7 +242,7 @@ export class DocumentArticle extends React.Component {
       }
 
       return (
-        <div className={'document-article ' + style.page}>
+        <div data-testid="document-article" className={'document-article ' + style.page}>
           <Label {...labelProps} />
           <h1 className={titleClassName}>{data.title}</h1>
           {!isEmpty(data.subtitle) && <p>{data.subtitle}</p>}
@@ -256,7 +256,7 @@ export class DocumentArticle extends React.Component {
           {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
 
           {!isEmpty(officeData) && (
-            <p className={style.meta}>
+            <p data-testid="office and contact info" className={style.meta}>
               {this.renderOfficeInfo()}
               <br />
               {pageType === 'article' && this.renderContactElement()}
@@ -350,7 +350,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 DocumentArticle.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired // should be one of 'document' or 'article'
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
