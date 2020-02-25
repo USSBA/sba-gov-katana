@@ -92,9 +92,9 @@ class EventLookupPage extends React.PureComponent {
       let isZeroState = false
       const defaultResults = []
 
-      if (searchResults && searchResults.count) {
-        results = searchResults.items
-        count = searchResults.count
+      if (searchResults && searchResults.found) {
+        results = searchResults.hit
+        count = searchResults.found
         hasNoResults = count === 0
         isLoading = false
         isZeroState = false

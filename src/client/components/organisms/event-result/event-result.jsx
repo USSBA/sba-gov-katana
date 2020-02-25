@@ -116,63 +116,59 @@ class EventResult extends React.PureComponent {
   render() {
     const { id, item } = this.props
 
-    // TODO: move this guard clause to the content api
-    // Require title, cost, startDate, endDate, timezone to exist in order to render the event
-    if (item.title && item.cost && item.startDate && item.endDate && item.timezone && item.locationType) {
-      const itemCost = item.cost === '0.00' ? 'Free' : '$' + item.cost
+    const itemCost = item.cost === '0.00' ? 'Free' : '$' + item.cost
 
-      const divClassName = classNames({
-        [styles.container]: true,
-        [styles.marginFirstChild]: id === 'result-0',
-        [styles.result]: true
-      })
+    const divClassName = classNames({
+      [styles.container]: true,
+      [styles.marginFirstChild]: id === 'result-0',
+      [styles.result]: true
+    })
 
-      const ariaLabelText = `Event Result ${Number(id.split('-')[1]) + 1}`
-      const eventTitle = he.decode(item.title)
+    const ariaLabelText = `Event Result ${Number(id.split('-')[1]) + 1}`
+    const eventTitle = he.decode(item.title)
 
-      return (
-        <div
-          id={`event-result-${id}`}
-          className={divClassName}
-          tabIndex="0"
-          aria-label={ariaLabelText}
-          data-cy="event result"
-        >
-          <div className={styles.columnGroupA}>
-            <div className={styles.column1}>
-              <div className={'event-date ' + styles.date} tabIndex="0" data-cy="date">
-                {this.formatDate()}
-              </div>
-              <div className={'event-time ' + styles.time} tabIndex="0" data-cy="time">
-                {this.formatTime()}
-              </div>
+    return (
+      <div
+        id={`event-result-${id}`}
+        className={divClassName}
+        tabIndex="0"
+        aria-label={ariaLabelText}
+        data-cy="event result"
+      >
+        <div className={styles.columnGroupA}>
+          <div className={styles.column1}>
+            <div className={'event-date ' + styles.date} tabIndex="0" data-cy="date">
+              {this.formatDate()}
             </div>
-            <div className={styles.column2}>
-              <Link
-                onClick={() => {
-                  window.location.assign(this.renderEventDetailUrl())
-                }}
-                className={styles.title}
-                tabIndex="0"
-              >
-                <h6 className="event-title" data-cy="title">
-                  {eventTitle}
-                </h6>
-              </Link>
-              <div className={'event-location ' + styles.location} tabIndex="0" data-cy="location">
-                {this.renderLocationInfo()}
-              </div>
+            <div className={'event-time ' + styles.time} tabIndex="0" data-cy="time">
+              {this.formatTime()}
             </div>
           </div>
-          <div className={styles.column3}>
-            <div className={'event-cost ' + styles.cost} tabIndex="0" data-cy="cost">{`${itemCost}`}</div>
-          </div>
-          <div className={'event-registration ' + styles.column4} data-cy="registration">
-            {this.renderRegistrationInfo()}
+          <div className={styles.column2}>
+            <Link
+              onClick={() => {
+                window.location.assign(this.renderEventDetailUrl())
+              }}
+              className={styles.title}
+              tabIndex="0"
+            >
+              <h6 className="event-title" data-cy="title">
+                {eventTitle}
+              </h6>
+            </Link>
+            <div className={'event-location ' + styles.location} tabIndex="0" data-cy="location">
+              {this.renderLocationInfo()}
+            </div>
           </div>
         </div>
-      )
-    }
+        <div className={styles.column3}>
+          <div className={'event-cost ' + styles.cost} tabIndex="0" data-cy="cost">{`${itemCost}`}</div>
+        </div>
+        <div className={'event-registration ' + styles.column4} data-cy="registration">
+          {this.renderRegistrationInfo()}
+        </div>
+      </div>
+    )
   }
 }
 
