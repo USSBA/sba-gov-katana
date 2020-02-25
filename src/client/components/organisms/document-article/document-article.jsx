@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux'
 import style from './document-article.scss'
 import * as ContentActions from '../../../actions/content.js'
 import * as NavigationActions from '../../../actions/navigation.js'
-import { Button, DecorativeDash, Label, Link, TextSection } from 'atoms'
+import { Button, ContactText, DecorativeDash, Label, Link, TextSection } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 import { fetchRestContent } from '../../../../client/fetch-content-helper'
@@ -26,7 +26,6 @@ export class DocumentArticle extends React.Component {
 
   componentDidMount() {
     this.getOfficeData()
-    this.getMediaContactsData()
   }
 
   async getOfficeData() {
@@ -43,28 +42,6 @@ export class DocumentArticle extends React.Component {
         url: rawOfficeData.website && rawOfficeData.website.url
       }
       this.setState({ officeData })
-    }
-  }
-
-  async getMediaContactsData() {
-    const mediaContacts = this.props.data.mediaContacts
-    const officeData = this.state.officeData
-    const mediaContactsData = []
-
-    // if it exists, use media contacts from the original (article) data
-    // otherwise, if it exists, use media contact from the office
-    if (!isEmpty(mediaContacts) && mediaContacts.length > 0) {
-      for (let i = 0; i < mediaContacts.length; i++) {
-        const mediaContact = await fetchRestContent(mediaContacts[i])
-        mediaContactsData.push(mediaContact)
-      }
-    } else if (officeData && typeof officeData.mediaContact === 'number') {
-      const mediaContact = await fetchRestContent(officeData.mediaContact)
-      mediaContactsData.push(mediaContact)
-    }
-
-    if (mediaContactsData.length > 0) {
-      this.setState({ mediaContactsData })
     }
   }
 
@@ -143,47 +120,6 @@ export class DocumentArticle extends React.Component {
     return officeElement
   }
 
-  // Checks if a given media contact is valid to be displayed on the article page
-  isValidMediaContact(mediaContact) {
-    const validEmail = !isEmpty(mediaContact.emailAddress)
-    const validPhone = !isEmpty(mediaContact.emailAddress)
-    return validEmail || validPhone
-  }
-
-  renderContactElement() {
-    const { mediaContactsData } = this.state
-    const contacts = []
-    for (let i = 0; i < mediaContactsData.length; i++) {
-      const { name, emailAddress, phone } = mediaContactsData[i]
-      let emailAddressLink
-      let phoneLink
-
-      // Appends the media contact with the correct string as needed
-      if (contacts.length === 0 && this.isValidMediaContact(mediaContactsData[i])) {
-        contacts.push('Contact ')
-      } else if (mediaContactsData[i - 1] && this.isValidMediaContact(mediaContactsData[i - 1])) {
-        contacts.push(', ')
-      }
-
-      if (!isEmpty(emailAddress)) {
-        emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
-      }
-
-      if (!isEmpty(phone)) {
-        phoneLink = <Link to={`tel:${phone}`}>{phone}</Link>
-      }
-
-      if (emailAddressLink && phoneLink) {
-        contacts.push(`${name} at `, emailAddressLink, ' or ', phoneLink)
-      } else if (emailAddressLink) {
-        contacts.push(`${name} at `, emailAddressLink)
-      } else if (phoneLink) {
-        contacts.push(`${name} at `, phoneLink)
-      }
-    }
-    return contacts
-  }
-
   render() {
     const { data } = this.props
     const { officeData } = this.state
@@ -259,7 +195,9 @@ export class DocumentArticle extends React.Component {
             <p data-testid="office and contact info" className={style.meta}>
               {this.renderOfficeInfo()}
               <br />
-              {pageType === 'article' && this.renderContactElement()}
+              {pageType === 'article' && (
+                <ContactText articleContacts={data.mediaContacts} officeContact={officeData.mediaContact} />
+              )}
             </p>
           )}
 

@@ -48,34 +48,5 @@ describe('DocumentArticle', () => {
       await waitForElement(() => getByTestId('document-article'))
       expect(fetchRestContentStub).not.toBeCalled()
     })
-
-    it('should make a fetchRestContent call for media contact data when the [article] data contains a mediaContacts array with an id', async () => {
-      const mediaContacts = [123]
-      const mockArticleData = {
-        mediaContacts: mediaContacts,
-        programs: [],
-        id: 3948
-      }
-
-      const { getByTestId } = render(<DocumentArticle data={mockArticleData} type="article" />)
-      await waitForElement(() => getByTestId('document-article'))
-      expect(fetchRestContentStub).toBeCalledTimes(1)
-      expect(fetchRestContentStub).toBeCalledWith(mediaContacts[0])
-    })
-
-    it('should make MULTIPLE fetchRestContent calls for media contact data when the [article] data contains MULTIPLE mediaContacts array of ids', async () => {
-      const mediaContacts = [123, 456]
-      const mockArticleData = {
-        mediaContacts: mediaContacts,
-        programs: [],
-        id: 3948
-      }
-
-      const { getByTestId } = render(<DocumentArticle data={mockArticleData} type="article" />)
-      await waitForElement(() => getByTestId('document-article'))
-      expect(fetchRestContentStub).toBeCalledTimes(2)
-      expect(fetchRestContentStub).toHaveBeenNthCalledWith(1, mediaContacts[0])
-      expect(fetchRestContentStub).toHaveBeenNthCalledWith(2, mediaContacts[1])
-    })
   })
 })
