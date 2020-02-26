@@ -19,8 +19,7 @@ export class DocumentArticle extends React.Component {
   constructor() {
     super()
     this.state = {
-      officeData: null,
-      mediaContactsData: []
+      officeData: null
     }
   }
 
@@ -101,17 +100,21 @@ export class DocumentArticle extends React.Component {
 
     // if it exists, use office title and url from the office data
     // otherwise, if it exists, use title and url from the original (document) data
-    if (officeData && officeData.title && officeData.url) {
+    if (officeData && !isEmpty(officeData.title) && !isEmpty(officeData.url)) {
       title = officeData.title
       url = officeData.url
-    } else if (!isEmpty(data.officeLink) && data.officeLink.title && data.officeLink.url) {
+    } else if (
+      !isEmpty(data.officeLink) &&
+      !isEmpty(data.officeLink.title) &&
+      !isEmpty(data.officeLink.url)
+    ) {
       title = data.officeLink.title
       url = data.officeLink.url
     }
 
     if (title && url) {
       officeElement = (
-        <span>
+        <span data-testid="office link">
           By <Link to={url}>{title}</Link>
         </span>
       )
@@ -120,9 +123,27 @@ export class DocumentArticle extends React.Component {
     return officeElement
   }
 
+  renderContactInfo() {
+    const {
+      data: { mediaContacts }
+    } = this.props
+    const { officeData } = this.state
+    const contactTextProps = {}
+
+    if (!isEmpty(mediaContacts)) {
+      contactTextProps.articleContacts = mediaContacts
+    }
+    if (!isEmpty(officeData) && typeof officeData.mediaContact === 'number') {
+      contactTextProps.officeContact = officeData.mediaContact
+    }
+
+    if (!isEmpty(contactTextProps)) {
+      return <ContactText {...contactTextProps} />
+    }
+  }
+
   render() {
     const { data } = this.props
-    const { officeData } = this.state
 
     const body = data.body && typeof data.body === 'string' ? data.body : ''
 
@@ -191,15 +212,11 @@ export class DocumentArticle extends React.Component {
 
           {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
 
-          {!isEmpty(officeData) && (
-            <p data-testid="office and contact info" className={style.meta}>
-              {this.renderOfficeInfo()}
-              <br />
-              {pageType === 'article' && (
-                <ContactText articleContacts={data.mediaContacts} officeContact={officeData.mediaContact} />
-              )}
-            </p>
-          )}
+          <div data-testid="office and contact info" className={style.meta}>
+            {this.renderOfficeInfo()}
+            <br />
+            {pageType === 'article' && this.renderContactInfo()}
+          </div>
 
           <hr className={style.hr} />
           <div className={style.summaryContainer}>
@@ -289,7 +306,7 @@ function mapDispatchToProps(dispatch) {
 
 DocumentArticle.propTypes = {
   data: PropTypes.object.isRequired,
-  type: PropTypes.string.isRequired // should be one of 'document' or 'article'
+  type: PropTypes.string // should be one of 'document' or 'article'
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)

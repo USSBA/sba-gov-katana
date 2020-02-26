@@ -4,7 +4,7 @@ import 'jest-dom/extend-expect'
 import { ContactText } from 'atoms'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 
-const mockPersonData = {
+const defaultMockPersonData = {
   emailAddress: 'person@sba.gov',
   phone: '100-200-3000',
   name: 'U.S. Small Business Administration',
@@ -15,7 +15,7 @@ let fetchRestContentStub
 
 beforeEach(function() {
   fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
-  fetchRestContentStub.mockReturnValue(mockPersonData)
+  fetchRestContentStub.mockReturnValue(defaultMockPersonData)
 })
 
 afterEach(function() {
@@ -88,12 +88,19 @@ describe('ContactText', () => {
   })
   describe('contact text display', () => {
     it('should display contact text when there is a contact with an email and phone', async () => {
-      const officeContact = 999
+      const personWithEmailAndPhone = {
+        emailAddress: 'person@sba.gov',
+        phone: '100-200-3000',
+        name: 'U.S. Small Business Administration',
+        id: 999
+      }
+      fetchRestContentStub.mockReturnValue(personWithEmailAndPhone)
 
+      const officeContact = 999
       const { getByTestId } = render(<ContactText officeContact={officeContact} />)
       const contactInfo = await waitForElement(() => getByTestId('contact info'))
 
-      const expectedText = `Contact ${mockPersonData.name} at ${mockPersonData.emailAddress} or ${mockPersonData.phone}`
+      const expectedText = `Contact ${personWithEmailAndPhone.name} at ${personWithEmailAndPhone.emailAddress} or ${personWithEmailAndPhone.phone}`
       expect(contactInfo).toHaveTextContent(expectedText)
     })
 
