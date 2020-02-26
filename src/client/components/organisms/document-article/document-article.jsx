@@ -52,7 +52,10 @@ export class DocumentArticle extends React.Component {
   }
 
   handleRelatedPrograms(program) {
-    const { navigationActions, type } = this.props
+    const {
+      navigationActions,
+      data: { type }
+    } = this.props
     const params = { program: program }
 
     navigationActions.locationChange('/' + type + '/?' + queryString.stringify(params))
@@ -305,8 +308,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 DocumentArticle.propTypes = {
-  data: PropTypes.object.isRequired,
-  type: PropTypes.string // should be one of 'document' or 'article'
+  data: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
