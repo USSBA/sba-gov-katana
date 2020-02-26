@@ -4,7 +4,7 @@ import 'jest-dom/extend-expect'
 import * as helpers from 'client/fetch-content-helper'
 import SiteMapPage from 'client/components/pages/sitemap-page/sitemap-page'
 
-describe.only('SiteMap', () => {
+describe('SiteMap', () => {
   it('fetches siteMap.json data', () => {
     helpers.fetchRestContent = jest.fn().mockImplementationOnce(() => Promise.resolve())
     const { getByTestId } = render(<SiteMapPage />)
