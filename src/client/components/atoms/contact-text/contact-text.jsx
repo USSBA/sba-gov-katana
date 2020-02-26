@@ -40,7 +40,7 @@ export class ContactText extends React.Component {
   // Checks if a given media contact is valid to be displayed on the article page
   isValidMediaContact(mediaContact) {
     const validEmail = !isEmpty(mediaContact.emailAddress)
-    const validPhone = !isEmpty(mediaContact.emailAddress)
+    const validPhone = !isEmpty(mediaContact.phone)
     return validEmail || validPhone
   }
 
@@ -61,11 +61,19 @@ export class ContactText extends React.Component {
       }
 
       if (!isEmpty(emailAddress)) {
-        emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
+        emailAddressLink = (
+          <Link to={`mailto:${emailAddress}`} key={`email-${i}`}>
+            {emailAddress}
+          </Link>
+        )
       }
 
       if (!isEmpty(phone)) {
-        phoneLink = <Link to={`tel:${phone}`}>{phone}</Link>
+        phoneLink = (
+          <Link to={`tel:${phone}`} key={`phone-${i}`}>
+            {phone}
+          </Link>
+        )
       }
 
       if (emailAddressLink && phoneLink) {
