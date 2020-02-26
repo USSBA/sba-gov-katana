@@ -98,6 +98,7 @@ class DistrictOfficeTemplate extends React.Component {
           </div>
         </div>
         <div className={styles.section}>
+          {clientConfig.useD8EventsBackend ? <Events items={events} /> : <EventsCTA />}
           <Events items={events} />
         </div>
         <div className={styles.content}>
@@ -206,29 +207,21 @@ const NewsletterSignup = () => {
 
 // TODO: Events component temporarily displays EventsCTA as per TA-3491. Remove flag when events backend is completed.
 const Events = ({ items }) => {
-  if (clientConfig.useD8EventsBackend) {
-    return (
-      <div data-testid="events" className={styles.events}>
-        <h2>Upcoming events and workshops</h2>
-        {items.length > 0 && (
-          <Results items={items}>
-            <EventResult />
-          </Results>
-        )}
-        <div className={styles.button} data-testid="events-button">
-          <a href="/events/find/" className={styles.buttonLink}>
-            Find More Events
-          </a>
-        </div>
+  return (
+    <div data-testid="events" className={styles.events}>
+      <h2>Upcoming events and workshops</h2>
+      {items.length > 0 && (
+        <Results items={items}>
+          <EventResult />
+        </Results>
+      )}
+      <div className={styles.button} data-testid="events-button">
+        <a href="/events/find/" className={styles.buttonLink}>
+          Find More Events
+        </a>
       </div>
-    )
-  } else {
-    return (
-      <div data-testid="events" className={styles.content}>
-        <EventsCTA />
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 // TODO: Events component temporarily displays EventsCTA as per TA-3491.
