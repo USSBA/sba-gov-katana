@@ -88,6 +88,10 @@ const DistrictOfficeSubPageTemplate = props => (
   />
 )
 
+const SiteMapPage = props => (
+  <Async componentProps={props} load={import('./pages/sitemap-page/sitemap-page.jsx')} />
+)
+
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
 import clientConfig from '../services/client-config.js'
@@ -146,6 +150,8 @@ const mainRoutes = [
     from="/offices/district/:officeId/:pageConnectorId:/:subPageId"
     to="/offices/district/:officeId/:pageConnectorId/:subPageId/"
   />,
+  <Route key={76} path="/sitemap" component={SiteMapPage} />,
+  <Redirect key={77} from="/sitemap/" to="/sitemap" />,
   <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
   <Route
     key={13}

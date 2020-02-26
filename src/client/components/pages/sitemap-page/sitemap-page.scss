@@ -1,0 +1,22 @@
+.container {
+  word-break: break-word;
+  padding: 30px 30px 0 30px;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 0;
+
+    @include for-large-up {
+      font-size: 36px;
+    }
+  }
+
+  @include for-medium-up {
+    width: 700px;
+    margin: 0 auto;
+  }
+}
+.linkList {
+	margin-left: 50px;
+}
