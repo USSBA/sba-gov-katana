@@ -28,8 +28,9 @@ describe('DocumentArticle', () => {
         type: 'document'
       }
 
-      const { getByTestId } = render(<DocumentArticle data={mockDocumentData} />)
-      await waitForElement(() => getByTestId('document-article'))
+      const { queryByTestId } = render(<DocumentArticle data={mockDocumentData} />)
+      const documentComponent = await waitForElement(() => queryByTestId('document-article'))
+      expect(documentComponent).toBeInTheDocument()
     })
 
     it('should render for an article', async () => {
@@ -39,8 +40,9 @@ describe('DocumentArticle', () => {
         type: 'article'
       }
 
-      const { getByTestId } = render(<DocumentArticle data={mockArticleData} />)
-      await waitForElement(() => getByTestId('document-article'))
+      const { queryByTestId } = render(<DocumentArticle data={mockArticleData} />)
+      const articleComponent = await waitForElement(() => queryByTestId('document-article'))
+      expect(articleComponent).toBeInTheDocument()
     })
   })
 
