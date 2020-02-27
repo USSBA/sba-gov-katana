@@ -1,32 +1,43 @@
-// TODO: Refactoring of this file to resolve the eslint max-statements error.
-// Then remove the eslint-disable (on following line) and eslint-enable (on last line of file)
-
-/* eslint-disable max-statements */
-
 import React from 'react'
 import classNames from 'classnames'
 import moment from 'moment'
 import queryString from 'querystring'
+import PropTypes from 'prop-types'
 import { includes, isEmpty, last } from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import clientConfig from '../../../services/client-config.js'
 import style from './document-article.scss'
 import * as ContentActions from '../../../actions/content.js'
 import * as NavigationActions from '../../../actions/navigation.js'
-import { Button, DecorativeDash, Label, Link, TextSection } from 'atoms'
+import { Button, ContactText, DecorativeDash, Label, Link, TextSection } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
+import { fetchRestContent } from '../../../../client/fetch-content-helper'
 
 export class DocumentArticle extends React.Component {
-  componentDidMount() {
-    const {
-      contentActions: { fetchContentIfNeeded }
-    } = this.props
+  constructor() {
+    super()
+    this.state = {
+      officeData: null
+    }
+  }
 
-    fetchContentIfNeeded('officesRaw', 'officesRaw')
-    fetchContentIfNeeded('persons', 'persons')
+  async componentDidMount() {
+    const officeId = this.props.data.office
+    let rawOfficeData
+
+    if (typeof officeId === 'number') {
+      rawOfficeData = await fetchRestContent(officeId)
+    }
+    if (rawOfficeData) {
+      const officeData = {
+        mediaContact: rawOfficeData.mediaContact,
+        title: rawOfficeData.title,
+        url: rawOfficeData.website && rawOfficeData.website.url
+      }
+      this.setState({ officeData })
+    }
   }
 
   downloadClick(currentFile) {
@@ -37,7 +48,10 @@ export class DocumentArticle extends React.Component {
   }
 
   handleRelatedPrograms(program) {
-    const { navigationActions, type } = this.props
+    const {
+      navigationActions,
+      data: { type }
+    } = this.props
     const params = { program: program }
 
     navigationActions.locationChange('/' + type + '/?' + queryString.stringify(params))
@@ -76,52 +90,59 @@ export class DocumentArticle extends React.Component {
     return <div className={style.dates}> {dateLine} </div>
   }
 
-  // Checks if a given media contact is valid to be displayed on the article page
-  isValidMediaContact(mediaContact) {
-    const validEmail = !isEmpty(mediaContact.emailAddress)
-    const validPhone = !isEmpty(mediaContact.emailAddress)
-    return validEmail || validPhone
+  renderOfficeInfo() {
+    const { data } = this.props
+    const { officeData } = this.state
+    let officeElement = null
+    let title
+    let url
+
+    // if it exists, use office title and url from the office data
+    // otherwise, if it exists, use title and url from the original (document) data
+    if (officeData && !isEmpty(officeData.title) && !isEmpty(officeData.url)) {
+      title = officeData.title
+      url = officeData.url
+    } else if (
+      !isEmpty(data.officeLink) &&
+      !isEmpty(data.officeLink.title) &&
+      !isEmpty(data.officeLink.url)
+    ) {
+      title = data.officeLink.title
+      url = data.officeLink.url
+    }
+
+    if (title && url) {
+      officeElement = (
+        <span data-testid="office link">
+          By <Link to={url}>{title}</Link>
+        </span>
+      )
+    }
+
+    return officeElement
   }
 
-  renderContactElement(mediaContacts) {
-    const contacts = []
-    for (let i = 0; i < mediaContacts.length; i++) {
-      // As a temporary fix, we can prevent this code from running when an entry in the mediaContacts array is undefined.
-      // When we do a refactor of this file, we should prevent falsey values from getting into the mediaContacts array to begin with.
-      if (mediaContacts[i]) {
-        const { name, emailAddress, phone } = mediaContacts[i]
-        let emailAddressLink
-        let phoneLink
+  renderContactInfo() {
+    const {
+      data: { mediaContacts }
+    } = this.props
+    const { officeData } = this.state
+    const contactTextProps = {}
 
-        // Appends the media contact with the correct string as needed
-        if (contacts.length === 0 && this.isValidMediaContact(mediaContacts[i])) {
-          contacts.push('Contact ')
-        } else if (mediaContacts[i - 1] && this.isValidMediaContact(mediaContacts[i - 1])) {
-          contacts.push(', ')
-        }
-
-        if (!isEmpty(emailAddress)) {
-          emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
-        }
-
-        if (!isEmpty(phone)) {
-          phoneLink = <Link to={`tel:${phone}`}>{phone}</Link>
-        }
-
-        if (emailAddressLink && phoneLink) {
-          contacts.push(`${name} at `, emailAddressLink, ' or ', phoneLink)
-        } else if (emailAddressLink) {
-          contacts.push(`${name} at `, emailAddressLink)
-        } else if (phoneLink) {
-          contacts.push(`${name} at `, phoneLink)
-        }
-      }
+    if (!isEmpty(mediaContacts)) {
+      contactTextProps.articleContacts = mediaContacts
     }
-    return contacts
+    if (!isEmpty(officeData) && typeof officeData.mediaContact === 'number') {
+      contactTextProps.officeContact = officeData.mediaContact
+    }
+
+    if (!isEmpty(contactTextProps)) {
+      return <ContactText {...contactTextProps} />
+    }
   }
 
   render() {
-    const { data, mediaContacts, office, officeLink } = this.props
+    const { data } = this.props
 
     const body = data.body && typeof data.body === 'string' ? data.body : ''
 
@@ -162,28 +183,6 @@ export class DocumentArticle extends React.Component {
         articleIdText = ` | ${articleIdPrefix && `${articleIdPrefix} Number `}${data.articleId}`
       }
 
-      let officeData = {}
-      if (clientConfig.pressRelease && !isEmpty(office) && office.website) {
-        const {
-          title,
-          website: { url }
-        } = office
-        officeData = { title, url }
-      } else if (!clientConfig.pressRelease && !isEmpty(officeLink) && officeLink.url) {
-        const { title, url } = officeLink
-        officeData = { title, url }
-      }
-
-      let officeElement = null
-      if (!isEmpty(officeData)) {
-        const { title, url } = officeData
-        officeElement = (
-          <span>
-            By <Link to={url}>{title}</Link>
-          </span>
-        )
-      }
-
       const titleClassName = classNames({
         'document-article-title': true,
         [style.title]: true,
@@ -199,7 +198,7 @@ export class DocumentArticle extends React.Component {
       }
 
       return (
-        <div className={'document-article ' + style.page}>
+        <div data-testid="document-article" className={'document-article ' + style.page}>
           <Label {...labelProps} />
           <h1 className={titleClassName}>{data.title}</h1>
           {!isEmpty(data.subtitle) && <p>{data.subtitle}</p>}
@@ -212,16 +211,11 @@ export class DocumentArticle extends React.Component {
 
           {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
 
-          {!isEmpty(officeData) && (
-            <p className={style.meta}>
-              {officeElement}
-              <br />
-              {pageType === 'article' &&
-                !isEmpty(mediaContacts) &&
-                mediaContacts.length !== 0 &&
-                this.renderContactElement(mediaContacts)}
-            </p>
-          )}
+          <div data-testid="office and contact info" className={style.meta}>
+            {this.renderOfficeInfo()}
+            <br />
+            {pageType === 'article' && this.renderContactInfo()}
+          </div>
 
           <hr className={style.hr} />
           <div className={style.summaryContainer}>
@@ -309,6 +303,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
+DocumentArticle.propTypes = {
+  data: PropTypes.object.isRequired
+}
 
-/* eslint-enable max-statements */
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
