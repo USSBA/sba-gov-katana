@@ -23,11 +23,7 @@ export class DocumentArticle extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.getOfficeData()
-  }
-
-  async getOfficeData() {
+  async componentDidMount() {
     const officeId = this.props.data.office
     let rawOfficeData
 

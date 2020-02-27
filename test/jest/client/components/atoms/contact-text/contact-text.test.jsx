@@ -29,7 +29,7 @@ afterAll(function() {
 
 describe('ContactText', () => {
   describe('fetchRestContent calls for data', () => {
-    it('should make a fetchRestContent call for articleContacts is an array containing an id', async () => {
+    it('should make a fetchRestContent call for media contact data when articleContacts is an array containing an id', async () => {
       const articleContacts = [123]
 
       const { getByTestId } = render(<ContactText articleContacts={articleContacts} />)
@@ -39,13 +39,13 @@ describe('ContactText', () => {
       expect(fetchRestContentStub).toBeCalledWith(articleContacts[0])
     })
 
-    it('should make MULTIPLE fetchRestContent calls for media contact data when the [article] data contains MULTIPLE mediaContacts array of ids', async () => {
+    it('should make MULTIPLE fetchRestContent calls for media contact data when articleContacts is an array containing MULTIPLE ids', async () => {
       const articleContacts = [123, 456]
 
       const { getByTestId } = render(<ContactText articleContacts={articleContacts} />)
       await waitForElement(() => getByTestId('contact info'))
 
-      expect(fetchRestContentStub).toBeCalledTimes(2)
+      expect(fetchRestContentStub).toBeCalledTimes(articleContacts.length)
       expect(fetchRestContentStub).toHaveBeenNthCalledWith(1, articleContacts[0])
       expect(fetchRestContentStub).toHaveBeenNthCalledWith(2, articleContacts[1])
     })

@@ -12,11 +12,7 @@ export class ContactText extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.getMediaContactsData()
-  }
-
-  async getMediaContactsData() {
+  async componentDidMount() {
     const { articleContacts, officeContact } = this.props
     const mediaContactsData = []
 
@@ -39,9 +35,9 @@ export class ContactText extends React.Component {
 
   // Checks if a given media contact is valid to be displayed on the article page
   isValidMediaContact(mediaContact) {
-    const validEmail = !isEmpty(mediaContact.emailAddress)
-    const validPhone = !isEmpty(mediaContact.phone)
-    return validEmail || validPhone
+    const isValidEmail = !isEmpty(mediaContact.emailAddress)
+    const isValidPhone = !isEmpty(mediaContact.phone)
+    return isValidEmail || isValidPhone
   }
 
   render() {
