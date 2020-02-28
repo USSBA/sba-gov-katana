@@ -100,7 +100,6 @@ class DistrictOfficeTemplate extends React.Component {
         </div>
         <div className={styles.section}>
           {clientConfig.useD8EventsBackend ? <Events items={events} /> : <EventsCTA />}
-          <Events items={events} />
         </div>
         <div className={styles.content}>
           <div className={styles.section}>
