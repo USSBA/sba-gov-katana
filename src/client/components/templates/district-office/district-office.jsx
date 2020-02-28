@@ -23,9 +23,8 @@ class DistrictOfficeTemplate extends React.Component {
 
     const results = await fetchSiteContent('events', {
       pageSize: 5,
-      // TODO: Switch to using office.id when id is included in event data
-      // office: office.id
-      office: office.title
+      // Search will not return results until event host office ID is included in data source
+      office: office.id
     })
     let events = []
     if (clientConfig.useD8EventsBackend) {
