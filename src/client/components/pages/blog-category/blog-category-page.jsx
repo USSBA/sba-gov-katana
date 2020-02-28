@@ -174,7 +174,7 @@ class BlogCategoryPage extends Component {
     const thirdRow = blogDeck.slice(6, 9)
     const fourthRow = blogDeck.slice(9, 12)
     return (
-      <div data-testid={'blog-card-collections'}>
+      <div data-testid="blog-card-collections">
         <CardCollection
           cards={firstRow}
           parentIndex={1}
@@ -213,17 +213,17 @@ class BlogCategoryPage extends Component {
 
     if (this.categoryValidation()) {
       return (
-        <div>
+        <div data-testid="blog-category-page">
           <div className={styles.blog_category_title}>
-            <h1 data-testid={'blog-category-title'}>{title}</h1>
-            <h5 data-testid={'blog-category-subtitle'}>{subtitle}</h5>
+            <h1 data-testid="blog-category-title">{title}</h1>
+            <h5 data-testid="blog-category-subtitle">{subtitle}</h5>
           </div>
           <div className={styles.blog_content}>
-            <div className={styles.blog_paginator} data-testid={'blog-top-paginator'}>
+            <div className={styles.blog_paginator} data-testid="blog-top-paginator">
               {this.renderPaginator()}
             </div>
             {this.formatCardDeck(blogDeck)}
-            <div className={styles.blog_paginator} data-testid={'blog-bottom-paginator'}>
+            <div className={styles.blog_paginator} data-testid="blog-bottom-paginator">
               {this.renderPaginator()}
             </div>
           </div>
