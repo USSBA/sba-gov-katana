@@ -4,7 +4,6 @@ import { size } from 'lodash'
 import styles from './document-article.scss'
 import { VersionsList } from 'atoms'
 import { DocumentArticle, RelatedDocumentCards } from 'organisms'
-import { logPageEvent } from '../../../services/analytics.js'
 
 class DocumentArticleTemplate extends React.Component {
   render() {
@@ -25,7 +24,7 @@ class DocumentArticleTemplate extends React.Component {
     return (
       <div>
         <div className={styles.container}>
-          <DocumentArticle data={data} type={doc ? 'document' : 'article'} />
+          <DocumentArticle data={data} />
           {doc && <VersionsList doc={data} />}
         </div>
         {Boolean(size(data.relatedDocuments)) && <RelatedDocumentCards data={data} />}

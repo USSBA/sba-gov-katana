@@ -6,6 +6,7 @@ import CaretDownIcon from './icons/caret-down'
 import Carousel from './carousel/carousel'
 import Checkbox from './checkbox/checkbox'
 import CloseIcon from './icons/close'
+import ContactText from './contact-text/contact-text'
 import DecorativeDash from './decorative-dash/decorative-dash'
 import Label from './label/label'
 import ExtraLargeTitleText from './extra-large-title-text/extra-large-title-text'
@@ -48,6 +49,7 @@ export {
   Carousel,
   Checkbox,
   CloseIcon,
+  ContactText,
   DecorativeDash,
   Label,
   ExtraLargeTitleText,
