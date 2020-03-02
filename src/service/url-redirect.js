@@ -23,37 +23,37 @@ function mapUrlQueryParameters(url) {
 }
 
 async function findNodeIdByUrl(url) {
-  if (url.startsWith('/event')) {
-    const split = url.split('/')
-    const eventId = split[2]
-    return {
-      nodeId: eventId,
-      langCode: 'en',
-      type: 'event'
-    }
-  } else {
-    const params = mapUrlQueryParameters(url)
-    return dynamodb
-      .query(params)
-      .promise()
-      .then(result => {
-        let nodeId = null
-        let langCode = null
-        if (result.Count > 0) {
-          const mostRecentItem = findMostRecentItem(result.Items)
-          nodeId = mostRecentItem.NodeId.S
-          langCode = mostRecentItem.LangCode ? mostRecentItem.LangCode.S : 'en-US'
-        }
-        return {
-          nodeId,
-          langCode
-        }
-      })
-      .catch(error => {
-        console.error('EXCEPTION: Unable to get redirect node id from DynamoDB', url)
-        throw error
-      })
-  }
+  // if (url.startsWith('/event')) {
+  //   const split = url.split('/')
+  //   const eventId = split[2]
+  //   return {
+  //     nodeId: eventId,
+  //     langCode: 'en',
+  //     type: 'event'
+  //   }
+  // } else {
+  const params = mapUrlQueryParameters(url)
+  return dynamodb
+    .query(params)
+    .promise()
+    .then(result => {
+      let nodeId = null
+      let langCode = null
+      if (result.Count > 0) {
+        const mostRecentItem = findMostRecentItem(result.Items)
+        nodeId = mostRecentItem.NodeId.S
+        langCode = mostRecentItem.LangCode ? mostRecentItem.LangCode.S : 'en-US'
+      }
+      return {
+        nodeId,
+        langCode
+      }
+    })
+    .catch(error => {
+      console.error('EXCEPTION: Unable to get redirect node id from DynamoDB', url)
+      throw error
+    })
+  // }
 }
 
 function findMostRecentItem(itemList) {
