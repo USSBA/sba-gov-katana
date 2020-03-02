@@ -23,15 +23,6 @@ function mapUrlQueryParameters(url) {
 }
 
 async function findNodeIdByUrl(url) {
-  // if (url.startsWith('/event')) {
-  //   const split = url.split('/')
-  //   const eventId = split[2]
-  //   return {
-  //     nodeId: eventId,
-  //     langCode: 'en',
-  //     type: 'event'
-  //   }
-  // } else {
   const params = mapUrlQueryParameters(url)
   return dynamodb
     .query(params)
