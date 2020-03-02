@@ -17,8 +17,10 @@ class EventPage extends Component {
     const queryArgs = {
       id: String(this.props.params.eventId)
     }
-    const result = await fetchSiteContent('events', queryArgs).catch(_ => this.setState({ data: null }))
-    this.setState({ data: result.hit[0] })
+    const { hit } = await fetchSiteContent('events', queryArgs).catch(_ => this.setState({ data: null }))
+    if (hit && hit[0]) {
+      this.setState({ data: hit[0] })
+    }
   }
 
   render() {
