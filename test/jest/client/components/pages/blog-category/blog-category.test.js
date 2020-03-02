@@ -182,23 +182,25 @@ describe('Blog Category Page', () => {
   })
 
   describe('when visiting a blog category type for an office', () => {
-    it('will make the fetch call for the office json', () => {
+    it('will make the fetch call for the office json', async () => {
       const blogCategoryPageParams = {
         category: 'success-stories',
         officeId: 1234
       }
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
-      render(<BlogCategoryPage params={blogCategoryPageParams} />)
+      const { getByTestId } = render(<BlogCategoryPage params={blogCategoryPageParams} />)
+      await waitForElement(() => getByTestId('blog-category-page'))
       expect(fetchRestContentStub).toHaveBeenCalledWith(blogCategoryPageParams.officeId)
     })
 
-    it('will make the fetch call for the blogs json using the given category and office id', () => {
+    it('will make the fetch call for the blogs json using the given category and office id', async () => {
       const blogCategoryPageParams = {
         category: 'success-stories',
         officeId: 1234
       }
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-      render(<BlogCategoryPage params={blogCategoryPageParams} />)
+      const { getByTestId } = render(<BlogCategoryPage params={blogCategoryPageParams} />)
+      await waitForElement(() => getByTestId('blog-category-page'))
 
       const expectedFetchParams = {
         category: 'Success Story',
@@ -209,12 +211,13 @@ describe('Blog Category Page', () => {
       expect(fetchSiteContentStub).toHaveBeenCalledWith('blogs', expectedFetchParams)
     })
 
-    it('will NOT include the office key to make the fetch call for blogs when there is NO office', () => {
+    it('will NOT include the office key to make the fetch call for blogs when there is NO office', async () => {
       const blogCategoryPageParamsWithoutOffice = {
         category: 'success-stories'
       }
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-      render(<BlogCategoryPage params={blogCategoryPageParamsWithoutOffice} />)
+      const { getByTestId } = render(<BlogCategoryPage params={blogCategoryPageParamsWithoutOffice} />)
+      await waitForElement(() => getByTestId('blog-category-page'))
 
       const expectedFetchParamsWithoutOfficeKey = {
         category: 'Success Story',
@@ -243,9 +246,7 @@ describe('Blog Category Page', () => {
       const { getByTestId } = render(<BlogCategoryPage params={blogCategoryPageParams} />)
       const subtitle = await waitForElement(() => getByTestId('blog-category-subtitle'))
 
-      const expectedSubtitleText = `Success stories from small business owners out of the ${
-        mockOfficeResponse.title
-      }.`
+      const expectedSubtitleText = `Success stories from small business owners out of the ${mockOfficeResponse.title}.`
       expect(subtitle).toHaveTextContent(expectedSubtitleText)
     })
   })

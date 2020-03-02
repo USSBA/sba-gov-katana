@@ -104,8 +104,8 @@ class BlogsLandingPage extends Component {
     }
 
     return (
-      <div>
-        <div data-testid={'blogs-hero'}>
+      <div data-testid="blogs landing page">
+        <div data-testid="blogs-hero">
           <Hero
             title={heroData.title}
             message={heroData.message}
@@ -115,7 +115,7 @@ class BlogsLandingPage extends Component {
           />
         </div>
         {categorySections.map((section, index) => (
-          <div data-testid={'blog category deck'} key={index}>
+          <div data-testid="blog category deck" key={index}>
             <BlogCategoryDeck
               cards={section.cards}
               categoryTitle={section.title}
@@ -125,7 +125,7 @@ class BlogsLandingPage extends Component {
           </div>
         ))}
         {authors.length > 0 && (
-          <div data-testid={'authorSection'}>
+          <div data-testid="authorSection">
             <AuthorCardCollection data={authors} />
           </div>
         )}

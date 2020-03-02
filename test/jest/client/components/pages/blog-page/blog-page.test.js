@@ -62,7 +62,7 @@ const mockAuthorData = {
   langCode: 'en'
 }
 
-const fetchRestContentStubCallback = ({ node, id }) => {
+const fetchRestContentStubCallback = id => {
   let result
   if (id === 18024) {
     result = Object.assign({}, mockAuthorData)
@@ -83,14 +83,15 @@ describe('Blog page', () => {
     const enhancer = applyMiddleware(thunk)
     const store = createStore(reducers, initialState, enhancer)
 
+    const blogId = '1'
+
     const { getByTestId } = render(
       <Provider store={store}>
-        <BlogPage id="1" />
+        <BlogPage id={blogId} />
       </Provider>
     )
 
-    expect(fetchRestContentStub).toHaveBeenCalledTimes(1)
-
+    expect(fetchRestContentStub).toBeCalledWith(blogId)
     const content = await waitForElement(() => getByTestId('blog-content'))
     expect(content).toBeInTheDocument()
 
@@ -105,13 +106,15 @@ describe('Blog page', () => {
     const enhancer = applyMiddleware(thunk)
     const store = createStore(reducers, initialState, enhancer)
 
+    const blogId = '1'
+
     const { getByTestId } = render(
       <Provider store={store}>
-        <BlogPage id="1" />
+        <BlogPage id={blogId} />
       </Provider>
     )
 
-    expect(fetchRestContentStub).toHaveBeenCalledTimes(1)
+    expect(fetchRestContentStub).toBeCalledWith(blogId)
 
     const content = await waitForElement(() => getByTestId('blog-error'))
     expect(content).toBeInTheDocument()
@@ -121,20 +124,24 @@ describe('Blog page', () => {
 
   it('renders loader when BlogPage is waiting for an api response', async () => {
     const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
+    fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
 
     const initialState = undefined
     const enhancer = applyMiddleware(thunk)
     const store = createStore(reducers, initialState, enhancer)
 
+    const blogId = '1'
+
     const { getByTestId } = render(
       <Provider store={store}>
-        <BlogPage id="1" />
+        <BlogPage id={blogId} />
       </Provider>
     )
 
-    expect(fetchRestContentStub).toHaveBeenCalledTimes(1)
+    expect(fetchRestContentStub).toBeCalledWith(blogId)
     expect(getByTestId('blog-loader')).toBeInTheDocument()
   })
+
   describe('Byline', () => {
     it('should exist', async () => {
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
@@ -153,6 +160,7 @@ describe('Blog page', () => {
       const content = await waitForElement(() => getByTestId('byline'))
       expect(content).toBeInTheDocument()
     })
+
     it('should contain postAuthor, postDate and postCategory', async () => {
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
       fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
@@ -176,6 +184,7 @@ describe('Blog page', () => {
       content = await waitForElement(() => getByTestId('postCategory'))
       expect(content).toBeInTheDocument()
     })
+
     it('should contain postTitle, postSummary and postAuthorSectionTitle', async () => {
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
       fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
@@ -200,6 +209,7 @@ describe('Blog page', () => {
       expect(content).toBeInTheDocument()
     })
   })
+
   describe('featuredImage', () => {
     it('should exist', async () => {
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
@@ -218,6 +228,7 @@ describe('Blog page', () => {
       const content = await waitForElement(() => getByTestId('featuredImage'))
       expect(content).toBeInTheDocument()
     })
+
     it('should not exist', async () => {
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')
       fetchRestContentStub.mockImplementation(fetchRestContentStubCallback)
@@ -240,6 +251,7 @@ describe('Blog page', () => {
       mockBlogData.featuredImage = origFeaturedImage
     })
   })
+
   describe('AuthorCard', () => {
     it('should exist', async () => {
       const fetchRestContentStub = jest.spyOn(fetchContentHelper, 'fetchRestContent')

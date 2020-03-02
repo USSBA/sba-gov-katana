@@ -2,11 +2,10 @@ import React from 'react'
 import { render, cleanup, waitForElement, within } from 'react-testing-library'
 import '../../test-data/matchMedia.mock'
 import DistrictOffice from 'templates/district-office/district-office.jsx'
-import { when, resetAllWhenMocks } from 'jest-when'
+import { when } from 'jest-when'
 import 'jest-dom/extend-expect'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 import eventsTestData from '../../test-data/events.json'
-import blogsTestData from '../../test-data/district-office-blogs.json'
 
 afterEach(cleanup)
 
@@ -108,35 +107,37 @@ const mockLeadershipResponse = [
 
 describe('District Office template', () => {
   describe('the office information section', () => {
-    it('will render the services section if service information is provided from the office request', () => {
+    it('will render the services section if service information is provided from the office request', async () => {
       const servicesEntry = '<p>Some content</p>'
       const mockOfficeData = {
         title: 'State District Office',
         officeServices: servicesEntry
       }
       const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      await waitForElement(() => getByTestId('district-office'))
 
-      const officeInfo = getByTestId('office-information-section')
+      const officeInfo = await waitForElement(() => getByTestId('office-information-section'))
       const officeServices = getByTestId('office-services-section')
       expect(officeInfo).toBeInTheDocument()
       expect(officeServices).toBeInTheDocument()
       expect(officeServices).toContainHTML(servicesEntry)
     })
 
-    it('will NOT render the services section if service information is not available from office request', () => {
+    it('will NOT render the services section if service information is not available from office request', async () => {
       const mockOfficeData = {
         title: 'State District Office'
       }
       const { getByTestId, queryByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      await waitForElement(() => getByTestId('district-office'))
 
-      const officeInfo = getByTestId('office-information-section')
+      const officeInfo = await waitForElement(() => getByTestId('office-information-section'))
       const officeServices = queryByTestId('office-services-section')
       expect(officeInfo).toBeInTheDocument()
       expect(officeServices).toBeNull()
     })
   })
 
-  it('will NOT render the services section if service information is not in a String data type', () => {
+  it('will NOT render the services section if service information is not in a String data type', async () => {
     const mockOfficeData = {
       title: 'State District Office',
       officeServices: {
@@ -144,15 +145,16 @@ describe('District Office template', () => {
       }
     }
     const { getByTestId, queryByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+    await waitForElement(() => getByTestId('district-office'))
 
-    const officeInfo = getByTestId('office-information-section')
+    const officeInfo = await waitForElement(() => getByTestId('office-information-section'))
     const officeServices = queryByTestId('office-services-section')
     expect(officeInfo).toBeInTheDocument()
     expect(officeServices).toBeNull()
   })
 
   describe('Hero section', () => {
-    it('renders the hero component with office data', () => {
+    it('renders the hero component with office data', async () => {
       const mockOfficeData = {
         bannerImage: {
           image: {
@@ -167,8 +169,9 @@ describe('District Office template', () => {
         title: 'State District Office'
       }
       const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      await waitForElement(() => getByTestId('district-office'))
 
-      const hero = getByTestId('hero')
+      const hero = await waitForElement(() => getByTestId('hero'))
       const heroButton = within(hero).getByTestId('button')
       const heroTitle = within(hero).getByTestId('title')
       const heroSummary = within(hero).getByTestId('message')
@@ -186,18 +189,19 @@ describe('District Office template', () => {
       )
     })
 
-    it('renders the hero without a background image when there is no bannerImage in the office data', () => {
+    it('renders the hero without a background image when there is no bannerImage in the office data', async () => {
       const mockOfficeData = {
         title: 'State District Office'
       }
       const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      await waitForElement(() => getByTestId('district-office'))
 
-      const hero = getByTestId('hero')
+      const hero = await waitForElement(() => getByTestId('hero'))
       const heroBackground = within(hero).getByTestId('background')
       expect(heroBackground).toHaveClass('noImage')
     })
 
-    it('renders the hero without a button when there is no bannerImage.link.url in the office data', () => {
+    it('renders the hero without a button when there is no bannerImage.link.url in the office data', async () => {
       const mockOfficeData = {
         bannerImage: {
           image: {
@@ -208,19 +212,23 @@ describe('District Office template', () => {
         title: 'State District Office'
       }
       const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
-      const hero = getByTestId('hero')
+      await waitForElement(() => getByTestId('district-office'))
+
+      const hero = await waitForElement(() => getByTestId('hero'))
       expect(hero).toBeInTheDocument()
 
       const heroButton = within(hero).queryByTestId('button')
       expect(heroButton).not.toBeInTheDocument()
     })
 
-    it('renders the hero without a summary when there is no summary in the office data', () => {
+    it('renders the hero without a summary when there is no summary in the office data', async () => {
       const mockOfficeData = {
         title: 'State District Office'
       }
       const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
-      const hero = getByTestId('hero')
+      await waitForElement(() => getByTestId('district-office'))
+
+      const hero = await waitForElement(() => getByTestId('hero'))
       expect(hero).toBeInTheDocument()
 
       const heroSummary = within(hero).queryByTestId('message')
@@ -229,61 +237,68 @@ describe('District Office template', () => {
   })
 
   describe('Social media section', () => {
-    it('renders social media when there is a twitterLink in the office data', () => {
+    it('renders social media when there is a twitterLink in the office data', async () => {
       const mockOfficeData = {
         title: 'State District Office',
         twitterLink: 'https://twitter.com/sbagov'
       }
       const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      await waitForElement(() => getByTestId('district-office'))
 
-      const socialMediaSection = getByTestId('social-media-section')
+      const socialMediaSection = await waitForElement(() => getByTestId('social-media-section'))
       expect(socialMediaSection).toBeInTheDocument()
 
       within(socialMediaSection).getByText('Follow us')
       within(socialMediaSection).getByAltText('link to twitter')
     })
 
-    it('does NOT render social media when twitterLink is NOT a string', () => {
+    it('does NOT render social media when twitterLink is NOT a string', async () => {
       const mockOfficeData = {
         title: 'State District Office',
         twitterLink: {}
       }
-      const { queryByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+      await waitForElement(() => getByTestId('district-office'))
 
-      const socialMediaSection = queryByTestId('social-media-section')
+      const officeInfoSection = await waitForElement(() => getByTestId('office-information-section'))
+      const socialMediaSection = within(officeInfoSection).queryByTestId('social-media-section')
       expect(socialMediaSection).not.toBeInTheDocument()
     })
   })
 
-  it('renders the latest news release component', () => {
+  it('renders the latest news release component', async () => {
     const mockOfficeData = { title: 'State District Office' }
     const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+    await waitForElement(() => getByTestId('district-office'))
 
-    const content = getByTestId('news-release-section')
+    const content = await waitForElement(() => getByTestId('news-release-section'))
     expect(content).toBeInTheDocument()
   })
 
-  it('renders the newsletter sign up component', () => {
+  it('renders the newsletter sign up component', async () => {
     const mockOfficeData = { title: 'State District Office' }
     const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+    await waitForElement(() => getByTestId('district-office'))
 
-    const content = getByTestId('office-newsletter')
+    const content = await waitForElement(() => getByTestId('office-newsletter'))
     expect(content).toBeInTheDocument()
   })
 
   it('renders a CTA for any district office', async () => {
     const mockOfficeData = { title: 'Fearless HQ' }
     const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+    await waitForElement(() => getByTestId('district-office'))
 
-    const cta = getByTestId('call-to-action')
+    const cta = await waitForElement(() => getByTestId('call-to-action'))
     expect(cta).toBeInTheDocument()
   })
 
   it('renders the lender match component for any district office', async () => {
     const mockOfficeData = { title: 'Fearless HQ' }
     const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
+    await waitForElement(() => getByTestId('district-office'))
 
-    const lenderMatch = getByTestId('office-lender-match')
+    const lenderMatch = await waitForElement(() => getByTestId('office-lender-match'))
     expect(lenderMatch).toBeInTheDocument()
   })
 
@@ -372,7 +387,7 @@ describe('District Office template', () => {
       expect(content.length).toEqual(3)
     })
 
-    it('contains no leaders', () => {
+    it('contains no leaders', async () => {
       const mockOfficeResponse = {
         officeLeadership: {},
         title: 'Alabama District Office',
@@ -385,7 +400,10 @@ describe('District Office template', () => {
         return Promise.resolve(eventsTestData)
       })
 
-      const { queryByTestId } = render(<DistrictOffice office={mockOfficeResponse} />)
+      const { getByTestId, queryByTestId } = render(<DistrictOffice office={mockOfficeResponse} />)
+      await waitForElement(() => getByTestId('district-office'))
+      await waitForElement(() => getByTestId('office-document-links'))
+
       const content = queryByTestId('office-leadership')
       expect(content).not.toBeInTheDocument()
     })
@@ -435,7 +453,7 @@ describe('District Office template', () => {
     const mockOfficeData = { title: 'Fearless HQ', officeId: 99999 }
     const { getByTestId } = render(<DistrictOffice office={mockOfficeData} />)
 
-    const documentLinks = getByTestId('office-document-links')
+    const documentLinks = await waitForElement(() => getByTestId('office-document-links'))
     expect(documentLinks).toBeInTheDocument()
   })
 })
