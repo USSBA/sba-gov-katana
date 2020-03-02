@@ -4,12 +4,8 @@ import moment from 'moment'
 import queryString from 'querystring'
 import PropTypes from 'prop-types'
 import { includes, isEmpty, last } from 'lodash'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import style from './document-article.scss'
-import * as ContentActions from '../../../actions/content.js'
-import * as NavigationActions from '../../../actions/navigation.js'
 import { Button, ContactText, DecorativeDash, Label, Link, TextSection } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
@@ -296,15 +292,16 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    contentActions: bindActionCreators(ContentActions, dispatch),
-    navigationActions: bindActionCreators(NavigationActions, dispatch)
-  }
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     contentActions: bindActionCreators(ContentActions, dispatch),
+//     navigationActions: bindActionCreators(NavigationActions, dispatch)
+//   }
+// }
 
 DocumentArticle.propTypes = {
   data: PropTypes.object.isRequired
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
+// export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
+export default DocumentArticle
