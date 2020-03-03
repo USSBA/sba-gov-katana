@@ -4,12 +4,8 @@ import moment from 'moment'
 import queryString from 'querystring'
 import PropTypes from 'prop-types'
 import { includes, isEmpty, last } from 'lodash'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import style from './document-article.scss'
-import * as ContentActions from '../../../actions/content.js'
-import * as NavigationActions from '../../../actions/navigation.js'
 import { Button, ContactText, DecorativeDash, Label, Link, TextSection } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
@@ -49,12 +45,11 @@ export class DocumentArticle extends React.Component {
 
   handleRelatedPrograms(program) {
     const {
-      navigationActions,
       data: { type }
     } = this.props
     const params = { program: program }
 
-    navigationActions.locationChange('/' + type + '/?' + queryString.stringify(params))
+    window.open('/' + type + '/?' + queryString.stringify(params), '_self')
   }
 
   renderDateLine(file) {
@@ -262,49 +257,8 @@ export class DocumentArticle extends React.Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  const {
-    contentReducer: { officesRaw: offices, persons }
-  } = state
-  const {
-    data: { office: officeId, mediaContacts: mediaContactIds }
-  } = ownProps
-
-  let office
-  const mediaContacts = []
-
-  if (offices && typeof officeId === 'number') {
-    office = offices.find(({ id }) => id === officeId)
-  }
-
-  if (mediaContactIds) {
-    mediaContactIds.length > 0 &&
-      mediaContactIds.forEach(mediaContactId => {
-        if (persons && typeof mediaContactId === 'number') {
-          mediaContacts.push(persons.find(({ id }) => id === mediaContactId))
-        }
-      })
-  }
-
-  if (persons && office && mediaContacts.length === 0) {
-    mediaContacts.push(persons.find(({ id }) => id === office.mediaContact))
-  }
-
-  return {
-    office,
-    mediaContacts
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    contentActions: bindActionCreators(ContentActions, dispatch),
-    navigationActions: bindActionCreators(NavigationActions, dispatch)
-  }
-}
-
 DocumentArticle.propTypes = {
   data: PropTypes.object.isRequired
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
+export default DocumentArticle
