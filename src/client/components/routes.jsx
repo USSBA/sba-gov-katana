@@ -92,6 +92,10 @@ const SiteMapPage = props => (
   <Async componentProps={props} load={import('./pages/sitemap-page/sitemap-page.jsx')} />
 )
 
+const EventPage = props => (
+  <Async componentProps={props} load={import('./pages/event-page/event-page.jsx')} />
+)
+
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
 import clientConfig from '../services/client-config.js'
@@ -152,6 +156,8 @@ const mainRoutes = [
   />,
   <Route key={76} path="/sitemap" component={SiteMapPage} />,
   <Redirect key={77} from="/sitemap/" to="/sitemap" />,
+  <Route key={78} path="/events/:eventId" component={EventPage} />,
+  <Redirect key={79} from="/events/:eventId/" to="/events/:eventId" />,
   <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
   <Route
     key={13}

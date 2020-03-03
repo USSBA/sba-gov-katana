@@ -4,7 +4,7 @@ import Event from '../../templates/event/event.jsx'
 import ErrorPage from '../error-page/error-page.jsx'
 import { Loader } from 'atoms'
 import { isEmpty } from 'lodash'
-import { fetchEventContent } from '../../../fetch-content-helper'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './event-page.scss'
 
 class EventPage extends Component {
@@ -13,36 +13,20 @@ class EventPage extends Component {
     this.state = {}
   }
 
-  fetchEvent(id) {
-    if (id) {
-      fetchEventContent(id)
-        .then(data => this.setState({ data }))
-        .catch(_ => this.setState({ data: null }))
+  async componentDidMount() {
+    const queryArgs = {
+      id: String(this.props.params.eventId)
     }
-  }
-
-  componentDidMount() {
-    if (this.props.id) {
-      return this.fetchEvent(this.props.id)
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { id } = this.props
-    const { id: nextId } = nextProps
-
-    // Re-render the page with new event data when we remain on `/event`
-    // and the EventPage but the id has changed.
-    if (id !== nextId) {
-      return this.fetchEvent(nextId)
+    const { hit } = await fetchSiteContent('events', queryArgs).catch(_ => this.setState({ data: null }))
+    if (hit && hit[0]) {
+      this.setState({ data: hit[0] })
     }
   }
 
   render() {
-    const { id } = this.props
+    const { eventId } = this.props.params
     const { data } = this.state
-
-    if (id && data) {
+    if (eventId && data) {
       if (!isEmpty(data)) {
         return (
           <div>
@@ -60,14 +44,6 @@ class EventPage extends Component {
       )
     }
   }
-}
-
-EventPage.defaultProps = {
-  id: null
-}
-
-EventPage.propTypes = {
-  id: PropTypes.string
 }
 
 export default EventPage

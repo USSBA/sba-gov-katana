@@ -23,14 +23,24 @@ describe('Event Page', () => {
   })
 
   test('should render the loader while waiting of a response from the API', () => {
-    const component = shallow(<EventPage />)
+    const props = {
+      params: {
+        eventId: "304"
+      }
+    }
+    const component = shallow(<EventPage {...props} />)
     const result = component.find('Loader')
     const expected = 1
     expect(result).toHaveLength(expected)
   })
 
   test('should render the 404 page when no event data is found', () => {
-    const component = shallow(<EventPage id="foo" />)
+    const props = {
+      params: {
+        eventId: "304"
+      }
+    }
+    const component = shallow(<EventPage {...props} />)
     component.setState({ data: {} })
     const result = component.find('ErrorPage')
     const expected = 1
@@ -38,7 +48,12 @@ describe('Event Page', () => {
   })
 
   test('should render the event component when event data is set', () => {
-    const component = shallow(<EventPage id="foo" />)
+    const props = {
+      params: {
+        eventId: "304"
+      }
+    }
+    const component = shallow(<EventPage {...props} />)
     component.setState({ data: { title: 'foo' } })
     const result = component.find('Event')
     const expected = 1
