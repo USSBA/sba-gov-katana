@@ -65,7 +65,7 @@ class DistrictOfficeTemplate extends React.Component {
     const officeRegion = !isEmpty(office.region) ? office.region : null
 
     return (
-      <div>
+      <div data-testid="district-office">
         <HeroBanner office={office} />
         <div className={styles.content}>
           <div data-testid="office-information-section" className={styles.officeInfo}>
