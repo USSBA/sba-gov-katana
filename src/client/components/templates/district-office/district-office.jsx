@@ -21,15 +21,23 @@ class DistrictOfficeTemplate extends React.Component {
   async componentDidMount() {
     const { office } = this.props
 
-    const { items } = await fetchSiteContent('events', {
+    const results = await fetchSiteContent('events', {
       pageSize: 5,
-      officeId: office.id
+      // Search will not return results until event host office ID is included in data source
+      office: office.id
     })
-    // when the events content api is set to D8, then pageSize=5 will do the work for us
-    // but since the events content api is set to D7, slice the first 5 items off the response
     let events = []
-    if (items && items.length > 0) {
-      events = items.slice(0, 5)
+    if (clientConfig.useD8EventsBackend) {
+      if (results && results.found > 0) {
+        events = results.hit
+      }
+    } else {
+      // when the events content api is set to D8, then pageSize=5 will do the work for us
+      // but since the events content api is set to D7, slice the first 5 items off the response
+      const { items } = results
+      if (items && items.length > 0) {
+        events = items.slice(0, 5)
+      }
     }
 
     let leaders = []
@@ -57,7 +65,7 @@ class DistrictOfficeTemplate extends React.Component {
     const officeRegion = !isEmpty(office.region) ? office.region : null
 
     return (
-      <div>
+      <div data-testid="district-office">
         <HeroBanner office={office} />
         <div className={styles.content}>
           <div data-testid="office-information-section" className={styles.officeInfo}>
@@ -91,7 +99,7 @@ class DistrictOfficeTemplate extends React.Component {
           </div>
         </div>
         <div className={styles.section}>
-          <Events items={events} />
+          {clientConfig.useD8EventsBackend ? <Events items={events} /> : <EventsCTA />}
         </div>
         <div className={styles.content}>
           <div className={styles.section}>
@@ -199,29 +207,21 @@ const NewsletterSignup = () => {
 
 // TODO: Events component temporarily displays EventsCTA as per TA-3491. Remove flag when events backend is completed.
 const Events = ({ items }) => {
-  if (clientConfig.useD8EventsBackend) {
-    return (
-      <div data-testid="events" className={styles.events}>
-        <h2>Upcoming events and workshops</h2>
-        {items.length > 0 && (
-          <Results items={items}>
-            <EventResult />
-          </Results>
-        )}
-        <div className={styles.button} data-testid="events-button">
-          <a href="/events/find/" className={styles.buttonLink}>
-            Find More Events
-          </a>
-        </div>
+  return (
+    <div data-testid="events" className={styles.events}>
+      <h2>Upcoming events and workshops</h2>
+      {items.length > 0 && (
+        <Results items={items}>
+          <EventResult />
+        </Results>
+      )}
+      <div className={styles.button} data-testid="events-button">
+        <a href="/events/find/" className={styles.buttonLink}>
+          Find More Events
+        </a>
       </div>
-    )
-  } else {
-    return (
-      <div data-testid="events" className={styles.content}>
-        <EventsCTA />
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 // TODO: Events component temporarily displays EventsCTA as per TA-3491.

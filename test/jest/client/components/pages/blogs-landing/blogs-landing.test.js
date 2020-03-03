@@ -6,78 +6,6 @@ import '../../test-data/matchMedia.mock'
 import BlogsLandingPage from 'pages/blogs-landing/blogs-landing.jsx'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 
-const mockNewsAndViewsData = [
-  {
-    blogCategory: 'SBA News and Views',
-    created: 1554897112,
-    id: 10,
-    title: 'SBA celebrates National Veterans Small Business Week',
-    summary: 'We approach Veterans Day and National Veterans Small Business Week.',
-    type: 'blog',
-    url: '/blog/sba-celebrates-national-veterans-small-business-week'
-  },
-  {
-    blogCategory: 'SBA News and Views',
-    created: 1554897112,
-    id: 11,
-    title: 'SBA celebrates Memorial Day',
-    summary: 'We approach Memorial Day and National Small Business Week.',
-    type: 'blog',
-    url: '/blog/sba-celebrates-memorial-day'
-  }
-]
-const mockIndustryWordData = [
-  {
-    blogCategory: 'Industry Word',
-    created: 1554897112,
-    id: 12,
-    title: 'SBA celebrates National Veterans Small Business Week',
-    summary: 'We approach Veterans Day and National Veterans Small Business Week.',
-    type: 'blog',
-    url: '/blog/sba-celebrates-national-veterans-small-business-week'
-  },
-  {
-    blogCategory: 'Industry Word',
-    created: 1554897112,
-    id: 13,
-    title: 'SBA celebrates Memorial Day',
-    summary: 'We approach Memorial Day and National Small Business Week.',
-    type: 'blog',
-    url: '/blog/sba-celebrates-memorial-day'
-  }
-]
-
-const mockSuccessStoryData = [
-  {
-    author: 6377,
-    blogBody: [
-      {
-        id: 21591,
-        type: 'blogPost',
-        blogSectionImage: {
-          url: '/sites/default/files/2019-09/Success%20Story%202.jpg',
-          alt: 'family',
-          width: 1218,
-          height: 813
-        },
-        blogSectionText: '<p>oh boy</p>\r\n'
-      }
-    ],
-    blogCategory: 'Success Story',
-    blogTags: 'Business Laws',
-    featuredImage: {},
-    office: 6386,
-    summary: 'yep',
-    type: 'blog',
-    title: 'My Success',
-    id: 19603,
-    updated: 1567708951,
-    created: 1567699392,
-    langCode: 'en',
-    url: '/blog/my-success-0'
-  }
-]
-
 const mockAuthorData = [
   {
     bio: '<p>Pradeep serves as Chief of Staff.',
@@ -128,22 +56,10 @@ const mockAuthorData = [
   }
 ]
 
-const fetchSiteContentStubCallback = (node, { category }) => {
-  const result = { total: 0, blogs: [] }
-  if (category === 'SBA News and Views') {
-    result.blogs = mockNewsAndViewsData
-  } else if (category === 'Industry Word') {
-    result.blogs = mockIndustryWordData
-  } else if (category === 'Success Story') {
-    result.blogs = mockSuccessStoryData
-  }
-  return result
-}
-
 afterEach(cleanup)
 
 describe('Blogs landing page', () => {
-  it('renders the blog landing page hero', () => {
+  it('renders the blog landing page hero', async () => {
     const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
     when(fetchSiteContentStub)
       .calledWith('blogs', 'SBA News and Views')
@@ -158,8 +74,9 @@ describe('Blogs landing page', () => {
       .calledWith('authors')
       .mockImplementationOnce(() => Promise.resolve([]))
 
-    const { getByTestId } = render(<BlogsLandingPage />)
-    expect(getByTestId('blogs-hero')).toBeInTheDocument()
+    const { queryByTestId } = render(<BlogsLandingPage />)
+    const blogsHero = await waitForElement(() => queryByTestId('blogs-hero'))
+    expect(blogsHero).toBeInTheDocument()
   })
 
   it('renders the blog category deck component thrice', async () => {
@@ -201,10 +118,12 @@ describe('Blogs landing page', () => {
     const firstCategoryQueryParams = { category: 'SBA News and Views', end: 3, order: 'desc' }
     const secondCategoryQueryParams = { category: 'Industry Word', end: 3, order: 'desc' }
 
-    render(<BlogsLandingPage />)
+    const { getByTestId } = render(<BlogsLandingPage />)
+    await waitForElement(() => getByTestId('blogs landing page'))
     expect(fetchSiteContentStub).toBeCalledWith('blogs', firstCategoryQueryParams)
     expect(fetchSiteContentStub).toBeCalledWith('blogs', secondCategoryQueryParams)
   })
+
   describe('AuthorCardCollection', () => {
     it('should exist', async () => {
       const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
