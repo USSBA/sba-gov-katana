@@ -138,8 +138,8 @@ export class DocumentArticle extends React.Component {
 
   // checks if file is in the directory for noncompliant files
   isNot508Compliant(currentFile) {
-    const noncompliantFileDirectory = 'sites/default/files/sba/'
-    return currentFile && currentFile.fileUrl && currentFile.fileUrl.includes(noncompliantFileDirectory)
+    const noncompliantFileDirectory = '/sites/default/files/sba/'
+    return currentFile && currentFile.fileUrl && currentFile.fileUrl.startsWith(noncompliantFileDirectory)
   }
 
   render() {
