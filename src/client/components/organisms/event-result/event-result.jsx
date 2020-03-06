@@ -78,7 +78,7 @@ class EventResult extends React.PureComponent {
 
   renderEventDetailUrl() {
     const { id } = this.props.item
-    return `/event/${id}`
+    return `/events/${id}`
   }
 
   renderRegistrationInfo() {
