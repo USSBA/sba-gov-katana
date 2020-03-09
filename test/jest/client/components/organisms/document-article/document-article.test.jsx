@@ -154,6 +154,59 @@ describe('DocumentArticle', () => {
       expect(officeLink).not.toBeInTheDocument()
     })
   })
+  describe('508 compliance section', () => {
+    it('should display the Noncompliant508FlashMessage when the document is from the noncompliant file directory', async () => {
+      const mockDocumentData = {
+        programs: [],
+        id: 3948,
+        type: 'document',
+        files: [
+          {
+            fileUrl: '/sites/default/files/sba/example.pdf'
+          }
+        ]
+      }
+
+      const { queryByTestId } = render(<DocumentArticle data={mockDocumentData} />)
+      await waitForElement(() => queryByTestId('document-article'))
+      const complianceComponent = queryByTestId('not-compliant-message')
+      expect(complianceComponent).toBeInTheDocument()
+    })
+    it('should NOT display the Noncompliant508FlashMessage when the document is from the noncompliant file directory', async () => {
+      const mockDocumentData = {
+        programs: [],
+        id: 3948,
+        type: 'document',
+        files: [
+          {
+            fileUrl: '/sites/default/files/2020-01/example.pdf'
+          }
+        ]
+      }
+
+      const { queryByTestId } = render(<DocumentArticle data={mockDocumentData} />)
+      await waitForElement(() => queryByTestId('document-article'))
+      const complianceComponent = queryByTestId('not-compliant-message')
+      expect(complianceComponent).not.toBeInTheDocument()
+    })
+    it('should NOT display the Noncompliant508FlashMessage when no file URL is present', async () => {
+      const mockDocumentData = {
+        programs: [],
+        id: 3948,
+        type: 'document',
+        files: [
+          {
+            fileUrl: '/sites/default/files/2020-01/example.pdf'
+          }
+        ]
+      }
+
+      const { queryByTestId } = render(<DocumentArticle data={mockDocumentData} />)
+      await waitForElement(() => queryByTestId('document-article'))
+      const complianceComponent = queryByTestId('not-compliant-message')
+      expect(complianceComponent).not.toBeInTheDocument()
+    })
+  })
 
   describe('office and contact info section', () => {
     it('should display contact section for an article', async () => {

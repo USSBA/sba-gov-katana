@@ -90,3 +90,16 @@
 .relatedPrograms {
   font-weight: bold;
 }
+
+.noncompliant {
+  border: 1px solid $sba-red;
+  padding: 20px;
+
+  @include for-small-and-medium-only {
+    margin-bottom: 30px;
+  }
+
+  @include for-large-up {
+    margin-bottom: 40px;
+  }
+}

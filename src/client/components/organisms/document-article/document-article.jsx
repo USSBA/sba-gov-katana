@@ -136,6 +136,12 @@ export class DocumentArticle extends React.Component {
     }
   }
 
+  // checks if file is in the directory for noncompliant files
+  isNot508Compliant(currentFile) {
+    const nonCompliantDirectoryPattern = /^\/sites\/default\/files\/sba\/.*\.[a-z]+/i
+    return currentFile && currentFile.fileUrl && nonCompliantDirectoryPattern.test(currentFile.fileUrl)
+  }
+
   render() {
     const { data } = this.props
 
@@ -197,6 +203,7 @@ export class DocumentArticle extends React.Component {
           <Label {...labelProps} />
           <h1 className={titleClassName}>{data.title}</h1>
           {!isEmpty(data.subtitle) && <p>{data.subtitle}</p>}
+          {this.isNot508Compliant(currentFile) && <Noncompliant508Message />}
           {includes(data.category, PRESS_RELEASE) && (
             <h5>
               Last updated {moment.unix(data.updated).format('MMMM D, YYYY')}
@@ -257,6 +264,17 @@ export class DocumentArticle extends React.Component {
   }
 }
 
+const Noncompliant508Message = () => {
+  const supportEmail = 'support@us-sba.atlassian.net'
+  const supportEmailSubjectLine = 'Document Assistance'
+  const supportUrl = `mailto:${supportEmail}?subject=${supportEmailSubjectLine}`
+  return (
+    <div className={style.noncompliant} data-testid="not-compliant-message">
+      This document is presented for historical/archival purposes. For questions or assistance with this
+      document, please contact <Link to={supportUrl}>{supportEmail}</Link>
+    </div>
+  )
+}
 DocumentArticle.propTypes = {
   data: PropTypes.object.isRequired
 }
