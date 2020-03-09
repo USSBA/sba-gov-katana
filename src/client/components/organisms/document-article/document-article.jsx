@@ -203,7 +203,7 @@ export class DocumentArticle extends React.Component {
           <Label {...labelProps} />
           <h1 className={titleClassName}>{data.title}</h1>
           {!isEmpty(data.subtitle) && <p>{data.subtitle}</p>}
-          {this.isNot508Compliant(currentFile) && <Noncompliant508FlashMessage />}
+          {this.isNot508Compliant(currentFile) && <Noncompliant508Message />}
           {includes(data.category, PRESS_RELEASE) && (
             <h5>
               Last updated {moment.unix(data.updated).format('MMMM D, YYYY')}
@@ -264,7 +264,7 @@ export class DocumentArticle extends React.Component {
   }
 }
 
-const Noncompliant508FlashMessage = () => {
+const Noncompliant508Message = () => {
   const supportEmail = 'support@us-sba.atlassian.net'
   const supportEmailSubjectLine = 'Document Assistance'
   const supportUrl = `mailto:${supportEmail}?subject=${supportEmailSubjectLine}`
