@@ -131,9 +131,9 @@ class Event extends Component {
           <h1 data-cy="event-title" tabIndex="0">
             {eventTitle}
           </h1>
+          {status === 'Canceled' && <div id="canceled-message-a" className={styles.canceledMessage} tabIndex="0"><p>This event is canceled.</p></div>}
         </div>
         <div className={styles.page}>
-          {status === 'Canceled' && <div id="canceled-message-a" className={styles.canceledMessageA} tabIndex="0"><p>This event is canceled.</p></div>}
           <div className={styles.columnA}>
             <DecorativeDash aria-hidden="true" width={80} />
             <h4 className={styles.descriptionLabel} data-cy="event-description-label" tabIndex="0">
@@ -158,7 +158,6 @@ class Event extends Component {
                 />
               </div>
             )}
-            {status === 'Canceled' && <div id="canceled-message-b" className={styles.canceledMessageB} tabIndex="0"><p>This event is canceled.</p></div>}
             <div className={styles.detailsBox}>
               <h3 tabIndex="0">Date and time</h3>
               <div>
