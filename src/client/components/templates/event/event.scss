@@ -141,7 +141,9 @@
 }
 
 @mixin canceledMessage {
-  border: 2px dashed red;
+  background-color: white;
+  border-top: 3px solid #c00;
+  box-shadow: 0 7px 15px 0 rgba(0,0,0,0.1);
   margin-bottom: 30px;
   text-align: center;
   p {
@@ -166,6 +168,9 @@
 
 .canceledMessageB {
   @include canceledMessage;
+  p {
+    padding-bottom: 20px;
+  }
   @include grid-media($sba-grid-medium) {
     display: none;
   }
