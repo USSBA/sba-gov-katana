@@ -16,4 +16,4 @@ sizestandards:
     endpoint: 27b9p5e3fk.execute-api.us-east-1.amazonaws.com/LATEST/
 content:
     cloudfront: d1utnfrh2o11a6.cloudfront.net
-    useD8EventsBackend: false
+    useD8EventsBackend: true
