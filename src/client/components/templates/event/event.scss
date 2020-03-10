@@ -139,3 +139,37 @@
     flex-direction: column-reverse;
   }
 }
+
+@mixin canceledMessage {
+  border: 2px dashed red;
+  margin-bottom: 30px;
+  text-align: center;
+  p {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+.canceledMessageA {
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+    @include canceledMessage;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12);
+    @include canceledMessage;
+  }
+}
+
+.canceledMessageB {
+  @include canceledMessage;
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    display: none;
+  }
+}
