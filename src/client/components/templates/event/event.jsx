@@ -48,7 +48,8 @@ class Event extends Component {
       location,
       contact,
       registrationUrl,
-      locationType
+      locationType,
+      status
     } = this.props.eventData
 
     const startDate = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D')
@@ -132,6 +133,7 @@ class Event extends Component {
           </h1>
         </div>
         <div className={styles.page}>
+          {status === 'Canceled' && <div id="canceled-message-a" className={styles.canceledMessageA} tabIndex="0"><p>This event is canceled.</p></div>}
           <div className={styles.columnA}>
             <DecorativeDash aria-hidden="true" width={80} />
             <h4 className={styles.descriptionLabel} data-cy="event-description-label" tabIndex="0">
@@ -142,7 +144,7 @@ class Event extends Component {
             </p>
           </div>
           <div className={styles.columnB} tabIndex="0">
-            {!isEmpty(registrationUrl) && (
+            {status !== 'Canceled' && !isEmpty(registrationUrl) && (
               <div className={styles.button} data-cy="registration">
                 <Button primary onClick={this.handleRegisterButtonClick.bind(this)}>
                   Register <i aria-hidden="true" className={iconClassName} />
@@ -156,6 +158,7 @@ class Event extends Component {
                 />
               </div>
             )}
+            {status === 'Canceled' && <div id="canceled-message-b" className={styles.canceledMessageB} tabIndex="0"><p>This event is canceled.</p></div>}
             <div className={styles.detailsBox}>
               <h3 tabIndex="0">Date and time</h3>
               <div>
