@@ -131,7 +131,7 @@ class Event extends Component {
           <h1 data-cy="event-title" tabIndex="0">
             {eventTitle}
           </h1>
-          {status === 'Canceled' && <div id="canceled-message-a" className={styles.canceledMessage} tabIndex="0"><p>This event is canceled.</p></div>}
+          {status === 'Canceled' && <div id="canceled-message" className={styles.canceledMessage} tabIndex="0"><p>This event is canceled.</p></div>}
         </div>
         <div className={styles.page}>
           <div className={styles.columnA}>

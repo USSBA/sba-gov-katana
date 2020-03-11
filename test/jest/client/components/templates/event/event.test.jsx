@@ -201,7 +201,7 @@ describe('Event Template', () => {
       }
     }
     const component = mount(<Event {...props} />)
-    const canceledMessage = component.find('#canceled-message-a')
+    const canceledMessage = component.find('#canceled-message')
     expect(canceledMessage.text()).toBe('This event is canceled.')
   })
 })
