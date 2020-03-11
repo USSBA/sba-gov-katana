@@ -116,7 +116,7 @@ class EventResult extends React.PureComponent {
   render() {
     const { id, item } = this.props
 
-    const itemCost = item.cost === '0.00' ? 'Free' : '$' + item.cost
+    const itemCost = item.cost === '0' ? 'Free' : '$' + item.cost
 
     const divClassName = classNames({
       [styles.container]: true,

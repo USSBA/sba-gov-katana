@@ -93,7 +93,7 @@ class Event extends Component {
       }
     }
 
-    const costDetail = cost === '0.00' ? 'Free' : '$' + cost
+    const costDetail = cost === '0' ? 'Free' : '$' + cost
 
     const address =
       location.address && location.city && location.state && location.zipcode
@@ -180,7 +180,7 @@ class Event extends Component {
               </div>
               <div>
                 <h3 tabIndex="0">Cost</h3>
-                <p tabIndex="0" data-cy="event-details-cost">
+                <p id="event-details-cost" tabIndex="0" data-cy="event-details-cost">
                   {costDetail}
                 </p>
               </div>
