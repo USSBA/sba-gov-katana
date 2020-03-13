@@ -37,6 +37,28 @@ class Event extends Component {
     return breadcrumbs
   }
 
+  renderLocationLink(location) {
+    const locationData = [
+      location.address,
+      location.address2,
+      location.city,
+      location.state,
+      location.zipcode
+    ]
+    const filteredLocationData = locationData.filter(Boolean)
+    const linkAddress = filteredLocationData.join(' ')
+
+    if (linkAddress.length > 0) {
+      const link = 'https://maps.google.com?q=' + encodeURIComponent(linkAddress)
+
+      return (
+        <a id="event-details-location-link" href={link} key="loocation link">
+          View on map
+        </a>
+      )
+    }
+  }
+
   renderLocationInfo() {
     const { location, locationType } = this.props.eventData
 
@@ -74,28 +96,11 @@ class Event extends Component {
         addressLine2 = zipcode
       }
 
-      let linkElement
-
-      // TODO fix formatting of linkAddress
-      // include location.address2
-      if (location.address && location.city && location.state && location.zipcode) {
-        const linkAddress =
-          location.address + ' ' + location.city + ' ' + location.state + ' ' + location.zipcode
-
-        const link = 'https://maps.google.com?q=' + encodeURIComponent(linkAddress)
-        linkElement = (
-          <a id="event-details-location-link" href={link} key="loocation link">
-            View on map
-          </a>
-        )
-      }
+      const linkElement = this.renderLocationLink(location)
 
       addressName && addressString.push(addressName) && addressString.push(<br key="name br" />)
-
       addressLine1 && addressString.push(addressLine1) && addressString.push(<br key="address1 br" />)
-
       addressLine2 && addressString.push(addressLine2) && addressString.push(<br key="address2 br" />)
-
       linkElement && addressString.push(linkElement) && addressString.push(<br key="link br" />)
 
       addressElement = <p>{addressString}</p>
