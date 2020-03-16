@@ -103,6 +103,7 @@ $homepage-gutter-size: 5.333vw;
   color: white;
 
   @include grid-media($sba-grid-small) {
+    color: $sba-blue;
     font-size: 48px;
     font-weight: 600;
     line-height: 52px;
