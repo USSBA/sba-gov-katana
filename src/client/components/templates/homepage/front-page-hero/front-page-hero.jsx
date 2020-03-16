@@ -4,8 +4,6 @@ import styles from './front-page-hero.scss'
 import Triangle from 'assets/images/homepage/primary-landing/desktop-corner-graphic.png'
 import { Button } from 'atoms'
 import { eventCategories } from '../../../../services/constants'
-import largeImage from './websitebanner.jpg'
-import mediumImage from './websitebanner02.jpg'
 
 class FrontPageHero extends React.Component {
   render() {
@@ -17,8 +15,8 @@ class FrontPageHero extends React.Component {
     return (
       <div className={styles.container}>
         <div className={styles.imageContainer}>
-          <img alt={imageLarge.alt} className={styles.heroLarge} src={largeImage} />
-          <img alt={imageMedium.alt} className={styles.heroMedium} src={mediumImage} />
+          <img alt={imageLarge.alt} className={styles.heroLarge} src={imageLarge.url} />
+          <img alt={imageMedium.alt} className={styles.heroMedium} src={imageMedium.url} />
           <img alt={imageSmall.alt} className={styles.heroSmall} src={imageSmall.url} />
         </div>
         <div className={styles.boxContainer}>
