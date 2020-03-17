@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import isMobile from 'ismobilejs'
 
 import styles from './course-content.scss'
 import { Button } from 'atoms'
@@ -12,24 +11,20 @@ const Overlay = ({ isStarted, onClick }) => {
   const buttonText = 'Start course'
 
   const renderOverlay = child => (
-    <div className={`course-overlay ${styles.courseOverlay}`} onClick={isMobile.any ? null : onClick}>
+    <div className={`course-overlay ${styles.courseOverlay}`} onClick={onClick}>
       {child}
     </div>
   )
 
-  if (isMobile.any) {
-    return renderOverlay(<h2>This course is not supported on mobile devices.</h2>)
-  } else {
-    if (!isStarted) {
-      return renderOverlay(
-        <Button aria-label={buttonText} primary>
-          {buttonText}
-        </Button>
-      )
-    }
-
-    return null
+  if (!isStarted) {
+    return renderOverlay(
+      <Button aria-label={buttonText} primary>
+        {buttonText}
+      </Button>
+    )
   }
+
+  return null
 }
 
 class CourseContent extends React.PureComponent {
