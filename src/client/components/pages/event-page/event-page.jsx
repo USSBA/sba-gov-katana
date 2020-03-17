@@ -18,6 +18,7 @@ class EventPage extends Component {
     const queryArgs = {
       id: String(this.props.params.eventId)
     }
+    // TODO: remove feature flag after updating events backend
     if (clientConfig.useD8EventsBackend) {
       const { hit } = await fetchSiteContent('events', queryArgs).catch(_ => this.setState({ data: null }))
       if (hit && hit[0]) {
