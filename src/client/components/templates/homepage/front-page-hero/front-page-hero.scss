@@ -100,9 +100,10 @@ $homepage-gutter-size: 5.333vw;
 }
 
 .title {
-  color: $sba-blue;
+  color: white;
 
   @include grid-media($sba-grid-small) {
+    color: $sba-blue;
     font-size: 48px;
     font-weight: 600;
     line-height: 52px;
@@ -110,14 +111,14 @@ $homepage-gutter-size: 5.333vw;
   }
 
   @include grid-media($sba-grid-medium) {
-    font-size: 48px;
+    font-size: 42px;
     font-weight: 600;
     line-height: 52px;
     margin-bottom: 20px;
   }
 
   @include grid-media($sba-grid-large) {
-    font-size: 60.75px;
+    font-size: 51.75px;
     font-weight: 600;
     line-height: 66px;
     margin-bottom: 20px;
