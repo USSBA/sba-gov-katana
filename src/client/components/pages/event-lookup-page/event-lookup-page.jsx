@@ -92,8 +92,11 @@ class EventLookupPage extends React.PureComponent {
       let isZeroState = false
       const defaultResults = []
 
-      if (searchResults && searchResults.found) {
-        results = searchResults.hit
+      // if (searchResults && searchResults.found) {
+      if (searchResults) {
+        // TODO: remove feature flag when updated events backend launches
+        results = clientConfig.useD8EventsBackend ? searchResults.hit : searchResults.items
+        // results = searchResults.hit
         count = searchResults.found
         hasNoResults = count === 0
         isLoading = false
