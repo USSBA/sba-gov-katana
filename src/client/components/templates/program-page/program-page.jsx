@@ -4,6 +4,7 @@ import { isEmpty } from 'lodash'
 
 import styles from './program-page.scss'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
+import { RemoveMainLoader } from 'molecules'
 import { Hero } from 'organisms'
 
 class ProgramPage extends React.Component {
@@ -42,6 +43,7 @@ class ProgramPage extends React.Component {
 
     return (
       <div>
+        <RemoveMainLoader />
         {hasBannerImage && (
           <Hero
             title={title}
