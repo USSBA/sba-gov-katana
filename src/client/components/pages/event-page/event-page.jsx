@@ -6,6 +6,7 @@ import { Loader } from 'atoms'
 import { isEmpty } from 'lodash'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './event-page.scss'
+import clientConfig from '../../../services/client-config.js'
 
 class EventPage extends Component {
   constructor() {
@@ -17,9 +18,19 @@ class EventPage extends Component {
     const queryArgs = {
       id: String(this.props.params.eventId)
     }
-    const { hit } = await fetchSiteContent('events', queryArgs).catch(_ => this.setState({ data: null }))
-    if (hit && hit[0]) {
-      this.setState({ data: hit[0] })
+    // TODO: remove feature flag after updating events backend
+    if (clientConfig.useD8EventsBackend) {
+      const { hit } = await fetchSiteContent('events', queryArgs).catch(_ => this.setState({ data: null }))
+      if (hit && hit[0]) {
+        this.setState({ data: hit[0] })
+      }
+    } else {
+      const { items } = await fetchSiteContent('events', queryArgs).catch(_ =>
+        this.setState({ data: null })
+      )
+      if (items && items[0]) {
+        this.setState({ data: items[0] })
+      }
     }
   }
 

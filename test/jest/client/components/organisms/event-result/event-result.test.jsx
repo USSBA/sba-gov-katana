@@ -13,7 +13,7 @@ const mockEvent = JSON.stringify({
   startDate: '2019-02-26T07:30:00-08:00',
   endDate: '2019-02-26T12:30:00-08:00',
   timezone: 'PST',
-  cost: '0.00',
+  cost: '0',
   locationType: 'In Person',
   location: {
     city: 'Camp Pendleton',
@@ -35,9 +35,9 @@ describe('Event result', () => {
     expect(componentTitle).toEqual('Business Entrepreneurship Course')
   })
 
-  it('renders cost as Free when the cost is 0.00', () => {
+  it('renders cost as Free when the cost is 0', () => {
     const customMockEvent = JSON.parse(mockEvent)
-    customMockEvent.cost = '0.00'
+    customMockEvent.cost = '0'
 
     const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
     expect(component.find('.event-cost')).toHaveLength(1)
@@ -45,14 +45,14 @@ describe('Event result', () => {
     expect(componentCost).toEqual('Free')
   })
 
-  it('renders cost as value when cost is greater than 0.00', () => {
+  it('renders cost as value when cost is greater than 0', () => {
     const customMockEvent = JSON.parse(mockEvent)
-    customMockEvent.cost = '40.00'
+    customMockEvent.cost = '40'
 
     const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
     expect(component.find('.event-cost')).toHaveLength(1)
     const componentCost = component.find('.event-cost').text()
-    expect(componentCost).toEqual('$40.00')
+    expect(componentCost).toEqual('$40')
   })
 
   it('displays the start date in the correct format', () => {

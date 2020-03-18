@@ -105,7 +105,7 @@ describe('Event Template', () => {
   })
 
   test('should render event location in details box when event is In Person', () => {
-    const expected = 'Fayetteville State University1200 Murchison Road, Fayetteville, North Carolina 28301'
+    const expected = 'Fayetteville State University1200 Murchison RoadFayetteville, North Carolina 28301'
     const props = {
       eventData: {
         title: title,
@@ -115,7 +115,7 @@ describe('Event Template', () => {
       }
     }
     const component = shallow(<Event {...props} />)
-    const result = component.find('p#event-details-location')
+    const result = component.find('#event-details-location')
     expect(result).toHaveLength(1)
     expect(result.text()).toContain(expected)
   })
@@ -131,7 +131,7 @@ describe('Event Template', () => {
       }
     }
     const component = shallow(<Event {...props} />)
-    const result = component.find('p#event-details-location')
+    const result = component.find('#event-details-location')
     expect(result).toHaveLength(1)
     expect(result.text()).toBe(expected)
   })
@@ -150,6 +150,39 @@ describe('Event Template', () => {
     expect(result).toHaveLength(1)
     expect(result.text()).toBe(expected)
   })
+
+  it('renders cost, in details box, as Free when the cost is 0', () => {
+    const expected = 'Free'
+    const props = {
+      eventData: {
+        title: title,
+        location: location,
+        contact: contact,
+        cost: '0'
+      }
+    }
+    const component = shallow(<Event {...props} />)
+    const result = component.find('#event-details-cost')
+    expect(result).toHaveLength(1)
+    expect(result.text()).toBe(expected)
+  })
+
+  it('renders cost, in details box, as value when cost is greater than 0.00', () => {
+    const expected = '$40'
+    const props = {
+      eventData: {
+        title: title,
+        location: location,
+        contact: contact,
+        cost: '40'
+      }
+    }
+    const component = shallow(<Event {...props} />)
+    const result = component.find('#event-details-cost')
+    expect(result).toHaveLength(1)
+    expect(result.text()).toBe(expected)
+  })
+
   test('should render a breadcrumb', () => {
     const props = {
       eventData: {
