@@ -223,4 +223,18 @@ describe('Event Template', () => {
     const breadcrumbTitle = component.find('a#breadcrumb-current')
     expect(breadcrumbTitle.text()).toBe(eventTitle)
   })
+  test('should render the canceled event message', () => {
+    const eventTitle = 'example title'
+    const props = {
+      eventData: {
+        title: eventTitle,
+        location,
+        contact,
+        status: 'Canceled'
+      }
+    }
+    const component = mount(<Event {...props} />)
+    const canceledMessage = component.find('#canceled-message')
+    expect(canceledMessage.text()).toBe('This event is canceled.')
+  })
 })

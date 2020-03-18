@@ -125,7 +125,9 @@ class Event extends Component {
       recurringType,
       cost,
       contact,
-      registrationUrl
+      registrationUrl,
+      locationType,
+      status
     } = this.props.eventData
 
     const startDate = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D')
@@ -200,6 +202,7 @@ class Event extends Component {
           <h1 data-cy="event-title" tabIndex="0">
             {eventTitle}
           </h1>
+          {status === 'Canceled' && <div id="canceled-message" className={styles.canceledMessage} tabIndex="0"><p>This event is canceled.</p></div>}
         </div>
         <div className={styles.page}>
           <div className={styles.columnA}>
@@ -212,7 +215,7 @@ class Event extends Component {
             </p>
           </div>
           <div className={styles.columnB} tabIndex="0">
-            {!isEmpty(registrationUrl) && (
+            {status !== 'Canceled' && !isEmpty(registrationUrl) && (
               <div className={styles.button} data-cy="registration">
                 <Button primary onClick={this.handleRegisterButtonClick.bind(this)}>
                   Register <i aria-hidden="true" className={iconClassName} />
