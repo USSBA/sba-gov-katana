@@ -139,3 +139,19 @@
     flex-direction: column-reverse;
   }
 }
+
+.canceledMessage {
+  background-color: white;
+  border-top: 3px solid $sba-red;
+  box-shadow: $box-shadow;
+  margin: 0;
+  margin-bottom: 30px;
+  width: 100%;
+  text-align: center;
+  p {
+    padding-bottom: 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding-bottom: 0;
+  }
+}

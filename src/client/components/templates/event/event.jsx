@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button, DecorativeDash, SmallIcon } from 'atoms'
+import { Button, DecorativeDash } from 'atoms'
 import classNames from 'classnames'
 import moment from 'moment'
 import { isEmpty } from 'lodash'
@@ -37,6 +37,85 @@ class Event extends Component {
     return breadcrumbs
   }
 
+  renderLocationLink(location) {
+    const locationData = [
+      location.address,
+      location.address2,
+      location.city,
+      location.state,
+      location.zipcode
+    ]
+    const filteredLocationData = locationData.filter(Boolean)
+    const linkAddress = filteredLocationData.join(' ')
+
+    if (linkAddress.length > 0) {
+      const link = 'https://maps.google.com?q=' + encodeURIComponent(linkAddress)
+
+      return (
+        <a id="event-details-location-link" href={link} key="loocation link">
+          View on map
+        </a>
+      )
+    }
+  }
+
+  renderLocationInfo() {
+    const { location, locationType } = this.props.eventData
+
+    const onlineElement = <p>Online</p>
+
+    let addressElement
+    if (location) {
+      const { name, address, address2, city, state, zipcode } = location
+      const addressString = []
+
+      let addressName
+      if (name) {
+        addressName = name
+      }
+
+      let addressLine1
+      if (address && address2) {
+        addressLine1 = address.concat(`, ${address2}`)
+      } else if (address) {
+        addressLine1 = address
+      }
+
+      let addressLine2
+      if (city && state) {
+        addressLine2 = city.concat(`, ${state}`)
+      } else if (city) {
+        addressLine2 = city
+      } else if (state) {
+        addressLine2 = state
+      }
+
+      if (addressLine2 && zipcode) {
+        addressLine2 = addressLine2.concat(` ${zipcode}`)
+      } else if (zipcode) {
+        addressLine2 = zipcode
+      }
+
+      const linkElement = this.renderLocationLink(location)
+
+      addressName && addressString.push(addressName) && addressString.push(<br key="name br" />)
+      addressLine1 && addressString.push(addressLine1) && addressString.push(<br key="address1 br" />)
+      addressLine2 && addressString.push(addressLine2) && addressString.push(<br key="address2 br" />)
+      linkElement && addressString.push(linkElement) && addressString.push(<br key="link br" />)
+
+      addressElement = <p>{addressString}</p>
+    }
+
+    return (
+      <div>
+        <h3 tabIndex="0">Location</h3>
+        <div id="event-details-location" tabIndex="0" data-cy="event-details-location">
+          {locationType === 'Online' ? onlineElement : addressElement}
+        </div>
+      </div>
+    )
+  }
+
   render() {
     const {
       title,
@@ -45,10 +124,10 @@ class Event extends Component {
       recurring,
       recurringType,
       cost,
-      location,
       contact,
       registrationUrl,
-      locationType
+      locationType,
+      status
     } = this.props.eventData
 
     const startDate = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D')
@@ -93,14 +172,7 @@ class Event extends Component {
       }
     }
 
-    const costDetail = cost === '0.00' ? 'Free' : '$' + cost
-
-    const address =
-      location.address && location.city && location.state && location.zipcode
-        ? location.address + '\n' + location.city + ',' + location.state + ' ' + location.zipcode
-        : null
-
-    const link = 'https://maps.google.com?q=' + encodeURIComponent(address)
+    const costDetail = cost === '0' ? 'Free' : '$' + cost
 
     // classNames is not necessary when this is created for future extensibility
     // delete this comment if you modify the classNames below to include logic
@@ -130,6 +202,7 @@ class Event extends Component {
           <h1 data-cy="event-title" tabIndex="0">
             {eventTitle}
           </h1>
+          {status === 'Canceled' && <div id="canceled-message" className={styles.canceledMessage} tabIndex="0"><p>This event is canceled.</p></div>}
         </div>
         <div className={styles.page}>
           <div className={styles.columnA}>
@@ -142,7 +215,7 @@ class Event extends Component {
             </p>
           </div>
           <div className={styles.columnB} tabIndex="0">
-            {!isEmpty(registrationUrl) && (
+            {status !== 'Canceled' && !isEmpty(registrationUrl) && (
               <div className={styles.button} data-cy="registration">
                 <Button primary onClick={this.handleRegisterButtonClick.bind(this)}>
                   Register <i aria-hidden="true" className={iconClassName} />
@@ -180,30 +253,11 @@ class Event extends Component {
               </div>
               <div>
                 <h3 tabIndex="0">Cost</h3>
-                <p tabIndex="0" data-cy="event-details-cost">
+                <p id="event-details-cost" tabIndex="0" data-cy="event-details-cost">
                   {costDetail}
                 </p>
               </div>
-              <h3 tabIndex="0">Location</h3>
-              <div>
-                {locationType === 'In Person' ? (
-                  <p id="event-details-location" tabIndex="0" data-cy="event-details-location">
-                    {location.name}
-                    <br />
-                    {location.address}, {location.address_additional}
-                    <br />
-                    {location.city}, {location.state} {location.zipcode}
-                    <br />
-                    <a id="event-details-location-link" href={link}>
-                      View on map
-                    </a>
-                  </p>
-                ) : (
-                  <p id="event-details-location" tabIndex="0">
-                    Online
-                  </p>
-                )}
-              </div>
+              {this.renderLocationInfo()}
               {!isEmpty(contact.name) && (
                 <div>
                   <h3 tabIndex="0">Event Organizer</h3>
