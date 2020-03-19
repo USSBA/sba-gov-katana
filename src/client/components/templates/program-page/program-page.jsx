@@ -43,7 +43,6 @@ class ProgramPage extends React.Component {
 
     return (
       <div>
-        <RemoveMainLoader />
         {hasBannerImage && (
           <Hero
             title={title}
