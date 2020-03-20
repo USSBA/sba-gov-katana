@@ -21,7 +21,7 @@ class MainLoader extends React.Component {
   }
 
   shouldLoaderDisplay() {
-    const allowedPages = ['', 'business-guide']
+    const allowedPages = ['', '10-steps-start-your-business']
     const currentPagePath = window.location.pathname.split('/')[1]
     return this.props.displayLoader !== false && allowedPages.includes(currentPagePath)
   }
@@ -55,7 +55,4 @@ MainLoader.propTypes = {
   displayLoader: PropTypes.bool
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(MainLoader)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(MainLoader)
