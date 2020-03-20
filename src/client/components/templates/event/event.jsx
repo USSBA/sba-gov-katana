@@ -116,19 +116,32 @@ class Event extends Component {
     )
   }
 
+  renderRecurringInfo() {
+    const { recurringType } = this.props.eventData
+    let divTabIndex
+    let recurringText
+
+    if (recurringType) {
+      divTabIndex = '0'
+      recurringText = `Recurs ${recurringType.toLowerCase()}`
+    } else {
+      divTabIndex = '-1'
+    }
+
+    return (
+      <div
+        className={styles.eventDetailsRecurring}
+        id="event-details-recurring"
+        data-cy="event-details-recurring"
+        tabIndex={divTabIndex}
+      >
+        {recurringText}
+      </div>
+    )
+  }
+
   render() {
-    const {
-      title,
-      description,
-      timezone,
-      recurring,
-      recurringType,
-      cost,
-      contact,
-      registrationUrl,
-      locationType,
-      status
-    } = this.props.eventData
+    const { title, description, timezone, cost, contact, registrationUrl, status } = this.props.eventData
 
     const startDate = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D')
     const startDateDetails = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
@@ -150,27 +163,6 @@ class Event extends Component {
       startTime = startTime + startingTimeSuffix
     }
     const eventTime = `${startTime}–${endTime} ${timezone}`
-
-    let recurringDetail
-    if (recurring === 'Yes') {
-      switch (recurringType) {
-        case 'Recurs monthly (same week &amp; same day of week)':
-          recurringDetail = 'Recurs same day every month'
-          break
-        case 'Recurs bi-weekly':
-          recurringDetail = 'Recurs bi-weekly'
-          break
-        case 'Recurs weekly':
-          recurringDetail = 'Recurs weekly'
-          break
-        case 'Recurs daily':
-          recurringDetail = 'Recurs daily'
-          break
-        default:
-          recurringDetail = 'This is a recurring event'
-          break
-      }
-    }
 
     const costDetail = cost === '0' ? 'Free' : '$' + cost
 
@@ -202,7 +194,11 @@ class Event extends Component {
           <h1 data-cy="event-title" tabIndex="0">
             {eventTitle}
           </h1>
-          {status === 'Canceled' && <div id="canceled-message" className={styles.canceledMessage} tabIndex="0"><p>This event is canceled.</p></div>}
+          {status === 'Canceled' && (
+            <div id="canceled-message" className={styles.canceledMessage} tabIndex="0">
+              <p>This event is canceled.</p>
+            </div>
+          )}
         </div>
         <div className={styles.page}>
           <div className={styles.columnA}>
@@ -238,18 +234,7 @@ class Event extends Component {
                 <div id="event-details-time" data-cy="event-details-time" tabIndex="0">
                   {eventTime}
                 </div>
-                {!isEmpty(recurringDetail) ? (
-                  <div
-                    className={styles.eventDetailsRecurring}
-                    id="event-details-recurring"
-                    data-cy="event-details-recurring"
-                    tabIndex="0"
-                  >
-                    {recurringDetail}
-                  </div>
-                ) : (
-                  <p tabIndex="-1" />
-                )}
+                {this.renderRecurringInfo()}
               </div>
               <div>
                 <h3 tabIndex="0">Cost</h3>
