@@ -23,4 +23,4 @@ features:
         tableName: UrlToUrlRedirectAvery
 content:
     cloudfront: d8ptg6c733nbj.cloudfront.net
-    useD8EventsBackend: true
+    useD8EventsBackend: false
