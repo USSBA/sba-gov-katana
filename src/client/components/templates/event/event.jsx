@@ -118,30 +118,30 @@ class Event extends Component {
 
   renderRecurringInfo() {
     const { recurringType } = this.props.eventData
-    let divTabIndex
-    let recurringText
-
-    if (recurringType) {
-      divTabIndex = '0'
-      recurringText = `Recurs ${recurringType.toLowerCase()}`
-    } else {
-      divTabIndex = '-1'
-    }
 
     return (
       <div
         className={styles.eventDetailsRecurring}
         id="event-details-recurring"
         data-cy="event-details-recurring"
-        tabIndex={divTabIndex}
+        tabIndex="0"
       >
-        {recurringText}
+        {`Recurs ${recurringType.toLowerCase()}`}
       </div>
     )
   }
 
   render() {
-    const { title, description, timezone, cost, contact, registrationUrl, status } = this.props.eventData
+    const {
+      title,
+      description,
+      timezone,
+      cost,
+      contact,
+      recurringType,
+      registrationUrl,
+      status
+    } = this.props.eventData
 
     const startDate = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D')
     const startDateDetails = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
@@ -234,7 +234,7 @@ class Event extends Component {
                 <div id="event-details-time" data-cy="event-details-time" tabIndex="0">
                   {eventTime}
                 </div>
-                {this.renderRecurringInfo()}
+                {recurringType && this.renderRecurringInfo()}
               </div>
               <div>
                 <h3 tabIndex="0">Cost</h3>
