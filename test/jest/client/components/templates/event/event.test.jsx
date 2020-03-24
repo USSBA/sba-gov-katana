@@ -86,16 +86,14 @@ describe('Event Template', () => {
   })
 
   test('should render if an event is recurring in details box', () => {
-    const recurringType = 'Recurs daily'
-    const recurring = 'Yes'
+    const recurringType = 'Daily'
     const expected = 'Recurs daily'
     const props = {
       eventData: {
         title: title,
         location: location,
         contact: contact,
-        recurringType: recurringType,
-        recurring: recurring
+        recurringType: recurringType
       }
     }
     const component = shallow(<Event {...props} />)
