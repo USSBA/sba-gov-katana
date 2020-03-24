@@ -11,49 +11,40 @@ import clientConfig from '../../../services/client-config.js'
 class EventPage extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      LOADING_STATE: 'unloaded'
+    }
   }
 
   async componentDidMount() {
     const queryArgs = {
       id: String(this.props.params.eventId)
     }
+    const results = await fetchSiteContent('events', queryArgs).catch( _ => {
+      this.setState({ data: null })
+    })
     // TODO: remove feature flag after updating events backend
-    if (clientConfig.useD8EventsBackend) {
-      const { hit } = await fetchSiteContent('events', queryArgs).catch(_ => this.setState({ data: null }))
-      if (hit && hit[0]) {
-        this.setState({ data: hit[0] })
-      }
-    } else {
-      const { items } = await fetchSiteContent('events', queryArgs).catch(_ =>
-        this.setState({ data: null })
-      )
-      if (items && items[0]) {
-        this.setState({ data: items[0] })
-      }
-    }
+    const result = clientConfig.useD8EventsBackend ? results.hit : results.items
+    const data = !isEmpty(result) ? result[0] : null
+    this.setState({ data, LOADING_STATE: 'loaded' })
   }
 
   render() {
     const { eventId } = this.props.params
-    const { data } = this.state
-    if (eventId && data) {
-      if (!isEmpty(data)) {
-        return (
-          <div>
-            <Event eventData={data} />
-          </div>
-        )
-      } else {
-        return <ErrorPage linkUrl="/events/find" linkMessage="find events page" />
-      }
-    } else {
-      return (
-        <div className={styles.container}>
-          <Loader />
-        </div>
-      )
-    }
+    const { data, LOADING_STATE } = this.state
+
+    return (
+      <div>
+        {!eventId && <ErrorPage linkUrl="/events/find" linkMessage="find events page" />}
+        {eventId && <div>
+          {LOADING_STATE !== 'loaded' && <div className={styles.container}><Loader /></div>}
+          {LOADING_STATE === 'loaded' && <div>
+            {isEmpty(data) && <ErrorPage linkUrl="/events/find" linkMessage="find events page" />}
+            {!isEmpty(data) && <Event eventData={data} />}
+          </div>}
+        </div>}
+      </div>
+    )
   }
 }
 
