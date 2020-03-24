@@ -41,7 +41,7 @@ describe('Event Page', () => {
       }
     }
     const component = shallow(<EventPage {...props} />)
-    component.setState({ data: {} })
+    component.setState({ data: {}, LOADING_STATE: 'loaded' })
     const result = component.find('ErrorPage')
     const expected = 1
     expect(result).toHaveLength(expected)
@@ -50,11 +50,11 @@ describe('Event Page', () => {
   test('should render the event component when event data is set', () => {
     const props = {
       params: {
-        eventId: "304"
+        eventId: "304",
       }
     }
     const component = shallow(<EventPage {...props} />)
-    component.setState({ data: { title: 'foo' } })
+    component.setState({ data: { title: 'foo' }, LOADING_STATE: 'loaded' })
     const result = component.find('Event')
     const expected = 1
     expect(result).toHaveLength(expected)
