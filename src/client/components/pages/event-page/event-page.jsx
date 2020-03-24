@@ -36,8 +36,13 @@ class EventPage extends Component {
     return (
       <div>
         {!eventId && <ErrorPage linkUrl="/events/find" linkMessage="find events page" />}
-        {eventId && LOADING_STATE === 'loaded' && (!isEmpty(data) ? <div><Event eventData={data} /></div> : <ErrorPage linkUrl="/events/find" linkMessage="find events page" />)}
-        {eventId && LOADING_STATE !== 'loaded' && <div className={styles.container}><Loader /></div>}
+        {eventId && <div>
+          {LOADING_STATE !== 'loaded' && <div className={styles.container}><Loader /></div>}
+          {LOADING_STATE === 'loaded' && <div>
+            {isEmpty(data) && <ErrorPage linkUrl="/events/find" linkMessage="find events page" />}
+            {!isEmpty(data) && <Event eventData={data} />}
+          </div>}
+        </div>}
       </div>
     )
   }
