@@ -20,7 +20,7 @@ class EventPage extends Component {
     const queryArgs = {
       id: String(this.props.params.eventId)
     }
-    const results = await fetchSiteContent('events', queryArgs).catch( _ => {
+    const results = await fetchSiteContent('events', queryArgs).catch(_ => {
       this.setState({ data: null })
     })
     // TODO: remove feature flag after updating events backend
@@ -33,31 +33,33 @@ class EventPage extends Component {
     const { eventId } = this.props.params
     const { data, LOADING_STATE } = this.state
 
-    const eventComponent = clientConfig.useD8EventsBackend ? <Event eventData={data} /> : <EventFromD7 eventData={data} />
+    const eventComponent = clientConfig.useD8EventsBackend ? (
+      <Event eventData={data} />
+    ) : (
+      <EventFromD7 eventData={data} />
+    )
 
     return (
       <div>
         {!eventId && <ErrorPage linkUrl="/events/find" linkMessage="find events page" />}
-        {eventId && <div>
-          {LOADING_STATE !== 'loaded' && <div className={styles.container}><Loader /></div>}
-          {LOADING_STATE === 'loaded' && <div>
-            {isEmpty(data) && <ErrorPage linkUrl="/events/find" linkMessage="find events page" />}
-            {!isEmpty(data) && eventComponent}
-          </div>}
-        </div>}
+        {eventId && (
+          <div>
+            {LOADING_STATE !== 'loaded' && (
+              <div className={styles.container}>
+                <Loader />
+              </div>
+            )}
+            {LOADING_STATE === 'loaded' && (
+              <div>
+                {isEmpty(data) && <ErrorPage linkUrl="/events/find" linkMessage="find events page" />}
+                {!isEmpty(data) && eventComponent}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     )
   }
 }
-
-(
-  <div>
-    {clientConfig.useD8EventsBackend ? (
-      <Event eventData={data} />
-    ) : (
-      <EventFromD7 eventData={data} />
-    )}
-  </div>
-)
 
 export default EventPage
