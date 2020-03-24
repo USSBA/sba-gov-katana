@@ -20,12 +20,11 @@ class EventPage extends Component {
     const queryArgs = {
       id: String(this.props.params.eventId)
     }
-    let result
     const results = await fetchSiteContent('events', queryArgs).catch( _ => {
       this.setState({ data: null })
     })
     // TODO: remove feature flag after updating events backend
-    result = clientConfig.useD8EventsBackend ? results.hit : results.items
+    const result = clientConfig.useD8EventsBackend ? results.hit : results.items
     const data = !isEmpty(result) ? result[0] : null
     this.setState({ data, LOADING_STATE: 'loaded' })
   }
