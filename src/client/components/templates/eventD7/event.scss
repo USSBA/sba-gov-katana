@@ -1,0 +1,157 @@
+.container {
+  @include grid-media($sba-grid-large) {
+    padding: 30px 30px 0 30px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 30px 30px 0 30px;
+  }
+}
+
+.header {
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    padding-top: 30px;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12);
+  }
+}
+
+.smallIcon {
+  float: left;
+  display: block;
+
+  @include grid-media($sba-grid-small) {
+    i {
+      font-size: 25px;
+    }
+  }
+  @include grid-media($sba-grid-medium) {
+    i {
+      font-size: 25px;
+    }
+  }
+}
+
+.breadcrumb {
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    @include grid-push(0);
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+    @include grid-push(0);
+    padding: 15px 0;
+    margin-bottom: 50px;
+    border-bottom: 1px solid $sba-gray-light;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12);
+    border-top: 1px solid $sba-gray-light;
+  }
+}
+
+.descriptionLabel {
+  color: $secondary-black-ish;
+  padding-top: 45px;
+}
+
+.columnA {
+  @include grid-media($sba-grid-small) {
+    padding-bottom: 40px;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(7);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(7);
+    padding-right: 100px;
+  }
+}
+
+.columnB {
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(5);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(5);
+  }
+
+  padding-bottom: 40px;
+}
+
+.detailsBox {
+  background-color: white;
+  border-top: 3px solid $sba-blue;
+  box-shadow: $box-shadow;
+  padding: 30px;
+
+  @include for-small-only {
+    h1 {
+      // The static part of calc() (1rem) defines the minimum so that the font
+      // size does not become too small as the screen gets smaller.
+      font-size: calc(18px + 4vw);
+      hyphens: auto;
+    }
+  }
+}
+
+.button {
+  margin-bottom: 22px;
+
+  @include grid-media($sba-grid-medium) {
+    margin-top: 40px;
+  }
+
+  @include grid-media($sba-grid-large) {
+    margin-top: 40px;
+  }
+}
+
+.registerButtonIcon {
+  padding-left: 5px;
+  vertical-align: middle;
+}
+
+.contactIcon {
+  float: left;
+  color: $sba-blue;
+  padding-right: 10px;
+}
+
+.contactName {
+  padding-bottom: 5px;
+}
+
+.eventDetailsRecurring {
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+.page {
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.canceledMessage {
+  background-color: white;
+  border-top: 3px solid $sba-red;
+  box-shadow: $box-shadow;
+  margin: 0;
+  margin-bottom: 30px;
+  width: 100%;
+  text-align: center;
+  p {
+    padding-bottom: 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding-bottom: 0;
+  }
+}
