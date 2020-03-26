@@ -20,7 +20,7 @@ class StandalonePage extends Component {
     super()
     this.state = {
       data: {},
-      loadingState: 'unloaded',
+      loadingState: 'unloaded'
     }
   }
   async componentDidMount() {
@@ -74,10 +74,11 @@ class StandalonePage extends Component {
 
     if (!isEmpty(data)) {
       langCode = getLanguageOverride()
-      title = data.title
-      summary = data.summary
-      paragraphs = this.makeParagraphs(data.paragraphs)
-      sectionHeaders = this.makeSectionHeaders(data.paragraphs)
+      const content = langCode === 'es' ? data.spanishTranslation : data
+      title = content.title
+      summary = content.summary
+      paragraphs = this.makeParagraphs(content.paragraphs)
+      sectionHeaders = this.makeSectionHeaders(content.paragraphs)
       className = classNames({
         'standalone-page-titlesection': true,
         [styles.content]: true
