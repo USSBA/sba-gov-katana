@@ -83,7 +83,6 @@ class StandalonePage extends Component {
 
     if (!isEmpty(data)) {
       langCode = getLanguageOverride()
-      // const content = langCode === 'es' ? data.spanishTranslation : data
       const content = this.setContent(data, langCode)
       title = content.title
       summary = content.summary
