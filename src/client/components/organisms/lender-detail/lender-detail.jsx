@@ -13,15 +13,35 @@ class LenderDetail extends React.PureComponent {
     }
   }
 
+  formatStreetAddress(address1, address2) {
+    const addressLines = []
+    address1 && addressLines.push(address1)
+    address2 && addressLines.push(address2)
+    return addressLines.join(' ')
+  }
+
+  formatName(firstName, lastName) {
+    const names = []
+    firstName && names.push(firstName)
+    lastName && names.push(lastName)
+    return names.join(' ')
+  }
+
   render() {
     const { selectedItem, hideDetailState } = this.props
     const { item, distance } = selectedItem
 
+    const address1 = item.address ? item.address[0] : ''
+    const address2 = item.address_additional ? item.address_additional[0] : ''
+    const firstName = item.contact_first_name ? item.contact_first_name[0] : ''
+    const lastName = item.contact_last_name ? item.contact_last_name[0] : ''
+
     const contactProps = {
       city: item.city ? item.city[0] : '',
-      streetAddress: item.address ? item.address[0] : '',
+      streetAddress: this.formatStreetAddress(address1, address2),
       state: item.state ? item.state[0] : '',
       zipCode: item.zipcode ? item.zipcode[0] : '',
+      personTitle: this.formatName(firstName, lastName),
       email: item.contact_email ? item.contact_email[0] : '',
       phoneNumber: item.contact_phone ? item.contact_phone[0] : '',
       fax: item.contact_fax ? item.contact_fax[0] : '',
