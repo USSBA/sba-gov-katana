@@ -62,10 +62,8 @@ class LenderLookupPage extends React.PureComponent {
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
     const pageSize = 5
-    // const defaultType = 'All'
     const defaultSearchParams = {
       pageSize
-      // type: defaultType
     }
 
     const searchTips = ['Search near a different ZIP code.']
@@ -125,7 +123,6 @@ class LenderLookupPage extends React.PureComponent {
             paginate={true}
             scroll
             hasSearchInfoPanel
-            // searchTermName={'q'}
             onClick={item => {
               this.centerMap(true)
               this.setSelectedItem(item)
@@ -137,8 +134,6 @@ class LenderLookupPage extends React.PureComponent {
             }}
             searchTips={searchTips}
             displaySearchTipsOnNoResults
-            // displayDefaultResultOnNoResults
-            // defaultResultObject={<DefaultOfficeResult />}
             customDetailResultsView={this.customDetailResultsView.bind(this)}
             extraContainerStyles={styles.centerContainer}
             extraResultContainerStyles={styles.resultContainer}

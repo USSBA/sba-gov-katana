@@ -61,70 +61,8 @@
   outline: none;
 }
 
-.lenderType {
-  color: #1b1e29;
-  font-size: 18px;
-  display: inline;
-}
-
-.lenderType:focus {
-  outline: 2px dotted $sba-gray-light;
-  outline-offset: 3px;
-}
-
 .italic {
   font-style: italic;
-}
-
-.fa {
-  display: inline-block;
-  @include grid-media($sba-grid-small) {
-    font-size: 20px;
-    vertical-align: middle;
-    width: 22px;
-  }
-  @include grid-media($sba-grid-medium) {
-    font-size: 20px;
-    vertical-align: middle;
-    width: 20px;
-  }
-}
-
-.serviceList {
-  margin: 40px 0 10px;
-
-  @include grid-media($sba-grid-small) {
-    margin: 30px 0;
-
-    button {
-      width: 100%;
-    }
-  }
-}
-
-.lenderWebsiteButton {
-  @include grid-media($sba-grid-small) {
-    margin: 30px 0;
-
-    button {
-      width: 100%;
-    }
-  }
-
-  @include grid-media($sba-grid-medium) {
-    float: right;
-    margin-top: 40px;
-  }
-  @include grid-media($sba-grid-large) {
-    float: right;
-    margin-top: 40px;
-  }
-}
-
-.firstResult {
-  hr {
-    margin: 15px 0 18px;
-  }
 }
 
 .distance {
@@ -157,19 +95,6 @@
   clear: both;
 }
 
-.detailView {
-  width: 100%;
-  padding: 20px;
-  background: #ffffff;
-  position: relative;
-
-  h2 {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 0;
-  }
-}
-
 .close {
   position: absolute;
   top: 20px;
@@ -181,11 +106,6 @@
     font-size: 20px;
     cursor: pointer;
   }
-}
-
-.contactCard {
-  border: none;
-  padding: 0;
 }
 
 .hoveredBorder {
@@ -204,8 +124,4 @@
 .isFirstHoveredResult {
   margin-top: 0;
   padding-top: 20px;
-}
-
-.defaultLenderResult {
-  margin: 0 0 0 -10px;
 }
