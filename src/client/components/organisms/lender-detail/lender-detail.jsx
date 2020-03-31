@@ -1,11 +1,10 @@
 import React from 'react'
-import { ContactCard } from 'molecules'
-import styles from './lender-detail.scss'
-import lenderResultStyles from '../lender-result/lender-result.scss'
+import classNames from 'classnames'
 import marker from 'assets/svg/marker.svg'
 import exitIcon from 'assets/svg/icons/close-icon-sm-blue.svg'
-import { isEmpty } from 'lodash'
-import classNames from 'classnames'
+import styles from './lender-detail.scss'
+import lenderResultStyles from '../lender-result/lender-result.scss'
+import { ContactCard } from 'molecules'
 
 class LenderDetail extends React.PureComponent {
   componentDidMount() {
@@ -17,17 +16,15 @@ class LenderDetail extends React.PureComponent {
   render() {
     const { selectedItem, hideDetailState } = this.props
     const { item, distance } = selectedItem
-    const officeType = item.office_type ? item.office_type[0] : ''
-    const officeSummary = '' //item.summary && item.summary.length ? item.summary[0] : ''
+
     const contactProps = {
-      city: item.location_city ? item.location_city[0] : '',
-      streetAddress: item.location_street_address ? item.location_street_address[0] : '',
-      state: item.location_state ? item.location_state[0] : '',
-      zipCode: item.location_zipcode ? Number(item.location_zipcode[0]) : '',
-      email: item.location_email ? item.location_email[0] : '',
-      phoneNumber: item.location_phone_number ? item.location_phone_number[0] : '',
-      fax: item.location_fax ? item.location_fax[0] : '',
-      link: item.office_website ? item.office_website[0] : '',
+      city: item.city ? item.city[0] : '',
+      streetAddress: item.address ? item.address[0] : '',
+      state: item.state ? item.state[0] : '',
+      zipCode: item.zipcode ? Number(item.zipcode[0]) : '',
+      email: item.contact_email ? item.contact_email[0] : '',
+      phoneNumber: item.contact_phone ? item.contact_phone[0] : '',
+      fax: item.contact_fax ? item.contact_fax[0] : '',
       border: false
     }
 
@@ -74,36 +71,7 @@ class LenderDetail extends React.PureComponent {
               {item.title[0]}
             </h2>
           </div>
-          <div id="lender-type">
-            <div tabIndex="0" role="text" className={lenderResultStyles.lenderType}>
-              <span>{officeType}</span>
-            </div>
-          </div>
         </div>
-        <div>
-          {item.office_service ? (
-            <div className={lenderResultStyles.serviceList + ' service-list'}>
-              {' '}
-              <h3 tabIndex="0" role="heading">
-                Services
-              </h3>
-              <div>{item.office_service.join(', ')}</div>
-            </div>
-          ) : null}
-        </div>
-        {!isEmpty(officeSummary) && (
-          <div>
-            <div className={lenderResultStyles.hr}>
-              <hr />
-            </div>
-            <div className="lender-summary">
-              <p>{item.summary && item.summary.length ? item.summary[0] : ''}</p>
-            </div>
-            <div className={lenderResultStyles.hr}>
-              <hr />
-            </div>
-          </div>
-        )}
         <ContactCard {...contactProps} />
       </div>
     )

@@ -6,8 +6,8 @@ import { StyleWrapperDiv, TextInput } from 'atoms'
 import {
   PrimarySearchBar,
   Results,
-  OfficeDetail,
-  OfficeResult,
+  LenderDetail,
+  LenderResult,
   OfficeMap
   // DefaultOfficeResult
 } from 'organisms'
@@ -54,7 +54,7 @@ class LenderLookupPage extends React.PureComponent {
     const { selectedItem } = this.state
     return (
       <div className={resultsClassName}>
-        <OfficeDetail selectedItem={selectedItem} hideDetailState={hideDetailState} />
+        <LenderDetail selectedItem={selectedItem} hideDetailState={hideDetailState} />
       </div>
     )
   }
@@ -144,7 +144,7 @@ class LenderLookupPage extends React.PureComponent {
             extraResultContainerStyles={styles.resultContainer}
             setWhiteBackground
           >
-            <OfficeResult />
+            <LenderResult />
           </Results>
         </StyleWrapperDiv>
       </SearchTemplate>
