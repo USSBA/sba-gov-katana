@@ -21,7 +21,7 @@ class LenderDetail extends React.PureComponent {
       city: item.city ? item.city[0] : '',
       streetAddress: item.address ? item.address[0] : '',
       state: item.state ? item.state[0] : '',
-      zipCode: item.zipcode ? Number(item.zipcode[0]) : '',
+      zipCode: item.zipcode ? item.zipcode[0] : '',
       email: item.contact_email ? item.contact_email[0] : '',
       phoneNumber: item.contact_phone ? item.contact_phone[0] : '',
       fax: item.contact_fax ? item.contact_fax[0] : '',
@@ -67,8 +67,8 @@ class LenderDetail extends React.PureComponent {
                 <div className={lenderResultStyles.clear} />
               </div>
             )}
-            <h2 tabIndex="0" role="heading" className="lender-title">
-              {item.title[0]}
+            <h2 tabIndex="0" role="heading" className="lender-name">
+              {item.lender_name[0]}
             </h2>
           </div>
         </div>
