@@ -1,4 +1,4 @@
-.officeSearch {
+.lenderSearch {
   position: relative;
 }
 
@@ -85,7 +85,7 @@
   }
 }
 
-.officeResults {
+.lenderResults {
   @include grid-media($sba-grid-large) {
     position: absolute;
     top: 240px;

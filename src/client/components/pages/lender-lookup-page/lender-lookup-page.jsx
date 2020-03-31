@@ -1,20 +1,19 @@
 import React from 'react'
-import { fetchSiteContent } from '../../../fetch-content-helper'
 import { find, isEmpty } from 'lodash'
 
 import styles from './lender-lookup-page.scss'
-import { TaxonomyMultiSelect, StyleWrapperDiv, TextInput } from 'atoms'
+import { StyleWrapperDiv, TextInput } from 'atoms'
 import {
   PrimarySearchBar,
   Results,
   OfficeDetail,
   OfficeResult,
-  OfficeMap,
-  DefaultOfficeResult
+  OfficeMap
+  // DefaultOfficeResult
 } from 'organisms'
 import SearchTemplate from '../../templates/search/search.jsx'
 
-class OfficeLookupPage extends React.PureComponent {
+class LenderLookupPage extends React.PureComponent {
   constructor() {
     super()
 
@@ -22,33 +21,8 @@ class OfficeLookupPage extends React.PureComponent {
       selectedItem: {},
       newCenter: {},
       shouldCenterMap: false,
-      hoveredMarkerId: '',
-      taxonomies: null
+      hoveredMarkerId: ''
     }
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.taxonomies
-  }
-
-  //componentWillMount() {
-  //  const necessaryTaxonomies = ['officeType', 'officeService']
-  //  fetchSiteContent('taxonomys', {
-  //    names: necessaryTaxonomies.join(',')
-  //  }).then(results => {
-  //    this.setState({ taxonomies: results })
-  //  })
-  //}
-
-  getTaxonomy(name) {
-    if (!this.state.taxonomies) {
-      return {
-        name: '',
-        terms: []
-      }
-    }
-    const taxonomy = find(this.state.taxonomies, { name: name }) || { name: '', terms: [] }
-    return taxonomy
   }
 
   setSelectedItem(selectedItem) {
@@ -88,32 +62,26 @@ class OfficeLookupPage extends React.PureComponent {
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
     const pageSize = 5
-    const defaultType = 'All'
+    // const defaultType = 'All'
     const defaultSearchParams = {
-      pageSize,
-      type: defaultType
+      pageSize
+      // type: defaultType
     }
-    const officeTypeTaxonomy = this.getTaxonomy('officeType')
-    const officeServiceTaxonomy = this.getTaxonomy('officeService')
 
-    const searchTips = [
-      'Try using different search term.',
-      'Search near a different ZIP code.',
-      'Contact your closest SBA office.'
-    ]
+    const searchTips = ['Search near a different ZIP code.']
 
     return (
       <SearchTemplate
-        searchType="offices"
+        searchType="lenders"
         defaultSearchParams={defaultSearchParams}
         loadDefaultResults={false}
         scrollToTopAfterSearch={false}
-        extraClassName={styles.officeSearch}
+        extraClassName={styles.lenderSearch}
         paginate={false}
         showStatus={false}
         onHandleEvent={this.centerMap.bind(this, false)}
       >
-        <PrimarySearchBar id="office-primary-search-bar" title="Find a Lender" className={styles.searchBar}>
+        <PrimarySearchBar id="lender-primary-search-bar" title="Find lenders" className={styles.searchBar}>
           <TextInput
             id="zip"
             queryParamName="address"
@@ -150,13 +118,14 @@ class OfficeLookupPage extends React.PureComponent {
           }}
           hoveredMarkerId={hoveredMarkerId}
         />
-        <StyleWrapperDiv className={styles.officeResults} hideOnZeroState={true}>
+
+        <StyleWrapperDiv className={styles.lenderResults} hideOnZeroState={true}>
           <Results
             id="lender-results"
             paginate={true}
             scroll
             hasSearchInfoPanel
-            searchTermName={'q'}
+            // searchTermName={'q'}
             onClick={item => {
               this.centerMap(true)
               this.setSelectedItem(item)
@@ -168,8 +137,8 @@ class OfficeLookupPage extends React.PureComponent {
             }}
             searchTips={searchTips}
             displaySearchTipsOnNoResults
-            displayDefaultResultOnNoResults
-            defaultResultObject={<DefaultOfficeResult />}
+            // displayDefaultResultOnNoResults
+            // defaultResultObject={<DefaultOfficeResult />}
             customDetailResultsView={this.customDetailResultsView.bind(this)}
             extraContainerStyles={styles.centerContainer}
             extraResultContainerStyles={styles.resultContainer}
@@ -183,4 +152,4 @@ class OfficeLookupPage extends React.PureComponent {
   }
 }
 
-export default OfficeLookupPage
+export default LenderLookupPage
