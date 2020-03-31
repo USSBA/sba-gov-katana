@@ -65,6 +65,10 @@ const OfficeLookupPage = props => (
   <Async componentProps={props} load={import('./pages/office-lookup-page/office-lookup-page.jsx')} />
 )
 
+const LenderLookupPage = props => (
+  <Async componentProps={props} load={import('./pages/lender-lookup-page/lender-lookup-page.jsx')} />
+)
+
 const EventLookupPage = props => (
   <Async componentProps={props} load={import('./pages/event-lookup-page/event-lookup-page.jsx')} />
 )
@@ -134,6 +138,8 @@ const mainRoutes = [
   <Redirect key={69} from="/blogs/:category/:officeId" to="/blogs/:category/:officeId/" />,
   <Route key={70} path="/offices/district/:officeId/" component={DistrictOfficePage} />,
   <Redirect key={71} from="/offices/district/:officeId" to="/offices/district/:officeId/" />,
+  <Route key={72} path="/lender-lookup/find/" component={LenderLookupPage} />,
+  <Redirect key={73} from="/lender-lookup/find" to="/lender-lookup/find/" />,
   <Route
     key={72}
     path="/offices/district/:officeId/:pageConnectorId/"
