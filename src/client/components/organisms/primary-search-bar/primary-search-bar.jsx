@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import { isEmpty } from 'lodash'
 
 import styles from './primary-search-bar.scss'
-import { Button, SearchIcon } from 'atoms'
+import { Button } from 'atoms'
 
 export class PrimarySearchBar extends React.PureComponent {
   onFieldChange(fieldName, value) {
@@ -38,9 +39,13 @@ export class PrimarySearchBar extends React.PureComponent {
       })
       return clonedChild
     })
-    const { id, buttonActive } = this.props
-    const bannerClassName =
-      styles.banner + (!isEmpty(this.props.className) ? ' ' + this.props.className : '')
+    const { id, buttonActive, subtext } = this.props
+
+    const bannerClassName = classNames({
+      [styles.banner]: true,
+      [this.props.className]: !isEmpty(this.props.className),
+      [styles.bannerToIncludeSubtext]: !isEmpty(subtext)
+    })
 
     return (
       <div id={id}>
@@ -52,6 +57,7 @@ export class PrimarySearchBar extends React.PureComponent {
           >
             {this.props.title}
           </h2>
+          {subtext && <p className={styles.subtext}> {subtext} </p>}
           <form>
             {childrenWithProps}
             <div className={styles.applyButton}>
@@ -85,6 +91,9 @@ PrimarySearchBar.propTypes = {
   // title text above inputs
   title: PropTypes.string,
 
+  // subtext/helper text below title
+  subtext: PropTypes.string,
+
   // html id attribute for component
   id: PropTypes.string,
 
@@ -96,6 +105,7 @@ PrimarySearchBar.defaultProps = {
   onFieldChange: () => {},
   searchButtonText: 'Search',
   title: 'Search',
+  subtext: null,
   id: null,
   buttonActive: true
 }

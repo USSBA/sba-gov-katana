@@ -3,14 +3,7 @@ import { find, isEmpty } from 'lodash'
 
 import styles from './lender-lookup-page.scss'
 import { StyleWrapperDiv, TextInput } from 'atoms'
-import {
-  PrimarySearchBar,
-  Results,
-  LenderDetail,
-  LenderResult,
-  OfficeMap
-  // DefaultOfficeResult
-} from 'organisms'
+import { PrimarySearchBar, Results, LenderDetail, LenderResult, OfficeMap } from 'organisms'
 import SearchTemplate from '../../templates/search/search.jsx'
 
 class LenderLookupPage extends React.PureComponent {
@@ -66,8 +59,6 @@ class LenderLookupPage extends React.PureComponent {
       pageSize
     }
 
-    const searchTips = ['Search near a different ZIP code.']
-
     return (
       <SearchTemplate
         searchType="lenders"
@@ -79,7 +70,12 @@ class LenderLookupPage extends React.PureComponent {
         showStatus={false}
         onHandleEvent={this.centerMap.bind(this, false)}
       >
-        <PrimarySearchBar id="lender-primary-search-bar" title="Find lenders" className={styles.searchBar}>
+        <PrimarySearchBar
+          id="lender-primary-search-bar"
+          title="Find eligible lenders"
+          subtext="Use this tool to find a nearby lender eligible to issue a loan under the Paycheck Protection Program. Note: Lenders are not required to participate."
+          className={styles.searchBar}
+        >
           <TextInput
             id="zip"
             queryParamName="address"
@@ -132,8 +128,6 @@ class LenderLookupPage extends React.PureComponent {
             onResultHover={id => {
               this.setHoveredMarkerId(id)
             }}
-            searchTips={searchTips}
-            displaySearchTipsOnNoResults
             customDetailResultsView={this.customDetailResultsView.bind(this)}
             extraContainerStyles={styles.centerContainer}
             extraResultContainerStyles={styles.resultContainer}
