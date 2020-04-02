@@ -166,7 +166,7 @@ ContactCard.propTypes = {
   state: PropTypes.string,
   streetAddress: PropTypes.string,
   title: PropTypes.string,
-  zipCode: PropTypes.number,
+  zipCode: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   testId: PropTypes.string
 }
 

@@ -197,6 +197,9 @@ class SearchTemplate extends React.PureComponent {
             hasNoResults = count === 0
             isLoading = false
             isZeroState = false
+          } else {
+            isZeroState = false
+            isLoading = false
           }
           return {
             results,

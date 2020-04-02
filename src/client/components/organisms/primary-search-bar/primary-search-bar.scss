@@ -35,6 +35,12 @@
   }
 }
 
+.bannerToIncludeSubtext {
+  @include grid-media($sba-grid-large) {
+    height: 260px;
+  }
+}
+
 .header {
   margin: 0 0 20px 0;
 }
@@ -160,6 +166,10 @@
   @media screen and (min-width: 768px) {
     top: 44px;
   }
+}
+
+.subtext {
+  color: white;
 }
 
 .multiSelect {

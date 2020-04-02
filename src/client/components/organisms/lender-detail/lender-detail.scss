@@ -1,0 +1,49 @@
+.detailView {
+  width: 100%;
+  padding: 34px 30px;
+  background: #ffffff;
+  position: relative;
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: -3px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding-left: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0;
+    display: inline;
+    &:focus {
+      outline: 2px dotted $sba-gray-light;
+      outline-offset: 3px;
+    }
+  }
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  padding: 10px;
+  img {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+img:focus {
+  outline: 2px dotted $sba-gray-light;
+  outline-offset: 3px;
+}
+
+.additionalTitleMargin {
+  @include grid-media($sba-grid-large) {
+    h2 {
+      margin-top: 26px;
+      display: block;
+    }
+  }
+}

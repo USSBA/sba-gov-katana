@@ -17,6 +17,8 @@ import GenericCardCollection from './generic-card-collection/generic-card-collec
 import GlobalSearch from './global-search/global-search.jsx'
 import Hero from './hero/hero.jsx'
 import LeadershipCards from './leadership-cards/leadership-cards.jsx'
+import LenderDetail from './lender-detail/lender-detail.jsx'
+import LenderResult from './lender-result/lender-result.jsx'
 import LocationInfoSection from './location-info-section/location-info-section.jsx'
 import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
@@ -83,6 +85,8 @@ export {
   GlobalSearch,
   Hero,
   LeadershipCards,
+  LenderDetail,
+  LenderResult,
   LocationInfoSection,
   Lookup,
   ModalController,
