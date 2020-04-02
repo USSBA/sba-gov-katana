@@ -138,8 +138,8 @@ const mainRoutes = [
   <Redirect key={69} from="/blogs/:category/:officeId" to="/blogs/:category/:officeId/" />,
   <Route key={70} path="/offices/district/:officeId/" component={DistrictOfficePage} />,
   <Redirect key={71} from="/offices/district/:officeId" to="/offices/district/:officeId/" />,
-  <Route key={72} path="/lender-lookup/find/" component={LenderLookupPage} />,
-  <Redirect key={73} from="/lender-lookup/find" to="/lender-lookup/find/" />,
+  <Route key={72} path="/paycheckprotection/find" component={LenderLookupPage} />,
+  <Redirect key={73} from="/paycheckprotection/find" to="/paycheckprotection/find/" />,
   <Route
     key={72}
     path="/offices/district/:officeId/:pageConnectorId/"
