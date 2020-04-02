@@ -1,5 +1,5 @@
 import React from 'react'
-import { find, isEmpty } from 'lodash'
+import { isEmpty } from 'lodash'
 
 import styles from './lender-lookup-page.scss'
 import { StyleWrapperDiv, TextInput } from 'atoms'
