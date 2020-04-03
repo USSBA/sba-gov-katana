@@ -2,7 +2,7 @@ import React from 'react'
 import { isEmpty } from 'lodash'
 
 import styles from './lender-lookup-page.scss'
-import { StyleWrapperDiv, TextInput } from 'atoms'
+import { StyleWrapperDiv, TextInput, MultiSelect } from 'atoms'
 import { PrimarySearchBar, Results, LenderDetail, LenderResult, OfficeMap } from 'organisms'
 import SearchTemplate from '../../templates/search/search.jsx'
 
@@ -93,8 +93,26 @@ class LenderLookupPage extends React.PureComponent {
             }}
             errorText="Enter a 5-digit zip code."
           />
+          <MultiSelect
+            id="rapid-lenders-filter"
+            queryParamName="rapidLenders"
+            label="Have you filed your 2019 Taxes?"
+            autoFocus={false}
+            className={styles.multiselect}
+            multi={false}
+            options={[
+              {
+                label: 'Yes',
+                value: true
+              },
+              {
+                label: 'No',
+                value: false
+              }
+            ]}
+            dataCy="date"
+          />
         </PrimarySearchBar>
-
         <OfficeMap
           id="office-map"
           onMarkerClick={item => {
