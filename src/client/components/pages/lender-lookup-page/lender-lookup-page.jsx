@@ -110,7 +110,7 @@ class LenderLookupPage extends React.PureComponent {
                 value: false
               }
             ]}
-            dataCy="date"
+            dataCy="rapid-lenders-filter"
           />
         </PrimarySearchBar>
         <OfficeMap
