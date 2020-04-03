@@ -94,8 +94,8 @@ class LenderLookupPage extends React.PureComponent {
             errorText="Enter a 5-digit zip code."
           />
           <MultiSelect
-            id="rapid-lenders-filter"
-            queryParamName="rapidLenders"
+            id="has-filed-2019-taxes"
+            queryParamName="hasFiled2019Taxes"
             label="Have you filed your 2019 Taxes?"
             autoFocus={false}
             className={styles.multiselect}
@@ -110,7 +110,7 @@ class LenderLookupPage extends React.PureComponent {
                 value: false
               }
             ]}
-            dataCy="rapid-lenders-filter"
+            dataCy="has-filed-2019-taxes"
           />
         </PrimarySearchBar>
         <OfficeMap

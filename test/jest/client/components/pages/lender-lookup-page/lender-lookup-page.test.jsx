@@ -10,7 +10,7 @@ import moment from 'moment'
 describe('LenderLookupPage', () => {
   it('should seelct the rapid lenders dropdown', () => {
     const component = mount(<LenderLookupPage />)
-    const result = component.find('[data-cy="rapid-lenders-filter"]')
+    const result = component.find('[data-cy="has-filed-2019-taxes"]')
     expect(result).toHaveLength(1)
   })
 })
