@@ -42,8 +42,9 @@ class LenderDetail extends React.PureComponent {
       state: item.state ? item.state[0] : '',
       zipCode: item.zipcode ? item.zipcode[0] : '',
       personTitle: this.formatName(firstName, lastName),
-      email: item.contact_email ? item.contact_email[0] : '',
-      phoneNumber: item.contact_phone ? item.contact_phone[0] : '',
+      //email: item.contact_email ? item.contact_email[0] : '',
+      email: '',
+      phoneNumber: item.bank_phone ? item.bank_phone[0] : '',
       fax: item.contact_fax ? item.contact_fax[0] : '',
       border: false
     }
