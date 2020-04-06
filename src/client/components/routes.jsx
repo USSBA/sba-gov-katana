@@ -164,6 +164,8 @@ const mainRoutes = [
   <Redirect key={77} from="/sitemap/" to="/sitemap" />,
   <Route key={78} path="/events/:eventId" component={EventPage} />,
   <Redirect key={79} from="/events/:eventId/" to="/events/:eventId" />,
+  // TODO: Remove route 999999999. This was for testing purposes only
+  <Route key={999999999} path="/events/:eventId/location/date/title" component={EventPage} />,
   // TODO: Remove redirects 80 and 81 after switching to updated events backend
   <Redirect key={80} from="/event/:eventId/" to="/events/:eventId" />,
   <Redirect key={81} from="/event/:eventId" to="/events/:eventId" />,

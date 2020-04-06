@@ -204,13 +204,19 @@ async function getMetaVariables(nodeId, type = 'node', request) {
   // This will only allow valid nodeId's to make an axios call.
   // Currently negative nodeId numbers are associated to pages without a nodeId,
   // so we can regard negative nodeId's as invalid.
-  if (request.substring(0, 7) === '/event/') {
+  if (request.substring(0, 8) === '/events/') {
+    const eventIdMatcher = new RegExp('/events/([^/]+)/')
+    const eventId = request.match(eventIdMatcher)
+    console.log('EVENTID----', eventId)
     const jsonContent = await axios.get(
-      `https://${config.get('server.fqdn')}/api/content/search/event/${nodeId}.json`
+      `https://${config.get('server.fqdn')}/api/content/search/events.json?id=${eventId}`
     )
-    if (jsonContent.data) {
-      description = jsonContent.data.summary
-      title = jsonContent.data.title
+    console.log('JSONCONTENT-----', jsonContent)
+    console.log('JSONCONTENT.DATA-----', jsonContent.data)
+    console.log('JSONCONTENT.DATA.HIT-----', jsonContent.data.hit)
+    if (jsonContent.data && jsonContent.data.hit[0]) {
+      description = jsonContent.data.hit[0].description
+      title = jsonContent.data.hit[0].title
     }
   } else if (nodeId > 0) {
     const jsonContent = await axios.get(
