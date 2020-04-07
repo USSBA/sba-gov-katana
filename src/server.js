@@ -197,18 +197,28 @@ if (config.get('developmentOptions.webpack.enabled')) {
 const { fetchNewUrlByOldUrl } = require('./service/drupal-url-redirect.js')
 const { findMostRecentUrlRedirect } = require('./service/url-redirect.js')
 
-async function getMetaVariables(nodeId, type = 'node', request) {
+async function setMetaVariables(nodeId, type = 'node', request) {
   let description = config.get('meta.description')
   let title = config.get('meta.title')
 
   // Processes for event detail pages but ignores events find page
-  if (request.substring(0, 8) === '/events/' && request.substring(9, 12) !== 'find') {
+  if (request.substring(0, 8) === '/events/' && request.substring(8, 12) !== 'find') {
     const eventIdMatcher = new RegExp('/events/([^/]+)/')
-    const eventId = request.match(eventIdMatcher)[1]
-    const jsonContent = await axios.get(
-      `https://${config.get('server.fqdn')}/api/content/search/events.json?id=${eventId}`
-    )
-    if (jsonContent.data && jsonContent.data.hit.length > 0) {
+    const regexMatches = request.match(eventIdMatcher)
+
+    let eventId
+    if (regexMatches && regexMatches.length > 0) {
+      eventId = regexMatches[1]
+    }
+
+    let jsonContent
+    if (eventId) {
+      jsonContent = await axios.get(
+        `https://${config.get('server.fqdn')}/api/content/search/events.json?id=${eventId}`
+      )
+    }
+
+    if (jsonContent && jsonContent.data && jsonContent.data.hit.length > 0) {
       description = jsonContent.data.hit[0].description
       title = jsonContent.data.hit[0].title
     }
@@ -235,7 +245,7 @@ async function getMetaVariables(nodeId, type = 'node', request) {
 app.get(['/', '/*'], async function(req, res, next) {
   let metaVariables
   try {
-    metaVariables = await getMetaVariables(req.nodeId, req.type, req.url)
+    metaVariables = await setMetaVariables(req.nodeId, req.type, req.url)
 
     const pugVariables = _.merge({}, metaVariables, {
       langOverride: req.preferredLanguage,
