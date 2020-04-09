@@ -203,7 +203,7 @@ async function setMetaVariables(nodeId, type = 'node', request) {
 
   // Processes for event detail pages but ignores events find page
   if (request.substring(0, 8) === '/events/' && request.substring(8, 12) !== 'find') {
-    const eventIdMatcher = new RegExp('/events/([^/]+)/')
+    const eventIdMatcher = new RegExp('/events/.*/([^/]+)/?')
     const regexMatches = request.match(eventIdMatcher)
 
     let eventId
