@@ -15,11 +15,11 @@ const formatHours = hoursOfOperation => {
 }
 
 const formatWebsite = website => {
-  let link
+  let linkText
   if (website && website.length > 0) {
-    link = 'Website'
+    linkText = 'Vist Website'
   }
-  return link
+  return linkText
 }
 
 // TODO: The link card component has overlapping functionality and should be
@@ -101,7 +101,8 @@ const ContactCard = props => {
       name: 'website',
       text: formatWebsite(website),
       href: website,
-      ariaLabel: 'link icon'
+      icon: 'external-link-square',
+      ariaLabel: 'website icon'
     },
     {
       name: 'hours of operation',
