@@ -54,7 +54,6 @@ class LenderLookupPage extends React.PureComponent {
 
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
-    const showTaxQuestion = false
     const pageSize = 5
     const defaultSearchParams = {
       pageSize
