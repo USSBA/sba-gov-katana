@@ -197,22 +197,36 @@ if (config.get('developmentOptions.webpack.enabled')) {
 const { fetchNewUrlByOldUrl } = require('./service/drupal-url-redirect.js')
 const { findMostRecentUrlRedirect } = require('./service/url-redirect.js')
 
-async function getMetaVariables(nodeId, type = 'node', request) {
+async function setMetaVariables(nodeId, type = 'node', request) {
   let description = config.get('meta.description')
   let title = config.get('meta.title')
 
+  // Processes for event detail pages but ignores events find page
+  if (request.substring(0, 8) === '/events/' && request.substring(8, 12) !== 'find') {
+    const eventIdMatcher = new RegExp('/events/.*/([^/]+)/?')
+    const regexMatches = request.match(eventIdMatcher)
+
+    let eventId
+    if (regexMatches && regexMatches.length > 0) {
+      eventId = regexMatches[1]
+    }
+
+    let jsonContent
+    if (eventId) {
+      jsonContent = await axios.get(
+        `https://${config.get('server.fqdn')}/api/content/search/events.json?id=${eventId}`
+      )
+    }
+
+    if (jsonContent && jsonContent.data && jsonContent.data.hit.length > 0) {
+      description = jsonContent.data.hit[0].description
+      title = jsonContent.data.hit[0].title
+    }
+  }
   // This will only allow valid nodeId's to make an axios call.
   // Currently negative nodeId numbers are associated to pages without a nodeId,
   // so we can regard negative nodeId's as invalid.
-  if (request.substring(0, 7) === '/event/') {
-    const jsonContent = await axios.get(
-      `https://${config.get('server.fqdn')}/api/content/search/event/${nodeId}.json`
-    )
-    if (jsonContent.data) {
-      description = jsonContent.data.summary
-      title = jsonContent.data.title
-    }
-  } else if (nodeId > 0) {
+  else if (nodeId > 0) {
     const jsonContent = await axios.get(
       `https://${config.get('content.cloudfront')}/api/content/${nodeId}.json`
     )
@@ -231,7 +245,7 @@ async function getMetaVariables(nodeId, type = 'node', request) {
 app.get(['/', '/*'], async function(req, res, next) {
   let metaVariables
   try {
-    metaVariables = await getMetaVariables(req.nodeId, req.type, req.url)
+    metaVariables = await setMetaVariables(req.nodeId, req.type, req.url)
 
     const pugVariables = _.merge({}, metaVariables, {
       langOverride: req.preferredLanguage,
