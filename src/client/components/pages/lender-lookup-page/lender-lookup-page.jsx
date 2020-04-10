@@ -93,7 +93,8 @@ class LenderLookupPage extends React.PureComponent {
             }}
             errorText="Enter a 5-digit zip code."
           />
-          <MultiSelect
+          {/* TC-3 Uncomment when adding back in tax question */}
+          {/* <MultiSelect
             id="has-filed-2019-taxes"
             queryParamName="hasFiled2019Taxes"
             label="Have you filed your 2019 Taxes?"
@@ -111,7 +112,7 @@ class LenderLookupPage extends React.PureComponent {
               }
             ]}
             dataCy="has-filed-2019-taxes"
-          />
+          /> */}
         </PrimarySearchBar>
         <OfficeMap
           id="office-map"
