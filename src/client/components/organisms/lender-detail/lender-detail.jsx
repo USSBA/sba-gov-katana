@@ -46,6 +46,7 @@ class LenderDetail extends React.PureComponent {
       email: '',
       phoneNumber: item.bank_phone ? item.bank_phone[0] : '',
       fax: item.contact_fax ? item.contact_fax[0] : '',
+      website: item.website ? item.website[0] : '',
       border: false
     }
 
