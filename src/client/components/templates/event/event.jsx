@@ -234,7 +234,7 @@ class Event extends Component {
                 <div id="event-details-time" data-cy="event-details-time" tabIndex="0">
                   {eventTime}
                 </div>
-                {recurringType && this.renderRecurringInfo()}
+                {recurringType ? this.renderRecurringInfo() : <p />}
               </div>
               <div>
                 <h3 tabIndex="0">Cost</h3>
