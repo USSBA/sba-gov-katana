@@ -126,6 +126,8 @@ const mainRoutes = [
   <Redirect key={57} path="/person/:first" to="/person/:first/" />,
   <Route key={58} path="/local-assistance/find/" component={OfficeLookupPage} />,
   <Redirect key={59} from="/local-assistance/find" to="/local-assistance/find/" />,
+  <Route key={82} path="/asistencia-local/find/" component={OfficeLookupPage} />,
+  <Redirect key={83} from="/asistencia-local/find" to="/asistencia-local/find/" />,
   <Route key={60} path="/events/find/" component={EventLookupPage} />,
   <Redirect key={61} from="/events/find" to="/events/find/" />,
   <Route key={62} path="/person/" component={PersonLookupPage} />,
