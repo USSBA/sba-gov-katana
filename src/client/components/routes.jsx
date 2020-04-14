@@ -162,11 +162,16 @@ const mainRoutes = [
   />,
   <Route key={76} path="/sitemap" component={SiteMapPage} />,
   <Redirect key={77} from="/sitemap/" to="/sitemap" />,
-  <Route key={78} path="/events/:eventId" component={EventPage} />,
-  <Redirect key={79} from="/events/:eventId/" to="/events/:eventId" />,
-  // TODO: Remove redirects 80 and 81 after switching to updated events backend
-  <Redirect key={80} from="/event/:eventId/" to="/events/:eventId" />,
-  <Redirect key={81} from="/event/:eventId" to="/events/:eventId" />,
+  <Route key={78} path="/events/:locationTitlePath/:eventId" component={EventPage} />,
+  <Redirect
+    key={79}
+    from="/events/:locationTitlePath/:eventId/"
+    to="/events/:locationTitlePath/:eventId"
+  />,
+  <Route key={80} path="/events/:eventId" component={EventPage} />,
+  // TODO: Remove redirects 81 and 82 after switching to updated events backend
+  <Redirect key={81} from="/event/:eventId/" to="/events/:eventId" />,
+  <Redirect key={82} from="/event/:eventId" to="/events/:eventId" />,
   <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
   <Route
     key={13}
