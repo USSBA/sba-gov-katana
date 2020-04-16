@@ -73,7 +73,7 @@ class LenderLookupPage extends React.PureComponent {
         <PrimarySearchBar
           id="lender-primary-search-bar"
           title="Find Eligible Lenders"
-          subtext="Use this tool to find a nearby lender eligible to issue a loan under the Paycheck Protection Program."
+          subtext="The SBA is currently unable to accept new applications for the Paycheck Protection Program based on available appropriations funding."
           className={styles.searchBar}
         >
           <TextInput
