@@ -360,6 +360,7 @@ jobs:
                 ;;
               qa)
                 export ASSET_BUCKET_NAME_PREFIX=qa.ussba.io
+                ;;
               *)
                 export ASSET_BUCKET_NAME_PREFIX=${ENVIRONMENT}
                 ;;
