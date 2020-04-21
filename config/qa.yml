@@ -1,0 +1,25 @@
+googleAnalytics:
+    enabled: true
+    accountId: UA-96147768-1
+    optimizeContainerId: GTM-NPDXPPF
+    tagManagerAccountId: GTM-WN49BK2
+    debug: false
+foresee:
+    environment: staging
+miscapi:
+  endpoint: mpmhqtea8g.execute-api.us-east-1.amazonaws.com/latest/
+server:
+    fqdn: qa.ussba.io
+features:
+    localAssistMenuHeight: true
+    geoLocator: false
+    showSbic: false
+    urlRedirect:
+        tableName: UrlToNodeQualityAssurance
+        enabled: true
+    drupalRedirect:
+        enabled: true
+        tableName: UrlToUrlRedirectQualityAssurance
+content:
+    cloudfront: d99ubiyhrorko.cloudfront.net
+    useD8EventsBackend: false

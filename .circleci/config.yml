@@ -33,6 +33,7 @@ workflows:
             - mint
             - amy
             - pat
+            - qa
             - /int-\w+/ 
     - cache-dependencies-upper:
         filters:
@@ -102,6 +103,7 @@ workflows:
             - mint
             - amy
             - pat
+            - qa
             - /int-\w+/
             - /RELEASE-\d+/
     - build-package:
@@ -117,6 +119,7 @@ workflows:
             - staging
             - mint
             - amy
+            - qa
             - pat
             - /int-\w+/
             - /RELEASE-\d+/
@@ -131,6 +134,7 @@ workflows:
             - amy
             - pat
             - mint
+            - qa
             - /int-\w+/
             - /RELEASE-\d+/
         context: sba-gov-lower
@@ -144,6 +148,7 @@ workflows:
             only:
             - amy
             - pat
+            - qa
             - /int-\w+/
             - /RELEASE-\d+/
         context: sba-gov-lower
@@ -353,6 +358,8 @@ jobs:
               pat)
                 export ASSET_BUCKET_NAME_PREFIX=pat.ussba.io
                 ;;
+              qa)
+                export ASSET_BUCKET_NAME_PREFIX=qa.ussba.io
               *)
                 export ASSET_BUCKET_NAME_PREFIX=${ENVIRONMENT}
                 ;;
