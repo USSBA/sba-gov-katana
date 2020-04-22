@@ -7,7 +7,7 @@ googleAnalytics:
 foresee:
     environment: staging
 miscapi:
-  endpoint: mpmhqtea8g.execute-api.us-east-1.amazonaws.com/latest/
+  endpoint: 36wms1ypyc.execute-api.us-east-1.amazonaws.com/latest/
 server:
     fqdn: qa.ussba.io
 features:
