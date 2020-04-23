@@ -133,10 +133,19 @@ workflows:
             only:
             - amy
             - pat
-            - mint
-            - qa
             - /int-\w+/
             - /RELEASE-\d+/
+        context: sba-gov-lower
+    - upload-package-integration:
+        requires: [build-package]
+        filters:
+          branches:
+            only:
+            - master
+          tags:
+            only:
+            - mint
+            - qa
         context: sba-gov-lower
     - deploy-package:
         requires: [upload-package]
@@ -331,15 +340,7 @@ jobs:
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
         
-            if [ "$ENVIRONMENT" == "master" ]
-            then
-              ENVIRONMENT=mint
-            fi
-
             case $ENVIRONMENT in
-              mint)
-                export ASSET_BUCKET_NAME_PREFIX=mint.ussba.io
-                ;;
               int-as)
                 export ASSET_BUCKET_NAME_PREFIX=avery.ussba.io
                 ;;
@@ -358,9 +359,6 @@ jobs:
               pat)
                 export ASSET_BUCKET_NAME_PREFIX=pat.ussba.io
                 ;;
-              qa)
-                export ASSET_BUCKET_NAME_PREFIX=qa.ussba.io
-                ;;
               *)
                 export ASSET_BUCKET_NAME_PREFIX=${ENVIRONMENT}
                 ;;
@@ -369,7 +367,38 @@ jobs:
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
             aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${ENVIRONMENT}/katana-lambda.zip"
+  
+  upload-package-integration:
+    docker:
+      - image: ussba/cc-docker-git-aws:latest
+    steps:
+      - checkout
+      - attach_workspace:
+          at: workspace
+      - run:
+          name: publish
+          shell: /bin/bash -eo pipefail
+          command: |
+            export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
+            export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
 
+            if [ "$ENVIRONMENT" == "master" ]
+            then
+              INTEGRATION=mint
+              QUALITYASSURANCE=qa
+            fi
+
+            MINT_ASSET_BUCKET_NAME_PREFIX=mint.ussba.io
+            QA_ASSET_BUCKET_NAME_PREFIX=qa.ussba.io
+
+            aws s3 sync workspace/build/ s3://${MINT_ASSET_BUCKET_NAME_PREFIX}-assets/build/
+            aws s3 sync workspace/assets/ s3://${MINT_ASSET_BUCKET_NAME_PREFIX}-assets/assets/
+            aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${INTEGRATION}/katana-lambda.zip"    
+  
+            aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
+            aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
+            aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${QUALITYASSURANCE}/katana-lambda.zip"    
+  
   deploy-package:
     docker:
       - image: ussba/cc-docker-git-aws:latest
