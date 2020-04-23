@@ -150,16 +150,19 @@ workflows:
     - deploy-package:
         requires: [upload-package]
         filters:
-          branches:
-            only:
-            - master
           tags:
             only:
             - amy
             - pat
-            - qa
             - /int-\w+/
             - /RELEASE-\d+/
+        context: sba-gov-lower
+    - deploy-package-integration:
+        requires: [upload-package]
+        filters:
+          branches:
+            only:
+            - master
         context: sba-gov-lower
     - hold:
         type: approval
@@ -415,14 +418,7 @@ jobs:
               TARGET_ENVIRONMENT=${CIRCLE_BRANCH}
             fi
 
-            case $TARGET_ENVIRONMENT in
-              master)
-                export ENVIRONMENT=mint
-                ;;
-              *)
-                export ENVIRONMENT=${CIRCLE_TAG}
-                ;;
-            esac
+            ENVIRONMENT = ${CIRCLE_TAG}
 
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
@@ -431,6 +427,31 @@ jobs:
             export LAMBDA_NAME="${ENVIRONMENT}-KatanaLambda"
 
             aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${ENVIRONMENT}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
+
+  deploy-package-integration:
+    docker:
+      - image: ussba/cc-docker-git-aws:latest
+    steps:
+      - checkout
+      - run:
+          name: deploy
+          shell: /bin/bash -eo pipefail
+          command: |
+
+            export INTEGRATION=mint
+            export QUALITYASSURANCE=qa
+     
+            export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
+            export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
+
+            export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${INTEGRATION}/katana-lambda.zip" | jq '.Versions[0].VersionId')
+            export LAMBDA_NAME="${INTEGRATION}-KatanaLambda"
+            aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${INTEGRATION}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
+            
+            
+            export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${QUALITYASSURANCE}/katana-lambda.zip" | jq '.Versions[0].VersionId')
+            export LAMBDA_NAME="${QUALITYASSURANCE}-KatanaLambda"
+            aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${ASSURANCE}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
 
   upload-package-with-approval:
     docker:
