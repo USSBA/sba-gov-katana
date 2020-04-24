@@ -13,7 +13,7 @@ features:
         tableName: UrlToUrlRedirectStaging
         enabled: true
     borrowerChatbot:
-        baseUrl: staging.sba.gov/borrowerbot'
+        baseUrl: www.sba.gov/borrowerbot'
 aws:
   cloudsearch:
     searchEndpoint: 'doc-staging-2qt6cxrxhpdkdv5pnjgw54wzqi.us-east-1.cloudsearch.amazonaws.com'
