@@ -11,6 +11,8 @@ import { BasicPage } from 'templates/basic-page/basic-page.jsx'
 
 const title = 'My Basic Page'
 const summary = 'My Basic Page Summary'
+const locationOne = '/business-guide/marketing'
+const locationTwo = '/funding-programs/finder'
 
 jest.mock('element-overlap')
 
@@ -20,7 +22,7 @@ describe('BasicPage', () => {
   })
 
   test('renders default data', () => {
-    const component = shallow(<BasicPage title="" summary="" />)
+    const component = shallow(<BasicPage title="" summary="" location={{ locationOne }} />)
     expect(component.find('.basicpage-mobilenav')).toHaveLength(1)
     expect(component.find('.basicpage-previousnext')).toHaveLength(1)
     expect(component.find('.basicpage-sectionnavigation')).toHaveLength(1)
@@ -28,49 +30,61 @@ describe('BasicPage', () => {
   })
 
   test('renders the mobilenav when displayMobileNav state is true', () => {
-    const BasicPageComponent = shallow(<BasicPage title="" summary="" />)
+    const BasicPageComponent = shallow(<BasicPage title="" summary="" location={{ locationTwo }} />)
     BasicPageComponent.setState({ displayMobileNav: true })
     expect(BasicPageComponent.find('.basicpage-mobilenav').hasClass('hideContainer')).toEqual(true)
   })
 
   test("doesn't render the mobilenav when displayMobileNav state is false", () => {
-    const BasicPageComponent = shallow(<BasicPage title="" summary="" />)
+    const BasicPageComponent = shallow(<BasicPage title="" summary="" location={{ locationOne }} />)
     BasicPageComponent.setState({ displayMobileNav: false })
     expect(BasicPageComponent.find('.basicpage-mobilenav').hasClass('container')).toEqual(true)
   })
 
   test('render a TitleSection component', () => {
-    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
+    const BasicPageComponent = shallow(
+      <BasicPage title={title} summary={summary} location={{ locationOne }} />
+    )
     expect(BasicPageComponent.find(TitleSection).length).toEqual(1)
     expect(BasicPageComponent.find(TitleSection).prop('title')).toEqual(title)
     expect(BasicPageComponent.find(TitleSection).prop('summary')).toEqual(summary)
   })
 
   test("doesn't render a Breadcrumb component when no lineage prop is passed", () => {
-    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
+    const BasicPageComponent = shallow(
+      <BasicPage title={title} summary={summary} location={{ locationTwo }} />
+    )
     expect(BasicPageComponent.find(Breadcrumb).length).toEqual(0)
   })
 
   test('renders a Breadcrumb component when no lineage prop is passed', () => {
     const lineage = [{ title: 'onelineage', fullUrl: 'http://good.com/good' }]
-    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} lineage={lineage} />)
+    const BasicPageComponent = shallow(
+      <BasicPage title={title} summary={summary} lineage={lineage} location={{ locationOne }} />
+    )
     expect(BasicPageComponent.find(Breadcrumb).length).toEqual(1)
     expect(BasicPageComponent.find(Breadcrumb).prop('items')).toBeDefined()
   })
 
   test('renders RemoveMainLoader component', () => {
-    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
+    const BasicPageComponent = shallow(
+      <BasicPage title={title} summary={summary} location={{ locationTwo }} />
+    )
     expect(BasicPageComponent.find(RemoveMainLoader).length).toEqual(1)
   })
 
   test('renders Waypoint library', () => {
-    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
+    const BasicPageComponent = shallow(
+      <BasicPage title={title} summary={summary} location={{ locationOne }} />
+    )
     expect(BasicPageComponent.find(Waypoint).length).toEqual(1)
   })
 
   test('has a section navigation when there is a lineage', () => {
     const lineage = [{ title: 'lineage1', fullUrl: 'http://example.com/lineage1' }]
-    const component = shallow(<BasicPage title={title} summary={summary} lineage={lineage} />)
+    const component = shallow(
+      <BasicPage title={title} summary={summary} lineage={lineage} location={{ locationTwo }} />
+    )
     const sectionNav = component.find(SectionNav)
 
     expect(sectionNav.prop('lineage')).toEqual(lineage)
@@ -85,7 +99,7 @@ describe('BasicPage', () => {
   })
 
   test('has no section navigation when there is no lineage', () => {
-    const component = shallow(<BasicPage title={title} summary={summary} />)
+    const component = shallow(<BasicPage title={title} summary={summary} location={{ locationOne }} />)
     const sectionNav = component.find(SectionNav)
 
     expect(sectionNav.length).toEqual(0)
@@ -93,7 +107,9 @@ describe('BasicPage', () => {
 
   test('has previous and next buttons when there is a lineage', () => {
     const lineage = [{ title: 'lineage1', fullUrl: 'http://example.com/lineage1' }]
-    const component = shallow(<BasicPage title={title} summary={summary} lineage={lineage} />)
+    const component = shallow(
+      <BasicPage title={title} summary={summary} lineage={lineage} location={{ locationTwo }} />
+    )
     const sectionNav = component.find(PreviousNextSection)
 
     expect(sectionNav.length).toEqual(1)
@@ -103,7 +119,7 @@ describe('BasicPage', () => {
 
   test('has no previous and next buttons when there is no lineage', () => {
     mockListenForOverlap.mockImplementation(() => null)
-    const component = shallow(<BasicPage title={title} summary={summary} />)
+    const component = shallow(<BasicPage title={title} summary={summary} location={{ locationOne }} />)
     const sectionNav = component.find(PreviousNextSection)
 
     expect(sectionNav.length).toEqual(0)

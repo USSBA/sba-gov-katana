@@ -42,7 +42,7 @@ export class RootPage extends React.Component {
     } else if (window && window.nodeId && this.state.siteMap.length && Number(window.nodeId) > 0) {
       const pageLineage = findPageLineageByNodeId(this.state.siteMap, window.nodeId)
       if (pageLineage) {
-        return <Page lineage={pageLineage} nodeId={window.nodeId} />
+        return <Page lineage={pageLineage} location={this.props.location} nodeId={window.nodeId} />
       } else {
         return <ErrorPage />
       }
