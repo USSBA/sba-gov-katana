@@ -12,6 +12,8 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectPat
+    borrowerChatbot:
+    baseUrl: 'borrowerbot-web-ui-codebuilddeploy-1-webappbucket-1fy48fwc62ekq.s3.us-west-2.amazonaws.com'
 sizestandards:
     endpoint: 27b9p5e3fk.execute-api.us-east-1.amazonaws.com/LATEST/
 content:

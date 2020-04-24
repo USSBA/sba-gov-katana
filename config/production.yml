@@ -18,6 +18,8 @@ features:
     drupalRedirect:
         tableName: UrlToUrlRedirectProduction
         enabled: true
+    borrowerChatbot:
+            baseUrl: www.sba.gov/borrowerbot'
 aws:
   cloudsearch:
     searchEndpoint: 'doc-production-b4waq4e3rl6daphct5rtlxjmmm.us-east-1.cloudsearch.amazonaws.com'
