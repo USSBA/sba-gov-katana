@@ -13,7 +13,8 @@ features:
         enabled: true
         tableName: UrlToUrlRedirectPat
     borrowerChatbot:
-    baseUrl: 'borrowerbot-web-ui-codebuilddeploy-1-webappbucket-1fy48fwc62ekq.s3.us-west-2.amazonaws.com'
+        baseUrl: 'borrowerbot-web-ui-codebuilddeploy-1-webappbucket-1fy48fwc62ekq.s3.us-west-2.amazonaws.com'
+        configFile: '/config/pat.lex-web-ui-loader-config.json'
 sizestandards:
     endpoint: 27b9p5e3fk.execute-api.us-east-1.amazonaws.com/LATEST/
 content:
