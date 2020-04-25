@@ -22,6 +22,7 @@ features:
         tableName: UrlToUrlRedirectIntegration
     borrowerChatbot:
         baseUrl: 'borrowerbot-web-ui-codebuilddeploy-1-webappbucket-1fy48fwc62ekq.s3.us-west-2.amazonaws.com'
+        configFile: 'lex-web-ui-loader-config.json'
 content:
     cloudfront: d32xeasjw66w65.cloudfront.net
     useD8EventsBackend: false

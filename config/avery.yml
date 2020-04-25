@@ -21,8 +21,6 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectAvery
-    borrowerChatbot:
-        baseUrl: 'borrowerbot-web-ui-codebuilddeploy-1-webappbucket-1fy48fwc62ekq.s3.us-west-2.amazonaws.com'
 content:
     cloudfront: d8ptg6c733nbj.cloudfront.net
     useD8EventsBackend: false
