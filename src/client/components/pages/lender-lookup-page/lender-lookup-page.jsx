@@ -155,6 +155,10 @@ class LenderLookupPage extends React.PureComponent {
             <LenderResult />
           </Results>
         </StyleWrapperDiv>
+        <div className={styles.noticeWithLink}>
+          {`If you notice incorrect bank information, please contact your `}
+          <a href="https://www.sba.gov/tools/local-assistance/districtoffices">SBA District Office</a>
+        </div>
       </SearchTemplate>
     )
   }
