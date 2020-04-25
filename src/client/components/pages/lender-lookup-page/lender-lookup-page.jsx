@@ -72,8 +72,8 @@ class LenderLookupPage extends React.PureComponent {
       >
         <PrimarySearchBar
           id="lender-primary-search-bar"
-          title="Find Eligible Lenders"
-          subtext="The SBA is currently unable to accept new applications for the Paycheck Protection Program based on available appropriations funding."
+          title="Find Eligible Paycheck Protection Program Lenders"
+          subtext="Notice: The SBA will resume accepting Paycheck Protection Program applications from participating lenders on Monday, April 27, 2020 at 10:30am EDT."
           className={styles.searchBar}
         >
           <TextInput
