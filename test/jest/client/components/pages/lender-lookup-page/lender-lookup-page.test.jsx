@@ -38,6 +38,14 @@ describe('LenderLookupPage', () => {
       const wrapper = shallow(<LenderLookupPage />)
       expect(wrapper.find('Results')).toHaveLength(1)
     })
+
+    it('renders a notice with link to SBA District Office', () => {
+      const wrapper = shallow(<LenderLookupPage />)
+      expect(wrapper.find('.noticeWithLink')).toHaveLength(1)
+      expect(
+        wrapper.find('[href="https://www.sba.gov/tools/local-assistance/districtoffices"]')
+      ).toHaveLength(1)
+    })
   })
 
   describe('actions', () => {
