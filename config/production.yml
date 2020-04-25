@@ -19,7 +19,8 @@ features:
         tableName: UrlToUrlRedirectProduction
         enabled: true
     borrowerChatbot:
-            baseUrl: www.sba.gov/borrowerbot'
+        baseUrl: 'www.sba.gov/borrowerbot'
+        configFile: 'lex-web-ui-loader-config.json'
 aws:
   cloudsearch:
     searchEndpoint: 'doc-production-b4waq4e3rl6daphct5rtlxjmmm.us-east-1.cloudsearch.amazonaws.com'

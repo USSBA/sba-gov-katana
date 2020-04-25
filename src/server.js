@@ -134,7 +134,7 @@ app.post('/actions/misc/*', async (req, res, next) => {
 
 app.get('/api/borrowerbot', (req, res, next) => {
   res.send({
-    baseUrl: `https://${config.get('features.borrowerChatbot.baseUrl')}`,
+    baseUrl: `http://${config.get('features.borrowerChatbot.baseUrl')}`,
     configFile: config.get('features.borrowerChatbot.configFile')
   })
 })

@@ -10,7 +10,7 @@ class ChatbotWidget extends React.Component {
     script.async = true
     script.innerHTML = `var loaderOpts = {
         baseUrl: '${result.data.baseUrl}',
-        configUrl: '${result.data.baseUrl}${result.data.configFile}',
+        configUrl: '${result.data.baseUrl}/${result.data.configFile}',
         shouldLoadMinDeps: true
       };
       var loader = new ChatBotUiLoader.IframeLoader(loaderOpts);
