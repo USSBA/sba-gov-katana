@@ -126,6 +126,9 @@ workflows:
     - upload-package:
         requires: [build-package]
         filters:
+          branches:
+            ignore:
+            - /.*/
           tags:
             only:
             - amy
@@ -143,6 +146,9 @@ workflows:
     - deploy-package:
         requires: [upload-package]
         filters:
+          branches:
+            ignore:
+            - /.*/
           tags:
             only:
             - amy
@@ -387,8 +393,8 @@ jobs:
             aws s3 sync workspace/assets/ s3://${MINT_ASSET_BUCKET_NAME_PREFIX}-assets/assets/
             aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${INTEGRATION}/katana-lambda.zip"    
   
-            aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
-            aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
+            aws s3 sync workspace/build/ s3://${QA_ASSET_BUCKET_NAME_PREFIX}-assets/build/
+            aws s3 sync workspace/assets/ s3://${QA_ASSET_BUCKET_NAME_PREFIX}-assets/assets/
             aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${QUALITYASSURANCE}/katana-lambda.zip"    
   
   deploy-package:
@@ -439,7 +445,7 @@ jobs:
             
             export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${QUALITYASSURANCE}/katana-lambda.zip" | jq '.Versions[0].VersionId')
             export LAMBDA_NAME="${QUALITYASSURANCE}-KatanaLambda"
-            aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${ASSURANCE}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
+            aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${QUALITYASSURANCE}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
 
   upload-package-with-approval:
     docker:
