@@ -218,7 +218,6 @@ class Results extends React.PureComponent {
     const view = shouldShowDetail
       ? this.renderDetailResultsView(resultsClassName)
       : this.renderResultsView(resultsClassName)
-    console.log('view', view)
     return (
       <div id={id} className={styles.container} role="main" aria-live="polite">
         {view}
