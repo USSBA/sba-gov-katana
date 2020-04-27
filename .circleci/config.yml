@@ -141,7 +141,7 @@ workflows:
         filters:
           branches:
             only:
-            - Feature-TA-3609-TEST
+            - master
         context: sba-gov-lower
     - deploy-package:
         requires: [upload-package]
@@ -161,7 +161,7 @@ workflows:
         filters:
           branches:
             only:
-            - Feature-TA-3609-TEST
+            - master
         context: sba-gov-lower
     - hold:
         type: approval
@@ -406,7 +406,7 @@ jobs:
           name: deploy
           shell: /bin/bash -eo pipefail
           command: |
-            export ENVIRONMENT = ${CIRCLE_TAG}
+            export ENVIRONMENT=${CIRCLE_TAG}
 
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
