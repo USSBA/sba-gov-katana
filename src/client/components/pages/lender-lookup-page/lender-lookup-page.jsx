@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash'
 
 import styles from './lender-lookup-page.scss'
 import { StyleWrapperDiv, TextInput, MultiSelect } from 'atoms'
-import { PrimarySearchBar, Results, LenderDetail, LenderResult, OfficeMap } from 'organisms'
+import { PrimarySearchBar, Results, LenderDetail, OfficeMap } from 'organisms'
 import SearchTemplate from '../../templates/search/search.jsx'
 
 class LenderLookupPage extends React.PureComponent {
@@ -41,15 +41,6 @@ class LenderLookupPage extends React.PureComponent {
 
   setHoveredMarkerId(hoveredMarkerId) {
     this.setState({ hoveredMarkerId })
-  }
-
-  customDetailResultsView(resultsClassName, hideDetailState) {
-    const { selectedItem } = this.state
-    return (
-      <div className={resultsClassName}>
-        <LenderDetail selectedItem={selectedItem} hideDetailState={hideDetailState} />
-      </div>
-    )
   }
 
   render() {
@@ -147,12 +138,11 @@ class LenderLookupPage extends React.PureComponent {
             onResultHover={id => {
               this.setHoveredMarkerId(id)
             }}
-            customDetailResultsView={this.customDetailResultsView.bind(this)}
             extraContainerStyles={styles.centerContainer}
             extraResultContainerStyles={styles.resultContainer}
             setWhiteBackground
           >
-            <LenderResult />
+            <LenderDetail />
           </Results>
         </StyleWrapperDiv>
         <div className={styles.noticeWithLink}>

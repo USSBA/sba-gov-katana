@@ -77,7 +77,7 @@ const ContactCard = props => {
     {
       name: 'contact link',
       text: linkText,
-      icon: 'external-link-square',
+      icon: 'globe',
       href: link,
       ariaLabel: 'website icon'
     },
