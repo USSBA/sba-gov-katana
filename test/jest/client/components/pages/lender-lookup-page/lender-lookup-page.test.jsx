@@ -51,6 +51,13 @@ describe('LenderLookupPage', () => {
         wrapper.find('[href="https://www.sba.gov/tools/local-assistance/districtoffices"]')
       ).toHaveLength(1)
     })
+
+    it('renders CTA for additional relief options', () => {
+      const wrapper = shallow(<LenderLookupPage />)
+      const cta = wrapper.find('CallToAction')
+      expect(cta).toHaveLength(1)
+      expect(cta.prop('headline')).toEqual('Looking for another funding option?')
+    })
   })
 
   describe('actions', () => {
