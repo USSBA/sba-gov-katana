@@ -126,9 +126,6 @@ workflows:
     - upload-package:
         requires: [build-package]
         filters:
-          branches:
-            only:
-            - master
           tags:
             only:
             - amy
@@ -141,11 +138,7 @@ workflows:
         filters:
           branches:
             only:
-            - master
-          tags:
-            only:
-            - mint
-            - qa
+            - Feature-TA-3609-TEST
         context: sba-gov-lower
     - deploy-package:
         requires: [upload-package]
@@ -158,11 +151,11 @@ workflows:
             - /RELEASE-\d+/
         context: sba-gov-lower
     - deploy-package-integration:
-        requires: [upload-package]
+        requires: [upload-package-integration]
         filters:
           branches:
             only:
-            - master
+            - Feature-TA-3609-TEST
         context: sba-gov-lower
     - hold:
         type: approval
@@ -385,12 +378,8 @@ jobs:
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
 
-            if [ "$ENVIRONMENT" == "master" ]
-            then
-              INTEGRATION=mint
-              QUALITYASSURANCE=qa
-            fi
-
+            INTEGRATION=mint
+            QUALITYASSURANCE=qa
             MINT_ASSET_BUCKET_NAME_PREFIX=mint.ussba.io
             QA_ASSET_BUCKET_NAME_PREFIX=qa.ussba.io
 
@@ -447,7 +436,6 @@ jobs:
             export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${INTEGRATION}/katana-lambda.zip" | jq '.Versions[0].VersionId')
             export LAMBDA_NAME="${INTEGRATION}-KatanaLambda"
             aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${INTEGRATION}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
-            
             
             export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${QUALITYASSURANCE}/katana-lambda.zip" | jq '.Versions[0].VersionId')
             export LAMBDA_NAME="${QUALITYASSURANCE}-KatanaLambda"
