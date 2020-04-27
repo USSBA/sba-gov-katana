@@ -39,6 +39,11 @@ describe('LenderLookupPage', () => {
       expect(wrapper.find('Results')).toHaveLength(1)
     })
 
+    it('renders LenderDetail inside Results', () => {
+      const wrapper = shallow(<LenderLookupPage />)
+      expect(wrapper.find('Results').find('LenderDetail')).toHaveLength(1)
+    })
+
     it('renders a notice with link to SBA District Office', () => {
       const wrapper = shallow(<LenderLookupPage />)
       expect(wrapper.find('.noticeWithLink')).toHaveLength(1)
