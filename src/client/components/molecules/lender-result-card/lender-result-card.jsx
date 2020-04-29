@@ -66,7 +66,15 @@ const LenderResultCard = props => {
             className={`fa fa-${fields.website.icon}`}
             tabIndex="0"
           />
-          <span dangerouslySetInnerHTML={{ __html: fields.website.text }} tabIndex="0" />
+          <span tabIndex="0">{fields.website.text}</span>
+        </a>
+        <a className={styles.phoneNumber} href={fields.phoneNumber.href}>
+          <i
+            aria-label={fields.phoneNumber.ariaLabel}
+            className={`fa fa-${fields.phoneNumber.icon}`}
+            tabIndex="0"
+          />
+          <span tabIndex="0">Call</span>
         </a>
       </div>
     </div>

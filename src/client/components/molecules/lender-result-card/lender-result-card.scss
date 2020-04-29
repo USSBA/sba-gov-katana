@@ -1,5 +1,7 @@
 .lenderResultCard {
   display: flex;
+  justify-content: space-between;
+
   .firstColumn {
     color: $secondary-black-ish;
     padding-top: 5px;
@@ -7,24 +9,42 @@
     max-width: 300px;
   }
   .secondColumn {
+    display: flex;
     width: 25%;
     align-self: center;
+    justify-content: space-between;
     min-height: 35px;
     margin: 0 $base-spacing;
 
-    .websiteLink {
+    .websiteLink,
+    .phoneNumber {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-decoration: none;
+      color: $secondary-blue;
+      margin-right: 1rem;
 
       i {
         font-size: 1.5rem;
+        width: 1.6em;
+        height: 1.6em;
+        text-align: center;
+        line-height: 1.6em;
+        border-radius: 50%;
+        border: 1px solid;
+        box-sizing: content-box;
       }
 
       span {
         display: block;
         font-size: 15px;
+      }
+    }
+
+    .phoneNumber {
+      @include grid-media($sba-grid-medium) {
+        display: none;
       }
     }
   }
