@@ -86,6 +86,23 @@
   }
 }
 
+.noticeWithLink {
+  background-color: $secondary-blue-dark;
+  color: $sba-blue-lighter;
+  padding: $small-spacing;
+  padding-left: 28px;
+  font-family: $serif-font-family;
+  font-style: italic;
+
+  a {
+    color: inherit;
+  }
+}
+
+.ctaContainer {
+  margin: 28px;
+}
+
 .multiselect {
   label {
     font-weight: 400;
