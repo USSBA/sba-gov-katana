@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import styles from './lender-result-card.scss'
+import classNames from 'classnames'
 
 const LenderResultCard = props => {
   const { link, phoneNumber, streetAddress, title, className: cn, testId } = props
@@ -17,17 +18,28 @@ const LenderResultCard = props => {
       name: 'contact phone',
       text: phoneNumber,
       icon: 'phone',
-      href: `tel:${phoneNumber}`,
+      href: `${phoneNumber ? `tel:${phoneNumber}` : ``}`,
       ariaLabel: 'phone icon'
     },
     website: {
       name: 'contact link',
       text: 'Website',
       icon: 'globe',
-      href: link,
+      href: link || '',
       ariaLabel: 'website icon'
     }
   }
+
+  const lenderWebsiteClassName = classNames({
+    [styles.disabled]: !fields.website.href,
+    [styles.iconContainer]: true
+  })
+
+  const lenderPhoneClassName = classNames({
+    [styles.phoneNumber]: true,
+    [styles.disabled]: !fields.phoneNumber.href,
+    [styles.iconContainer]: true
+  })
 
   return (
     <div data-testid={testId} className={styles.lenderResultCard}>
@@ -48,7 +60,7 @@ const LenderResultCard = props => {
           className={styles.row}
           key={Math.random()}
         >
-          <span dangerouslySetInnerHTML={{ __html: fields.address.text }} tabIndex="0" />
+          <span tabIndex="0">{fields.address.text}</span>
         </div>
         <div
           data-testid={fields.phoneNumber.name}
@@ -56,11 +68,11 @@ const LenderResultCard = props => {
           className={styles.row}
           key={Math.random()}
         >
-          <span dangerouslySetInnerHTML={{ __html: fields.phoneNumber.text }} tabIndex="0" />
+          <span tabIndex="0">{fields.phoneNumber.text}</span>
         </div>
       </div>
       <div className={styles.secondColumn}>
-        <a className={styles.websiteLink} href={fields.website.href}>
+        <a className={lenderWebsiteClassName} href={fields.website.href}>
           <i
             aria-label={fields.website.ariaLabel}
             className={`fa fa-${fields.website.icon}`}
@@ -68,7 +80,7 @@ const LenderResultCard = props => {
           />
           <span tabIndex="0">{fields.website.text}</span>
         </a>
-        <a className={styles.phoneNumber} href={fields.phoneNumber.href}>
+        <a className={lenderPhoneClassName} href={fields.phoneNumber.href}>
           <i
             aria-label={fields.phoneNumber.ariaLabel}
             className={`fa fa-${fields.phoneNumber.icon}`}
