@@ -175,14 +175,8 @@ class Results extends React.PureComponent {
       divProps.className = extraContainerStyles
     }
 
-    let shouldShowSearchInfoPanel = true
-    if (!enableNoResultsMessage) {
-      shouldShowSearchInfoPanel = items.length > 0
-    }
-
     return (
       <div className={resultsClassName}>
-        {shouldShowSearchInfoPanel && this.renderSearchInfoPanel()}
         <div {...divProps}>
           {this.renderSearchTips()}
           {this.renderDefaultResults()}

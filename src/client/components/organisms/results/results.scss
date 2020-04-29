@@ -4,19 +4,19 @@
 }
 
 .resultsWithPagination {
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     bottom: 66px;
   }
 }
 
 .resultsWithSearchInfo {
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     top: 0px;
   }
 }
 
 .resultContainer {
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     pointer-events: all;
   }
 }
@@ -35,7 +35,7 @@
 }
 
 .defaultResults {
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     pointer-events: all;
   }
 }

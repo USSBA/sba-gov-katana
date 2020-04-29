@@ -53,7 +53,7 @@
 
 .centerContainer {
   outline: none;
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     position: absolute;
     bottom: 0px;
     top: 40px;
@@ -64,23 +64,25 @@
 }
 
 .lenderResults {
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     position: absolute;
-    top: 240px;
-    left: 30px;
+    top: 260px;
     bottom: 27px;
     background-color: unset;
     width: 321px;
     overflow: hidden;
     pointer-events: none;
     margin-top: 50px;
-    margin-bottom: 170px;
+  }
+
+  @include grid-media($sba-grid-large) {
+    top: 170px;
   }
 }
 
 .resultContainer {
   min-width: 321px;
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     position: absolute;
     pointer-events: all;
   }
@@ -108,7 +110,7 @@
     font-weight: 400;
   }
 
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     margin-right: 20px;
     display: inline-block;
     width: 290px;
