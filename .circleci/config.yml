@@ -33,6 +33,7 @@ workflows:
             - mint
             - amy
             - pat
+            - qa
             - /int-\w+/ 
     - cache-dependencies-upper:
         filters:
@@ -102,6 +103,7 @@ workflows:
             - mint
             - amy
             - pat
+            - qa
             - /int-\w+/
             - /RELEASE-\d+/
     - build-package:
@@ -117,6 +119,7 @@ workflows:
             - staging
             - mint
             - amy
+            - qa
             - pat
             - /int-\w+/
             - /RELEASE-\d+/
@@ -124,28 +127,41 @@ workflows:
         requires: [build-package]
         filters:
           branches:
-            only:
-            - master
+            ignore:
+            - /.*/
           tags:
             only:
             - amy
             - pat
-            - mint
             - /int-\w+/
             - /RELEASE-\d+/
+        context: sba-gov-lower
+    - upload-package-integration:
+        requires: [build-package]
+        filters:
+          branches:
+            only:
+            - master
         context: sba-gov-lower
     - deploy-package:
         requires: [upload-package]
         filters:
           branches:
-            only:
-            - master
+            ignore:
+            - /.*/
           tags:
             only:
             - amy
             - pat
             - /int-\w+/
             - /RELEASE-\d+/
+        context: sba-gov-lower
+    - deploy-package-integration:
+        requires: [upload-package-integration]
+        filters:
+          branches:
+            only:
+            - master
         context: sba-gov-lower
     - hold:
         type: approval
@@ -326,15 +342,7 @@ jobs:
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
         
-            if [ "$ENVIRONMENT" == "master" ]
-            then
-              ENVIRONMENT=mint
-            fi
-
             case $ENVIRONMENT in
-              mint)
-                export ASSET_BUCKET_NAME_PREFIX=mint.ussba.io
-                ;;
               int-as)
                 export ASSET_BUCKET_NAME_PREFIX=avery.ussba.io
                 ;;
@@ -361,7 +369,34 @@ jobs:
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
             aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${ENVIRONMENT}/katana-lambda.zip"
+  
+  upload-package-integration:
+    docker:
+      - image: ussba/cc-docker-git-aws:latest
+    steps:
+      - checkout
+      - attach_workspace:
+          at: workspace
+      - run:
+          name: publish
+          shell: /bin/bash -eo pipefail
+          command: |
+            export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
+            export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
 
+            INTEGRATION=mint
+            QUALITYASSURANCE=qa
+            MINT_ASSET_BUCKET_NAME_PREFIX=mint.ussba.io
+            QA_ASSET_BUCKET_NAME_PREFIX=qa.ussba.io
+
+            aws s3 sync workspace/build/ s3://${MINT_ASSET_BUCKET_NAME_PREFIX}-assets/build/
+            aws s3 sync workspace/assets/ s3://${MINT_ASSET_BUCKET_NAME_PREFIX}-assets/assets/
+            aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${INTEGRATION}/katana-lambda.zip"    
+  
+            aws s3 sync workspace/build/ s3://${QA_ASSET_BUCKET_NAME_PREFIX}-assets/build/
+            aws s3 sync workspace/assets/ s3://${QA_ASSET_BUCKET_NAME_PREFIX}-assets/assets/
+            aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${QUALITYASSURANCE}/katana-lambda.zip"    
+  
   deploy-package:
     docker:
       - image: ussba/cc-docker-git-aws:latest
@@ -371,21 +406,7 @@ jobs:
           name: deploy
           shell: /bin/bash -eo pipefail
           command: |
-            if [ -z "${CIRCLE_BRANCH}" ]
-            then
-              TARGET_ENVIRONMENT=${CIRCLE_TAG}
-            else
-              TARGET_ENVIRONMENT=${CIRCLE_BRANCH}
-            fi
-
-            case $TARGET_ENVIRONMENT in
-              master)
-                export ENVIRONMENT=mint
-                ;;
-              *)
-                export ENVIRONMENT=${CIRCLE_TAG}
-                ;;
-            esac
+            export ENVIRONMENT=${CIRCLE_TAG}
 
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
@@ -394,6 +415,30 @@ jobs:
             export LAMBDA_NAME="${ENVIRONMENT}-KatanaLambda"
 
             aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${ENVIRONMENT}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
+
+  deploy-package-integration:
+    docker:
+      - image: ussba/cc-docker-git-aws:latest
+    steps:
+      - checkout
+      - run:
+          name: deploy
+          shell: /bin/bash -eo pipefail
+          command: |
+
+            export INTEGRATION=mint
+            export QUALITYASSURANCE=qa
+     
+            export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
+            export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
+
+            export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${INTEGRATION}/katana-lambda.zip" | jq '.Versions[0].VersionId')
+            export LAMBDA_NAME="${INTEGRATION}-KatanaLambda"
+            aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${INTEGRATION}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
+            
+            export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${QUALITYASSURANCE}/katana-lambda.zip" | jq '.Versions[0].VersionId')
+            export LAMBDA_NAME="${QUALITYASSURANCE}-KatanaLambda"
+            aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${QUALITYASSURANCE}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
 
   upload-package-with-approval:
     docker:
