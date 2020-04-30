@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import LenderResultCard from 'client/components/molecules/lender-result-card/lender-result-card.jsx'
 
 describe('LenderResultCard', () => {
@@ -7,6 +7,9 @@ describe('LenderResultCard', () => {
     link: 'sba.gov',
     phoneNumber: '301-792-0678',
     streetAddress: '3913 7th St NE',
+    city: 'Washington',
+    state: 'DC',
+    zipCode: '20015',
     title: 'Credit Union'
   }
   it('renders the passed title', () => {
@@ -15,8 +18,15 @@ describe('LenderResultCard', () => {
   })
 
   it('renders the address', () => {
-    const wrapper = shallow(<LenderResultCard {...mockProps} />)
-    expect(wrapper.find('[data-testid="contact address"] span').text()).toEqual('3913 7th St NE')
+    const wrapper = mount(<LenderResultCard {...mockProps} />)
+    const addressInnerHtml = wrapper
+      .find('[data-testid="contact address"] span')
+      .prop('dangerouslySetInnerHTML')
+    expect(addressInnerHtml).toEqual(
+      expect.objectContaining({
+        __html: '3913 7th St NE<br />Washington, DC 20015'
+      })
+    )
   })
 
   it('renders the phoneNumber', () => {
