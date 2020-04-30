@@ -17,16 +17,21 @@ const Card = props => {
     parentIndex
   } = props
 
+  const customClass = props.customClass || ''
+
   /* eslint-disable no-magic-numbers */
-  const className = classNames({
-    card: true,
-    [styles.card]: true,
-    [styles.twoColumn]: numCards < 3,
-    [styles.threeColumn]: [3, 5, 9].includes(numCards),
-    [styles.fourColumn]: [4, 7, 8, 10, 11].includes(numCards),
-    [styles.sixColumn]: [6, 12].includes(numCards) || numCards > 12,
-    [styles.noImage]: isEmpty(image)
-  })
+  const className = classNames([
+    customClass,
+    {
+      card: true,
+      [styles.card]: true,
+      [styles.twoColumn]: numCards < 3,
+      [styles.threeColumn]: [3, 5, 9].includes(numCards),
+      [styles.fourColumn]: [4, 7, 8, 10, 11].includes(numCards),
+      [styles.sixColumn]: [6, 12].includes(numCards) || numCards > 12,
+      [styles.noImage]: isEmpty(image)
+    }
+  ])
   /* eslint-enable no-magic-numbers */
 
   // TODO: use lede text instead of subtitle text
@@ -78,7 +83,7 @@ const Card = props => {
       {imageMarkup}
       {/* If a card has a an image, a parent StyledGrayBackground will add
         padding to the card using the class name as a hook. */}
-      <div className={!isEmpty(image) ? 'content-with-image' : undefined}>
+      <div className={!isEmpty(image) ? 'content-with-image' : ''}>
         {titleText ? (
           <h4
             className={styles.itemTitle}

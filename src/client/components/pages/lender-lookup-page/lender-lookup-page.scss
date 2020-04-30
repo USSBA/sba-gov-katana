@@ -117,3 +117,38 @@
     width: 290px;
   }
 }
+
+.infoSection {
+  .leftColumn {
+    margin: $base-spacing;
+  }
+
+  .rightColumn {
+    margin: $base-spacing;
+    float: none;
+    border-top: none;
+    width: unset;
+  }
+
+  h4 {
+    margin-bottom: 0;
+  }
+
+  @include grid-media($sba-grid-medium) {
+    display: flex;
+
+    .leftColumn {
+      padding-right: $base-spacing;
+      width: 65%;
+    }
+
+    .rightColumn {
+      margin-right: $base-spacing;
+      width: 35%;
+
+      h4 {
+        margin-top: 0;
+      }
+    }
+  }
+}
