@@ -5,12 +5,16 @@ import styles from './lender-result-card.scss'
 import classNames from 'classnames'
 
 const LenderResultCard = props => {
-  const { link, phoneNumber, streetAddress, title, className: cn, testId } = props
+  const { link, phoneNumber, streetAddress, title, className: cn, testId, city, state, zipCode } = props
+
+  const formatAddress = breakOrNewLine => {
+    return `${streetAddress}${breakOrNewLine}${city}, ${state} ${zipCode}`
+  }
 
   const fields = {
     address: {
       name: 'contact address',
-      text: streetAddress,
+      text: streetAddress && city && state && zipCode && formatAddress('<br />'),
       icon: 'map-marker',
       ariaLabel: 'address icon'
     },
@@ -60,7 +64,7 @@ const LenderResultCard = props => {
           className={styles.row}
           key={Math.random()}
         >
-          <span tabIndex="0">{fields.address.text}</span>
+          <span dangerouslySetInnerHTML={{ __html: fields.address.text }} tabIndex="0" />
         </div>
         <div
           data-testid={fields.phoneNumber.name}
