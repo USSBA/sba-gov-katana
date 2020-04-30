@@ -10,11 +10,15 @@
   }
   .secondColumn {
     display: flex;
-    width: 25%;
+    width: 30%;
     align-self: center;
     justify-content: space-between;
     min-height: 35px;
-    margin: 0 $base-spacing;
+
+    @include grid-media($sba-grid-medium) {
+      width: 25%;
+      padding-left: 1rem;
+    }
 
     .iconContainer {
       display: flex;
@@ -22,7 +26,6 @@
       align-items: center;
       text-decoration: none;
       color: $secondary-blue;
-      margin-right: 1rem;
 
       &.disabled {
         color: $sba-gray;
@@ -49,6 +52,7 @@
     }
 
     .phoneNumber {
+      margin-left: 1rem;
       @include grid-media($sba-grid-medium) {
         display: none;
       }
