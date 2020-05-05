@@ -9,7 +9,7 @@ class DefaultOfficeResult extends React.PureComponent {
     if (document) {
       const { id, length } = this.props
       if (id === `result-${length - 1}`) {
-        document.querySelector('.search-info-panel').focus()
+        document.querySelector('.search-info-panel') && document.querySelector('.search-info-panel').focus()
       }
     }
   }
