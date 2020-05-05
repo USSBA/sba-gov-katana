@@ -14,6 +14,13 @@ describe('LenderLookupPage', () => {
     expect(result).toHaveLength(1)
   })
   describe('views', () => {
+    it('renders information section', () => {
+      const wrapper = shallow(<LenderLookupPage />)
+      expect(wrapper.find('.infoSection')).toHaveLength(1)
+      expect(wrapper.find('.leftColumn')).toHaveLength(1)
+      expect(wrapper.find('Card')).toHaveLength(1)
+    })
+
     it('renders Search Template', () => {
       const wrapper = shallow(<LenderLookupPage />)
       expect(wrapper.find('SearchTemplate')).toHaveLength(1)

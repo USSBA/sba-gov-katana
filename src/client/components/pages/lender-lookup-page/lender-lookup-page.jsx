@@ -2,7 +2,8 @@ import React from 'react'
 import { isEmpty } from 'lodash'
 
 import styles from './lender-lookup-page.scss'
-import { StyleWrapperDiv, TextInput, MultiSelect } from 'atoms'
+import { Card } from 'molecules'
+import { StyleWrapperDiv, TextInput, Link, MultiSelect } from 'atoms'
 import { PrimarySearchBar, Results, LenderDetail, OfficeMap } from 'organisms'
 import { CallToAction } from 'molecules'
 import SearchTemplate from '../../templates/search/search.jsx'
@@ -44,27 +45,62 @@ class LenderLookupPage extends React.PureComponent {
     this.setState({ hoveredMarkerId })
   }
 
+  buttonAction = {
+    link: {
+      title: 'Additional Relief Options',
+      url: '/funding-programs/loans/coronavirus-relief-options'
+    },
+    type: 'link'
+  }
+
+  image = {
+    url: '/assets/images/local-assistance/AdditionalFundingCTAImage.jpg',
+    alt: 'african american woman business owner'
+  }
+
+  howItWorksText = `The Paycheck Protection Program is a loan designed to provide a 
+  direct incentive for small businesses to keep their workers on the payroll. SBA 
+  will forgiveloads if all employees are kept on the payroll for eight weeks and the
+  money is used for payroll, rent, mortgage interest, or utilities.`
+
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
     const pageSize = 20
     const defaultSearchParams = {
       pageSize
     }
-    const buttonAction = {
-      link: {
-        title: 'Additional Relief Options',
-        url: '/funding-programs/loans/coronavirus-relief-options'
-      },
-      type: 'link'
-    }
-
-    const image = {
-      url: '/assets/images/local-assistance/AdditionalFundingCTAImage.jpg',
-      alt: 'african american woman business owner'
-    }
 
     return (
       <>
+        <div className={styles.infoSection}>
+          <div className={styles.leftColumn}>
+            <h2>Find Eligible Paycheck Protection Program Lenders</h2>
+            <p>
+              {`If you wish to begin preparing your application, you can download a copy of `}
+              <Link
+                to="https://www.sba.gov/document/sba-form--paycheck-protection-program-borrower-application-form"
+                key="ppp-application"
+              >
+                PPP borrower application form
+              </Link>
+              {` to see the information that will be requested from you when you apply with a lender`}
+            </p>
+          </div>
+          <Card
+            customClass={styles.rightColumn}
+            item={{
+              link: {
+                url:
+                  'https://www.sba.gov/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program',
+                title: 'Read more about the Payment Protection Program'
+              },
+              subtitleText: this.howItWorksText,
+              titleText: 'How It Works'
+            }}
+            index={0}
+            numCards={1}
+          />
+        </div>
         <SearchTemplate
           searchType="lenders"
           defaultSearchParams={defaultSearchParams}
@@ -169,8 +205,8 @@ class LenderLookupPage extends React.PureComponent {
             size="Large"
             headline="Looking for another funding option?"
             blurb="We're here to help you overcome the challenges created by this health crisis. We offer multiple funding options for those seeking economic relief."
-            buttonAction={buttonAction}
-            image={image}
+            buttonAction={this.buttonAction}
+            image={this.image}
           />
         </div>
       </>
