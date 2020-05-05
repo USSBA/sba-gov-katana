@@ -175,6 +175,7 @@ class LenderLookupPage extends React.PureComponent {
 
           <StyleWrapperDiv className={styles.lenderResults} hideOnZeroState={true}>
             <Results
+              shouldShowSearchInfoPanel={false}
               id="lender-results"
               paginate={true}
               scroll
