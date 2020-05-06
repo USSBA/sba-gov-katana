@@ -32,7 +32,7 @@ export class RootPage extends React.Component {
     if (getConfig('responseStatus') === 404) {
       return <ErrorPage />
     } else if (first === 'document') {
-      return <DocumentPage location={this.props.location} />
+      return <DocumentPage location={this.props.location} id={window.nodeId} />
     } else if (first === 'article') {
       return <ArticlePage location={this.props.location} id={window.nodeId} />
     } else if (first === 'blog') {
