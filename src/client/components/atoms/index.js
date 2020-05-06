@@ -12,6 +12,7 @@ import Label from './label/label'
 import ExtraLargeTitleText from './extra-large-title-text/extra-large-title-text'
 import FailureIcon from './icons/failure'
 import FileTypeIcon from './icons/file-type-icon'
+import FileUploader from './file-uploader/file-uploader'
 import FormErrorMessage from './form-error-message/form-error-message'
 import HamburgerIcon from './hamburger-icon/hamburger-icon'
 import HomeIcon from './icons/home'
@@ -55,6 +56,7 @@ export {
   ExtraLargeTitleText,
   FailureIcon,
   FileTypeIcon,
+  FileUploader,
   FormErrorMessage,
   HamburgerIcon,
   HomeIcon,

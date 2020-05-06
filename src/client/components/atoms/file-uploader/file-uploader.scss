@@ -1,0 +1,15 @@
+.dropzone {
+    margin-bottom: 25px;
+    border-radius: 10px;
+    border: 2px dashed rgba(85,63,61,0.3);
+    text-align: center;
+
+    p {
+        margin: 20px;
+        font-size: 16px;
+    }
+
+    /*@media(min-width: $min-tablet-width) {
+        width: 100%;
+    }*/
+}

@@ -3,20 +3,20 @@ import React, { Component } from 'react'
 import Select from 'react-select-v1'
 import classNames from 'classnames'
 import { isEmpty, isEqual, isNil } from 'lodash'
-import { Button, Link, Loader, MultiSelect, TextArea, TextInput } from 'atoms'
+import { Button, FileUploader, Link, Loader, MultiSelect, TextArea, TextInput } from 'atoms'
 import styles from './file-transfer-service-page.scss'
 
 class FileTransferServicePage extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <h2>File Transfer Service</h2>
+        <h1>File Transfer Service</h1>
         <p>
           All files sent through this page is transmitted using 128-bit encryption. After successful upload
           of selected files(s) an email notification will be sent to the selected recipient and will be
           handled accodingly.
         </p>
-        <h3>Email</h3>
+        <h2>Email</h2>
         <form>
           <div className={styles.to}>
             <MultiSelect
@@ -38,6 +38,33 @@ class FileTransferServicePage extends Component {
             //showSearchIcon={true}
           />
           <TextArea className={styles.message} id="message" label="Mesage" />
+          <h2>Attach files</h2>
+          <FileUploader label="Upload file" onChange={ () => {} }/>
+          <Button aria-label="Choose file" primary>Choose File</Button>
+          <p>Attach more files</p>
+          <h2>Contact information</h2>
+          <p>Please provide us with your contact information in case there are any issues or if we have questions.</p>
+          <TextInput
+            className={styles.subject}
+            data-cy="fullname"
+            id="fullname"
+            label="Full name"
+            //onChange={({ target: { value } }) => this.setState({ search: value })}
+            //placeholder="Search by name, title, or office"
+            //value={search}
+            //showSearchIcon={true}
+          />
+          <TextInput
+            className={styles.subject}
+            data-cy="email"
+            id="email"
+            label="Email address"
+            //onChange={({ target: { value } }) => this.setState({ search: value })}
+            //placeholder="Search by name, title, or office"
+            //value={search}
+            //showSearchIcon={true}
+          />
+          <Button aria-label="Send files" primary>Send files</Button>
         </form>
       </div>
     )
