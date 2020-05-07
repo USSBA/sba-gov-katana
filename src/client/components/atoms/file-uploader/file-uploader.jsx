@@ -36,12 +36,12 @@ class FileUploader extends Component {
 		const { label } = this.props
 		return (
 			<div className={styles.fileUploader}>
-	 			<div className={styles.label}>{label}</div>
+	 			<label for="dropzone-files" className={styles.label}>{label}</label>
 	 		    <Dropzone accept='application/pdf, application/msword' onDrop={ acceptedFiles => this.onDrop(acceptedFiles) }>
 				  {({getRootProps, getInputProps}) => (
 				    <section>
 				      <div {...getRootProps()}>
-				        <input {...getInputProps()} />
+				        <input id="dropzone-files" {...getInputProps()} />
 		 		        <div className={styles.dropzone}>
 		 		        	<p>Drag 'n' drop some files here, or click to select files</p>
 		 		        </div>
