@@ -1,92 +1,67 @@
-import React, { useEffect, useState } from 'react'
+import React, { Component } from 'react'
+import { Button } from  'atoms'
 import PropTypes from 'prop-types'
 import styles from './file-uploader.scss'
-import { useDropzone } from 'react-dropzone'
+import Dropzone from 'react-dropzone'
 import { isEmpty } from 'lodash'
 
-const FileUploader = ({ label, defaultValue, onChange }) => {
-
-	const [files, setFiles] = useState([])
-
-	const { getRootProps, getInputProps } = useDropzone({
-		//accept: 'image/*',
-		onDrop: acceptedFiles => {
-			setFiles(acceptedFiles.map(file => Object.assign(file, {
-				preview: URL.createObjectURL(file)
-			})))
-			onChange({
-				files: acceptedFiles//,
-				//shouldUploadImageData: true
-			})
+class FileUploader extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			files: []
 		}
-	})
-
-	const list = files.map(file => ({ content: <div key={file.name} className={styles.file}><img src={file.preview} alt="" /></div> }))
-
-	useEffect(() => () => {
-		// Make sure to revoke the data uris to avoid memory leaks
-		files.forEach(file => URL.revokeObjectURL(file.preview))
-	},
-	[files])
-
-	let defaultList = []
-	if (isEmpty(list)) {
-		defaultList = defaultValue.map( ({ key, publicURL }, i) => {
-			return { content: <div key={key} className={styles.file}><img src={publicURL} alt="" /></div> }
+	}
+	convertToListData(arr) {
+		return arr.map( ({ name }) => <div key={name} className={styles.file}>{name} <Button secondary onClick={e => { e.preventDefault(); this.removeFileFromList(name) }}>Remove this file</Button></div> )
+	}
+	removeFileFromList(filename) {
+		const { onChange } = this.props
+		const { files } = this.state
+		const filteredFiles = files.filter( file => file.name !== filename )
+		const list = this.convertToListData(filteredFiles)
+		this.setState( { files: filteredFiles, list }, () => {
+			onChange({ files: filteredFiles })
 		})
 	}
-
-	const onSort = (sortedList, shouldUploadImageData = false) => {
-		onChange({
-			files,
-			keyOrder: sortedList.map ( item => item.content.key )//,
-			//shouldUploadImageData
+	onDrop(acceptedFiles) {
+		const { onChange } = this.props
+		const list = this.convertToListData(acceptedFiles)
+		this.setState({ files: acceptedFiles, list }, () => {
+			onChange({ files: acceptedFiles })
 		})
 	}
-
-	return (
-		<div>
-			<div className={styles.label}>{label}</div>
-			<div {...getRootProps()}>
-		        <input {...getInputProps()} />
-		        <div className={styles.dropzone}>
-		        	<p>Drag 'n' drop some files here, or click to select files</p>
-		        </div>
-		    </div>
-		    {!isEmpty(list) && <div>{list.map( item => item.content )}</div>}
-		    {/*(!isEmpty(list) && <div className={styles.sortableList}>
-		    	<DragSortableList
-		    		items={list}
-		    		moveTransitionDuration={0.3}
-		    		type="vertical"
-		    		onSort={ e => {
-		    			onSort(e, true)
-		    		}}
-		    	/>
-		    </div>)}
-		    {isEmpty(list) && !isEmpty(defaultList) && (<div className={styles.sortableList}>
-		    	<DragSortableList
-		    		items={defaultList}
-		    		moveTransitionDuration={0.3}
-		    		type="vertical"
-		    		onSort={ e => {
-		    			onSort(e)
-		    		}}
-		    	/>
-		    </div>)*/}
-		</div>
-	)
+	render() {
+		const { list } = this.state
+		const { label } = this.props
+		return (
+			<div className={styles.fileUploader}>
+	 			<div className={styles.label}>{label}</div>
+	 		    <Dropzone accept='application/pdf, application/msword' onDrop={ acceptedFiles => this.onDrop(acceptedFiles) }>
+				  {({getRootProps, getInputProps}) => (
+				    <section>
+				      <div {...getRootProps()}>
+				        <input {...getInputProps()} />
+		 		        <div className={styles.dropzone}>
+		 		        	<p>Drag 'n' drop some files here, or click to select files</p>
+		 		        </div>
+				      </div>
+				    </section>
+				  )}
+				</Dropzone>
+	 		    {(!isEmpty(list) && <div className={styles.sortableList}>{list}</div>)}
+			</div>
+		)
+	}
 }
 FileUploader.propTypes = {
   label: PropTypes.string,
   onDrop: PropTypes.func,
-  defaultValue: PropTypes.array,
   onChange: PropTypes.func
 }
 FileUploader.defaultProps = {
   label: 'add label',
   onDrop: () => {},
-  defaultValue: [],
   onChange: () => {}
 }
 export default FileUploader

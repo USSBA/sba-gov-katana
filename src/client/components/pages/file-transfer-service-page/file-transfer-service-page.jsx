@@ -7,6 +7,13 @@ import { Button, FileUploader, Link, Loader, MultiSelect, TextArea, TextInput } 
 import styles from './file-transfer-service-page.scss'
 
 class FileTransferServicePage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      filesValue: [],
+      textAreaValue: {}
+    }
+  }
   render() {
     return (
       <div className={styles.container}>
@@ -22,7 +29,7 @@ class FileTransferServicePage extends Component {
             <MultiSelect
               id="to"
               label="To"
-              //onChange={({ value }) => this.setState({ office: value })}
+              //onChange={ e => console.log(e)}
               //options={this.officeOptions}
               //value={office}
             />
@@ -37,11 +44,16 @@ class FileTransferServicePage extends Component {
             //value={search}
             //showSearchIcon={true}
           />
-          <TextArea className={styles.message} id="message" label="Mesage" />
+          <TextArea
+            className={styles.message}
+            id="message"
+            label="Mesage"
+            onChange={ e => this.setState({ textAreaValue: e }) }
+          />
           <h2>Attach files</h2>
-          <FileUploader label="Upload file" onChange={ () => {} }/>
-          <Button aria-label="Choose file" primary>Choose File</Button>
-          <p>Attach more files</p>
+          <div data-testid="file-uploader">
+            <FileUploader label="File upload area" onChange={ files => this.setState({ filesValue: files }) }/>
+          </div>
           <h2>Contact information</h2>
           <p>Please provide us with your contact information in case there are any issues or if we have questions.</p>
           <TextInput
