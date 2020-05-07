@@ -187,8 +187,8 @@ const mainRoutes = [
     path="/business-guide/10-steps-start-your-business"
     to="/business-guide/10-steps-start-your-business/"
   />,
-  <Redirect key={14} from="/sendthisfile/" to="/sendthisfile" />,
-  <Route key={15} path="/sendthisfile" component={FileTransferServicePage} />,
+  <Redirect key={14} from="/filetransfer/" to="/filetransfer" />,
+  <Route key={15} path="/filetransfer" component={FileTransferServicePage} />,
   <Route
     component={TenStepsLandingPage}
     key={112}
