@@ -7,9 +7,9 @@ describe('LenderResultCard', () => {
     link: 'sba.gov',
     phoneNumber: '301-792-0678',
     streetAddress: '3913 7th St NE',
-    city: 'Washington',
+    city: 'WASHINGTON',
     state: 'DC',
-    zipCode: '20015',
+    zipCode: '8091',
     title: 'Credit Union'
   }
   it('renders the passed title', () => {
@@ -18,13 +18,13 @@ describe('LenderResultCard', () => {
   })
 
   it('renders the address', () => {
-    const wrapper = mount(<LenderResultCard {...mockProps} />)
+    const wrapper = shallow(<LenderResultCard {...mockProps} />)
     const addressInnerHtml = wrapper
       .find('[data-testid="contact address"] span')
       .prop('dangerouslySetInnerHTML')
     expect(addressInnerHtml).toEqual(
       expect.objectContaining({
-        __html: '3913 7th St NE<br />Washington, DC 20015'
+        __html: '3913 7th St NE<br />washington, DC 08091'
       })
     )
   })

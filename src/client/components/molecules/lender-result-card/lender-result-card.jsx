@@ -7,8 +7,15 @@ import classNames from 'classnames'
 const LenderResultCard = props => {
   const { link, phoneNumber, streetAddress, title, className: cn, testId, city, state, zipCode } = props
 
+  const makeFiveDigitZip = () => {
+    let fiveDigitZip = zipCode
+    while (fiveDigitZip.length < 5) {
+      fiveDigitZip = `0${fiveDigitZip}`
+    }
+    return fiveDigitZip
+  }
   const formatAddress = breakOrNewLine => {
-    return `${streetAddress}${breakOrNewLine}${city}, ${state} ${zipCode}`
+    return `${streetAddress}${breakOrNewLine}${city.toLowerCase()}, ${state} ${makeFiveDigitZip()}`
   }
 
   const fields = {
@@ -59,19 +66,14 @@ const LenderResultCard = props => {
           </h4>
         )}
         <div
+          className={styles.address}
           data-testid={fields.address.name}
           data-cy={fields.address.name}
-          className={styles.row}
           key={Math.random()}
         >
           <span dangerouslySetInnerHTML={{ __html: fields.address.text }} tabIndex="0" />
         </div>
-        <div
-          data-testid={fields.phoneNumber.name}
-          data-cy={fields.phoneNumber.name}
-          className={styles.row}
-          key={Math.random()}
-        >
+        <div data-testid={fields.phoneNumber.name} data-cy={fields.phoneNumber.name} key={Math.random()}>
           <span tabIndex="0">{fields.phoneNumber.text}</span>
         </div>
       </div>
