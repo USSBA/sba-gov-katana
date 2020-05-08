@@ -100,6 +100,13 @@ const EventPage = props => (
   <Async componentProps={props} load={import('./pages/event-page/event-page.jsx')} />
 )
 
+const FileTransferServicePage = props => (
+  <Async
+    componentProps={props}
+    load={import('./pages/file-transfer-service-page/file-transfer-service-page.jsx')}
+  />
+)
+
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
 import clientConfig from '../services/client-config.js'
@@ -180,6 +187,8 @@ const mainRoutes = [
     path="/business-guide/10-steps-start-your-business"
     to="/business-guide/10-steps-start-your-business/"
   />,
+  <Redirect key={14} from="/filetransfer/" to="/filetransfer" />,
+  <Route key={15} path="/filetransfer" component={FileTransferServicePage} />,
   <Route
     component={TenStepsLandingPage}
     key={112}
