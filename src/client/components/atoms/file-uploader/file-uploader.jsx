@@ -18,7 +18,7 @@ class FileUploader extends Component {
 				<div key={name} className={styles.file}>
 					{name}
 					<Button secondary onClick={ e => {
-						e.preventDefault();
+						e.preventDefault()
 						this.removeFileFromList(name)
 					}}>Remove this file</Button>
 				</div>
