@@ -39,7 +39,7 @@ class OfficeResult extends React.PureComponent {
     const officeType = item.office_type ? item.office_type[0] : ''
     const isOfficialOffice = sbaOfficeNames.includes(officeType)
     const isFirstResult = id === 'result-0'
-    const isHovered = this.props.item.id === hoveredMarkerId
+    const isHovered = Boolean(hoveredMarkerId) && this.props.item.id === hoveredMarkerId
 
     const cardLayoutClassName = classNames({
       'card-layout': true,
