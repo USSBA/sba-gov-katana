@@ -22,7 +22,7 @@ class DocumentArticleTemplate extends React.Component {
     }
 
     return (
-      <div>
+      <div data-testid={'document-article-template'}>
         <div className={styles.container}>
           <DocumentArticle data={data} />
           {doc && <VersionsList doc={data} />}
