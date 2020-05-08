@@ -13,7 +13,17 @@ class FileUploader extends Component {
 		}
 	}
 	convertToListData(arr) {
-		return arr.map( ({ name }) => <div key={name} className={styles.file}>{name} <Button secondary onClick={e => { e.preventDefault(); this.removeFileFromList(name) }}>Remove this file</Button></div> )
+		return arr.map( ({ name }) => {
+			return (
+				<div key={name} className={styles.file}>
+					{name}
+					<Button secondary onClick={ e => {
+						e.preventDefault();
+						this.removeFileFromList(name)
+					}}>Remove this file</Button>
+				</div>
+			)
+		})
 	}
 	removeFileFromList(filename) {
 		const { onChange } = this.props
@@ -36,7 +46,7 @@ class FileUploader extends Component {
 		const { label } = this.props
 		return (
 			<div className={styles.fileUploader}>
-	 			<label for="dropzone-files" className={styles.label}>{label}</label>
+	 			<label tabIndex="0" for="dropzone-files" className={styles.label}>{label}</label>
 	 		    <Dropzone accept='application/pdf, application/msword' onDrop={ acceptedFiles => this.onDrop(acceptedFiles) }>
 				  {({getRootProps, getInputProps}) => (
 				    <section>
