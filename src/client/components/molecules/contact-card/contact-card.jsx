@@ -37,7 +37,7 @@ const ContactCard = props => {
   } = props
   const linkText = 'Visit website'
 
-  const address = breakOrNewLine => {
+  const formatAddress = breakOrNewLine => {
     return `${streetAddress}${breakOrNewLine}${city}, ${state} ${zipCode}`
   }
 
@@ -56,9 +56,9 @@ const ContactCard = props => {
     },
     {
       name: 'contact address',
-      text: streetAddress && city && state && zipCode && address('<br />'),
+      text: streetAddress && city && state && zipCode && formatAddress('<br />'),
       icon: 'map-marker',
-      href: `https://maps.google.com?q=${encodeURIComponent(address('\n'))}`,
+      href: `https://maps.google.com?q=${encodeURIComponent(formatAddress('\n'))}`,
       ariaLabel: 'address icon'
     },
     {
@@ -77,7 +77,7 @@ const ContactCard = props => {
     {
       name: 'contact link',
       text: linkText,
-      icon: 'external-link-square',
+      icon: 'globe',
       href: link,
       ariaLabel: 'website icon'
     },
@@ -106,7 +106,7 @@ const ContactCard = props => {
   // Since website text is assigned "Visit Website" in the above code, we check for an empty href instead for filtering.
   // Discovered strange behavior where the href sometimes comes back as an empty object, so this is also filtering that out.
   function emptyFieldFilter(field) {
-    const { href, name, text } = field
+    const { href, text } = field
 
     // Checks if this field is a website field.
     const isNotAWebsiteField = text !== linkText

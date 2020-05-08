@@ -1,0 +1,74 @@
+.lenderResultCard {
+  display: flex;
+  justify-content: space-between;
+
+  .firstColumn {
+    color: $secondary-black-ish;
+    padding-top: 5px;
+    width: 75%;
+    max-width: 300px;
+  }
+  .secondColumn {
+    display: flex;
+    width: 30%;
+    align-self: center;
+    justify-content: space-between;
+    min-height: 35px;
+
+    @include grid-media($sba-grid-medium) {
+      width: 25%;
+      padding-left: 1rem;
+    }
+
+    .iconContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: $secondary-blue;
+
+      &.disabled {
+        color: $sba-gray;
+        &:hover {
+          cursor: unset;
+        }
+      }
+
+      i {
+        font-size: 1.5rem;
+        width: 1.6em;
+        height: 1.6em;
+        text-align: center;
+        line-height: 1.6em;
+        border-radius: 50%;
+        border: 1px solid;
+        box-sizing: content-box;
+      }
+
+      span {
+        display: block;
+        font-size: 15px;
+      }
+    }
+
+    .phoneNumber {
+      margin-left: 1rem;
+      @include grid-media($sba-grid-medium) {
+        display: none;
+      }
+    }
+  }
+
+  .address {
+    text-transform: capitalize;
+  }
+}
+
+.box {
+  border: 2px solid $sba-gray-lighter;
+  padding: 30px;
+}
+
+.h4 {
+  font-size: 1rem;
+}

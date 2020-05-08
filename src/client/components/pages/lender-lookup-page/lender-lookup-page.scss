@@ -53,7 +53,7 @@
 
 .centerContainer {
   outline: none;
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     position: absolute;
     bottom: 0px;
     top: 40px;
@@ -64,26 +64,46 @@
 }
 
 .lenderResults {
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     position: absolute;
-    top: 240px;
-    left: 30px;
+    top: 260px;
     bottom: 27px;
     background-color: unset;
-    width: 321px;
+    width: 340px;
     overflow: hidden;
     pointer-events: none;
     margin-top: 50px;
-    margin-bottom: 170px;
+  }
+
+  @include grid-media($sba-grid-large) {
+    top: 170px;
   }
 }
 
 .resultContainer {
   min-width: 321px;
-  @include grid-media($sba-grid-large) {
+  padding-bottom: 71px;
+  @include grid-media($sba-grid-medium) {
     position: absolute;
     pointer-events: all;
   }
+}
+
+.noticeWithLink {
+  background-color: $secondary-blue-dark;
+  color: $sba-blue-lighter;
+  padding: $small-spacing;
+  padding-left: 28px;
+  font-family: $serif-font-family;
+  font-style: italic;
+
+  a {
+    color: inherit;
+  }
+}
+
+.ctaContainer {
+  margin: 28px;
 }
 
 .multiselect {
@@ -91,9 +111,44 @@
     font-weight: 400;
   }
 
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     margin-right: 20px;
     display: inline-block;
     width: 290px;
+  }
+}
+
+.infoSection {
+  .leftColumn {
+    margin: $base-spacing;
+  }
+
+  .rightColumn {
+    margin: $base-spacing;
+    float: none;
+    border-top: none;
+    width: unset;
+  }
+
+  h4 {
+    margin-bottom: 0;
+  }
+
+  @include grid-media($sba-grid-medium) {
+    display: flex;
+
+    .leftColumn {
+      padding-right: $base-spacing;
+      width: 65%;
+    }
+
+    .rightColumn {
+      margin-right: $base-spacing;
+      width: 35%;
+
+      h4 {
+        margin-top: 0;
+      }
+    }
   }
 }

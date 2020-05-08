@@ -12,6 +12,7 @@ import DistrictOfficePreviousNextSection from './district-office-previous-next/d
 import FeedbackForm from './feedback-form/feedback-form'
 import FormPageButtons from './form-page-buttons/form-page-buttons'
 import GoogleTranslate from './google-translate/google-translate'
+import LenderResultCard from './lender-result-card/lender-result-card'
 import MainLoader from './main-loader/main-loader'
 import MenuTile from './menu-tile/menu-tile'
 import MenuTileWithLinks from './menu-tile-with-links/menu-tile-with-links'
@@ -49,6 +50,7 @@ export {
   FeedbackForm,
   FormPageButtons,
   GoogleTranslate,
+  LenderResultCard,
   MainLoader,
   MenuTile,
   MenuTileWithLinks,

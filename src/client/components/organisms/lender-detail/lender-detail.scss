@@ -1,6 +1,7 @@
 .detailView {
   width: 100%;
-  padding: 34px 30px;
+  border-bottom: $base-border;
+  padding: $base-spacing 30px;
   background: #ffffff;
   position: relative;
   &:focus {
@@ -20,6 +21,10 @@
       outline: 2px dotted $sba-gray-light;
       outline-offset: 3px;
     }
+  }
+
+  div[class~='contact-card'] {
+    margin-bottom: 0;
   }
 }
 

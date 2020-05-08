@@ -174,8 +174,7 @@ class Results extends React.PureComponent {
     if (extraContainerStyles) {
       divProps.className = extraContainerStyles
     }
-
-    let shouldShowSearchInfoPanel = true
+    let shouldShowSearchInfoPanel = this.props.shouldShowSearchInfoPanel
     if (!enableNoResultsMessage) {
       shouldShowSearchInfoPanel = items.length > 0
     }
@@ -245,6 +244,7 @@ Results.defaultProps = {
   enableLoadingMessage: true,
   extraContainerStyles: null,
   extraResultContainerStyles: null,
+  shouldShowSearchInfoPanel: true,
 
   // When true, sets white background to searchInfoPanel, paginator, resultsContainer, and defaultResults
   setWhiteBackground: false,

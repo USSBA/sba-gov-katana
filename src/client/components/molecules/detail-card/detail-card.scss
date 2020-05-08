@@ -18,9 +18,14 @@ table {
   background-color: white;
 }
 
+.program-summary-data:last-child td:last-child {
+  padding-bottom: 40px;
+}
+
 .detailCard {
   position: relative;
   height: 100%;
+  padding-bottom: 1px; // This... helps size the container for some reason, but we don't know why and maybe want to look at this again
 
   .label {
     margin-bottom: 20px;

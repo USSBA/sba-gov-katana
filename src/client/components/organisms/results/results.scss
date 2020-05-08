@@ -4,25 +4,41 @@
 }
 
 .resultsWithPagination {
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     bottom: 66px;
   }
 }
 
 .resultsWithSearchInfo {
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     top: 0px;
   }
 }
 
 .resultContainer {
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     pointer-events: all;
   }
 }
 
 .scroll {
   overflow-y: scroll;
+
+  @include grid-media($sba-grid-medium) {
+    &::-webkit-scrollbar {
+      width: 0.75em;
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+      border-radius: 10px;
+    }
+  }
 }
 
 .searchFocusState {
@@ -35,7 +51,7 @@
 }
 
 .defaultResults {
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-medium) {
     pointer-events: all;
   }
 }
