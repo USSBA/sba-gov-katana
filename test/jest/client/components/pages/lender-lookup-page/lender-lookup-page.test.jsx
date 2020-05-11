@@ -38,7 +38,7 @@ describe('LenderLookupPage', () => {
 
     it('renders TextInput', () => {
       const wrapper = shallow(<LenderLookupPage />)
-      expect(wrapper.find('TextInput')).toHaveLength(1)
+      expect(wrapper.find('TextInput')).toHaveLength(2)
     })
 
     it('renders OfficeMap', () => {
@@ -73,22 +73,22 @@ describe('LenderLookupPage', () => {
   })
 
   describe('actions', () => {
-    describe('TextInput', () => {
+    describe('TextInput for zipcode', () => {
       it('receives address as queryParamName prop', () => {
         const wrapper = shallow(<LenderLookupPage />)
-        const queryParamName = wrapper.find('TextInput').prop('queryParamName')
+        const queryParamName = wrapper.find('#zip').prop('queryParamName')
         expect(queryParamName).toEqual('address')
       })
 
       it('uses the correct placeholder text', () => {
         const wrapper = shallow(<LenderLookupPage />)
-        const placeholderText = wrapper.find('TextInput').prop('placeholder')
+        const placeholderText = wrapper.find('#zip').prop('placeholder')
         expect(placeholderText).toEqual('Zip Code')
       })
 
       it("doesn't allow non five digit input", () => {
         const wrapper = shallow(<LenderLookupPage />)
-        const textInput = wrapper.find('TextInput')
+        const textInput = wrapper.find('#zip')
         const validationFn = textInput.prop('validationFunction')
         expect(validationFn('123')).toBe(false)
         expect(validationFn('ab123')).toBe(false)

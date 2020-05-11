@@ -31,6 +31,7 @@ export class PrimarySearchBar extends React.PureComponent {
       const { fieldValues } = this.props
       const clonedChild = React.cloneElement(child, {
         onChange: valueOrEvent => {
+          console.log(valueOrEvent)
           this.onFieldChange.bind(this)
           const value = valueOrEvent.target ? valueOrEvent.target.value : valueOrEvent
           this.onFieldChange(queryParamName, value)
