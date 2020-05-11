@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { browserHistory } from 'react-router'
-import { assign, chain, find, includes, map, mapValues, pickBy } from 'lodash'
+import { assign, chain, find, includes, map, mapValues, pickBy, isEmpty } from 'lodash'
 import { DocumentArticleLookup } from 'organisms'
 import styles from './paging-lookup.scss'
 import { getQueryParams } from '../../../services/utils.js'
@@ -118,12 +118,15 @@ class PagingLookup extends React.Component {
   }
 
   componentWillReceiveProps({ sbaOffices }) {
-    this.setState(
-      {
-        sbaOfficeFilters: this.createSbaOfficeFilterList(sbaOffices)
-      },
-      () => this.submit()
-    )
+    if (isEmpty(this.state.sbaOfficeFilters)) {
+      const sbaOfficeFilters = this.createSbaOfficeFilterList(sbaOffices)
+      this.setState(
+        {
+          sbaOfficeFilters
+        },
+        () => this.submit()
+      )
+    }
   }
 
   reArrangeTaxonomyOrder(data) {
@@ -190,10 +193,9 @@ class PagingLookup extends React.Component {
         pageNumber: 1
       },
       () => {
-        this.submit()
+        this.handlePageChange(1)
       }
     )
-    this.handlePageChange(1)
   }
 
   convertAndSetQueryObjectToString(queryObject) {
