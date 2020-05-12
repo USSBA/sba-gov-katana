@@ -33,6 +33,7 @@ class Page extends React.Component {
             paragraphs={data.paragraphs}
             summary={data.summary}
             lineage={this.props.lineage}
+            location={this.props.location}
           />
         )
       } else if (data.type === 'programPage') {

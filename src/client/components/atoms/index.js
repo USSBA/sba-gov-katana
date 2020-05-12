@@ -4,6 +4,7 @@ import CaptionText from './caption-text/caption-text'
 import CardContainer from './card-container/card-container'
 import CaretDownIcon from './icons/caret-down'
 import Carousel from './carousel/carousel'
+import ChatbotWidget from './chatbot-widget/chatbot-widget.jsx'
 import Checkbox from './checkbox/checkbox'
 import CloseIcon from './icons/close'
 import ContactText from './contact-text/contact-text'
@@ -17,6 +18,7 @@ import FormErrorMessage from './form-error-message/form-error-message'
 import HamburgerIcon from './hamburger-icon/hamburger-icon'
 import HomeIcon from './icons/home'
 import ImageSection from './image-section/image-section'
+import loadLexChatBotScript from './chatbot-widget/load-lex-chat-bot-ui'
 import Link from './link/link'
 import Loader from './loader/loader'
 import MainLogo from './main-logo/main-logo'
@@ -48,6 +50,7 @@ export {
   CardContainer,
   CaretDownIcon,
   Carousel,
+  ChatbotWidget,
   Checkbox,
   CloseIcon,
   ContactText,
@@ -61,6 +64,7 @@ export {
   HamburgerIcon,
   HomeIcon,
   ImageSection,
+  loadLexChatBotScript,
   Link,
   Loader,
   MainLogo,
