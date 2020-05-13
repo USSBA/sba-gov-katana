@@ -152,3 +152,32 @@
     }
   }
 }
+
+.carouselOverride {
+  button {
+    border: 1px solid red;
+    &::before {
+      content: '\f054' !important;
+      color: white;
+      font-family: FontAwesome;
+      border: none !important;
+      font-size: 1rem;
+      margin: 0 1rem;
+    }
+    &:first-child {
+      &::before {
+        content: '\f053' !important;
+      }
+    }
+  }
+  .slide {
+    background-color: $secondary-blue-dark;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 2em;
+    h3 {
+      color: $base-background-color;
+    }
+  }
+}

@@ -1,13 +1,15 @@
 import React from 'react'
 import { isEmpty } from 'lodash'
+import { Carousel } from 'react-responsive-carousel'
 
-import styles from './lender-lookup-page.scss'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+
+import pageStyles from './lender-lookup-page.scss'
 import { Card } from 'molecules'
 import { StyleWrapperDiv, TextInput, Link, MultiSelect } from 'atoms'
 import { PrimarySearchBar, Results, LenderDetail, OfficeMap } from 'organisms'
 import { CallToAction } from 'molecules'
 import SearchTemplate from '../../templates/search/search.jsx'
-
 class LenderLookupPage extends React.PureComponent {
   constructor() {
     super()
@@ -72,8 +74,25 @@ class LenderLookupPage extends React.PureComponent {
 
     return (
       <>
-        <div className={styles.infoSection}>
-          <div className={styles.leftColumn}>
+        <Carousel
+          className={pageStyles.carouselOverride}
+          showThumbs={false}
+          infiniteLoop={true}
+          useKeyboardArrows={true}
+          showStatus={false}
+        >
+          <div className={pageStyles.slide} style={{ height: '200px', color: '#fff' }}>
+            <h3>this is slide 1</h3>
+          </div>
+          <div className={pageStyles.slide} style={{ height: '200px', color: '#fff' }}>
+            <h3>this is slide 2</h3>
+          </div>
+          <div className={pageStyles.slide} style={{ height: '200px', color: '#fff' }}>
+            <h3>this is slide 3</h3>
+          </div>
+        </Carousel>
+        <div className={pageStyles.infoSection}>
+          <div className={pageStyles.leftColumn}>
             <h2>Find Eligible Paycheck Protection Program Lenders</h2>
             <p>
               {`If you wish to begin preparing your application, you can download a copy of `}
@@ -87,7 +106,7 @@ class LenderLookupPage extends React.PureComponent {
             </p>
           </div>
           <Card
-            customClass={styles.rightColumn}
+            customClass={pageStyles.rightColumn}
             item={{
               link: {
                 url:
@@ -106,7 +125,7 @@ class LenderLookupPage extends React.PureComponent {
           defaultSearchParams={defaultSearchParams}
           loadDefaultResults={false}
           scrollToTopAfterSearch={false}
-          extraClassName={styles.lenderSearch}
+          extraClassName={pageStyles.lenderSearch}
           paginate={false}
           showStatus={false}
           onHandleEvent={this.centerMap.bind(this, false)}
@@ -114,12 +133,12 @@ class LenderLookupPage extends React.PureComponent {
           <PrimarySearchBar
             id="lender-primary-search-bar"
             title="Find Eligible Paycheck Protection Program Lenders"
-            className={styles.searchBar}
+            className={pageStyles.searchBar}
           >
             <TextInput
               id="zip"
               queryParamName="address"
-              className={styles.field + ' ' + styles.zip}
+              className={pageStyles.field + ' ' + pageStyles.zip}
               label="Near"
               placeholder="Zip Code"
               validationFunction={input => {
@@ -139,7 +158,7 @@ class LenderLookupPage extends React.PureComponent {
               queryParamName="hasFiled2019Taxes"
               label="Have you filed your 2019 Taxes?"
               autoFocus={false}
-              className={styles.multiselect}
+              className={pageStyles.multiselect}
               multi={false}
               options={[
                 {
@@ -172,7 +191,7 @@ class LenderLookupPage extends React.PureComponent {
             hoveredMarkerId={hoveredMarkerId}
           />
 
-          <StyleWrapperDiv className={styles.lenderResults} hideOnZeroState={true}>
+          <StyleWrapperDiv className={pageStyles.lenderResults} hideOnZeroState={true}>
             <Results
               shouldShowSearchInfoPanel={false}
               id="lender-results"
@@ -188,19 +207,19 @@ class LenderLookupPage extends React.PureComponent {
               onResultHover={id => {
                 this.setHoveredMarkerId(id)
               }}
-              extraContainerStyles={styles.centerContainer}
-              extraResultContainerStyles={styles.resultContainer}
+              extraContainerStyles={pageStyles.centerContainer}
+              extraResultContainerStyles={pageStyles.resultContainer}
               setWhiteBackground
             >
               <LenderDetail />
             </Results>
           </StyleWrapperDiv>
         </SearchTemplate>
-        <div className={styles.noticeWithLink}>
+        <div className={pageStyles.noticeWithLink}>
           {`If you notice incorrect bank information, please contact your `}
           <a href="https://www.sba.gov/tools/local-assistance/districtoffices">SBA District Office</a>
         </div>
-        <div className={styles.ctaContainer}>
+        <div className={pageStyles.ctaContainer}>
           <CallToAction
             size="Large"
             headline="Looking for another funding option?"
