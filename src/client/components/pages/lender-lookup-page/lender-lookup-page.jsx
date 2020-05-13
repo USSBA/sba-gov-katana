@@ -81,14 +81,27 @@ class LenderLookupPage extends React.PureComponent {
           useKeyboardArrows={true}
           showStatus={false}
         >
-          <div className={pageStyles.slide} style={{ height: '200px', color: '#fff' }}>
-            <h3>this is slide 1</h3>
+          <div className={pageStyles.slide} style={{ minHeight: '200px', color: '#fff' }}>
+            <h3>SBA is responding quickly to need and additional eligible lenders are added daily!</h3>
           </div>
-          <div className={pageStyles.slide} style={{ height: '200px', color: '#fff' }}>
-            <h3>this is slide 2</h3>
+          <div className={pageStyles.slide} style={{ minHeight: '200px', color: '#fff' }}>
+            <h3>
+              {`If you are looking for other types of assistance, counseling, mentoring, or training,  please look `}
+              <Link to="/local-assistance/find/" key="local-assistance">
+                here
+              </Link>
+            </h3>
           </div>
-          <div className={pageStyles.slide} style={{ height: '200px', color: '#fff' }}>
-            <h3>this is slide 3</h3>
+          <div className={pageStyles.slide} style={{ minHeight: '200px', color: '#fff' }}>
+            <h3>
+              {`For updates on the Payment Protection Program as they evolve, click `}
+              <Link
+                to="/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program"
+                key="ppp"
+              >
+                here
+              </Link>
+            </h3>
           </div>
         </Carousel>
         <div className={pageStyles.infoSection}>
