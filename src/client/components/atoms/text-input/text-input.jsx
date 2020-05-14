@@ -16,6 +16,10 @@ class TextInput extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.isValid(this.props.value)
+  }
+
   iconValidation(validationState) {
     if (this.props.showSuccessIcon && validationState === 'success') {
       return <SuccessIcon aria-hidden="true" />
@@ -123,7 +127,7 @@ class TextInput extends React.Component {
     if (optional && !isFocused && !value) {
       optionalPlaceholderProp.placeholder = 'Optional'
     }
-    console.log(rest)
+
     return (
       isVisible && (
         <div
