@@ -169,7 +169,7 @@ class LenderLookupPage extends React.PureComponent {
             <TextInput
               isVisible={this.state.isLenderNameVisible}
               id="lenderName"
-              queryParamName="lender_name"
+              queryParamName="lenderName"
               className={styles.field + ' ' + styles.zip}
               label="Lender Name"
               placeholder="Search for my bank"
