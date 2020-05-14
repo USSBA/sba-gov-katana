@@ -6,7 +6,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 import pageStyles from './lender-lookup-page.scss'
 import { Card } from 'molecules'
-import { StyleWrapperDiv, TextInput, Link, MultiSelect } from 'atoms'
+import { StyleWrapperDiv, TextInput, Link, MultiSelect, SimpleCarousel } from 'atoms'
 import { PrimarySearchBar, Results, LenderDetail, OfficeMap } from 'organisms'
 import { CallToAction } from 'molecules'
 import SearchTemplate from '../../templates/search/search.jsx'
@@ -74,17 +74,11 @@ class LenderLookupPage extends React.PureComponent {
 
     return (
       <>
-        <Carousel
-          className={pageStyles.carouselOverride}
-          showThumbs={false}
-          infiniteLoop={true}
-          useKeyboardArrows={true}
-          showStatus={false}
-        >
-          <div className={pageStyles.slide} style={{ minHeight: '200px', color: '#fff' }}>
+        <SimpleCarousel>
+          <div style={{ minHeight: '200px', color: '#fff' }}>
             <h3>SBA is responding quickly to need and additional eligible lenders are added daily!</h3>
           </div>
-          <div className={pageStyles.slide} style={{ minHeight: '200px', color: '#fff' }}>
+          <div style={{ minHeight: '200px', color: '#fff' }}>
             <h3>
               {`If you are looking for other types of assistance, counseling, mentoring, or training,  please look `}
               <Link to="/local-assistance/find/" key="local-assistance">
@@ -92,7 +86,7 @@ class LenderLookupPage extends React.PureComponent {
               </Link>
             </h3>
           </div>
-          <div className={pageStyles.slide} style={{ minHeight: '200px', color: '#fff' }}>
+          <div style={{ minHeight: '200px', color: '#fff' }}>
             <h3>
               {`For updates on the Payment Protection Program as they evolve, click `}
               <Link
@@ -103,7 +97,7 @@ class LenderLookupPage extends React.PureComponent {
               </Link>
             </h3>
           </div>
-        </Carousel>
+        </SimpleCarousel>
         <div className={pageStyles.infoSection}>
           <div className={pageStyles.leftColumn}>
             <h2>Find Eligible Paycheck Protection Program Lenders</h2>

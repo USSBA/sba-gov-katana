@@ -14,6 +14,11 @@ describe('LenderLookupPage', () => {
     expect(result).toHaveLength(1)
   })
   describe('views', () => {
+    it('renders a simple carousel', () => {
+      const wrapper = shallow(<LenderLookupPage />)
+      expect(wrapper.find('SimpleCarousel')).toHaveLength(1)
+    })
+
     it('renders information section', () => {
       const wrapper = shallow(<LenderLookupPage />)
       expect(wrapper.find('.infoSection')).toHaveLength(1)
