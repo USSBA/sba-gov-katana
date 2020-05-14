@@ -1,10 +1,7 @@
 import React from 'react'
 import { isEmpty } from 'lodash'
-import { Carousel } from 'react-responsive-carousel'
 
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
-
-import pageStyles from './lender-lookup-page.scss'
+import styles from './lender-lookup-page.scss'
 import { Card } from 'molecules'
 import { StyleWrapperDiv, TextInput, Link, MultiSelect, SimpleCarousel } from 'atoms'
 import { PrimarySearchBar, Results, LenderDetail, OfficeMap } from 'organisms'
@@ -98,8 +95,8 @@ class LenderLookupPage extends React.PureComponent {
             </h3>
           </div>
         </SimpleCarousel>
-        <div className={pageStyles.infoSection}>
-          <div className={pageStyles.leftColumn}>
+        <div className={styles.infoSection}>
+          <div className={styles.leftColumn}>
             <h2>Find Eligible Paycheck Protection Program Lenders</h2>
             <p>
               {`If you wish to begin preparing your application, you can download a copy of `}
@@ -113,7 +110,7 @@ class LenderLookupPage extends React.PureComponent {
             </p>
           </div>
           <Card
-            customClass={pageStyles.rightColumn}
+            customClass={styles.rightColumn}
             item={{
               link: {
                 url:
@@ -132,7 +129,7 @@ class LenderLookupPage extends React.PureComponent {
           defaultSearchParams={defaultSearchParams}
           loadDefaultResults={false}
           scrollToTopAfterSearch={false}
-          extraClassName={pageStyles.lenderSearch}
+          extraClassName={styles.lenderSearch}
           paginate={false}
           showStatus={false}
           onHandleEvent={this.centerMap.bind(this, false)}
@@ -140,12 +137,12 @@ class LenderLookupPage extends React.PureComponent {
           <PrimarySearchBar
             id="lender-primary-search-bar"
             title="Find Eligible Paycheck Protection Program Lenders"
-            className={pageStyles.searchBar}
+            className={styles.searchBar}
           >
             <TextInput
               id="zip"
               queryParamName="address"
-              className={pageStyles.field + ' ' + pageStyles.zip}
+              className={styles.field + ' ' + styles.zip}
               label="Near"
               placeholder="Zip Code"
               validationFunction={input => {
@@ -165,7 +162,7 @@ class LenderLookupPage extends React.PureComponent {
               queryParamName="hasFiled2019Taxes"
               label="Have you filed your 2019 Taxes?"
               autoFocus={false}
-              className={pageStyles.multiselect}
+              className={styles.multiselect}
               multi={false}
               options={[
                 {
@@ -198,7 +195,7 @@ class LenderLookupPage extends React.PureComponent {
             hoveredMarkerId={hoveredMarkerId}
           />
 
-          <StyleWrapperDiv className={pageStyles.lenderResults} hideOnZeroState={true}>
+          <StyleWrapperDiv className={styles.lenderResults} hideOnZeroState={true}>
             <Results
               shouldShowSearchInfoPanel={false}
               id="lender-results"
@@ -214,19 +211,19 @@ class LenderLookupPage extends React.PureComponent {
               onResultHover={id => {
                 this.setHoveredMarkerId(id)
               }}
-              extraContainerStyles={pageStyles.centerContainer}
-              extraResultContainerStyles={pageStyles.resultContainer}
+              extraContainerStyles={styles.centerContainer}
+              extraResultContainerStyles={styles.resultContainer}
               setWhiteBackground
             >
               <LenderDetail />
             </Results>
           </StyleWrapperDiv>
         </SearchTemplate>
-        <div className={pageStyles.noticeWithLink}>
+        <div className={styles.noticeWithLink}>
           {`If you notice incorrect bank information, please contact your `}
           <a href="https://www.sba.gov/tools/local-assistance/districtoffices">SBA District Office</a>
         </div>
-        <div className={pageStyles.ctaContainer}>
+        <div className={styles.ctaContainer}>
           <CallToAction
             size="Large"
             headline="Looking for another funding option?"

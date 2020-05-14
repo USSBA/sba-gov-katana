@@ -29,14 +29,6 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/
       },
-      // {
-      //   test: /\.css$/,
-      //   loader: 'style-loader!css-loader?modules&',
-      //   exclude: [
-      //     path.resolve(__dirname, 'node_modules/react-select-v1'),
-      //     path.resolve(__dirname, 'src/client/components/atoms/multiselect/react-select-helpers.css')
-      //   ]
-      // },
       {
         test: /.*react-select.*\.css$/,
         loader:
