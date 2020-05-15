@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { kebabCase } from 'lodash'
 
 import styles from './text-input.scss'
-import { FailureIcon, FormErrorMessage, SuccessIcon, SearchIcon, ValidationIcon } from 'atoms'
+import { FormErrorMessage, SearchIcon, ValidationIcon } from 'atoms'
 
 class TextInput extends React.Component {
   constructor() {
@@ -18,16 +18,6 @@ class TextInput extends React.Component {
 
   componentDidMount() {
     this.isValid(this.props.value)
-  }
-
-  iconValidation(validationState) {
-    if (this.props.showSuccessIcon && validationState === 'success') {
-      return <SuccessIcon aria-hidden="true" />
-    } else if (this.props.showErrorIcon && validationState === 'error') {
-      return <FailureIcon aria-hidden="true" />
-    } else {
-      return null
-    }
   }
 
   errorMessage(validationState) {
@@ -120,7 +110,6 @@ class TextInput extends React.Component {
     } = this.props
     const { isFocused, isValid, value } = this.state
 
-    const validationIcon = this.iconValidation(validationState)
     const errorMessage = this.errorMessage(validationState)
 
     const optionalPlaceholderProp = {}

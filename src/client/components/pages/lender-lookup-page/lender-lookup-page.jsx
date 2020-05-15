@@ -174,26 +174,6 @@ class LenderLookupPage extends React.PureComponent {
               label="Lender Name"
               placeholder="Search for my bank"
             />
-            {/* TC-3 Uncomment when adding back in tax question */}
-            {/* <MultiSelect
-              id="has-filed-2019-taxes"
-              queryParamName="hasFiled2019Taxes"
-              label="Have you filed your 2019 Taxes?"
-              autoFocus={false}
-              className={styles.multiselect}
-              multi={false}
-              options={[
-                {
-                  label: 'Yes',
-                  value: true
-                },
-                {
-                  label: 'No',
-                  value: false
-                }
-              ]}
-              dataCy="has-filed-2019-taxes"
-            /> */}
           </PrimarySearchBar>
           <OfficeMap
             id="office-map"

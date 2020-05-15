@@ -2,17 +2,8 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import LenderLookupPage from 'pages/lender-lookup-page/lender-lookup-page.jsx'
-import * as clientConfig from 'client/services/client-config'
-import { MultiSelect } from 'atoms'
-import moment from 'moment'
 
 describe('LenderLookupPage', () => {
-  // TC-3 skipping test until we add back in tax question for find lender ppp page
-  it.skip('should select the rapid lenders dropdown', () => {
-    const component = mount(<LenderLookupPage />)
-    const result = component.find('[data-cy="has-filed-2019-taxes"]')
-    expect(result).toHaveLength(1)
-  })
   describe('views', () => {
     it('renders a simple carousel', () => {
       const wrapper = shallow(<LenderLookupPage />)
@@ -94,6 +85,44 @@ describe('LenderLookupPage', () => {
         expect(validationFn('ab123')).toBe(false)
         expect(validationFn('20002')).toBe(true)
         expect(validationFn('')).toBe(true)
+      })
+
+      it('sets isLenderNameVisible to true when zip input is valid', () => {
+        const wrapper = shallow(<LenderLookupPage />)
+        const textInput = wrapper.find('#zip')
+        const validationFn = textInput.prop('validationFunction')
+        expect(wrapper.state('isLenderNameVisible')).toBe(false)
+        validationFn('20017')
+        expect(wrapper.state('isLenderNameVisible')).toBe(true)
+      })
+
+      it("doesn't set isLenderNameVisible to true when zip input is invalid or empty", () => {
+        const wrapper = shallow(<LenderLookupPage />)
+        const textInput = wrapper.find('#zip')
+        const validationFn = textInput.prop('validationFunction')
+        validationFn('2001')
+        expect(wrapper.state('isLenderNameVisible')).toBe(false)
+        validationFn('')
+        expect(wrapper.state('isLenderNameVisible')).toBe(false)
+      })
+    })
+
+    describe('TextInput for lender name', () => {
+      it('is not visible on initial load', () => {
+        const wrapper = shallow(<LenderLookupPage />)
+        expect(wrapper.find('#lenderName').prop('isVisible')).toBe(false)
+      })
+
+      it('receives lenderName as queryParamName prop', () => {
+        const wrapper = shallow(<LenderLookupPage />)
+        const queryParamName = wrapper.find('#lenderName').prop('queryParamName')
+        expect(queryParamName).toEqual('lenderName')
+      })
+
+      it('uses the correct placeholder text', () => {
+        const wrapper = shallow(<LenderLookupPage />)
+        const placeholderText = wrapper.find('#lenderName').prop('placeholder')
+        expect(placeholderText).toEqual('Search for my bank')
       })
     })
 
