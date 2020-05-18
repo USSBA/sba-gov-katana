@@ -107,6 +107,7 @@ class TextSection extends React.Component {
     return (
       <span>
         <div
+          dir="auto"
           data-testid="text section"
           className={styles.textSection + (className ? ' ' + className : '')}
           dangerouslySetInnerHTML={{ __html: this.parseTables(text) }}
