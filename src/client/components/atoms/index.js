@@ -3,7 +3,7 @@ import Button from './button/button'
 import CaptionText from './caption-text/caption-text'
 import CardContainer from './card-container/card-container'
 import CaretDownIcon from './icons/caret-down'
-import Carousel from './carousel/carousel'
+import SimpleCarousel from './carousel/carousel'
 import Checkbox from './checkbox/checkbox'
 import CloseIcon from './icons/close'
 import ContactText from './contact-text/contact-text'
@@ -47,7 +47,7 @@ export {
   CaptionText,
   CardContainer,
   CaretDownIcon,
-  Carousel,
+  SimpleCarousel,
   Checkbox,
   CloseIcon,
   ContactText,

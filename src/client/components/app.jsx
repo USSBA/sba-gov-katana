@@ -25,6 +25,7 @@ const store = createStore(rootReducer, middleware)
 const history = syncHistoryWithStore(browserHistory, store)
 
 import '../styles/base.scss'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 require('font-awesome-webpack-4')
 
 class App extends React.Component {
