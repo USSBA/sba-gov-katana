@@ -15,8 +15,17 @@ class LenderLookupPage extends React.PureComponent {
       selectedItem: {},
       newCenter: {},
       shouldCenterMap: false,
-      hoveredMarkerId: ''
+      hoveredMarkerId: '',
+      isLenderNameVisible: false
     }
+  }
+
+  hideLenderName() {
+    this.setState({ isLenderNameVisible: false })
+  }
+
+  showLenderName() {
+    this.setState({ isLenderNameVisible: true })
   }
 
   setSelectedItem(selectedItem) {
@@ -147,35 +156,24 @@ class LenderLookupPage extends React.PureComponent {
               placeholder="Zip Code"
               validationFunction={input => {
                 // only validate if there is an input value
-                let result = true
+                let isValid = true
                 if (!isEmpty(input)) {
                   const fiveDigitRegex = /^\d{5}$/g
-                  result = fiveDigitRegex.test(input)
+                  isValid = fiveDigitRegex.test(input)
                 }
-                return result
+                isValid && input ? this.showLenderName() : this.hideLenderName()
+                return isValid
               }}
               errorText="Enter a 5-digit zip code."
             />
-            {/* TC-3 Uncomment when adding back in tax question */}
-            {/* <MultiSelect
-              id="has-filed-2019-taxes"
-              queryParamName="hasFiled2019Taxes"
-              label="Have you filed your 2019 Taxes?"
-              autoFocus={false}
-              className={styles.multiselect}
-              multi={false}
-              options={[
-                {
-                  label: 'Yes',
-                  value: true
-                },
-                {
-                  label: 'No',
-                  value: false
-                }
-              ]}
-              dataCy="has-filed-2019-taxes"
-            /> */}
+            <TextInput
+              isVisible={this.state.isLenderNameVisible}
+              id="lenderName"
+              queryParamName="lenderName"
+              className={styles.field + ' ' + styles.zip}
+              label="Lender Name"
+              placeholder="Search for my bank"
+            />
           </PrimarySearchBar>
           <OfficeMap
             id="office-map"

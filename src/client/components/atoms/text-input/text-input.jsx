@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { kebabCase } from 'lodash'
 
 import styles from './text-input.scss'
-import { FailureIcon, FormErrorMessage, SuccessIcon, SearchIcon, ValidationIcon } from 'atoms'
+import { FormErrorMessage, SearchIcon, ValidationIcon } from 'atoms'
 
 class TextInput extends React.Component {
   constructor() {
@@ -16,14 +16,8 @@ class TextInput extends React.Component {
     }
   }
 
-  iconValidation(validationState) {
-    if (this.props.showSuccessIcon && validationState === 'success') {
-      return <SuccessIcon aria-hidden="true" />
-    } else if (this.props.showErrorIcon && validationState === 'error') {
-      return <FailureIcon aria-hidden="true" />
-    } else {
-      return null
-    }
+  componentDidMount() {
+    this.isValid(this.props.value)
   }
 
   errorMessage(validationState) {
@@ -97,6 +91,7 @@ class TextInput extends React.Component {
       label,
       hidden,
       id,
+      isVisible,
       validationState,
       errorText,
       showSearchIcon,
@@ -115,65 +110,67 @@ class TextInput extends React.Component {
     } = this.props
     const { isFocused, isValid, value } = this.state
 
-    const validationIcon = this.iconValidation(validationState)
     const errorMessage = this.errorMessage(validationState)
 
     const optionalPlaceholderProp = {}
     if (optional && !isFocused && !value) {
-      optionalPlaceholderProp.placeholder = "Optional"
+      optionalPlaceholderProp.placeholder = 'Optional'
     }
 
     return (
-      <div
-        id={kebabCase(`${id} container`)}
-        className={classNames({
-          'text-input': true,
-          [styles.textInput]: true,
-          [className]: className
-        })}
-        hidden={hidden}
-        data-testid={kebabCase(`${id} container`)}
-      >
-        <label
-          htmlFor={id}
-          className={labelStyle ? labelStyle : null}
-          data-testid={kebabCase(`${id} label`)}
+      isVisible && (
+        <div
+          id={kebabCase(`${id} container`)}
+          className={classNames({
+            'text-input': true,
+            [styles.textInput]: true,
+            [className]: className
+          })}
+          hidden={hidden}
+          data-testid={kebabCase(`${id} container`)}
         >
-          {label}
-        </label>
-        <div className={styles.container}>
-          <input
-            id={id}
-            {...rest}
-            {...optionalPlaceholderProp}
-            aria-labelledby={id}
-            className={classNames({
-              [styles.input]: true,
-              [styles.invalid]: validationState === 'error' || !isValid,
-              [styles.searchIconPadding]: showSearchIcon
-            })}
-            data-testid={id}
-            type={inputType || 'text'}
-            inputMode={inputMode || 'text'}
-            onChange={this.handleChange.bind(this)}
-            onBlur={this.handleBlur.bind(this)}
-            onFocus={this.handleFocus.bind(this)}
-            onKeyUp={this.handleKeyUp.bind(this)}
-            required={!this.props.optional}
-          />
-          {showSearchIcon ? (
-            <div className={styles.searchIcon}>
-              <SearchIcon aria-hidden="true" />
-            </div>
-          ) : null}
-          <ValidationIcon
-            validationState={validationState}
-            showSuccessIcon={showSuccessIcon}
-            showErrorIcon={showErrorIcon}
-          />
+          <label
+            htmlFor={id}
+            className={labelStyle ? labelStyle : null}
+            data-testid={kebabCase(`${id} label`)}
+          >
+            {label}
+          </label>
+          <div className={styles.container}>
+            <input
+              id={id}
+              {...rest}
+              {...optionalPlaceholderProp}
+              aria-labelledby={id}
+              className={classNames({
+                [styles.input]: true,
+                [styles.invalid]: validationState === 'error' || !isValid,
+                [styles.searchIconPadding]: showSearchIcon
+              })}
+              data-testid={id}
+              type={inputType || 'text'}
+              inputMode={inputMode || 'text'}
+              onChange={this.handleChange.bind(this)}
+              onBlur={this.handleBlur.bind(this)}
+              onFocus={this.handleFocus.bind(this)}
+              onKeyUp={this.handleKeyUp.bind(this)}
+              required={!this.props.optional}
+              // value={value}
+            />
+            {showSearchIcon ? (
+              <div className={styles.searchIcon}>
+                <SearchIcon aria-hidden="true" />
+              </div>
+            ) : null}
+            <ValidationIcon
+              validationState={validationState}
+              showSuccessIcon={showSuccessIcon}
+              showErrorIcon={showErrorIcon}
+            />
+          </div>
+          {errorMessage}
         </div>
-        {errorMessage}
-      </div>
+      )
     )
   }
 }
@@ -181,6 +178,7 @@ class TextInput extends React.Component {
 TextInput.defaultProps = {
   showSuccessIcon: true,
   showErrorIcon: false,
+  isVisible: true,
   id: null
 }
 
@@ -209,7 +207,8 @@ TextInput.propTypes = {
   inputMode: PropTypes.string,
 
   // Passed to iconValidation() and returns SuccessIcon or FailureIcon
-  validationState: PropTypes.oneOf(['success', 'error', ''])
+  validationState: PropTypes.oneOf(['success', 'error', '']),
+  isVisible: PropTypes.bool
 }
 
 export default TextInput
