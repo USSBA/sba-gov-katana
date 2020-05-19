@@ -85,7 +85,7 @@ class LenderLookupPage extends React.PureComponent {
           </div>
           <div style={{ minHeight: '200px', color: '#fff' }}>
             <h3>
-              {`For updates on the Payment Protection Program as they evolve, click `}
+              {`For updates on the Paycheck Protection Program as they evolve, click `}
               <Link
                 to="/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program"
                 key="ppp"
@@ -197,7 +197,6 @@ class LenderLookupPage extends React.PureComponent {
 
           <StyleWrapperDiv className={styles.lenderResults} hideOnZeroState={true}>
             <Results
-              shouldShowSearchInfoPanel={false}
               id="lender-results"
               paginate={true}
               scroll
@@ -214,6 +213,9 @@ class LenderLookupPage extends React.PureComponent {
               extraContainerStyles={styles.centerContainer}
               extraResultContainerStyles={styles.resultContainer}
               setWhiteBackground
+              searchTermName={'lenderName'}
+              displaySearchTipsOnNoResults
+              searchTips={['Try entering a different lender name']}
             >
               <LenderDetail />
             </Results>
