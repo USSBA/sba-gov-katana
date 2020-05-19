@@ -173,6 +173,7 @@ class LenderLookupPage extends React.PureComponent {
               className={styles.field + ' ' + styles.zip}
               label="Lender Name"
               placeholder="Search for my bank"
+              optional
             />
           </PrimarySearchBar>
           <OfficeMap
