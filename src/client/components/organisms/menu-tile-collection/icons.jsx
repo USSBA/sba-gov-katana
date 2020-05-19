@@ -20,6 +20,9 @@ const icons = {
       icon: require('assets/images/for-partners/For_Partners_Icon_Lenders_color.png')
     },
     {
+      icon: require('assets/images/for-partners/For_Partners_Icon_Resource-Partners_color.png')
+    },
+    {
       icon: require('assets/images/for-partners/For_Partners_Icon_SBICs_color.png'),
       iconWhite: require('assets/images/for-partners/For_Partners_Icon_SBICs_white.png')
     },
