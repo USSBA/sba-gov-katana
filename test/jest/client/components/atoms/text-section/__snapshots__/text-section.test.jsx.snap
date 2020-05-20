@@ -10,6 +10,7 @@ exports[`TextSection should render a simple paragraph 1`] = `
       }
     }
     data-testid="text section"
+    dir="auto"
   />
 </span>
 `;
@@ -24,6 +25,7 @@ exports[`TextSection should render several paragraphs 1`] = `
       }
     }
     data-testid="text section"
+    dir="auto"
   />
 </span>
 `;
@@ -38,6 +40,7 @@ exports[`TextSection should render several paragraphs with an unordered list in 
       }
     }
     data-testid="text section"
+    dir="auto"
   />
 </span>
 `;
