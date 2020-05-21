@@ -40,6 +40,7 @@ exports[`SearchPage to match snapshot 1`] = `
                 defaultValue=""
                 id="search"
                 inputMode="text"
+                list=""
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}

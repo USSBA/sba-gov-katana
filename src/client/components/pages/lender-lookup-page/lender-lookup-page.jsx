@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash'
 
 import styles from './lender-lookup-page.scss'
 import { Card } from 'molecules'
-import { StyleWrapperDiv, TextInput, Link, MultiSelect, SimpleCarousel } from 'atoms'
+import { StyleWrapperDiv, TextInput, Link, MultiSelect, SimpleCarousel, DatalistDropdown } from 'atoms'
 import { PrimarySearchBar, Results, LenderDetail, OfficeMap } from 'organisms'
 import { CallToAction } from 'molecules'
 import SearchTemplate from '../../templates/search/search.jsx'
@@ -174,7 +174,9 @@ class LenderLookupPage extends React.PureComponent {
               label="Lender Name"
               placeholder="Search for my bank"
               optional
+              listName="lenders"
             />
+            <DatalistDropdown id="lenders" options={['bank of america', 'capital one bank']} />
           </PrimarySearchBar>
           <OfficeMap
             id="office-map"

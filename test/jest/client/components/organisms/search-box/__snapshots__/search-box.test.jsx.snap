@@ -39,6 +39,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
             data-testid="document-lookup"
             id="document-lookup"
             inputMode="text"
+            list=""
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}

@@ -3,12 +3,11 @@ import Button from './button/button'
 import CaptionText from './caption-text/caption-text'
 import CardContainer from './card-container/card-container'
 import CaretDownIcon from './icons/caret-down'
-import SimpleCarousel from './carousel/carousel'
 import Checkbox from './checkbox/checkbox'
 import CloseIcon from './icons/close'
 import ContactText from './contact-text/contact-text'
+import DatalistDropdown from './datalist-dropdown/datalist-dropdown'
 import DecorativeDash from './decorative-dash/decorative-dash'
-import Label from './label/label'
 import ExtraLargeTitleText from './extra-large-title-text/extra-large-title-text'
 import FailureIcon from './icons/failure'
 import FileTypeIcon from './icons/file-type-icon'
@@ -17,6 +16,7 @@ import FormErrorMessage from './form-error-message/form-error-message'
 import HamburgerIcon from './hamburger-icon/hamburger-icon'
 import HomeIcon from './icons/home'
 import ImageSection from './image-section/image-section'
+import Label from './label/label'
 import Link from './link/link'
 import Loader from './loader/loader'
 import MainLogo from './main-logo/main-logo'
@@ -26,6 +26,7 @@ import Radio from './radio/radio'
 import SearchIcon from './icons/search'
 import SearchInfoPanel from './search-info-panel/search-info-panel'
 import SectionLink from './section-link/section-link'
+import SimpleCarousel from './carousel/carousel'
 import SimpleSelect from './simple-select/simple-select'
 import SmallIcon from './small-icon/small-icon'
 import SocialMediaLink from './social-media-link/social-media-link'
@@ -47,10 +48,10 @@ export {
   CaptionText,
   CardContainer,
   CaretDownIcon,
-  SimpleCarousel,
   Checkbox,
   CloseIcon,
   ContactText,
+  DatalistDropdown,
   DecorativeDash,
   Label,
   ExtraLargeTitleText,
@@ -70,6 +71,7 @@ export {
   SearchIcon,
   SearchInfoPanel,
   SectionLink,
+  SimpleCarousel,
   SimpleSelect,
   SmallIcon,
   SocialMediaLink,

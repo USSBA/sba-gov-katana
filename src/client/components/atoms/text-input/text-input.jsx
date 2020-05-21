@@ -155,6 +155,8 @@ class TextInput extends React.Component {
               onFocus={this.handleFocus.bind(this)}
               onKeyUp={this.handleKeyUp.bind(this)}
               required={!this.props.optional}
+              // for DatalistDropdown
+              list={this.props.listName ? this.props.listName : ''}
             />
             {showSearchIcon ? (
               <div className={styles.searchIcon}>
