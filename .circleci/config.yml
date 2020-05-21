@@ -330,6 +330,7 @@ jobs:
             then
               ENVIRONMENT=${CIRCLE_TAG}
             elif echo "$CIRCLE_BRANCH" | grep -q "snyk-fix-" 
+            then
               ENVIRONMENT=qa
             else
               ENVIRONMENT=${CIRCLE_BRANCH}
