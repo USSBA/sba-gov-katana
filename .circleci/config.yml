@@ -402,6 +402,7 @@ jobs:
                 ;;
               qa)
                 export ENVIRONMENT=qa	
+                ;;
               *)	
                 export ENVIRONMENT=${CIRCLE_TAG}	
                 ;;	
