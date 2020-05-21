@@ -11,7 +11,7 @@ class FileTransferServicePage extends Component {
     super(props)
     this.state = {
       filesValue: [],
-      textAreaValue: {}
+      textAreaValue: ''
     }
   }
   render() {
@@ -47,15 +47,22 @@ class FileTransferServicePage extends Component {
           <TextArea
             className={styles.message}
             id="message"
-            label="Mesage"
-            onChange={ e => this.setState({ textAreaValue: e }) }
+            label="Message"
+            onChange={e => this.setState({ textAreaValue: e.target.value })}
+            value={this.state.textAreaValue}
           />
           <h2>Attach files</h2>
           <div data-testid="file-uploader">
-            <FileUploader label="File upload area" onChange={ files => this.setState({ filesValue: files }) }/>
+            <FileUploader
+              label="File upload area"
+              onChange={files => this.setState({ filesValue: files })}
+            />
           </div>
           <h2>Contact information</h2>
-          <p>Please provide us with your contact information in case there are any issues or if we have questions.</p>
+          <p>
+            Please provide us with your contact information in case there are any issues or if we have
+            questions.
+          </p>
           <TextInput
             className={styles.subject}
             data-cy="fullname"
@@ -76,7 +83,9 @@ class FileTransferServicePage extends Component {
             //value={search}
             //showSearchIcon={true}
           />
-          <Button aria-label="Send files" primary>Send files</Button>
+          <Button aria-label="Send files" primary>
+            Send files
+          </Button>
         </form>
       </div>
     )
