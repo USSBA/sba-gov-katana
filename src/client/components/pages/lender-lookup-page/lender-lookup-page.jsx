@@ -25,7 +25,14 @@ class LenderLookupPage extends React.PureComponent {
 
   async getLenderSuggestions(value) {
     const suggestions = await this.debouncedFetchContent('suggestions', { lenderName: value })
+<<<<<<< HEAD
     this.setState({ lenderSuggestions: suggestions })
+=======
+    // clean up data
+    // covert data to list of strings
+    // update state of lenderSuggestions
+    console.log(suggestions)
+>>>>>>> Fetch and debounce suggestions
   }
 
   hideLenderName() {
