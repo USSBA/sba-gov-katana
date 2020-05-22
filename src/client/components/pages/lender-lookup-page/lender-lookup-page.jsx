@@ -1,5 +1,7 @@
 import React from 'react'
-import { isEmpty } from 'lodash'
+import { isEmpty, debounce } from 'lodash'
+
+import { fetchSiteContent } from '../../../fetch-content-helper'
 
 import styles from './lender-lookup-page.scss'
 import { Card } from 'molecules'
@@ -10,14 +12,23 @@ import SearchTemplate from '../../templates/search/search.jsx'
 class LenderLookupPage extends React.PureComponent {
   constructor() {
     super()
-
+    this.debouncedFetchContent = debounce(fetchSiteContent, 250)
     this.state = {
       selectedItem: {},
       newCenter: {},
       shouldCenterMap: false,
       hoveredMarkerId: '',
-      isLenderNameVisible: false
+      isLenderNameVisible: false,
+      lenderSuggestions: []
     }
+  }
+
+  async getLenderSuggestions(value) {
+    const suggestions = await this.debouncedFetchContent('suggestions', { lenderName: value })
+    // clean up data
+    // covert data to list of strings
+    // update state of lenderSuggestions
+    console.log(suggestions)
   }
 
   hideLenderName() {
@@ -175,8 +186,12 @@ class LenderLookupPage extends React.PureComponent {
               placeholder="Search for my bank"
               optional
               listName="lenders"
+              onChangeCallback={value => {
+                console.log('get suggestions', value)
+                this.getLenderSuggestions(value)
+              }}
             />
-            <DatalistDropdown id="lenders" options={['bank of america', 'capital one bank']} />
+            <DatalistDropdown id="lenders" options={this.state.lenderSuggestions} />
           </PrimarySearchBar>
           <OfficeMap
             id="office-map"
