@@ -123,4 +123,3 @@ class FileTransferServicePage extends Component {
 }
 
 export default FileTransferServicePage
-export { postFormData }

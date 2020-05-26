@@ -1,13 +1,16 @@
 import React from 'react'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { shallow } from 'enzyme'
 =======
 import { shallow, mount } from 'enzyme'
 import sinon from 'sinon'
 import axios from 'axios'
 >>>>>>> TA-3686 build email data object and convert files to base64 for sending
+=======
+import { shallow } from 'enzyme'
+>>>>>>> TA-3686 move a function
 import FileTransferServicePage from 'pages/file-transfer-service-page/file-transfer-service-page.jsx'
-import postFormData from 'pages/file-transfer-service-page/file-transfer-service-page.jsx'
 
 describe('FileTransferServicePage', () => {
   it('should have one FileUploader component', () => {
@@ -45,6 +48,7 @@ describe('FileTransferServicePage', () => {
     expect(component.find('[data-testid="send-button"]').length).toEqual(1)
   })
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
   it.only('should submit form data', () => {
@@ -62,4 +66,6 @@ describe('FileTransferServicePage', () => {
     // axiosPostStub.restore()
   })
 >>>>>>> TA-3686 build email data object and convert files to base64 for sending
+=======
+>>>>>>> TA-3686 move a function
 })
