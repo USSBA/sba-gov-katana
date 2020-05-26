@@ -1,22 +1,7 @@
-import Fuse from 'fuse.js'
 import React, { Component } from 'react'
-import Select from 'react-select-v1'
-import classNames from 'classnames'
-import { isEmpty, isEqual, isNil, omit } from 'lodash'
 import axios from 'axios'
-import { Button, FileUploader, Link, Loader, MultiSelect, TextArea, TextInput } from 'atoms'
+import { Button, FileUploader, MultiSelect, TextArea, TextInput } from 'atoms'
 import styles from './file-transfer-service-page.scss'
-
-async function postFormData(formData) {
-  console.log('IN POSTFORMDATA', formData.length)
-  const url = 'http://localhost:4000'
-
-  try {
-    await axios.post(url, formData)
-  } catch (error) {
-    throw error
-  }
-}
 
 function getBase64(file) {
   return new Promise(function(resolve) {
@@ -38,6 +23,18 @@ class FileTransferServicePage extends Component {
       subject: 'File(s) Ready for Download...',
       fullName: '',
       emailSender: ''
+    }
+  }
+
+  async postFormData() {
+    const url = 'placeholder'
+
+    if (this.state.files.length > 0) {
+      try {
+        await axios.post(url, this.state)
+      } catch (error) {
+        throw error
+      }
     }
   }
 
@@ -114,7 +111,7 @@ class FileTransferServicePage extends Component {
           <Button
             aria-label="Send files"
             data-testid="send-button"
-            onClick={event => postFormData.bind(this)(this.state)}
+            onClick={event => this.postFormData()}
             primary
           >
             Send files
@@ -126,4 +123,3 @@ class FileTransferServicePage extends Component {
 }
 
 export default FileTransferServicePage
-export { postFormData }
