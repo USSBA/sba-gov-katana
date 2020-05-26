@@ -155,7 +155,6 @@ class TextInput extends React.Component {
               onFocus={this.handleFocus.bind(this)}
               onKeyUp={this.handleKeyUp.bind(this)}
               required={!this.props.optional}
-              // value={value}
             />
             {showSearchIcon ? (
               <div className={styles.searchIcon}>
