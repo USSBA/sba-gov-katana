@@ -83,7 +83,6 @@ class FileTransferServicePage extends Component {
           <h2>Attach files</h2>
           <div data-testid="file-uploader">
             <FileUploader
-              label="File upload area"
               onChange={files => {
                 this.mapFilesToBase64(files.files)
               }}
