@@ -632,16 +632,6 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-team'
     }
   },
-  sbaVideos: {
-    en: {
-      text: 'SBA Videos',
-      url: '/videos'
-    },
-    es: {
-      text: 'Videos de la SBA',
-      url: '/videos'
-    }
-  },
   select: {
     en: {
       text: 'Select...'
