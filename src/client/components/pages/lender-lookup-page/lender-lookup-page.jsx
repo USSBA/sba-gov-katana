@@ -25,10 +25,7 @@ class LenderLookupPage extends React.PureComponent {
 
   async getLenderSuggestions(value) {
     const suggestions = await this.debouncedFetchContent('suggestions', { lenderName: value })
-    // clean up data
-    // covert data to list of strings
-    // update state of lenderSuggestions
-    console.log(suggestions)
+    this.setState({ lenderSuggestions: suggestions })
   }
 
   hideLenderName() {
@@ -187,11 +184,10 @@ class LenderLookupPage extends React.PureComponent {
               optional
               listName="lenders"
               onChangeCallback={value => {
-                console.log('get suggestions', value)
                 this.getLenderSuggestions(value)
               }}
             />
-            <DatalistDropdown id="lenders" options={this.state.lenderSuggestions} />
+            <DatalistDropdown id="lenders" options={this.state.lenderSuggestions || []} />
           </PrimarySearchBar>
           <OfficeMap
             id="office-map"
