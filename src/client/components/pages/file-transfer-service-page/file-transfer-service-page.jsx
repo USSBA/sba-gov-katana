@@ -20,19 +20,20 @@ class FileTransferServicePage extends Component {
       files: [],
       message: '',
       emailRecipient: '',
-      subject: 'File(s) Ready for Download...',
-      fullName: '',
-      emailSender: '',
-      folderName: `submission-${Date.now()}`
+      subject: '',
+      emailSender: ''
     }
   }
 
   async postFormData() {
     const url = 'placeholder'
 
+    const formData = this.state
+    formData.folderName = `submission-${Date.now()}`
+
     if (this.state.files.length > 0) {
       try {
-        await axios.post(url, this.state)
+        await axios.post(url, formData)
       } catch (error) {
         throw error
       }
