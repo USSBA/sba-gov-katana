@@ -22,7 +22,8 @@ class FileTransferServicePage extends Component {
       emailRecipient: '',
       subject: 'File(s) Ready for Download...',
       fullName: '',
-      emailSender: ''
+      emailSender: '',
+      folderName: `submission-${Date.now()}`
     }
   }
 
