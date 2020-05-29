@@ -40,7 +40,7 @@ class TextInput extends React.Component {
   }
 
   handleChange(event) {
-    const { onChange } = this.props
+    const { onChange, onChangeCallback } = this.props
     const { isValid } = this.state
     const {
       target: { value }
@@ -48,6 +48,7 @@ class TextInput extends React.Component {
 
     if (onChange) {
       onChange(event)
+      onChangeCallback && onChangeCallback(value)
     }
 
     // if input becomes valid as you type, set that it is valid
@@ -155,6 +156,8 @@ class TextInput extends React.Component {
               onFocus={this.handleFocus.bind(this)}
               onKeyUp={this.handleKeyUp.bind(this)}
               required={!this.props.optional}
+              // for DatalistDropdown
+              list={this.props.listName ? this.props.listName : ''}
             />
             {showSearchIcon ? (
               <div className={styles.searchIcon}>

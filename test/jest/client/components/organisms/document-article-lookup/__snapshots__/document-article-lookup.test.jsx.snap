@@ -37,6 +37,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
               data-testid="document-lookup-text-input"
               id="document-lookup-text-input"
               inputMode="text"
+              list=""
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -902,6 +903,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
               data-testid="document-lookup-text-input"
               id="document-lookup-text-input"
               inputMode="text"
+              list=""
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
