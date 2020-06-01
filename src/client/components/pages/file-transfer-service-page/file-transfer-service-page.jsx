@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import config from '../../../../client/services/client-config'
 import { Button, FileUploader, MultiSelect, TextArea, TextInput } from 'atoms'
 import styles from './file-transfer-service-page.scss'
 
@@ -27,7 +28,7 @@ class FileTransferServicePage extends Component {
   }
 
   async postFormData() {
-    const url = 'placeholder'
+    const url = '/api/loan-processing'
 
     const formData = this.state
     formData.folderName = `submission-${Date.now()}`
@@ -115,6 +116,7 @@ class FileTransferServicePage extends Component {
             data-testid="send-button"
             onClick={event => this.postFormData()}
             primary
+            type="button"
           >
             Send files
           </Button>

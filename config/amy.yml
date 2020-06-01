@@ -14,6 +14,9 @@ miscapi:
   endpoint: mnk7e0ukgg.execute-api.us-east-1.amazonaws.com/latest/
 sizestandards:
     endpoint: 27b9p5e3fk.execute-api.us-east-1.amazonaws.com/LATEST/
+loanprocessing:
+    # endpoint: v4w2ob5cyl.execute-api.us-east-1.amazonaws.com/latest/
+    endpoint: amy.ussba.io/api/loan-processing
 content:
     cloudfront: d1utnfrh2o11a6.cloudfront.net
     useD8EventsBackend: true

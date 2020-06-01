@@ -132,6 +132,27 @@ app.post('/actions/misc/*', async (req, res, next) => {
   }
 })
 
+app.post('/api/loan-processing', async (req, res, next) => {
+  const url = 'https://' + config.get('loanprocessing.endpoint')
+  console.log('Posting to loan processing api', req.body, url)
+
+  try {
+    const { data } = await axios.post(url, req.body)
+
+    res.status(httpStatus.OK).json({ ...data })
+  } catch (error) {
+    const {
+      response: { data }
+    } = error
+
+    if (data) {
+      console.error('loan processing api error', data)
+    }
+
+    res.status(httpStatus.BAD_REQUEST).json({ error: data })
+  }
+})
+
 function fetchExternalContent(endpoint, stage, reqPath, queryParams, res, responseType) {
   axios
     .get('https://' + path.join(endpoint, stage, reqPath), {
