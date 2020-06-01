@@ -21,6 +21,7 @@ class FileTransferServicePage extends Component {
       message: '',
       emailRecipient: '',
       subject: '',
+      fullName: '',
       emailSender: ''
     }
   }
