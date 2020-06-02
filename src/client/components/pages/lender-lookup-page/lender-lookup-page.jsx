@@ -76,7 +76,7 @@ class LenderLookupPage extends React.PureComponent {
 
   howItWorksText = `The Paycheck Protection Program is a loan designed to provide a 
   direct incentive for small businesses to keep their workers on the payroll. SBA 
-  will forgiveloads if all employees are kept on the payroll for eight weeks and the
+  will forgive loans if all employees are kept on the payroll for eight weeks and the
   money is used for payroll, rent, mortgage interest, or utilities.`
 
   render() {
