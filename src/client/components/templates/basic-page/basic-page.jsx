@@ -5,7 +5,13 @@ import { listenForOverlap } from 'element-overlap'
 
 import styles from './basic-page.scss'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
-import { Breadcrumb, PreviousNextSection, RemoveMainLoader, TitleSection } from 'molecules'
+import {
+  BizzieChatbotWidget,
+  Breadcrumb,
+  PreviousNextSection,
+  RemoveMainLoader,
+  TitleSection
+} from 'molecules'
 import { GenericCardCollection, SectionNav } from 'organisms'
 import { getLanguageOverride } from '../../../services/utils.js'
 import { TRANSLATIONS } from '../../../translations.js'
@@ -17,6 +23,7 @@ export class BasicPage extends React.Component {
       slideLeftNavIn: false,
       slideContentIn: false,
       displayMobileNav: false,
+      displayBizzieBot: false,
       currentPosition: 'top'
     }
     this.handleSectionNavigationEnter = this.handleSectionNavigationEnter.bind(this)
@@ -116,6 +123,10 @@ export class BasicPage extends React.Component {
     listenForOverlap('#article-navigation-desktop', '#sba-footer', this.handleOverlap, {
       listenOn: 'scroll'
     })
+
+    if (this.props.location.pathname === '/about-sba/organization/contact-sba') {
+      this.setState({ displayBizzieBot: true })
+    }
   }
 
   sectionNavigation(langCode) {
@@ -189,6 +200,7 @@ export class BasicPage extends React.Component {
           </div>
           <div className="basicpage-previousnext">{this.previousAndNextButtons(langCode)}</div>
         </div>
+        {this.state.displayBizzieBot && <BizzieChatbotWidget />}
       </div>
     )
   }
