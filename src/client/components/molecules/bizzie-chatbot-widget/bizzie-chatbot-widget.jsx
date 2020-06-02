@@ -3,6 +3,7 @@ import ReactWebChat, { createDirectLine, createStore } from 'botframework-webcha
 import axios from 'axios'
 import classNames from 'classnames'
 
+import clientConfig from '../../../services/client-config.js'
 import styles from './bizzie-chatbot-widget.scss'
 
 const BizzieChatbotWidget = () => {
@@ -19,7 +20,7 @@ const BizzieChatbotWidget = () => {
 
   useEffect(() => {
     ;(async function() {
-      const response = await axios.get('https://sba-assistant-dev-bizzie.azurewebsites.net/api/token')
+      const response = await axios.get(`https://${clientConfig.bizzieTokenEndpoint}`)
       const { Token } = await JSON.parse(response.data)
 
       setToken(Token)
@@ -31,7 +32,6 @@ const BizzieChatbotWidget = () => {
     [styles.windowMaximized]: !minimized,
     [styles.windowMinimized]: minimized
   })
-  // className="bizzie-web-chat"
 
   return (
     <div
