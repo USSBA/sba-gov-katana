@@ -1,15 +1,22 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import config from '../../../../client/services/client-config'
 import { Button, FileUploader, MultiSelect, TextArea, TextInput } from 'atoms'
 import styles from './file-transfer-service-page.scss'
 
-function getBase64(file) {
-  return new Promise(function(resolve) {
-    var reader = new FileReader()
+function stripDataURLHeaders(fileAsDataURL) {
+  return fileAsDataURL.split(',')[1]
+}
+
+async function addBase64Data(file) {
+  return new Promise(resolve => {
+    const reader = new FileReader()
+
     reader.onloadend = function() {
-      resolve(reader.result)
+      const enrichedFile = file
+      enrichedFile.base64 = stripDataURLHeaders(reader.result)
+      resolve(enrichedFile)
     }
+
     reader.readAsDataURL(file)
   })
 }
@@ -43,9 +50,9 @@ class FileTransferServicePage extends Component {
   }
 
   mapFilesToBase64(files) {
-    const base64Files = files.map(file => getBase64(file))
+    const base64Files = files.map(addBase64Data)
 
-    Promise.all(base64Files).then(convertedFiles => this.setState({ files: convertedFiles }))
+    return Promise.all(base64Files).then(convertedFiles => this.setState({ files: convertedFiles }))
   }
 
   render() {
