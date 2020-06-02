@@ -20,9 +20,9 @@ const BizzieChatbotWidget = () => {
   useEffect(() => {
     ;(async function() {
       const response = await axios.get('https://sba-assistant-dev-bizzie.azurewebsites.net/api/token')
-      const { Token: webChatToken } = await JSON.parse(response.data)
+      const { Token } = await JSON.parse(response.data)
 
-      setToken(webChatToken)
+      setToken(Token)
     })()
   }, [])
 
