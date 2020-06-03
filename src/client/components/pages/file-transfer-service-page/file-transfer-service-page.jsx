@@ -7,14 +7,19 @@ function stripDataURLHeaders(fileAsDataURL) {
   return fileAsDataURL.split(',')[1]
 }
 
-async function addBase64Data(file) {
+async function createBase64FileData(file) {
   return new Promise(resolve => {
     const reader = new FileReader()
 
     reader.onloadend = function() {
-      const enrichedFile = file
-      enrichedFile.base64 = stripDataURLHeaders(reader.result)
-      resolve(enrichedFile)
+      const fileData = {
+        base64: stripDataURLHeaders(reader.result),
+        name: file.name,
+        lastModified: file.lastModified,
+        size: file.size,
+        type: file.type
+      }
+      resolve(fileData)
     }
 
     reader.readAsDataURL(file)
@@ -50,7 +55,7 @@ class FileTransferServicePage extends Component {
   }
 
   mapFilesToBase64(files) {
-    const base64Files = files.map(addBase64Data)
+    const base64Files = files.map(createBase64FileData)
 
     return Promise.all(base64Files).then(convertedFiles => this.setState({ files: convertedFiles }))
   }
