@@ -51,7 +51,7 @@
     "http-status-codes": "1.0.6",
     "js-yaml": "^3.13.1",
     "json2csv": "^3.7.3",
-    "lodash": "4.17.11",
+    "lodash": "4.17.12",
     "moment": "2.22.2",
     "moment-timezone": "0.5.13",
     "mysql": "2.16.0",
