@@ -2,6 +2,8 @@ foresee:
     environment: staging
 miscapi:
   endpoint: lv3rqu1y3g.execute-api.us-east-1.amazonaws.com/latest/
+loanprocessing:
+    endpoint: pat.ussba.io/api/loan-processing
 server:
     fqdn: pat.ussba.io
 features:

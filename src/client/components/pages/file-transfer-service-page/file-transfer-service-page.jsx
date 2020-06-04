@@ -3,12 +3,25 @@ import axios from 'axios'
 import { Button, FileUploader, MultiSelect, TextArea, TextInput } from 'atoms'
 import styles from './file-transfer-service-page.scss'
 
-function getBase64(file) {
-  return new Promise(function(resolve) {
-    var reader = new FileReader()
+function stripDataURLHeaders(fileAsDataURL) {
+  return fileAsDataURL.split(',')[1]
+}
+
+async function createBase64FileData(file) {
+  return new Promise(resolve => {
+    const reader = new FileReader()
+
     reader.onloadend = function() {
-      resolve(reader.result)
+      const fileData = {
+        base64: stripDataURLHeaders(reader.result),
+        name: file.name,
+        lastModified: file.lastModified,
+        size: file.size,
+        type: file.type
+      }
+      resolve(fileData)
     }
+
     reader.readAsDataURL(file)
   })
 }
@@ -27,7 +40,7 @@ class FileTransferServicePage extends Component {
   }
 
   async postFormData() {
-    const url = 'placeholder'
+    const url = '/api/loan-processing'
 
     const formData = this.state
     formData.folderName = `submission-${Date.now()}`
@@ -42,9 +55,9 @@ class FileTransferServicePage extends Component {
   }
 
   mapFilesToBase64(files) {
-    const base64Files = files.map(file => getBase64(file))
+    const base64Files = files.map(createBase64FileData)
 
-    Promise.all(base64Files).then(convertedFiles => this.setState({ files: convertedFiles }))
+    return Promise.all(base64Files).then(convertedFiles => this.setState({ files: convertedFiles }))
   }
 
   render() {
@@ -115,6 +128,7 @@ class FileTransferServicePage extends Component {
             data-testid="send-button"
             onClick={event => this.postFormData()}
             primary
+            type="button"
           >
             Send files
           </Button>

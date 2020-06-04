@@ -8,6 +8,8 @@ foresee:
     environment: staging
 miscapi:
   endpoint: mpmhqtea8g.execute-api.us-east-1.amazonaws.com/latest/
+loanprocessing:
+    endpoint: mint.ussba.io/api/loan-processing
 server:
     fqdn: mint.ussba.io
 features:
