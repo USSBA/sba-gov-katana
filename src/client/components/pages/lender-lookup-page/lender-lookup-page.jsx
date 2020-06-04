@@ -88,30 +88,6 @@ class LenderLookupPage extends React.PureComponent {
 
     return (
       <>
-        <SimpleCarousel>
-          <div style={{ minHeight: '200px', color: '#fff' }}>
-            <h3>SBA is responding quickly to need and additional eligible lenders are added daily!</h3>
-          </div>
-          <div style={{ minHeight: '200px', color: '#fff' }}>
-            <h3>
-              {`If you are looking for other types of assistance, counseling, mentoring, or training,  please look `}
-              <Link to="/local-assistance/find/" key="local-assistance">
-                here
-              </Link>
-            </h3>
-          </div>
-          <div style={{ minHeight: '200px', color: '#fff' }}>
-            <h3>
-              {`For updates on the Paycheck Protection Program as they evolve, click `}
-              <Link
-                to="/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program"
-                key="ppp"
-              >
-                here
-              </Link>
-            </h3>
-          </div>
-        </SimpleCarousel>
         <div className={styles.infoSection}>
           <div className={styles.leftColumn}>
             <h2>Find Eligible Paycheck Protection Program Lenders</h2>

@@ -5,11 +5,6 @@ import LenderLookupPage from 'pages/lender-lookup-page/lender-lookup-page.jsx'
 
 describe('LenderLookupPage', () => {
   describe('views', () => {
-    it('renders a simple carousel', () => {
-      const wrapper = shallow(<LenderLookupPage />)
-      expect(wrapper.find('SimpleCarousel')).toHaveLength(1)
-    })
-
     it('renders information section', () => {
       const wrapper = shallow(<LenderLookupPage />)
       expect(wrapper.find('.infoSection')).toHaveLength(1)
