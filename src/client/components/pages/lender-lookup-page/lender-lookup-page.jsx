@@ -1,23 +1,31 @@
 import React from 'react'
-import { isEmpty } from 'lodash'
+import { isEmpty, debounce } from 'lodash'
+
+import { fetchSiteContent } from '../../../fetch-content-helper'
 
 import styles from './lender-lookup-page.scss'
 import { Card } from 'molecules'
-import { StyleWrapperDiv, TextInput, Link, MultiSelect, SimpleCarousel } from 'atoms'
+import { StyleWrapperDiv, TextInput, Link, MultiSelect, SimpleCarousel, DatalistDropdown } from 'atoms'
 import { PrimarySearchBar, Results, LenderDetail, OfficeMap } from 'organisms'
 import { CallToAction } from 'molecules'
 import SearchTemplate from '../../templates/search/search.jsx'
 class LenderLookupPage extends React.PureComponent {
   constructor() {
     super()
-
+    this.debouncedFetchContent = debounce(fetchSiteContent, 250)
     this.state = {
       selectedItem: {},
       newCenter: {},
       shouldCenterMap: false,
       hoveredMarkerId: '',
-      isLenderNameVisible: false
+      isLenderNameVisible: false,
+      lenderSuggestions: []
     }
+  }
+
+  async getLenderSuggestions(value) {
+    const suggestions = await this.debouncedFetchContent('suggestions', { lenderName: value })
+    this.setState({ lenderSuggestions: suggestions })
   }
 
   hideLenderName() {
@@ -68,7 +76,7 @@ class LenderLookupPage extends React.PureComponent {
 
   howItWorksText = `The Paycheck Protection Program is a loan designed to provide a 
   direct incentive for small businesses to keep their workers on the payroll. SBA 
-  will forgiveloads if all employees are kept on the payroll for eight weeks and the
+  will forgive loans if all employees are kept on the payroll for eight weeks and the
   money is used for payroll, rent, mortgage interest, or utilities.`
 
   render() {
@@ -170,11 +178,16 @@ class LenderLookupPage extends React.PureComponent {
               isVisible={this.state.isLenderNameVisible}
               id="lenderName"
               queryParamName="lenderName"
-              className={styles.field + ' ' + styles.zip}
+              className={styles.field + ' ' + styles.lenderName}
               label="Lender Name"
               placeholder="Search for my bank"
               optional
+              listName="lenders"
+              onChangeCallback={value => {
+                this.getLenderSuggestions(value)
+              }}
             />
+            <DatalistDropdown id="lenders" options={this.state.lenderSuggestions || []} />
           </PrimarySearchBar>
           <OfficeMap
             id="office-map"

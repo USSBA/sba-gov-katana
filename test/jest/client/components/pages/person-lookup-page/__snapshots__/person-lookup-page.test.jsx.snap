@@ -33,6 +33,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
             data-testid="search"
             id="search"
             inputMode="text"
+            list=""
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}

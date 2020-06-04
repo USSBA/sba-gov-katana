@@ -598,20 +598,6 @@ exports[`Front Page Hero should render correctly 1`] = `
             Qualify for Government Contracts
           </a>
         </li>
-        <li
-          className="pageLink "
-        >
-          <a
-            className="link "
-            id="footer-group-5-3"
-            onBlur={[Function]}
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            SBA Videos
-          </a>
-        </li>
       </ul>
     </div>
   </div>
