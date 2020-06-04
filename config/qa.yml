@@ -8,6 +8,8 @@ foresee:
     environment: staging
 miscapi:
   endpoint: 36wms1ypyc.execute-api.us-east-1.amazonaws.com/latest/
+loanprocessing:
+    endpoint: qa.ussba.io/api/loan-processing
 server:
     fqdn: qa.ussba.io
 features:

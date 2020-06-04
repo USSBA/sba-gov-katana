@@ -7,6 +7,8 @@ googleAnalytics:
     tagManagerAccountId: GTM-MSNZZ6M
 miscapi:
   content: w1yv86ffx7.execute-api.us-east-1.amazonaws.com/latest/
+loanprocessing:
+    endpoint: sba.gov/api/loan-processing
 server:
     fqdn: sba.gov
 features:

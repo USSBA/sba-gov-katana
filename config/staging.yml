@@ -2,6 +2,8 @@ foresee:
     environment: staging
 miscapi:
   endpoint: ii16pmq7e6.execute-api.us-east-1.amazonaws.com/latest/
+loanprocessing:
+    endpoint: staging.sba.gov/api/loan-processing
 server:
     fqdn: staging.sba.gov
 features:
