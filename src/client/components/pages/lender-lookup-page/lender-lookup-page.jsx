@@ -12,7 +12,7 @@ import SearchTemplate from '../../templates/search/search.jsx'
 class LenderLookupPage extends React.PureComponent {
   constructor() {
     super()
-    this.debouncedFetchContent = debounce(fetchSiteContent, 250)
+    this.debouncedFetchContent = debounce(fetchSiteContent, 200)
     this.state = {
       selectedItem: {},
       newCenter: {},
