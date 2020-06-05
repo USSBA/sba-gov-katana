@@ -65,6 +65,8 @@ app.use(function(req, res, next) {
         googleMapsApiKey: config.get('googleMapsApiKey'),
         govdelivery: config.get('govdelivery.popupEnabled'),
         isUserLoggedIn: hasSessionCookie || false,
+        pppChatbotBaseUrl: config.get('features.chatbots.ppp.baseUrl'),
+        pppChatbotConfig: config.get('features.chatbots.ppp.configFile'),
         pressRelease: config.get('features.pressRelease'),
         responseStatus: responseStatus,
         sbaOfficeNames: config.get('features.office.sbaOfficeNames'),

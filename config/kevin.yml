@@ -14,6 +14,10 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectKevin
+    chatbots:
+        ppp:
+            baseUrl: 'borrowerbot-web-ui-codebuilddeploy-1-webappbucket-1fy48fwc62ekq.s3.us-west-2.amazonaws.com'
+            configFile: 'lex-web-ui-loader-config.json'
 content:
     cloudfront: d3f48ijg0l2tm.cloudfront.net
     useD8EventsBackend: true

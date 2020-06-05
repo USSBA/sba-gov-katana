@@ -5,7 +5,14 @@ import { listenForOverlap } from 'element-overlap'
 
 import styles from './basic-page.scss'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
-import { Breadcrumb, PreviousNextSection, RemoveMainLoader, TitleSection } from 'molecules'
+import {
+  loadLexChatBotScript,
+  Breadcrumb,
+  PppChatbotWidget,
+  PreviousNextSection,
+  RemoveMainLoader,
+  TitleSection
+} from 'molecules'
 import { GenericCardCollection, SectionNav } from 'organisms'
 import { getLanguageOverride } from '../../../services/utils.js'
 import { TRANSLATIONS } from '../../../translations.js'
@@ -17,7 +24,8 @@ export class BasicPage extends React.Component {
       slideLeftNavIn: false,
       slideContentIn: false,
       displayMobileNav: false,
-      currentPosition: 'top'
+      currentPosition: 'top',
+      lexBotUiScriptLoaded: false
     }
     this.handleSectionNavigationEnter = this.handleSectionNavigationEnter.bind(this)
     this.handleTopWaypointEnter = this.handleTopWaypointEnter.bind(this)
@@ -26,7 +34,16 @@ export class BasicPage extends React.Component {
     this.handleOverlap = this.handleOverlap.bind(this)
   }
 
-  // componentWillMount() {}
+  componentWillMount() {
+    if (
+      this.props.location.pathname ===
+      '/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program'
+    ) {
+      loadLexChatBotScript(() => {
+        this.setState({ lexBotUiScriptLoaded: true })
+      })
+    }
+  }
 
   makeSectionHeaders(paragraphData) {
     /* eslint-disable-next-line array-callback-return */
@@ -189,6 +206,7 @@ export class BasicPage extends React.Component {
           </div>
           <div className="basicpage-previousnext">{this.previousAndNextButtons(langCode)}</div>
         </div>
+        {this.state.lexBotUiScriptLoaded && <PppChatbotWidget />}
       </div>
     )
   }
