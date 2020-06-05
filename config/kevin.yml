@@ -15,6 +15,8 @@ features:
         enabled: true
         tableName: UrlToUrlRedirectKevin
     chatbots:
+        bizzie:
+            tokenEndpoint: 'sba-assistant-dev-bizzie.azurewebsites.net/api/token'
         ppp:
             baseUrl: 'borrowerbot-web-ui-codebuilddeploy-1-webappbucket-1fy48fwc62ekq.s3.us-west-2.amazonaws.com'
             configFile: 'lex-web-ui-loader-config.json'
