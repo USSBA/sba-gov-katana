@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-class ChatbotWidget extends React.Component {
+class PppChatbotWidget extends React.Component {
   async componentDidMount() {
     const result = await axios.get('/api/borrowerbot')
 
@@ -24,4 +24,4 @@ class ChatbotWidget extends React.Component {
   }
 }
 
-export default ChatbotWidget
+export default PppChatbotWidget

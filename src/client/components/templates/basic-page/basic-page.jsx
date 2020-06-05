@@ -5,8 +5,14 @@ import { listenForOverlap } from 'element-overlap'
 
 import styles from './basic-page.scss'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
-import { ChatbotWidget, loadLexChatBotScript } from 'atoms'
-import { Breadcrumb, PreviousNextSection, RemoveMainLoader, TitleSection } from 'molecules'
+import {
+  loadLexChatBotScript,
+  Breadcrumb,
+  PppChatbotWidget,
+  PreviousNextSection,
+  RemoveMainLoader,
+  TitleSection
+} from 'molecules'
 import { GenericCardCollection, SectionNav } from 'organisms'
 import { getLanguageOverride } from '../../../services/utils.js'
 import { TRANSLATIONS } from '../../../translations.js'
@@ -201,7 +207,7 @@ export class BasicPage extends React.Component {
           </div>
           <div className="basicpage-previousnext">{this.previousAndNextButtons(langCode)}</div>
         </div>
-        {this.state.lexBotUiScriptLoaded && <ChatbotWidget />}
+        {this.state.lexBotUiScriptLoaded && <PppChatbotWidget />}
       </div>
     )
   }

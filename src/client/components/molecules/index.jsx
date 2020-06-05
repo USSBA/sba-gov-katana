@@ -13,6 +13,7 @@ import FeedbackForm from './feedback-form/feedback-form'
 import FormPageButtons from './form-page-buttons/form-page-buttons'
 import GoogleTranslate from './google-translate/google-translate'
 import LenderResultCard from './lender-result-card/lender-result-card'
+import loadLexChatBotScript from './chatbots/ppp-chatbot-widget/load-lex-chat-bot-ui'
 import MainLoader from './main-loader/main-loader'
 import MenuTile from './menu-tile/menu-tile'
 import MenuTileWithLinks from './menu-tile-with-links/menu-tile-with-links'
@@ -22,6 +23,7 @@ import NumberedCalloutBlock from './numbered-callout-block/numbered-callout-bloc
 import PageLinkGroup from './page-link-group/page-link-group'
 import Paginator from './paginator/paginator'
 import PhoneNumber from './phone-number/phone-number'
+import PppChatbotWidget from './chatbots/ppp-chatbot-widget/ppp-chatbot-widget'
 import PreviousNextSection from './previous-next/previous-next'
 import QuickLinks from './quick-links/quick-links'
 import ReadMore from './readmore/readmore'
@@ -51,6 +53,7 @@ export {
   FormPageButtons,
   GoogleTranslate,
   LenderResultCard,
+  loadLexChatBotScript,
   MainLoader,
   MenuTile,
   MenuTileWithLinks,
@@ -60,6 +63,7 @@ export {
   PageLinkGroup,
   Paginator,
   PhoneNumber,
+  PppChatbotWidget,
   PreviousNextSection,
   QuickLinks,
   ReadMore,
