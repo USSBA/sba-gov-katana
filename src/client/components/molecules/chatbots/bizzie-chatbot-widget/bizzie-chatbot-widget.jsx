@@ -3,7 +3,7 @@ import ReactWebChat, { createDirectLine, createStore } from 'botframework-webcha
 import axios from 'axios'
 import classNames from 'classnames'
 
-import clientConfig from '../../../services/client-config.js'
+import clientConfig from '../../../../services/client-config.js'
 import styles from './bizzie-chatbot-widget.scss'
 
 const BizzieChatbotWidget = () => {

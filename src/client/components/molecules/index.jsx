@@ -1,6 +1,6 @@
 import Address from './address/address'
 import AuthorCard from './author-card/author-card'
-import BizzieChatbotWidget from './bizzie-chatbot-widget/bizzie-chatbot-widget'
+import BizzieChatbotWidget from './chatbots/bizzie-chatbot-widget/bizzie-chatbot-widget'
 import Breadcrumb from './breadcrumb/breadcrumb'
 import ButtonCta from './button-cta/button-cta'
 import CallToAction from './call-to-action/call-to-action'
