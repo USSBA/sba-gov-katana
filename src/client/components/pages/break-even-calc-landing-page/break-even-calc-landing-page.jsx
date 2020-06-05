@@ -1,4 +1,5 @@
 import React from 'react'
+<<<<<<< HEAD
 import { Button, DecorativeDash } from 'atoms'
 import { Accordion } from 'organisms'
 import { Breadcrumb } from 'molecules'
@@ -111,6 +112,12 @@ class BreakEvenCalculatorPage extends React.Component {
         </div>
       </div>
     )
+=======
+
+class BreakEvenCalculatorPage extends React.Component {
+  render() {
+    return <h1>Break Even Calculator</h1>
+>>>>>>> Create landing page and routing for it
   }
 }
 
