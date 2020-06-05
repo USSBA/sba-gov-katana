@@ -138,20 +138,6 @@
   }
 
   @include grid-media($sba-grid-medium) {
-    display: flex;
-
-    .leftColumn {
-      padding-right: $base-spacing;
-      width: 65%;
-    }
-
-    .rightColumn {
-      margin-right: $base-spacing;
-      width: 35%;
-
-      h4 {
-        margin-top: 0;
-      }
-    }
+    display: none;
   }
 }
