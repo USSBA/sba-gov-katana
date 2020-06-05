@@ -65,6 +65,8 @@ app.use(function(req, res, next) {
         googleMapsApiKey: config.get('googleMapsApiKey'),
         govdelivery: config.get('govdelivery.popupEnabled'),
         isUserLoggedIn: hasSessionCookie || false,
+        pppChatbotBaseUrl: config.get('features.chatbots.ppp.baseUrl'),
+        pppChatbotConfig: config.get('features.chatbots.ppp.configFile'),
         pressRelease: config.get('features.pressRelease'),
         responseStatus: responseStatus,
         sbaOfficeNames: config.get('features.office.sbaOfficeNames'),
@@ -132,12 +134,12 @@ app.post('/actions/misc/*', async (req, res, next) => {
   }
 })
 
-app.get('/api/borrowerbot', (req, res, next) => {
-  res.send({
-    baseUrl: `https://${config.get('features.borrowerChatbot.baseUrl')}`,
-    configFile: config.get('features.borrowerChatbot.configFile')
-  })
-})
+// app.get('/api/borrowerbot', (req, res, next) => {
+//   res.send({
+//     baseUrl: `https://${config.get('features.borrowerChatbot.baseUrl')}`,
+//     configFile: config.get('features.borrowerChatbot.configFile')
+//   })
+// })
 
 function fetchExternalContent(endpoint, stage, reqPath, queryParams, res, responseType) {
   axios
