@@ -1,0 +1,93 @@
+// .maximizedChatbot {
+//   .chatbotTopPane {
+//     width: 500px;
+//   }
+
+//   .chatbotWindow {
+//     height: 700px;
+//     width: 500px;
+//     border: 1px solid black;
+//   }
+// }
+
+// .minimizedChatbot{
+//   .chatbotTopPane {
+//     width: 300px;
+//   }
+
+//   .chatbotWindow {
+//     display: none;
+//   }
+// }
+
+// .minimizedChatbot, .maximizedChatbot {
+//   position: fixed;
+//   bottom: -7px;
+//   right: 30px;
+//   z-index: 100;
+
+//   .chatbotPaneLabelText {
+//     color: white;
+//     font-size: 30px;
+//     text-align: center;
+//   }
+
+//   .chatbotTopPane {
+//     height: 50px;
+//     background-color: $sba-blue;
+//     cursor: pointer;
+//   }
+// }
+
+.bizzieWebChatContainer {
+  bottom: -7px;
+  height: 750px;
+  position: fixed;
+  right: 30px;
+  width: 500px;
+}
+
+.windowMaximized {
+  .bizzieWebChat {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 700px;
+    width: 100%;
+  }
+
+  .bizzieWebChatTitleBar {
+    width: 100%;
+  }
+
+  .bizzieWebChatVisible {
+    visibility: visible;
+  }
+}
+
+.windowMinimized {
+  .bizzieWebChatTitleBar {
+    bottom: 7px;
+    left: 200px;
+    position: absolute;
+    width: 300px;
+  }
+
+  .bizzieWebChatHidden {
+    visibility: hidden;
+  }
+}
+
+.windowMaximized,
+.windowMinimized {
+  .bizzieWebChatTitleBar {
+    background-color: $sba-blue;
+    cursor: pointer;
+    height: 50px;
+  }
+
+  .bizzieWebChatTitleBarText {
+    color: white;
+    font-size: 30px;
+    margin: 0;
+    text-align: center;
+  }
+}

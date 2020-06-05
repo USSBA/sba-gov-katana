@@ -9,6 +9,7 @@ import {
   loadLexChatBotScript,
   Breadcrumb,
   PppChatbotWidget,
+  BizzieChatbotWidget,
   PreviousNextSection,
   RemoveMainLoader,
   TitleSection
@@ -24,6 +25,7 @@ export class BasicPage extends React.Component {
       slideLeftNavIn: false,
       slideContentIn: false,
       displayMobileNav: false,
+      displayBizzieBot: false,
       currentPosition: 'top',
       lexBotUiScriptLoaded: false
     }
@@ -34,16 +36,8 @@ export class BasicPage extends React.Component {
     this.handleOverlap = this.handleOverlap.bind(this)
   }
 
-  componentWillMount() {
-    if (
-      this.props.location.pathname ===
-      '/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program'
-    ) {
-      loadLexChatBotScript(() => {
-        this.setState({ lexBotUiScriptLoaded: true })
-      })
-    }
-  }
+  // componentWillMount() {
+  // }
 
   makeSectionHeaders(paragraphData) {
     /* eslint-disable-next-line array-callback-return */
@@ -133,6 +127,17 @@ export class BasicPage extends React.Component {
     listenForOverlap('#article-navigation-desktop', '#sba-footer', this.handleOverlap, {
       listenOn: 'scroll'
     })
+
+    if (this.props.location.pathname === '/about-sba/organization/contact-sba') {
+      this.setState({ displayBizzieBot: true })
+    } else if (
+      this.props.location.pathname ===
+      '/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program'
+    ) {
+      loadLexChatBotScript(() => {
+        this.setState({ lexBotUiScriptLoaded: true })
+      })
+    }
   }
 
   sectionNavigation(langCode) {
@@ -207,6 +212,7 @@ export class BasicPage extends React.Component {
           <div className="basicpage-previousnext">{this.previousAndNextButtons(langCode)}</div>
         </div>
         {this.state.lexBotUiScriptLoaded && <PppChatbotWidget />}
+        {this.state.displayBizzieBot && <BizzieChatbotWidget />}
       </div>
     )
   }

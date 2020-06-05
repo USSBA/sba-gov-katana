@@ -74,6 +74,7 @@ app.use(function(req, res, next) {
         showSbic: config.get('features.showSbic'),
         showRegisterLink: config.get('features.showRegisterLink'),
         localAssistMenuHeight: config.get('features.localAssistMenuHeight'),
+        bizzieTokenEndpoint: config.get('features.chatbots.bizzie.tokenEndpoint'),
         useD8EventsBackend: config.get('content.useD8EventsBackend')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
