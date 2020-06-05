@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import ReactWebChat, { createDirectLine, createStore } from 'botframework-webchat'
+// import ReactWebChat, { createDirectLine, createStore } from 'botframework-webchat'
 import axios from 'axios'
 import classNames from 'classnames'
 
@@ -10,8 +10,8 @@ const BizzieChatbotWidget = () => {
   const [token, setToken] = useState(null)
   const [minimized, setMinimized] = useState(true)
 
-  const directLine = useMemo(() => createDirectLine({ token }), [token])
-  const store = useMemo(() => createStore(), [])
+  // const directLine = useMemo(() => createDirectLine({ token }), [token])
+  // const store = useMemo(() => createStore(), [])
 
   const toggleChatWindowVisibility = useCallback(
     () => setMinimized(prevMinimizedState => !prevMinimizedState),
@@ -47,7 +47,7 @@ const BizzieChatbotWidget = () => {
           Bizzie
         </p>
       </div>
-      <ReactWebChat
+      {/*<ReactWebChat
         className={classNames(
           'bizzie-web-chat',
           styles.bizzieWebChat,
@@ -55,7 +55,7 @@ const BizzieChatbotWidget = () => {
         )}
         directLine={directLine}
         store={store}
-      />
+        />*/}
     </div>
   )
 }
