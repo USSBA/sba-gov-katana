@@ -16,7 +16,6 @@ import {
 import { GenericCardCollection, SectionNav } from 'organisms'
 import { getLanguageOverride } from '../../../services/utils.js'
 import { TRANSLATIONS } from '../../../translations.js'
-import axios from 'axios'
 
 export class BasicPage extends React.Component {
   constructor(props) {
