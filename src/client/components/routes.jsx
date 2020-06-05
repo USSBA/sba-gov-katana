@@ -207,8 +207,8 @@ const mainRoutes = [
     from="/guia-de-negocios/10-pasos-para-iniciar-su-empresa"
     to="/guia-de-negocios/10-pasos-para-iniciar-su-empresa/"
   />,
-  <Route key={114} path="/breakevencalculator" component={BreakEvenCalculatorPage} />,
-  <Redirect key={115} from="/breakevencalculator" to="/breakevencalculator/" />,
+  <Route key={114} path="/breakevenpointcalculator" component={BreakEvenCalculatorPage} />,
+  <Redirect key={115} from="/breakevenpointcalculator" to="/breakevenpointcalculator/" />,
   <Route key={6} path="/:first" component={RootPage} />,
   <Route key={7} path="/:first/" component={RootPage} />,
   <Route key={8} path="/:first/:second" component={RootPage} />,
