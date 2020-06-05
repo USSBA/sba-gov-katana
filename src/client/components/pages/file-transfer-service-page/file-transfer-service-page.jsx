@@ -9,15 +9,17 @@ const FORM_STATE = {
   error: 'error'
 }
 
+
 const origState = {
-  files: [],
-  message: '',
-  emailRecipient: '',
-  subject: '',
+  contactEmail: '',
   fullName: '',
-  emailSender: '',
+  files: [],
+  loanServiceCenterId: '',
+  message: '',
+  multiSelectOptions: [],
   shouldShowFileUploader: true,
-  showEmptyFileUploaderError: false
+  showEmptyFileUploaderError: false,
+  subject: ''
 }
 
 function stripDataURLHeaders(fileAsDataURL) {
@@ -31,7 +33,7 @@ async function createBase64FileData(file) {
     reader.onloadend = function() {
       const fileData = {
         base64: stripDataURLHeaders(reader.result),
-        name: file.name,
+        filename: file.name,
         lastModified: file.lastModified,
         size: file.size,
         type: file.type
@@ -54,18 +56,31 @@ class FileTransferServicePage extends Component {
     }
   }
 
+  async componentDidMount() {
+    const { data } = await axios.get('/api/loan-processing')
+    const multiSelectOptions = data.map(({ id, name }) => ({ value: id, label: name }))
+    this.setState({ multiSelectOptions })
+  }
+
   async submitForm(e) {
     e.preventDefault()
-
-    const url = '/api/loan-processing'
-    const formData = { ...this.state }
-    const { files, formProcessingState } = this.state
-
-    formData.folderName = `submission-${Date.now()}`
-
+    const { contactEmail, files, formProcessingState, fullName, loanServiceCenterId, message, subject } = this.state
     if (files.length > 0) {
       this.setState({ formProcessingState: FORM_STATE.processing })
       window.scrollTo(0, 0)
+      const url = '/api/loan-processing'
+      const formData = Object.assign(
+          {},
+          {
+            contactEmail,
+            files,
+            fullName,
+            folderName: `submission-${Date.now()}`,
+            loanServiceCenterId,
+            message,
+            subject
+          }
+        )
 
       await axios
         .post(url, formData)
@@ -96,7 +111,6 @@ class FileTransferServicePage extends Component {
 
   mapFilesToBase64(files) {
     const base64Files = files.map(createBase64FileData)
-
     return Promise.all(base64Files).then(convertedFiles => this.setState({ files: convertedFiles }))
   }
 
@@ -152,9 +166,9 @@ class FileTransferServicePage extends Component {
               data-testid="recipient-email"
               id="recipient-email"
               label="To"
-              onChange={e => this.setState({ emailRecipient: e.value })}
-              options={[{ value: 'test@sba.gov', label: 'test@sba.gov' }]}
-              value={this.state.emailRecipient}
+              onChange={e => this.setState({ loanServiceCenterId: e.value })}
+              options={this.state.multiSelectOptions}
+              value={this.state.loanServiceCenterId}
             />
           </div>
           <TextInput
@@ -190,7 +204,6 @@ class FileTransferServicePage extends Component {
               )}
             </Fragment>
           )}
-
           <h2>Contact information</h2>
           <p>
             Please provide us with your contact information in case there are any issues or if we have
@@ -210,8 +223,8 @@ class FileTransferServicePage extends Component {
             id="sender-email"
             inputType="email"
             label="Email address"
-            onChange={({ target: { value } }) => this.setState({ emailSender: value })}
-            value={this.state.emailSender}
+            onChange={({ target: { value } }) => this.setState({ contactEmail: value })}
+            value={this.state.contactEmail}
           />
           <Button aria-label="Send files" data-testid="send-button" primary type="submit">
             Send files
