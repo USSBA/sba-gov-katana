@@ -7,7 +7,7 @@ class BreakEvenCalculatorPage extends React.Component {
   calloutContent = {
     title: "What you'll need to get started",
     text:
-      'This analysis will help you easily prepare an estimate and visual to include in your business plan. We’ll do the math and all you will need is an idea of the  following information.'
+      'This analysis will help you easily prepare an estimate and visual to include in your business plan. We’ll do the math and all you will need is an idea of the following information.'
   }
   render() {
     return (
@@ -26,7 +26,7 @@ class BreakEvenCalculatorPage extends React.Component {
             companies may take years before turning a profit, often losing money in the first few months or
             years before breaking even. For this reason, break-even points are an important part of any
             business plan presented to a potential investor. It can also be a useful tool in future planning
-            for existing businesses to prove their potential turn around after disaster scenarios.{' '}
+            for existing businesses to prove their potential turn around after disaster scenarios.
           </p>
         </div>
         <div className={styles.gradientBackground}>
@@ -53,16 +53,16 @@ class BreakEvenCalculatorPage extends React.Component {
               <div className={styles.bottomRow}>
                 <ul>
                   <li>
-                    Your business' estimated <strong>Fixed Costs</strong>
+                    Your business's estimated <strong>Fixed Costs</strong>
                   </li>
                   <li>
-                    Your business' selling <strong>Price per Unit</strong> or service
+                    Your business's selling <strong>Price per Unit</strong> or service
                   </li>
                   <li>
-                    Your business' projected <strong>Unit Sales</strong>
+                    Your business's projected <strong>Unit Sales</strong>
                   </li>
                   <li>
-                    Your business' projected <strong>Variable Costs</strong>
+                    Your business's projected <strong>Variable Costs</strong>
                   </li>
                 </ul>
                 <div className={styles.buttonContainer}>
