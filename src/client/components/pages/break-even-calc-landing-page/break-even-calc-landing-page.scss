@@ -1,9 +1,12 @@
 .calcLandingPageContainer {
-  padding-bottom: 200px;
+  padding-bottom: 300px;
 }
 
 .infoSection {
   margin: $base-spacing * 2 $base-spacing * 3;
+  @include for-small-only {
+    margin: $base-spacing;
+  }
 }
 
 .gradientBackground {
@@ -13,6 +16,12 @@
 
 .infoContainer {
   margin: 0 $base-spacing * 3;
+  padding-top: $base-spacing * 2;
+
+  @include for-small-only {
+    margin: 0 $small-spacing;
+    padding-top: $small-spacing;
+  }
 
   & > div {
     margin-bottom: $small-spacing;
@@ -34,8 +43,6 @@
   .calcImage {
     height: 160px;
     width: 160px;
-    border: 2px solid white;
-    border-radius: 50%;
   }
 
   .calcText {
@@ -51,5 +58,29 @@
     background-color: $sba-white;
     padding: $base-spacing * 2;
     box-shadow: $box-shadow;
+    @include for-small-only {
+      padding: $small-spacing;
+    }
+
+    .bottomRow {
+      display: flex;
+      justify-content: space-between;
+      @include for-small-only {
+        flex-direction: column;
+      }
+
+      ul {
+        list-style-type: circle;
+        list-style-position: inside;
+        color: $sba-blue;
+        @include for-small-only {
+          margin-bottom: $small-spacing;
+        }
+      }
+
+      .buttonContainer {
+        margin-top: auto;
+      }
+    }
   }
 }
