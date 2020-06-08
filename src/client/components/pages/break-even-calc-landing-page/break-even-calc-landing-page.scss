@@ -1,3 +1,7 @@
+.calcLandingPageContainer {
+  padding-bottom: 200px;
+}
+
 .infoSection {
   margin: $base-spacing * 2 $base-spacing * 3;
 }
@@ -5,4 +9,47 @@
 .gradientBackground {
   height: 500px;
   background: radial-gradient(circle at center, $secondary-blue-light, $secondary-blue-dark);
+}
+
+.infoContainer {
+  margin: 0 $base-spacing * 3;
+
+  & > div {
+    margin-bottom: $small-spacing;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .formula {
+    color: $sba-white;
+    background-color: rgba(0, 81, 139, 0.7);
+    text-align: center;
+    padding: $small-spacing;
+    font-size: 24px;
+  }
+
+  .calcImage {
+    height: 160px;
+    width: 160px;
+    border: 2px solid white;
+    border-radius: 50%;
+  }
+
+  .calcText {
+    color: $sba-white;
+    width: 75%;
+
+    h3 {
+      color: $sba-white;
+    }
+  }
+
+  .calloutCard {
+    background-color: $sba-white;
+    padding: $base-spacing * 2;
+    box-shadow: $box-shadow;
+  }
 }
