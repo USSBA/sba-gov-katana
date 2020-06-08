@@ -4,6 +4,8 @@ import Accordion from '../../organisms/accordion/accordion'
 import styles from './break-even-calc-landing-page.scss'
 import { faqFields, benefitFields } from './content'
 
+import styles from './break-even-calc-landing-page.scss'
+
 class BreakEvenCalculatorPage extends React.Component {
   calloutContent = {
     title: "What you'll need to get started",
