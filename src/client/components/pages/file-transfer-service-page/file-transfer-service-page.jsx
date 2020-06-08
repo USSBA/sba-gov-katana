@@ -57,9 +57,12 @@ class FileTransferServicePage extends Component {
   }
 
   async componentDidMount() {
-    const { data } = await axios.get('/api/loan-processing')
-    const multiSelectOptions = data.map(({ id, name }) => ({ value: id, label: name }))
-    this.setState({ multiSelectOptions })
+    const { groupId } = this.props.location.query
+    if (groupId) {
+      const { data } = await axios.get(`/api/loan-processing?groupId=${groupId}`)
+      const multiSelectOptions = data.map(({ id, name }) => ({ value: id, label: name }))
+      this.setState({ multiSelectOptions })
+    }
   }
 
   async submitForm(e) {

@@ -154,12 +154,13 @@ app.post('/api/loan-processing', async (req, res, next) => {
 })
 
 app.get('/api/loan-processing', async (req, res, next) => {
-  const url = 'https://' + config.get('loanprocessing.endpoint')
+  let url = 'https://' + config.get('loanprocessing.endpoint')
+  if (req.query.groupId) {
+    url += `?groupId=${req.query.groupId}`
+  }
   console.log('Posting to loan processing api', req.body, url)
-
   try {
     const { data } = await axios.get(url)
-
     res.status(httpStatus.OK).json(data)
   } catch (error) {
     const {
