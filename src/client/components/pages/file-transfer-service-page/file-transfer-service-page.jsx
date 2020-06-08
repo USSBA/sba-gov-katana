@@ -59,7 +59,6 @@ class FileTransferServicePage extends Component {
 
     const url = '/api/loan-processing'
     const { formData, files, formProcessingState } = this.state
-    const statusCode = 204
 
     formData.folderName = `submission-${Date.now()}`
 
@@ -70,6 +69,7 @@ class FileTransferServicePage extends Component {
       await axios
         .post(url, formData)
         .then(response => {
+          const statusCode = 204
           this.setState({
             formProcessingState: response.status === statusCode ? FORM_STATE.success : FORM_STATE.error
           })

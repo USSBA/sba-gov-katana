@@ -30,7 +30,7 @@
     "complexity": ["warn", 6],
     "consistent-return": ["off"],
     "curly": ["warn"],
-    "default-case": ["warn"],
+    "default-case": ["off"],
     "dot-location": ["off"],
     "dot-notation": ["error"],
     "eqeqeq": ["error"],
