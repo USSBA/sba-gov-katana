@@ -58,7 +58,8 @@ class FileTransferServicePage extends Component {
     e.preventDefault()
 
     const url = '/api/loan-processing'
-    const { formData, files, formProcessingState } = this.state
+    const formData = { ...this.state }
+    const { files, formProcessingState } = this.state
 
     formData.folderName = `submission-${Date.now()}`
 
