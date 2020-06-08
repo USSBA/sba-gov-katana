@@ -1,11 +1,17 @@
 import React from 'react'
+import { Button } from 'atoms'
 
 import styles from './break-even-calc-landing-page.scss'
 
 class BreakEvenCalculatorPage extends React.Component {
+  calloutContent = {
+    title: "What you'll need to get started",
+    text:
+      'This analysis will help you easily prepare an estimate and visual to include in your business plan. We’ll do the math and all you will need is an idea of the  following information.'
+  }
   render() {
     return (
-      <>
+      <div className={styles.calcLandingPageContainer}>
         <div className={styles.infoSection}>
           <h1>Break-even point analysis</h1>
           <h5>
@@ -23,8 +29,44 @@ class BreakEvenCalculatorPage extends React.Component {
             for existing businesses to prove their potential turn around after disaster scenarios.{' '}
           </p>
         </div>
-        <div className={styles.gradientBackground}></div>
-      </>
+        <div className={styles.gradientBackground}>
+          <div className={styles.infoContainer}>
+            <div className={styles.row}>
+              <div className={styles.calcImage}></div>
+              <div className={styles.calcText}>
+                Get started with the
+                <h3>Break-even point analysis tool</h3>
+                <p>
+                  Create your break-even analysis with this calculator and determine your business’s
+                  break-even point using the following formula:
+                </p>
+              </div>
+            </div>
+            <div className={styles.formula}>
+              Fixed Costs ÷ (Price - Variable Costs) = Break-even Point in Units
+            </div>
+            <div className={styles.calloutCard}>
+              <h3>{this.calloutContent.title}</h3>
+              <p>{this.calloutContent.text}</p>
+              <ul>
+                <li>
+                  Your business' estimated <em>Fixed Costs</em>
+                </li>
+                <li>
+                  Your business' selling <em>Price per Unit</em> or service
+                </li>
+                <li>
+                  Your business' projected <em>Unit Sales</em>
+                </li>
+                <li>
+                  Your business' projected <em>Variable Costs</em>
+                </li>
+              </ul>
+              <Button primary>Start Analysis</Button>
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 }
