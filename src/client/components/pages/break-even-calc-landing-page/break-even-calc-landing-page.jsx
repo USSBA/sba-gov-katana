@@ -32,7 +32,9 @@ class BreakEvenCalculatorPage extends React.Component {
         <div className={styles.gradientBackground}>
           <div className={styles.infoContainer}>
             <div className={styles.row}>
-              <div className={styles.calcImage}></div>
+              <div className={styles.calcImage}>
+                <img src="/assets/images/break-even-calculator/Calculator_icon.svg" alt="calculator icon" />
+              </div>
               <div className={styles.calcText}>
                 Get started with the
                 <h3>Break-even point analysis tool</h3>
@@ -48,21 +50,25 @@ class BreakEvenCalculatorPage extends React.Component {
             <div className={styles.calloutCard}>
               <h3>{this.calloutContent.title}</h3>
               <p>{this.calloutContent.text}</p>
-              <ul>
-                <li>
-                  Your business' estimated <em>Fixed Costs</em>
-                </li>
-                <li>
-                  Your business' selling <em>Price per Unit</em> or service
-                </li>
-                <li>
-                  Your business' projected <em>Unit Sales</em>
-                </li>
-                <li>
-                  Your business' projected <em>Variable Costs</em>
-                </li>
-              </ul>
-              <Button primary>Start Analysis</Button>
+              <div className={styles.bottomRow}>
+                <ul>
+                  <li>
+                    Your business' estimated <strong>Fixed Costs</strong>
+                  </li>
+                  <li>
+                    Your business' selling <strong>Price per Unit</strong> or service
+                  </li>
+                  <li>
+                    Your business' projected <strong>Unit Sales</strong>
+                  </li>
+                  <li>
+                    Your business' projected <strong>Variable Costs</strong>
+                  </li>
+                </ul>
+                <div className={styles.buttonContainer}>
+                  <Button primary>Start Analysis</Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
