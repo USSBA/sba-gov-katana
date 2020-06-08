@@ -1,0 +1,8 @@
+.infoSection {
+  margin: $base-spacing * 2 $base-spacing * 3;
+}
+
+.gradientBackground {
+  height: 500px;
+  background: radial-gradient(circle at center, $secondary-blue-light, $secondary-blue-dark);
+}
