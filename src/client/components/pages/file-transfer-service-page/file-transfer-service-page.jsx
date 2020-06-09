@@ -9,7 +9,6 @@ const FORM_STATE = {
   error: 'error'
 }
 
-
 const origState = {
   contactEmail: '',
   fullName: '',
@@ -67,12 +66,13 @@ class FileTransferServicePage extends Component {
 
   async submitForm(e) {
     e.preventDefault()
-    const { contactEmail, files, formProcessingState, fullName, loanServiceCenterId, message, subject } = this.state
+
+    const { contactEmail, files, fullName, loanServiceCenterId, message, subject } = this.state
+
     if (files.length > 0) {
-      this.setState({ formProcessingState: FORM_STATE.processing })
-      window.scrollTo(0, 0)
-      const url = '/api/loan-processing'
-      const formData = Object.assign(
+      this.setState({ formProcessingState: FORM_STATE.processing }, async () => {
+        const url = '/api/loan-processing'
+        const formData = Object.assign(
           {},
           {
             contactEmail,
@@ -85,20 +85,23 @@ class FileTransferServicePage extends Component {
           }
         )
 
-      await axios
-        .post(url, formData)
-        .then(response => {
-          const statusCode = 204
-          this.setState({
-            formProcessingState: response.status === statusCode ? FORM_STATE.success : FORM_STATE.error
+        await axios
+          .post(url, formData)
+          .then(response => {
+            const statusCode = 204
+            const formProcessingState =
+              response.status === statusCode ? FORM_STATE.success : FORM_STATE.error
+            this.setState({ formProcessingState })
+
+            if (formProcessingState === FORM_STATE.success) {
+              this.resetForm()
+            }
           })
-          if (formProcessingState === FORM_STATE.success) {
-            this.resetForm()
-          }
-        })
-        .catch(error => {
-          this.setState({ formProcessingState: FORM_STATE.error })
-        })
+          .catch(error => {
+            this.setState({ formProcessingState: FORM_STATE.error })
+          })
+      })
+      window.scrollTo(0, 0)
     } else {
       window.scrollTo(0, this.fileUploaderRef.current.offsetTop)
       this.setState({ showEmptyFileUploaderError: true })
