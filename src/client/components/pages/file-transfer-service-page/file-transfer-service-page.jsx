@@ -1,7 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import axios from 'axios'
-import { Button, FileUploader, MultiSelect, TextArea, TextInput } from 'atoms'
+import { Button, FileUploader, MultiSelect, TextArea, TextInput, Loader } from 'atoms'
 import styles from './file-transfer-service-page.scss'
+
+const FORM_STATE = {
+  processing: 'processing',
+  success: 'success',
+  error: 'error'
+}
+
+const origState = {
+  files: [],
+  message: '',
+  emailRecipient: '',
+  subject: '',
+  fullName: '',
+  emailSender: '',
+  shouldShowFileUploader: true,
+  showEmptyFileUploaderError: false
+}
 
 function stripDataURLHeaders(fileAsDataURL) {
   return fileAsDataURL.split(',')[1]
@@ -29,29 +46,52 @@ async function createBase64FileData(file) {
 class FileTransferServicePage extends Component {
   constructor(props) {
     super(props)
+    this.fileUploaderRef = React.createRef()
+
     this.state = {
-      files: [],
-      message: '',
-      emailRecipient: '',
-      subject: '',
-      fullName: '',
-      emailSender: ''
+      formProcessingState: null,
+      ...origState
     }
   }
 
-  async postFormData() {
-    const url = '/api/loan-processing'
+  async submitForm(e) {
+    e.preventDefault()
 
-    const formData = this.state
+    const url = '/api/loan-processing'
+    const formData = { ...this.state }
+    const { files, formProcessingState } = this.state
+
     formData.folderName = `submission-${Date.now()}`
 
-    if (this.state.files.length > 0) {
-      try {
-        await axios.post(url, formData)
-      } catch (error) {
-        throw error
-      }
+    if (files.length > 0) {
+      this.setState({ formProcessingState: FORM_STATE.processing })
+      window.scrollTo(0, 0)
+
+      await axios
+        .post(url, formData)
+        .then(response => {
+          const statusCode = 204
+          this.setState({
+            formProcessingState: response.status === statusCode ? FORM_STATE.success : FORM_STATE.error
+          })
+          if (formProcessingState === FORM_STATE.success) {
+            this.resetForm()
+          }
+        })
+        .catch(error => {
+          this.setState({ formProcessingState: FORM_STATE.error })
+        })
+    } else {
+      window.scrollTo(0, this.fileUploaderRef.current.offsetTop)
+      this.setState({ showEmptyFileUploaderError: true })
     }
+  }
+
+  resetForm() {
+    // Resetting the state to its original state and using shouldShowFileUploader to render a new FileUploader section
+    this.setState({ ...origState, shouldShowFileUploader: false }, () => {
+      this.setState({ shouldShowFileUploader: true })
+    })
   }
 
   mapFilesToBase64(files) {
@@ -61,8 +101,44 @@ class FileTransferServicePage extends Component {
   }
 
   render() {
+    let formContent
+
+    const { formProcessingState } = this.state
+
+    switch (formProcessingState) {
+      case FORM_STATE.success:
+        formContent = (
+          <div className={styles[formProcessingState]}>
+            <i className="fa fa-check-circle" data-testid="newsletter-success-icon" />
+            <h3 data-testid="newsletter-success-title">Success!</h3>
+            <p data-testid="newsletter-success-message">We have received your documents.</p>
+          </div>
+        )
+        break
+      case FORM_STATE.error:
+        formContent = (
+          <div className={styles[formProcessingState]} data-testid="newsletter-error-info">
+            <i className="fa fa-times-circle" data-testid="newsletter-error-icon" />
+            <h3 data-testid="newsletter-error-title">Oops something went wrong…</h3>
+            <p data-testid="newsletter-error-message">
+              We were unable to receive your documents. Please check your document format and submit again.
+            </p>
+          </div>
+        )
+        break
+      case FORM_STATE.processing:
+        formContent = (
+          <div className={styles.loaderContainer}>
+            <Loader />
+          </div>
+        )
+        break
+    }
+
     return (
       <div className={styles.container}>
+        {formContent}
+
         <h1>File Transfer Service</h1>
         <p>
           All files sent through this page is transmitted using 128-bit encryption. After successful upload
@@ -70,7 +146,7 @@ class FileTransferServicePage extends Component {
           handled accordingly.
         </p>
         <h2>Email</h2>
-        <form>
+        <form onSubmit={event => this.submitForm(event)}>
           <div className={styles.to}>
             <MultiSelect
               data-testid="recipient-email"
@@ -87,6 +163,7 @@ class FileTransferServicePage extends Component {
             id="subject"
             label="Subject"
             onChange={({ target: { value } }) => this.setState({ subject: value })}
+            value={this.state.subject}
           />
           <TextArea
             className={styles.message}
@@ -96,14 +173,24 @@ class FileTransferServicePage extends Component {
             onChange={e => this.setState({ message: e.target.value })}
             value={this.state.message}
           />
-          <h2>Attach files</h2>
-          <div data-testid="file-uploader">
-            <FileUploader
-              onChange={files => {
-                this.mapFilesToBase64(files.files)
-              }}
-            />
-          </div>
+          {this.state.shouldShowFileUploader && (
+            <Fragment>
+              <h2 ref={this.fileUploaderRef}>Attach files</h2>
+              <div data-testid="file-uploader">
+                <FileUploader
+                  id="file-uploader"
+                  onChange={files => {
+                    this.mapFilesToBase64(files.files)
+                    this.setState({ showEmptyFileUploaderError: false })
+                  }}
+                />
+              </div>
+              {this.state.showEmptyFileUploaderError && (
+                <p className={styles.uploadFileError}>Please upload a file.</p>
+              )}
+            </Fragment>
+          )}
+
           <h2>Contact information</h2>
           <p>
             Please provide us with your contact information in case there are any issues or if we have
@@ -115,21 +202,18 @@ class FileTransferServicePage extends Component {
             id="full-name"
             label="Full name"
             onChange={({ target: { value } }) => this.setState({ fullName: value })}
+            value={this.state.fullName}
           />
           <TextInput
             className={styles.subject}
             data-testid="sender-email"
             id="sender-email"
+            inputType="email"
             label="Email address"
             onChange={({ target: { value } }) => this.setState({ emailSender: value })}
+            value={this.state.emailSender}
           />
-          <Button
-            aria-label="Send files"
-            data-testid="send-button"
-            onClick={event => this.postFormData()}
-            primary
-            type="button"
-          >
+          <Button aria-label="Send files" data-testid="send-button" primary type="submit">
             Send files
           </Button>
         </form>

@@ -26,3 +26,43 @@
 .message {
   min-height: 200px;
 }
+
+.success,
+.error {
+  // border-bottom: 2px solid $sba-blue-dark;
+  margin-bottom: 100px;
+  text-align: center;
+
+  p {
+    margin-bottom: 9px;
+    margin-top: 0;
+  }
+
+  :global(.fa) {
+    font-size: 45px;
+    margin-bottom: 15px;
+  }
+}
+
+.success {
+  :global(.fa) {
+    color: $secondary-green;
+  }
+}
+
+.error {
+  :global(.fa) {
+    color: $sba-red;
+  }
+}
+
+.loaderContainer {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 20vw;
+}
+
+.uploadFileError {
+  color: $sba-red;
+}
