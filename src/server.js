@@ -158,7 +158,7 @@ app.get('/api/loan-processing', async (req, res, next) => {
   if (req.query.groupId) {
     url += `?groupId=${req.query.groupId}`
   }
-  console.log('Posting to loan processing api', req.body, url)
+  console.log('Getting to loan processing api', req.body, url)
   try {
     const { data } = await axios.get(url)
     res.status(httpStatus.OK).json(data)
