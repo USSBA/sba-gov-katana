@@ -153,6 +153,28 @@ app.post('/api/loan-processing', async (req, res, next) => {
   }
 })
 
+app.get('/api/loan-processing', async (req, res, next) => {
+  let url = 'https://' + config.get('loanprocessing.endpoint')
+  if (req.query.groupId) {
+    url += `?groupId=${req.query.groupId}`
+  }
+  console.log('Getting to loan processing api', req.body, url)
+  try {
+    const { data } = await axios.get(url)
+    res.status(httpStatus.OK).json(data)
+  } catch (error) {
+    const {
+      response: { data }
+    } = error
+
+    if (data) {
+      console.error('loan processing api error', data)
+    }
+
+    res.status(httpStatus.BAD_REQUEST).json({ error: data })
+  }
+})
+
 function fetchExternalContent(endpoint, stage, reqPath, queryParams, res, responseType) {
   axios
     .get('https://' + path.join(endpoint, stage, reqPath), {
