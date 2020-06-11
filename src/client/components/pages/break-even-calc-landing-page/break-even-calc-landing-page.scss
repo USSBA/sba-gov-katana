@@ -1,9 +1,11 @@
 .calcLandingPageContainer {
-  .breadcrumbSection {
-    padding: $small-spacing $base-spacing;
-    border-top: 1px solid $sba-gray-light;
-    border-bottom: 1px solid $sba-gray-light;
-    margin: 0 $base-spacing;
+  padding-bottom: 300px;
+}
+
+.infoSection {
+  margin: $base-spacing * 2 $base-spacing * 3;
+  @include for-small-only {
+    margin: $small-spacing;
   }
 
   .infoSection {
@@ -23,35 +25,37 @@
       flex-wrap: wrap;
       justify-content: space-between;
 
-      .benefitsCol {
-        width: 30%;
-        @include for-small-only {
-          width: 100%;
-        }
-      }
+  .row p {
+    color: $sba-white;
+  }
 
-      .subHeading {
-        color: $secondary-blue;
-        font-size: 1rem;
-        font-weight: 700;
-        line-height: 1.5;
-        margin-bottom: 1.1rem;
-        @include for-small-only {
-          margin-top: 0;
-        }
-      }
+  & > div {
+    margin-bottom: $small-spacing;
+  }
 
-      .benefitsContent {
-        @include for-small-only {
-          display: none;
-        }
-      }
+  .formula {
+    clear: both;
+    color: $sba-white;
+    background-color: rgba(0, 81, 139, 0.7);
+    text-align: center;
+    padding: $small-spacing;
+    font-size: 24px;
+    @include for-small-only {
+      font-size: unset;
     }
   }
 
-  .gradientBackground {
-    height: 500px;
-    background: $secondary-blue;
+  .calcImage {
+    float: left;
+    height: 160px;
+    width: 160px;
+    margin-right: 10px;
+    margin-bottom: 2em;
+    @include for-small-only {
+      margin-bottom: 10px;
+      height: 112px;
+      width: 112px;
+    }
   }
 
   .infoContainer {
