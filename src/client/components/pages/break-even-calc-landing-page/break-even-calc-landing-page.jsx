@@ -38,11 +38,11 @@ class BreakEvenCalculatorPage extends React.Component {
               <div className={styles.calcText}>
                 Get started with the
                 <h3>Break-even point analysis tool</h3>
-                <p>
-                  Create your break-even analysis with this calculator and determine your business’s
-                  break-even point using the following formula:
-                </p>
               </div>
+              <p>
+                Create your break-even analysis with this calculator and determine your business’s
+                break-even point using the following formula:
+              </p>
             </div>
             <div className={styles.formula}>
               Fixed Costs ÷ (Price - Variable Costs) = Break-even Point in Units
