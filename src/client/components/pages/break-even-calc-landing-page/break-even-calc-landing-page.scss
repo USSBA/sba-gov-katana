@@ -5,7 +5,7 @@
 .infoSection {
   margin: $base-spacing * 2 $base-spacing * 3;
   @include for-small-only {
-    margin: $base-spacing;
+    margin: $small-spacing;
   }
 }
 
@@ -23,26 +23,37 @@
     padding-top: $small-spacing;
   }
 
+  .row p {
+    color: $sba-white;
+  }
+
   & > div {
     margin-bottom: $small-spacing;
   }
 
-  .row {
-    display: flex;
-    justify-content: space-around;
-  }
-
   .formula {
+    clear: both;
     color: $sba-white;
     background-color: rgba(0, 81, 139, 0.7);
     text-align: center;
     padding: $small-spacing;
     font-size: 24px;
+    @include for-small-only {
+      font-size: unset;
+    }
   }
 
   .calcImage {
+    float: left;
     height: 160px;
     width: 160px;
+    margin-right: 10px;
+    margin-bottom: 2em;
+    @include for-small-only {
+      margin-bottom: 10px;
+      height: 112px;
+      width: 112px;
+    }
   }
 
   .calcText {
