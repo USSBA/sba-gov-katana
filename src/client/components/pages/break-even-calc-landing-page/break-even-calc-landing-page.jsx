@@ -14,19 +14,19 @@ class BreakEvenCalculatorPage extends React.Component {
       <div className={styles.calcLandingPageContainer}>
         <div className={styles.infoSection}>
           <h1>Break-even point analysis</h1>
-          <h5>
-            The Break-even point (BEP) is the point at which total cost and total revenue are equal. Meaning
-            there is no loss or gain - for your small business. In other words, the break-even point is the
-            level of production at which the costs of production equal the revenues for a product.
-          </h5>
-          <h3>An important calculation for your business plan</h3>
           <p>
-            Potential investors in a business not only want to know the return to expect on their
-            investments but also the point when they will realize this return. This is because some
-            companies may take years before turning a profit, often losing money in the first few months or
-            years before breaking even. For this reason, break-even points are an important part of any
-            business plan presented to a potential investor. It can also be a useful tool in future planning
-            for existing businesses to prove their potential turn around after disaster scenarios.
+            The break-even point is the point at which total cost and total revenue are equal, meaning there
+            is no loss or gain for your small business. In other words, you've reached the level of
+            production at which the costs of production equal the revenues for a product.
+          </p>
+          <p>
+            This is an important calculation for your business plan. Potential investors in a business not
+            only want to know the return to expect on their investments, but also the point when they will
+            realize this return. This is because some companies may take years before turning a profit,
+            often losing money in the first few months or years before breaking even. For this reason,
+            break-even points are an important part of any business plan presented to a potential investor.
+            It can also be a useful tool in future planning for existing businesses to prove their potential
+            turn around after disaster scenarios.
           </p>
         </div>
         <div className={styles.gradientBackground}>
@@ -37,7 +37,7 @@ class BreakEvenCalculatorPage extends React.Component {
               </div>
               <div className={styles.calcText}>
                 Get started with the
-                <h3>Break-even point analysis tool</h3>
+                <h3>Break-even Point Analysis Tool</h3>
               </div>
               <p>
                 Create your break-even analysis with this calculator and determine your business’s
@@ -45,7 +45,7 @@ class BreakEvenCalculatorPage extends React.Component {
               </p>
             </div>
             <div className={styles.formula}>
-              Fixed Costs ÷ (Price - Variable Costs) = Break-even Point in Units
+              Fixed Costs ÷ (Price - Variable Costs) = Break-Even Point in Units
             </div>
             <div className={styles.calloutCard}>
               <h3>{this.calloutContent.title}</h3>
@@ -53,16 +53,16 @@ class BreakEvenCalculatorPage extends React.Component {
               <div className={styles.bottomRow}>
                 <ul>
                   <li>
-                    Your business's estimated <strong>Fixed Costs</strong>
+                    Your business's estimated <strong>fixed costs</strong>
                   </li>
                   <li>
-                    Your business's selling <strong>Price per Unit</strong> or service
+                    Your business's selling <strong>price per unit</strong>
                   </li>
                   <li>
-                    Your business's projected <strong>Unit Sales</strong>
+                    Your business's projected <strong>unit sales</strong>
                   </li>
                   <li>
-                    Your business's projected <strong>Variable Costs</strong>
+                    Your business's projected <strong>variable costs</strong>
                   </li>
                 </ul>
                 <div className={styles.buttonContainer}>
