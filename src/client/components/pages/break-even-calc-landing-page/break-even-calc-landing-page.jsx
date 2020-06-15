@@ -77,7 +77,7 @@ class BreakEvenCalculatorPage extends React.Component {
               </div>
               <div className={styles.calcText}>
                 Get started with the
-                <h3>Break-even point analysis tool</h3>
+                <h3>Break-even Point Analysis Tool</h3>
               </div>
               <p>
                 Create your break-even analysis with this calculator and determine your business’s
