@@ -15,9 +15,9 @@ class BreakEvenCalculatorPage extends React.Component {
         <div className={styles.infoSection}>
           <h1>Break-even point analysis</h1>
           <p>
-            The break-even point is the point at which total cost and total revenue are equal, meaning there
-            is no loss or gain for your small business. In other words, you've reached the level of
-            production at which the costs of production equal the revenues for a product.
+            The <strong>break-even point</strong> is the point at which total cost and total revenue are
+            equal, meaning there is no loss or gain for your small business. In other words, you've reached
+            the level of production at which the costs of production equal the revenues for a product.
           </p>
           <p>
             This is an important calculation for your business plan. Potential investors in a business not
@@ -28,6 +28,57 @@ class BreakEvenCalculatorPage extends React.Component {
             It can also be a useful tool in future planning for existing businesses to prove their potential
             turn around after disaster scenarios.
           </p>
+          <h3>Benefits of doing break-even analysis</h3>
+          <div className={styles.benefits}>
+            <div className={styles.benefitsCol}>
+              <p className={styles.subHeading}>Price Smarter</p>
+              <p className={styles.benefitsContent}>
+                Finding your break-even point will help you price your products smarter. A lot of psychology
+                goes into pricing, but knowing how it will affect your profitability is just as important.
+                Especially, when making sure that you can pay all your bills.
+              </p>
+            </div>
+            <div className={styles.benefitsCol}>
+              <p className={styles.subHeading}>Catch Missing Expenses</p>
+              <p className={styles.benefitsContent}>
+                It’s easy to overlook expenses when you’re thinking through a new business idea. When you
+                complete the break-even analysis you have all of your financial commitments figured out
+                limiting surprises in the future.
+              </p>
+            </div>
+            <div className={styles.benefitsCol}>
+              <p className={styles.subHeading}>Set Revenue Targets</p>
+              <p className={styles.benefitsContent}>
+                After completing the analysis, you will know exactly how much you need to sell in order to
+                be profitable. This sets sales goals for your business. When you have a number in mind, it
+                will be easier to follow through.
+              </p>
+            </div>
+            <div className={styles.benefitsCol}>
+              <p className={styles.subHeading}>Make Smarter Decisions</p>
+              <p className={styles.benefitsContent}>
+                Helps limit business decisions made on emotions. How you feel is important, but it shouldn't
+                be the base of your business decisions. The break-even analysis will help you start your
+                business based on facts.
+              </p>
+            </div>
+            <div className={styles.benefitsCol}>
+              <p className={styles.subHeading}>Limit Financial Strain</p>
+              <p className={styles.benefitsContent}>
+                Mitigates risk by showing when to avoid a business idea. Helping potential businesses avoid
+                failure as well as limiting the financial toll of a bad idea through realistic analysis of
+                potential outcomes.{' '}
+              </p>
+            </div>
+            <div className={styles.benefitsCol}>
+              <p className={styles.subHeading}>Fund Your Business</p>
+              <p className={styles.benefitsContent}>
+                The break-even analysis is usually a requirement if you want to take on investors or debt in
+                order to fund your business. You have to prove that you plan is viable and it helps you feel
+                good about taking on the burden of financing.
+              </p>
+            </div>
+          </div>
         </div>
         <div className={styles.gradientBackground}>
           <div className={styles.infoContainer}>
