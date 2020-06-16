@@ -7,6 +7,33 @@
   @include for-small-only {
     margin: $small-spacing;
   }
+
+  .benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .benefitsCol {
+      width: 30%;
+      @include for-small-only {
+        width: 100%;
+      }
+    }
+
+    .subHeading {
+      color: $secondary-blue;
+      font-weight: 700;
+      @include for-small-only {
+        margin-top: 0;
+      }
+    }
+
+    .benefitsContent {
+      @include for-small-only {
+        display: none;
+      }
+    }
+  }
 }
 
 .gradientBackground {
