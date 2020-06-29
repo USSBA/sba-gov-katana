@@ -4,8 +4,6 @@ import Accordion from '../../organisms/accordion/accordion'
 import styles from './break-even-calc-landing-page.scss'
 import { faqFields, benefitFields } from './content'
 
-import styles from './break-even-calc-landing-page.scss'
-
 class BreakEvenCalculatorPage extends React.Component {
   calloutContent = {
     title: "What you'll need to get started",
@@ -82,15 +80,15 @@ class BreakEvenCalculatorPage extends React.Component {
                 </div>
               </div>
             </div>
-            <div className={styles.accordionContainer}>
-              <h3>Calculator Tips and Tricks</h3>
-              <DecorativeDash width={77} />
-              <div className={styles.accordionContent}>
-                {faqFields.map(faq => (
-                  <Accordion title={faq.question} content={faq.answer} />
-                ))}
-              </div>
-            </div>
+          </div>
+        </div>
+        <div className={styles.accordionContainer}>
+          <h3>Tips and Tricks</h3>
+          <DecorativeDash width={77} />
+          <div className={styles.accordionContent}>
+            {faqFields.map(faq => (
+              <Accordion title={faq.question} content={faq.answer} />
+            ))}
           </div>
         </div>
       </div>

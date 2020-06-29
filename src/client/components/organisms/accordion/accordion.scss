@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
 
-/* Style the accordion section */
-.accordion__section {
+.accordionSection {
   display: flex;
   flex-direction: column;
 }
 
-/* Style the buttons that are used to open and close the accordion panel */
 .accordion {
   color: $sba-blue-dark;
   cursor: pointer;
@@ -20,15 +18,13 @@
   border-bottom: 1px solid #cccccc;
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .accordion:hover,
 .active {
   margin-top: 0px;
   background-color: #f5f5f5;
 }
 
-/* Style the accordion content title */
-.accordion__title {
+.accordionTitle {
   color: $sba-blue;
   font-weight: 600;
   font-family: 'Source Sans Pro';
@@ -40,32 +36,25 @@
   padding: top 1px;
 }
 
-/* Style the accordion chevron icon */
-.accordion__icon {
+.accordionIcon {
   margin-left: auto;
   transition: transform 0.6s ease;
   float: right;
 }
 
-/* Style to rotate icon when state is active */
-.rotate {
-  transform: rotate(90deg);
-}
-
-/* Style the accordion content panel. Note: hidden by default */
-.accordion__content {
+.accordionContent {
   background-color: white;
   overflow: hidden;
   transition: max-height 0.6s ease;
   border-bottom: 1px solid #cccccc;
 }
 
-/* Style the accordion content text */
-.accordion__text {
+.accordionText {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 18px;
   padding: 18px;
+  margin-left: $base-spacing * 2;
   ul {
     -moz-column-count: 3;
     -moz-column-gap: 20px;

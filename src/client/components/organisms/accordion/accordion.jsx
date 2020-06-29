@@ -18,13 +18,13 @@ function Accordion(props) {
   return (
     <div className={styles.accordion__section}>
       <div className={`${styles.accordion} ${isActive ? styles.active : ''}`} onClick={toggleAccordion}>
-        <p className={styles.accordion__title}>
+        <p className={styles.accordionTitle}>
           {props.title}
-          <i className={styles.accordion__icon + ' fa ' + setRotate} />
+          <i className={styles.accordionIcon + ' fa ' + setRotate} />
         </p>
       </div>
-      <div ref={contentRef} style={{ maxHeight: `${setHeight}` }} className={styles.accordion__content}>
-        <div className={styles.accordion__text} dangerouslySetInnerHTML={{ __html: props.content }} />
+      <div ref={contentRef} style={{ maxHeight: `${setHeight}` }} className={styles.accordionContent}>
+        <div className={styles.accordionText} dangerouslySetInnerHTML={{ __html: props.content }} />
       </div>
     </div>
   )
