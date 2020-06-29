@@ -1,0 +1,137 @@
+.calcLandingPageContainer {
+  padding-bottom: 3000px;
+}
+
+.infoSection {
+  margin: $base-spacing * 2 $base-spacing * 3;
+  @include for-small-only {
+    margin: $small-spacing;
+  }
+
+  .benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .benefitsCol {
+      width: 30%;
+      @include for-small-only {
+        width: 100%;
+      }
+    }
+
+    .subHeading {
+      color: $secondary-blue;
+      font-weight: 700;
+      @include for-small-only {
+        margin-top: 0;
+      }
+    }
+
+    .benefitsContent {
+      @include for-small-only {
+        display: none;
+      }
+    }
+  }
+}
+
+.gradientBackground {
+  height: 500px;
+  background: radial-gradient(circle at center, $secondary-blue-light, $secondary-blue-dark);
+}
+
+.infoContainer {
+  margin: 0 $base-spacing * 3;
+  padding-top: $base-spacing * 2;
+
+  @include for-small-only {
+    margin: 0 $small-spacing;
+    padding-top: $small-spacing;
+  }
+
+  .row p {
+    color: $sba-white;
+  }
+
+  & > div {
+    margin-bottom: $small-spacing;
+  }
+
+  .formula {
+    clear: both;
+    color: $sba-white;
+    background-color: rgba(0, 81, 139, 0.7);
+    text-align: center;
+    padding: $small-spacing;
+    font-size: 24px;
+    @include for-small-only {
+      font-size: unset;
+    }
+  }
+
+  .calcImage {
+    float: left;
+    height: 160px;
+    width: 160px;
+    margin-right: 10px;
+    margin-bottom: 2em;
+    @include for-small-only {
+      margin-bottom: 10px;
+      height: 112px;
+      width: 112px;
+    }
+  }
+
+  .calcText {
+    color: $sba-white;
+    width: 75%;
+
+    h3 {
+      color: $sba-white;
+    }
+  }
+
+  .calloutCard {
+    background-color: $sba-white;
+    padding: $base-spacing * 2;
+    box-shadow: $box-shadow;
+    @include for-small-only {
+      padding: $small-spacing;
+    }
+
+    .bottomRow {
+      display: flex;
+      justify-content: space-between;
+      @include for-small-only {
+        flex-direction: column;
+      }
+
+      ul {
+        list-style-type: circle;
+        list-style-position: inside;
+        color: $sba-blue;
+        @include for-small-only {
+          margin-bottom: $small-spacing;
+        }
+      }
+
+      .buttonContainer {
+        margin-top: auto;
+      }
+    }
+  }
+
+  .accordionContainer {
+    margin-top: $base-spacing * 2;
+    .accordionContent {
+      margin-top: $base-spacing * 1;
+    }
+    .flex-grid {
+      display: flex;
+    }
+    .col {
+      flex: 1;
+    }
+  }
+}
