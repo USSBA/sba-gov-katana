@@ -37,7 +37,6 @@ class ErrorPage extends React.Component {
           <div tabIndex="0" className={styles.content}>
             <h1 data-cy="error-page-title">404</h1>
             <h2>Page not found</h2>
-            <DecorativeDash width={77} />
             <h3 data-cy="error-page-message">
               {text} Return to the <Link to={linkUrl}>{linkMessage}</Link>, or search for what you're trying
               to find.
