@@ -1,8 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import styles from '../../../../client/components/organisms/accordion/accordion.scss'
-
-import Accordion from 'organisms/accordion/accordion.jsx'
+import { Accordion } from 'organisms'
 
 describe('Accordion', () => {
   afterEach(() => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, DecorativeDash } from 'atoms'
-import Accordion from '../../organisms/accordion/accordion'
+import { Accordion } from 'organisms'
 import styles from './break-even-calc-landing-page.scss'
 import { faqFields, benefitFields } from './content'
 

@@ -121,7 +121,8 @@
   }
   .accordionContainer {
     margin-top: $base-spacing * 9;
-    padding-left: $base-spacing * 3;
+    margin-left: $base-spacing * 3;
+    margin-right: $base-spacing * 3;
     .accordionContent {
       margin-top: $base-spacing * 1;
     }
