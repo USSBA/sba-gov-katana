@@ -31,7 +31,7 @@ const constants = {
     confirmationEmail: '/lendermatch/resend',
     submitForm: '/lendermatch/matchFormData',
     submitFeedbackResults: '/api/feedback',
-    tenSteps: '/business-guide/10-steps-start-your-business/',
+    tenSteps: '/business-guide/10-steps-start-your-business',
     submitProfile: '/actions/misc/resourceCenterProfile'
   },
   messages: {
