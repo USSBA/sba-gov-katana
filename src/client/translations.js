@@ -902,7 +902,7 @@ const TRANSLATIONS = {
   tenStepsNavigationCta: {
     en: {
       headline: 'Not sure where to start? Start your business in 10 steps.',
-      link: '/business-guide/10-steps-start-your-business/',
+      link: '/business-guide/10-steps-start-your-business',
       linkText: 'See the guide'
     },
     es: {
@@ -926,7 +926,7 @@ const TRANSLATIONS = {
   tenStepsPanelCta: {
     en: {
       headline: 'Start your business in 10 steps',
-      link: '/business-guide/10-steps-start-your-business/',
+      link: '/business-guide/10-steps-start-your-business',
       linkText: 'See the guide'
     },
     es: {

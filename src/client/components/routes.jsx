@@ -181,12 +181,8 @@ const mainRoutes = [
   // TODO: Remove redirects 81 and 82 after switching to updated events backend
   <Redirect key={81} from="/event/:eventId/" to="/events/:eventId" />,
   <Redirect key={82} from="/event/:eventId" to="/events/:eventId" />,
-  <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
-  <Route
-    key={13}
-    path="/business-guide/10-steps-start-your-business"
-    to="/business-guide/10-steps-start-your-business/"
-  />,
+  <Route key={12} path="/business-guide/10-steps-start-your-business" component={TenStepsLandingPage} />,
+  <Route key={13} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
   <Redirect key={14} from="/filetransfer/" to="/filetransfer" />,
   <Route key={15} path="/filetransfer" component={FileTransferServicePage} />,
   <Route
