@@ -198,6 +198,8 @@ export class DocumentArticle extends React.Component {
         labelProps.type = type
       }
 
+      const showDownload = data.displayDownloadButton && data.displayDownloadButton === true
+
       return (
         <div data-testid="document-article" className={'document-article ' + style.page}>
           <Label {...labelProps} />
@@ -222,7 +224,7 @@ export class DocumentArticle extends React.Component {
           <hr className={style.hr} />
           <div className={style.summaryContainer}>
             <div className="column">
-              {currentFile && !isEmpty(currentFile.fileUrl) && (
+              {showDownload && currentFile && !isEmpty(currentFile.fileUrl) && (
                 <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
                   {`Download ${currentFileExtension}`}
                 </Button>
