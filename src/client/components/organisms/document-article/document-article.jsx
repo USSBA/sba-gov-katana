@@ -198,7 +198,7 @@ export class DocumentArticle extends React.Component {
         labelProps.type = type
       }
 
-      const showDownload = data.displayDownloadButton && data.displayDownloadButton === true
+      const showDownload = !(data.hideDownloadButton && data.hideDownloadButton === true) //explicit because data.hideDownloadButton can be false or {}
 
       return (
         <div data-testid="document-article" className={'document-article ' + style.page}>
