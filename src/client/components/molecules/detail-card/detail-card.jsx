@@ -80,6 +80,7 @@ class DetailCard extends React.Component {
   render() {
     const doc = this.props.data
     const { data } = this.props
+    let hideDownloadLink = false
 
     if (doc) {
       const { category, documents, type: pageType } = doc
@@ -87,6 +88,7 @@ class DetailCard extends React.Component {
       let type
       if (pageType === 'document') {
         type = doc.documentIdType
+        hideDownloadLink = doc.hideDownloadLink === true
       } else if (pageType === 'article' && category) {
         type = category[0]
       }
@@ -133,7 +135,7 @@ class DetailCard extends React.Component {
             <Link to={doc.url}>{doc.title}</Link>
           </h6>
           {this.props.showDetails ? this.renderTable(this.props.data) : null}
-          {this.renderDownloadLink()}
+          {!hideDownloadLink && this.renderDownloadLink()}
         </div>
       )
     } else {
