@@ -198,7 +198,7 @@ export class DocumentArticle extends React.Component {
         labelProps.type = type
       }
 
-      const showDownload = !(data.hideDownloadButton && data.hideDownloadButton === true) //explicit because data.hideDownloadButton can be false or {}
+      const showDownload = !(data.removeDownloadButton && data.removeDownloadButton === true) //explicit because data.removeDownloadButton can be false or {}
 
       return (
         <div data-testid="document-article" className={'document-article ' + style.page}>
@@ -225,9 +225,11 @@ export class DocumentArticle extends React.Component {
           <div className={style.summaryContainer}>
             <div className="column">
               {showDownload && currentFile && !isEmpty(currentFile.fileUrl) && (
-                <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
-                  {`Download ${currentFileExtension}`}
-                </Button>
+                <div data-testid="download-button">
+                  <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
+                    {`Download ${currentFileExtension}`}
+                  </Button>
+                </div>
               )}
             </div>
             <div className="column">

@@ -15,10 +15,10 @@ const detailCardItem = JSON.stringify({
 })
 
 describe('Detail card', () => {
-  it('does not render download link for a document type that has hideDownloadButton set to true', () => {
+  it('does not render download link for a document type that has removeDownloadButton set to true', () => {
     const customDetailCardItem = JSON.parse(detailCardItem)
     customDetailCardItem.type = 'document'
-    customDetailCardItem.hideDownloadButton = true
+    customDetailCardItem.removeDownloadButton = true
     const detailCard = shallow(<DetailCard data={customDetailCardItem} />)
     expect(
       detailCard
@@ -29,10 +29,10 @@ describe('Detail card', () => {
     ).not.toContain('Download')
   })
 
-  it('renders download link for a document type that has hideDownloadButton set to false', () => {
+  it('renders download link for a document type that has removeDownloadButton set to false', () => {
     const customDetailCardItem = JSON.parse(detailCardItem)
     customDetailCardItem.type = 'document'
-    customDetailCardItem.hideDownloadButton = false
+    customDetailCardItem.removeDownloadButton = false
     const detailCard = shallow(<DetailCard data={customDetailCardItem} />)
     expect(
       detailCard

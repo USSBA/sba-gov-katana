@@ -88,7 +88,7 @@ class DetailCard extends React.Component {
       let type
       if (pageType === 'document') {
         type = doc.documentIdType
-        showDownloadLink = !(doc.hideDownloadButton === true) //explicit because doc.hideDownloadButton can be false or {}
+        showDownloadLink = !(doc.removeDownloadButton === true) //explicit because doc.removeDownloadButton can be false or {}
       } else if (pageType === 'article' && category) {
         type = category[0]
       }
