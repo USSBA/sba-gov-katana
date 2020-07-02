@@ -198,6 +198,8 @@ export class DocumentArticle extends React.Component {
         labelProps.type = type
       }
 
+      const showDownload = !(data.removeDownloadButton && data.removeDownloadButton === true) //explicit because data.removeDownloadButton can be false or {}
+
       return (
         <div data-testid="document-article" className={'document-article ' + style.page}>
           <Label {...labelProps} />
@@ -222,10 +224,12 @@ export class DocumentArticle extends React.Component {
           <hr className={style.hr} />
           <div className={style.summaryContainer}>
             <div className="column">
-              {currentFile && !isEmpty(currentFile.fileUrl) && (
-                <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
-                  {`Download ${currentFileExtension}`}
-                </Button>
+              {showDownload && currentFile && !isEmpty(currentFile.fileUrl) && (
+                <div data-testid="download-button">
+                  <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
+                    {`Download ${currentFileExtension}`}
+                  </Button>
+                </div>
               )}
             </div>
             <div className="column">

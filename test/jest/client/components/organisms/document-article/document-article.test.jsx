@@ -44,6 +44,55 @@ describe('DocumentArticle', () => {
       const articleComponent = await waitForElement(() => queryByTestId('document-article'))
       expect(articleComponent).toBeInTheDocument()
     })
+
+    it('should display download button when file exists and removeDownloadButton is set to false', async () => {
+      const mockDocumentData = {
+        programs: [],
+        id: 3948,
+        type: 'document',
+        files: [
+          {
+            fileUrl: 'file.txt'
+          }
+        ],
+        removeDownloadButton: false
+      }
+
+      const { queryByTestId } = render(<DocumentArticle data={mockDocumentData} />)
+      const downloadButton = queryByTestId('download-button')
+      expect(downloadButton).toBeInTheDocument()
+    })
+
+    it('should not display download button when file does not exist', async () => {
+      const mockDocumentData = {
+        programs: [],
+        id: 3948,
+        type: 'document',
+        removeDownloadButton: false
+      }
+
+      const { queryByTestId } = render(<DocumentArticle data={mockDocumentData} />)
+      const downloadButton = queryByTestId('download-button')
+      expect(downloadButton).not.toBeInTheDocument()
+    })
+
+    it('should not display download button when removeDownloadButton is set to true', async () => {
+      const mockDocumentData = {
+        programs: [],
+        id: 3948,
+        type: 'document',
+        files: [
+          {
+            fileUrl: 'file.txt'
+          }
+        ],
+        removeDownloadButton: true
+      }
+
+      const { queryByTestId } = render(<DocumentArticle data={mockDocumentData} />)
+      const downloadButton = queryByTestId('download-button')
+      expect(downloadButton).not.toBeInTheDocument()
+    })
   })
 
   describe('fetchRestContent calls for data', () => {
