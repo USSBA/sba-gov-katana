@@ -1,8 +1,0 @@
-developmentOptions:
-    client:
-        logging: false
-aws:
-  cloudsearch:
-    officeEndpoint: 'doc-automated-testing-offices-xjifz4ykng45x326ysoly4eygi.us-east-1.cloudsearch.amazonaws.com'
-content:
-  useD8EventsBackend: true
