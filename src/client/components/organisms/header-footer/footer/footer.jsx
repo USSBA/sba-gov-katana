@@ -1,5 +1,5 @@
-import React from 'react'
-import { kebabCase, startCase } from 'lodash'
+import React, { Component } from 'react'
+import { isEmpty, kebabCase, startCase } from 'lodash'
 
 import facebookThumbnail from 'assets/images/footer/facebook.png'
 import instagramThumbnail from 'assets/images/footer/instagram.png'
@@ -14,6 +14,8 @@ import { TRANSLATIONS } from '../../../../translations'
 import { getLanguageOverride } from '../../../../services/utils'
 import { SocialMediaLink } from 'atoms'
 import { NewsletterForm, PageLinkGroup } from 'molecules'
+
+import axios from 'axios'
 
 const SocialMediaLinkSet = () => {
   const socialMediaLinks = [
@@ -69,92 +71,54 @@ const Address = () => {
 }
 
 class Footer extends React.Component {
-  render() {
-    const langCode = getLanguageOverride(true)
-    const desktopLinks = [
-      {
-        title: TRANSLATIONS.customerService,
-        links: [
-          TRANSLATIONS.aboutSba,
-          TRANSLATIONS.contactSba,
-          TRANSLATIONS.sbaEnEspanol,
-          TRANSLATIONS.mediaAndPressRelations,
-          TRANSLATIONS.sbaLocations,
-          TRANSLATIONS.sbaTeam
-        ]
-      },
-      {
-        title: TRANSLATIONS.aboutSbaGov,
-        links: [
-          TRANSLATIONS.siteMap,
-          TRANSLATIONS.privacyPolicy,
-          TRANSLATIONS.linkingPolicy,
-          TRANSLATIONS.accessibility,
-          TRANSLATIONS.disclaimers,
-          TRANSLATIONS.socialMedia,
-          TRANSLATIONS.dataStore,
-          TRANSLATIONS.blog
-        ]
-      },
-      {
-        title: TRANSLATIONS.sbaInformation,
-        links: [
-          TRANSLATIONS.freedomOfInformationAct,
-          TRANSLATIONS.noFearAct,
-          TRANSLATIONS.reportFraudWasteAndAbuse,
-          TRANSLATIONS.initiatives,
-          TRANSLATIONS.plainLanguage,
-          TRANSLATIONS.nationalResourceGuides
-        ]
-      },
-      {
-        title: TRANSLATIONS.sbaPerformance,
-        links: [
-          TRANSLATIONS.strategicPlanning,
-          TRANSLATIONS.performanceBudgetAndFinancing,
-          TRANSLATIONS.openGovernment,
-          TRANSLATIONS.policyAndRegulations,
-          TRANSLATIONS.eliminatingFraudWasteAndAbuse
-        ]
-      },
-      {
-        title: TRANSLATIONS.oversight,
-        links: [
-          TRANSLATIONS.inspectorGeneral,
-          TRANSLATIONS.advocacy,
-          TRANSLATIONS.hearingsAndAppeals,
-          TRANSLATIONS.ombudsman,
-          TRANSLATIONS.whiteHouseGov,
-          TRANSLATIONS.usaGov,
-          TRANSLATIONS.regulationsGov
-        ]
-      },
-      {
-        title: TRANSLATIONS.toolsAndFeatures,
-        links: [
-          TRANSLATIONS.onlineTraining,
-          TRANSLATIONS.findEvents,
-          TRANSLATIONS.qualifyForGovernmentContracts
-        ]
+  constructor(props) {
+    super(props)
+    this.state = {
+      desktopLinks: null
+    }
+  }
+  async componentDidMount() {
+    const { data } = await axios.get('https://avery.ussba.io/api/content/footerMenu.json')
+    const formatDesktopLink = (item, isChild) => {
+      const format = obj => ({
+        text: obj.linkTitle,
+        url: obj.link
+      })
+      const title = {
+        en: format(item)
       }
-    ]
-
+      if (item.spanishTranslation) {
+        title.es = format(item.spanishTranslation)
+      }
+      const result = isChild ? title : { title }
+      if (!isEmpty(item.children)) {
+        result.links = item.children.map(child => formatDesktopLink(child, true))
+      }
+      return result
+    }
+    const desktopLinks = data.map(datum => formatDesktopLink(datum))
+    this.setState({ desktopLinks })
+  }
+  render() {
+    const { desktopLinks } = this.state
+    const langCode = getLanguageOverride(true)
     return (
       <footer id="sba-footer" className={styles.footer}>
         <div key={1} className={styles.footerLinks}>
-          {desktopLinks.map((item, index) => {
-            return (
-              <div key={index + 10} className={styles.desktopFooterLinks}>
-                <PageLinkGroup
-                  id={'footer-group-' + index}
-                  key={index + 30}
-                  langCode={langCode}
-                  links={item.links}
-                  title={item.title[langCode].text}
-                />
-              </div>
-            )
-          })}
+          {!isEmpty(desktopLinks) &&
+            desktopLinks.map((item, index) => {
+              return (
+                <div key={index + 10} className={styles.desktopFooterLinks}>
+                  <PageLinkGroup
+                    id={'footer-group-' + index}
+                    key={index + 30}
+                    langCode={langCode}
+                    links={item.links}
+                    title={item.title[langCode].text}
+                  />
+                </div>
+              )
+            })}
         </div>
         <div key={2} className={styles.tabletFooterLinks}>
           <PageLinkGroup
