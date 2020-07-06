@@ -70,7 +70,7 @@ const Address = () => {
   )
 }
 
-class Footer extends React.Component {
+class Footer extends Component {
   constructor(props) {
     super(props)
     this.state = {
