@@ -15,7 +15,7 @@ import { getLanguageOverride } from '../../../../services/utils'
 import { SocialMediaLink } from 'atoms'
 import { NewsletterForm, PageLinkGroup } from 'molecules'
 
-import axios from 'axios'
+import { fetchRestContent } from '../../../../fetch-content-helper'
 
 const SocialMediaLinkSet = () => {
   const socialMediaLinks = [
@@ -78,7 +78,7 @@ class Footer extends React.Component {
     }
   }
   async componentDidMount() {
-    const { data } = await axios.get('/api/content/footerMenu.json')
+    const data = await fetchRestContent('footerMenu')
     const formatDesktopLink = (item, isChild) => {
       const format = obj => ({
         text: obj.linkTitle,
