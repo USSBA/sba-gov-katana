@@ -78,7 +78,7 @@ class Footer extends React.Component {
     }
   }
   async componentDidMount() {
-    const { data } = await axios.get('https://avery.ussba.io/api/content/footerMenu.json')
+    const { data } = await axios.get('/api/content/footerMenu.json')
     const formatDesktopLink = (item, isChild) => {
       const format = obj => ({
         text: obj.linkTitle,
