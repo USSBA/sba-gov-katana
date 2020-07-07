@@ -87,9 +87,7 @@ class Footer extends Component {
       const title = {
         en: format(item)
       }
-      if (item.spanishTranslation) {
-        title.es = format(item.spanishTranslation)
-      }
+      title.es = format(item.spanishTranslation || item)
       const result = isChild ? title : { title }
       if (!isEmpty(item.children)) {
         result.links = item.children.map(child => formatDesktopLink(child, true))
