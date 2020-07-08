@@ -2,18 +2,15 @@ import React from 'react'
 import config from '../../../services/client-config.js'
 import { compose, withProps } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
-import { isEmpty, difference, get } from 'lodash'
+import { isEmpty, isPlainObject, difference, get } from 'lodash'
 import PropTypes from 'prop-types'
 import marker from 'assets/svg/marker.svg'
 import styles from './office-map.scss'
 import clientConfig from '../../../services/client-config.js'
 import officeResultStyles from '../office-result/office-result.scss'
-import $ from 'jquery'
 import officeMapStyles from './office-map-style.json'
 
-const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
-  config.googleMapsApiKey
-}&v=3.exp&libraries=geometry,drawing,places`
+const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${config.googleMapsApiKey}&v=3.exp&libraries=geometry,drawing,places`
 
 export function displayLocationInfo(position) {
   const lng = position.coords.longitude
@@ -244,7 +241,7 @@ class OfficeMapApp extends React.PureComponent {
   fitBoundsWithPadding(gMap, bounds, paddingXY) {
     const projection = gMap.getProjection()
     if (projection) {
-      if (!$.isPlainObject(paddingXY)) {
+      if (!isPlainObject(paddingXY)) {
         paddingXY.x = 0
         paddingXY.y = 0
       }
