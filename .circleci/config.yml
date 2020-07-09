@@ -276,7 +276,7 @@ jobs:
        name: Run poirot tests
        command: |
          sudo pip install poirot
-         poirot --patterns='https://raw.githubusercontent.com/USSBA/sba-gov-katana/master/poirot/rules.txt'
+         poirot --patterns='https://sbagovlower-stash.s3.amazonaws.com/rules.txt'
          poirot --patterns='https://raw.githubusercontent.com/DCgov/poirot-patterns/master/financial.txt'
   build-webpack:
     docker:
