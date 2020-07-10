@@ -100,7 +100,7 @@ app.get('/health', (req, res, next) => {
 })
 
 const sbicContactsCsv = require('./controllers/sbic-contacts-csv.js')
-app.get('/api/content/sbic-contacts.csv', sbicContactsCsv.downloadCsv)
+app.get('/download/sbic-contacts.csv', sbicContactsCsv.downloadCsv)
 
 // this is only reached in local development where the nginx proxy is not present
 app.post('/api/feedback', (req, res, next) => {
