@@ -7,7 +7,7 @@ import { Button, MultiSelect } from 'atoms'
 import { Paginator } from 'molecules'
 
 const pageSize = 10
-const SBIC_URL = '/api/content/sbic-contacts.csv'
+const SBIC_URL = '/download/sbic-contacts.csv'
 
 class SbicLookup extends React.Component {
   constructor(ownProps) {
