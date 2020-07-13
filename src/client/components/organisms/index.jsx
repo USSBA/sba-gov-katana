@@ -1,4 +1,5 @@
 // miscellaenous organisms
+import Accordion from './accordion/accordion.jsx'
 import AuthorCardCollection from './author-card-collection/author-card-collection.jsx'
 import BlogCategoryDeck from './blog-category-deck/blog-category-deck.jsx'
 import CardCollection from './card-collection/card-collection.jsx'
@@ -66,6 +67,7 @@ import MobileSectionNavModal from './modals/mobile-section-nav/mobile-section-na
 
 // miscellaneous organisms
 export {
+  Accordion,
   AuthorCardCollection,
   BlogCategoryDeck,
   CardCollection,
