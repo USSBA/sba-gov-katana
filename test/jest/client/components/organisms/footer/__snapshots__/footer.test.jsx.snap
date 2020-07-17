@@ -318,8 +318,8 @@ exports[`Front Page Hero should render correctly 1`] = `
     >
       <span>
         <a
-          href="javascript:void(0);"
-          onClick={[Function]}
+          href="https://facebook.com/SBAgov"
+          target="_blank"
         >
           <img
             alt="SBA Facebook page"
@@ -330,8 +330,8 @@ exports[`Front Page Hero should render correctly 1`] = `
       </span>
       <span>
         <a
-          href="javascript:void(0);"
-          onClick={[Function]}
+          href="https://twitter.com/sbagov"
+          target="_blank"
         >
           <img
             alt="SBA Twitter page"
@@ -342,8 +342,8 @@ exports[`Front Page Hero should render correctly 1`] = `
       </span>
       <span>
         <a
-          href="javascript:void(0);"
-          onClick={[Function]}
+          href="https://youtube.com/user/sba"
+          target="_blank"
         >
           <img
             alt="SBA Youtube page"
@@ -354,8 +354,8 @@ exports[`Front Page Hero should render correctly 1`] = `
       </span>
       <span>
         <a
-          href="javascript:void(0);"
-          onClick={[Function]}
+          href="https://linkedin.com/company/us-small-business-administration"
+          target="_blank"
         >
           <img
             alt="SBA Linked In page"
@@ -366,8 +366,8 @@ exports[`Front Page Hero should render correctly 1`] = `
       </span>
       <span>
         <a
-          href="javascript:void(0);"
-          onClick={[Function]}
+          href="https://instagram.com/sbagov"
+          target="_blank"
         >
           <img
             alt="SBA Instagram page"

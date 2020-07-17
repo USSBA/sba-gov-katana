@@ -8,7 +8,6 @@ import classNames from 'classnames'
 import moment from 'moment'
 import { isEmpty } from 'lodash'
 import styles from './event.scss'
-import { LeaveSbaModal } from 'organisms'
 import { Breadcrumb } from 'molecules'
 import he from 'he'
 
@@ -18,19 +17,6 @@ class Event extends Component {
     this.state = {
       modalIsOpen: false
     }
-  }
-
-  handleRegisterButtonClick(e) {
-    e.preventDefault()
-    this.setModalState(true)
-  }
-
-  setModalState(isOpen) {
-    this.setState({ modalIsOpen: isOpen })
-  }
-
-  handleClose() {
-    this.setModalState(false)
   }
 
   makeEventBreadcrumb(eventTitle) {
@@ -223,16 +209,9 @@ class Event extends Component {
           <div className={styles.columnB} tabIndex="0">
             {status !== 'Canceled' && !isEmpty(registrationUrl) && (
               <div className={styles.button} data-cy="registration">
-                <Button primary onClick={this.handleRegisterButtonClick.bind(this)}>
+                <Button primary url={registrationUrl} target="_blank">
                   Register <i aria-hidden="true" className={iconClassName} />
                 </Button>
-                <LeaveSbaModal
-                  closeLeaveSba={this.handleClose.bind(this)}
-                  isOpen={this.state.modalIsOpen}
-                  url={registrationUrl}
-                  shouldOpenNewWindow
-                  data-cy="leave sba modal"
-                />
               </div>
             )}
             <div className={styles.detailsBox}>
