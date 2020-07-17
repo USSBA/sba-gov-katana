@@ -60,7 +60,6 @@ import MainMenu from './header-footer/main-menu/main-menu.jsx'
 import FrontPageHero from '../templates/homepage/front-page-hero/front-page-hero.jsx'
 
 // modal organisms
-import LeaveSbaModal from './modals/leave-sba-modal/leave-sba-modal.jsx'
 import MobileSectionNavModal from './modals/mobile-section-nav/mobile-section-nav.jsx'
 
 /* EXPORTS */
@@ -126,4 +125,4 @@ export { Footer, Header, MainMenu, MobileNav }
 export { FrontPageHero }
 
 // modal organisms
-export { LeaveSbaModal, MobileSectionNavModal }
+export { MobileSectionNavModal }

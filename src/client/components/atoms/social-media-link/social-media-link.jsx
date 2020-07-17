@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import styles from './social-media-link.scss'
 import { Link } from 'atoms'
-import { LeaveSbaModal } from 'organisms'
 
 class SocialMediaLink extends React.Component {
   constructor() {
@@ -13,31 +12,12 @@ class SocialMediaLink extends React.Component {
     }
   }
 
-  handleSocialMediaClick(e) {
-    e.preventDefault()
-    this.setModelState(true)
-  }
-
-  setModelState(isOpen) {
-    this.setState({ modalIsOpen: isOpen })
-  }
-
-  handleClose() {
-    this.setModelState(false)
-  }
-
   render() {
-    // TODO: should this even be a Link?
     return (
       <span>
-        <Link onClick={this.handleSocialMediaClick.bind(this)}>
+        <Link to={this.props.url} target="_blank">
           <img className={styles.socialMediaIcons} src={this.props.image} alt={this.props.altText} />
         </Link>
-        <LeaveSbaModal
-          url={this.props.url}
-          closeLeaveSba={this.handleClose.bind(this)}
-          isOpen={this.state.modalIsOpen}
-        />
       </span>
     )
   }

@@ -6,7 +6,6 @@ import { isEmpty } from 'lodash'
 
 import styles from './event-result.scss'
 import { Button, Link } from 'atoms'
-import { LeaveSbaModal } from 'organisms'
 import he from 'he'
 
 class EventResult extends React.PureComponent {
@@ -15,19 +14,6 @@ class EventResult extends React.PureComponent {
     this.state = {
       modalIsOpen: false
     }
-  }
-
-  handleRegisterButtonClick(e) {
-    e.preventDefault()
-    this.setModalState(true)
-  }
-
-  setModalState(isOpen) {
-    this.setState({ modalIsOpen: isOpen })
-  }
-
-  handleClose() {
-    this.setModalState(false)
   }
 
   formatDate() {
@@ -92,16 +78,9 @@ class EventResult extends React.PureComponent {
     if (!isEmpty(item.registrationUrl)) {
       return (
         <div className={styles.registerButton}>
-          <Button tabIndex="0" secondary onClick={this.handleRegisterButtonClick.bind(this)}>
+          <Button tabIndex="0" secondary url={item.registrationUrl} target="_blank">
             Register <i aria-hidden="true" className={iconClassName} />
           </Button>
-          <LeaveSbaModal
-            closeLeaveSba={this.handleClose.bind(this)}
-            isOpen={this.state.modalIsOpen}
-            url={item.registrationUrl}
-            shouldOpenNewWindow
-            data-cy="leave sba modal"
-          />
         </div>
       )
     } else {

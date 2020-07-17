@@ -2,7 +2,7 @@ import $ from 'jquery'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './text-section.scss'
-import { LeaveSbaModal } from 'organisms'
+import { Link } from 'atoms'
 
 class TextSection extends React.Component {
   constructor() {
@@ -74,6 +74,7 @@ class TextSection extends React.Component {
       const href = $(anchor).attr('href')
       if (href && !/(https?:\/\/[a-zA-Z.0-9]+?\.gov($|(\/.*)))|^\//.test(href)) {
         $(anchor).addClass('external-link-marker')
+        anchor.setAttribute('target', '_blank')
       }
     })
 
@@ -91,17 +92,6 @@ class TextSection extends React.Component {
     this.setState({ modalIsOpen: false })
   }
 
-  componentDidMount() {
-    const _this = this
-    $('.external-link-marker')
-      .off('click')
-      .on('click', e => {
-        console.log('Click!', e.target.href)
-        _this.showModal(e.target.href)
-        e.preventDefault()
-      })
-  }
-
   render() {
     const { className, text } = this.props
     return (
@@ -111,11 +101,6 @@ class TextSection extends React.Component {
           data-testid="text section"
           className={styles.textSection + (className ? ' ' + className : '')}
           dangerouslySetInnerHTML={{ __html: this.parseTables(text) }}
-        />
-        <LeaveSbaModal
-          url={this.state.targetUrl}
-          isOpen={this.state.modalIsOpen}
-          closeLeaveSba={this.closeModal.bind(this)}
         />
       </span>
     )
