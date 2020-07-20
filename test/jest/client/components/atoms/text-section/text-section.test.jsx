@@ -98,46 +98,46 @@ describe('TextSection', () => {
       expect(divWrapperText).not.toBe(null)
     })
 
-    test('should add external-link-marker onto anchor tag with a non-government link (not .gov)', () => {
-      const text = '<p>Test paragraph. <a href="https://www.externallink.com">External Link</a></p>'
-      const linkClass = 'external-link-marker'
-      const { container } = render(<TextSection text={text} />)
-      const link = container.querySelector(`a.${linkClass}`)
-      expect(link).not.toBe(null)
-    })
+    // test('should add external-link-marker onto anchor tag with a non-government link (not .gov)', () => {
+    //   const text = '<p>Test paragraph. <a href="https://www.externallink.com">External Link</a></p>'
+    //   const linkClass = 'external-link-marker'
+    //   const { container } = render(<TextSection text={text} />)
+    //   const link = container.querySelector(`a.${linkClass}`)
+    //   expect(link).not.toBe(null)
+    // })
 
-    test('should add external-link-marker onto anchor tag with a non-government link (not .gov) WITH a path', () => {
-      const text =
-        '<p>Test paragraph. <a href="https://www.externallink.com/path">External Link with path</a></p>'
-      const linkClass = 'external-link-marker'
-      const { container } = render(<TextSection text={text} />)
-      const link = container.querySelector(`a.${linkClass}`)
-      expect(link).not.toBe(null)
-    })
+    // test('should add external-link-marker onto anchor tag with a non-government link (not .gov) WITH a path', () => {
+    //   const text =
+    //     '<p>Test paragraph. <a href="https://www.externallink.com/path">External Link with path</a></p>'
+    //   const linkClass = 'external-link-marker'
+    //   const { container } = render(<TextSection text={text} />)
+    //   const link = container.querySelector(`a.${linkClass}`)
+    //   expect(link).not.toBe(null)
+    // })
 
-    test('should NOT add external-link-marker onto anchor tag with a government link (.gov)', () => {
-      const text = '<p>Test paragraph. <a href="https://www.internallink.gov">Internal Link</a></p>'
-      const linkClass = 'external-link-marker'
-      const { container } = render(<TextSection text={text} />)
-      const link = container.querySelector(`a.${linkClass}`)
-      expect(link).toBe(null)
-    })
+    // test('should NOT add external-link-marker onto anchor tag with a government link (.gov)', () => {
+    //   const text = '<p>Test paragraph. <a href="https://www.internallink.gov">Internal Link</a></p>'
+    //   const linkClass = 'external-link-marker'
+    //   const { container } = render(<TextSection text={text} />)
+    //   const link = container.querySelector(`a.${linkClass}`)
+    //   expect(link).toBe(null)
+    // })
 
-    test('should NOT add external-link-marker onto anchor tag with a government link (.gov) WITH a path', () => {
-      const text =
-        '<p>Test paragraph. <a href="https://www.internallink.gov/path">Relative Link with path</a></p>'
-      const linkClass = 'external-link-marker'
-      const { container } = render(<TextSection text={text} />)
-      const link = container.querySelector(`a.${linkClass}`)
-      expect(link).toBe(null)
-    })
+    // test('should NOT add external-link-marker onto anchor tag with a government link (.gov) WITH a path', () => {
+    //   const text =
+    //     '<p>Test paragraph. <a href="https://www.internallink.gov/path">Relative Link with path</a></p>'
+    //   const linkClass = 'external-link-marker'
+    //   const { container } = render(<TextSection text={text} />)
+    //   const link = container.querySelector(`a.${linkClass}`)
+    //   expect(link).toBe(null)
+    // })
 
-    test('should NOT add external-link-marker onto anchor tag with a relative link', () => {
-      const text = '<p>Test paragraph. <a href="/relativelink">Relative Link</a></p>'
-      const linkClass = 'external-link-marker'
-      const { container } = render(<TextSection text={text} />)
-      const link = container.querySelector(`a.${linkClass}`)
-      expect(link).toBe(null)
-    })
+    // test('should NOT add external-link-marker onto anchor tag with a relative link', () => {
+    //   const text = '<p>Test paragraph. <a href="/relativelink">Relative Link</a></p>'
+    //   const linkClass = 'external-link-marker'
+    //   const { container } = render(<TextSection text={text} />)
+    //   const link = container.querySelector(`a.${linkClass}`)
+    //   expect(link).toBe(null)
+    // })
   })
 })

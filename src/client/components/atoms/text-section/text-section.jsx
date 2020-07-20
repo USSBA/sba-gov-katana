@@ -14,6 +14,7 @@ class TextSection extends React.Component {
   }
 
   parseTables(text) {
+    console.log('A-----', text)
     const textSectionHtml = $(`<div>${text}</div>`)
 
     textSectionHtml.find('table').each((i, table) => {
@@ -28,23 +29,26 @@ class TextSection extends React.Component {
       const trs = $(table).find('tbody > tr')
       const firstRowLength = $($(trs)[0]).find('td').length
 
+      console.log('C----', firstRowLength)
+
       $(trs).each((k, trow) => {
         let tds = $(trow).find('td')
 
-        // TODO: This if statement functionality should be checked to see if it needs to be modified or removed
-        if (tds.length !== firstRowLength) {
-          const prevRow = $(trs)[k - 1]
-          const firstTdCopy = $($(prevRow).find('td')[0]).clone()
-          firstTdCopy.removeAttr('rowspan')
-          firstTdCopy.find('.table-header-label').remove()
-          const cellHtml = firstTdCopy.find('.table-data-wrapper').html()
-          firstTdCopy
-            .find('.table-data-wrapper')
-            .parent()
-            .html(cellHtml)
-          firstTdCopy.addClass('show-mobile')
-          $(trow).prepend($(firstTdCopy))
-        }
+        // // TODO: This if statement functionality should be checked to see if it needs to be modified or removed
+        // if (tds.length !== firstRowLength) { //extra columns in row after the first row
+        //   console.log('D---', tds.length);
+        //   const prevRow = $(trs)[k - 1] //get good row before problem row
+        //   const firstTdCopy = $($(prevRow).find('td')[0]).clone() //gets first column in good row
+        //   firstTdCopy.removeAttr('rowspan') //remove attribute from good td
+        //   firstTdCopy.find('.table-header-label').remove() //remove another thing from good td
+        //   const cellHtml = firstTdCopy.find('.table-data-wrapper').html() //get html in the good td
+        //   firstTdCopy
+        //     .find('.table-data-wrapper')
+        //     .parent()
+        //     .html(cellHtml) //get html in parent of good td
+        //   firstTdCopy.addClass('show-mobile') //add mobile class to good td
+        //   $(trow).prepend($(firstTdCopy)) //inserts good td into bad row
+        // }
 
         tds = $(trow).find('td')
 
