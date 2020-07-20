@@ -6,7 +6,7 @@ import { faqFields, benefitFields } from './content'
 
 class BreakEvenCalculatorPage extends React.Component {
   calloutContent = {
-    title: "What you'll need to get started:",
+    title: 'What you need to get started:',
     text:
       'This analysis will help you easily prepare an estimate and visual to include in your business plan. We’ll do the math and all you will need is an idea of the following information.'
   }
