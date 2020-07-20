@@ -74,7 +74,7 @@ class BreakEvenCalculatorPage extends React.Component {
                     Your business's projected <strong>unit sales</strong>
                   </li>
                   <li>
-                    Your business's estimated <strong>variable costs</strong> per unit
+                    Your business's estimated <strong>variable cost per unit</strong>
                   </li>
                 </ul>
                 <div className={styles.buttonContainer}>
