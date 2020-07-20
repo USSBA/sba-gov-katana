@@ -6,7 +6,7 @@ import { faqFields, benefitFields } from './content'
 
 class BreakEvenCalculatorPage extends React.Component {
   calloutContent = {
-    title: "What you'll need to get started",
+    title: "What you'll need to get started:",
     text:
       'This analysis will help you easily prepare an estimate and visual to include in your business plan. We’ll do the math and all you will need is an idea of the following information.'
   }
@@ -74,7 +74,7 @@ class BreakEvenCalculatorPage extends React.Component {
                     Your business's projected <strong>unit sales</strong>
                   </li>
                   <li>
-                    Your business's projected <strong>variable costs</strong>
+                    Your business's estimated <strong>variable costs</strong> per unit
                   </li>
                 </ul>
                 <div className={styles.buttonContainer}>

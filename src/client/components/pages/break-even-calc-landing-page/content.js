@@ -35,17 +35,17 @@ export const faqFields = [
     question: 'Learn about fixed costs',
     answer: `
     <p>
-      The total fixed costs, variable costs, unit or service sales are calculated on a monthly basis in 
-      this calculator. Meaning that adding the total for all products and services monthly should account 
-      for all products and services. You may also want to do the calculation individually for each product 
-      or service if the products or service sales vary per month.
-    </p>
-      
+      Fixed costs are costs incurred during a specific period of time that do not change with the increase or 
+      decrease in production or services. Once established, fixed costs do not change over the life of an 
+      agreement or cost schedule. For this calculator we are calculating the fixed costs on a monthly basis.
+    </p> 
+    
     <p>
-      Remember the break-even point is used as an estimate for lender viability and your business plan. It is not 
-      intended to 100% accurately determine your accounting or financing since those calculations can only be done 
-      after all costs and production have occurred. It's also a good idea to throw a little extra, say 10%, into 
-      your break-even analysis to cover miscellaneous expenses that you can't predict.
+      If you have fixed costs that do not incur monthly you should still include them, but calculate the 
+      monthly amount that goes towards that expense. For example if something is paid for on a quarterly basis, 
+      but does not change with production you would divide that cost by four in order to estimate the monthly 
+      amount of that cost. In the break-even analysis we will help you break down the potential fixed costs 
+      related to your business.
     </p>
 
     <p>
