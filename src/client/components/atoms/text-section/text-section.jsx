@@ -46,7 +46,6 @@ class TextSection extends React.Component {
             tds.forEach((tdata, i) => {
               const html = '<div class="table-data">' + tdata.innerHTML + '</div>'
               tdata.classList.add('index-' + i)
-              // tdata.innerHTML = html
               tds[i].innerHTML = html
             })
           } else {
@@ -56,9 +55,6 @@ class TextSection extends React.Component {
 
               const label = "<div class='table-header-label'>" + headers[i] + ':</div>'
               tdata.insertAdjacentHTML('beforeend', label)
-
-              // const labelFrag = document.createRange().createContextualFragment(label)
-              // tdata.insertBefore(labelFrag, tdata.firstChild);
             })
           }
         })

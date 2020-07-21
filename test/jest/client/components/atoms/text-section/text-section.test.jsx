@@ -2,7 +2,6 @@
 
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { JSDOM } from 'jsdom'
 import { cleanup, render } from 'react-testing-library'
 import { TextSection } from 'atoms'
 
@@ -13,16 +12,6 @@ jest.mock('client/services/client-config.js', function() {
     }
   }
 })
-
-// global.document.createRange = props => ({
-//   setStart: () => {},
-//   setEnd: () => {},
-//   commonAncestorContainer: {
-//     nodeName: 'BODY',
-//     ownerDocument: document,
-//   },
-//   createContextualFragment: str => JSDOM.fragment(str)
-// })
 
 describe('TextSection', () => {
   test('should render a simple paragraph', () => {
