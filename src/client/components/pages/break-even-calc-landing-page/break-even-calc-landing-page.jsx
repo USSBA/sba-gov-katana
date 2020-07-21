@@ -36,16 +36,15 @@ class BreakEvenCalculatorPage extends React.Component {
             the level of production at which the costs of production equals the revenues for a product.
           </p>
           <p>
-            The <strong>break-even point</strong> is the point at which total cost and total revenue are
-            equal, meaning there is no loss or gain for your small business. In other words, you've reached
-            the level of production at which the costs of production equal the revenues for a product.
+            This is <strong>an important calculation for your business plan</strong>. Potential investors in
+            a business not only want to know the return to expect on their investments, but also the point
+            when they will realize this return. This is because some companies may take years before turning
+            a profit, often losing money in the first few months or years before breaking even. For this
+            reason, break-even point is an important part of any business plan presented to a potential
+            investor. It can also be a useful tool in future planning for existing businesses to prove their
+            potential turnaround after disaster scenarios.
           </p>
-          <p>
-            For existing businesses, this can be a useful tool not only in analyzing costs and evaluating
-            profits they’ll earn at different sales volumes, but also to prove their potential turnaround
-            after disaster scenarios.
-          </p>
-          <h3>Benefits of doing break-even analysis</h3>
+          <div className={styles.benefitsTitle}>Benefits of a break-even analysis</div>
           <div className={styles.benefits}>
             {benefitFields.map(benefit => (
               <div className={styles.benefitsCol}>
@@ -63,13 +62,15 @@ class BreakEvenCalculatorPage extends React.Component {
                 <img src="/assets/images/break-even-calculator/Calculator_icon.svg" alt="calculator icon" />
               </div>
               <div className={styles.calcText}>
-                Get started with the
-                <h3>Break-even Point Analysis Tool</h3>
+                <h2>
+                  Getting Started <br />
+                  Break-Even Point Analysis
+                </h2>
+                <p>
+                  Create your break-even analysis with this calculator and determine your business’s
+                  break-even point in units using the following formula:
+                </p>
               </div>
-              <p>
-                Create your break-even analysis with this calculator and determine your business’s
-                break-even point using the following formula:
-              </p>
             </div>
             <div className={styles.formula}>
               Fixed Costs ÷ (Price - Variable Costs) = Break-Even Point in Units
