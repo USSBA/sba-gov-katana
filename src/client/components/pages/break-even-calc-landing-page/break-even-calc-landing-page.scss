@@ -5,6 +5,12 @@
       margin: $small-spacing;
     }
 
+    div.benefitsTitle {
+      height: 72px;
+      color: $sba-blue;
+      font-size: 40px;
+    }
+
     .benefits {
       display: flex;
       flex-wrap: wrap;
@@ -84,7 +90,7 @@
       color: $sba-white;
       width: 75%;
 
-      h3 {
+      h2 {
         color: $sba-white;
       }
     }
