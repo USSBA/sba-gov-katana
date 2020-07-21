@@ -1,8 +1,6 @@
-import $ from 'jquery'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './text-section.scss'
-import { Link } from 'atoms'
 
 class TextSection extends React.Component {
   constructor() {
@@ -11,85 +9,60 @@ class TextSection extends React.Component {
       modalIsOpen: false,
       targetUrl: ''
     }
+    this.handleExternalLinks = this.handleExternalLinks.bind(this)
   }
 
-  parseTables(text) {
-    const textSectionHtml = $(`<div>${text}</div>`)
-
-    textSectionHtml.find('table').each((i, table) => {
-      const headers = []
-      $(table)
-        .addClass('text-section-table')
-        .find('thead > tr > th')
-        .each((j, theader) => {
-          headers.push($(theader).text())
-        })
-
-      const trs = $(table).find('tbody > tr')
-      const firstRowLength = $($(trs)[0]).find('td').length
-
-      $(trs).each((k, trow) => {
-        let tds = $(trow).find('td')
-
-        // TODO: This if statement functionality should be checked to see if it needs to be modified or removed
-        if (tds.length !== firstRowLength) {
-          const prevRow = $(trs)[k - 1]
-          const firstTdCopy = $($(prevRow).find('td')[0]).clone()
-          firstTdCopy.removeAttr('rowspan')
-          firstTdCopy.find('.table-header-label').remove()
-          const cellHtml = firstTdCopy.find('.table-data-wrapper').html()
-          firstTdCopy
-            .find('.table-data-wrapper')
-            .parent()
-            .html(cellHtml)
-          firstTdCopy.addClass('show-mobile')
-          $(trow).prepend($(firstTdCopy))
-        }
-
-        tds = $(trow).find('td')
-
-        if (headers.length < 1) {
-          tds.each((index, tdata) => {
-            const html = '<div class="table-data">' + $(tdata).html() + '</div>'
-            $(tdata)
-              .html(html)
-              .addClass('index-' + index)
-          })
-        } else {
-          tds.each((index, tdata) => {
-            const html = "<div class='table-data-wrapper'>" + $(tdata).html() + '</div>'
-            $(tdata).html(html)
-
-            const label = "<div class='table-header-label'>" + headers[index] + ':</div>'
-            $(tdata).prepend(label)
-          })
-        }
-      })
-    })
-
-    // TODO: Consider abstracting out this section of code into it's own function
-    textSectionHtml.find('a').each((i, anchor) => {
+  handleExternalLinks(htmlDom) {
+    htmlDom.querySelectorAll('a').forEach(anchor => {
       // Regex will check for .gov link without a path or with a path OR a relative link.
-      // If none of the above cases are true then we add an external-link-marker class to the link.
-      const href = $(anchor).attr('href')
+      // If none of the above cases are true then we add a target blank attribute to the link.
+      const href = anchor.getAttribute('href')
       if (href && !/(https?:\/\/[a-zA-Z.0-9]+?\.gov($|(\/.*)))|^\//.test(href)) {
-        $(anchor).addClass('external-link-marker')
         anchor.setAttribute('target', '_blank')
       }
     })
-
-    return textSectionHtml.html()
   }
 
-  showModal(targetUrl) {
-    this.setState({
-      modalIsOpen: true,
-      targetUrl
-    })
-  }
+  parseTables(text) {
+    const textSectionHtml = `${text}`
 
-  closeModal() {
-    this.setState({ modalIsOpen: false })
+    var htmlDom = new DOMParser().parseFromString(textSectionHtml, 'text/html')
+
+    const tables = htmlDom.querySelectorAll('table')
+    if (tables.length > 0) {
+      tables.forEach(table => {
+        const headers = []
+        table.classList.add('text-section-table')
+        table.querySelectorAll('thead > tr > th').forEach(theader => {
+          headers.push(theader.textContent)
+        })
+
+        const trs = table.querySelectorAll('tbody > tr')
+
+        trs.forEach(trow => {
+          const tds = trow.querySelectorAll('td')
+
+          if (headers.length < 1) {
+            tds.forEach((tdata, i) => {
+              const html = '<div class="table-data">' + tdata.innerHTML + '</div>'
+              tdata.classList.add('index-' + i)
+              tds[i].innerHTML = html
+            })
+          } else {
+            tds.forEach((tdata, i) => {
+              const html = "<div class='table-data-wrapper'>" + tdata.innerHTML + '</div>'
+              tds[i].innerHTML = html
+
+              const label = "<div class='table-header-label'>" + headers[i] + ':</div>'
+              tdata.insertAdjacentHTML('beforeend', label)
+            })
+          }
+        })
+      })
+    }
+
+    this.handleExternalLinks(htmlDom)
+    return htmlDom.body.innerHTML
   }
 
   render() {
