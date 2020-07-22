@@ -1,6 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import DesktopNav from '../desktop-nav/desktop-nav.jsx'
 import MobileNav from '../mobile-nav/mobile-nav.jsx'
