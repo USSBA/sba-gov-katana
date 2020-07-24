@@ -47,11 +47,7 @@ class NewsReleases extends React.Component {
         {articles && articles.length > 0 && (
           <div className={styles.newsReleases} data-testid="news-cards">
             <h2>News releases</h2>
-            <DetailCardCollection
-              type={'article'}
-              cards={articles}
-              fieldsToShowInDetails={['Published', 'Summary']}
-            />
+            <DetailCardCollection type={'article'} cards={articles} fieldsToShowInDetails={['Published']} />
             <div className={styles.button} data-testid="news-more-button">
               <a href={articleLink}>
                 <Button primary>View All</Button>
