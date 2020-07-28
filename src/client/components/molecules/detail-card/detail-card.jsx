@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { includes, isEmpty, size } from 'lodash'
+import moment from 'moment'
 
 import styles from './detail-card.scss'
 import { DecorativeDash, FileTypeIcon, Label, Link } from 'atoms'
@@ -45,11 +46,9 @@ class DetailCard extends React.Component {
       rows.push({ name: 'Program:', value: doc.programs.join(', ') })
     }
 
-    if (doc.published && includes(fieldsToShowInDetails, 'Published')) {
-      const publishedDate = new Date(doc.updated)
-      const publishedDateString =
-        publishedDate.getMonth() + '/' + publishedDate.getDate() + '/' + publishedDate.getYear()
-      rows.push({ name: 'Published:', value: publishedDateString })
+    if ((doc.published || doc.updated) && includes(fieldsToShowInDetails, 'Published')) {
+      const publishedDate = moment(doc.updated).format('MM[/]D[/]YYYY')
+      rows.push({ name: 'Published:', value: publishedDate })
     }
 
     if (size(doc.summary) && includes(fieldsToShowInDetails, 'Summary')) {
