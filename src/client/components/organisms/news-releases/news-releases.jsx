@@ -45,7 +45,7 @@ class NewsReleases extends React.Component {
       <div>
         {articles && articles.length > 0 && (
           <div className={styles.newsReleases} data-testid="news-cards">
-            <h2>News releases</h2>
+            <h2>District news</h2>
             <DetailCardCollection
               type={'article'}
               cards={articles}
