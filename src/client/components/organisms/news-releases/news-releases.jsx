@@ -49,7 +49,8 @@ class NewsReleases extends React.Component {
             <DetailCardCollection
               type={'article'}
               cards={articles}
-              fieldsToShowInDetails={['Published', 'Date']}
+              fieldsToShowInDetails={['Published']}
+              showDate={true}
             />
             <div className={styles.button} data-testid="news-more-button">
               <a href={articleLink}>

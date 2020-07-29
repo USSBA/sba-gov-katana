@@ -51,18 +51,12 @@ class DetailCard extends React.Component {
       rows.push({ name: 'Published:', value: publishedDate })
     }
 
-    if (doc.created && includes(fieldsToShowInDetails, 'Date')) {
-      const publishedDate = moment(doc.created).format('MM[/]D[/]YYYY')
-      rows.push({ name: 'Authored On:', value: publishedDate })
-    }
-
     if (size(doc.summary) && includes(fieldsToShowInDetails, 'Summary')) {
       rows.push({ name: 'Summary:', value: doc.summary })
     }
 
     return (
       <div>
-        <DecorativeDash />
         <table className={styles.programSummaryTableData}>
           <tbody className={styles['program-summary-table']}>
             {rows.map((row, index) => {
@@ -138,6 +132,10 @@ class DetailCard extends React.Component {
           <h6>
             <Link to={doc.url}>{doc.title}</Link>
           </h6>
+          <DecorativeDash width={30} />
+          {this.props.showDate && doc.created && (
+            <div className={styles.date}>{moment(doc.created).format('MMMM D, YYYY')}</div>
+          )}
           {this.props.showDetails ? this.renderTable(this.props.data) : null}
           {showDownloadLink && this.renderDownloadLink()}
         </div>
