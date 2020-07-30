@@ -133,8 +133,8 @@ class DetailCard extends React.Component {
             <Link to={doc.url}>{doc.title}</Link>
           </h6>
           <DecorativeDash width={30} />
-          {this.props.showDate && doc.created && (
-            <div className={styles.date}>{moment(doc.created).format('MMMM D, YYYY')}</div>
+          {this.props.showDate && doc.updated && (
+            <div className={styles.date}>{moment.unix(doc.updated).format('MMMM D, YYYY')}</div>
           )}
           {this.props.showDetails ? this.renderTable(this.props.data) : null}
           {showDownloadLink && this.renderDownloadLink()}
