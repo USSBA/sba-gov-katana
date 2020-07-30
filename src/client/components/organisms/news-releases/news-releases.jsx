@@ -17,7 +17,7 @@ class NewsReleases extends React.Component {
     const { officeId, national, region } = this.props
 
     const queryParams = {
-      sortBy: 'Last Updated',
+      sortBy: 'Authored on Date',
       start: 0,
       end: 3
     }
@@ -46,7 +46,12 @@ class NewsReleases extends React.Component {
         {articles && articles.length > 0 && (
           <div className={styles.newsReleases} data-testid="news-cards">
             <h2>News releases</h2>
-            <DetailCardCollection type={'article'} cards={articles} fieldsToShowInDetails={['Published']} />
+            <DetailCardCollection
+              type={'article'}
+              cards={articles}
+              fieldsToShowInDetails={['Published']}
+              showDate={true}
+            />
             <div className={styles.button} data-testid="news-more-button">
               <a href={articleLink}>
                 <Button primary>View All</Button>

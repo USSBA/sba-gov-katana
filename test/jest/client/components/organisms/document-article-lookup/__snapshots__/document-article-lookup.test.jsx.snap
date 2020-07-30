@@ -628,19 +628,19 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
                 Master
               </a>
             </h6>
-            <div>
-              <div
-                className="dashContainer"
-              >
-                <hr
-                  className="dash dash"
-                  style={
-                    Object {
-                      "width": "336px",
-                    }
+            <div
+              className="dashContainer"
+            >
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "30px",
                   }
-                />
-              </div>
+                }
+              />
+            </div>
+            <div>
               <table
                 className="programSummaryTableData"
               >
@@ -675,19 +675,19 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
                 Knight
               </a>
             </h6>
-            <div>
-              <div
-                className="dashContainer"
-              >
-                <hr
-                  className="dash dash"
-                  style={
-                    Object {
-                      "width": "336px",
-                    }
+            <div
+              className="dashContainer"
+            >
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "30px",
                   }
-                />
-              </div>
+                }
+              />
+            </div>
+            <div>
               <table
                 className="programSummaryTableData"
               >
@@ -722,19 +722,19 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
                 Master
               </a>
             </h6>
-            <div>
-              <div
-                className="dashContainer"
-              >
-                <hr
-                  className="dash dash"
-                  style={
-                    Object {
-                      "width": "336px",
-                    }
+            <div
+              className="dashContainer"
+            >
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "30px",
                   }
-                />
-              </div>
+                }
+              />
+            </div>
+            <div>
               <table
                 className="programSummaryTableData"
               >
@@ -769,19 +769,19 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
                 Knight
               </a>
             </h6>
-            <div>
-              <div
-                className="dashContainer"
-              >
-                <hr
-                  className="dash dash"
-                  style={
-                    Object {
-                      "width": "336px",
-                    }
+            <div
+              className="dashContainer"
+            >
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "30px",
                   }
-                />
-              </div>
+                }
+              />
+            </div>
+            <div>
               <table
                 className="programSummaryTableData"
               >
@@ -1393,19 +1393,19 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 Master
               </a>
             </h6>
-            <div>
-              <div
-                className="dashContainer"
-              >
-                <hr
-                  className="dash dash"
-                  style={
-                    Object {
-                      "width": "336px",
-                    }
+            <div
+              className="dashContainer"
+            >
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "30px",
                   }
-                />
-              </div>
+                }
+              />
+            </div>
+            <div>
               <table
                 className="programSummaryTableData"
               >
@@ -1440,19 +1440,19 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 Knight
               </a>
             </h6>
-            <div>
-              <div
-                className="dashContainer"
-              >
-                <hr
-                  className="dash dash"
-                  style={
-                    Object {
-                      "width": "336px",
-                    }
+            <div
+              className="dashContainer"
+            >
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "30px",
                   }
-                />
-              </div>
+                }
+              />
+            </div>
+            <div>
               <table
                 className="programSummaryTableData"
               >
@@ -1487,19 +1487,19 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 Master
               </a>
             </h6>
-            <div>
-              <div
-                className="dashContainer"
-              >
-                <hr
-                  className="dash dash"
-                  style={
-                    Object {
-                      "width": "336px",
-                    }
+            <div
+              className="dashContainer"
+            >
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "30px",
                   }
-                />
-              </div>
+                }
+              />
+            </div>
+            <div>
               <table
                 className="programSummaryTableData"
               >
@@ -1534,19 +1534,19 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 Knight
               </a>
             </h6>
-            <div>
-              <div
-                className="dashContainer"
-              >
-                <hr
-                  className="dash dash"
-                  style={
-                    Object {
-                      "width": "336px",
-                    }
+            <div
+              className="dashContainer"
+            >
+              <hr
+                className="dash dash"
+                style={
+                  Object {
+                    "width": "30px",
                   }
-                />
-              </div>
+                }
+              />
+            </div>
+            <div>
               <table
                 className="programSummaryTableData"
               >
