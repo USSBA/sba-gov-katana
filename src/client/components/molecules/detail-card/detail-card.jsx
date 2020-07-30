@@ -47,7 +47,7 @@ class DetailCard extends React.Component {
     }
 
     if (doc.published && includes(fieldsToShowInDetails, 'Published')) {
-      const publishedDate = moment(doc.updated).format('MM[/]D[/]YYYY')
+      const publishedDate = moment.unix(doc.updated).format('MMMM D, YYYY')
       rows.push({ name: 'Published:', value: publishedDate })
     }
 
