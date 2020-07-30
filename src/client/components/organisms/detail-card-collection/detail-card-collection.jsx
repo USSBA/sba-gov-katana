@@ -17,6 +17,7 @@ class DetailCardCollection extends React.Component {
           showDetails={this.props.showDetails}
           showBorder={true}
           fieldsToShowInDetails={this.props.fieldsToShowInDetails}
+          showDate={this.props.showDate}
         />
       </div>
     )
@@ -45,7 +46,8 @@ DetailCardCollection.propTypes = {
 
 DetailCardCollection.defaultProps = {
   showDetails: true,
-  fieldsToShowInDetails: []
+  fieldsToShowInDetails: [],
+  showDate: false
 }
 
 export default DetailCardCollection
