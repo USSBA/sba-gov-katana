@@ -17,7 +17,6 @@ class NewsReleases extends React.Component {
     const { officeId, national, region } = this.props
 
     const queryParams = {
-      articleCategory: 'Press release',
       sortBy: 'Last Updated',
       start: 0,
       end: 3
@@ -40,7 +39,7 @@ class NewsReleases extends React.Component {
   render() {
     const { articles } = this.state
     const { officeId } = this.props
-    const articleLink = `/article?office=${officeId}&relatedOffice=${officeId}&articleCategory=Press release`
+    const articleLink = `/article?office=${officeId}&relatedOffice=${officeId}`
 
     return (
       <div>
