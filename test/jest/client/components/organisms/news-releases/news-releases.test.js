@@ -95,7 +95,7 @@ describe('News releases', () => {
     fetchSiteContentStub.mockImplementationOnce(() => Promise.resolve(oneNewsReleaseData))
 
     const expectedQueryParams = {
-      sortBy: 'Authored on Date',
+      sortBy: 'Last Updated',
       start: 0,
       end: 3
     }

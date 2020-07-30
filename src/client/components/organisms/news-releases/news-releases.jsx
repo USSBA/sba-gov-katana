@@ -17,7 +17,7 @@ class NewsReleases extends React.Component {
     const { officeId, national, region } = this.props
 
     const queryParams = {
-      sortBy: 'Authored on Date',
+      sortBy: 'Last Updated',
       start: 0,
       end: 3
     }
