@@ -208,7 +208,7 @@ export class DocumentArticle extends React.Component {
           {this.isNot508Compliant(currentFile) && <Noncompliant508Message />}
           {includes(data.category, PRESS_RELEASE) && (
             <h5>
-              Last updated {moment.unix(data.updated).format('MMMM D, YYYY')}
+              Authored on {moment.unix(data.created).format('MMMM D, YYYY')}
               {articleIdText}
             </h5>
           )}
