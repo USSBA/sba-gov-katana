@@ -10,7 +10,7 @@ miscapi:
 loanprocessing:
     endpoint: sba.gov/api/loan-processing
 server:
-    fqdn: sba.gov
+    fqdn: www.www.www.www.www.www.www.www.sba.gov
 features:
     localAssistMenuHeight: false
     showSbic: false
