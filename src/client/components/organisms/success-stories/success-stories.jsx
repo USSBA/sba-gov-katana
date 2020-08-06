@@ -39,15 +39,14 @@ class SuccessStories extends PureComponent {
           url: featuredImage.url
         },
         link: {
-          url,
-          title: 'Read full post'
+          url
         },
         subtitleText: summary,
         titleText: title
       }
       return (
         <div data-testid={`success-story-card`} key={index}>
-          <Card index={index} item={item} numCards={3} />
+          <Card index={index} item={item} numCards={3} disableLearnMoreLink={true} />
         </div>
       )
     })
