@@ -38,10 +38,6 @@ class SuccessStories extends PureComponent {
           alt: featuredImage.alt,
           url: featuredImage.url
         },
-        link: {
-          url,
-          title: 'Read full post'
-        },
         subtitleText: summary,
         titleText: title
       }

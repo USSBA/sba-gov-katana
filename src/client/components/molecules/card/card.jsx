@@ -40,12 +40,14 @@ const Card = props => {
     languageOverride && languageOverride.startsWith('es')
       ? TRANSLATIONS.learnMore.es.text
       : TRANSLATIONS.learnMore.en.text
-  let uri = ''
-  if (typeof link === 'string') {
-    uri = link
-  } else {
-    uri = link.uri || link.url
-    title = link.title
+  let uri
+  if (!isEmpty(link)) {
+    if (typeof link === 'string') {
+      uri = link
+    } else {
+      uri = link.uri || link.url
+      title = link.title
+    }
   }
 
   let imageMarkup = null
@@ -60,7 +62,7 @@ const Card = props => {
       />
     )
 
-    if (!isEmpty(link) && uri) {
+    if (!isEmpty(link) && !isEmpty(uri)) {
       imageMarkup = <Link to={uri}>{imageMarkup}</Link>
     }
   }
