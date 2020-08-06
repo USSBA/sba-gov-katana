@@ -11,6 +11,7 @@ import { getLanguageOverride } from '../../../services/utils'
 const Card = props => {
   const {
     cardAriaLabel,
+    disableLearnMoreLink,
     index,
     item: { image, link, subtitleText, titleText, italicText },
     numCards,
@@ -40,14 +41,12 @@ const Card = props => {
     languageOverride && languageOverride.startsWith('es')
       ? TRANSLATIONS.learnMore.es.text
       : TRANSLATIONS.learnMore.en.text
-  let uri
-  if (!isEmpty(link)) {
-    if (typeof link === 'string') {
-      uri = link
-    } else {
-      uri = link.uri || link.url
-      title = link.title
-    }
+  let uri = ''
+  if (typeof link === 'string') {
+    uri = link
+  } else {
+    uri = link.uri || link.url
+    title = link.title || title
   }
 
   let imageMarkup = null
@@ -120,7 +119,7 @@ const Card = props => {
             ) : null}
           </div>
         ) : null}
-        {learnMoreMarkup}
+        {!disableLearnMoreLink && learnMoreMarkup}
       </div>
     </div>
   )
@@ -131,11 +130,13 @@ Card.defaultProps = {
   item: {},
   index: -1,
   numCards: -1,
-  parentIndex: -1
+  parentIndex: -1,
+  disableLearnMoreLink: false
 }
 
 Card.propTypes = {
   cardAriaLabel: PropTypes.string,
+  disableLearnMoreLink: PropTypes.bool,
   index: PropTypes.number,
   item: PropTypes.shape({
     image: PropTypes.shape({
