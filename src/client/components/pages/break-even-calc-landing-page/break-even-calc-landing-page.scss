@@ -1,4 +1,11 @@
 .calcLandingPageContainer {
+  .breadcrumbSection {
+    padding: $small-spacing $base-spacing;
+    border-top: 1px solid $sba-gray-light;
+    border-bottom: 1px solid $sba-gray-light;
+    margin: 0 $base-spacing;
+  }
+
   .infoSection {
     margin: $base-spacing * 2 $base-spacing * 3;
     @include for-small-only {
