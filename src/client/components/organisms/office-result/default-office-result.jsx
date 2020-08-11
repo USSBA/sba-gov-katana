@@ -35,7 +35,7 @@ class DefaultOfficeResult extends React.PureComponent {
           city: this.getPropertyValue(item, 'location_city'),
           streetAddress: this.getPropertyValue(item, 'location_street_address'),
           state: this.getPropertyValue(item, 'location_state'),
-          zipCode: Number(this.getPropertyValue(item, 'location_zipcode')),
+          zipCode: this.getPropertyValue(item, 'location_zipcode'),
           email: this.getPropertyValue(item, 'location_email'),
           phoneNumber: this.getPropertyValue(item, 'location_phone_number'),
           fax: this.getPropertyValue(item, 'location_fax'),
