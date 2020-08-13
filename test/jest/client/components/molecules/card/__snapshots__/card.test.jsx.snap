@@ -58,6 +58,12 @@ exports[`Card does not error check malformed link 1`] = `
         tabIndex="0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
+        <a
+          classto="https:\\\\dogs"
+          href="javascript:void(0);"
+        >
+          ›
+        </a>
       </p>
     </div>
     <a
@@ -130,6 +136,12 @@ exports[`Card should render the spanish version correctly if the link is just a 
         tabIndex="0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
+        <a
+          classto="/my-spanish-path/my-page"
+          href="javascript:void(0);"
+        >
+          ›
+        </a>
       </p>
     </div>
     <a
@@ -198,6 +210,12 @@ exports[`Card to render correctly 1`] = `
         tabIndex="0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
+        <a
+          classto="https://en.wikipedia.org/wiki/Kitten"
+          href="javascript:void(0);"
+        >
+          ›
+        </a>
       </p>
     </div>
     <a
@@ -268,6 +286,12 @@ exports[`Card to render correctly if the link is just a string 1`] = `
         tabIndex="0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
+        <a
+          classto="/my-path/my-page"
+          href="javascript:void(0);"
+        >
+          ›
+        </a>
       </p>
     </div>
     <a
@@ -328,6 +352,7 @@ exports[`Card to render correctly with null link 1`] = `
         tabIndex="0"
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
+        
       </p>
     </div>
   </div>
