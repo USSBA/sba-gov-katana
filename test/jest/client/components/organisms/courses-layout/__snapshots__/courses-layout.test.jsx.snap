@@ -146,6 +146,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
@@ -224,6 +225,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
@@ -302,6 +304,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
@@ -380,6 +383,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
@@ -467,6 +471,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
@@ -545,6 +550,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
@@ -623,6 +629,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
@@ -701,6 +708,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
@@ -788,6 +796,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
@@ -866,6 +875,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
@@ -944,6 +954,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
@@ -1022,6 +1033,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
+                        aria-label="Read more"
                         onClick={[Function]}
                         style={Object {}}
                         target="_self"
