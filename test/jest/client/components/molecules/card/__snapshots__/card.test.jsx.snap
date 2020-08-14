@@ -59,10 +59,13 @@ exports[`Card does not error check malformed link 1`] = `
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
         <a
-          classto="https:\\\\dogs"
-          href="javascript:void(0);"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
-          ›
+          <i
+            className="fa fa-chevron-right"
+          />
         </a>
       </p>
     </div>
@@ -137,10 +140,13 @@ exports[`Card should render the spanish version correctly if the link is just a 
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
         <a
-          classto="/my-spanish-path/my-page"
-          href="javascript:void(0);"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
-          ›
+          <i
+            className="fa fa-chevron-right"
+          />
         </a>
       </p>
     </div>
@@ -211,10 +217,11 @@ exports[`Card to render correctly 1`] = `
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
         <a
-          classto="https://en.wikipedia.org/wiki/Kitten"
-          href="javascript:void(0);"
+          href="https://en.wikipedia.org/wiki/Kitten"
         >
-          ›
+          <i
+            className="fa fa-chevron-right"
+          />
         </a>
       </p>
     </div>
@@ -287,10 +294,13 @@ exports[`Card to render correctly if the link is just a string 1`] = `
       >
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
         <a
-          classto="/my-path/my-page"
-          href="javascript:void(0);"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
-          ›
+          <i
+            className="fa fa-chevron-right"
+          />
         </a>
       </p>
     </div>

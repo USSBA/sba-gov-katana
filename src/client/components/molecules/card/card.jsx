@@ -67,7 +67,13 @@ const Card = props => {
   }
 
   const titleMarkup = uri ? <Link to={uri}>{titleText}</Link> : titleText
-  const caretLink = uri ? <Link classto={uri}>›</Link> : ''
+  const caretLink = uri ? (
+    <Link to={uri}>
+      <i className="fa fa-chevron-right" />
+    </Link>
+  ) : (
+    ''
+  )
   const learnMoreMarkup = uri ? (
     <Link to={uri} data-testid="card link">
       {title}

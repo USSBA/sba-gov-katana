@@ -146,10 +146,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
@@ -221,10 +224,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
@@ -296,10 +302,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
@@ -371,10 +380,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
@@ -455,10 +467,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
@@ -530,10 +545,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
@@ -605,10 +623,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
@@ -680,10 +701,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
@@ -764,10 +788,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
@@ -839,10 +866,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
@@ -914,10 +944,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
@@ -989,10 +1022,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                       <a
-                        classto="/course/anc-business-guide-8a-business-development-program"
-                        href="javascript:void(0);"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
                       >
-                        ›
+                        <i
+                          className="fa fa-chevron-right"
+                        />
                       </a>
                     </p>
                   </div>
