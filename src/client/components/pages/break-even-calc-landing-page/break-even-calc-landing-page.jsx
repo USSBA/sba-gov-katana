@@ -120,15 +120,15 @@ class BreakEvenCalculatorPage extends React.Component {
                     <AccordionItemButton className={accordionStyles.accordionButton}>
                       <h3>
                         {faq.question}
-                        {/* <AccordionItemState>
-                          {({ expanded }) =>
-                            (expanded ? (
+                        <AccordionItemState>
+                          {({ expanded }) => {
+                            return expanded ? (
                               <i className={styles.accordionIcon + ' fa fa-chevron-up'} />
                             ) : (
                               <i className={styles.accordionIcon + ' fa fa-chevron-down'} />
-                            ))
-                          }
-                        </AccordionItemState> */}
+                            )
+                          }}
+                        </AccordionItemState>
                       </h3>
                     </AccordionItemButton>
                   </AccordionItemHeading>
