@@ -109,7 +109,7 @@ class BreakEvenCalculatorPage extends React.Component {
             </div>
           </div>
         </div>
-        <div className={styles.accordionContainer}>
+        <div className={accordionStyles.accordionContainer}>
           <h3>Tips and Tricks</h3>
           <DecorativeDash width={77} />
           <div className={accordionStyles.accordionContent}>
@@ -123,9 +123,9 @@ class BreakEvenCalculatorPage extends React.Component {
                         <AccordionItemState>
                           {({ expanded }) => {
                             return expanded ? (
-                              <i className={styles.accordionIcon + ' fa fa-chevron-up'} />
+                              <i className={accordionStyles.accordionIcon + ' fa fa-chevron-up'} />
                             ) : (
-                              <i className={styles.accordionIcon + ' fa fa-chevron-down'} />
+                              <i className={accordionStyles.accordionIcon + ' fa fa-chevron-down'} />
                             )
                           }}
                         </AccordionItemState>

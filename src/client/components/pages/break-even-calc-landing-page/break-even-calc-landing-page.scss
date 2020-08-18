@@ -132,49 +132,6 @@
       }
     }
   }
-  .accordionContainer {
-    margin-top: $base-spacing * 9;
-    margin-left: $base-spacing * 3;
-    margin-right: $base-spacing * 3;
-    .accordionContent {
-      margin-top: $base-spacing * 1;
-    }
-    .flex-grid {
-      display: flex;
-    }
-    .col {
-      flex: 1;
-    }
-
-    margin-bottom: $base-spacing * 1;
-
-    .accordionIcon {
-      margin-left: auto;
-      transition: transform 0.6s ease;
-      float: right;
-    }
-
-    .accordionText {
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 400;
-      font-size: 18px;
-      padding: 18px;
-      margin-left: $base-spacing * 2;
-      ul {
-        -moz-column-count: 3;
-        -moz-column-gap: 20px;
-        -webkit-column-count: 3;
-        -webkit-column-gap: 20px;
-        column-count: 3;
-        column-gap: 20px;
-        li {
-          list-style-type: circle;
-          margin: 0;
-          margin-left: 20px;
-        }
-      }
-    }
-  }
 }
 
 .accordion .accordion__item .accordion__heading {
