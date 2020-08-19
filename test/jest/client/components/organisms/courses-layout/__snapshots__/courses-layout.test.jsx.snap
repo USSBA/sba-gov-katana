@@ -145,6 +145,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a
@@ -214,6 +224,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a
@@ -283,6 +303,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a
@@ -352,6 +382,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a
@@ -430,6 +470,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a
@@ -499,6 +549,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a
@@ -568,6 +628,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a
@@ -637,6 +707,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a
@@ -715,6 +795,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a
@@ -784,6 +874,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a
@@ -853,6 +953,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a
@@ -922,6 +1032,16 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       tabIndex="0"
                     >
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
+                      <a
+                        aria-label="Read more"
+                        onClick={[Function]}
+                        style={Object {}}
+                        target="_self"
+                      >
+                        <i
+                          className="fa fa-chevron-right"
+                        />
+                      </a>
                     </p>
                   </div>
                   <a

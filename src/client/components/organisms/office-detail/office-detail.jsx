@@ -23,7 +23,7 @@ class OfficeDetail extends React.PureComponent {
       city: item.location_city ? item.location_city[0] : '',
       streetAddress: item.location_street_address ? item.location_street_address[0] : '',
       state: item.location_state ? item.location_state[0] : '',
-      zipCode: item.location_zipcode ? Number(item.location_zipcode[0]) : '',
+      zipCode: item.location_zipcode ? item.location_zipcode[0] : '',
       email: item.location_email ? item.location_email[0] : '',
       phoneNumber: item.location_phone_number ? item.location_phone_number[0] : '',
       fax: item.location_fax ? item.location_fax[0] : '',

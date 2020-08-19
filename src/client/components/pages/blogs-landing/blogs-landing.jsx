@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import { AuthorCardCollection, BlogCategoryDeck, Hero } from 'organisms'
 import { compact } from 'lodash'
@@ -13,8 +14,11 @@ class BlogsLandingPage extends Component {
   }
 
   async componentDidMount() {
+    const { showAuthorCardCollection } = this.props
     this.fetchBlogs()
-    this.fetchAuthors()
+    if (showAuthorCardCollection) {
+      this.fetchAuthors()
+    }
   }
 
   async fetchBlogs() {
@@ -134,4 +138,10 @@ class BlogsLandingPage extends Component {
   }
 }
 
+BlogsLandingPage.propTypes = {
+  showAuthorCardCollection: PropTypes.bool
+}
+BlogsLandingPage.defaultProps = {
+  showAuthorCardCollection: false
+}
 export default BlogsLandingPage
