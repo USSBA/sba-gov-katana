@@ -57,7 +57,7 @@ class BreakEvenCalculatorPage extends React.Component {
           <div className={styles.benefitsTitle}>Benefits of a break-even analysis</div>
           <div className={styles.benefits}>
             {benefitFields.map(benefit => (
-              <div className={styles.benefitsCol}>
+              <div className={styles.benefitsCol} key={benefit.title}>
                 <p className={styles.subHeading}>{benefit.title}</p>
                 <p className={styles.benefitsContent}>{benefit.description}</p>
               </div>
@@ -115,7 +115,7 @@ class BreakEvenCalculatorPage extends React.Component {
           <div className={accordionStyles.accordionContent}>
             <Accordion allowZeroExpanded>
               {faqFields.map(faq => (
-                <AccordionItem key={faq.uuid}>
+                <AccordionItem key={faq.question}>
                   <AccordionItemHeading className={accordionStyles.accordionHeading}>
                     <AccordionItemButton className={accordionStyles.accordionButton}>
                       <h3>
