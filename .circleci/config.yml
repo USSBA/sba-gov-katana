@@ -207,7 +207,7 @@ jobs:
       - save_cache:
           paths:
             - ./node_modules
-          key: v2-dependencies-{{ checksum "package.json" }}
+          key: v2-dependencies-v1-{{ checksum "package.json" }}
   cache-dependencies-upper:
     docker:
     - image: circleci/node:12.18
@@ -216,7 +216,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "package.json" }}
+          - v2-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: install dependencies
           command: |
@@ -224,7 +224,7 @@ jobs:
       - save_cache:
           paths:
             - ./node_modules
-          key: v2-dependencies-{{ checksum "package.json" }}
+          key: v2-dependencies-v1-{{ checksum "package.json" }}
       - snyk/scan:
           token-variable: SNYK
           fail-on-issues: false
@@ -236,7 +236,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "package.json" }}
+          - v2-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: run jest
           command: |
@@ -249,7 +249,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "package.json" }}
+          - v2-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: run mocha
           command: |
@@ -262,7 +262,7 @@ jobs:
     # Download and cache dependencies
     - restore_cache:
         keys:
-        - v2-dependencies-{{ checksum "package.json" }}
+        - v2-dependencies-v1-{{ checksum "package.json" }}
     # - run:
     #     name: run eslint fix and prettier
     #     command:
@@ -286,7 +286,7 @@ jobs:
     # Download and cache dependencies
     - restore_cache:
         keys:
-        - v2-dependencies-{{ checksum "package.json" }}
+        - v2-dependencies-v1-{{ checksum "package.json" }}
     - run:
         name: build webpack
         command: |
