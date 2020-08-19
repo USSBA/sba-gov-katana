@@ -193,7 +193,7 @@ workflows:
 jobs:
   cache-dependencies-lower:
     docker:
-    - image: circleci/node:8.10
+    - image: circleci/node:12.18
     steps:
       - checkout
       # Download and cache dependencies
@@ -210,7 +210,7 @@ jobs:
           key: v2-dependencies-{{ checksum "package.json" }}
   cache-dependencies-upper:
     docker:
-    - image: circleci/node:8.10
+    - image: circleci/node:12.18
     steps:
       - checkout
       # Download and cache dependencies
@@ -230,7 +230,7 @@ jobs:
           fail-on-issues: false
   test-jest:
     docker:
-    - image: circleci/node:8.10
+    - image: circleci/node:12.18
     steps:
       - checkout
       # Download and cache dependencies
@@ -243,7 +243,7 @@ jobs:
             npm run test-jest
   test-mocha:
     docker:
-    - image: circleci/node:8.10
+    - image: circleci/node:12.18
     steps:
       - checkout
       # Download and cache dependencies
@@ -256,7 +256,7 @@ jobs:
             npm run test-mocha
   test-format:
     docker:
-    - image: circleci/node:8.10
+    - image: circleci/node:12.18
     steps:
     - checkout
     # Download and cache dependencies
@@ -280,7 +280,7 @@ jobs:
          poirot --patterns='https://raw.githubusercontent.com/DCgov/poirot-patterns/master/financial.txt'
   build-webpack:
     docker:
-    - image: circleci/node:8.10
+    - image: circleci/node:12.18
     steps:
     - checkout
     # Download and cache dependencies
@@ -299,7 +299,7 @@ jobs:
   build-package:
     working_directory: /home/circleci/project
     docker:
-      - image: circleci/node:8.10
+      - image: circleci/node:12.18
     steps:
       - checkout
       - restore_cache:
