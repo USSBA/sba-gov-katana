@@ -199,7 +199,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "package.json" }}
+          - v2-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: install dependencies
           command: |
