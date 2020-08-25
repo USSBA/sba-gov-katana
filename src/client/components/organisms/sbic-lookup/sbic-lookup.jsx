@@ -279,7 +279,7 @@ class SbicLookup extends React.Component {
                 <th className={style.industryHead}>Industry</th>
                 <th className={style.activeSinceHead}>Active since</th>
                 <th className={style.investingStatusHead}>Investing status</th>
-                <th className={style.contactInfoHead}>Contact info</th>
+                <th>Contact info</th>
               </tr>
             </thead>
             {this.state.contacts ? <tbody>{this.renderContacts()}</tbody> : <tbody>loading</tbody>}
