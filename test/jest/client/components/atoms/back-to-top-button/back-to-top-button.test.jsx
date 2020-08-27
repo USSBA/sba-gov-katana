@@ -16,4 +16,11 @@ describe('BackToTopButton', () => {
     const arrow = getByTestId('arrow')
     expect(button).toContainElement(arrow)
   })
+  it('should call resetYPos function ', () => {
+    BackToTopButton.prototype.resetYPos = jest.fn()
+    const { getByTestId } = render(<BackToTopButton />)
+    const button = getByTestId('back-to-top-button')
+    fireEvent.click(button)
+    expect(BackToTopButton.prototype.resetYPos).toBeCalledTimes(1)
+  })
 })

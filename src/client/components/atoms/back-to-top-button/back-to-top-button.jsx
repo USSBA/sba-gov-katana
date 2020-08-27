@@ -1,3 +1,5 @@
+/* eslint-disable no-invalid-this */
+
 import React, { Component } from 'react'
 import styles from './back-to-top-button.module.scss'
 import classNames from 'classnames'
@@ -20,7 +22,7 @@ class BackToTopButton extends Component {
     this.setState({ enabled })
     this.ticking = false
   }
-  handleScroll() {
+  handleScroll = () => {
     if (!this.ticking) {
       this.ticking = true
       requestAnimationFrame(() => {
@@ -33,7 +35,7 @@ class BackToTopButton extends Component {
   componentWillUnmount() {
     this.shouldUpdate = false
   }
-  resetYPos = () => {
+  resetYPos() {
     window.scrollTo(0, 0)
   }
   render() {
