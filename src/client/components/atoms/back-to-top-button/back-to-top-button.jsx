@@ -17,7 +17,8 @@ class BackToTopButton extends Component {
     this.update()
   }
   update() {
-    const SCROLL_THRESHOLD = 600
+    const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    const SCROLL_THRESHOLD = viewportHeight * 3
     const enabled = window.scrollY > SCROLL_THRESHOLD
     this.setState({ enabled })
     this.ticking = false
