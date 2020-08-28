@@ -1,0 +1,29 @@
+foresee:
+  environment: staging
+googleAnalytics:
+  enabled: true
+  accountId: UA-96147768-1
+  optimizeContainerId: GTM-NPDXPPF
+  tagManagerAccountId: GTM-WN49BK2
+server:
+  fqdn: mint.ussba.io
+features:
+  forPartners: true
+  showSbic: false
+  moon: false
+  searchUrl: "/search/?q="
+  urlRedirect:
+      enabled: true
+      tableName: UrlToNodeIntegration #mint
+  drupalRedirect:
+      enabled: true
+      tableName: UrlToUrlRedirectIntegration #mint
+loanprocessing:
+  endpoint: amy.ussba.io/api/loan-processing
+content:
+  endpoint: 61ebndrk8a.execute-api.us-east-1.amazonaws.com/latest #mint
+  cloudfront: d32xeasjw66w65.cloudfront.net #mint
+  useD8EventsBackend: false
+developmentOptions:
+  assets:
+      endpoint: wakizashi.mint.ussba.io #mint
