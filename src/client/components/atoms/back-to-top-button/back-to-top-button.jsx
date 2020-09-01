@@ -12,15 +12,22 @@ class BackToTopButton extends Component {
     }
   }
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll)
-    this.shouldUpdate = true
-    this.update()
+    if (window.matchMedia) {
+      const mediaQuery = window.matchMedia('(min-width: 768px)')
+      mediaQuery.addListener(this.widthChange)
+      this.widthChange(mediaQuery)
+      window.addEventListener('scroll', this.handleScroll)
+      this.shouldUpdate = true
+      this.newsletterButton = document.querySelector('.newsletter .button')
+      this.update()
+    }
   }
   update() {
     const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
     const SCROLL_THRESHOLD = viewportHeight * 3
     const enabled = window.scrollY > SCROLL_THRESHOLD
-    this.setState({ enabled })
+    const bottomMargin = viewportHeight - this.newsletterButton.getBoundingClientRect().y
+    this.setState({ enabled, bottomMargin })
     this.ticking = false
   }
   handleScroll = () => {
@@ -39,12 +46,25 @@ class BackToTopButton extends Component {
   resetYPos() {
     window.scrollTo(0, 0)
   }
+  widthChange(mediaQuery) {
+    const isDesktopBreakpoint = mediaQuery.matches
+    this.setState({ isDesktopBreakpoint })
+  }
   render() {
-    const { enabled } = this.state
+    const { enabled, bottomMargin, isDesktopBreakpoint } = this.state
     const className = classNames({
       [styles.backToTopButton]: true,
       [styles.disabled]: !enabled
     })
+    let bottomMarginStyle = {}
+    if (bottomMargin > 20 && isDesktopBreakpoint) {
+      const EXTRA_MARGIN = 34
+      bottomMarginStyle = {
+        style: {
+          bottom: `${Math.ceil(bottomMargin + EXTRA_MARGIN)}px`
+        }
+      }
+    }
     return (
       <button
         data-testid="back-to-top-button"
@@ -53,6 +73,7 @@ class BackToTopButton extends Component {
           e.preventDefault()
           this.resetYPos()
         }}
+        {...bottomMarginStyle}
       >
         <span data-testid="arrow" className={styles.arrow} />
         <strong>Back to Top</strong>
