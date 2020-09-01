@@ -24,7 +24,7 @@ class BackToTopButton extends Component {
   }
   update() {
     const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-    const SCROLL_THRESHOLD = viewportHeight * 3
+    const SCROLL_THRESHOLD = viewportHeight * 1.5
     const enabled = window.scrollY > SCROLL_THRESHOLD
     const bottomMargin = viewportHeight - this.newsletterButton.getBoundingClientRect().y
     this.setState({ enabled, bottomMargin })
@@ -57,8 +57,8 @@ class BackToTopButton extends Component {
       [styles.disabled]: !enabled
     })
     let bottomMarginStyle = {}
-    if (bottomMargin > 20 && isDesktopBreakpoint) {
-      const EXTRA_MARGIN = 34
+    if (bottomMargin > 8 && isDesktopBreakpoint) {
+      const EXTRA_MARGIN = 22
       bottomMarginStyle = {
         style: {
           bottom: `${Math.ceil(bottomMargin + EXTRA_MARGIN)}px`
