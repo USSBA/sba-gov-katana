@@ -5,6 +5,19 @@ exports[`Front Page Hero should render correctly 1`] = `
   className="footer"
   id="sba-footer"
 >
+  <button
+    className="backToTopButton disabled"
+    data-testid="back-to-top-button"
+    onClick={[Function]}
+  >
+    <span
+      className="arrow"
+      data-testid="arrow"
+    />
+    <strong>
+      Back to Top
+    </strong>
+  </button>
   <div
     className="footerLinks"
   />

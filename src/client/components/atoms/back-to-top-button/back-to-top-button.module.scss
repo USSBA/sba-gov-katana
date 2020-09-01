@@ -1,0 +1,28 @@
+.backToTopButton {
+  z-index: 9999999;
+  display: inline-block;
+  position: fixed;
+  right: 8px;
+  bottom: 8px;
+  width: 65px;
+  background: #fff;
+  box-shadow: 1px 3px 11px #a9a6a6;
+  padding: 10px;
+  color: $sba-blue;
+  text-transform: none;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+.arrow {
+  display: block;
+  margin: 0 auto;
+  width: 17px;
+  height: 17px;
+  border-top: 4px solid $sba-blue;
+  border-right: 4px solid $sba-red;
+  transform: rotate(-45deg);
+}
+.disabled {
+  display: none;
+}
