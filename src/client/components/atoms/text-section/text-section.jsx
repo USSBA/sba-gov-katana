@@ -13,7 +13,7 @@ class TextSection extends React.Component {
   }
 
   handleExternalLinks(htmlDom) {
-    htmlDom.querySelectorAll('a').forEach(anchor => {
+    Array.prototype.forEach.call(htmlDom.querySelectorAll('a'), anchor => {
       // Regex will check for .gov link without a path or with a path OR a relative link.
       // If none of the above cases are true then we add a target blank attribute to the link.
       const href = anchor.getAttribute('href')
@@ -30,26 +30,26 @@ class TextSection extends React.Component {
 
     const tables = htmlDom.querySelectorAll('table')
     if (tables.length > 0) {
-      tables.forEach(table => {
+      Array.prototype.forEach.call(tables, table => {
         const headers = []
         table.classList.add('text-section-table')
-        table.querySelectorAll('thead > tr > th').forEach(theader => {
+        Array.prototype.forEach.call(table.querySelectorAll('thead > tr > th'), theader => {
           headers.push(theader.textContent)
         })
 
         const trs = table.querySelectorAll('tbody > tr')
 
-        trs.forEach(trow => {
+        Array.prototype.forEach.call(trs, trow => {
           const tds = trow.querySelectorAll('td')
 
           if (headers.length < 1) {
-            tds.forEach((tdata, i) => {
+            Array.prototype.forEach.call(tds, (tdata, i) => {
               const html = '<div class="table-data">' + tdata.innerHTML + '</div>'
               tdata.classList.add('index-' + i)
               tds[i].innerHTML = html
             })
           } else {
-            tds.forEach((tdata, i) => {
+            Array.prototype.forEach.call(tds, (tdata, i) => {
               const html = "<div class='table-data-wrapper'>" + tdata.innerHTML + '</div>'
               tds[i].innerHTML = html
 
