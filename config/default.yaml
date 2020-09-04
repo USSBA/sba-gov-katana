@@ -19,7 +19,7 @@ googleAnalytics:
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-WN49BK2
     debug: false
-googleMapsApiKey: GOOGLE_MAPS_API_KEY
+googleMapsApiKey: placeholder
 server:
     port: 3000
     fqdn: placeholder
