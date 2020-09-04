@@ -48,7 +48,7 @@ class BreakEvenCalculatorPage extends React.Component {
           <div className={styles.benefitsTitle}>Benefits of a break-even analysis</div>
           <div className={styles.benefits}>
             {benefitFields.map(benefit => (
-              <div className={styles.benefitsCol}>
+              <div className={styles.benefitsCol} key={benefit.title}>
                 <p className={styles.subHeading}>{benefit.title}</p>
                 <p className={styles.benefitsContent}>{benefit.description}</p>
               </div>
@@ -142,7 +142,7 @@ class BreakEvenCalculatorPage extends React.Component {
           <DecorativeDash width={77} />
           <div className={styles.accordionContent}>
             {faqFields.map(faq => (
-              <Accordion title={faq.question} content={faq.answer} />
+              <Accordion title={faq.question} content={faq.answer} key={faq.question} />
             ))}
           </div>
         </div>
