@@ -8,6 +8,10 @@
     "value": "AK"
   },
   {
+    "name": "American Samoa",
+    "value": "AS"
+  },
+  {
     "name": "Arizona",
     "value": "AZ"
   },
@@ -142,6 +146,10 @@
   {
     "name": "North Dakota",
     "value": "ND"
+  },
+  {
+    "name": "Northern Mariana Islands",
+    "value": "MP"
   },
   {
     "name": "Ohio",
