@@ -22,7 +22,7 @@ function getContactCardProps(title, locationInfo, areasServed, testId) {
   typeof locationInfo.phoneNumber === 'string' && (cardProps.phoneNumber = locationInfo.phoneNumber)
   typeof locationInfo.state === 'string' && (cardProps.state = locationInfo.state)
   typeof locationInfo.streetAddress === 'string' && (cardProps.streetAddress = locationInfo.streetAddress)
-  typeof locationInfo.zipCode === 'number' && (cardProps.zipCode = locationInfo.zipCode)
+  typeof locationInfo.zipCode === 'string' && (cardProps.zipCode = locationInfo.zipCode)
 
   if (testId === 'region-location' && typeof areasServed === 'string' && areasServed.length > 0) {
     cardProps.message = areasServed

@@ -7,7 +7,7 @@ This project contains the code for the SBA.gov UI that renders the content manag
 This system is managed by the [U.S. Small Business Administration](https://www.sba.gov) on [AWS Lambda](https://aws.amazon.com/lambda/).
 
 ### Development
-For the development environment setup, see [development.md]
+For the development environment setup, see [development.md](development.md)
 
 ## Project Details
 

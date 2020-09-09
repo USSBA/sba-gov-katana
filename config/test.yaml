@@ -19,7 +19,6 @@ googleAnalytics:
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-WN49BK2
     debug: false
-googleMapsApiKey: placeholder
 server:
     port: 3000
     fqdn: placeholder
@@ -52,6 +51,7 @@ aws:
     zipCodeDynamoDBTableName: ZipCodesLower
   dynamodb:
     endpoint: placeholder
+googleMapsApiKey: placeholder
 content:
   endpoint: placeholder
 miscapi:

@@ -12,7 +12,7 @@ import styles from './footer.scss'
 
 import { TRANSLATIONS } from '../../../../translations'
 import { getLanguageOverride } from '../../../../services/utils'
-import { SocialMediaLink } from 'atoms'
+import { BackToTopButton, SocialMediaLink } from 'atoms'
 import { NewsletterForm, PageLinkGroup } from 'molecules'
 
 import { fetchRestContent } from '../../../../fetch-content-helper'
@@ -102,6 +102,7 @@ class Footer extends Component {
     const langCode = getLanguageOverride(true)
     return (
       <footer id="sba-footer" className={styles.footer}>
+        <BackToTopButton />
         <div key={1} className={styles.footerLinks}>
           {!isEmpty(desktopLinks) &&
             desktopLinks.map((item, index) => {
