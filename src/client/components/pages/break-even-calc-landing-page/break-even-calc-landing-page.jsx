@@ -1,8 +1,17 @@
 import React from 'react'
 import { Button, DecorativeDash } from 'atoms'
-import { Accordion } from 'organisms'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+  AccordionItemState
+} from 'react-accessible-accordion'
+
 import { Breadcrumb } from 'molecules'
 import styles from './break-even-calc-landing-page.scss'
+import accordionStyles from './accordion.scss'
 import { faqFields, benefitFields } from './content'
 
 class BreakEvenCalculatorPage extends React.Component {
@@ -137,13 +146,38 @@ class BreakEvenCalculatorPage extends React.Component {
             </div>
           </div>
         </div>
-        <div className={styles.accordionContainer}>
+        <div className={accordionStyles.accordionContainer}>
           <h3>Tips and Tricks</h3>
           <DecorativeDash width={77} />
-          <div className={styles.accordionContent}>
-            {faqFields.map(faq => (
-              <Accordion title={faq.question} content={faq.answer} key={faq.question} />
-            ))}
+          <div className={accordionStyles.accordionContent}>
+            <Accordion allowZeroExpanded>
+              {faqFields.map(faq => (
+                <AccordionItem key={faq.question}>
+                  <AccordionItemHeading className={accordionStyles.accordionHeading}>
+                    <AccordionItemButton className={accordionStyles.accordionButton}>
+                      <h3>
+                        {faq.question}
+                        <AccordionItemState>
+                          {({ expanded }) => {
+                            return expanded ? (
+                              <i className={accordionStyles.accordionIcon + ' fa fa-chevron-up'} />
+                            ) : (
+                              <i className={accordionStyles.accordionIcon + ' fa fa-chevron-down'} />
+                            )
+                          }}
+                        </AccordionItemState>
+                      </h3>
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel>
+                    <div
+                      className={accordionStyles.accordionText}
+                      dangerouslySetInnerHTML={{ __html: faq.answer }}
+                    />
+                  </AccordionItemPanel>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </div>
