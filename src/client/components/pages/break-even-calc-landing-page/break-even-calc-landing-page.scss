@@ -132,19 +132,8 @@
       }
     }
   }
-  .accordionContainer {
-    margin-top: $base-spacing * 9;
-    margin-left: $base-spacing * 3;
-    margin-right: $base-spacing * 3;
-    .accordionContent {
-      margin-top: $base-spacing * 1;
-    }
-    .flex-grid {
-      display: flex;
-    }
-    .col {
-      flex: 1;
-    }
-  }
-  margin-bottom: $base-spacing * 1;
+}
+
+.accordion .accordion__item .accordion__heading {
+  color: blue;
 }
