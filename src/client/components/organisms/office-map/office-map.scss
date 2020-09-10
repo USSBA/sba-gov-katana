@@ -5,6 +5,10 @@
     height: 100vh;
     display: block;
   }
+  @include grid-media($sba-grid-large) {
+    margin-left: 30%;
+    width: 70%;
+  }
 }
 
 .focus:focus {
