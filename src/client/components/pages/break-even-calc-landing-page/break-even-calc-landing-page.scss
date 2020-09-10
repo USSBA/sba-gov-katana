@@ -32,7 +32,10 @@
 
       .subHeading {
         color: $secondary-blue;
+        font-size: 1rem;
         font-weight: 700;
+        line-height: 1.5;
+        margin-bottom: 1.1rem;
         @include for-small-only {
           margin-top: 0;
         }
@@ -48,15 +51,17 @@
 
   .gradientBackground {
     height: 500px;
-    background: radial-gradient(circle at center, $secondary-blue-light, $secondary-blue-dark);
+    background: $secondary-blue;
   }
 
   .infoContainer {
-    margin: 0 $base-spacing * 3;
+    margin: -500px auto 0;
+    padding-right: $base-spacing;
+    padding-left: $base-spacing;
     padding-top: $base-spacing * 2;
+    max-width: 1000px;
 
     @include for-small-only {
-      margin: 0 $small-spacing;
       padding-top: $small-spacing;
     }
 
@@ -90,15 +95,19 @@
         margin-bottom: 10px;
         height: 112px;
         width: 112px;
+        float: none;
+        margin: -2em auto $small-spacing;
       }
     }
 
     .calcText {
       color: $sba-white;
-      width: 75%;
 
       h2 {
         color: $sba-white;
+        @include for-small-only {
+          text-align: center;
+        }
       }
     }
 
