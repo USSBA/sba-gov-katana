@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import json2csv from 'json2csv'
 import { castArray, filter, intersection, isEmpty, orderBy, pick } from 'lodash'
 
+import states from '../../../services/us-states.json'
 import style from './sbic-lookup.scss'
 import { Button, MultiSelect } from 'atoms'
 import { Paginator } from 'molecules'
@@ -18,6 +19,7 @@ class SbicLookup extends React.Component {
       sortByValue: 'Investor Name',
       industryValue: 'All',
       investingStatusValue: 'All',
+      locationValue: 'All',
       pageNumber: 1
     }
   }
@@ -49,7 +51,9 @@ class SbicLookup extends React.Component {
           this.props.afterChange(
             'sbic-lookup',
             'Filter Status : ' +
-              JSON.stringify(pick(this.state, ['sortByValue', 'industryValue', 'investingStatusValue'])),
+              JSON.stringify(
+                pick(this.state, ['sortByValue', 'industryValue', 'investingStatusValue', 'locationValue'])
+              ),
             null
           )
         }
@@ -91,6 +95,11 @@ class SbicLookup extends React.Component {
         return contact.investingStatus === this.state.investingStatusValue
       })
     }
+    if (this.state.locationValue !== 'All') {
+      filteredContacts = filter(filteredContacts, contact => {
+        return contact.state === this.state.locationValue
+      })
+    }
     return filteredContacts
   }
 
@@ -103,6 +112,11 @@ class SbicLookup extends React.Component {
   }
 
   renderMultiSelects() {
+    const stateOptions = states.map(state => {
+      return { label: `${state.name} (${state.value})`, value: state.value }
+    })
+    stateOptions.unshift({ label: 'All', value: 'All' })
+
     const specificMultiSelectProps = [
       {
         id: 'sort-by-select',
@@ -168,6 +182,16 @@ class SbicLookup extends React.Component {
             value: 'notinvesting'
           }
         ]
+      },
+      {
+        id: 'state-select',
+        onChange: e => {
+          this.handleChange(e, 'locationValue')
+        },
+        label: 'State/Territory',
+        name: 'state-select',
+        value: this.state.locationValue,
+        options: stateOptions
       }
     ]
 
@@ -254,6 +278,45 @@ class SbicLookup extends React.Component {
   }
 
   render() {
+    let resultsContent
+    if (this.state.contacts.length === 0) {
+      resultsContent = (
+        <div className={style.emptyResultsContainer}>
+          <strong className="text-secondary">
+            No results found. You may need to expand your search. SBICs are not located in every state.
+          </strong>
+        </div>
+      )
+    } else {
+      resultsContent = (
+        <Fragment>
+          <div className={style.tableContainer}>
+            <table className={style.table}>
+              <thead>
+                <tr>
+                  <th className={style.nameAndAddressHead}>Investor name & address</th>
+                  <th className={style.industryHead}>Industry</th>
+                  <th className={style.activeSinceHead}>Active since</th>
+                  <th className={style.investingStatusHead}>Investing status</th>
+                  <th>Contact info</th>
+                </tr>
+              </thead>
+              {this.state.contacts ? <tbody>{this.renderContacts()}</tbody> : <tbody>loading</tbody>}
+            </table>
+          </div>
+          <div className={style.paginator}>
+            <Paginator
+              pageNumber={this.state.pageNumber}
+              pageSize={pageSize}
+              total={this.state.contacts.length}
+              onBack={this.handleBack.bind(this)}
+              onForward={this.handleForward.bind(this)}
+            />
+          </div>
+        </Fragment>
+      )
+    }
+
     return (
       <div>
         <div className={style.banner}>
@@ -271,29 +334,7 @@ class SbicLookup extends React.Component {
             />
           </div>
         </div>
-        <div className={style.tableContainer}>
-          <table className={style.table}>
-            <thead>
-              <tr>
-                <th className={style.nameAndAddressHead}>Investor name & address</th>
-                <th className={style.industryHead}>Industry</th>
-                <th className={style.activeSinceHead}>Active since</th>
-                <th className={style.investingStatusHead}>Investing status</th>
-                <th>Contact info</th>
-              </tr>
-            </thead>
-            {this.state.contacts ? <tbody>{this.renderContacts()}</tbody> : <tbody>loading</tbody>}
-          </table>
-        </div>
-        <div className={style.paginator}>
-          <Paginator
-            pageNumber={this.state.pageNumber}
-            pageSize={pageSize}
-            total={this.state.contacts.length}
-            onBack={this.handleBack.bind(this)}
-            onForward={this.handleForward.bind(this)}
-          />
-        </div>
+        {resultsContent}
       </div>
     )
   }
