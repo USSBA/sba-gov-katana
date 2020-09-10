@@ -1,8 +1,5 @@
 .accordionContainer {
-  margin-bottom: $base-spacing * 1;
-  margin-top: $base-spacing * 9;
-  margin-left: $base-spacing * 3;
-  margin-right: $base-spacing * 3;
+  margin: $base-spacing * 2 auto $base-spacing * 3;
 
   .accordionContent {
     margin-top: $base-spacing * 1;

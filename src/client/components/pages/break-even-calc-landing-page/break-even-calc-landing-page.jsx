@@ -54,11 +54,11 @@ class BreakEvenCalculatorPage extends React.Component {
             investor. It can also be a useful tool in future planning for existing businesses to prove their
             potential turnaround after disaster scenarios.
           </p>
-          <div className={styles.benefitsTitle}>Benefits of a break-even analysis</div>
+          <h2 className={styles.benefitsTitle}>Benefits of a break-even analysis</h2>
           <div className={styles.benefits}>
             {benefitFields.map(benefit => (
               <div className={styles.benefitsCol} key={benefit.title}>
-                <p className={styles.subHeading}>{benefit.title}</p>
+                <h3 className={styles.subHeading}>{benefit.title}</h3>
                 <p className={styles.benefitsContent}>{benefit.description}</p>
               </div>
             ))}
@@ -72,10 +72,8 @@ class BreakEvenCalculatorPage extends React.Component {
                 <img src="/assets/images/break-even-calculator/Calculator_icon.svg" alt="calculator icon" />
               </div>
               <div className={styles.calcText}>
-                <h2>
-                  Getting Started <br />
-                  Break-Even Point Analysis
-                </h2>
+                <h2>Getting Started </h2>
+                <h2>Break-Even Point Analysis</h2>
                 <p>
                   Create your break-even analysis with this calculator and determine your business’s
                   break-even point in units using the following formula:
@@ -144,40 +142,6 @@ class BreakEvenCalculatorPage extends React.Component {
                 </Accordion>
               </div>
             </div>
-          </div>
-        </div>
-        <div className={accordionStyles.accordionContainer}>
-          <h3>Tips and Tricks</h3>
-          <DecorativeDash width={77} />
-          <div className={accordionStyles.accordionContent}>
-            <Accordion allowZeroExpanded>
-              {faqFields.map(faq => (
-                <AccordionItem key={faq.question}>
-                  <AccordionItemHeading className={accordionStyles.accordionHeading}>
-                    <AccordionItemButton className={accordionStyles.accordionButton}>
-                      <h3>
-                        {faq.question}
-                        <AccordionItemState>
-                          {({ expanded }) => {
-                            return expanded ? (
-                              <i className={accordionStyles.accordionIcon + ' fa fa-chevron-up'} />
-                            ) : (
-                              <i className={accordionStyles.accordionIcon + ' fa fa-chevron-down'} />
-                            )
-                          }}
-                        </AccordionItemState>
-                      </h3>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    <div
-                      className={accordionStyles.accordionText}
-                      dangerouslySetInnerHTML={{ __html: faq.answer }}
-                    />
-                  </AccordionItemPanel>
-                </AccordionItem>
-              ))}
-            </Accordion>
           </div>
         </div>
       </div>
