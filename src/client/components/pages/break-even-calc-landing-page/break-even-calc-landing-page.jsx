@@ -46,13 +46,17 @@ class BreakEvenCalculatorPage extends React.Component {
             the level of production at which the costs of production equals the revenues for a product.
           </p>
           <p>
-            This is <strong>an important calculation for your business plan</strong>. Potential investors in
-            a business not only want to know the return to expect on their investments, but also the point
-            when they will realize this return. This is because some companies may take years before turning
-            a profit, often losing money in the first few months or years before breaking even. For this
-            reason, break-even point is an important part of any business plan presented to a potential
-            investor. It can also be a useful tool in future planning for existing businesses to prove their
-            potential turnaround after disaster scenarios.
+            For any new business, this is <strong>an important calculation in your business plan</strong>.
+            Potential investors in a business not only want to know the return to expect on their
+            investments, but also the point when they will realize this return. This is because some
+            companies may take years before turning a profit, often losing money in the first few months or
+            years before breaking even. For this reason, break-even point is an important part of any
+            business plan presented to a potential investor.
+          </p>
+          <p>
+            For existing businesses, this can be a useful tool not only in analyzing costs and evaluating
+            profits they’ll earn at different sales volumes, but also to prove their potential turnaround
+            after disaster scenarios.
           </p>
           <h2 className={styles.benefitsTitle}>Benefits of a break-even analysis</h2>
           <div className={styles.benefits}>
