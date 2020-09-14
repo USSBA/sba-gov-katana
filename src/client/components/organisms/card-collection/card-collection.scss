@@ -1,6 +1,5 @@
 .cardCollection {
-  // @include grid-collapse;
-  display: grid;
+  @include grid-collapse;
 }
 
 .cardRow {

@@ -6,8 +6,6 @@
   background-color: white;
   margin-bottom: 1.5em;
   margin-top: 1.5em;
-  margin-left: -1px;
-  // width: 49% !important;
 
   .itemTitle {
     margin-top: 15px;
@@ -41,7 +39,6 @@
 }
 
 .fourColumn {
-  // display: grid;
   @include for-medium-only {
     @include grid-column(6);
   }

@@ -5,7 +5,6 @@ import { chunk, size } from 'lodash'
 import breakpoints from '../../../styles/base/_variables.scss'
 import styles from './card-collection.scss'
 import { Card } from 'molecules'
-import { CostExplorer } from 'aws-sdk'
 
 const cardsPerRowMap = {
   '2': 2,
@@ -74,7 +73,6 @@ class CardCollection extends React.Component {
     window.addEventListener('resize', this.updateCardsPerRow.bind(this))
 
     const rows = chunk(cardComponents, cardsPerRow)
-
     return (
       <div className={styles.cardCollection}>
         {rows.map(function(item, index) {
