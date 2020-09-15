@@ -7,6 +7,13 @@
   }
 }
 
+.hasResults {
+  @include grid-media($sba-grid-large) {
+    margin-left: 30%;
+    width: 70%;
+  }
+}
+
 .focus:focus {
   outline: -webkit-focus-ring-color auto 5px;
 }
