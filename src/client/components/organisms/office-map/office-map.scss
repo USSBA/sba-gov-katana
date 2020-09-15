@@ -5,6 +5,9 @@
     height: 100vh;
     display: block;
   }
+}
+
+.hasResults {
   @include grid-media($sba-grid-large) {
     margin-left: 30%;
     width: 70%;

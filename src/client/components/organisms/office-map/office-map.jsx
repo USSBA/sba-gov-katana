@@ -9,6 +9,7 @@ import styles from './office-map.scss'
 import clientConfig from '../../../services/client-config.js'
 import officeResultStyles from '../office-result/office-result.scss'
 import officeMapStyles from './office-map-style.json'
+import classNames from 'classnames'
 
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${config.googleMapsApiKey}&v=3.exp&libraries=geometry,drawing,places`
 
@@ -332,7 +333,12 @@ class OfficeMapApp extends React.PureComponent {
     // pass array of points with lats and lngs
 
     const { points, map } = this.state
-    const { onFieldChange, selectedItem, newCenter, onDragEnd, hoveredMarkerId } = this.props
+    const { onFieldChange, selectedItem, newCenter, onDragEnd, hoveredMarkerId, total } = this.props
+
+    const className = classNames({
+      [styles.googleMap]: true,
+      [styles.hasResults]: Boolean(total)
+    })
 
     return (
       <div id="google-map" className={styles.googleMap}>
