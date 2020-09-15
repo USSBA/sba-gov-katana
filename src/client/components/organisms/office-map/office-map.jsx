@@ -341,7 +341,7 @@ class OfficeMapApp extends React.PureComponent {
     })
 
     return (
-      <div id="google-map" className={styles.googleMap}>
+      <div id="google-map" className={className}>
         <OfficeMap
           markers={points}
           setBounds={this.setBounds.bind(this)}
