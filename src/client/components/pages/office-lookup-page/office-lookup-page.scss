@@ -102,7 +102,7 @@
 }
 
 .resultContainer {
-  min-width: 321px;
+  width: 100%;
   @include grid-media($sba-grid-large) {
     position: absolute;
     pointer-events: all;
