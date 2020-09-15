@@ -344,12 +344,9 @@ const NameAndAddress = props => {
   return (
     <div className={style.investorNameAndTitle}>
       <div className={style.investorTitle}>{props.title}</div>
-      <i className={style.mapIcon + ' fa fa-map-marker'} aria-hidden="true" />
-      <div className={style.addressContainer}>
-        <div className={style.streetAddress}>{props.streetAddress}</div>
-        <div className={style.cityAddress}>
-          {props.city}, {props.state} {props.zipCode}
-        </div>
+      <div className={style.streetAddress}>{props.streetAddress}</div>
+      <div className={style.cityAddress}>
+        {props.city}, {props.state} {props.zipCode}
       </div>
     </div>
   )
