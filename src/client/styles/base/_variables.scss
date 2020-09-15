@@ -163,3 +163,9 @@ $mobile-nav: (
   gutter: 0,
   media: '(max-width: 767px)'
 );
+
+:export {
+  breakpointSmall: $breakpoint-small;
+  breakpointMedium: $breakpoint-medium;
+  breakpointLarge: $breakpoint-large;
+}
