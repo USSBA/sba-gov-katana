@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import json2csv from 'json2csv'
 import { castArray, filter, intersection, isEmpty, orderBy, pick } from 'lodash'
 
 import states from '../../../services/us-states.json'
@@ -15,7 +14,6 @@ class SbicLookup extends React.Component {
     super()
     this.state = {
       contacts: ownProps.items || [],
-      contactsCsv: null,
       sortByValue: 'Investor Name',
       industryValue: 'All',
       investingStatusValue: 'All',
@@ -31,7 +29,6 @@ class SbicLookup extends React.Component {
       },
       () => {
         this.sortAndFilterContacts()
-        this.convertContactsToCsv()
       }
     )
   }
@@ -101,14 +98,6 @@ class SbicLookup extends React.Component {
       })
     }
     return filteredContacts
-  }
-
-  convertContactsToCsv() {
-    if (this.state.contacts && this.state.contacts.length > 0) {
-      const fields = Object.keys(this.state.contacts[0])
-      const csv = json2csv({ data: this.state.contacts, fields: fields })
-      this.setState({ contactsCsv: csv })
-    }
   }
 
   renderMultiSelects() {
