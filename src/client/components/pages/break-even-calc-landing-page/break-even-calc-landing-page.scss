@@ -118,7 +118,6 @@
       @include for-small-only {
         padding: $small-spacing;
       }
-    }
 
       .bottomRow {
         display: flex;
@@ -142,10 +141,6 @@
       }
     }
   }
-}
-
-.accordion .accordion__item .accordion__heading {
-  color: blue;
 }
 
 .accordion .accordion__item .accordion__heading {

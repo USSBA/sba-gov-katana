@@ -47,7 +47,6 @@ export const faqFields = [
       amount of that cost. In the break-even analysis we will help you break down the potential fixed costs 
       related to your business.
     </p>
-
     <p>
       <strong>Examples of fixed costs include:</strong>
       <ul>
@@ -77,7 +76,6 @@ export const faqFields = [
         with many different factors throughout a company’s lifecycle. In the break-even analysis we will help 
         you break down the potential variable costs related to your business.
       </p>
-
       <p>
         <strong>Examples of variable costs include:</strong>
         <ul>
