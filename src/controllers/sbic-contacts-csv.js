@@ -1,6 +1,6 @@
 const axios = require('axios')
 const httpStatus = require('http-status-codes')
-const jsonToCsv = require('json2csv')
+const { Parser } = require('json2csv')
 const config = require('config')
 
 // get SBIC json data return a csv file
@@ -26,10 +26,8 @@ function downloadCsv(req, res) {
 
 function createCsvFromJson(jsonData) {
   const fields = Object.keys(jsonData[0])
-  return jsonToCsv({
-    data: jsonData,
-    fields
-  })
+  const json2csvParser = new Parser(fields)
+  return json2csvParser.parse(jsonData)
 }
 
 module.exports.downloadCsv = downloadCsv

@@ -88,11 +88,10 @@
 .officeResults {
   @include grid-media($sba-grid-large) {
     position: absolute;
-    top: 240px;
-    left: 30px;
-    bottom: 27px;
+    top: 220px;
+    bottom: 0;
     background-color: unset;
-    width: 340px;
+    width: 30%;
     overflow: hidden;
     pointer-events: none;
   }
@@ -103,7 +102,7 @@
 }
 
 .resultContainer {
-  min-width: 321px;
+  width: 100%;
   @include grid-media($sba-grid-large) {
     position: absolute;
     pointer-events: all;

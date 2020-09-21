@@ -52,13 +52,58 @@
 }
 
 .tableContainer {
-  padding: 0 60px;
+  @include grid-media($sba-grid-medium) {
+    padding: 0 60px;
+  }
 }
 
 .table {
   border-bottom: 1px solid $sba-gray-light;
 
-  @include grid-media($sba-grid-medium-and-small) {
+  @include grid-media($sba-grid-small) {
+    display: block;
+    overflow-y: auto;
+
+    & thead {
+      display: none;
+    }
+
+    & tbody,
+    tr,
+    td {
+      display: block;
+    }
+
+    & tr {
+      border-bottom: 1px solid $sba-gray-light;
+    }
+
+    & td {
+      overflow: auto;
+      border: none;
+      padding-right: 0;
+    }
+
+    & .mobileHeader {
+      float: left;
+      font-weight: bold;
+      margin-left: 2%;
+      margin-right: 5%;
+      width: 30%;
+    }
+
+    & .investorNameAndTitle {
+      display: inline-block;
+      width: 63%;
+    }
+
+    & .contactInfo {
+      display: inline-block;
+      width: 63%;
+    }
+  }
+
+  @include for-medium-only {
     display: block;
     overflow-y: auto;
 
@@ -169,18 +214,6 @@
 
 .investorTitle {
   font-weight: bold;
-}
-
-.mapIcon {
-  color: $sba-gray-dark;
-  float: left;
-  font-size: 26px !important;
-  margin-top: 12px;
-}
-
-.addressContainer {
-  display: inline-block;
-  padding-left: 8px;
 }
 
 .phoneIcon {
