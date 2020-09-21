@@ -1,0 +1,148 @@
+.calcLandingPageContainer {
+  .breadcrumbSection {
+    padding: $small-spacing $base-spacing;
+    border-top: 1px solid $sba-gray-light;
+    border-bottom: 1px solid $sba-gray-light;
+    margin: 0 $base-spacing;
+  }
+
+  .infoSection {
+    margin: $base-spacing * 2 $base-spacing * 3;
+    @include for-small-only {
+      margin: $small-spacing;
+    }
+
+    div.benefitsTitle {
+      height: 72px;
+      color: $sba-blue;
+      font-size: 40px;
+    }
+
+    .benefits {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .benefitsCol {
+        width: 30%;
+        @include for-small-only {
+          width: 100%;
+        }
+      }
+
+      .subHeading {
+        color: $secondary-blue;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.5;
+        margin-bottom: 1.1rem;
+        @include for-small-only {
+          margin-top: 0;
+        }
+      }
+
+      .benefitsContent {
+        @include for-small-only {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .gradientBackground {
+    height: 500px;
+    background: $secondary-blue;
+  }
+
+  .infoContainer {
+    margin: -500px auto 0;
+    padding-right: $base-spacing;
+    padding-left: $base-spacing;
+    padding-top: $base-spacing * 2;
+    max-width: 1000px;
+
+    @include for-small-only {
+      padding-top: $small-spacing;
+    }
+
+    .row p {
+      color: $sba-white;
+    }
+
+    & > div {
+      margin-bottom: $small-spacing;
+    }
+
+    .formula {
+      clear: both;
+      color: $sba-white;
+      background-color: rgba(0, 81, 139, 0.7);
+      text-align: center;
+      padding: $small-spacing;
+      font-size: 24px;
+      @include for-small-only {
+        font-size: unset;
+      }
+    }
+
+    .calcImage {
+      float: left;
+      height: 160px;
+      width: 160px;
+      margin-right: 10px;
+      margin-bottom: 2em;
+      @include for-small-only {
+        margin-bottom: 10px;
+        height: 112px;
+        width: 112px;
+        float: none;
+        margin: -2em auto $small-spacing;
+      }
+    }
+
+    .calcText {
+      color: $sba-white;
+
+      h2 {
+        color: $sba-white;
+        @include for-small-only {
+          text-align: center;
+        }
+      }
+    }
+
+    .calloutCard {
+      background-color: $sba-white;
+      padding: $base-spacing * 2;
+      box-shadow: $box-shadow;
+      @include for-small-only {
+        padding: $small-spacing;
+      }
+
+      .bottomRow {
+        display: flex;
+        justify-content: space-between;
+        @include for-small-only {
+          flex-direction: column;
+        }
+
+        ul {
+          list-style-type: circle;
+          list-style-position: inside;
+          color: $sba-blue;
+          @include for-small-only {
+            margin-bottom: $small-spacing;
+          }
+        }
+
+        .buttonContainer {
+          margin-top: auto;
+        }
+      }
+    }
+  }
+}
+
+.accordion .accordion__item .accordion__heading {
+  color: blue;
+}

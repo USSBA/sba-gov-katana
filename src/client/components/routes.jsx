@@ -1,7 +1,5 @@
 import Async from 'react-code-splitting'
-
 import React from 'react'
-import { isEmpty } from 'lodash'
 
 const Main = props => <Async componentProps={props} load={import('./templates/main.jsx')} />
 
@@ -69,6 +67,13 @@ const LenderLookupPage = props => (
   <Async componentProps={props} load={import('./pages/lender-lookup-page/lender-lookup-page.jsx')} />
 )
 
+const BreakEvenCalculatorPage = props => (
+  <Async
+    componentProps={props}
+    load={import('./pages/break-even-calc-landing-page/break-even-calc-landing-page.jsx')}
+  />
+)
+
 const EventLookupPage = props => (
   <Async componentProps={props} load={import('./pages/event-lookup-page/event-lookup-page.jsx')} />
 )
@@ -108,9 +113,6 @@ const FileTransferServicePage = props => (
 )
 
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
-import constants from '../services/constants.js'
-import clientConfig from '../services/client-config.js'
-import MaintenancePage from './pages/maintenance-page/maintenance-page.jsx'
 
 const mainRoutes = [
   <IndexRoute key={1} component={HomepageContainer} />,
@@ -205,6 +207,8 @@ const mainRoutes = [
     from="/guia-de-negocios/10-pasos-para-iniciar-su-empresa"
     to="/guia-de-negocios/10-pasos-para-iniciar-su-empresa/"
   />,
+  <Route key={114} path="/breakevenpointcalculator" component={BreakEvenCalculatorPage} />,
+  <Redirect key={115} from="/breakevenpointcalculator" to="/breakevenpointcalculator/" />,
   <Route key={6} path="/:first" component={RootPage} />,
   <Route key={7} path="/:first/" component={RootPage} />,
   <Route key={8} path="/:first/:second" component={RootPage} />,
