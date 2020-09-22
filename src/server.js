@@ -99,6 +99,14 @@ app.get('/health', (req, res, next) => {
   res.status(httpStatus.OK).send()
 })
 
+app.get('/breakevenpointcalculator', (req, res) => {
+  if (config.get('features.breakEvenCalculator.enabled')) {
+    res.status(httpStatus.OK).send()
+  } else {
+    res.redirect(301, '/')
+  }
+})
+
 const sbicContactsCsv = require('./controllers/sbic-contacts-csv.js')
 app.get('/download/sbic-contacts.csv', sbicContactsCsv.downloadCsv)
 
