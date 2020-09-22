@@ -70,7 +70,7 @@ class LenderLookupPage extends React.PureComponent {
   }
 
   image = {
-    url: '/assets/images/local-assistance/AdditionalFundingCTAImage.jpg',
+    url: '/assets/images/local-assistance/AdditionalFundingCTAImage_1000.png',
     alt: 'african american woman business owner'
   }
 
