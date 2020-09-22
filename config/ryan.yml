@@ -20,8 +20,6 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectRyan
-    breakEvenCalculator:
-        enabled: false #true|false
 content:
     cloudfront: d2gpg521ydb1gz.cloudfront.net
     useD8EventsBackend: true

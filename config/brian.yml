@@ -14,8 +14,6 @@ features:
     urlRedirect:
         tableName: UrlToNodeBrian
         enabled: true
-    breakEvenCalculator:
-        enabled: false #true|false
 content:
     cloudfront: d24l989bmg52r3.cloudfront.net
     useD8EventsBackend: true
