@@ -99,7 +99,7 @@ app.get('/health', (req, res, next) => {
   res.status(httpStatus.OK).send()
 })
 
-app.get('/breakevenpointcalculator', (req, res) => {
+app.get('/breakevenpointcalculator', (req, res, next) => {
   if (config.get('features.breakEvenCalculator.enabled')) {
     res.status(httpStatus.OK).send()
   } else {

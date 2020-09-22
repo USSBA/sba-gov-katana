@@ -42,7 +42,7 @@ features:
         sbaOfficeNames: ['SBA district office', 'SBA regional office']
     pressRelease: true
     breakEvenCalculator:
-        enabled: true
+        enabled: false
 sizestandards:
     endpoint: placeholder
 loanprocessing:
