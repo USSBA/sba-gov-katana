@@ -99,11 +99,17 @@ app.get('/health', (req, res, next) => {
   res.status(httpStatus.OK).send()
 })
 
-app.get('/breakevenpointcalculator', (req, res, next) => {
+app.get('/breakevenpointcalculator', (req, res) => {
   if (config.get('features.breakEvenCalculator.enabled')) {
-    res.status(httpStatus.OK).send()
+    //res.status(httpStatus.OK).send()
+    res.status(httpStatus.OK).json({
+      test: 'A'
+    })
   } else {
-    res.redirect(301, '/')
+    //res.redirect(301, '/')
+    res.status(httpStatus.OK).json({
+      test: 'B'
+    })
   }
 })
 
