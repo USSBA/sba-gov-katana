@@ -63,10 +63,11 @@ class TextReadMoreSection extends React.Component {
   render() {
     const expandedStyle = this.state.readMoreExpanded ? styles.expanded : ''
 
-    let subcomponents = [this.makeReadMoreSection(), this.makeTextSection()]
-    if (!this.state.readMoreExpanded && window.innerWidth > 1079) {
-      subcomponents = reverse(subcomponents)
-    }
+    const subcomponents = [this.makeTextSection(), this.makeReadMoreSection()]
+    /* commented out to remove right-side read-more alignment. Comment back in to enable. */
+    // if (!this.state.readMoreExpanded && window.innerWidth > 1079) {
+    //   subcomponents = reverse(subcomponents)
+    // }
 
     return <div className={expandedStyle + ' ' + styles.textReadMoreSection}>{subcomponents}</div>
   }

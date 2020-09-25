@@ -4,6 +4,15 @@ exports[`ReadMore should render expanded ReadMore component 1`] = `
 <div
   className="readMoreSection"
 >
+  <a
+    href="#"
+    onClick={[Function]}
+    role="button"
+  >
+    <i
+      className="fa fa-close"
+    />
+  </a>
   <div>
     <h3
       id="text-readmore-section-3-read-more-title"
@@ -55,6 +64,10 @@ exports[`ReadMore should render expanded ReadMore component 1`] = `
       onClick={[Function]}
     >
       Close
+       
+      <i
+        className="fa fa-chevron-right"
+      />
     </a>
   </div>
 </div>
@@ -64,6 +77,15 @@ exports[`ReadMore should render expanded ReadMore component 2`] = `
 <div
   className="readMoreSection"
 >
+  <a
+    href="#"
+    onClick={[Function]}
+    role="button"
+  >
+    <i
+      className="fa fa-close"
+    />
+  </a>
   <div>
     <h3
       id="text-readmore-section-3-read-more-title"
@@ -115,6 +137,10 @@ exports[`ReadMore should render expanded ReadMore component 2`] = `
       onClick={[Function]}
     >
       Cerrar
+       
+      <i
+        className="fa fa-chevron-right"
+      />
     </a>
   </div>
 </div>
@@ -152,6 +178,10 @@ exports[`ReadMore should render read more button when not expanded 1`] = `
       onClick={[Function]}
     >
       Read more
+       
+      <i
+        className="fa fa-chevron-right"
+      />
     </a>
   </div>
 </div>

@@ -51,6 +51,11 @@ class ReadMore extends React.Component {
     })
     return (
       <div className={readMoreClassName}>
+        {this.props.expanded && (
+          <a href="#" role="button" onClick={this.handleClick.bind(this)}>
+            <i className="fa fa-close" />
+          </a>
+        )}
         {this.props.readMoreSectionItem.image && (
           <div
             className={imageClassName}
@@ -78,11 +83,8 @@ class ReadMore extends React.Component {
           <DecorativeDash width={1.75} />
           {this.props.isHTML ? expandedHtmlSection : expandedTextSection}
           <a href="#" onClick={this.handleClick.bind(this)}>
-            {btnText}
+            {btnText} <i className="fa fa-chevron-right" />
           </a>
-          {/*<Button alternate id={this.props.parentId + '-btn'} onClick={this.handleClick.bind(this)} primary>
-          {btnText}
-        </Button>*/}
         </div>
       </div>
     )
