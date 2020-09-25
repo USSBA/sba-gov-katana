@@ -12,17 +12,18 @@ foresee:
 miscapi:
   endpoint: 9hculkgtb7.execute-api.us-east-1.amazonaws.com/latest/
 loanprocessing:
-    endpoint: avery.ussba.io/api/loan-processing
+    endpoint: mint.ussba.io/api/loan-processing
 server:
-    fqdn: avery.ussba.io
+    fqdn: mint.ussba.io
 features:
     showSbic: false
     urlRedirect:
-        tableName: UrlToNodeAvery
+        tableName: UrlToNodeIntegration
         enabled: true
     drupalRedirect:
         enabled: true
-        tableName: UrlToUrlRedirectAvery
+        tableName: UrlToUrlRedirectIntegration
 content:
-    cloudfront: d8ptg6c733nbj.cloudfront.net
+    cloudfront: d32xeasjw66w65.cloudfront.net # mint
+    #cloudfront: d8ptg6c733nbj.cloudfront.net # avery
     useD8EventsBackend: false

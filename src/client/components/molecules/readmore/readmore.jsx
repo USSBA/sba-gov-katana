@@ -6,6 +6,7 @@ import styles from './readmore.scss'
 import { TRANSLATIONS } from '../../../translations'
 import { getLanguageOverride } from '../../../services/utils'
 import { Button, DecorativeDash } from 'atoms'
+import classNames from 'classnames'
 
 class ReadMore extends React.Component {
   handleClick(e) {
@@ -39,28 +40,50 @@ class ReadMore extends React.Component {
     ) : (
       ''
     )
-    const expandedHr = this.props.expanded ? <DecorativeDash width={1.75} /> : ''
-
+    const readMoreClassName = classNames({
+      [styles.readMoreSection]: true,
+      [styles.expanded]: this.props.readMoreSectionItem.image && this.props.expanded
+    })
+    const src = 'https://avery.ussba.io/sites/default/files/2020-09/7Z8A0557.jpg'
+    const imageClassName = classNames({
+      [styles.image]: true,
+      [styles.expanded]: this.props.readMoreSectionItem.image && this.props.expanded
+    })
     return (
-      <div className={styles.readMoreSection}>
-        <h3 id={this.props.parentId + '-title'}>{this.props.readMoreSectionItem.titleText}</h3>
-        {this.props.isHTML ? (
+      <div className={readMoreClassName}>
+        {this.props.readMoreSectionItem.image && (
           <div
-            dangerouslySetInnerHTML={{ __html: this.props.readMoreSectionItem.preview }}
-            key={50}
-            id={this.props.parentId + '-preview'}
-            className={styles.preview}
+            className={imageClassName}
+            style={{
+              background: `url('${src}') no-repeat`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'top'
+            }}
           />
-        ) : (
-          <p key={50} id={this.props.parentId + '-preview'} className={styles.preview}>
-            {this.props.readMoreSectionItem.preview}
-          </p>
         )}
-        {expandedHr}
-        {this.props.isHTML ? expandedHtmlSection : expandedTextSection}
-        <Button alternate id={this.props.parentId + '-btn'} onClick={this.handleClick.bind(this)} primary>
+        <div>
+          <h3 id={this.props.parentId + '-title'}>{this.props.readMoreSectionItem.titleText}</h3>
+          {this.props.isHTML ? (
+            <div
+              dangerouslySetInnerHTML={{ __html: this.props.readMoreSectionItem.preview }}
+              key={50}
+              id={this.props.parentId + '-preview'}
+              className={styles.preview}
+            />
+          ) : (
+            <p key={50} id={this.props.parentId + '-preview'} className={styles.preview}>
+              {this.props.readMoreSectionItem.preview}
+            </p>
+          )}
+          <DecorativeDash width={1.75} />
+          {this.props.isHTML ? expandedHtmlSection : expandedTextSection}
+          <a href="#" onClick={this.handleClick.bind(this)}>
+            {btnText}
+          </a>
+          {/*<Button alternate id={this.props.parentId + '-btn'} onClick={this.handleClick.bind(this)} primary>
           {btnText}
-        </Button>
+        </Button>*/}
+        </div>
       </div>
     )
   }

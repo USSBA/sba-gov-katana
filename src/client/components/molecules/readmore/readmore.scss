@@ -8,10 +8,35 @@
   border-top: 2px solid $sba-blue;
   box-shadow: $box-shadow;
   margin-bottom: 40px;
-  padding: 40px;
+  padding: 30px;
+
+  display: flex;
 
   h3 {
     color: $sba-blue;
+  }
+
+  hr {
+    margin-top: 0;
+  }
+
+  &.expanded {
+    display: block;
+    hr {
+      margin-left: 40%;
+    }
+  }
+}
+
+.image {
+  width: 100%;
+  margin: -30px 30px -30px -30px;
+
+  &.expanded {
+    width: 40%;
+    margin-bottom: 20px;
+    height: 242px;
+    float: left;
   }
 }
 

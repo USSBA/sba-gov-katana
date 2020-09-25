@@ -4,59 +4,59 @@ exports[`ReadMore should render expanded ReadMore component 1`] = `
 <div
   className="readMoreSection"
 >
-  <h3
-    id="text-readmore-section-3-read-more-title"
-  >
-    This is a title
-  </h3>
-  <p
-    className="preview"
-    id="text-readmore-section-3-read-more-preview"
-  />
-  <div
-    className="dashContainer"
-  >
-    <hr
-      className="dash dash"
-      style={
-        Object {
-          "width": "1.75px",
-        }
-      }
+  <div>
+    <h3
+      id="text-readmore-section-3-read-more-title"
+    >
+      This is a title
+    </h3>
+    <p
+      className="preview"
+      id="text-readmore-section-3-read-more-preview"
     />
+    <div
+      className="dashContainer"
+    >
+      <hr
+        className="dash dash"
+        style={
+          Object {
+            "width": "1.75px",
+          }
+        }
+      />
+    </div>
+    <p
+      className="expandedCopyText"
+    >
+      This is a test.
+       
+    </p>
+    <p
+      className="expandedCopyText"
+    >
+      Yes, this is the test.
+       
+    </p>
+    <p
+      className="expandedCopyText"
+    >
+      Four new lines.
+       
+    </p>
+    <p
+      className="expandedCopyText"
+    >
+      It is good.
+       
+    </p>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Close
+    </a>
   </div>
-  <p
-    className="expandedCopyText"
-  >
-    This is a test.
-     
-  </p>
-  <p
-    className="expandedCopyText"
-  >
-    Yes, this is the test.
-     
-  </p>
-  <p
-    className="expandedCopyText"
-  >
-    Four new lines.
-     
-  </p>
-  <p
-    className="expandedCopyText"
-  >
-    It is good.
-     
-  </p>
-  <button
-    className="button alternate large primary responsive spacing"
-    data-testid="button"
-    id="text-readmore-section-3-read-more-btn"
-    onClick={[Function]}
-  >
-    Close
-  </button>
 </div>
 `;
 
@@ -64,59 +64,59 @@ exports[`ReadMore should render expanded ReadMore component 2`] = `
 <div
   className="readMoreSection"
 >
-  <h3
-    id="text-readmore-section-3-read-more-title"
-  >
-    This is a title
-  </h3>
-  <p
-    className="preview"
-    id="text-readmore-section-3-read-more-preview"
-  />
-  <div
-    className="dashContainer"
-  >
-    <hr
-      className="dash dash"
-      style={
-        Object {
-          "width": "1.75px",
-        }
-      }
+  <div>
+    <h3
+      id="text-readmore-section-3-read-more-title"
+    >
+      This is a title
+    </h3>
+    <p
+      className="preview"
+      id="text-readmore-section-3-read-more-preview"
     />
+    <div
+      className="dashContainer"
+    >
+      <hr
+        className="dash dash"
+        style={
+          Object {
+            "width": "1.75px",
+          }
+        }
+      />
+    </div>
+    <p
+      className="expandedCopyText"
+    >
+      This is a test.
+       
+    </p>
+    <p
+      className="expandedCopyText"
+    >
+      Yes, this is the test.
+       
+    </p>
+    <p
+      className="expandedCopyText"
+    >
+      Four new lines.
+       
+    </p>
+    <p
+      className="expandedCopyText"
+    >
+      It is good.
+       
+    </p>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Cerrar
+    </a>
   </div>
-  <p
-    className="expandedCopyText"
-  >
-    This is a test.
-     
-  </p>
-  <p
-    className="expandedCopyText"
-  >
-    Yes, this is the test.
-     
-  </p>
-  <p
-    className="expandedCopyText"
-  >
-    Four new lines.
-     
-  </p>
-  <p
-    className="expandedCopyText"
-  >
-    It is good.
-     
-  </p>
-  <button
-    className="button alternate large primary responsive spacing"
-    data-testid="button"
-    id="text-readmore-section-3-read-more-btn"
-    onClick={[Function]}
-  >
-    Cerrar
-  </button>
 </div>
 `;
 
@@ -124,24 +124,35 @@ exports[`ReadMore should render read more button when not expanded 1`] = `
 <div
   className="readMoreSection"
 >
-  <h3
-    id="text-readmore-section-3-read-more-title"
-  >
-    This is a title
-  </h3>
-  <p
-    className="preview"
-    id="text-readmore-section-3-read-more-preview"
-  />
-  
-  
-  <button
-    className="button alternate large primary responsive spacing"
-    data-testid="button"
-    id="text-readmore-section-3-read-more-btn"
-    onClick={[Function]}
-  >
-    Read more
-  </button>
+  <div>
+    <h3
+      id="text-readmore-section-3-read-more-title"
+    >
+      This is a title
+    </h3>
+    <p
+      className="preview"
+      id="text-readmore-section-3-read-more-preview"
+    />
+    <div
+      className="dashContainer"
+    >
+      <hr
+        className="dash dash"
+        style={
+          Object {
+            "width": "1.75px",
+          }
+        }
+      />
+    </div>
+    
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Read more
+    </a>
+  </div>
 </div>
 `;
