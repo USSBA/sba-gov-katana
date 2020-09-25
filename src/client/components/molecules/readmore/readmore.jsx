@@ -44,7 +44,6 @@ class ReadMore extends React.Component {
       [styles.readMoreSection]: true,
       [styles.expanded]: this.props.readMoreSectionItem.image && this.props.expanded
     })
-    const src = 'https://avery.ussba.io/sites/default/files/2020-09/7Z8A0557.jpg'
     const imageClassName = classNames({
       [styles.image]: true,
       [styles.expanded]: this.props.readMoreSectionItem.image && this.props.expanded
@@ -60,7 +59,7 @@ class ReadMore extends React.Component {
           <div
             className={imageClassName}
             style={{
-              background: `url('${src}') no-repeat`,
+              background: `url('${this.props.readMoreSectionItem.image.url}') no-repeat`,
               backgroundSize: 'cover',
               backgroundPosition: 'top'
             }}
