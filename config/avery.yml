@@ -10,22 +10,19 @@ googleAnalytics:
 foresee:
     environment: staging
 miscapi:
-    endpoint: mpmhqtea8g.execute-api.us-east-1.amazonaws.com/latest/ # mint
-    # endpoint: 9hculkgtb7.execute-api.us-east-1.amazonaws.com/latest/ # avery
+  endpoint: 9hculkgtb7.execute-api.us-east-1.amazonaws.com/latest/
 loanprocessing:
-    endpoint: mint.ussba.io/api/loan-processing
+    endpoint: avery.ussba.io/api/loan-processing
 server:
-    fqdn: mint.ussba.io
+    fqdn: avery.ussba.io
 features:
     showSbic: false
     urlRedirect:
-        tableName: UrlToNodeIntegration
+        tableName: UrlToNodeAvery
         enabled: true
     drupalRedirect:
         enabled: true
-        tableName: UrlToUrlRedirectIntegration
+        tableName: UrlToUrlRedirectAvery
 content:
-    endpoint: 61ebndrk8a.execute-api.us-east-1.amazonaws.com/latest # mint
-    cloudfront: d32xeasjw66w65.cloudfront.net # mint
-    #cloudfront: d8ptg6c733nbj.cloudfront.net # avery
+    cloudfront: d8ptg6c733nbj.cloudfront.net
     useD8EventsBackend: false
