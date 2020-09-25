@@ -25,6 +25,7 @@ features:
         enabled: true
         tableName: UrlToUrlRedirectIntegration
 content:
+    endpoint: 61ebndrk8a.execute-api.us-east-1.amazonaws.com/latest # mint
     cloudfront: d32xeasjw66w65.cloudfront.net # mint
     #cloudfront: d8ptg6c733nbj.cloudfront.net # avery
     useD8EventsBackend: false
