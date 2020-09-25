@@ -27,4 +27,3 @@ features:
 content:
     cloudfront: d32xeasjw66w65.cloudfront.net
     useD8EventsBackend: false
-
