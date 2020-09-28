@@ -6,6 +6,7 @@ import styles from './readmore.scss'
 import { TRANSLATIONS } from '../../../translations'
 import { getLanguageOverride } from '../../../services/utils'
 import { Button, DecorativeDash } from 'atoms'
+import ModalCloseIcon from 'assets/svg/modal-close-icon.svg'
 import classNames from 'classnames'
 
 class ReadMore extends React.Component {
@@ -51,9 +52,14 @@ class ReadMore extends React.Component {
     return (
       <div className={readMoreClassName}>
         {this.props.expanded && (
-          <a href="#" role="button" onClick={this.handleClick.bind(this)}>
-            <i className="fa fa-close" />
-          </a>
+          <img
+            alt="close icon"
+            className={styles.closeIcon}
+            src={ModalCloseIcon}
+            onClick={this.handleClick.bind(this)}
+            data-cy="close button"
+            aria-label="Close this section."
+          />
         )}
         {this.props.readMoreSectionItem.image && (
           <div

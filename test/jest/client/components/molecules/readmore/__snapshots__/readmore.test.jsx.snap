@@ -4,15 +4,14 @@ exports[`ReadMore should render expanded ReadMore component 1`] = `
 <div
   className="readMoreSection"
 >
-  <a
-    href="#"
+  <img
+    alt="close icon"
+    aria-label="Close this section."
+    className="closeIcon"
+    data-cy="close button"
     onClick={[Function]}
-    role="button"
-  >
-    <i
-      className="fa fa-close"
-    />
-  </a>
+    src="test-file-stub"
+  />
   <div>
     <h3
       id="text-readmore-section-3-read-more-title"
@@ -77,15 +76,14 @@ exports[`ReadMore should render expanded ReadMore component 2`] = `
 <div
   className="readMoreSection"
 >
-  <a
-    href="#"
+  <img
+    alt="close icon"
+    aria-label="Close this section."
+    className="closeIcon"
+    data-cy="close button"
     onClick={[Function]}
-    role="button"
-  >
-    <i
-      className="fa fa-close"
-    />
-  </a>
+    src="test-file-stub"
+  />
   <div>
     <h3
       id="text-readmore-section-3-read-more-title"

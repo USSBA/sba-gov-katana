@@ -21,12 +21,12 @@
     margin-top: 0;
   }
 
-  i[class='fa fa-close'] {
-    display: inline-block;
+  .closeIcon {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    padding: 15px;
+    cursor: pointer;
+    right: 30px;
+    width: 20px;
+    height: 29px;
   }
 
   i[class='fa fa-chevron-right'] {
