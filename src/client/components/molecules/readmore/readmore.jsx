@@ -6,6 +6,8 @@ import styles from './readmore.scss'
 import { TRANSLATIONS } from '../../../translations'
 import { getLanguageOverride } from '../../../services/utils'
 import { Button, DecorativeDash } from 'atoms'
+import ModalCloseIcon from 'assets/svg/modal-close-icon.svg'
+import classNames from 'classnames'
 
 class ReadMore extends React.Component {
   handleClick(e) {
@@ -39,28 +41,56 @@ class ReadMore extends React.Component {
     ) : (
       ''
     )
-    const expandedHr = this.props.expanded ? <DecorativeDash width={1.75} /> : ''
-
+    const readMoreClassName = classNames({
+      [styles.readMoreSection]: true,
+      [styles.expanded]: this.props.readMoreSectionItem.image && this.props.expanded
+    })
+    const imageClassName = classNames({
+      [styles.image]: true,
+      [styles.expanded]: this.props.readMoreSectionItem.image && this.props.expanded
+    })
     return (
-      <div className={styles.readMoreSection}>
-        <h3 id={this.props.parentId + '-title'}>{this.props.readMoreSectionItem.titleText}</h3>
-        {this.props.isHTML ? (
-          <div
-            dangerouslySetInnerHTML={{ __html: this.props.readMoreSectionItem.preview }}
-            key={50}
-            id={this.props.parentId + '-preview'}
-            className={styles.preview}
+      <div className={readMoreClassName}>
+        {this.props.expanded && (
+          <img
+            alt="close icon"
+            className={styles.closeIcon}
+            src={ModalCloseIcon}
+            onClick={this.handleClick.bind(this)}
+            data-cy="close button"
+            aria-label="Close this section."
           />
-        ) : (
-          <p key={50} id={this.props.parentId + '-preview'} className={styles.preview}>
-            {this.props.readMoreSectionItem.preview}
-          </p>
         )}
-        {expandedHr}
-        {this.props.isHTML ? expandedHtmlSection : expandedTextSection}
-        <Button alternate id={this.props.parentId + '-btn'} onClick={this.handleClick.bind(this)} primary>
-          {btnText}
-        </Button>
+        {this.props.readMoreSectionItem.image && (
+          <div
+            className={imageClassName}
+            style={{
+              background: `url('${this.props.readMoreSectionItem.image.url}') no-repeat`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'top'
+            }}
+          />
+        )}
+        <div>
+          <h3 id={this.props.parentId + '-title'}>{this.props.readMoreSectionItem.titleText}</h3>
+          {this.props.isHTML ? (
+            <div
+              dangerouslySetInnerHTML={{ __html: this.props.readMoreSectionItem.preview }}
+              key={50}
+              id={this.props.parentId + '-preview'}
+              className={styles.preview}
+            />
+          ) : (
+            <p key={50} id={this.props.parentId + '-preview'} className={styles.preview}>
+              {this.props.readMoreSectionItem.preview}
+            </p>
+          )}
+          <DecorativeDash width={1.75} />
+          {this.props.isHTML ? expandedHtmlSection : expandedTextSection}
+          <a href="#" onClick={this.handleClick.bind(this)}>
+            {btnText} <i className="fa fa-chevron-right" />
+          </a>
+        </div>
       </div>
     )
   }

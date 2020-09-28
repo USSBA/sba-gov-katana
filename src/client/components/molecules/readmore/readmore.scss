@@ -8,10 +8,53 @@
   border-top: 2px solid $sba-blue;
   box-shadow: $box-shadow;
   margin-bottom: 40px;
-  padding: 40px;
+  padding: 30px;
+  position: relative;
+
+  display: flex;
 
   h3 {
     color: $sba-blue;
+  }
+
+  hr {
+    margin-top: 0;
+  }
+
+  .closeIcon {
+    position: absolute;
+    cursor: pointer;
+    right: 30px;
+    width: 20px;
+    height: 29px;
+  }
+
+  i[class='fa fa-chevron-right'] {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: text-bottom;
+  }
+
+  &.expanded {
+    display: block;
+    hr {
+      margin-left: 40%;
+    }
+    i[class='fa fa-chevron-right'] {
+      display: none;
+    }
+  }
+}
+
+.image {
+  width: 100%;
+  margin: -30px 30px -30px -30px;
+
+  &.expanded {
+    width: 40%;
+    margin-bottom: 20px;
+    height: 242px;
+    float: left;
   }
 }
 
