@@ -69,7 +69,7 @@ const Card = props => {
   const titleMarkup = uri ? <Link to={uri}>{titleText}</Link> : titleText
   const caretLink = uri ? (
     <Link to={uri} aria-label="Read more">
-      <i className="fa fa-chevron-right" />
+      <i className="fa fa-angle-right" />
     </Link>
   ) : (
     ''

@@ -29,10 +29,11 @@
     height: 29px;
   }
 
-  i[class='fa fa-chevron-right'] {
+  i[class='fa fa-angle-right'] {
     display: inline-block;
     margin-left: 10px;
     vertical-align: text-bottom;
+    font-size: 120%;
   }
 
   &.expanded {
@@ -40,7 +41,7 @@
     hr {
       margin-left: 40%;
     }
-    i[class='fa fa-chevron-right'] {
+    i[class='fa fa-angle-right'] {
       display: none;
     }
   }

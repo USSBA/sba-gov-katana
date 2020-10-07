@@ -20,6 +20,13 @@
   .itemItalic {
     font-style: italic;
   }
+
+  i[class='fa fa-angle-right'] {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: text-bottom;
+    font-size: 120%;
+  }
 }
 
 .noImage {
