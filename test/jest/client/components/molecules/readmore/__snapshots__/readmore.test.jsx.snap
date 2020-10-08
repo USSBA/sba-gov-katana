@@ -65,7 +65,7 @@ exports[`ReadMore should render expanded ReadMore component 1`] = `
       Close
        
       <i
-        className="fa fa-chevron-right"
+        className="fa fa-angle-right"
       />
     </a>
   </div>
@@ -137,7 +137,7 @@ exports[`ReadMore should render expanded ReadMore component 2`] = `
       Cerrar
        
       <i
-        className="fa fa-chevron-right"
+        className="fa fa-angle-right"
       />
     </a>
   </div>
@@ -178,7 +178,7 @@ exports[`ReadMore should render read more button when not expanded 1`] = `
       Read more
        
       <i
-        className="fa fa-chevron-right"
+        className="fa fa-angle-right"
       />
     </a>
   </div>
