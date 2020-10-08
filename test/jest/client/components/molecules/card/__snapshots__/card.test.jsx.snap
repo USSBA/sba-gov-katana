@@ -65,7 +65,7 @@ exports[`Card does not error check malformed link 1`] = `
           target="_self"
         >
           <i
-            className="fa fa-chevron-right"
+            className="fa fa-angle-right"
           />
         </a>
       </p>
@@ -147,7 +147,7 @@ exports[`Card should render the spanish version correctly if the link is just a 
           target="_self"
         >
           <i
-            className="fa fa-chevron-right"
+            className="fa fa-angle-right"
           />
         </a>
       </p>
@@ -223,7 +223,7 @@ exports[`Card to render correctly 1`] = `
           href="https://en.wikipedia.org/wiki/Kitten"
         >
           <i
-            className="fa fa-chevron-right"
+            className="fa fa-angle-right"
           />
         </a>
       </p>
@@ -303,7 +303,7 @@ exports[`Card to render correctly if the link is just a string 1`] = `
           target="_self"
         >
           <i
-            className="fa fa-chevron-right"
+            className="fa fa-angle-right"
           />
         </a>
       </p>

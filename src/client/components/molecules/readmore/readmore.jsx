@@ -88,7 +88,7 @@ class ReadMore extends React.Component {
           <DecorativeDash width={1.75} />
           {this.props.isHTML ? expandedHtmlSection : expandedTextSection}
           <a href="#" onClick={this.handleClick.bind(this)}>
-            {btnText} <i className="fa fa-chevron-right" />
+            {btnText} <i className="fa fa-angle-right" />
           </a>
         </div>
       </div>

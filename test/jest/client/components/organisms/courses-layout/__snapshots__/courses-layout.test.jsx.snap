@@ -152,7 +152,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
@@ -231,7 +231,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
@@ -310,7 +310,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
@@ -389,7 +389,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
@@ -477,7 +477,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
@@ -556,7 +556,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
@@ -635,7 +635,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
@@ -714,7 +714,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
@@ -802,7 +802,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
@@ -881,7 +881,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
@@ -960,7 +960,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
@@ -1039,7 +1039,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                         target="_self"
                       >
                         <i
-                          className="fa fa-chevron-right"
+                          className="fa fa-angle-right"
                         />
                       </a>
                     </p>
