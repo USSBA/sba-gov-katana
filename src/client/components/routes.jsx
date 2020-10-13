@@ -232,7 +232,7 @@ const mainRouteProperties = [
   },
   {
     from: '/breakevenpointcalculator',
-    path: '/breakevenpointcalculator/'
+    to: '/breakevenpointcalculator/'
   },
   {
     component: RootPage,
