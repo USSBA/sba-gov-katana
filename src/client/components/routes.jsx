@@ -105,91 +105,116 @@ const EventPage = props => (
   <Async componentProps={props} load={import('./pages/event-page/event-page.jsx')} />
 )
 
-const FileTransferServicePage = props => (
-  <Async
-    componentProps={props}
-    load={import('./pages/file-transfer-service-page/file-transfer-service-page.jsx')}
-  />
-)
-
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 
-const mainRoutes = [
-  <IndexRoute key={1} component={HomepageContainer} />,
-  <Route key={5} path="/espanol" component={HomepageContainer} />,
-  <Route key={4} path="/document" component={DocumentLookupPage} />,
-  <Route key={14} path="/document/" component={DocumentLookupPage} />,
-  <Route key={40} path="/article" component={ArticleLookupPage} />,
-  <Route key={45} path="/article/" component={ArticleLookupPage} />,
-  <Route key={46} path="/size-standards/" component={SizeStandardsToolPage} />,
-  <Redirect key={47} from="/size-standards" to="/size-standards/" />,
-  <Route key={48} path="/resource-partner-survey/" component={ResourceCenterProfilePage} />,
-  <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
-  <Route key={50} path="/search/" component={SearchPage} />,
-  <Redirect key={51} from="/search" to="/search/" />,
-  <Route key={52} path="/course/:first" component={CourseTemplate} />,
-  <Route key={54} path="/course/" component={LearningCenterLookupPage} />,
-  <Redirect key={55} from="/course" to="/course/" />,
-  <Route key={56} path="/person/:first/" component={PersonPage} />,
-  <Redirect key={57} path="/person/:first" to="/person/:first/" />,
-  <Route key={58} path="/local-assistance/find/" component={OfficeLookupPage} />,
-  <Redirect key={59} from="/local-assistance/find" to="/local-assistance/find/" />,
-  <Route key={82} path="/asistencia-local/find/" component={OfficeLookupPage} />,
-  <Redirect key={83} from="/asistencia-local/find" to="/asistencia-local/find/" />,
-  <Route key={60} path="/events/find/" component={EventLookupPage} />,
-  <Redirect key={61} from="/events/find" to="/events/find/" />,
-  <Route key={62} path="/person/" component={PersonLookupPage} />,
-  <Redirect key={63} from="/person" to="/person/" />,
-  <Route key={64} path="/blogs/" component={BlogsLandingPage} />,
-  <Redirect key={65} from="/blogs" to="/blogs/" />,
-  <Route key={66} path="/blogs/:category/" component={BlogCategoryPage} />,
-  <Redirect key={67} from="/blogs/:category" to="/blogs/:category/" />,
-  <Route key={68} path="/blogs/:category/:officeId/" component={BlogCategoryPage} />,
-  <Redirect key={69} from="/blogs/:category/:officeId" to="/blogs/:category/:officeId/" />,
-  <Route key={70} path="/offices/district/:officeId/" component={DistrictOfficePage} />,
-  <Redirect key={71} from="/offices/district/:officeId" to="/offices/district/:officeId/" />,
-  <Route key={72} path="/paycheckprotection/find" component={LenderLookupPage} />,
-  <Redirect key={73} from="/paycheckprotection/find" to="/paycheckprotection/find/" />,
-  <Route
-    key={72}
-    path="/offices/district/:officeId/:pageConnectorId/"
-    component={DistrictOfficeSubPageTemplate}
-  />,
-  <Redirect
-    key={73}
-    from="/offices/district/:officeId/:pageConnectorId"
-    to="/offices/district/:officeId/:pageConnectorId/"
-  />,
-  <Route
-    key={74}
-    path="/offices/district/:officeId/:pageConnectorId/:subPageId"
-    component={DistrictOfficeSubPageTemplate}
-  />,
-  <Redirect
-    key={75}
-    from="/offices/district/:officeId/:pageConnectorId:/:subPageId"
-    to="/offices/district/:officeId/:pageConnectorId/:subPageId/"
-  />,
-  <Route key={76} path="/sitemap" component={SiteMapPage} />,
-  <Redirect key={77} from="/sitemap/" to="/sitemap" />,
-  <Route key={78} path="/events/:locationTitlePath/:eventId" component={EventPage} />,
-  <Redirect
-    key={79}
-    from="/events/:locationTitlePath/:eventId/"
-    to="/events/:locationTitlePath/:eventId"
-  />,
-  <Route key={80} path="/events/:eventId" component={EventPage} />,
-  // TODO: Remove redirects 81 and 82 after switching to updated events backend
-  <Redirect key={81} from="/event/:eventId/" to="/events/:eventId" />,
-  <Redirect key={82} from="/event/:eventId" to="/events/:eventId" />,
-  <Route key={12} path="/business-guide/10-steps-start-your-business" component={TenStepsLandingPage} />,
-  <Route key={13} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
-  <Redirect key={14} from="/filetransfer/" to="/filetransfer" />,
-  <Route key={15} path="/filetransfer" component={FileTransferServicePage} />,
-  <Route
-    component={TenStepsLandingPage}
-    key={112}
-    onEnter={(nextState, replace) => {
+const mainRouteProperties = [
+  {
+    component: HomepageContainer
+  },
+  {
+    component: HomepageContainer,
+    path: '/espanol'
+  },
+  {
+    component: DocumentLookupPage,
+    path: '/document'
+  },
+  {
+    component: ArticleLookupPage,
+    path: '/article'
+  },
+  {
+    component: SizeStandardsToolPage,
+    path: '/size-standards'
+  },
+  {
+    component: ResourceCenterProfilePage,
+    path: '/resource-partner-survey'
+  },
+  {
+    component: SearchPage,
+    path: '/search'
+  },
+  {
+    component: LearningCenterLookupPage,
+    path: '/course'
+  },
+  {
+    component: CourseTemplate,
+    path: '/course/:first'
+  },
+  {
+    component: PersonLookupPage,
+    path: '/person'
+  },
+  {
+    component: PersonPage,
+    path: '/person/:first'
+  },
+  {
+    component: OfficeLookupPage,
+    path: '/local-assistance/find'
+  },
+  {
+    component: OfficeLookupPage,
+    path: '/asistencia-local/find'
+  },
+  {
+    component: EventLookupPage,
+    path: '/events/find'
+  },
+  {
+    component: BlogsLandingPage,
+    path: '/blogs'
+  },
+  {
+    component: BlogCategoryPage,
+    path: '/blogs/:category'
+  },
+  {
+    component: BlogCategoryPage,
+    path: '/blogs/:category/:officeId'
+  },
+  {
+    component: DistrictOfficePage,
+    path: '/offices/district/:officeId'
+  },
+  {
+    component: LenderLookupPage,
+    path: '/paycheckprotection/find'
+  },
+  {
+    component: DistrictOfficeSubPageTemplate,
+    path: '/offices/district/:officeId/:pageConnectorId'
+  },
+  {
+    component: DistrictOfficeSubPageTemplate,
+    path: '/offices/district/:officeId/:pageConnectorId/:subPageId'
+  },
+  {
+    component: SiteMapPage,
+    path: '/sitemap'
+  },
+  {
+    component: EventPage,
+    path: '/events/:locationTitlePath/:eventId'
+  },
+  {
+    component: EventPage,
+    path: '/events/:eventId'
+  },
+  {
+    // TODO: Remove this redirect after switching to updated events backend
+    from: '/event/:eventId',
+    to: '/events/:eventId'
+  },
+  {
+    component: TenStepsLandingPage,
+    path: '/business-guide/10-steps-start-your-business'
+  },
+  {
+    component: TenStepsLandingPage,
+    onEnter: (nextState, replace) => {
       const {
         location: { pathname, query }
       } = nextState
@@ -198,27 +223,59 @@ const mainRoutes = [
       if (!Object.prototype.hasOwnProperty.call(query, 'lang')) {
         replace({ pathname, query: { ...query, lang: 'es' } })
       }
-    }}
-    path="/guia-de-negocios/10-pasos-para-iniciar-su-empresa/"
-  />,
-  <Redirect
-    key={113}
-    from="/guia-de-negocios/10-pasos-para-iniciar-su-empresa"
-    to="/guia-de-negocios/10-pasos-para-iniciar-su-empresa/"
-  />,
-  <Route key={114} path="/breakevenpointcalculator" component={BreakEvenCalculatorPage} />,
-  <Redirect key={115} from="/breakevenpointcalculator" to="/breakevenpointcalculator/" />,
-  <Route key={6} path="/:first" component={RootPage} />,
-  <Route key={7} path="/:first/" component={RootPage} />,
-  <Route key={8} path="/:first/:second" component={RootPage} />,
-  <Route key={9} path="/:first/:second/" component={RootPage} />,
-  <Route key={10} path="/:first/:second/:third" component={RootPage} />,
-  <Route key={11} path="/:first/:second/:third/" component={RootPage} />,
-  <Route key={18} path="/:first/:second/:third/:fourth" component={RootPage} />,
-  <Route key={19} path="/:first/:second/:third/:fourth/" component={RootPage} />,
-  <Route key={20} path="/:first/:second/:third/:fourth/:fifth" component={RootPage} />,
-  <Route key={21} path="/:first/:second/:third/:fourth/:fifth/" component={RootPage} />
+    },
+    path: '/guia-de-negocios/10-pasos-para-iniciar-su-empresa'
+  },
+  {
+    component: BreakEvenCalculatorPage,
+    path: '/breakevenpointcalculator'
+  },
+  {
+    from: '/breakevenpointcalculator',
+    path: '/breakevenpointcalculator/'
+  },
+  {
+    component: RootPage,
+    path: '/:first'
+  },
+  {
+    component: RootPage,
+    path: '/:first/:second'
+  },
+  {
+    component: RootPage,
+    path: '/:first/:second/:third'
+  },
+  {
+    component: RootPage,
+    path: '/:first/:second/:third/:fourth'
+  },
+  {
+    component: RootPage,
+    path: '/:first/:second/:third/:fourth/:fifth'
+  }
 ]
+
+const mainRoutes = mainRouteProperties.map((item, index) => {
+  const props = Object.assign(
+    {
+      key: index
+    },
+    item
+  )
+
+  let component
+
+  if (index === 0) {
+    component = <IndexRoute {...props} />
+  } else if (item.from) {
+    component = <Redirect {...props} />
+  } else {
+    component = <Route {...props} />
+  }
+
+  return component
+})
 
 const routes = [
   <Route key={2} path="/styleguide" component={StyleGuide} />,
