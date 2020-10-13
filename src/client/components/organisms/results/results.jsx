@@ -56,48 +56,6 @@ class Results extends React.PureComponent {
     ) : null
   }
 
-  renderSearchInfoPanel() {
-    const {
-      total,
-      pageSize,
-      pageNumber,
-      searchTermName,
-      submittedFieldValues,
-      hasSearchInfoPanel,
-      setWhiteBackground,
-      isLoading,
-      enableLoadingMessage
-    } = this.props
-
-    const divClassName = classNames({
-      [styles.whiteBackground]: setWhiteBackground
-    })
-
-    const searchInfoPanelClassName = classNames({
-      [styles.searchFocusState]: true,
-      [styles.searchFocusStateWhiteBackground]: setWhiteBackground,
-      [styles.searchInfoPanelWhiteBackground]: setWhiteBackground
-    })
-
-    const searchTerm = submittedFieldValues[searchTermName]
-
-    return hasSearchInfoPanel ? (
-      <div className={divClassName}>
-        <div className={'search-info-panel ' + searchInfoPanelClassName} tabIndex="0">
-          <SearchInfoPanel
-            pageNumber={pageNumber}
-            pageSize={pageSize}
-            total={total}
-            searchTerm={searchTerm}
-            isLoading={isLoading}
-            enableLoadingMessage={enableLoadingMessage}
-            setWhiteBackground={setWhiteBackground}
-          />
-        </div>
-      </div>
-    ) : null
-  }
-
   showDetailState(item) {
     this.props.onClick(item)
   }
@@ -181,7 +139,6 @@ class Results extends React.PureComponent {
 
     return (
       <div className={resultsClassName}>
-        {shouldShowSearchInfoPanel && this.renderSearchInfoPanel()}
         <div {...divProps}>
           {this.renderSearchTips()}
           {this.renderDefaultResults()}
@@ -214,9 +171,7 @@ class Results extends React.PureComponent {
     const resultsClassName = classNames({
       [styles.resultContainerWithPagination]: paginate
     })
-    const view = shouldShowDetail
-      ? this.renderDetailResultsView(resultsClassName)
-      : this.renderResultsView(resultsClassName)
+    const view = this.renderResultsView(resultsClassName)
     return (
       <div id={id} className={styles.container} role="main" aria-live="polite">
         {view}

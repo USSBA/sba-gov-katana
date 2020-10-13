@@ -17,6 +17,18 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           className="paginator"
           role="group"
         >
+          <button
+            aria-label="Go to previous results"
+            className="button large secondary"
+            data-testid="previous button"
+            onClick={[Function]}
+          >
+            <i
+              alt="previous page"
+              aria-hidden="true"
+              className="fa fa-fw fa-chevron-left"
+            />
+          </button>
           <span
             data-testid="showing results text"
           >
@@ -51,18 +63,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
               25
             </strong>
           </span>
-          <button
-            aria-label="Go to previous results"
-            className="button large secondary"
-            data-testid="previous button"
-            onClick={[Function]}
-          >
-            <i
-              alt="previous page"
-              aria-hidden="true"
-              className="fa fa-fw fa-chevron-left"
-            />
-          </button>
           <button
             aria-label="Go to next results"
             className="button large secondary"
@@ -1066,6 +1066,18 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           className="paginator"
           role="group"
         >
+          <button
+            aria-label="Go to previous results"
+            className="button large secondary"
+            data-testid="previous button"
+            onClick={[Function]}
+          >
+            <i
+              alt="previous page"
+              aria-hidden="true"
+              className="fa fa-fw fa-chevron-left"
+            />
+          </button>
           <span
             data-testid="showing results text"
           >
@@ -1100,18 +1112,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
               25
             </strong>
           </span>
-          <button
-            aria-label="Go to previous results"
-            className="button large secondary"
-            data-testid="previous button"
-            onClick={[Function]}
-          >
-            <i
-              alt="previous page"
-              aria-hidden="true"
-              className="fa fa-fw fa-chevron-left"
-            />
-          </button>
           <button
             aria-label="Go to next results"
             className="button large secondary"
