@@ -19,7 +19,7 @@ class PersonPage extends Component {
   async componentDidMount() {
     const pathname = this.props.location.pathname
     const persons = await fetchSiteContent('persons')
-    const person = persons.find(({ url }) => url === pathname.slice(0, -1))
+    const person = persons.find(({ url }) => url === pathname)
 
     if (!isEmpty(person)) {
       this.setState({ person })
