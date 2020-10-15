@@ -7,6 +7,7 @@
     border: 2px solid $sba-blue;
     font-size: 18px;
     padding: 10px 7px;
+    margin-left: 15px;
 
     &:hover {
       border-color: $secondary-blue-light;
@@ -19,9 +20,8 @@
   }
 
   button:first-of-type {
-    border-right-width: 0;
-    margin-left: 15px;
-
+    margin-left: 0;
+    margin-right: 15px;
     // Ensure the whole button is highlighed (even with the border hiding) when
     // hovered.
     &:hover {

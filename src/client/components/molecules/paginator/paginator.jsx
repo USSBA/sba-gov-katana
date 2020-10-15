@@ -43,12 +43,13 @@ const Paginator = props => {
       role="group"
       aria-label={`Showing results ${start} to ${end} out of ${total}`}
     >
+      {renderArrowButton('left')}
       <span data-testid="showing results text">
         Showing <strong className="text-primary">{start}</strong> <span className={styles.spacing}>-</span>{' '}
         <strong className="text-primary">{end}</strong> <span className={styles.spacing}>of</span>{' '}
         <strong className="text-primary">{total}</strong>
       </span>
-      {['left', 'right'].map(direction => renderArrowButton(direction))}
+      {renderArrowButton('right')}
     </div>
   )
 }
