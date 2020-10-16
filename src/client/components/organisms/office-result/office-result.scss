@@ -9,14 +9,7 @@
 
   h2 {
     cursor: pointer;
-
-    i {
-      display: inline-block;
-      float: right;
-      font-size: 15px;
-      padding-top: 5px;
-      padding-left: 20px;
-    }
+    margin-right: 60px;
   }
 
   h3 {
@@ -193,6 +186,7 @@
 }
 
 .hoveredInnerDiv {
+  position: relative;
   margin-top: -20px;
   margin-left: 17px;
   padding-top: 20px;
@@ -208,4 +202,23 @@
 
 .defaultOfficeResult {
   margin: 0 0 0 -10px;
+}
+
+.outerDiv {
+  position: relative;
+}
+
+.detail {
+  margin-right: 60px;
+}
+
+.website {
+  text-align: center;
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+
+.hoveredInnerDivWebsite {
+  top: 40px;
 }
