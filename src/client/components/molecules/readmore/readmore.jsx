@@ -8,6 +8,7 @@ import { getLanguageOverride } from '../../../services/utils'
 import { Button, DecorativeDash } from 'atoms'
 import ModalCloseIcon from 'assets/svg/modal-close-icon.svg'
 import classNames from 'classnames'
+import { isEmpty } from 'lodash'
 
 class ReadMore extends React.Component {
   handleClick(e) {
@@ -61,7 +62,7 @@ class ReadMore extends React.Component {
             aria-label="Close this section."
           />
         )}
-        {this.props.readMoreSectionItem.image && (
+        {!isEmpty(this.props.readMoreSectionItem.image) && (
           <div
             className={imageClassName}
             style={{
