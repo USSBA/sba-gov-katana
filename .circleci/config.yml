@@ -194,6 +194,7 @@ jobs:
           name: install dependencies
           command: |
             npm install --silent --no-save
+            which sls
       - save_cache:
           paths:
             - ./node_modules
@@ -211,6 +212,7 @@ jobs:
           name: install dependencies
           command: |
             npm install --silent --no-save
+            which sls
       - save_cache:
           paths:
             - ./node_modules
@@ -360,7 +362,7 @@ jobs:
 
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
-            aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${ENVIRONMENT}/katana-lambda.zip"
+            # aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${ENVIRONMENT}/katana-lambda.zip"
   deploy-package:
     docker:
       - image: ussba/cc-docker-git-aws:latest
@@ -396,10 +398,11 @@ jobs:
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
 
-            export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${ENVIRONMENT}/katana-lambda.zip" | jq '.Versions[0].VersionId')
-            export LAMBDA_NAME="${ENVIRONMENT}-KatanaLambda"
+            serverless deploy --stage ${ENVIRONMENT}
 
-            aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${ENVIRONMENT}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
+            # export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${ENVIRONMENT}/katana-lambda.zip" | jq '.Versions[0].VersionId')
+            # export LAMBDA_NAME="${ENVIRONMENT}-KatanaLambda"
+            # aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${ENVIRONMENT}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
   upload-package-with-approval:
     docker:
       - image: ussba/cc-docker-git-aws:latest
