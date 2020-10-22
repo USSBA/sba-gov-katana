@@ -366,6 +366,8 @@ jobs:
       - image: cimg/node:12.18
     steps:
       - checkout
+      - attach_workspace:
+          at: workspace
       - run:
           name: deploy
           shell: /bin/bash -eo pipefail
