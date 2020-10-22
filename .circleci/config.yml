@@ -194,7 +194,7 @@ jobs:
           name: install dependencies
           command: |
             npm install --silent --no-save
-            which sls
+            npm i -g serverless
       - save_cache:
           paths:
             - ./node_modules
@@ -212,7 +212,7 @@ jobs:
           name: install dependencies
           command: |
             npm install --silent --no-save
-            which sls
+            npm i -g serverless
       - save_cache:
           paths:
             - ./node_modules
