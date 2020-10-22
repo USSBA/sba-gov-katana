@@ -365,7 +365,7 @@ jobs:
             # aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${ENVIRONMENT}/katana-lambda.zip"
   deploy-package:
     docker:
-      - image: ussba/cc-docker-git-aws:latest
+      - image: cimg/node:12.18
     steps:
       - checkout
       - run:
