@@ -107,7 +107,7 @@ class StandalonePage extends Component {
               <div>
                 <div data-testid="standalone-page-titlesection" className={className}>
                   <TitleSection
-                    gridClass={basicPageStyles.titleSection}
+                    //gridClass={basicPageStyles.titleSection}
                     sectionHeaders={sectionHeaders}
                     title={title}
                     summary={summary}
