@@ -1,15 +1,33 @@
 .content {
-	h1 {
-		margin-top: 15px;
-	}
+  h1 {
+    margin-top: 15px;
+  }
+
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    @include grid-push(0);
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+    @include grid-push(0);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(9);
+    @include grid-push(2);
+  }
+
+  > div {
+    margin-left: 0;
+    width: 100%;
+  }
 }
 
 .loaderContainer {
-	align-items: center;
-	display: flex;
-	justify-content: center;
-	height: 20vw;
-	@include for-small-only {
-		margin: 30px 0;
-	}
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 20vw;
+  @include for-small-only {
+    margin: 30px 0;
+  }
 }
