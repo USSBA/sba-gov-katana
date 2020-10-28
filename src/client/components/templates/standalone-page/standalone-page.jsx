@@ -106,12 +106,7 @@ class StandalonePage extends Component {
             {!isEmpty(data) ? (
               <div>
                 <div data-testid="standalone-page-titlesection" className={className}>
-                  <TitleSection
-                    gridClass={basicPageStyles.titleSection}
-                    sectionHeaders={sectionHeaders}
-                    title={title}
-                    summary={summary}
-                  />{' '}
+                  <TitleSection sectionHeaders={sectionHeaders} title={title} summary={summary} />{' '}
                   {paragraphs}
                 </div>
               </div>
