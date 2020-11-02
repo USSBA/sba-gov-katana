@@ -22,10 +22,10 @@ class Main extends React.Component {
 
   async componentDidMount() {
     const langOverride = getLanguageOverride()
-    const disasterAlert = await fetchSiteContent('disaster', langOverride)
     if (document) {
       document.documentElement.setAttribute('lang', langOverride)
     }
+    const disasterAlert = await fetchSiteContent('disaster', langOverride)
     this.setState({
       disasterAlert,
       disasterAlertCookieExists: Boolean(cookie.load(DISASTER_ALERT_COOKIE))
