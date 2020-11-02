@@ -47,7 +47,7 @@
     "express": "4.16.4",
     "fuse.js": "^3.4.2",
     "he": "^1.2.0",
-    "html-to-text": "3.0.0",
+    "html-to-text": "6.0.0",
     "http-status-codes": "1.0.6",
     "js-yaml": "^3.13.1",
     "json2csv": "^4.0.0",
