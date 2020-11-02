@@ -1,3 +1,5 @@
+/* eslint-disable no-undefined */
+
 import React from 'react'
 import cookie from 'react-cookie'
 
@@ -19,7 +21,11 @@ class Main extends React.Component {
   }
 
   async componentDidMount() {
-    const disasterAlert = await fetchSiteContent('disaster', getLanguageOverride())
+    const langOverride = getLanguageOverride()
+    const disasterAlert = await fetchSiteContent('disaster', langOverride)
+    if (document) {
+      document.documentElement.setAttribute('lang', langOverride)
+    }
     this.setState({
       disasterAlert,
       disasterAlertCookieExists: Boolean(cookie.load(DISASTER_ALERT_COOKIE))
