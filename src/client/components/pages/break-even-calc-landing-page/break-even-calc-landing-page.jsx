@@ -12,15 +12,73 @@ import {
 import { Breadcrumb } from 'molecules'
 import styles from './break-even-calc-landing-page.scss'
 import accordionStyles from './accordion.scss'
-import { faqFields, benefitFields } from './content'
-
+import { fetchRestContent } from '../../../fetch-content-helper'
 class BreakEvenCalculatorPage extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      data: {}
+    }
+  }
+
   calloutContent = {
     title: 'What you need to get started:',
     text:
       'This analysis will help you easily prepare an estimate and visual to include in your business plan. We’ll do the math and all you will need is an idea of the following information.'
   }
+
+  async componentDidMount() {
+    const becNodeId = window.nodeId
+    if (becNodeId > 0) {
+      fetchRestContent(becNodeId).then(becData => {
+        const data = this.parseBecData(becData)
+
+        this.setState({ data })
+      })
+    }
+  }
+
+  parseBecData(data) {
+    alert(JSON.stringify(data))
+    const becData = {}
+    let i = 0
+
+    //Parse Break-Even Point Paragraph
+    while (data.paragraphs[i].type !== 'sectionHeader') {
+      becData.mainParagraph = data.paragraphs[i].text
+      i++
+    }
+
+    //Parse break-even analysis paragraph
+    becData.benefitsTitle = data.paragraphs[i].text
+    i++
+    becData.benefits = []
+    while (data.paragraphs[i].type !== 'sectionHeader') {
+      const benefits = {}
+      benefits.title = data.paragraphs[i].text
+      benefits.content = data.paragraphs[i + 1].text
+      becData.benefits.push(benefits)
+      i = i + 2
+    }
+
+    //Parse Tips and Tricks
+    becData.tips = {}
+    becData.tips.title = ''
+    becData.tips.title = data.paragraphs[i].text
+    becData.tips.faqs = []
+    i++
+    while (i < data.paragraphs.length) {
+      const faq = {}
+      faq.title = data.paragraphs[i].text
+      faq.content = data.paragraphs[i + 1].text
+      becData.tips.faqs.push(faq)
+      i = i + 2
+    }
+    return becData
+  }
+
   render() {
+    const { data } = this.state
     return (
       <div className={styles.calcLandingPageContainer}>
         <div className={styles.breadcrumbSection}>
@@ -40,33 +98,26 @@ class BreakEvenCalculatorPage extends React.Component {
         </div>
         <div className={styles.infoSection}>
           <h1>Break-Even Point</h1>
-          <p>
-            The <strong>break-even point</strong> is the point at which total cost and total revenue are
-            equal, meaning there is no loss or gain for your small business. In other words, you've reached
-            the level of production at which the costs of production equals the revenues for a product.
-          </p>
-          <p>
-            For any new business, this is <strong>an important calculation in your business plan</strong>.
-            Potential investors in a business not only want to know the return to expect on their
-            investments, but also the point when they will realize this return. This is because some
-            companies may take years before turning a profit, often losing money in the first few months or
-            years before breaking even. For this reason, break-even point is an important part of any
-            business plan presented to a potential investor.
-          </p>
-          <p>
-            For existing businesses, this can be a useful tool not only in analyzing costs and evaluating
-            profits they’ll earn at different sales volumes, but also to prove their potential turnaround
-            after disaster scenarios.
-          </p>
-          <h2 className={styles.benefitsTitle}>Benefits of a break-even analysis</h2>
-          <div className={styles.benefits}>
-            {benefitFields.map(benefit => (
-              <div className={styles.benefitsCol} key={benefit.title}>
-                <h3 className={styles.subHeading}>{benefit.title}</h3>
-                <p className={styles.benefitsContent}>{benefit.description}</p>
+          {data ? (
+            <div>
+              <div dangerouslySetInnerHTML={{ __html: data && data.mainParagraph }} />
+              <h2 className={styles.benefitsTitle}>{data && data.benefitsTitle}</h2>
+              <div className={styles.benefits}>
+                {data.benefits &&
+                  data.benefits.map(benefit => (
+                    <div className={styles.benefitsCol} key={benefit.title}>
+                      <h3 className={styles.subHeading}>{benefit.title}</h3>
+                      <p
+                        className={styles.benefitsContent}
+                        dangerouslySetInnerHTML={{ __html: benefit.content }}
+                      />
+                    </div>
+                  ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ) : (
+            <div />
+          )}
         </div>
         <div>
           <div className={styles.gradientBackground}></div>
@@ -112,40 +163,47 @@ class BreakEvenCalculatorPage extends React.Component {
                 </div>
               </div>
             </div>
-            <div className={accordionStyles.accordionContainer}>
-              <h3>Tips and Tricks</h3>
-              <DecorativeDash width={77} />
-              <div className={accordionStyles.accordionContent}>
-                <Accordion allowZeroExpanded>
-                  {faqFields.map(faq => (
-                    <AccordionItem key={faq.question}>
-                      <AccordionItemHeading className={accordionStyles.accordionHeading}>
-                        <AccordionItemButton className={accordionStyles.accordionButton}>
-                          <h3>
-                            {faq.question}
-                            <AccordionItemState>
-                              {({ expanded }) => {
-                                return expanded ? (
-                                  <i className={accordionStyles.accordionIcon + ' fa fa-chevron-up'} />
-                                ) : (
-                                  <i className={accordionStyles.accordionIcon + ' fa fa-chevron-down'} />
-                                )
-                              }}
-                            </AccordionItemState>
-                          </h3>
-                        </AccordionItemButton>
-                      </AccordionItemHeading>
-                      <AccordionItemPanel>
-                        <div
-                          className={accordionStyles.accordionText}
-                          dangerouslySetInnerHTML={{ __html: faq.answer }}
-                        />
-                      </AccordionItemPanel>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+            {data ? (
+              <div className={accordionStyles.accordionContainer}>
+                <h3>{data.tips && data.tips.title}</h3>
+                <DecorativeDash width={77} />
+                <div className={accordionStyles.accordionContent}>
+                  <Accordion allowZeroExpanded>
+                    {data.tips &&
+                      data.tips.faqs.map(faq => (
+                        <AccordionItem key={faq.title}>
+                          <AccordionItemHeading className={accordionStyles.accordionHeading}>
+                            <AccordionItemButton className={accordionStyles.accordionButton}>
+                              <h3>
+                                {faq.title}
+                                <AccordionItemState>
+                                  {({ expanded }) => {
+                                    return expanded ? (
+                                      <i className={accordionStyles.accordionIcon + ' fa fa-chevron-up'} />
+                                    ) : (
+                                      <i
+                                        className={accordionStyles.accordionIcon + ' fa fa-chevron-down'}
+                                      />
+                                    )
+                                  }}
+                                </AccordionItemState>
+                              </h3>
+                            </AccordionItemButton>
+                          </AccordionItemHeading>
+                          <AccordionItemPanel>
+                            <div
+                              className={accordionStyles.accordionText}
+                              dangerouslySetInnerHTML={{ __html: faq.content }}
+                            />
+                          </AccordionItemPanel>
+                        </AccordionItem>
+                      ))}
+                  </Accordion>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div />
+            )}
           </div>
         </div>
       </div>
