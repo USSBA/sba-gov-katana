@@ -8,7 +8,7 @@ import {
   AccordionItemPanel,
   AccordionItemState
 } from 'react-accessible-accordion'
-
+import { isEmpty } from 'lodash'
 import { Breadcrumb } from 'molecules'
 import styles from './break-even-calc-landing-page.scss'
 import accordionStyles from './accordion.scss'
@@ -29,17 +29,15 @@ class BreakEvenCalculatorPage extends React.Component {
 
   async componentDidMount() {
     const becNodeId = window.nodeId
-    if (becNodeId > 0) {
+    if (!isEmpty(becNodeId)) {
       fetchRestContent(becNodeId).then(becData => {
         const data = this.parseBecData(becData)
-
         this.setState({ data })
       })
     }
   }
 
   parseBecData(data) {
-    alert(JSON.stringify(data))
     const becData = {}
     let i = 0
 
@@ -79,8 +77,9 @@ class BreakEvenCalculatorPage extends React.Component {
 
   render() {
     const { data } = this.state
+    console.log('data is -->', data)
     return (
-      <div className={styles.calcLandingPageContainer}>
+      <div data-testid="breakevencalc" className={styles.calcLandingPageContainer}>
         <div className={styles.breadcrumbSection}>
           <Breadcrumb
             items={[
