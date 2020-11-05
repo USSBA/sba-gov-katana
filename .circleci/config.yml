@@ -196,6 +196,7 @@ workflows:
           tags:
             only:
             - staging
+            - production
         context: sba-gov-upper
 jobs:
   cache-dependencies-lower:
