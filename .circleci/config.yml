@@ -167,7 +167,7 @@ workflows:
             - production
             - staging
     - deploy-package-serverless-with-approval:
-        requires: [upload-package-with-approval]
+        requires: [hold]
         filters:
           branches: 
             ignore:
