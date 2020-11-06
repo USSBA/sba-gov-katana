@@ -116,7 +116,7 @@ workflows:
             - production
             - staging
             - mint
-            - pat
+            - qa
             - /int-\w+/
             - /RELEASE-\d+/
     - upload-package:
@@ -129,7 +129,7 @@ workflows:
           tags:
             only:
             - mint
-            - pat
+            - qa
             - /int-\w+/
             - /RELEASE-\d+/
         context: sba-gov-lower
@@ -154,6 +154,7 @@ workflows:
           tags:
             only:
             - mint
+            - qa
         context: sba-gov-lower
     - hold:
         type: approval
