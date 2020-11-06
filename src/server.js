@@ -47,16 +47,25 @@ app.use(function(req, res, next) {
       console.log('Session info: ', req.sessionInfo)
     }
   }
+
   const requestPath = req.path
-  const requestPathWithoutTraillingSlack =
+  let requestPathWithoutTraillingSlack
+  requestPathWithoutTraillingSlack =
     requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
+
+  if (config.get('features.breakEvenCalculator.enabled')) {
+    requestPathWithoutTraillingSlack =
+      requestPathWithoutTraillingSlack === '/breakevenpointcalculator'
+        ? '/page/break-even-point'
+        : requestPathWithoutTraillingSlack
+  }
+
   findNodeIdByUrl(requestPathWithoutTraillingSlack)
     .then(({ nodeId, langCode, type }) => {
       let responseStatus = httpStatus.OK
       if (!nodeId && config.get('features.true404')) {
         responseStatus = httpStatus.NOT_FOUND
       }
-
       const clientConfig = {
         counselorCta: config.get('counselorCta.nodeId'),
         debug: config.get('developmentOptions.client.logging'),
