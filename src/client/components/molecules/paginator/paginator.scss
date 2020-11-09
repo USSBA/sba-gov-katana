@@ -17,6 +17,9 @@
     &:focus {
       border: 2px solid;
     }
+    &:disabled {
+      border-color: #c5c5c5;
+    }
   }
 
   button:first-of-type {
