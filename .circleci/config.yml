@@ -116,7 +116,7 @@ workflows:
             - production
             - staging
             - mint
-            - pat
+            - qa
             - /int-\w+/
             - /RELEASE-\d+/
     - upload-package:
@@ -129,7 +129,7 @@ workflows:
           tags:
             only:
             - mint
-            - pat
+            - qa
             - /int-\w+/
             - /RELEASE-\d+/
         context: sba-gov-lower
@@ -154,6 +154,7 @@ workflows:
           tags:
             only:
             - mint
+            - qa
         context: sba-gov-lower
     - hold:
         type: approval
@@ -166,27 +167,16 @@ workflows:
             only:
             - production
             - staging
-    - upload-package-with-approval:
+    - deploy-package-serverless-with-approval:
         requires: [hold]
         filters:
-          branches:
+          branches: 
             ignore:
             - /.*/
           tags:
             only:
-            - production
             - staging
-        context: sba-gov-upper
-    - deploy-package-with-approval:
-        requires: [upload-package-with-approval]
-        filters:
-          branches:
-            ignore:
-            - /.*/
-          tags:
-            only:
             - production
-            - staging
         context: sba-gov-upper
 jobs:
   cache-dependencies-lower:
@@ -431,61 +421,18 @@ jobs:
 
             sudo npm i -g serverless
             serverless deploy --stage ${ENVIRONMENT}
-  upload-package-with-approval:
+
+  deploy-package-serverless-with-approval:
     docker:
-      - image: ussba/cc-docker-git-aws:latest
+      - image: cimg/node:12.18
     steps:
       - checkout
       - attach_workspace:
           at: workspace
       - run:
-          name: publish
-          shell: /bin/bash -eo pipefail
-          command: |
-            if [ -z "${CIRCLE_BRANCH}" ]
-            then
-              ENVIRONMENT=${CIRCLE_TAG}
-            else
-              ENVIRONMENT=${CIRCLE_BRANCH}
-            fi
-
-            export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
-            export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
-
-            SOURCE_PREFIX=${ENVIRONMENT}
-            case $ENVIRONMENT in
-              production)
-                export ASSET_BUCKET_NAME_PREFIX=www.sba.gov
-                ;;
-              *)
-                export ASSET_BUCKET_NAME_PREFIX=staging.sba.gov
-                ;;
-            esac
-
-            aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
-            aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
-            aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${ENVIRONMENT}/katana-lambda.zip"
-
-  deploy-package-with-approval:
-    docker:
-      - image: ussba/cc-docker-git-aws:latest
-    steps:
-      - checkout
-      - run:
           name: deploy
           shell: /bin/bash -eo pipefail
           command: |
-            if [ -z "${CIRCLE_BRANCH}" ]
-            then
-              TARGET_ENVIRONMENT=${CIRCLE_TAG}
-            else
-              TARGET_ENVIRONMENT=${CIRCLE_BRANCH}
-            fi
 
-            export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
-            export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
-
-            export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${TARGET_ENVIRONMENT}/katana-lambda.zip" | jq '.Versions[0].VersionId')
-            export LAMBDA_NAME="${TARGET_ENVIRONMENT}-KatanaLambda"
-
-            aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${TARGET_ENVIRONMENT}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
+            sudo npm i -g serverless
+            serverless deploy --stage ${CIRCLE_TAG}
