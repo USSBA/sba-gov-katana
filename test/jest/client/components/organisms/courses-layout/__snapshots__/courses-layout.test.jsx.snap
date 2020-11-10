@@ -21,6 +21,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
             aria-label="Go to previous results"
             className="button large secondary"
             data-testid="previous button"
+            disabled={true}
             onClick={[Function]}
           >
             <i
@@ -1070,6 +1071,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
             aria-label="Go to previous results"
             className="button large secondary"
             data-testid="previous button"
+            disabled={true}
             onClick={[Function]}
           >
             <i

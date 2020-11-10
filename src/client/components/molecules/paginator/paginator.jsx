@@ -22,6 +22,7 @@ const Paginator = props => {
       responsive={false}
       aria-label={direction === 'left' ? 'Go to previous results' : 'Go to next results'}
       data-testid={direction === 'left' ? 'previous button' : 'next button'}
+      disabled={(direction === 'left' && start === 1) || (direction === 'right' && end === total)}
     >
       <i
         alt={`${direction === 'left' ? 'previous' : 'next'} page`}
