@@ -199,6 +199,8 @@ export class DocumentArticle extends React.Component {
       }
 
       const showDownload = !(data.removeDownloadButton && data.removeDownloadButton === true) //explicit because data.removeDownloadButton can be false or {}
+      const { translatedDocList } = data
+      console.log('A--', translatedDocList)
 
       return (
         <div data-testid="document-article" className={'document-article ' + style.page}>
@@ -220,6 +222,8 @@ export class DocumentArticle extends React.Component {
             <br />
             {pageType === 'article' && this.renderContactInfo()}
           </div>
+
+          {translatedDocList && <TranslatedDocuments data={translatedDocList} />}
 
           <hr className={style.hr} />
           <div className={style.summaryContainer}>
@@ -279,8 +283,17 @@ const Noncompliant508Message = () => {
     </div>
   )
 }
+const TranslatedDocuments = ({ data }) => {
+  return (
+    <div>
+      <h5>Applications must be submitted in English.</h5>
+      <h5>Languages</h5>
+      <h5>Translated Documents</h5>
+      <p>{JSON.stringify(data)}</p>
+    </div>
+  )
+}
 DocumentArticle.propTypes = {
   data: PropTypes.object.isRequired
 }
-
 export default DocumentArticle
