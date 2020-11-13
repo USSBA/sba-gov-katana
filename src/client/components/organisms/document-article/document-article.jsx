@@ -223,7 +223,7 @@ export class DocumentArticle extends React.Component {
             {pageType === 'article' && this.renderContactInfo()}
           </div>
 
-          {translatedDocList && <TranslatedDocuments data={translatedDocList} />}
+          {!isEmpty(translatedDocList) && <TranslatedDocuments data={translatedDocList} />}
 
           <hr className={style.hr} />
           <div className={style.summaryContainer}>
