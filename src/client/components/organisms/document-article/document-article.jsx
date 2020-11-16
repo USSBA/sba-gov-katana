@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { includes, isEmpty, last } from 'lodash'
 
 import style from './document-article.scss'
-import { Button, ContactText, DecorativeDash, Label, Link, TextSection } from 'atoms'
+import { Button, ContactText, DecorativeDash, FileTypeIcon, Label, Link, TextSection } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 import { fetchRestContent } from '../../../../client/fetch-content-helper'
@@ -286,7 +286,19 @@ const Noncompliant508Message = () => {
 const TranslatedDocuments = ({ data }) => {
   return (
     <div>
-      <h5>Applications must be submitted in English.</h5>
+      <h3>Applications must be submitted in English.</h3>
+      <p>
+        <em>All documents provided below are for informational purposes only.</em>
+      </p>
+      <div className={style.officialSubmissionMessage}>
+        <p>
+          <strong>English - for official submission</strong> <strong>|</strong>{' '}
+          <a href="#">
+            Download pdf <FileTypeIcon fileExtension="pdf" />
+          </a>
+        </p>
+      </div>
+      <hr />
       <h5>Languages</h5>
       <h5>Translated Documents</h5>
       <p>{JSON.stringify(data)}</p>
