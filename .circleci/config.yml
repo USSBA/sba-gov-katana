@@ -432,7 +432,6 @@ jobs:
 
             sudo npm i -g serverless
             serverless deploy --stage ${ENVIRONMENT}
-
   upload-package-serverless-with-approval:
     docker:
       - image: ussba/cc-docker-git-aws:latest
@@ -463,7 +462,6 @@ jobs:
             esac
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
-
   deploy-package-serverless-with-approval:
     docker:
       - image: cimg/node:12.18
