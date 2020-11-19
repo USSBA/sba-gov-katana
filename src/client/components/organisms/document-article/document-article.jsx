@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import classNames from 'classnames'
 import moment from 'moment'
 import queryString from 'querystring'
@@ -213,58 +213,63 @@ export class DocumentArticle extends React.Component {
               {articleIdText}
             </h5>
           )}
-
-          {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
-
-          <div data-testid="office and contact info" className={style.meta}>
-            {this.renderOfficeInfo()}
-            <br />
-            {pageType === 'article' && this.renderContactInfo()}
-          </div>
-
           {!isEmpty(translatedDocList) && (
-            <TranslatedDocuments defaultDoc={data.files[0]} docs={translatedDocList} />
+            <Fragment>
+              <TextSection className={style.body} text={body} />
+              <TranslatedDocuments defaultDoc={data.files[0]} docs={translatedDocList} />
+            </Fragment>
           )}
-
-          <hr className={style.hr} />
-          <div className={style.summaryContainer}>
-            <div className="column">
-              {showDownload && currentFile && !isEmpty(currentFile.fileUrl) && (
-                <div data-testid="download-button">
-                  <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
-                    {`Download ${currentFileExtension}`}
-                  </Button>
+          {isEmpty(translatedDocList) && (
+            <Fragment>
+              {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
+              <div data-testid="office and contact info" className={style.meta}>
+                {this.renderOfficeInfo()}
+                <br />
+                {pageType === 'article' && this.renderContactInfo()}
+              </div>
+              <hr className={style.hr} />
+              <div className={style.summaryContainer}>
+                <div className="column">
+                  {showDownload && currentFile && !isEmpty(currentFile.fileUrl) && (
+                    <div data-testid="download-button">
+                      <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
+                        {`Download ${currentFileExtension}`}
+                      </Button>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <div className="column">
-              {!isEmpty(data.summary) && <h5 className={style.summary}>{data.summary}</h5>}
-            </div>
-          </div>
-          <div className={style.dash}>
-            <DecorativeDash width={77} />
-          </div>
-          {/* TODO: body style for grid media queries should be baked into text section? */}
-          <TextSection className={style.body} text={body} />
-          <div className={'document-article-related-programs-container ' + style.relatedProgramsContainer}>
-            <hr />
-            <span className={style.relatedPrograms}>Related programs: </span>
-            {data.programs.map((program, index) => {
-              return (
-                <span className="document-article-related-programs-link" key={index}>
-                  <Link
-                    onClick={() => {
-                      return this.handleRelatedPrograms(program)
-                    }}
-                  >
-                    {program}
-                  </Link>
-                  {index === data.programs.length - 1 ? null : ', '}
-                </span>
-              )
-            })}
-            <hr className={style.hr} />
-          </div>
+                <div className="column">
+                  {!isEmpty(data.summary) && <h5 className={style.summary}>{data.summary}</h5>}
+                </div>
+              </div>
+              <div className={style.dash}>
+                <DecorativeDash width={77} />
+              </div>
+              {/* TODO: body style for grid media queries should be baked into text section? */}
+              <TextSection className={style.body} text={body} />
+              <div
+                className={'document-article-related-programs-container ' + style.relatedProgramsContainer}
+              >
+                <hr />
+                <span className={style.relatedPrograms}>Related programs: </span>
+                {data.programs.map((program, index) => {
+                  return (
+                    <span className="document-article-related-programs-link" key={index}>
+                      <Link
+                        onClick={() => {
+                          return this.handleRelatedPrograms(program)
+                        }}
+                      >
+                        {program}
+                      </Link>
+                      {index === data.programs.length - 1 ? null : ', '}
+                    </span>
+                  )
+                })}
+                <hr className={style.hr} />
+              </div>
+            </Fragment>
+          )}
         </div>
       )
     } else {
