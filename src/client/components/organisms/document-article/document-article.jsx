@@ -198,9 +198,8 @@ export class DocumentArticle extends React.Component {
         labelProps.type = type
       }
 
-      const showDownload = !(data.removeDownloadButton && data.removeDownloadButton === true) //explicit because data.removeDownloadButton can be false or {}
       const { translatedDocList } = data
-      console.log('A--', translatedDocList)
+      const showDownload = !(data.removeDownloadButton && data.removeDownloadButton === true) //explicit because data.removeDownloadButton can be false or {}
 
       return (
         <div data-testid="document-article" className={'document-article ' + style.page}>
@@ -223,7 +222,9 @@ export class DocumentArticle extends React.Component {
             {pageType === 'article' && this.renderContactInfo()}
           </div>
 
-          {!isEmpty(translatedDocList) && <TranslatedDocuments data={translatedDocList} />}
+          {!isEmpty(translatedDocList) && (
+            <TranslatedDocuments defaultDoc={data.files[0]} docs={translatedDocList} />
+          )}
 
           <hr className={style.hr} />
           <div className={style.summaryContainer}>
@@ -283,7 +284,7 @@ const Noncompliant508Message = () => {
     </div>
   )
 }
-const TranslatedDocuments = ({ data }) => {
+const TranslatedDocuments = ({ docs, defaultDoc }) => {
   return (
     <div>
       <h3>Applications must be submitted in English.</h3>
@@ -293,7 +294,7 @@ const TranslatedDocuments = ({ data }) => {
       <div className={style.officialSubmissionMessage}>
         <p>
           <strong>English - for official submission</strong> <strong>|</strong>{' '}
-          <a href="#">
+          <a href={defaultDoc.fileUrl} target="_blank">
             Download pdf <FileTypeIcon fileExtension="pdf" />
           </a>
         </p>
@@ -301,7 +302,7 @@ const TranslatedDocuments = ({ data }) => {
       <hr />
       <h5>Languages</h5>
       <h5>Translated Documents</h5>
-      <p>{JSON.stringify(data)}</p>
+      <p>{JSON.stringify(docs)}</p>
     </div>
   )
 }
