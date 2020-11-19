@@ -167,8 +167,19 @@ workflows:
             only:
             - production
             - staging
-    - deploy-package-serverless-with-approval:
+    - upload-package-serverless-with-approval:
         requires: [hold]
+        filters:
+          branches: 
+            ignore:
+            - /.*/
+          tags:
+            only:
+            - staging
+            - production
+        context: sba-gov-upper
+    - deploy-package-serverless-with-approval:
+        requires: [upload-package-serverless-with-approval]
         filters:
           branches: 
             ignore:
@@ -421,7 +432,36 @@ jobs:
 
             sudo npm i -g serverless
             serverless deploy --stage ${ENVIRONMENT}
-
+  upload-package-serverless-with-approval:
+    docker:
+      - image: ussba/cc-docker-git-aws:latest
+    steps:
+      - checkout
+      - attach_workspace:
+          at: workspace
+      - run:
+          name: publish
+          shell: /bin/bash -eo pipefail
+          command: |
+            if [ -z "${CIRCLE_BRANCH}" ]
+            then
+              ENVIRONMENT=${CIRCLE_TAG}
+            else
+              ENVIRONMENT=${CIRCLE_BRANCH}
+            fi
+            export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
+            export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
+            SOURCE_PREFIX=${ENVIRONMENT}
+            case $ENVIRONMENT in
+              production)
+                export ASSET_BUCKET_NAME_PREFIX=www.sba.gov
+                ;;
+              *)
+                export ASSET_BUCKET_NAME_PREFIX=staging.sba.gov
+                ;;
+            esac
+            aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
+            aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
   deploy-package-serverless-with-approval:
     docker:
       - image: cimg/node:12.18
