@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import classNames from 'classnames'
 import moment from 'moment'
 import queryString from 'querystring'
@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { includes, isEmpty, last } from 'lodash'
 
 import style from './document-article.scss'
-import { Button, ContactText, DecorativeDash, Label, Link, TextSection } from 'atoms'
+import { Button, ContactText, DecorativeDash, FileTypeIcon, Label, Link, TextSection } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 import { fetchRestContent } from '../../../../client/fetch-content-helper'
@@ -198,9 +198,8 @@ export class DocumentArticle extends React.Component {
         labelProps.type = type
       }
 
-      const showDownload = !(data.removeDownloadButton && data.removeDownloadButton === true) //explicit because data.removeDownloadButton can be false or {}
       const { translatedDocList } = data
-      console.log('A--', translatedDocList)
+      const showDownload = !(data.removeDownloadButton && data.removeDownloadButton === true) //explicit because data.removeDownloadButton can be false or {}
 
       return (
         <div data-testid="document-article" className={'document-article ' + style.page}>
@@ -214,56 +213,63 @@ export class DocumentArticle extends React.Component {
               {articleIdText}
             </h5>
           )}
-
-          {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
-
-          <div data-testid="office and contact info" className={style.meta}>
-            {this.renderOfficeInfo()}
-            <br />
-            {pageType === 'article' && this.renderContactInfo()}
-          </div>
-
-          {!isEmpty(translatedDocList) && <TranslatedDocuments data={translatedDocList} />}
-
-          <hr className={style.hr} />
-          <div className={style.summaryContainer}>
-            <div className="column">
-              {showDownload && currentFile && !isEmpty(currentFile.fileUrl) && (
-                <div data-testid="download-button">
-                  <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
-                    {`Download ${currentFileExtension}`}
-                  </Button>
+          {!isEmpty(translatedDocList) && (
+            <Fragment>
+              <TextSection className={style.body} text={body} />
+              <TranslatedDocuments defaultDoc={data.files[0]} docs={translatedDocList} />
+            </Fragment>
+          )}
+          {isEmpty(translatedDocList) && (
+            <Fragment>
+              {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
+              <div data-testid="office and contact info" className={style.meta}>
+                {this.renderOfficeInfo()}
+                <br />
+                {pageType === 'article' && this.renderContactInfo()}
+              </div>
+              <hr className={style.hr} />
+              <div className={style.summaryContainer}>
+                <div className="column">
+                  {showDownload && currentFile && !isEmpty(currentFile.fileUrl) && (
+                    <div data-testid="download-button">
+                      <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
+                        {`Download ${currentFileExtension}`}
+                      </Button>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <div className="column">
-              {!isEmpty(data.summary) && <h5 className={style.summary}>{data.summary}</h5>}
-            </div>
-          </div>
-          <div className={style.dash}>
-            <DecorativeDash width={77} />
-          </div>
-          {/* TODO: body style for grid media queries should be baked into text section? */}
-          <TextSection className={style.body} text={body} />
-          <div className={'document-article-related-programs-container ' + style.relatedProgramsContainer}>
-            <hr />
-            <span className={style.relatedPrograms}>Related programs: </span>
-            {data.programs.map((program, index) => {
-              return (
-                <span className="document-article-related-programs-link" key={index}>
-                  <Link
-                    onClick={() => {
-                      return this.handleRelatedPrograms(program)
-                    }}
-                  >
-                    {program}
-                  </Link>
-                  {index === data.programs.length - 1 ? null : ', '}
-                </span>
-              )
-            })}
-            <hr className={style.hr} />
-          </div>
+                <div className="column">
+                  {!isEmpty(data.summary) && <h5 className={style.summary}>{data.summary}</h5>}
+                </div>
+              </div>
+              <div className={style.dash}>
+                <DecorativeDash width={77} />
+              </div>
+              {/* TODO: body style for grid media queries should be baked into text section? */}
+              <TextSection className={style.body} text={body} />
+              <div
+                className={'document-article-related-programs-container ' + style.relatedProgramsContainer}
+              >
+                <hr />
+                <span className={style.relatedPrograms}>Related programs: </span>
+                {data.programs.map((program, index) => {
+                  return (
+                    <span className="document-article-related-programs-link" key={index}>
+                      <Link
+                        onClick={() => {
+                          return this.handleRelatedPrograms(program)
+                        }}
+                      >
+                        {program}
+                      </Link>
+                      {index === data.programs.length - 1 ? null : ', '}
+                    </span>
+                  )
+                })}
+                <hr className={style.hr} />
+              </div>
+            </Fragment>
+          )}
         </div>
       )
     } else {
@@ -283,13 +289,25 @@ const Noncompliant508Message = () => {
     </div>
   )
 }
-const TranslatedDocuments = ({ data }) => {
+const TranslatedDocuments = ({ docs, defaultDoc }) => {
   return (
     <div>
-      <h5>Applications must be submitted in English.</h5>
+      <h3>Applications must be submitted in English.</h3>
+      <p>
+        <em>All documents provided below are for informational purposes only.</em>
+      </p>
+      <div className={style.officialSubmissionMessage}>
+        <p>
+          <strong>English - for official submission</strong> <strong>|</strong>{' '}
+          <a href={defaultDoc.fileUrl} target="_blank">
+            Download pdf <FileTypeIcon fileExtension="pdf" />
+          </a>
+        </p>
+      </div>
+      <hr />
       <h5>Languages</h5>
       <h5>Translated Documents</h5>
-      <p>{JSON.stringify(data)}</p>
+      <p>{JSON.stringify(docs)}</p>
     </div>
   )
 }

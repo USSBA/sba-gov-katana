@@ -103,3 +103,20 @@
     margin-bottom: 40px;
   }
 }
+
+.officialSubmissionMessage {
+  display: inline-block;
+  border: 2px solid #c5c5c5;
+  padding: 0 25px;
+  margin-bottom: 50px;
+
+  strong,
+  a,
+  i {
+    margin-left: 10px;
+  }
+
+  strong:first-child {
+    margin-left: 0;
+  }
+}
