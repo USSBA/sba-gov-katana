@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import moment from 'moment'
 import queryString from 'querystring'
 import PropTypes from 'prop-types'
-import { includes, isEmpty, last } from 'lodash'
+import { chunk, includes, isEmpty, last } from 'lodash'
 
 import style from './document-article.scss'
 import { Button, ContactText, DecorativeDash, FileTypeIcon, Label, Link, TextSection } from 'atoms'
@@ -199,7 +199,8 @@ export class DocumentArticle extends React.Component {
       }
 
       const { translatedDocList } = data
-      const showDownload = !(data.removeDownloadButton && data.removeDownloadButton === true) //explicit because data.removeDownloadButton can be false or {}
+      const showDownload = !(data.removeDownloadButton && data.removeDownloadButton === true)
+      //explicit because data.removeDownloadButton can be false or {}
 
       return (
         <div data-testid="document-article" className={'document-article ' + style.page}>
@@ -290,6 +291,15 @@ const Noncompliant508Message = () => {
   )
 }
 const TranslatedDocuments = ({ docs, defaultDoc }) => {
+  const languages = []
+  docs.forEach(doc => {
+    doc.language.forEach(language => {
+      if (!languages.includes(language)) {
+        languages.push(language)
+      }
+    })
+  })
+
   return (
     <div>
       <h3>Applications must be submitted in English.</h3>
@@ -305,9 +315,20 @@ const TranslatedDocuments = ({ docs, defaultDoc }) => {
         </p>
       </div>
       <hr />
-      <h5>Languages</h5>
-      <h5>Translated Documents</h5>
-      <p>{JSON.stringify(docs)}</p>
+      <div className={style.languages}>
+        <h3>Languages</h3>
+        {chunk(languages, 4).map((list, i) => (
+          <ul key={i}>
+            {list.map((language, j) => (
+              <li key={j}>
+                <a href={`#${language.split(' ')[0].toLowerCase()}`}>{language}</a>
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+      {/* <h5>Translated Documents</h5> */}
+      <p>{/*JSON.stringify(docs)*/}</p>
     </div>
   )
 }

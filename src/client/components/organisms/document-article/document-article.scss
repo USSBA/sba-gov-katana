@@ -120,3 +120,38 @@
     margin-left: 0;
   }
 }
+
+.languages {
+  ul {
+    display: inline-block;
+    width: 49%;
+    vertical-align: top;
+    margin-bottom: 20px;
+    li {
+      margin-bottom: 10px;
+    }
+  }
+
+  @include for-medium-only {
+    h3 {
+      margin-right: 20px;
+    }
+    ul {
+      width: 16%;
+    }
+  }
+
+  @include for-medium-up {
+    display: flex;
+    ul {
+      width: 16%;
+      padding-right: 10px;
+    }
+  }
+
+  @include for-large-up {
+    h3 {
+      width: 16%;
+    }
+  }
+}
