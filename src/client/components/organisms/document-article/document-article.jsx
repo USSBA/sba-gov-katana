@@ -217,7 +217,7 @@ export class DocumentArticle extends React.Component {
           {!isEmpty(translatedDocList) && (
             <Fragment>
               <TextSection className={style.body} text={body} />
-              <TranslatedDocuments defaultDoc={data.files[0]} docs={translatedDocList} />
+              <TranslatedDocuments defaultDoc={data.files[0]} list={translatedDocList} />
             </Fragment>
           )}
           {isEmpty(translatedDocList) && (
@@ -290,10 +290,10 @@ const Noncompliant508Message = () => {
     </div>
   )
 }
-const TranslatedDocuments = ({ docs, defaultDoc }) => {
+const TranslatedDocuments = ({ list, defaultDoc }) => {
   const languages = []
-  docs.forEach(doc => {
-    doc.language.forEach(language => {
+  list.forEach(item => {
+    item.language.forEach(language => {
       if (!languages.includes(language)) {
         languages.push(language)
       }
@@ -317,9 +317,9 @@ const TranslatedDocuments = ({ docs, defaultDoc }) => {
       <hr />
       <div className={style.languages}>
         <h3>Languages</h3>
-        {chunk(languages, 4).map((list, i) => (
+        {chunk(languages, 4).map((languageList, i) => (
           <ul key={i}>
-            {list.map((language, j) => (
+            {languageList.map((language, j) => (
               <li key={j}>
                 <a href={`#${language.split(' ')[0].toLowerCase()}`}>{language}</a>
               </li>
@@ -327,8 +327,41 @@ const TranslatedDocuments = ({ docs, defaultDoc }) => {
           </ul>
         ))}
       </div>
-      {/* <h5>Translated Documents</h5> */}
-      <p>{/*JSON.stringify(docs)*/}</p>
+      <div className={style.list}>
+        <h4>Translated Documents</h4>
+        <ul>
+          {list
+            .filter(item => !isEmpty(item.language))
+            .map((item, i) => {
+              return (
+                <li
+                  key={i}
+                  className={style.button}
+                  role="button"
+                  onClick={() => {
+                    window.open(item.translatedDocFile.url, '_blank')
+                  }}
+                >
+                  <p>
+                    <strong>{item.language}</strong>
+                  </p>
+                  <div className={style.colA}>
+                    <p>
+                      <em>{item.translatedDocFile.description}</em>
+                    </p>
+                    <p className={style.warningLabel}>Solicitud de condonación de préstamos PPP</p>
+                  </div>
+                  <div className={style.colB}>
+                    <a className={style.link} href={item.translatedDocFile.url} target="_blank">
+                      <strong>Download pdf</strong> <FileTypeIcon fileExtension="pdf" />
+                    </a>
+                  </div>
+                  <div className={style.clear} />
+                </li>
+              )
+            })}
+        </ul>
+      </div>
     </div>
   )
 }
