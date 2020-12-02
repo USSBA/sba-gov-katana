@@ -174,7 +174,8 @@
       &.button {
         cursor: pointer;
 
-        &:hover {
+        &:hover,
+        &:focus {
           > p {
             color: #057dbc;
           }
