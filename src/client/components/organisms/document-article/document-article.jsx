@@ -354,7 +354,7 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
         'Dapat isumite sa Ingles ang mga aplikasyon. Ang lahat ng mga dokumento na ibinigay sa ibaba ay para sa mga layuning pang-impormasyon lamang.'
     },
     {
-      language: 'hatian creole',
+      language: 'haitian creole',
       prefix: 'Kreyòl Ayisyen',
       text:
         'Aplikasyon yo dwe depoze nan lang anglè. Tout dokiman ki disponib pi ba la yo se pou enfòmasyon w sèlman.'
