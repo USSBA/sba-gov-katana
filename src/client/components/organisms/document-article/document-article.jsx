@@ -333,6 +333,7 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
     },
     {
       language: 'arabic',
+      prefix: 'العربية',
       text: ' يجب تقديم الطلبات باللغة الإنجليزية.\nجميع المستندات المقدمة أدناه هي لأغراض إعلامية فقط.'
     },
     {
@@ -407,9 +408,7 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
               item.prefix = disclaimer.prefix.traditional
             } else {
               item.disclaimer = disclaimer.text
-              if (!isEmpty(disclaimer.prefix)) {
-                item.prefix = disclaimer.prefix
-              }
+              item.prefix = disclaimer.prefix
             }
           }
           return bool
