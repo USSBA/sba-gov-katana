@@ -440,7 +440,7 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
           <ul key={i}>
             {list.map((item, j) => (
               <li key={j}>
-                <a href={`#${item.language[0].replace(' ', '-').toLowerCase()}`}>{item.language[0]}</a>
+                <a href={`#${item.language[0].replace(' ', '-').toLowerCase()}`}>{item.prefix}</a>
               </li>
             ))}
           </ul>
