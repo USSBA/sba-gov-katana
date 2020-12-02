@@ -291,7 +291,7 @@ const Noncompliant508Message = () => {
   )
 }
 const TranslatedDocuments = ({ docList, defaultDoc }) => {
-  const notices = [
+  const disclaimers = [
     {
       language: 'spanish',
       prefix: 'Español',
@@ -396,19 +396,19 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
       if (!isEmpty(listItem.language)) {
         const language = listItem.language[0].toLowerCase()
         const item = Object.assign({}, listItem)
-        notices.find(notice => {
-          const bool = language.includes(notice.language)
+        disclaimers.find(disclaimer => {
+          const bool = language.includes(disclaimer.language)
           if (bool) {
             if (language.includes('chinese') && language.includes('simplified')) {
-              item.notice = notice.text.simplified
-              item.prefix = notice.prefix.simplified
+              item.disclaimer = disclaimer.text.simplified
+              item.prefix = disclaimer.prefix.simplified
             } else if (language.includes('chinese') && language.includes('traditional')) {
-              item.notice = notice.text.traditional
-              item.prefix = notice.prefix.traditional
+              item.disclaimer = disclaimer.text.traditional
+              item.prefix = disclaimer.prefix.traditional
             } else {
-              item.notice = notice.text
-              if (!isEmpty(notice.prefix)) {
-                item.prefix = notice.prefix
+              item.disclaimer = disclaimer.text
+              if (!isEmpty(disclaimer.prefix)) {
+                item.prefix = disclaimer.prefix
               }
             }
           }
@@ -465,9 +465,9 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
               </p>
               <div className={style.colA}>
                 <p>
-                  <em>{item.translatedDocFile.description}</em>
+                  <em>{item.disclaimer}</em>
                 </p>
-                <p className={style.notice}>{item.notice}</p>
+                <p className={style.title}>{item.title}</p>
               </div>
               <div className={style.colB}>
                 <a className={style.link} href={item.translatedDocFile.url} target="_blank">
