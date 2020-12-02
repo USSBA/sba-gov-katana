@@ -185,6 +185,11 @@
         }
       }
 
+      &:focus {
+        outline: 2px dotted #c5c5c5;
+        outline-offset: 3px;
+      }
+
       > p {
         color: $sba-blue;
         font-weight: bold;
@@ -199,7 +204,7 @@
           margin-left: 0;
         }
       }
-      .warningLabel {
+      .notice {
         text-decoration: underline;
       }
       .clear {
