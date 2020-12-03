@@ -217,7 +217,7 @@ export class DocumentArticle extends React.Component {
           {!isEmpty(translatedDocList) && (
             <Fragment>
               <TextSection className={style.body} text={body} />
-              <TranslatedDocuments defaultDoc={data.files[0]} docs={translatedDocList} />
+              <TranslatedDocuments defaultDoc={data.files[0]} docList={translatedDocList} />
             </Fragment>
           )}
           {isEmpty(translatedDocList) && (
@@ -290,21 +290,139 @@ const Noncompliant508Message = () => {
     </div>
   )
 }
-const TranslatedDocuments = ({ docs, defaultDoc }) => {
-  const languages = []
-  docs.forEach(doc => {
-    doc.language.forEach(language => {
-      if (!languages.includes(language)) {
-        languages.push(language)
+const TranslatedDocuments = ({ docList, defaultDoc }) => {
+  const disclaimers = [
+    {
+      language: 'spanish',
+      prefix: 'Español',
+      text:
+        'Las solicitudes deben presentarse en inglés. Todos los siguientes documentos se ofrecen solo con fines informativos y como referencia para usted.'
+    },
+    {
+      language: 'vietnamese',
+      prefix: 'Tiếng Việt',
+      text:
+        'Các đơn đăng ký phải được nộp bằng tiếng Anh. Tất cả các tài liệu dưới đây chỉ phục vụ mục đích cung cấp thông tin.'
+    },
+    {
+      language: 'korean',
+      prefix: '한국어',
+      text: '신청서는 드시 영어로 제출해야 합니다. 아래 문서는 모두 정보 제공 목적으로만 제공됩니다.'
+    },
+    {
+      language: 'chinese',
+      prefix: {
+        simplified: '中文简体',
+        traditional: '中文繁軆'
+      },
+      text: {
+        simplified: '您必须以英文提交申请。 以下提供的所有文件仅供参考。',
+        traditional: '您必須以英文提交申請。 以下提供的所有文檔僅供參考。'
       }
+    },
+    {
+      language: 'japanese',
+      prefix: '日本語',
+      text: '申請は英語で行う必要があります。以下の文書は全て情報提供のみを目的とします。'
+    },
+    {
+      language: 'russian',
+      prefix: 'русский язык',
+      text:
+        'Заявки должны подаваться на английском языке. Все представленные ниже документы предназначены только для ознакомительных целей.'
+    },
+    {
+      language: 'arabic',
+      prefix: 'العربية',
+      text: ' يجب تقديم الطلبات باللغة الإنجليزية.\nجميع المستندات المقدمة أدناه هي لأغراض إعلامية فقط.'
+    },
+    {
+      language: 'french',
+      prefix: 'Français',
+      text:
+        'Les demandes doivent être présentées en anglais.  Tous les documents fournis ci-dessous le sont à titre informatif uniquement.'
+    },
+    {
+      language: 'portugues',
+      prefix: 'Português',
+      text:
+        'As inscrições devem obrigatoriamente ser enviadas em inglês.  Os documentos abaixo são disponibilizados somente para fins informativos.'
+    },
+    {
+      language: 'tagalog',
+      prefix: 'Tagalog',
+      text:
+        'Dapat isumite sa Ingles ang mga aplikasyon. Ang lahat ng mga dokumento na ibinigay sa ibaba ay para sa mga layuning pang-impormasyon lamang.'
+    },
+    {
+      language: 'haitian creole',
+      prefix: 'Kreyòl Ayisyen',
+      text:
+        'Aplikasyon yo dwe depoze nan lang anglè. Tout dokiman ki disponib pi ba la yo se pou enfòmasyon w sèlman.'
+    },
+    {
+      language: 'german',
+      prefix: 'Deutsche',
+      text:
+        'Müssen die Anträge in Englisch ausgefüllt und eingereicht werden.  Alle unten zur Verfügung gestellte Dokumente dienen rein informativen Zwecken.'
+    },
+    {
+      language: 'hindi',
+      prefix: 'हिन्दी भाषा',
+      text:
+        'आवेदन अंग्रेजी में प्रस्तुत किए जाने चाहिए। नीचे दिए गए सभी दस्तावेज़ केवल सूचना के उद्देश्यों के लिए हैं।'
+    },
+    {
+      language: 'italian',
+      prefix: 'Italiano',
+      text:
+        'Le richieste devono essere presentate in inglese.  Tutti i documenti forniti in seguito hanno unicamente scopi informativi.'
+    },
+    {
+      language: 'polish',
+      prefix: 'Polski',
+      text:
+        'Wnioski należy składać w języku angielskim. Wszystkie przedstawione poniżej dokumenty mają charakter wyłącznie informacyjny.'
+    },
+    {
+      language: 'gujarati',
+      prefix: 'ગુજરાતી',
+      text:
+        'અરજીઓને અંગ્રેજીમાં રજૂ કરવી આવશ્યક છે.  નીચે આપેલા તમામ દસ્તાવેજો માત્ર માહિતીના હેતુ માટે છે.'
+    }
+  ]
+  const languageList = docList
+    .map(listItem => {
+      let result = null
+      if (!isEmpty(listItem.language)) {
+        const language = listItem.language[0].toLowerCase()
+        const item = Object.assign({}, listItem)
+        disclaimers.find(disclaimer => {
+          const bool = language.includes(disclaimer.language)
+          if (bool) {
+            if (language.includes('chinese') && language.includes('simplified')) {
+              item.disclaimer = disclaimer.text.simplified
+              item.prefix = disclaimer.prefix.simplified
+            } else if (language.includes('chinese') && language.includes('traditional')) {
+              item.disclaimer = disclaimer.text.traditional
+              item.prefix = disclaimer.prefix.traditional
+            } else {
+              item.disclaimer = disclaimer.text
+              item.prefix = disclaimer.prefix
+            }
+          }
+          return bool
+        })
+        result = item
+      }
+      return result
     })
-  })
-
+    .filter(item => item !== null)
   return (
-    <div>
-      <h3>Applications must be submitted in English.</h3>
+    <Fragment>
+      <h3>Your application must be submitted in English.</h3>
       <p>
-        <em>All documents provided below are for informational purposes only.</em>
+        <em>All documents below are for your reference only.</em>
       </p>
       <div className={style.officialSubmissionMessage}>
         <p>
@@ -317,19 +435,50 @@ const TranslatedDocuments = ({ docs, defaultDoc }) => {
       <hr />
       <div className={style.languages}>
         <h3>Languages</h3>
-        {chunk(languages, 4).map((list, i) => (
+        {chunk(languageList, 4).map((list, i) => (
           <ul key={i}>
-            {list.map((language, j) => (
+            {list.map((item, j) => (
               <li key={j}>
-                <a href={`#${language.split(' ')[0].toLowerCase()}`}>{language}</a>
+                <a href={`#${item.language[0].replace(' ', '-').toLowerCase()}`}>{item.prefix}</a>
               </li>
             ))}
           </ul>
         ))}
       </div>
-      {/* <h5>Translated Documents</h5> */}
-      <p>{/*JSON.stringify(docs)*/}</p>
-    </div>
+      <div className={style.list}>
+        <h4>Translated Documents</h4>
+        <ul>
+          {languageList.map((item, i) => (
+            <li
+              key={i}
+              className={style.button}
+              role="button"
+              tabIndex="0"
+              onClick={() => {
+                window.open(item.translatedDocFile.url, '_blank')
+              }}
+            >
+              <p id={item.language[0].replace(' ', '-').toLowerCase()}>
+                {!isEmpty(item.prefix) && <strong>{item.prefix} | </strong>}
+                <strong>{item.language}</strong>
+              </p>
+              <div className={style.colA}>
+                <p>
+                  <em>{item.disclaimer}</em>
+                </p>
+                <p className={style.title}>{item.title}</p>
+              </div>
+              <div className={style.colB}>
+                <a className={style.link} href={item.translatedDocFile.url} target="_blank">
+                  <strong>Download pdf</strong> <FileTypeIcon fileExtension="pdf" />
+                </a>
+              </div>
+              <div className={style.clear} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Fragment>
   )
 }
 DocumentArticle.propTypes = {
