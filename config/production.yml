@@ -21,7 +21,7 @@ features:
         tableName: UrlToUrlRedirectProduction
         enabled: true
     breakEvenCalculator:
-        enabled: false
+        enabled: true
 aws:
   cloudsearch:
     searchEndpoint: 'doc-production-b4waq4e3rl6daphct5rtlxjmmm.us-east-1.cloudsearch.amazonaws.com'
