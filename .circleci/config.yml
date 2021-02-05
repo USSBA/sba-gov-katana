@@ -32,6 +32,7 @@ workflows:
             only:
             - mint
             - qa
+            - demo
             - /int-\w+/ 
     - cache-dependencies-upper:
         filters:
@@ -101,6 +102,7 @@ workflows:
             - staging
             - mint
             - qa
+            - demo
             - /int-\w+/
             - /RELEASE-\d+/
     - build-package:
@@ -117,6 +119,7 @@ workflows:
             - staging
             - mint
             - qa
+            - demo
             - /int-\w+/
             - /RELEASE-\d+/
     - upload-package:
@@ -130,6 +133,7 @@ workflows:
             only:
             - mint
             - qa
+            - demo
             - /int-\w+/
             - /RELEASE-\d+/
         context: sba-gov-lower
@@ -155,6 +159,7 @@ workflows:
             only:
             - mint
             - qa
+            - demo
         context: sba-gov-lower
     - hold:
         type: approval

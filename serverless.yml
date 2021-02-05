@@ -51,6 +51,11 @@ custom:
       account_type_uppercase: LOWER
       dynamo_table_suffix: QualityAssurance
       content_url: qa.ussba.io
+    demo:
+      account_type: lower
+      account_type_uppercase: LOWER
+      dynamo_table_suffix: Demo
+      content_url: demo.ussba.io
     staging:
       account_type: upper
       account_type_uppercase: UPPER
