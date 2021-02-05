@@ -156,7 +156,7 @@ class BreakEvenCalculatorPage extends React.Component {
                   </li>
                 </ul>
                 <div className={styles.buttonContainer}>
-                  <Button primary url="breakevenpointcalculator/calculate">
+                  <Button primary url="breakevenpointcalculator/calculate/">
                     Start Analysis
                   </Button>
                 </div>
