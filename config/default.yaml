@@ -7,7 +7,7 @@ developmentOptions:
         enabled: false
         silent: false
     assets:
-      endpoint: placeholder
+      endpoint: development_assets_placeholder
 govdelivery:
     popupEnabled: false
 foresee:
@@ -19,10 +19,10 @@ googleAnalytics:
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-WN49BK2
     debug: false
-googleMapsApiKey: placeholder
+googleMapsApiKey: googlemaps_placeholder
 server:
     port: 3000
-    fqdn: placeholder
+    fqdn: server_fqdn_placeholder
 counselorCta:
     nodeId: 6
 features:
@@ -32,7 +32,7 @@ features:
     geoLocator: false
     searchUrl: "/search/?q="
     urlRedirect:
-        tableName: placeholder
+        tableName: features_urlredirect_tablename_placeholder
         enabled: false
     drupalRedirect:
         enabled: false
@@ -44,20 +44,20 @@ features:
     breakEvenCalculator:
         enabled: false
 sizestandards:
-    endpoint: placeholder
+    endpoint: sizestandards_placeholder
 loanprocessing:
-    endpoint: placeholder
+    endpoint: loanprocessing_placeholder
 aws:
   cloudsearch:
     searchEndpoint: 'doc-mint-hdgvyg66mwvfnu46tzaszesh5u.us-east-1.cloudsearch.amazonaws.com'
     officeEndpoint: 'doc-mint-offices-mjhazqnua7k5nqkxojddfhkrw4.us-east-1.cloudsearch.amazonaws.com'
     zipCodeDynamoDBTableName: ZipCodesLower
   dynamodb:
-    endpoint: placeholder
+    endpoint: aws_dynamodb_placeholder
 content:
-  endpoint: placeholder
+  endpoint: content_placeholder
 miscapi:
-  endpoint: placeholder
+  endpoint: miscapi_placeholder
 meta:
   title: 'Small Business Administration'
   description: "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business."
