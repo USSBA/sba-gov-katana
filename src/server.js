@@ -49,18 +49,18 @@ app.use(function(req, res, next) {
   }
 
   const requestPath = req.path
-  let requestPathWithoutTraillingSlack
-  requestPathWithoutTraillingSlack =
+  let requestPathWithoutTrailingSlash
+  requestPathWithoutTrailingSlash =
     requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
 
   if (config.get('features.breakEvenCalculator.enabled')) {
-    requestPathWithoutTraillingSlack =
-      requestPathWithoutTraillingSlack === '/breakevenpointcalculator'
+    requestPathWithoutTrailingSlash =
+      requestPathWithoutTrailingSlash === '/breakevenpointcalculator'
         ? '/page/break-even-point'
-        : requestPathWithoutTraillingSlack
+        : requestPathWithoutTrailingSlash
   }
 
-  findNodeIdByUrl(requestPathWithoutTraillingSlack)
+  findNodeIdByUrl(requestPathWithoutTrailingSlash)
     .then(({ nodeId, langCode, type }) => {
       let responseStatus = httpStatus.OK
       if (!nodeId && config.get('features.true404')) {

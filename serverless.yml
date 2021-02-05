@@ -6,17 +6,17 @@ enableLocalInstallationFallback: true
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: ${opt:stage, 'mint'} # Set the default stage used. Default is mint
+  stage: ${opt:stage} # Set the default stage used. Default is mint
   region: ${opt:region, 'us-east-1'}
   vpc:
-    subnetIds: ${ssm:/${self:provider.stage}/network/private_subnet_ids}
+    subnetIds: ${ssm:/${self:custom.env.ssm_prefix, self:provider.stage}/network/private_subnet_ids}
     #securityGroupIds: []
   apiGateway:
-    restApiId: ${ssm:/${self:provider.stage}/katana/apigw_id}
-    restApiRootResourceId: ${ssm:/${self:provider.stage}/katana/apigw_root_resource_id}
-  role: ${ssm:/${self:provider.stage}/katana/lambda_role_arn}
+    restApiId: ${ssm:/${self:custom.env.ssm_prefix, self:provider.stage}/katana${self:custom.env.ssm_apigw_prefix, ""}/apigw_id}
+    restApiRootResourceId: ${ssm:/${self:custom.env.ssm_prefix, self:provider.stage}/katana${self:custom.env.ssm_apigw_prefix, ""}/apigw_root_resource_id}
+  role: ${ssm:/${self:custom.env.ssm_prefix, self:provider.stage}/katana/lambda_role_arn}
   environment: # Service-wide environment variables
-    NODE_ENV: ${self:provider.stage}
+    NODE_ENV: ${self:custom.env.node_env, self:provider.stage}
     GOOGLE_MAPS_API_KEY: ${ssm:${self:custom.env.account_type_uppercase}_GOOGLE_MAPS_API_KEY}
     CONTENT_URL: ${self:custom.env.content_url}
 
@@ -33,6 +33,14 @@ functions:
       - http: "ANY {proxy+}"
 custom:
   config:
+    default:
+      node_env: mint
+      ssm_prefix: mint
+      ssm_apigw_prefix: -dev/${self:provider.stage}
+      account_type: lower
+      account_type_uppercase: LOWER
+      dynamo_table_suffix: Integration
+      content_url: mint.ussba.io
     mint:
       account_type: lower
       account_type_uppercase: LOWER
@@ -53,4 +61,4 @@ custom:
       account_type_uppercase: UPPER
       dynamo_table_suffix: Production
       content_url: www.sba.gov
-  env: ${self:custom.config.${self:provider.stage}}
+  env: ${self:custom.config.${self:provider.stage}, self:custom.config.default}
