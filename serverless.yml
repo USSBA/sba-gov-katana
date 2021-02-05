@@ -9,12 +9,12 @@ provider:
   stage: ${opt:stage} # Set the default stage used. Default is mint
   region: ${opt:region, 'us-east-1'}
   vpc:
-    subnetIds: ${ssm:/${self:custom.env.ssm_prefix, self:provider.stage}/network/private_subnet_ids}
+    subnetIds: ${ssm:/${self:custom.ssm_prefix}/network/private_subnet_ids}
     #securityGroupIds: []
   apiGateway:
-    restApiId: ${ssm:/${self:custom.env.ssm_prefix, self:provider.stage}/katana${self:custom.env.ssm_apigw_prefix, ""}/apigw_id}
-    restApiRootResourceId: ${ssm:/${self:custom.env.ssm_prefix, self:provider.stage}/katana${self:custom.env.ssm_apigw_prefix, ""}/apigw_root_resource_id}
-  role: ${ssm:/${self:custom.env.ssm_prefix, self:provider.stage}/katana/lambda_role_arn}
+    restApiId: ${ssm:/${self:custom.ssm_prefix}/${self:custom.ssm_apigw_katana_path}/apigw_id}
+    restApiRootResourceId: ${ssm:/${self:custom.ssm_prefix}/${self:custom.ssm_apigw_katana_path}/apigw_root_resource_id}
+  role: ${ssm:/${self:custom.ssm_prefix}/katana/lambda_role_arn}
   environment: # Service-wide environment variables
     NODE_ENV: ${self:custom.env.node_env, self:provider.stage}
     GOOGLE_MAPS_API_KEY: ${ssm:${self:custom.env.account_type_uppercase}_GOOGLE_MAPS_API_KEY}
@@ -36,7 +36,7 @@ custom:
     default:
       node_env: mint
       ssm_prefix: mint
-      ssm_apigw_prefix: -dev/${self:provider.stage}
+      ssm_apigw_katana_path: katana-dev/${self:provider.stage}
       account_type: lower
       account_type_uppercase: LOWER
       dynamo_table_suffix: Integration
@@ -62,3 +62,5 @@ custom:
       dynamo_table_suffix: Production
       content_url: www.sba.gov
   env: ${self:custom.config.${self:provider.stage}, self:custom.config.default}
+  ssm_prefix: ${self:custom.env.ssm_prefix, self:provider.stage}
+  ssm_apigw_katana_path: ${self:custom.env.ssm_apigw_katana_path, "katana"}

@@ -19,7 +19,7 @@ googleAnalytics:
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-WN49BK2
     debug: false
-googleMapsApiKey: gooblemapsapikey_placeholder
+googleMapsApiKey: googlemaps_placeholder
 server:
     port: 3000
     fqdn: server_fqdn_placeholder
@@ -32,7 +32,7 @@ features:
     geoLocator: false
     searchUrl: "/search/?q="
     urlRedirect:
-        tableName: placeholder
+        tableName: features_urlredirect_tablename_placeholder
         enabled: false
     drupalRedirect:
         enabled: false
