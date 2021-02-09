@@ -4,8 +4,8 @@ googleAnalytics:
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-WN49BK2
     debug: false
-# miscapi:
-#   endpoint: mpmhqtea8g.execute-api.us-east-1.amazonaws.com/latest/
+miscapi:
+  endpoint: miscapi_placeholder
 server:
     fqdn: demo.ussba.io
 features:
