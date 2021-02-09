@@ -234,7 +234,7 @@ app.get('/isSmallBusiness', (req, res, next) => {
   fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
 
-if (config.get('developmentOptions.webpack.enabled')) {
+if (config.get('developmentOptions.webpack.enabled') || config.get('developmentOptions.assets.external')) {
   app.get('/sites/default/files/*', (req, res, next) => {
     const url = `https://${config.get('developmentOptions.assets.endpoint')}${req.path}`
     console.log('Calling ' + url)
