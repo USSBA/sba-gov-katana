@@ -32,6 +32,7 @@ workflows:
             only:
             - mint
             - qa
+            - demo
             - /int-\w+/
             - /deploy-\w+/
     - cache-dependencies-upper:
@@ -102,6 +103,7 @@ workflows:
             - staging
             - mint
             - qa
+            - demo
             - /int-\w+/
             - /RELEASE-\d+/
             - /deploy-\w+/
@@ -119,6 +121,7 @@ workflows:
             - staging
             - mint
             - qa
+            - demo
             - /int-\w+/
             - /RELEASE-\d+/
             - /deploy-\w+/
@@ -133,6 +136,7 @@ workflows:
             only:
             - mint
             - qa
+            - demo
             - /int-\w+/
             - /RELEASE-\d+/
         context: sba-gov-lower
@@ -158,6 +162,7 @@ workflows:
             only:
             - mint
             - qa
+            - demo
             - /deploy-\w+/
         context: sba-gov-lower
     - hold:
@@ -351,17 +356,11 @@ jobs:
               mint)	
                 export ASSET_BUCKET_NAME_PREFIX=mint.ussba.io	
                 ;;
-              qa)
-                export ASSET_BUCKET_NAME_PREFIX=qa.ussba.io
-                ;;
-              int-as)
-                export ASSET_BUCKET_NAME_PREFIX=avery.ussba.io
+              demo)
+                export ASSET_BUCKET_NAME_PREFIX=demo.ussba.io
                 ;;
               int-bl)
                 export ASSET_BUCKET_NAME_PREFIX=brian.ussba.io
-                ;;
-              int-rh)
-                export ASSET_BUCKET_NAME_PREFIX=ryan.ussba.io
                 ;;
               *)
                 export ASSET_BUCKET_NAME_PREFIX=${ENVIRONMENT}
@@ -370,7 +369,12 @@ jobs:
 
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
-            aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${ENVIRONMENT}/katana-lambda.zip"
+
+            if [ "$ENVIRONMENT" == "int-bl" ]	
+            then	
+              aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${ENVIRONMENT}/katana-lambda.zip"
+            fi	
+
   deploy-package-aws:
     docker:
       - image: ussba/cc-docker-git-aws:latest
