@@ -1,0 +1,35 @@
+developmentOptions:
+    client:
+        logging: true
+    assets:
+      external: true
+      endpoint: mint.ussba.io
+googleAnalytics:
+    enabled: true
+    accountId: UA-96147768-1
+    optimizeContainerId: GTM-NPDXPPF
+    tagManagerAccountId: GTM-WN49BK2
+    debug: false
+foresee:
+    environment: staging
+miscapi:
+  endpoint: mpmhqtea8g.execute-api.us-east-1.amazonaws.com/latest/
+loanprocessing:
+    endpoint: mint.ussba.io/api/loan-processing
+server:
+    fqdn: mint.ussba.io
+features:
+    localAssistMenuHeight: true
+    geoLocator: false
+    showSbic: false
+    urlRedirect:
+        tableName: UrlToNodeIntegration
+        enabled: true
+    drupalRedirect:
+        enabled: true
+        tableName: UrlToUrlRedirectIntegration
+    breakEvenCalculator:
+        enabled: true
+content:
+    cloudfront: d32xeasjw66w65.cloudfront.net
+    useD8EventsBackend: false

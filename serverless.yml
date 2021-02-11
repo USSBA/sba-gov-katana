@@ -6,7 +6,7 @@ enableLocalInstallationFallback: true
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: ${opt:stage} # Set the default stage used. Default is mint
+  stage: ${opt:stage}
   region: ${opt:region, 'us-east-1'}
   vpc:
     subnetIds: ${ssm:/${self:custom.ssm_prefix}/network/private_subnet_ids}
@@ -34,7 +34,7 @@ functions:
 custom:
   config:
     default:
-      node_env: mint
+      node_env: mintDev
       ssm_prefix: mint
       ssm_apigw_katana_path: katana-dev/${self:provider.stage}
       account_type: lower
