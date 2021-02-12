@@ -51,6 +51,11 @@ custom:
       account_type_uppercase: LOWER
       dynamo_table_suffix: QualityAssurance
       content_url: qa.ussba.io
+    venus:
+      account_type: lower
+      account_type_uppercase: LOWER
+      dynamo_table_suffix: Venus
+      content_url: venus.ussba.io
     demo:
       account_type: lower
       account_type_uppercase: LOWER

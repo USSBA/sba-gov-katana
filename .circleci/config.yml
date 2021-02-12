@@ -33,6 +33,7 @@ workflows:
             - mint
             - qa
             - demo
+            - venus
             - /int-\w+/
             - /deploy-\w+/
     - cache-dependencies-upper:
@@ -104,6 +105,7 @@ workflows:
             - mint
             - qa
             - demo
+            - venus
             - /int-\w+/
             - /RELEASE-\d+/
             - /deploy-\w+/
@@ -122,6 +124,7 @@ workflows:
             - mint
             - qa
             - demo
+            - venus
             - /int-\w+/
             - /RELEASE-\d+/
             - /deploy-\w+/
@@ -137,6 +140,7 @@ workflows:
             - mint
             - qa
             - demo
+            - venus
             - /int-\w+/
             - /RELEASE-\d+/
         context: sba-gov-lower
@@ -162,6 +166,7 @@ workflows:
             only:
             - mint
             - qa
+            - venus
             - demo
             - /deploy-\w+/
         context: sba-gov-lower
@@ -358,6 +363,9 @@ jobs:
                 ;;
               demo)
                 export ASSET_BUCKET_NAME_PREFIX=demo.ussba.io
+                ;;
+              venus)
+                export ASSET_BUCKET_NAME_PREFIX=venus.ussba.io
                 ;;
               int-bl)
                 export ASSET_BUCKET_NAME_PREFIX=brian.ussba.io
