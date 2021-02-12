@@ -7,22 +7,16 @@ googleAnalytics:
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-WN49BK2
     debug: false
-foresee:
-    environment: staging
-miscapi:
-  endpoint: 9hculkgtb7.execute-api.us-east-1.amazonaws.com/latest/
-loanprocessing:
-    endpoint: avery.ussba.io/api/loan-processing
 server:
-    fqdn: avery.ussba.io
+    fqdn: venus.ussba.io
 features:
     showSbic: false
     urlRedirect:
-        tableName: UrlToNodeAvery
+        tableName: UrlToNodeVenus
         enabled: true
     drupalRedirect:
         enabled: true
-        tableName: UrlToUrlRedirectAvery
+        tableName: UrlToUrlRedirectVenus
 content:
-    cloudfront: d8ptg6c733nbj.cloudfront.net
+    cloudfront: d296wys6s7bkek.cloudfront.net
     useD8EventsBackend: false
