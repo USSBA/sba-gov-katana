@@ -32,7 +32,10 @@ workflows:
             only:
             - mint
             - qa
-            - /int-\w+/ 
+            - demo
+            - venus
+            - /int-\w+/
+            - /deploy-\w+/
     - cache-dependencies-upper:
         filters:
           branches:
@@ -42,9 +45,9 @@ workflows:
             only:
             - staging
             - production
-        context: snyk   
+        context: snyk
     - test-jest:
-        requires: 
+        requires:
           - cache-dependencies-lower
           - cache-dependencies-upper
         filters:
@@ -101,8 +104,11 @@ workflows:
             - staging
             - mint
             - qa
+            - demo
+            - venus
             - /int-\w+/
             - /RELEASE-\d+/
+            - /deploy-\w+/
     - build-package:
         requires: [build-webpack]
         filters:
@@ -117,8 +123,11 @@ workflows:
             - staging
             - mint
             - qa
+            - demo
+            - venus
             - /int-\w+/
             - /RELEASE-\d+/
+            - /deploy-\w+/
     - upload-package:
         requires: [build-package]
         filters:
@@ -130,6 +139,8 @@ workflows:
             only:
             - mint
             - qa
+            - demo
+            - venus
             - /int-\w+/
             - /RELEASE-\d+/
         context: sba-gov-lower
@@ -146,7 +157,7 @@ workflows:
             - /RELEASE-\d+/
         context: sba-gov-lower
     - deploy-package-serverless:
-        requires: [upload-package]
+        requires: [build-package]
         filters:
           branches: 
             only:
@@ -155,6 +166,9 @@ workflows:
             only:
             - mint
             - qa
+            - venus
+            - demo
+            - /deploy-\w+/
         context: sba-gov-lower
     - hold:
         type: approval
@@ -347,17 +361,14 @@ jobs:
               mint)	
                 export ASSET_BUCKET_NAME_PREFIX=mint.ussba.io	
                 ;;
-              qa)
-                export ASSET_BUCKET_NAME_PREFIX=qa.ussba.io
+              demo)
+                export ASSET_BUCKET_NAME_PREFIX=demo.ussba.io
                 ;;
-              int-as)
-                export ASSET_BUCKET_NAME_PREFIX=avery.ussba.io
+              venus)
+                export ASSET_BUCKET_NAME_PREFIX=venus.ussba.io
                 ;;
               int-bl)
                 export ASSET_BUCKET_NAME_PREFIX=brian.ussba.io
-                ;;
-              int-rh)
-                export ASSET_BUCKET_NAME_PREFIX=ryan.ussba.io
                 ;;
               *)
                 export ASSET_BUCKET_NAME_PREFIX=${ENVIRONMENT}
@@ -366,7 +377,12 @@ jobs:
 
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
-            aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${ENVIRONMENT}/katana-lambda.zip"
+
+            if [ "$ENVIRONMENT" == "int-bl" ]	
+            then	
+              aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${ENVIRONMENT}/katana-lambda.zip"
+            fi	
+
   deploy-package-aws:
     docker:
       - image: ussba/cc-docker-git-aws:latest
@@ -374,7 +390,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: workspace
-      - run:
+      - deploy:
           name: deploy
           shell: /bin/bash -eo pipefail
           command: |
@@ -405,33 +421,30 @@ jobs:
             aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${ENVIRONMENT}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
   deploy-package-serverless:
     docker:
-        - image: cimg/node:12.18
+      - image: cimg/node:12.18
     steps:
       - checkout
       - attach_workspace:
           at: workspace
-      - run:
+      - deploy:
           name: deploy
           shell: /bin/bash -eo pipefail
           command: |
-            if [ -z "${CIRCLE_BRANCH}" ]	       
-            then	
-              TARGET_ENVIRONMENT=${CIRCLE_TAG}	
-            else	
-              TARGET_ENVIRONMENT=${CIRCLE_BRANCH}	
-            fi	
-
-            case $TARGET_ENVIRONMENT in	
-              master)	
-                export ENVIRONMENT=mint	
-                ;;
-              *)	
-                export ENVIRONMENT=${CIRCLE_TAG}	
-                ;;	
-            esac
+            if [ "${CIRCLE_BRANCH}" == "master" ] || [ "${CIRCLE_BRANCH}" == "main" ]; then
+              # main branch, autodeploy mint
+              TARGET_ENVIRONMENT=mint
+            elif [ ! -z "${CIRCLE_TAG}" ]; then
+              # Tag exists, deploy tag, stripping 'deploy-' prefix if it exists
+              TARGET_ENVIRONMENT=${CIRCLE_TAG}
+              TARGET_ENVIRONMENT=$(echo $TARGET_ENVIRONMENT | sed 's/^deploy-//')
+            else
+              # No tag, not main branch... just leave
+              echo "ERROR: No tag and not on main branch.  Aborting serverless deploy, check workflow settings"
+              exit 1
+            fi
 
             sudo npm i -g serverless
-            serverless deploy --stage ${ENVIRONMENT}
+            serverless deploy --stage ${TARGET_ENVIRONMENT}
   upload-package-serverless-with-approval:
     docker:
       - image: ussba/cc-docker-git-aws:latest
@@ -469,7 +482,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: workspace
-      - run:
+      - deploy:
           name: deploy
           shell: /bin/bash -eo pipefail
           command: |

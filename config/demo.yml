@@ -1,0 +1,25 @@
+googleAnalytics:
+    enabled: true
+    accountId: UA-96147768-1
+    optimizeContainerId: GTM-NPDXPPF
+    tagManagerAccountId: GTM-WN49BK2
+    debug: false
+miscapi:
+  endpoint: miscapi_placeholder
+server:
+    fqdn: demo.ussba.io
+features:
+    localAssistMenuHeight: true
+    geoLocator: false
+    showSbic: false
+    urlRedirect:
+        tableName: UrlToNodeDemo
+        enabled: true
+    drupalRedirect:
+        enabled: true
+        tableName: UrlToUrlRedirectDemo
+    breakEvenCalculator:
+        enabled: true
+content:
+    cloudfront: d1b9hponkzgzlb.cloudfront.net
+    useD8EventsBackend: false

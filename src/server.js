@@ -49,18 +49,18 @@ app.use(function(req, res, next) {
   }
 
   const requestPath = req.path
-  let requestPathWithoutTraillingSlack
-  requestPathWithoutTraillingSlack =
+  let requestPathWithoutTrailingSlash
+  requestPathWithoutTrailingSlash =
     requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
 
   if (config.get('features.breakEvenCalculator.enabled')) {
-    requestPathWithoutTraillingSlack =
-      requestPathWithoutTraillingSlack === '/breakevenpointcalculator'
+    requestPathWithoutTrailingSlash =
+      requestPathWithoutTrailingSlash === '/breakevenpointcalculator'
         ? '/page/break-even-point'
-        : requestPathWithoutTraillingSlack
+        : requestPathWithoutTrailingSlash
   }
 
-  findNodeIdByUrl(requestPathWithoutTraillingSlack)
+  findNodeIdByUrl(requestPathWithoutTrailingSlash)
     .then(({ nodeId, langCode, type }) => {
       let responseStatus = httpStatus.OK
       if (!nodeId && config.get('features.true404')) {
@@ -234,7 +234,7 @@ app.get('/isSmallBusiness', (req, res, next) => {
   fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
 
-if (config.get('developmentOptions.webpack.enabled')) {
+if (config.get('developmentOptions.webpack.enabled') || config.get('developmentOptions.assets.external')) {
   app.get('/sites/default/files/*', (req, res, next) => {
     const url = `https://${config.get('developmentOptions.assets.endpoint')}${req.path}`
     console.log('Calling ' + url)
