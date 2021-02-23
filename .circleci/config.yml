@@ -31,10 +31,8 @@ workflows:
           tags:
             only:
             - mint
-            - qa
             - demo
             - venus
-            - /int-\w+/
             - /deploy-\w+/
     - cache-dependencies-upper:
         filters:
@@ -103,10 +101,8 @@ workflows:
             - production
             - staging
             - mint
-            - qa
             - demo
             - venus
-            - /int-\w+/
             - /RELEASE-\d+/
             - /deploy-\w+/
     - build-package:
@@ -122,10 +118,8 @@ workflows:
             - production
             - staging
             - mint
-            - qa
             - demo
             - venus
-            - /int-\w+/
             - /RELEASE-\d+/
             - /deploy-\w+/
     - upload-package:
@@ -141,23 +135,10 @@ workflows:
             - qa
             - demo
             - venus
-            - /int-\w+/
             - /RELEASE-\d+/
         context: sba-gov-lower
-    - deploy-package-aws:
+    - deploy-package:
         requires: [upload-package]
-        filters:
-          branches:
-            only:
-            - /snyk-fix-.*/
-          tags:
-            only:
-            - qa
-            - /int-\w+/
-            - /RELEASE-\d+/
-        context: sba-gov-lower
-    - deploy-package-serverless:
-        requires: [build-package]
         filters:
           branches: 
             only:
@@ -181,7 +162,7 @@ workflows:
             only:
             - production
             - staging
-    - upload-package-serverless-with-approval:
+    - upload-package-with-approval:
         requires: [hold]
         filters:
           branches: 
@@ -192,8 +173,8 @@ workflows:
             - staging
             - production
         context: sba-gov-upper
-    - deploy-package-serverless-with-approval:
-        requires: [upload-package-serverless-with-approval]
+    - deploy-package-with-approval:
+        requires: [upload-package-with-approval]
         filters:
           branches: 
             ignore:
@@ -378,48 +359,7 @@ jobs:
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
 
-            if [ "$ENVIRONMENT" == "int-bl" ]	
-            then	
-              aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${ENVIRONMENT}/katana-lambda.zip"
-            fi	
-
-  deploy-package-aws:
-    docker:
-      - image: ussba/cc-docker-git-aws:latest
-    steps:
-      - checkout
-      - attach_workspace:
-          at: workspace
-      - deploy:
-          name: deploy
-          shell: /bin/bash -eo pipefail
-          command: |
-            if [ -z "${CIRCLE_BRANCH}" ]	       
-            then	
-              TARGET_ENVIRONMENT=${CIRCLE_TAG}	
-            elif echo "$CIRCLE_BRANCH" | grep -q "snyk-fix-" 
-            then
-              TARGET_ENVIRONMENT=qa
-            else	
-              TARGET_ENVIRONMENT=${CIRCLE_BRANCH}	
-            fi	
-
-            case $TARGET_ENVIRONMENT in	
-              qa)
-                export ENVIRONMENT=qa	
-                ;;
-              *)	
-                export ENVIRONMENT=${CIRCLE_TAG}	
-                ;;	
-            esac
-
-            export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
-            export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
-
-            export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${ENVIRONMENT}/katana-lambda.zip" | jq '.Versions[0].VersionId')
-            export LAMBDA_NAME="${ENVIRONMENT}-KatanaLambda"
-            aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${ENVIRONMENT}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
-  deploy-package-serverless:
+  deploy-package:
     docker:
       - image: cimg/node:12.18
     steps:
@@ -445,7 +385,7 @@ jobs:
 
             sudo npm i -g serverless
             serverless deploy --stage ${TARGET_ENVIRONMENT}
-  upload-package-serverless-with-approval:
+  upload-package-with-approval:
     docker:
       - image: ussba/cc-docker-git-aws:latest
     steps:
@@ -475,7 +415,7 @@ jobs:
             esac
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
-  deploy-package-serverless-with-approval:
+  deploy-package-with-approval:
     docker:
       - image: cimg/node:12.18
     steps:
