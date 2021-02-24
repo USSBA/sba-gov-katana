@@ -16,8 +16,7 @@ export class PrimarySearchBar extends React.PureComponent {
 
   onSearch(event) {
     event.preventDefault()
-
-    if (this.props.onSearch) {
+    if (this.props.onSearch && this.props.isValid !== false) {
       this.props.onSearch()
       return false
     }

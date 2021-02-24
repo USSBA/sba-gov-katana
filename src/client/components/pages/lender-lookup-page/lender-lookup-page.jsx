@@ -19,7 +19,8 @@ class LenderLookupPage extends React.PureComponent {
       shouldCenterMap: false,
       hoveredMarkerId: '',
       isLenderNameVisible: false,
-      lenderSuggestions: []
+      lenderSuggestions: [],
+      isValid: true
     }
   }
 
@@ -126,11 +127,13 @@ class LenderLookupPage extends React.PureComponent {
           paginate={false}
           showStatus={false}
           onHandleEvent={this.centerMap.bind(this, false)}
+          isValid={this.state.isValid}
         >
           <PrimarySearchBar
             id="lender-primary-search-bar"
             title="Find Eligible Paycheck Protection Program Lenders"
             className={styles.searchBar}
+            isValid={this.state.isValid}
           >
             <TextInput
               id="zip"
@@ -144,6 +147,7 @@ class LenderLookupPage extends React.PureComponent {
                 if (!isEmpty(input)) {
                   const fiveDigitRegex = /^\d{5}$/g
                   isValid = fiveDigitRegex.test(input)
+                  this.setState({ isValid: isValid })
                 }
                 isValid && input ? this.showLenderName() : this.hideLenderName()
                 return isValid

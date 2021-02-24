@@ -23,7 +23,8 @@ class OfficeLookupPage extends React.PureComponent {
       newCenter: {},
       shouldCenterMap: false,
       hoveredMarkerId: '',
-      taxonomies: null
+      taxonomies: null,
+      isValid: true
     }
   }
 
@@ -117,31 +118,22 @@ class OfficeLookupPage extends React.PureComponent {
           id="office-primary-search-bar"
           title="Find local assistance"
           className={styles.searchBar}
+          isValid={this.state.isValid}
         >
-          <TextInput
-            id="search"
-            queryParamName="q"
-            className={styles.field + ' ' + styles.search}
-            label="Find"
-            placeholder="Search by keyword"
-            validationState={''}
-            showSearchIcon={true}
-          />
-
           <TextInput
             id="zip"
             queryParamName="address"
             className={styles.field + ' ' + styles.zip}
-            label="Near"
-            placeholder="Zip Code"
+            label="Buisness Zip Code"
             validationFunction={input => {
               // only validate if there is an input value
-              let result = true
+              let isValid = true
               if (!isEmpty(input)) {
                 const fiveDigitRegex = /^\d{5}$/g
-                result = fiveDigitRegex.test(input)
+                isValid = fiveDigitRegex.test(input)
+                this.setState({ isValid: isValid })
               }
-              return result
+              return isValid
             }}
             errorText="Enter a 5-digit zip code."
           />

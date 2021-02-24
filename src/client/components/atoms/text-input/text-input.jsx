@@ -70,6 +70,9 @@ class TextInput extends React.Component {
   }
 
   handleKeyUp(event) {
+    if (event.keyCode !== 13) {
+      return
+    }
     const { isValid } = this.state
     const isNewValueValid = this.isValid(event.target.value)
 
