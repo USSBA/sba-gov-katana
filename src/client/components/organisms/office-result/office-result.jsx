@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react'
 import styles from './office-result.scss'
 import { Address, PhoneNumber } from 'molecules'
@@ -134,7 +135,7 @@ class OfficeResult extends React.PureComponent {
                   </div>*/}
                 </div>
                 {street && <div>{street}</div>}
-                {phoneNumber && <div>{phoneNumber}</div>}
+                {phoneNumber && <PhoneNumber iconName={false} phoneNumber={phoneNumber} />}
               </div>
             </div>
             <div>
