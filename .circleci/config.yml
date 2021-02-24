@@ -95,7 +95,6 @@ workflows:
             only:
             - master
             - /[Ff]eature-\w+-\d+[-\w]*/
-            - /snyk-fix-.*/
           tags:
             only:
             - production
@@ -103,7 +102,6 @@ workflows:
             - mint
             - demo
             - venus
-            - /RELEASE-\d+/
             - /deploy-\w+/
     - build-package:
         requires: [build-webpack]
@@ -112,7 +110,6 @@ workflows:
             only:
             - master
             - /[Ff]eature-\w+-\d+[-\w]*/
-            - /snyk-fix-.*/
           tags:
             only:
             - production
@@ -120,25 +117,22 @@ workflows:
             - mint
             - demo
             - venus
-            - /RELEASE-\d+/
             - /deploy-\w+/
-    - upload-package:
+    - upload-assets:
         requires: [build-package]
         filters:
           branches:
             only:
             - master
-            - /snyk-fix-.*/
           tags:
             only:
             - mint
             - qa
             - demo
             - venus
-            - /RELEASE-\d+/
         context: sba-gov-lower
     - deploy-package:
-        requires: [upload-package]
+        requires: [upload-assets]
         filters:
           branches: 
             only:
@@ -149,6 +143,16 @@ workflows:
             - qa
             - venus
             - demo
+        context: sba-gov-lower
+    - deploy-package:
+        name: "deploy-package-without-assets"
+        requires: [build-package]
+        filters:
+          branches:
+            ignore:
+            - /.*/
+          tags:
+            only:
             - /deploy-\w+/
         context: sba-gov-lower
     - hold:
@@ -162,7 +166,7 @@ workflows:
             only:
             - production
             - staging
-    - upload-package-with-approval:
+    - upload-assets-with-approval:
         requires: [hold]
         filters:
           branches: 
@@ -174,7 +178,7 @@ workflows:
             - production
         context: sba-gov-upper
     - deploy-package-with-approval:
-        requires: [upload-package-with-approval]
+        requires: [upload-assets-with-approval]
         filters:
           branches: 
             ignore:
@@ -309,7 +313,7 @@ jobs:
             - katana-lambda.zip
             - build
             - assets
-  upload-package:
+  upload-assets:
     docker:
       - image: ussba/cc-docker-git-aws:latest
     steps:
@@ -323,9 +327,6 @@ jobs:
             if [ -z "${CIRCLE_BRANCH}" ]
             then
               ENVIRONMENT=${CIRCLE_TAG}
-            elif echo "$CIRCLE_BRANCH" | grep -q "snyk-fix-" 
-            then
-              ENVIRONMENT=qa
             else
               ENVIRONMENT=${CIRCLE_BRANCH}
             fi
@@ -385,7 +386,7 @@ jobs:
 
             sudo npm i -g serverless
             serverless deploy --stage ${TARGET_ENVIRONMENT}
-  upload-package-with-approval:
+  upload-assets-with-approval:
     docker:
       - image: ussba/cc-docker-git-aws:latest
     steps:
