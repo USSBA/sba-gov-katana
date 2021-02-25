@@ -48,6 +48,15 @@ exports[`Front Page Hero should render correctly 1`] = `
       >
         This is a button
       </a>
+      <a
+        className="button large link responsive secondary spacing"
+        data-testid="button"
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
+      >
+        This is also a button
+      </a>
     </div>
   </div>
 </div>
