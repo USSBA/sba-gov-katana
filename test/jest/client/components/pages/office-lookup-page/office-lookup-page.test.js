@@ -20,12 +20,12 @@ describe('OfficeLookupPage', () => {
   })
 })
 
-describe('TextInput for zipcode', () => {
+describe('office lookup search', () => {
   beforeEach(() => {
     render(<OfficeLookupPage />)
   })
 
-  test('checks the zip code value is valid when click outside of the field', () => {
+  test('zip code value is validated when clicked outside of the zip search field', () => {
     const zipCodeField = screen.getByTestId('zip')
     const searchTitle = screen.getByRole('heading', {
       name: /find local assistance/i
