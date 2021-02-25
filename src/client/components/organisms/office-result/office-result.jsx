@@ -67,91 +67,94 @@ class OfficeResult extends React.PureComponent {
     //elasticsearch returns all single value elements as an array *sigh*
     return (
       <div className={styles.outerDiv}>
-        <a
-          id={`office-result-container-${id}`}
-          className={cardLayoutClassName}
-          aria-label={item.title[0]}
-          tabIndex="0"
-          onMouseOver={() => {
-            if (!isHovered) {
-              this.props.onResultHover(this.props.item.id)
-            }
-          }}
-          onFocus={() => {
-            if (!isHovered) {
-              this.props.onResultHover(this.props.item.id)
-            }
-          }}
-          onMouseOut={() => {
-            if (isHovered) {
-              this.props.onResultHover({})
-            }
-          }}
-          onBlur={() => {
-            if (isHovered) {
-              this.props.onResultHover({})
-            }
-          }}
-          onClick={e => {
-            e.preventDefault()
-            this.onClick({
-              item,
-              distance
-            })
-          }}
-          onKeyUp={obj => {
-            const enterKeyCode = 13
-            if (obj.keyCode === enterKeyCode) {
+        <div className={cardLayoutClassName}>
+          <a
+            id={`office-result-container-${id}`}
+            aria-label={item.title[0]}
+            tabIndex="0"
+            onMouseOver={() => {
+              if (!isHovered) {
+                this.props.onResultHover(this.props.item.id)
+              }
+            }}
+            onFocus={() => {
+              if (!isHovered) {
+                this.props.onResultHover(this.props.item.id)
+              }
+            }}
+            onMouseOut={() => {
+              if (isHovered) {
+                this.props.onResultHover({})
+              }
+            }}
+            onBlur={() => {
+              if (isHovered) {
+                this.props.onResultHover({})
+              }
+            }}
+            onClick={e => {
+              e.preventDefault()
               this.onClick({
                 item,
                 distance
               })
-            }
-          }}
-        >
-          <div id={`office-result-${id}`} className={innerDivClassName}>
-            <div>
-              <div className={styles.distance}>
-                <div>
-                  <img src={marker} className={styles.marker} />
+            }}
+            onKeyUp={obj => {
+              const enterKeyCode = 13
+              if (obj.keyCode === enterKeyCode) {
+                this.onClick({
+                  item,
+                  distance
+                })
+              }
+            }}
+          >
+            <div id={`office-result-${id}`} className={innerDivClassName}>
+              <div>
+                <div className={styles.distance}>
+                  <div>
+                    <img src={marker} className={styles.marker} />
+                  </div>
+                  <div id={`office-miles-${id}`} className={styles.miles}>
+                    {distance !== null ? (
+                      <Distance distance={distance} />
+                    ) : (
+                      <Location city={city} state={state} />
+                    )}
+                  </div>
+                  <div className={styles.clear} />
                 </div>
-                <div id={`office-miles-${id}`} className={styles.miles}>
-                  {distance !== null ? (
-                    <Distance distance={distance} />
-                  ) : (
-                    <Location city={city} state={state} />
-                  )}
+                <div id={`office-title-${id}`}>
+                  <h2>{item.title[0]}</h2>
                 </div>
-                <div className={styles.clear} />
-              </div>
-              <div id={`office-title-${id}`}>
-                <h2>{item.title[0]}</h2>
-              </div>
-              <div className={styles.detail}>
-                <div id={`office-type-${id}`}>
-                  {/*<div className={styles.officeType}>
+                <div className={styles.detail}>
+                  <div id={`office-type-${id}`}>
+                    {/*<div className={styles.officeType}>
                     {isOfficialOffice && <i className={'fa fa-shield ' + styles.fa} />}
                     <span>{officeType}</span>
                   </div>*/}
+                  </div>
+                  {street && <div>{street}</div>}
                 </div>
-                {street && <div>{street}</div>}
-                {phoneNumber && <PhoneNumber iconName={false} phoneNumber={phoneNumber} />}
+              </div>
+              <div>
+                {item.office_service ? (
+                  <div className={styles.serviceList + ' service-list'}>
+                    {' '}
+                    <h3>Services</h3>
+                    <div>{item.office_service.join(', ')}</div>
+                  </div>
+                ) : null}
               </div>
             </div>
-            <div>
-              {item.office_service ? (
-                <div className={styles.serviceList + ' service-list'}>
-                  {' '}
-                  <h3>Services</h3>
-                  <div>{item.office_service.join(', ')}</div>
-                </div>
-              ) : null}
-            </div>
+          </a>
+          <div className={innerDivClassName}>
+            {phoneNumber && <PhoneNumber iconName="" phoneNumber={phoneNumber} />}
           </div>
           <div className={styles.hr}>
             <hr />
           </div>
-        </a>
+        </div>
         {link && (
           <a href={link} target="_blank">
             <div className={websiteClassName}>
