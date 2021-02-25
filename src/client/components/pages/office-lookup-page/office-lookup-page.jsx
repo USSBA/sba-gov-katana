@@ -1,7 +1,6 @@
 import React from 'react'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import { find, isEmpty } from 'lodash'
-
 import styles from './office-lookup-page.scss'
 import { TaxonomyMultiSelect, StyleWrapperDiv, TextInput } from 'atoms'
 import {

@@ -147,7 +147,7 @@ class LenderLookupPage extends React.PureComponent {
                 if (!isEmpty(input)) {
                   const fiveDigitRegex = /^\d{5}$/g
                   isValid = fiveDigitRegex.test(input)
-                  this.setState({ isValid: isValid })
+                  this.setState({ isValid })
                 }
                 isValid && input ? this.showLenderName() : this.hideLenderName()
                 return isValid
