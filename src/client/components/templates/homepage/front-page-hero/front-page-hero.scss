@@ -29,7 +29,7 @@ $homepage-gutter-size: 5.333vw;
   }
 
   @media (min-width: $breakpoint-medium) {
-    a:last-child {
+    a[class*='secondary'] {
       box-shadow: inset 0 0 0 2px #fff;
       color: #fff;
 
