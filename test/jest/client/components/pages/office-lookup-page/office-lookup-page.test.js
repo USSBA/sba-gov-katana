@@ -35,7 +35,7 @@ describe('office lookup search', () => {
     expect(screen.queryByText(/enter a 5\-digit zip code\./i)).toBeInTheDocument()
   })
 
-  test('zip code value can be empty when you click search', () => {
+  test('zip code value can not be empty when you click search', () => {
     const zipCodeField = screen.getByTestId('zip')
     const searchButton = screen.getByRole('button', {
       name: /search/i
@@ -43,7 +43,7 @@ describe('office lookup search', () => {
     userEvent.click(zipCodeField)
     userEvent.type(zipCodeField, '')
     userEvent.click(searchButton)
-    expect(screen.queryByText(/enter a 5\-digit zip code\./i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/enter a 5\-digit zip code\./i)).toBeInTheDocument()
   })
 
   test('form will submit if the zipcode value is 5 digits', () => {

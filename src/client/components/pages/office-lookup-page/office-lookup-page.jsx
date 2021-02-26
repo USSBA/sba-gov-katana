@@ -126,7 +126,8 @@ class OfficeLookupPage extends React.PureComponent {
             label="Buisness Zip Code"
             validationFunction={input => {
               // only validate if there is an input value
-              let isValidZip = true
+
+              let isValidZip = !isEmpty(input)
               if (!isEmpty(input)) {
                 const fiveDigitRegex = /^\d{5}$/g
                 isValidZip = fiveDigitRegex.test(input)
