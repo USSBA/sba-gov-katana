@@ -4,7 +4,6 @@ import OfficeLookupPage from 'pages/office-lookup-page/office-lookup-page.jsx'
 import { TaxonomyMultiSelect } from 'atoms'
 var sinon = require('sinon')
 import * as helper from 'client/fetch-content-helper'
-import 'react-testing-library/cleanup-after-each'
 import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'

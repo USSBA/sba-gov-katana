@@ -23,7 +23,7 @@ class OfficeLookupPage extends React.PureComponent {
       shouldCenterMap: false,
       hoveredMarkerId: '',
       taxonomies: null,
-      isValid: true
+      isValidZip: true
     }
   }
 
@@ -117,7 +117,7 @@ class OfficeLookupPage extends React.PureComponent {
           id="office-primary-search-bar"
           title="Find local assistance"
           className={styles.searchBar}
-          isValid={this.state.isValid}
+          isValid={this.state.isValidZip}
         >
           <TextInput
             id="zip"
@@ -126,13 +126,13 @@ class OfficeLookupPage extends React.PureComponent {
             label="Buisness Zip Code"
             validationFunction={input => {
               // only validate if there is an input value
-              let isValid = true
+              let isValidZip = true
               if (!isEmpty(input)) {
                 const fiveDigitRegex = /^\d{5}$/g
-                isValid = fiveDigitRegex.test(input)
-                this.setState({ isValid: isValid })
+                isValidZip = fiveDigitRegex.test(input)
+                this.setState({ isValidZip })
               }
-              return isValid
+              return isValidZip
             }}
             errorText="Enter a 5-digit zip code."
           />

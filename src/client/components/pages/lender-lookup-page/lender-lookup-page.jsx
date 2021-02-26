@@ -20,7 +20,7 @@ class LenderLookupPage extends React.PureComponent {
       hoveredMarkerId: '',
       isLenderNameVisible: false,
       lenderSuggestions: [],
-      isValid: true
+      isValidZip: true
     }
   }
 
@@ -127,13 +127,12 @@ class LenderLookupPage extends React.PureComponent {
           paginate={false}
           showStatus={false}
           onHandleEvent={this.centerMap.bind(this, false)}
-          isValid={this.state.isValid}
         >
           <PrimarySearchBar
             id="lender-primary-search-bar"
             title="Find Eligible Paycheck Protection Program Lenders"
             className={styles.searchBar}
-            isValid={this.state.isValid}
+            isValid={this.state.isValidZip}
           >
             <TextInput
               id="zip"
@@ -143,14 +142,14 @@ class LenderLookupPage extends React.PureComponent {
               placeholder="Zip Code"
               validationFunction={input => {
                 // only validate if there is an input value
-                let isValid = true
+                let isValidZip = true
                 if (!isEmpty(input)) {
                   const fiveDigitRegex = /^\d{5}$/g
-                  isValid = fiveDigitRegex.test(input)
-                  this.setState({ isValid })
+                  isValidZip = fiveDigitRegex.test(input)
+                  this.setState({ isValidZip: isValidZip })
                 }
-                isValid && input ? this.showLenderName() : this.hideLenderName()
-                return isValid
+                isValidZip && input ? this.showLenderName() : this.hideLenderName()
+                return isValidZip
               }}
               errorText="Enter a 5-digit zip code."
             />
