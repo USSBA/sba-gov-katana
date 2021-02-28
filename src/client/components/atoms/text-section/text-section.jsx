@@ -53,7 +53,7 @@ class TextSection extends React.Component {
               const html = "<div class='table-data-wrapper'>" + tdata.innerHTML + '</div>'
               tds[i].innerHTML = html
 
-              const label = "<div class='table-header-label'>" + headers[i] + ':</div>'
+              const label = "<div class='table-header-label'>" + headers[i - 1] + ':</div>'
               tdata.insertAdjacentHTML('beforeend', label)
             })
           }
