@@ -62,9 +62,10 @@ class OfficeResult extends React.PureComponent {
     //elasticsearch returns all single value elements as an array *sigh*
     return (
       <div className={styles.outerDiv}>
-        <div className={cardLayoutClassName}>
+        <div>
           <a
             id={`office-result-container-${id}`}
+            className={cardLayoutClassName}
             aria-label={item.title[0]}
             tabIndex="0"
             onMouseOver={() => {
