@@ -68,7 +68,7 @@ class Homepage extends React.Component {
     return (
       <div className={styles.container}>
         <div className={styles.section}>
-          <FrontPageHero hero={hero} button={buttons[0]} />
+          <FrontPageHero hero={hero} buttons={buttons} />
         </div>
         {paragraphElements.map(element => {
           const {
@@ -99,7 +99,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export { Homepage }
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Homepage)
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
