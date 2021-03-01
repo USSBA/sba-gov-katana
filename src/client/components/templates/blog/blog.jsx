@@ -50,9 +50,11 @@ class Blog extends Component {
           {blogData.title}
         </h1>
         <ByLine blogData={blogData} categoryLink={categoryLink} />
-        <h5 data-testid={'postSummary'} tabIndex="0">
-          {blogData.summary}
-        </h5>
+        {!isEmpty(blogData.summary) && (
+          <h5 data-testid={'postSummary'} tabIndex="0">
+            {blogData.summary}
+          </h5>
+        )}
         {!isEmpty(featuredImage) && (
           <img
             data-testid="featuredImage"

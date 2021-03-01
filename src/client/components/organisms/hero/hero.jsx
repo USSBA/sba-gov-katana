@@ -1,5 +1,5 @@
 import React from 'react'
-import { debounce } from 'lodash'
+import { debounce, isEmpty } from 'lodash'
 
 import scrollIcon from 'assets/svg/scroll.svg'
 import styles from './hero.scss'
@@ -53,9 +53,11 @@ class Hero extends React.Component {
             <h1 tabIndex="0" data-testid="title">
               {title}
             </h1>
-            <h2 className={styles.message} tabIndex="0" data-testid="message">
-              {message}
-            </h2>
+            {!isEmpty(message) && (
+              <h2 className={styles.message} tabIndex="0" data-testid="message">
+                {message}
+              </h2>
+            )}
             {buttons &&
               buttons.map((item, index) => (
                 <Button
