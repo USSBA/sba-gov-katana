@@ -1,8 +1,7 @@
 /* eslint-disable complexity */
 import React from 'react'
 import styles from './office-result.scss'
-import { Address, PhoneNumber } from 'molecules'
-import { Button } from 'atoms'
+import { PhoneNumber } from 'molecules'
 import PropTypes from 'prop-types'
 import clientConfig from '../../../services/client-config.js'
 import marker from 'assets/svg/marker.svg'
@@ -48,20 +47,16 @@ class OfficeResult extends React.PureComponent {
     const cardLayoutClassName = classNames({
       'card-layout': true,
       [styles.officeResultContainer]: true,
-      [styles.hoveredBorder]: isHovered,
       [styles.focus]: true
     })
 
     const innerDivClassName = classNames({
       [styles.officeResult]: true,
-      [styles.hoveredInnerDiv]: isHovered,
-      [styles.isFirstHoveredResult]: isHovered && isFirstResult,
       [styles.focus]: true
     })
 
     const websiteClassName = classNames({
-      [styles.website]: true,
-      [styles.hoveredInnerDivWebsite]: isHovered
+      [styles.website]: true
     })
 
     //elasticsearch returns all single value elements as an array *sigh*
@@ -148,7 +143,7 @@ class OfficeResult extends React.PureComponent {
               </div>
             </div>
           </a>
-          <div className={innerDivClassName}>
+          <div className={styles.resultPhoneNumber}>
             {phoneNumber && <PhoneNumber iconName="" phoneNumber={phoneNumber} />}
           </div>
           <div className={styles.hr}>
