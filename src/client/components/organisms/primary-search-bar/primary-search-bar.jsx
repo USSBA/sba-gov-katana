@@ -16,6 +16,8 @@ export class PrimarySearchBar extends React.PureComponent {
 
   onSearch(event) {
     event.preventDefault()
+    // only if the props.isValid is defined and is false so that other pages that use this component
+    // do not need to define this.
     if (this.props.onSearch && this.props.isValid !== false) {
       this.props.onSearch()
       return false

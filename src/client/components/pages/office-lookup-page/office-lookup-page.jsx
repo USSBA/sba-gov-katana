@@ -23,12 +23,23 @@ class OfficeLookupPage extends React.PureComponent {
       shouldCenterMap: false,
       hoveredMarkerId: '',
       taxonomies: null,
-      isValidZip: true
+      isValidZip: false
+    }
+    this.textInput = React.createRef()
+  }
+
+  focusTextInput() {
+    if (this.textInput.current) {
+      this.textInput.current.focus()
     }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextState.taxonomies
+  }
+
+  componentDidMount() {
+    this.focusTextInput()
   }
 
   componentWillMount() {
@@ -118,16 +129,18 @@ class OfficeLookupPage extends React.PureComponent {
           title="Find local assistance"
           className={styles.searchBar}
           isValid={this.state.isValidZip}
+          validationFunction={false}
         >
           <TextInput
             id="zip"
             queryParamName="address"
+            textRef={this.textInput}
             className={styles.field + ' ' + styles.zip}
             label="Buisness Zip Code"
             validationFunction={input => {
               // only validate if there is an input value
 
-              let isValidZip = !isEmpty(input)
+              let isValidZip = false
               if (!isEmpty(input)) {
                 const fiveDigitRegex = /^\d{5}$/g
                 isValidZip = fiveDigitRegex.test(input)

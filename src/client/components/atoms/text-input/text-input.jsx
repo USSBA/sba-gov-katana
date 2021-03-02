@@ -9,6 +9,7 @@ import { FormErrorMessage, SearchIcon, ValidationIcon } from 'atoms'
 class TextInput extends React.Component {
   constructor() {
     super()
+
     this.state = {
       isFocused: false,
       isValid: true,
@@ -110,6 +111,7 @@ class TextInput extends React.Component {
       validationFunction,
       inputType,
       inputMode,
+      textRef,
       ...rest
     } = this.props
     const { isFocused, isValid, value } = this.state
@@ -153,6 +155,7 @@ class TextInput extends React.Component {
               })}
               data-testid={id}
               type={inputType || 'text'}
+              ref={this.props.textRef}
               inputMode={inputMode || 'text'}
               onChange={this.handleChange.bind(this)}
               onBlur={this.handleBlur.bind(this)}
@@ -184,7 +187,8 @@ TextInput.defaultProps = {
   showSuccessIcon: true,
   showErrorIcon: false,
   isVisible: true,
-  id: null
+  id: null,
+  textRef: null
 }
 
 TextInput.propTypes = {
