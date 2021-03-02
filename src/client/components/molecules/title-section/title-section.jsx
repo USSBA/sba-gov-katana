@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { isEmpty } from 'lodash'
 import styles from './title-section.scss'
 import { DecorativeDash, Link } from 'atoms'
 import { getLanguageOverride } from '../../../services/utils.js'
@@ -36,9 +37,11 @@ class TitleSection extends React.Component {
         <h1 id="titleSectionTitleId" className={styles.title}>
           {this.props.title}
         </h1>
-        <h5 id="titleSectionSummaryId" className={styles.summary}>
-          {this.props.summary}
-        </h5>
+        {!isEmpty(this.props.summary) && (
+          <h5 id="titleSectionSummaryId" className={styles.summary}>
+            {this.props.summary}
+          </h5>
+        )}
         <DecorativeDash width={77} />
         {this.props.sectionHeaders.length > 0 ? titleLinks : ''}
       </div>

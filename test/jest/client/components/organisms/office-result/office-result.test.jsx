@@ -12,6 +12,7 @@ describe('OfficeResult', () => {
       id: '123',
       fields: {
         title: ['title'],
+        location_phone_number: ['301-111-1111'],
         exprs: {}
       }
     },
@@ -35,7 +36,8 @@ describe('OfficeResult', () => {
       expect.objectContaining({
         item: {
           exprs: {},
-          title: ['title']
+          title: ['title'],
+          location_phone_number: ['301-111-1111']
         }
       })
     )
@@ -63,5 +65,10 @@ describe('OfficeResult', () => {
     const wrapper = shallow(<OfficeResult {...mockProps} hoveredMarkerId={mockProps.item.id} />)
     wrapper.find('a').simulate('blur')
     expect(mockResultHover).toHaveBeenCalledWith({})
+  })
+
+  it('renders phone number component', () => {
+    const wrapper = shallow(<OfficeResult {...mockProps} hoveredMarkerId={'4'} />)
+    expect(wrapper.find('PhoneNumber')).toHaveLength(1)
   })
 })
