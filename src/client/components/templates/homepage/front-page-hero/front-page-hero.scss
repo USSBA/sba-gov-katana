@@ -101,8 +101,8 @@ $homepage-gutter-size: 5.333vw;
   }
 
   @include grid-media($sba-grid-medium) {
-    @include grid-column(6);
-    padding: 60px 10px 50px;
+    @include grid-column(7);
+    padding: 60px 0 50px;
   }
 
   @include grid-media($sba-grid-large) {
