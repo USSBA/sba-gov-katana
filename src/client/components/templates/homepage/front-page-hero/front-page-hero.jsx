@@ -8,7 +8,7 @@ import { eventCategories } from '../../../../services/constants'
 class FrontPageHero extends React.Component {
   render() {
     const {
-      button,
+      buttons,
       hero: { caption, imageLarge, imageMedium, imageSmall, title }
     } = this.props
 
@@ -23,9 +23,11 @@ class FrontPageHero extends React.Component {
           <div className={styles.box}>
             <h1 className={styles.title}>{title}</h1>
             <div className={styles.text}>{caption}</div>
-            <Button primary url={button.url}>
-              {button.title}
-            </Button>
+            {buttons.map((button, i) => (
+              <Button key={i} primary={i === 0} secondary={i !== 0} url={button.url}>
+                {button.title}
+              </Button>
+            ))}
           </div>
         </div>
       </div>

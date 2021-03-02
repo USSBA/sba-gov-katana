@@ -4,10 +4,14 @@ import { mount, shallow } from 'enzyme'
 
 import { FrontPageHero } from 'organisms'
 
-const buttonProps = [
+const buttons = [
   {
-    url: '/button-url',
+    url: '/button-url-a',
     title: 'This is a button'
+  },
+  {
+    url: '/button-url-b',
+    title: 'This is also a button'
   }
 ]
 
@@ -38,7 +42,7 @@ const heroProps = {
 
 describe('Front Page Hero', () => {
   test('should render correctly', () => {
-    const tree = renderer.create(<FrontPageHero hero={heroProps} button={buttonProps[0]} />).toJSON()
+    const tree = renderer.create(<FrontPageHero hero={heroProps} buttons={buttons} />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 
@@ -51,7 +55,7 @@ describe('Front Page Hero', () => {
   // })
 
   test('should load correct elements before rendering', () => {
-    const component = mount(<FrontPageHero hero={heroProps} button={buttonProps[0]} />)
+    const component = mount(<FrontPageHero hero={heroProps} buttons={buttons} />)
     const props = component.props()
 
     expect(props.hero.title).toEqual('Start and grow your business')
