@@ -57,7 +57,13 @@ describe('Primary Search Bar', () => {
     const onSearchMock = jest.fn()
     const searchBar = mount(<PrimarySearchBar isValid={true} onSearch={onSearchMock} />)
     searchBar.find('Button').simulate('click')
-    console.log('onSearchMock is', onSearchMock)
+    expect(onSearchMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('runs the search when search button is clicked and the isValid prop is not passed', () => {
+    const onSearchMock = jest.fn()
+    const searchBar = mount(<PrimarySearchBar onSearch={onSearchMock} />)
+    searchBar.find('Button').simulate('click')
     expect(onSearchMock).toHaveBeenCalledTimes(1)
   })
 
@@ -65,7 +71,6 @@ describe('Primary Search Bar', () => {
     const onSearchMock = jest.fn()
     const searchBar = mount(<PrimarySearchBar isValid={true} onSearch={onSearchMock} />)
     searchBar.find('Button').simulate('click')
-    console.log('onSearchMock is', onSearchMock)
     expect(onSearchMock).toHaveBeenCalledTimes(1)
   })
 
