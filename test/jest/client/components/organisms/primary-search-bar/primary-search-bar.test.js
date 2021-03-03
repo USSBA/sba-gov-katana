@@ -67,7 +67,7 @@ describe('Primary Search Bar', () => {
     expect(onSearchMock).toHaveBeenCalledTimes(1)
   })
 
-  it('does not run the search when the search button is clicked but the for field is invalid', () => {
+  it('does not run the search when the search button is clicked but the form field is invalid', () => {
     const onSearchMock = jest.fn()
     const searchBar = mount(<PrimarySearchBar isValid={true} onSearch={onSearchMock} />)
     searchBar.find('Button').simulate('click')
