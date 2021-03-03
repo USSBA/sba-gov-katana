@@ -136,7 +136,7 @@ class OfficeLookupPage extends React.PureComponent {
             queryParamName="address"
             textRef={this.textInput}
             className={styles.field + ' ' + styles.zip}
-            label="Buisness Zip Code"
+            label="Business Zip Code"
             validationFunction={input => {
               // only validate if there is an input value
 
