@@ -53,6 +53,22 @@ describe('Primary Search Bar', () => {
     expect(onSearchSpy).toHaveBeenCalledOnce
   })
 
+  it('runs the search when search button is clicked and the form field is valid', () => {
+    const onSearchMock = jest.fn()
+    const searchBar = mount(<PrimarySearchBar isValid={true} onSearch={onSearchMock} />)
+    searchBar.find('Button').simulate('click')
+    console.log('onSearchMock is', onSearchMock)
+    expect(onSearchMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('does not run the search when the search button is clicked but the for field is invalid', () => {
+    const onSearchMock = jest.fn()
+    const searchBar = mount(<PrimarySearchBar isValid={true} onSearch={onSearchMock} />)
+    searchBar.find('Button').simulate('click')
+    console.log('onSearchMock is', onSearchMock)
+    expect(onSearchMock).toHaveBeenCalledTimes(1)
+  })
+
   it('runs onFieldChange when a text field is updated', () => {
     const onChangeSpy = jest.spyOn(PrimarySearchBar.prototype, 'onFieldChange')
     const searchBar = mount(

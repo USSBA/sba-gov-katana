@@ -22,7 +22,6 @@ export class PrimarySearchBar extends React.PureComponent {
       this.props.onSearch()
       return false
     }
-
     return true
   }
 

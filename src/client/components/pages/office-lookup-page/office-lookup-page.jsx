@@ -146,6 +146,7 @@ class OfficeLookupPage extends React.PureComponent {
                 isValidZip = fiveDigitRegex.test(input)
                 this.setState({ isValidZip })
               }
+              this.setState({ isValidZip })
               return isValidZip
             }}
             errorText="Enter a 5-digit zip code."
