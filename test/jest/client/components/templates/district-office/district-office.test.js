@@ -232,7 +232,7 @@ describe('District Office template', () => {
       expect(hero).toBeInTheDocument()
 
       const heroSummary = within(hero).queryByTestId('message')
-      expect(heroSummary).not.toHaveTextContent()
+      expect(heroSummary).not.toBeInTheDocument()
     })
   })
 
