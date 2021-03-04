@@ -144,7 +144,6 @@ class OfficeLookupPage extends React.PureComponent {
               if (!isEmpty(input)) {
                 const fiveDigitRegex = /^\d{5}$/g
                 isValidZip = fiveDigitRegex.test(input)
-                this.setState({ isValidZip })
               }
               this.setState({ isValidZip })
               return isValidZip
