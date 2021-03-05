@@ -28,6 +28,19 @@ $homepage-gutter-size: 5.333vw;
     transform: translateY(-50%);
   }
 
+  @media (min-width: $breakpoint-medium) and (max-width: 1199px) {
+    a {
+      display: block;
+      /* while an important declaration is always the last resort, it is important to remove the margin-left value at this intemidary break point in this particular component context. */
+      margin-left: 0 !important;
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   @media (min-width: $breakpoint-medium) {
     a:nth-child(2n) {
       box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8);
@@ -101,7 +114,7 @@ $homepage-gutter-size: 5.333vw;
   }
 
   @include grid-media($sba-grid-medium) {
-    @include grid-column(8);
+    @include grid-column(6);
     padding: 60px 0 50px;
   }
 
