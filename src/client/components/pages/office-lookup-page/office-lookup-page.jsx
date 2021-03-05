@@ -1,7 +1,6 @@
 import React from 'react'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import { find, isEmpty } from 'lodash'
-
 import styles from './office-lookup-page.scss'
 import { TaxonomyMultiSelect, StyleWrapperDiv, TextInput } from 'atoms'
 import {
@@ -23,12 +22,24 @@ class OfficeLookupPage extends React.PureComponent {
       newCenter: {},
       shouldCenterMap: false,
       hoveredMarkerId: '',
-      taxonomies: null
+      taxonomies: null,
+      isValidZip: false
+    }
+    this.textInput = React.createRef()
+  }
+
+  focusTextInput() {
+    if (this.textInput.current) {
+      this.textInput.current.focus()
     }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextState.taxonomies
+  }
+
+  componentDidMount() {
+    this.focusTextInput()
   }
 
   componentWillMount() {
@@ -117,31 +128,25 @@ class OfficeLookupPage extends React.PureComponent {
           id="office-primary-search-bar"
           title="Find local assistance"
           className={styles.searchBar}
+          isValid={this.state.isValidZip}
+          validationFunction={false}
         >
-          <TextInput
-            id="search"
-            queryParamName="q"
-            className={styles.field + ' ' + styles.search}
-            label="Find"
-            placeholder="Search by keyword"
-            validationState={''}
-            showSearchIcon={true}
-          />
-
           <TextInput
             id="zip"
             queryParamName="address"
+            textRef={this.textInput}
             className={styles.field + ' ' + styles.zip}
-            label="Near"
-            placeholder="Zip Code"
+            label="Business Zip Code"
             validationFunction={input => {
               // only validate if there is an input value
-              let result = true
+
+              let isValidZip = false
               if (!isEmpty(input)) {
                 const fiveDigitRegex = /^\d{5}$/g
-                result = fiveDigitRegex.test(input)
+                isValidZip = fiveDigitRegex.test(input)
               }
-              return result
+              this.setState({ isValidZip })
+              return isValidZip
             }}
             errorText="Enter a 5-digit zip code."
           />

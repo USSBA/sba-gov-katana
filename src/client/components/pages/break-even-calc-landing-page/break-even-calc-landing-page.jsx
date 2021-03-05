@@ -77,7 +77,6 @@ class BreakEvenCalculatorPage extends React.Component {
 
   render() {
     const { data } = this.state
-    console.log('data is -->', data)
     return (
       <div data-testid="breakevencalc" className={styles.calcLandingPageContainer}>
         <div className={styles.breadcrumbSection}>
