@@ -110,7 +110,7 @@ const TRANSLATIONS = {
       url: '/about-sba/what-we-do/contact-sba'
     },
     es: {
-      text: 'Contacte con la SBA',
+      text: 'Comuníquese a la SBA',
       url: '/about-sba/what-we-do/contact-sba'
     }
   },
