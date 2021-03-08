@@ -136,7 +136,7 @@ class OfficeContactModal extends React.Component {
     return (
       <ReactModal
         isOpen={this.state.modalIsOpen}
-        className={styles.modal}
+        className={styles.content}
         overlayClassName={styles.overlay}
         role="dialog"
         aria-labelledby="dialogTitle"
@@ -154,6 +154,7 @@ class OfficeContactModal extends React.Component {
             <h3 id="dialogTitle" className={styles.title}>
               Contact your CITY District Office
             </h3>
+            <div className={styles.divider} />
           </div>
           <div>
             <TextInput
@@ -199,8 +200,13 @@ class OfficeContactModal extends React.Component {
               errorText="Enter a 5-digit zip code."
             />
           </div>
-          <Button secondary>CANCEL</Button>
-          <Button primary>SUBMIT</Button>
+          <div className={styles.btnContainer}>
+            {/*<Button disabled={!this.isValidForm()} primary small type="submit">
+              Subscribe
+            </Button>*/}
+            <Button secondary>CANCEL</Button>
+            <Button primary>SUBMIT</Button>
+          </div>
         </div>
       </ReactModal>
     )

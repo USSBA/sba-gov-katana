@@ -8,7 +8,7 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal {
+.content {
   position: absolute;
   top: 0;
   left: 0;
@@ -16,10 +16,11 @@
   bottom: 0;
   margin: auto;
   width: 700px;
-  height: 800px;
+  height: 775px;
   background-color: #fff;
   display: flex;
   justify-content: center;
+  border-top: 8px solid #002E6D;
 }
 
 .exitIcon {
@@ -38,7 +39,13 @@
 
 .title {
   font-size: 27px;
-  margin-top: 50px;
+  margin-top: 65px;
+}
+
+.divider {
+  border-top: 3px solid #CC0000;
+  width: 142px;
+  margin: 0 auto 20px;
 }
 
 .field {
@@ -48,4 +55,12 @@
     float: left;
     display: inline-block;
   }
+}
+
+.btnContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 20px;
 }
