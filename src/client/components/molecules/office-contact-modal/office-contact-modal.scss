@@ -1,0 +1,51 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 700px;
+  height: 800px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.exitIcon {
+  width: 30px;
+  height: 30px;
+  color: #666666;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+.imgContainer {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.title {
+  font-size: 27px;
+  margin-top: 50px;
+}
+
+.field {
+  width: 100%;
+  @include grid-media($sba-grid-large) {
+    margin-right: 20px;
+    float: left;
+    display: inline-block;
+  }
+}

@@ -3,6 +3,10 @@ import React from 'react'
 import styles from './office-result.scss'
 import { PhoneNumber } from 'molecules'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import * as ModalActions from '../../../actions/show-modal'
 import clientConfig from '../../../services/client-config.js'
 import marker from 'assets/svg/marker.svg'
 import classNames from 'classnames'
@@ -163,13 +167,15 @@ class OfficeResult extends React.PureComponent {
                 </div>
               </a>
             )}
-            {/*<a href={null} target="_blank">
-              <div className={contactClassName}>
-                <i className={'fa fa-envelope ' + styles.fa} />
-                <br />
-                Contact
-              </div>
-            </a>*/}
+            <button type="button" onClick={this.props.modalActions.showOfficeContactModal} className={styles.contactButton}>
+              <a href={null} target="_blank">
+                <div className={contactClassName}>
+                  <i className={'fa fa-envelope ' + styles.fa} />
+                  <br />
+                  Contact
+                </div>
+              </a>
+            </button>
           </div>
         </div>
       </div>
@@ -195,4 +201,15 @@ OfficeResult.propTypes = {
   onResultHover: PropTypes.func
 }
 
-export default OfficeResult
+function mapDispatchToProps(dispatch) {
+  return {
+    modalActions: bindActionCreators(ModalActions, dispatch)
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(OfficeResult)
+
+export { OfficeResult }

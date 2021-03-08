@@ -98,6 +98,7 @@ class TextInput extends React.Component {
       id,
       isVisible,
       validationState,
+      helperText,
       errorText,
       showSearchIcon,
       showValidationIcon,
@@ -176,6 +177,11 @@ class TextInput extends React.Component {
               showErrorIcon={showErrorIcon}
             />
           </div>
+          {!errorMessage && (
+            <span className={styles.helperText}>
+              {helperText}
+            </span>
+          )}
           {errorMessage}
         </div>
       )
