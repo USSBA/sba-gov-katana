@@ -94,7 +94,6 @@
     h1 {
       // The static part of calc() (1rem) defines the minimum so that the font
       // size does not become too small as the screen gets smaller.
-      font-size: calc(18px + 4vw);
       hyphens: auto;
     }
   }
