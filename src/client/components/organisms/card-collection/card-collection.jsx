@@ -24,7 +24,7 @@ class CardCollection extends React.Component {
     super(props)
 
     this.state = {
-      cardsPerRow: cardsPerRowMap[props.cards.length].full
+      cardsPerRow: [1]
     }
   }
 
@@ -34,14 +34,17 @@ class CardCollection extends React.Component {
 
   updateCardsPerRow() {
     const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+
     const cardsLength = cardsPerRowMap[this.props.cards.length]
 
-    if (viewportWidth >= medium && viewportWidth < large) {
-      this.setState({ cardsPerRow: cardsLength.tablet })
-    } else if (viewportWidth < medium) {
-      this.setState({ cardsPerRow: cardsLength.mobile })
-    } else {
-      this.setState({ cardsPerRow: cardsLength.full })
+    if (cardsLength) {
+      if (viewportWidth >= medium && viewportWidth < large) {
+        this.setState({ cardsPerRow: cardsLength.tablet })
+      } else if (viewportWidth < medium) {
+        this.setState({ cardsPerRow: cardsLength.mobile })
+      } else {
+        this.setState({ cardsPerRow: cardsLength.full })
+      }
     }
   }
 
