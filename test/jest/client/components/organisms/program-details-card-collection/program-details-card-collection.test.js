@@ -26,28 +26,27 @@ function makeTestDataItem(itemNumber) {
 const testData = [makeTestDataItem(0), makeTestDataItem(1), makeTestDataItem(2), makeTestDataItem(3)]
 
 describe('ProgramDetailsCardCollection', () => {
-  test('empty test')
-  // test('should render the default cards', () => {
-  //   const component = renderer.create(<ProgramDetailsCardCollection />)
-  //   const tree = component.toJSON()
-  //   expect(tree).toMatchSnapshot()
-  // })
-  // test('should render nothing when given nothing', () => {
-  //   const component = shallow(<ProgramDetailsCardCollection cards={null} />)
-  //   expect(component.contains('CardCollection')).toEqual(false)
-  // })
-  // test('should render english by default', () => {
-  //   const component = shallow(<ProgramDetailsCardCollection cards={testData} />)
-  //   const cardsPropertyToCardCollection = component.find('CardCollection').prop('cards')
-  //   expect(cardsPropertyToCardCollection.length).toEqual(4)
-  //   expect(cardsPropertyToCardCollection[0].titleText).toEqual('Title 0')
-  //   expect(cardsPropertyToCardCollection[0].subtitleText).toEqual('Summary 0')
-  // })
-  // test('should render the spanish translation when the language is set', () => {
-  //   const component = shallow(<ProgramDetailsCardCollection cards={testData} currentLanguage="es" />)
-  //   const cardsPropertyToCardCollection = component.find('CardCollection').prop('cards')
-  //   expect(cardsPropertyToCardCollection.length).toEqual(4)
-  //   expect(cardsPropertyToCardCollection[0].titleText).toEqual('Título 0')
-  //   expect(cardsPropertyToCardCollection[0].subtitleText).toEqual('Resumen 0')
-  // })
+  test('should render the default cards', () => {
+    const component = renderer.create(<ProgramDetailsCardCollection />)
+    const tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+  test('should render nothing when given nothing', () => {
+    const component = shallow(<ProgramDetailsCardCollection cards={null} />)
+    expect(component.contains('CardCollection')).toEqual(false)
+  })
+  test('should render english by default', () => {
+    const component = shallow(<ProgramDetailsCardCollection cards={testData} />)
+    const cardsPropertyToCardCollection = component.find('CardCollection').prop('cards')
+    expect(cardsPropertyToCardCollection.length).toEqual(4)
+    expect(cardsPropertyToCardCollection[0].titleText).toEqual('Title 0')
+    expect(cardsPropertyToCardCollection[0].subtitleText).toEqual('Summary 0')
+  })
+  test('should render the spanish translation when the language is set', () => {
+    const component = shallow(<ProgramDetailsCardCollection cards={testData} currentLanguage="es" />)
+    const cardsPropertyToCardCollection = component.find('CardCollection').prop('cards')
+    expect(cardsPropertyToCardCollection.length).toEqual(4)
+    expect(cardsPropertyToCardCollection[0].titleText).toEqual('Título 0')
+    expect(cardsPropertyToCardCollection[0].subtitleText).toEqual('Resumen 0')
+  })
 })

@@ -24,7 +24,7 @@ class CardCollection extends React.Component {
     super(props)
 
     this.state = {
-      cardsPerRow: [1]
+      cardsPerRow: [2, 2]
     }
   }
 
