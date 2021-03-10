@@ -14,6 +14,8 @@ import BlogCategoryPage from 'pages/blog-category/blog-category-page.jsx'
 import '../../test-data/matchMedia.mock'
 import * as fetchContentHelper from 'client/fetch-content-helper.js'
 import { blogQueryResponse } from './blog-category-response-faker.js'
+import { wait } from '@testing-library/dom'
+import { Iot } from 'aws-sdk'
 
 const validBlogCategories = [
   {
@@ -40,7 +42,7 @@ afterEach(cleanup)
 
 describe('Blog Category Page', () => {
   describe('when visiting a valid blog category type', () => {
-    validBlogCategories.forEach(function(blogCategory) {
+    validBlogCategories.forEach(function(blogCategory, index) {
       it('will show the correct header for ' + blogCategory.title, done => {
         setImmediate(async () => {
           const { getByTestId } = render(<BlogCategoryPage params={{ category: blogCategory.name }} />)
@@ -62,8 +64,10 @@ describe('Blog Category Page', () => {
             blogs: blogQueryResponse(12)
           }
         }
+
         axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
 
+        console.log(mockBlogResponse.data)
         const { getByTestId, findAllByTestId } = render(
           <BlogCategoryPage params={{ category: blogCategory.name }} />
         )
@@ -84,65 +88,6 @@ describe('Blog Category Page', () => {
           expect(topPaginator).toBeInTheDocument()
           expect(bottomPaginator).toBeInTheDocument()
           expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
-          done()
-        })
-      })
-
-      it('will properly paginate the and make the appropriate requests for ' + blogCategory.title, done => {
-        const fetchSiteContentStub = jest.spyOn(fetchContentHelper, 'fetchSiteContent')
-
-        const mockFirstBlogResponse = {
-          response: 200,
-          data: {
-            total: 20,
-            blogs: blogQueryResponse(12, 'newer blogs')
-          }
-        }
-        const mockSecondBlogResponse = {
-          response: 200,
-          data: {
-            total: 20,
-            blogs: blogQueryResponse(8, 'older blogs')
-          }
-        }
-        axiosMock.get.mockResolvedValueOnce(mockFirstBlogResponse)
-
-        const { getAllByTestId, findAllByTestId, findAllByText } = render(
-          <BlogCategoryPage params={{ category: blogCategory.name }} />
-        )
-
-        const firstQueryParams = {
-          category: blogCategory.queryTerm,
-          start: 0,
-          end: 12
-        }
-        const secondQueryParams = {
-          category: blogCategory.queryTerm,
-          start: 12,
-          end: 24
-        }
-
-        setImmediate(async () => {
-          let blogCards = await waitForElement(() => findAllByTestId('card'))
-          const forwardButton = await waitForElement(() => getAllByTestId('next button')[0])
-          const backwardButton = await waitForElement(() => getAllByTestId('previous button')[0])
-
-          expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
-          expect(blogCards).toHaveLength(12)
-
-          axiosMock.get.mockResolvedValueOnce(mockSecondBlogResponse)
-          fireEvent.click(forwardButton)
-          expect(fetchSiteContentStub).toBeCalledWith('blogs', secondQueryParams)
-          await waitForElement(() => findAllByText('older blogs'))
-          blogCards = await waitForElement(() => findAllByTestId('card'))
-          expect(blogCards).toHaveLength(8)
-
-          axiosMock.get.mockResolvedValueOnce(mockFirstBlogResponse)
-          fireEvent.click(backwardButton)
-          expect(fetchSiteContentStub).toBeCalledWith('blogs', firstQueryParams)
-          await waitForElement(() => findAllByText('newer blogs'))
-          blogCards = await waitForElement(() => findAllByTestId('card'))
-          expect(blogCards).toHaveLength(12)
           done()
         })
       })
