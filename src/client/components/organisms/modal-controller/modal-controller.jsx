@@ -11,7 +11,7 @@ export const ModalController = ({ modalType, modalProps }) => {
     return <MobileSectionNavModal {...modalProps} />
   } else if (modalType === 'OFFICE_CONTACT_MODAL') {
     return <OfficeContactModal {...modalProps} />
-  }  else if (modalType === 'SBA_NEWSLETTER') {
+  } else if (modalType === 'SBA_NEWSLETTER') {
     return <SbaNewsModal {...modalProps} />
   } else {
     return <div />
