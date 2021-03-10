@@ -50,6 +50,9 @@ exports[`PersonLookupPage should render correctly 1`] = `
             />
           </div>
         </div>
+        <span
+          className="helperText"
+        />
       </div>
       <div
         className="select"
