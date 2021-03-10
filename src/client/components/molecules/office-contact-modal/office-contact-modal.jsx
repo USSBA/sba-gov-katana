@@ -10,87 +10,83 @@ import envelopeIcon from 'assets/svg/envelope.svg'
 import exitIcon from 'assets/svg/close_button.svg'
 import styles from './office-contact-modal.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
-import { Button, TextInput } from 'atoms'
+import { Button, TextInput, TextArea } from 'atoms'
 import { logEvent } from '../../../services/analytics.js'
 import {
   containsErrorOrNull,
   getEmailValidationState,
-  getZipcodeValidationState
 } from '../../../services/form-validation-helpers.js'
 
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
 class OfficeContactModal extends React.Component {
 
-  constructor(props) {
+  constructor() {
     super()
     this.state = {
       modalIsOpen: true,
       displayForm: true,
-      fullName: '',
-      email: '',
-      topic: '',
-      details: '',
+      userFullName: '',
+      userEmailAddress: '',
+      userTopic: '',
+      userDetails: '',
       validStates: {
         fullName: null,
-        email: null,
-        topic: null,
-        details: null,
+        userEmailAddress: null,
+        userTopic: null,
+        userDetails: null,
       }
     }
   }
 
-  // componentDidMount() {
-  //   this.validateFields(['userEmailAddress', 'userZipCode'])
-  //   window.scrollTo(0, 0)
-  // }
+  componentDidMount() {
+    this.validateFields(['userEmailAddress'])
+    window.scrollTo(0, 0)
+  }
 
-  // validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-  //   const validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
-  //   if (validationState[name] === 'error') {
-  //     logEvent({
-  //       category: 'Newsletter Modal',
-  //       action: 'Error Event',
-  //       label: name
-  //     })
-  //   }
-  //   return validationState
-  // }
+  
+  validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
+    const validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
+    if (validationState[name] === 'error') {
+      logEvent({
+        category: 'Newsletter Modal',
+        action: 'Error Event',
+        label: name
+      })
+    }
+    return validationState
+  }
 
-  // validateFields(fields, defaultWhenNotSuccessful) {
-  //   let validStates = this.state.validStates
+  validateFields(fields, defaultWhenNotSuccessful) {
+    let validStates = this.state.validStates
 
-  //   if (includes(fields, 'userEmailAddress')) {
-  //     validStates = Object.assign(
-  //       validStates,
-  //       this.validateSingleField(getEmailValidationState, 'userEmailAddress', defaultWhenNotSuccessful)
-  //     )
-  //   }
-  //   if (includes(fields, 'userZipCode')) {
-  //     validStates = Object.assign(
-  //       validStates,
-  //       this.validateSingleField(getZipcodeValidationState, 'userZipCode', defaultWhenNotSuccessful)
-  //     )
-  //   }
-  //   this.setState({ validStates: validStates })
-  // }
+    if (includes(fields, 'userEmailAddress')) {
+      validStates = Object.assign(
+        validStates,
+        this.validateSingleField(getEmailValidationState, 'userEmailAddress', defaultWhenNotSuccessful)
+      )
+    }
 
-  // isValidForm() {
-  //   return !containsErrorOrNull(this.state.validStates)
-  // }
+    this.setState({ validStates: validStates })
+  }
 
-  // handleSubmit(e) {
-  //   e.preventDefault()
-  //   //we do not care about the response
-  //   runMiscAction('newsletter-registration', {
-  //     userEmailAddress: this.state.userEmailAddress,
-  //     userZipCode: this.state.userZipCode
-  //   })
+  isValidForm() {
+    return !containsErrorOrNull(this.state.validStates)
+  }
 
-  //   this.setState({ displayForm: false })
-  //   this.timerId = setTimeout(() => {
-  //     this.setState({ modalIsOpen: false })
-  //   }, 5000)
-  // }
+  handleSubmit(e) {
+    console.log(e);
+    // e.preventDefault()
+    //we do not care about the response
+    // runMiscAction('newsletter-registration', {
+    //   userEmailAddress: this.state.userEmailAddress,
+    //   userZipCode: this.state.userZipCode
+    // })
+
+    // this.setState({ displayForm: false })
+    // this.timerId = setTimeout(() => {
+    //   this.setState({ modalIsOpen: false })
+    // }, 5000)
+  }
 
   // componentWillUnmount() {
   //   if (this.timerId !== null) {
@@ -98,24 +94,24 @@ class OfficeContactModal extends React.Component {
   //   }
   // }
 
-  // handleChange(e) {
-  //   const newState = {}
-  //   const name = e.target.name
-  //   newState[name] = e.target.value
-  //   this.setState(newState, () => this.validateFields([name]))
-  // }
+  handleChange(e) {
+    const newState = {}
+    const name = e.target.name
+    newState[name] = e.target.value
+    this.setState(newState, () => this.validateFields([name]))
+  }
 
-  // handleKeyDown(event) {
-  //   const code = event.keyCode ? event.keyCode : event.which
-  //   if (code === 13) {
-  //     this.setState({ modalIsOpen: false })
-  //   }
-  //   event.preventDefault()
-  // }
+  handleKeyDown(event) {
+    const code = event.keyCode ? event.keyCode : event.which
+    if (code === 13) {
+      this.setState({ modalIsOpen: false })
+    }
+    event.preventDefault()
+  }
 
-  // handleBlur(e) {
-  //   this.validateFields([e.target.name], 'error')
-  // }
+  handleBlur(e) {
+    this.validateFields([e.target.name], 'error')
+  }
 
   // handleFocus(nameOrEvent) {
   //   const name =
@@ -142,7 +138,7 @@ class OfficeContactModal extends React.Component {
         aria-labelledby="dialogTitle"
         contentLabel="Modal"
       >
-        <div>
+        <form>
           <div>
             <a className={styles.imgContainer} onClick={this.handleClose.bind(this)} href="">
               <img
@@ -158,46 +154,64 @@ class OfficeContactModal extends React.Component {
           </div>
           <div>
             <TextInput
-              id="zip"
-              queryParamName="address"
+              name="userFullName"
+              queryParamName="userFullName"
               textRef={this.textInput}
-              className={styles.field + ' ' + styles.zip}
+              className={styles.field}
               label="Full Name"
               helperText="Required. Input your first and last name."
-              errorText="Enter a 5-digit zip code."
+              errorText="Required. Input your first and last name."
+              onChange={this.handleChange.bind(this)}
+              value={this.state.userFullName}
+              validationState={this.state.validStates.userFullName}
+              onBlur={this.handleBlur.bind(this)}
             />
           </div>
           <div>
             <TextInput
-              id="zip"
-              queryParamName="address"
+              name="userEmailAddress"
+              queryParamName="userEmailAddress"
               textRef={this.textInput}
-              className={styles.field + ' ' + styles.zip}
+              className={styles.field}
               label="Email"
               helperText="Required. Input a valid email address format."
-              errorText="Enter a 5-digit zip code."
+              errorText="Required. Input a valid email address format."
+              onChange={this.handleChange.bind(this)}
+              value={this.state.userEmailAddress}
+              validationState={this.state.validStates.userEmailAddress}
+              onBlur={this.handleBlur.bind(this)}
             />
           </div>
           <div>
             <TextInput
-              id="zip"
-              queryParamName="address"
+              name="userTopic"
+              queryParamName="userTopic"
               textRef={this.textInput}
-              className={styles.field + ' ' + styles.zip}
+              className={styles.field}
               label="Topics"
               helperText="Required. Select your topic from the provided options."
-              errorText="Enter a 5-digit zip code."
+              errorText="Required. Select your topic from the provided options."
+              onChange={this.handleChange.bind(this)}
+              value={this.state.userTopic}
+              validationState={this.state.validStates.userTopic}
+              onBlur={this.handleBlur.bind(this)}
             />
           </div>
           <div>
-            <TextInput
-              id="zip"
-              queryParamName="address"
+            <TextArea
+              name="userDetails"
+              queryParamName="userDetails"
               textRef={this.textInput}
-              className={styles.field + ' ' + styles.zip}
+              className={styles.field}
               label="Details"
               helperText="Tell us more information about your inquirry or accomodations."
-              errorText="Enter a 5-digit zip code."
+              errorText="Tell us more information about your inquirry or accomodations."
+              onChange={this.handleChange.bind(this)}
+              value={this.state.userDetails}
+              validationState={this.state.validStates.userDetails}
+              style={{ height: '100px' }}
+              onBlur={this.handleBlur.bind(this)}
+              maxLength="250"
             />
           </div>
           <div className={styles.btnContainer}>
@@ -205,9 +219,9 @@ class OfficeContactModal extends React.Component {
               Subscribe
             </Button>*/}
             <Button secondary>CANCEL</Button>
-            <Button primary>SUBMIT</Button>
+            <Button type="submit" primary>SUBMIT</Button>
           </div>
-        </div>
+        </form>
       </ReactModal>
     )
   }
