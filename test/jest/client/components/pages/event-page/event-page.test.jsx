@@ -25,7 +25,7 @@ describe('Event Page', () => {
   test('should render the loader while waiting of a response from the API', () => {
     const props = {
       params: {
-        eventId: "304"
+        eventId: '304'
       }
     }
     const component = shallow(<EventPage {...props} />)
@@ -37,7 +37,7 @@ describe('Event Page', () => {
   test('should render the 404 page when no event data is found', () => {
     const props = {
       params: {
-        eventId: "304"
+        eventId: '304'
       }
     }
     const component = shallow(<EventPage {...props} />)
@@ -50,7 +50,7 @@ describe('Event Page', () => {
   test('should render the event component when event data is set', () => {
     const props = {
       params: {
-        eventId: "304",
+        eventId: '304'
       }
     }
     const component = shallow(<EventPage {...props} />)
