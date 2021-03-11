@@ -72,11 +72,16 @@
 @mixin lede-type {
   color: $sba-gray-dark;
   font-family: $serif-font-family;
-  font-size: 1.167rem;
+  font-size: 1.67rem;
   font-style: italic;
   font-weight: 300;
   line-height: 1.667;
   margin-bottom: 1.1em;
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+    line-height: 1.5em;
+  }
 }
 
 // ---

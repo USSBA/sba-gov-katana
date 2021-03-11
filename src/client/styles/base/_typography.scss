@@ -51,7 +51,7 @@ h2 {
 }
 
 h1 {
-  font-size: 2.667rem;
+  font-size: 2.333rem;
 
   @include for-large-up {
     font-size: 3.375rem;
@@ -59,7 +59,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.777rem;
+  font-size: 1.61rem;
   font-weight: 400;
 
   @include for-large-up {
