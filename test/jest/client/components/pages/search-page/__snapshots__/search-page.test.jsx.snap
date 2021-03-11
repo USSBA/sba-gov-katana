@@ -50,6 +50,9 @@ exports[`SearchPage to match snapshot 1`] = `
                 type="text"
               />
             </div>
+            <span
+              className="helperText"
+            />
           </div>
           <div
             className="searchIcon"

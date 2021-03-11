@@ -41,7 +41,7 @@ class OfficeResult extends React.PureComponent {
     const state = item.location_state ? item.location_state[0] : null
     const phoneNumber = item.location_phone_number ? item.location_phone_number[0] : null
     const link = item.office_website ? item.office_website[0] : null
-
+    const title = item.title[0]
     const sbaOfficeNames = clientConfig.sbaOfficeNames
     const officeType = item.office_type ? item.office_type[0] : ''
     const isOfficialOffice = sbaOfficeNames.includes(officeType)
@@ -75,7 +75,7 @@ class OfficeResult extends React.PureComponent {
             <a
               id={`office-result-container-${id}`}
               className={cardLayoutClassName}
-              aria-label={item.title[0]}
+              aria-label={title}
               tabIndex="0"
               onMouseOver={() => {
                 if (!isHovered) {
@@ -130,7 +130,7 @@ class OfficeResult extends React.PureComponent {
                     <div className={styles.clear} />
                   </div>
                   <div id={`office-title-${id}`}>
-                    <h2>{item.title[0]}</h2>
+                    <h2>{title}</h2>
                   </div>
                   <div>
                     <div id={`office-type-${id}`}>
@@ -167,15 +167,25 @@ class OfficeResult extends React.PureComponent {
                 </div>
               </a>
             )}
-            <button type="button" onClick={this.props.modalActions.showOfficeContactModal} className={styles.contactButton}>
-              <a href={null} target="_blank">
-                <div className={contactClassName}>
-                  <i className={'fa fa-envelope ' + styles.fa} />
-                  <br />
-                  Contact
-                </div>
-              </a>
-            </button>
+            {officeType === 'SBA District Office' ? (
+              <button
+                type="button"
+                onClick={() => {
+                  this.props.modalActions.showOfficeContactModal(title)
+                }}
+                className={styles.contactButton}
+              >
+                <a href={null} target="_blank">
+                  <div className={contactClassName}>
+                    <i className={'fa fa-envelope ' + styles.fa} />
+                    <br />
+                    Contact
+                  </div>
+                </a>
+              </button>
+            ) : (
+              <> </>
+            )}
           </div>
         </div>
       </div>
@@ -207,9 +217,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(OfficeResult)
+export default connect(null, mapDispatchToProps)(OfficeResult)
 
 export { OfficeResult }

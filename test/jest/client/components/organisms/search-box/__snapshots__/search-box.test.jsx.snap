@@ -49,6 +49,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
             type="text"
           />
         </div>
+        <span
+          className="helperText"
+        />
       </div>
       <div
         className="searchIcon"

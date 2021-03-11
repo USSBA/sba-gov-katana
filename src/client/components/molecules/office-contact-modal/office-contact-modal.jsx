@@ -12,15 +12,11 @@ import styles from './office-contact-modal.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
 import { Button, TextInput, TextArea } from 'atoms'
 import { logEvent } from '../../../services/analytics.js'
-import {
-  containsErrorOrNull,
-  getEmailValidationState,
-} from '../../../services/form-validation-helpers.js'
+import { containsErrorOrNull, getEmailValidationState } from '../../../services/form-validation-helpers.js'
 
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
 class OfficeContactModal extends React.Component {
-
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
       modalIsOpen: true,
@@ -29,11 +25,12 @@ class OfficeContactModal extends React.Component {
       userEmailAddress: '',
       userTopic: '',
       userDetails: '',
+      officeName: props.officeName,
       validStates: {
         fullName: null,
         userEmailAddress: null,
         userTopic: null,
-        userDetails: null,
+        userDetails: null
       }
     }
   }
@@ -43,7 +40,6 @@ class OfficeContactModal extends React.Component {
     window.scrollTo(0, 0)
   }
 
-  
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
     const validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
     if (validationState[name] === 'error') {
@@ -74,7 +70,7 @@ class OfficeContactModal extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log(e);
+    console.log(e)
     // e.preventDefault()
     //we do not care about the response
     // runMiscAction('newsletter-registration', {
@@ -124,8 +120,8 @@ class OfficeContactModal extends React.Component {
   // }
 
   handleClose(event) {
-    this.props.modalActions.closeOfficeContactModal()
     event.preventDefault()
+    this.props.modalActions.closeOfficeContactModal()
   }
 
   render() {
@@ -148,7 +144,7 @@ class OfficeContactModal extends React.Component {
               />
             </a>
             <h3 id="dialogTitle" className={styles.title}>
-              Contact your CITY District Office
+              Contact your {this.state.officeName} Office
             </h3>
             <div className={styles.divider} />
           </div>
@@ -218,8 +214,10 @@ class OfficeContactModal extends React.Component {
             {/*<Button disabled={!this.isValidForm()} primary small type="submit">
               Subscribe
             </Button>*/}
-            <Button secondary>CANCEL</Button>
-            <Button type="submit" primary>SUBMIT</Button>
+            <Button secondary onClick={this.handleClose.bind(this)}>
+              CANCEL
+            </Button>
+            <Button primary>SUBMIT</Button>
           </div>
         </form>
       </ReactModal>
@@ -232,6 +230,6 @@ function mapDispatchToProps(dispatch) {
     modalActions: bindActionCreators(ModalActions, dispatch)
   }
 }
-export default connect(mapDispatchToProps)(OfficeContactModal)
+export default connect(null, mapDispatchToProps)(OfficeContactModal)
 
 export { OfficeContactModal }
