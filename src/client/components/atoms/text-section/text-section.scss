@@ -88,7 +88,9 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
-    & td {
+
+    & td,
+    th {
       overflow: auto;
       border: 0;
       border-bottom: 2px solid $sba-gray-light;
@@ -145,7 +147,8 @@
     & tbody tr {
       border-bottom: 2px solid $sba-gray-light;
     }
-    & td {
+    & td,
+    th {
       padding-right: 15px;
       padding-left: 15px;
       border: 0;
