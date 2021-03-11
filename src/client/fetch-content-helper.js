@@ -23,6 +23,20 @@ async function fetchRestContent(id, langOverride) {
   return data
 }
 
+async function fetchApiSbaGovContent(fileDirectory) {
+  let data = null
+
+  try {
+    const response = await axios.get(`https://api.sba.gov/${fileDirectory}`)
+
+    data = JSON.parse(response.data)
+  } catch (error) {
+    console.error('fetchApiSbaGovContent', error)
+  }
+
+  return data
+}
+
 async function fetchEventContent(id, langOverride) {
   let data = null
 
@@ -82,4 +96,11 @@ async function runMiscAction(type, query) {
   return data
 }
 
-export { fetchRestContent, fetchEventContent, fetchSiteContent, postMiscAction, runMiscAction }
+export {
+  fetchApiSbaGovContent,
+  fetchRestContent,
+  fetchEventContent,
+  fetchSiteContent,
+  postMiscAction,
+  runMiscAction
+}
