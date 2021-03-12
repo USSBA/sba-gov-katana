@@ -38,7 +38,7 @@ class MultiSelect extends React.Component {
   }
 
   render() {
-    const { className, dataCy, helperText, errorText, id, label, placeholder, validationState, ...rest } = this.props
+    const { className, dataCy, errorText, id, label, placeholder, validationState, ...rest } = this.props
 
     const selectClassName = classNames({
       select: true,
@@ -69,11 +69,6 @@ class MultiSelect extends React.Component {
             .reduce((acc, attr) => (acc[attr] = this.props[attr]), {})}
           {...rest}
         />
-        {(validationState !== 'error' && helperText) && (
-          <div className={styles.helperText}>
-            {helperText}
-          </div>
-        )}
         {validationState === 'error' && <FormErrorMessage errorText={errorText} />}
       </div>
     )

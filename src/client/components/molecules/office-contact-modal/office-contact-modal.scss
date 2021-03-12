@@ -33,9 +33,11 @@
   position: absolute;
   top: 30px;
   right: 30px;
+  height: 30px;
 }
 
 .title {
+  text-align: center;
   font-size: 27px;
   margin-top: 45px;
 }
@@ -44,6 +46,10 @@
   border-top: 3px solid #CC0000;
   width: 142px;
   margin: 0 auto 20px;
+}
+
+.form {
+  max-width: 500px;
 }
 
 .field {

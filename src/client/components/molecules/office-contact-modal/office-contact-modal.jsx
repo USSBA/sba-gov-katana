@@ -12,7 +12,7 @@ import styles from './office-contact-modal.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
 import { Button, TextInput, MultiSelect, TextArea } from 'atoms'
 import { logEvent } from '../../../services/analytics.js'
-import { containsErrorOrNull, getEmailValidationState } from '../../../services/form-validation-helpers.js'
+import { containsErrorOrNull, getNameValidationState, getEmailValidationState } from '../../../services/form-validation-helpers.js'
 import OfficeContactSuccess from './office-contact-success'
 
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
@@ -24,22 +24,17 @@ class OfficeContactModal extends React.Component {
       displayForm: true,
       userFullName: '',
       userEmailAddress: '',
-      userTopic: '',
+      // userTopic: '',
       userDetails: '',
-      showSuccess: true,
+      showSuccess: false,
       officeName: props.officeName,
       validStates: {
-        fullName: null,
+        userFullName: null,
         userEmailAddress: null,
-        userTopic: null,
-        userDetails: null
+        // userTopic: null,
+        // userDetails: null
       }
     }
-  }
-
-  componentDidMount() {
-    this.validateFields(['userEmailAddress'])
-    window.scrollTo(0, 0)
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
@@ -57,12 +52,21 @@ class OfficeContactModal extends React.Component {
   validateFields(fields, defaultWhenNotSuccessful) {
     let validStates = this.state.validStates
 
+    if (includes(fields, 'userFullName')) {
+      validStates = Object.assign(
+        validStates,
+        this.validateSingleField(getNameValidationState, 'userFullName', defaultWhenNotSuccessful)
+      )
+    }
+
     if (includes(fields, 'userEmailAddress')) {
       validStates = Object.assign(
         validStates,
         this.validateSingleField(getEmailValidationState, 'userEmailAddress', defaultWhenNotSuccessful)
       )
     }
+
+    console.log(validStates)
 
     this.setState({ validStates: validStates })
   }
@@ -73,6 +77,7 @@ class OfficeContactModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    this.validateFields(Object.keys(this.state.validStates), 'error')
     //we do not care about the response
     // runMiscAction('newsletter-registration', {
     //   userEmailAddress: this.state.userEmailAddress,
@@ -84,12 +89,6 @@ class OfficeContactModal extends React.Component {
     //   this.setState({ modalIsOpen: false })
     // }, 5000)
   }
-
-  // componentWillUnmount() {
-  //   if (this.timerId !== null) {
-  //     clearTimeout(this.timerId)
-  //   }
-  // }
 
   handleChange(e) {
     const newState = {}
@@ -105,20 +104,6 @@ class OfficeContactModal extends React.Component {
     }
     event.preventDefault()
   }
-
-  handleBlur(e) {
-    this.validateFields([e.target.name], 'error')
-  }
-
-  // handleFocus(nameOrEvent) {
-  //   const name =
-  //     nameOrEvent && nameOrEvent.target && nameOrEvent.target.name ? nameOrEvent.target.name : nameOrEvent
-  //   logEvent({
-  //     category: 'Newsletter Modal',
-  //     action: 'Focus Event',
-  //     label: name
-  //   })
-  // }
 
   handleClose(event) {
     event.preventDefault()
@@ -145,7 +130,7 @@ class OfficeContactModal extends React.Component {
         {this.state.showSuccess ? (
           <OfficeContactSuccess modalActions={this.props.modalActions} />
         ) : (
-          <form>
+          <form onSubmit={e => this.handleSubmit(e)} novalidate="novalidate" className={styles.form}>
             <div>
               <h3 id="dialogTitle" className={styles.title}>
                 Contact your {this.state.officeName} Office
@@ -163,7 +148,6 @@ class OfficeContactModal extends React.Component {
               onChange={this.handleChange.bind(this)}
               value={this.state.userFullName}
               validationState={this.state.validStates.userFullName}
-              onBlur={this.handleBlur.bind(this)}
             />
             <TextInput
               name="userEmailAddress"
@@ -176,7 +160,6 @@ class OfficeContactModal extends React.Component {
               onChange={this.handleChange.bind(this)}
               value={this.state.userEmailAddress}
               validationState={this.state.validStates.userEmailAddress}
-              onBlur={this.handleBlur.bind(this)}
             />
             {/*<MultiSelect
               name="form-field-name"
@@ -201,14 +184,13 @@ class OfficeContactModal extends React.Component {
               value={this.state.userDetails}
               validationState={this.state.validStates.userDetails}
               style={{ height: '100px' }}
-              onBlur={this.handleBlur.bind(this)}
               maxLength="250"
             />
             <div className={styles.btnContainer}>
               <Button secondary onClick={this.handleClose.bind(this)}>
                 CANCEL
               </Button>
-              <Button disabled={!this.isValidForm()} primary type="submit">SUBMIT</Button>
+              <Button primary type="submit">SUBMIT</Button>
             </div>
           </form>
         )}

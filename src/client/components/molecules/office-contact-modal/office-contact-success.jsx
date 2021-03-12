@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './office-contact-success.scss'
 import { Button } from 'atoms'
 
-export default ({ modalActions }) => {
+const OfficeContactSuccess = ({ modalActions }) => {
 	const handleClose = event => {
     event.preventDefault()
     modalActions.closeOfficeContactModal()
@@ -30,3 +31,9 @@ export default ({ modalActions }) => {
 		</div>
 	)
 }
+
+OfficeContactSuccess.propTypes = {
+  modalActions: PropTypes.object,
+}
+
+export default OfficeContactSuccess
