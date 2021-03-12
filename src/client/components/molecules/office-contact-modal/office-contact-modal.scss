@@ -10,17 +10,15 @@
 
 .content {
   position: absolute;
-  top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  margin: auto;
+  margin: 100px auto 0;
   width: 700px;
-  height: 775px;
   background-color: #fff;
   display: flex;
   justify-content: center;
   border-top: 8px solid #002E6D;
+  padding-bottom: 35px;
 }
 
 .exitIcon {
@@ -61,6 +59,6 @@
   display: flex;
   width: 100%;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   padding-top: 20px;
 }

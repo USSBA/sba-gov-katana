@@ -1,0 +1,55 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title {
+  font-size: 27px;
+  margin-top: 45px;
+  text-align: center;
+}
+
+.divider {
+  border-top: 3px solid #CC0000;
+  width: 142px;
+  margin: 0 auto 20px;
+}
+
+.success {
+	width: 379px;
+	height: 110px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid #197E4E;
+	margin-top: 30px;
+}
+
+.icon {
+	font-size: 45px;
+	color: #197E4E;
+}
+
+.successMessage {
+	font-size: 22px;
+	color: #197E4E;
+	margin-top: 10px;
+}
+
+.messageTitle {
+	color: #000441;
+	font-size: 18px;
+	width: 377px;
+	margin-top: 35px;
+}
+
+.message {
+	color: #000441;
+	font-size: 18px;
+	width: 377px;
+	margin-top: 0;
+	margin-bottom: 30px;
+
+}

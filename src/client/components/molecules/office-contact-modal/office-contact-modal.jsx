@@ -10,9 +10,10 @@ import envelopeIcon from 'assets/svg/envelope.svg'
 import exitIcon from 'assets/svg/close_button.svg'
 import styles from './office-contact-modal.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
-import { Button, TextInput, TextArea } from 'atoms'
+import { Button, TextInput, MultiSelect, TextArea } from 'atoms'
 import { logEvent } from '../../../services/analytics.js'
 import { containsErrorOrNull, getEmailValidationState } from '../../../services/form-validation-helpers.js'
+import OfficeContactSuccess from './office-contact-success'
 
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
 class OfficeContactModal extends React.Component {
@@ -25,6 +26,7 @@ class OfficeContactModal extends React.Component {
       userEmailAddress: '',
       userTopic: '',
       userDetails: '',
+      showSuccess: true,
       officeName: props.officeName,
       validStates: {
         fullName: null,
@@ -70,8 +72,7 @@ class OfficeContactModal extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log(e)
-    // e.preventDefault()
+    e.preventDefault()
     //we do not care about the response
     // runMiscAction('newsletter-registration', {
     //   userEmailAddress: this.state.userEmailAddress,
@@ -134,21 +135,23 @@ class OfficeContactModal extends React.Component {
         aria-labelledby="dialogTitle"
         contentLabel="Modal"
       >
-        <form>
-          <div>
-            <a className={styles.imgContainer} onClick={this.handleClose.bind(this)} href="">
-              <img
-                className={styles.exitIcon}
-                src={exitIcon}
-                onKeyDown={event => this.handleKeyDown(event)}
-              />
-            </a>
-            <h3 id="dialogTitle" className={styles.title}>
-              Contact your {this.state.officeName} Office
-            </h3>
-            <div className={styles.divider} />
-          </div>
-          <div>
+        <a className={styles.imgContainer} onClick={this.handleClose.bind(this)} href="">
+          <img
+            className={styles.exitIcon}
+            src={exitIcon}
+            onKeyDown={event => this.handleKeyDown(event)}
+          />
+        </a>
+        {this.state.showSuccess ? (
+          <OfficeContactSuccess modalActions={this.props.modalActions} />
+        ) : (
+          <form>
+            <div>
+              <h3 id="dialogTitle" className={styles.title}>
+                Contact your {this.state.officeName} Office
+              </h3>
+              <div className={styles.divider} />
+            </div>
             <TextInput
               name="userFullName"
               queryParamName="userFullName"
@@ -162,8 +165,6 @@ class OfficeContactModal extends React.Component {
               validationState={this.state.validStates.userFullName}
               onBlur={this.handleBlur.bind(this)}
             />
-          </div>
-          <div>
             <TextInput
               name="userEmailAddress"
               queryParamName="userEmailAddress"
@@ -177,23 +178,17 @@ class OfficeContactModal extends React.Component {
               validationState={this.state.validStates.userEmailAddress}
               onBlur={this.handleBlur.bind(this)}
             />
-          </div>
-          <div>
-            <TextInput
-              name="userTopic"
-              queryParamName="userTopic"
-              textRef={this.textInput}
-              className={styles.field}
-              label="Topics"
+            {/*<MultiSelect
+              name="form-field-name"
+              value={this.state.userTopic}
+              onChange={this.handleChange.bind(this)}
               helperText="Required. Select your topic from the provided options."
               errorText="Required. Select your topic from the provided options."
-              onChange={this.handleChange.bind(this)}
-              value={this.state.userTopic}
-              validationState={this.state.validStates.userTopic}
-              onBlur={this.handleBlur.bind(this)}
-            />
-          </div>
-          <div>
+              options={[
+                { value: 'one', label: 'One' },
+                { value: 'two', label: 'Two' },
+              ]}
+            />*/}
             <TextArea
               name="userDetails"
               queryParamName="userDetails"
@@ -209,17 +204,14 @@ class OfficeContactModal extends React.Component {
               onBlur={this.handleBlur.bind(this)}
               maxLength="250"
             />
-          </div>
-          <div className={styles.btnContainer}>
-            {/*<Button disabled={!this.isValidForm()} primary small type="submit">
-              Subscribe
-            </Button>*/}
-            <Button secondary onClick={this.handleClose.bind(this)}>
-              CANCEL
-            </Button>
-            <Button primary>SUBMIT</Button>
-          </div>
-        </form>
+            <div className={styles.btnContainer}>
+              <Button secondary onClick={this.handleClose.bind(this)}>
+                CANCEL
+              </Button>
+              <Button disabled={!this.isValidForm()} primary type="submit">SUBMIT</Button>
+            </div>
+          </form>
+        )}
       </ReactModal>
     )
   }
