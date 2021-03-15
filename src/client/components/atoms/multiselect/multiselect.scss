@@ -85,3 +85,12 @@
   color: #686868;
   margin: 10px 0 0 0;
 }
+
+.invalid {
+  :global(.Select-control) {
+    border: 2px solid $sba-red-light;
+  }
+  :global(.Select-placeholder) {
+    height: 23px;
+  }
+}

@@ -12,7 +12,12 @@ import styles from './office-contact-modal.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
 import { Button, TextInput, MultiSelect, TextArea } from 'atoms'
 import { logEvent } from '../../../services/analytics.js'
-import { containsErrorOrNull, getNameValidationState, getEmailValidationState } from '../../../services/form-validation-helpers.js'
+import {
+  containsErrorOrNull,
+  getNameValidationState,
+  getEmailValidationState,
+  getSelectBoxValidationState,
+} from '../../../services/form-validation-helpers.js'
 import OfficeContactSuccess from './office-contact-success'
 
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
@@ -65,7 +70,12 @@ class OfficeContactModal extends React.Component {
       )
     }
 
-    console.log(validStates)
+    if (includes(fields, 'userTopic')) {
+      validStates = Object.assign(
+        validStates,
+        this.validateSingleField(getSelectBoxValidationState, 'userTopic', defaultWhenNotSuccessful)
+      )
+    }
 
     this.setState({ validStates: validStates })
   }
@@ -138,8 +148,6 @@ class OfficeContactModal extends React.Component {
             </div>
             <TextInput
               name="userFullName"
-              queryParamName="userFullName"
-              textRef={this.textInput}
               label="Full Name"
               helperText="Required. Input your first and last name."
               errorText="Required. Input your first and last name."
@@ -149,8 +157,6 @@ class OfficeContactModal extends React.Component {
             />
             <TextInput
               name="userEmailAddress"
-              queryParamName="userEmailAddress"
-              textRef={this.textInput}
               label="Email"
               helperText="Required. Input a valid email address format."
               errorText="Required. Input a valid email address format."
@@ -159,26 +165,26 @@ class OfficeContactModal extends React.Component {
               validationState={this.state.validStates.userEmailAddress}
             />
             <MultiSelect
-              name="form-field-name"
+              name="userTopic"
               className={styles.topicDropdown}
               reactSelectClassName={styles.reactSelect}
               label="Topic"
               value={this.state.userTopic}
+              validationState={this.state.validStates.userTopic}
               onChange={this.handleChange.bind(this)}
               helperText="Required. Select your topic from the provided options."
               errorText="Required. Select your topic from the provided options."
               options={[
-                { value: 'general inquiry', label: 'General Inquiry' },
-                { value: '8(a) offer letter', label: '8(a) Offer Letter' },
-                { value: 'media', label: 'Media' },
-                { value: 'covid-19', label: 'Covid-19' },
+                { value: 'covid-19 relief', label: 'Covid-19 Relief' },
                 { value: 'disaster relief', label: 'Disaster Relief' },
+                { value: 'consulting', label: 'Consulting' },
+                { value: 'financial assistance', label: 'Financial Assistance' },
+                { value: 'procurement & government contracting', label: 'Procurement & Government Contracting' },
+                { value: 'other', label: 'Other' },
               ]}
             />
             <TextArea
               name="userDetails"
-              queryParamName="userDetails"
-              textRef={this.textInput}
               className={styles.details}
               label="Details"
               helperText="Tell us more information about your inquirry or accomodations."
