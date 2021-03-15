@@ -303,23 +303,30 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
   const disclaimers = [
     {
       language: 'spanish',
+      lang: 'es',
       prefix: 'Español',
       text:
         'Las solicitudes deben presentarse en inglés. Todos los siguientes documentos se ofrecen solo con fines informativos y como referencia para usted.'
     },
     {
       language: 'vietnamese',
+      lang: 'vi',
       prefix: 'Tiếng Việt',
       text:
         'Các đơn đăng ký phải được nộp bằng tiếng Anh. Tất cả các tài liệu dưới đây chỉ phục vụ mục đích cung cấp thông tin.'
     },
     {
       language: 'korean',
+      lang: 'ko',
       prefix: '한국어',
       text: '신청서는 드시 영어로 제출해야 합니다. 아래 문서는 모두 정보 제공 목적으로만 제공됩니다.'
     },
     {
       language: 'chinese',
+      lang: {
+        simplified: 'zh-Hans',
+        traditional: 'zh-Hant'
+      },
       prefix: {
         simplified: '中文简体',
         traditional: '中文繁軆'
@@ -331,70 +338,82 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
     },
     {
       language: 'japanese',
+      lang: 'ja',
       prefix: '日本語',
       text: '申請は英語で行う必要があります。以下の文書は全て情報提供のみを目的とします。'
     },
     {
       language: 'russian',
+      lang: 'ru',
       prefix: 'русский язык',
       text:
         'Заявки должны подаваться на английском языке. Все представленные ниже документы предназначены только для ознакомительных целей.'
     },
     {
       language: 'arabic',
+      lang: 'ar',
       prefix: 'العربية',
       text: ' يجب تقديم الطلبات باللغة الإنجليزية.\nجميع المستندات المقدمة أدناه هي لأغراض إعلامية فقط.'
     },
     {
       language: 'french',
+      lang: 'fr',
       prefix: 'Français',
       text:
         'Les demandes doivent être présentées en anglais.  Tous les documents fournis ci-dessous le sont à titre informatif uniquement.'
     },
     {
       language: 'portugues',
+      lang: 'pt',
       prefix: 'Português',
       text:
         'As inscrições devem obrigatoriamente ser enviadas em inglês.  Os documentos abaixo são disponibilizados somente para fins informativos.'
     },
     {
       language: 'tagalog',
+      lang: 'tl',
       prefix: 'Tagalog',
       text:
         'Dapat isumite sa Ingles ang mga aplikasyon. Ang lahat ng mga dokumento na ibinigay sa ibaba ay para sa mga layuning pang-impormasyon lamang.'
     },
     {
       language: 'haitian creole',
+      lang: 'ht',
       prefix: 'Kreyòl Ayisyen',
       text:
         'Aplikasyon yo dwe depoze nan lang anglè. Tout dokiman ki disponib pi ba la yo se pou enfòmasyon w sèlman.'
     },
     {
       language: 'german',
+      lang: 'de',
       prefix: 'Deutsche',
       text:
         'Müssen die Anträge in Englisch ausgefüllt und eingereicht werden.  Alle unten zur Verfügung gestellte Dokumente dienen rein informativen Zwecken.'
     },
     {
       language: 'hindi',
+      lang: 'hi',
       prefix: 'हिन्दी भाषा',
       text:
         'आवेदन अंग्रेजी में प्रस्तुत किए जाने चाहिए। नीचे दिए गए सभी दस्तावेज़ केवल सूचना के उद्देश्यों के लिए हैं।'
     },
     {
       language: 'italian',
+      lang: 'it',
       prefix: 'Italiano',
       text:
         'Le richieste devono essere presentate in inglese.  Tutti i documenti forniti in seguito hanno unicamente scopi informativi.'
     },
     {
       language: 'polish',
+      lang: 'pl',
       prefix: 'Polski',
       text:
         'Wnioski należy składać w języku angielskim. Wszystkie przedstawione poniżej dokumenty mają charakter wyłącznie informacyjny.'
     },
     {
       language: 'gujarati',
+      lang: 'gu',
       prefix: 'ગુજરાતી',
       text:
         'અરજીઓને અંગ્રેજીમાં રજૂ કરવી આવશ્યક છે.  નીચે આપેલા તમામ દસ્તાવેજો માત્ર માહિતીના હેતુ માટે છે.'
@@ -410,12 +429,15 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
           const bool = language.includes(disclaimer.language)
           if (bool) {
             if (language.includes('chinese') && language.includes('simplified')) {
+              item.lang = disclaimer.lang.simplified
               item.disclaimer = disclaimer.text.simplified
               item.prefix = disclaimer.prefix.simplified
             } else if (language.includes('chinese') && language.includes('traditional')) {
+              item.lang = disclaimer.lang.traditional
               item.disclaimer = disclaimer.text.traditional
               item.prefix = disclaimer.prefix.traditional
             } else {
+              item.lang = disclaimer.lang
               item.disclaimer = disclaimer.text
               item.prefix = disclaimer.prefix
             }
@@ -435,7 +457,7 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
         {chunk(languageList, 4).map((list, i) => (
           <ul key={i}>
             {list.map((item, j) => (
-              <li key={j}>
+              <li key={j} lang={item.lang}>
                 <a href={`#${item.language[0].replace(' ', '-').toLowerCase()}`}>{item.prefix}</a>
               </li>
             ))}
@@ -449,6 +471,7 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
             <li
               key={i}
               className={style.button}
+              lang={item.lang}
               role="button"
               tabIndex="0"
               onClick={() => {
