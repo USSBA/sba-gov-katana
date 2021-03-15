@@ -67,7 +67,6 @@ describe('Blog Category Page', () => {
 
         axiosMock.get.mockResolvedValueOnce(mockBlogResponse)
 
-        console.log(mockBlogResponse.data)
         const { getByTestId, findAllByTestId } = render(
           <BlogCategoryPage params={{ category: blogCategory.name }} />
         )

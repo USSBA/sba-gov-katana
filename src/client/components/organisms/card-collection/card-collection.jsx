@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { isEmpty } from 'lodash'
+import { isEmpty, throttle } from 'lodash'
 import breakpoints from '../../../styles/base/_variables.scss'
 import styles from './card-collection.scss'
 import { Card } from 'molecules'
@@ -67,7 +67,7 @@ class CardCollection extends React.Component {
     // this is here to patch up a bug where the cards do not stack properly at certain points in the 'medium' breakpoint section
     window.addEventListener(
       'resize',
-      _.throttle(() => {
+      throttle(() => {
         this.updateCardsPerRow.bind(this)
       }, 100)
     )
