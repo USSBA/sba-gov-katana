@@ -12,13 +12,13 @@
   position: absolute;
   left: 0;
   right: 0;
-  margin: 100px auto 0;
-  width: 700px;
+  margin: 50px auto 0;
+  max-width: 650px;
   background-color: #fff;
   display: flex;
   justify-content: center;
   border-top: 8px solid #002E6D;
-  padding-bottom: 35px;
+  padding-bottom: 50px;
 }
 
 .exitIcon {
@@ -31,7 +31,7 @@
 
 .imgContainer {
   position: absolute;
-  top: 30px;
+  top: 25px;
   right: 30px;
   height: 30px;
 }
@@ -39,7 +39,7 @@
 .title {
   text-align: center;
   font-size: 27px;
-  margin-top: 45px;
+  margin-top: 65px;
 }
 
 .divider {
@@ -49,15 +49,23 @@
 }
 
 .form {
-  max-width: 500px;
+  max-width: 550px;
+  padding: 0 50px;
 }
 
-.field {
-  width: 100%;
-  @include grid-media($sba-grid-large) {
-    margin-right: 20px;
-    float: left;
-    display: inline-block;
+.details {
+  max-height: 100px;
+  min-height: 100px;
+  margin-bottom: 4px;
+}
+
+.topicDropdown {
+  margin-bottom: 20px;
+}
+
+.reactSelect {
+  &:global(.Select.is-focused > .Select-control) {
+    border: 1px solid #686868 !important;
   }
 }
 
@@ -66,5 +74,5 @@
   width: 100%;
   flex-direction: row;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 30px;
 }

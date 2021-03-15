@@ -24,15 +24,14 @@ class OfficeContactModal extends React.Component {
       displayForm: true,
       userFullName: '',
       userEmailAddress: '',
-      // userTopic: '',
+      userTopic: '',
       userDetails: '',
       showSuccess: false,
       officeName: props.officeName,
       validStates: {
         userFullName: null,
         userEmailAddress: null,
-        // userTopic: null,
-        // userDetails: null
+        userTopic: null,
       }
     }
   }
@@ -141,7 +140,6 @@ class OfficeContactModal extends React.Component {
               name="userFullName"
               queryParamName="userFullName"
               textRef={this.textInput}
-              className={styles.field}
               label="Full Name"
               helperText="Required. Input your first and last name."
               errorText="Required. Input your first and last name."
@@ -153,7 +151,6 @@ class OfficeContactModal extends React.Component {
               name="userEmailAddress"
               queryParamName="userEmailAddress"
               textRef={this.textInput}
-              className={styles.field}
               label="Email"
               helperText="Required. Input a valid email address format."
               errorText="Required. Input a valid email address format."
@@ -161,29 +158,32 @@ class OfficeContactModal extends React.Component {
               value={this.state.userEmailAddress}
               validationState={this.state.validStates.userEmailAddress}
             />
-            {/*<MultiSelect
+            <MultiSelect
               name="form-field-name"
+              className={styles.topicDropdown}
+              reactSelectClassName={styles.reactSelect}
+              label="Topic"
               value={this.state.userTopic}
               onChange={this.handleChange.bind(this)}
               helperText="Required. Select your topic from the provided options."
               errorText="Required. Select your topic from the provided options."
               options={[
-                { value: 'one', label: 'One' },
-                { value: 'two', label: 'Two' },
+                { value: 'general inquiry', label: 'General Inquiry' },
+                { value: '8(a) offer letter', label: '8(a) Offer Letter' },
+                { value: 'media', label: 'Media' },
+                { value: 'covid-19', label: 'Covid-19' },
+                { value: 'disaster relief', label: 'Disaster Relief' },
               ]}
-            />*/}
+            />
             <TextArea
               name="userDetails"
               queryParamName="userDetails"
               textRef={this.textInput}
-              className={styles.field}
+              className={styles.details}
               label="Details"
               helperText="Tell us more information about your inquirry or accomodations."
-              errorText="Tell us more information about your inquirry or accomodations."
               onChange={this.handleChange.bind(this)}
               value={this.state.userDetails}
-              validationState={this.state.validStates.userDetails}
-              style={{ height: '100px' }}
               maxLength="250"
             />
             <div className={styles.btnContainer}>

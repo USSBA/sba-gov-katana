@@ -28,6 +28,8 @@ class TextArea extends React.Component {
       showSuccessIcon,
       showErrorIcon,
       labelStyle,
+      helperText,
+      className,
       ...rest
     } = this.props
 
@@ -40,7 +42,7 @@ class TextArea extends React.Component {
           <textarea
             {...rest}
             id={id}
-            className={this.inputValidation(validationState)}
+            className={this.inputValidation(validationState) + ' ' + className}
             onChange={onChange}
             maxLength="250"
             value={value}
@@ -52,7 +54,12 @@ class TextArea extends React.Component {
             extraClassName={styles.validationIcon}
           />
         </div>
-        {showCounter ? (
+        {helperText && (
+          <span className={styles.helperText}>
+            {helperText}
+          </span>
+        )}
+        {(!helperText && showCounter) ? (
           <span className={styles.textAreaCounter}>
             {value.length}
             /250

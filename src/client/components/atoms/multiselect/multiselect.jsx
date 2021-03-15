@@ -38,7 +38,18 @@ class MultiSelect extends React.Component {
   }
 
   render() {
-    const { className, dataCy, errorText, id, label, placeholder, validationState, ...rest } = this.props
+    const {
+      className,
+      dataCy,
+      helperText,
+      errorText,
+      id,
+      label,
+      placeholder,
+      validationState,
+      reactSelectClassName,
+      ...rest
+    } = this.props
 
     const selectClassName = classNames({
       select: true,
@@ -55,6 +66,7 @@ class MultiSelect extends React.Component {
         <label htmlFor={id}>{label}</label>
         <ReactSelect
           ref={input => (this.select = input)}
+          className={reactSelectClassName}
           menuBuffer={10}
           tabSelectsValue={false}
           autoBlur={true}
@@ -69,6 +81,11 @@ class MultiSelect extends React.Component {
             .reduce((acc, attr) => (acc[attr] = this.props[attr]), {})}
           {...rest}
         />
+        {helperText && (
+          <p className={styles.helperText}>
+            {helperText}
+          </p>
+        )}
         {validationState === 'error' && <FormErrorMessage errorText={errorText} />}
       </div>
     )
