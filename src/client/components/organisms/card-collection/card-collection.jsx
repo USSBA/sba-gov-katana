@@ -65,7 +65,12 @@ class CardCollection extends React.Component {
     const { cardsPerRow } = this.state
 
     // this is here to patch up a bug where the cards do not stack properly at certain points in the 'medium' breakpoint section
-    window.addEventListener('resize', this.updateCardsPerRow.bind(this))
+    window.addEventListener(
+      'resize',
+      _.throttle(() => {
+        this.updateCardsPerRow.bind(this)
+      }, 100)
+    )
 
     let currentCardIndex = 0
     const rows = cardsPerRow.map(function(count) {
