@@ -214,39 +214,48 @@ export class DocumentArticle extends React.Component {
               {articleIdText}
             </h5>
           )}
-          {!isEmpty(translatedDocList) && (
+          {isEmpty(translatedDocList) && !isEmpty(currentFile) && (
+            <div>{this.renderDateLine(currentFile)}</div>
+          )}
+          <div data-testid="office and contact info" className={style.meta}>
+            {this.renderOfficeInfo()}
+            <br />
+            {pageType === 'article' && this.renderContactInfo()}
+          </div>
+          {isEmpty(translatedDocList) && <hr className={style.hr} />}
+          <div className={style.summaryContainer}>
+            <div className="column">
+              {showDownload && currentFile && !isEmpty(currentFile.fileUrl) && (
+                <div data-testid="download-button">
+                  <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
+                    {`Download ${currentFileExtension}`}
+                  </Button>
+                </div>
+              )}
+            </div>
+            <div className="column">
+              {!isEmpty(data.summary) && <h5 className={style.summary}>{data.summary}</h5>}
+              {!isEmpty(translatedDocList) && (
+                <Fragment>
+                  <h3>Your application must be submitted in English.</h3>
+                  <p>
+                    <em>All documents below are for your reference only.</em>
+                  </p>
+                </Fragment>
+              )}
+            </div>
+          </div>
+          {/* TODO: body style for grid media queries should be baked into text section? */}
+          {!isEmpty(translatedDocList) ? (
             <Fragment>
               <TextSection className={style.body} text={body} />
               <TranslatedDocuments defaultDoc={data.files[0]} docList={translatedDocList} />
             </Fragment>
-          )}
-          {isEmpty(translatedDocList) && (
+          ) : (
             <Fragment>
-              {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
-              <div data-testid="office and contact info" className={style.meta}>
-                {this.renderOfficeInfo()}
-                <br />
-                {pageType === 'article' && this.renderContactInfo()}
-              </div>
-              <hr className={style.hr} />
-              <div className={style.summaryContainer}>
-                <div className="column">
-                  {showDownload && currentFile && !isEmpty(currentFile.fileUrl) && (
-                    <div data-testid="download-button">
-                      <Button fullWidth onClick={e => this.downloadClick(currentFile)} primary>
-                        {`Download ${currentFileExtension}`}
-                      </Button>
-                    </div>
-                  )}
-                </div>
-                <div className="column">
-                  {!isEmpty(data.summary) && <h5 className={style.summary}>{data.summary}</h5>}
-                </div>
-              </div>
               <div className={style.dash}>
                 <DecorativeDash width={77} />
               </div>
-              {/* TODO: body style for grid media queries should be baked into text section? */}
               <TextSection className={style.body} text={body} />
               <div
                 className={'document-article-related-programs-container ' + style.relatedProgramsContainer}
@@ -420,18 +429,6 @@ const TranslatedDocuments = ({ docList, defaultDoc }) => {
     .filter(item => item !== null)
   return (
     <Fragment>
-      <h3>Your application must be submitted in English.</h3>
-      <p>
-        <em>All documents below are for your reference only.</em>
-      </p>
-      <div className={style.officialSubmissionMessage}>
-        <p>
-          <strong>English - for official submission</strong> <strong>|</strong>{' '}
-          <a href={defaultDoc.fileUrl} target="_blank">
-            Download pdf <FileTypeIcon fileExtension="pdf" />
-          </a>
-        </p>
-      </div>
       <hr />
       <div className={style.languages}>
         <h3>Languages</h3>
