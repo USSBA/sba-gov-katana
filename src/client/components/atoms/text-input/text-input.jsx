@@ -178,9 +178,9 @@ class TextInput extends React.Component {
             />
           </div>
           {(helperText && !errorMessage) && (
-            <span className={styles.helperText}>
+            <p className={styles.helperText}>
               {helperText}
-            </span>
+            </p>
           )}
           {errorMessage}
         </div>

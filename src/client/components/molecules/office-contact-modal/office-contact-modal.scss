@@ -12,13 +12,13 @@
   position: absolute;
   left: 0;
   right: 0;
-  margin: 50px auto 0;
+  margin: 40px auto 0;
   max-width: 650px;
   background-color: #fff;
   display: flex;
   justify-content: center;
   border-top: 8px solid #002E6D;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 
 .exitIcon {
@@ -49,7 +49,7 @@
 .title {
   text-align: center;
   font-size: 27px;
-  margin-top: 65px;
+  margin-top: 50px;
 }
 
 .divider {
@@ -89,3 +89,8 @@
   justify-content: center;
   padding-top: 30px;
 }
+
+.input {
+  margin-bottom: 0;
+}
+
