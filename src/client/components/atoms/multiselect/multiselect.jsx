@@ -48,6 +48,7 @@ class MultiSelect extends React.Component {
       placeholder,
       validationState,
       reactSelectClassName,
+      labelStyle,
       ...rest
     } = this.props
 
@@ -63,7 +64,7 @@ class MultiSelect extends React.Component {
 
     return (
       <div className={selectClassName} data-cy={dataCy ? dataCy : id} data-testid={testId}>
-        <label htmlFor={id}>{label}</label>
+        <label className={labelStyle ? labelStyle : null} htmlFor={id}>{label}</label>
         <ReactSelect
           ref={input => (this.select = input)}
           className={classNames({            

@@ -12,7 +12,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  margin: 40px auto 0;
+  margin: 20px auto 0;
   max-width: 650px;
   background-color: #fff;
   display: flex;
@@ -47,9 +47,21 @@
 }
 
 .title {
+  font-weight: 600;
   text-align: center;
   font-size: 27px;
-  margin-top: 50px;
+  margin-top: 30px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 22px;
+  }
+}
+
+.officeName {
+  text-align: center;
+  font-weight: 600;
+  color: #000;
+  font-size: 18px;
 }
 
 .divider {
@@ -59,8 +71,12 @@
 }
 
 .form {
+  min-width: 400px;
   max-width: 550px;
-  padding: 0 50px;
+
+  @media only screen and (max-width: 600px) {
+    padding: 0 25px;
+  }
 }
 
 .details {
@@ -90,7 +106,22 @@
   padding-top: 30px;
 }
 
-.input {
+.btnContent {
+  width: 122px;
+  height: 56px;
+
+  &:last-of-type {
+    margin-left: 40px;
+  }
+}
+
+.input, .label {
   margin-bottom: 0;
+}
+
+.label {
+  font-weight: 600;
+  margin-bottom: 0;
+  color: $sba-blue-dark;
 }
 

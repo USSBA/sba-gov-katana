@@ -141,8 +141,11 @@ class OfficeContactModal extends React.Component {
         ) : (
           <form onSubmit={e => this.handleSubmit(e)} novalidate="novalidate" className={styles.form}>
             <div>
-              <h3 id="dialogTitle" className={styles.title}>
-                Contact your {this.state.officeName} Office
+              <h2 id="dialogTitle" className={styles.title}>
+                Contact your District Office
+              </h2>
+              <h3 className={styles.officeName}>
+                {this.state.officeName}
               </h3>
               <div className={styles.divider} />
             </div>
@@ -155,6 +158,7 @@ class OfficeContactModal extends React.Component {
               value={this.state.userFullName}
               validationState={this.state.validStates.userFullName}
               className={styles.input}
+              labelStyle={styles.label}
             />
             <TextInput
               name="userEmailAddress"
@@ -165,10 +169,12 @@ class OfficeContactModal extends React.Component {
               value={this.state.userEmailAddress}
               validationState={this.state.validStates.userEmailAddress}
               className={styles.input}
+              labelStyle={styles.label}
             />
             <MultiSelect
               name="userTopic"
               className={styles.topicDropdown + ' ' + styles.input}
+              labelStyle={styles.label}
               reactSelectClassName={styles.reactSelect}
               label="Topic"
               value={this.state.userTopic}
@@ -188,17 +194,22 @@ class OfficeContactModal extends React.Component {
             <TextArea
               name="userDetails"
               className={styles.details}
+              labelStyle={styles.label}
               label="Details"
-              helperText="Tell us more information about your inquirry or accomodations."
+              helperText="Tell us more information about your inquiry"
               onChange={this.handleChange.bind(this)}
               value={this.state.userDetails}
               maxLength="250"
             />
             <div className={styles.btnContainer}>
-              <Button secondary onClick={this.handleClose.bind(this)}>
-                CANCEL
-              </Button>
-              <Button primary alternate type="submit">SUBMIT</Button>
+              <div className={styles.btnContent}>
+                <Button secondary onClick={this.handleClose.bind(this)}>
+                  CANCEL
+                </Button>
+              </div>
+              <div className={styles.btnContent}>
+                <Button primary alternate type="submit">SUBMIT</Button>
+              </div>
             </div>
           </form>
         )}
