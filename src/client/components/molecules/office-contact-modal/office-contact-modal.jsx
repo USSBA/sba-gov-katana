@@ -89,6 +89,17 @@ class OfficeContactModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.validateFields(Object.keys(this.state.validStates), 'error')
+
+    const { validStates } = this.state
+
+    const hasErrors = Object.keys(validStates).filter(key => {
+      return validStates[key] === 'error'
+    });
+
+    if (hasErrors.length) {
+      return null
+    }
+
     const formData = {
       userEmailAddress: this.state.userEmailAddress,
       userFullName: this.state.userFullName,
@@ -101,12 +112,10 @@ class OfficeContactModal extends React.Component {
       officeCity: this.state.addressObject.city,
       officePhoneNumber: this.state.addressObject.phoneNumber
     }
-    console.log(formData)
+    
     const response = postMiscAction('office-contact-form', formData)
-    console.log(response)
-    this.setState({ modalIsOpen: false })
+
     this.timerId = setTimeout(() => {
-      this.setState({ modalIsOpen: true })
       this.setState({ showSuccess: true })
     }, 1000)
   }
