@@ -102,13 +102,13 @@ class OfficeContactModal extends React.Component {
       officePhoneNumber: this.state.addressObject.phoneNumber
     }
     console.log(formData)
-    this.setState({ showSuccess: true })
     const response = postMiscAction('office-contact-form', formData)
     console.log(response)
-    // this.setState({ displayForm: false })
-    // this.timerId = setTimeout(() => {
-    //   this.setState({ modalIsOpen: false })
-    // }, 5000)
+    this.setState({ modalIsOpen: false })
+    this.timerId = setTimeout(() => {
+      this.setState({ modalIsOpen: true })
+      this.setState({ showSuccess: true })
+    }, 1000)
   }
 
   handleChange(e) {
@@ -159,9 +159,7 @@ class OfficeContactModal extends React.Component {
               <h2 id="dialogTitle" className={styles.title}>
                 Contact your District Office
               </h2>
-              <h3 className={styles.officeName}>
-                {this.state.officeName}
-              </h3>
+              <h3 className={styles.officeName}>{this.state.officeName}</h3>
               <div className={styles.divider} />
             </div>
             <TextInput
@@ -226,7 +224,9 @@ class OfficeContactModal extends React.Component {
                 </Button>
               </div>
               <div className={styles.btnContent}>
-                <Button primary alternate type="submit" onClick={this.handleSubmit.bind(this)}>SUBMIT</Button>
+                <Button primary alternate type="submit" onClick={this.handleSubmit.bind(this)}>
+                  SUBMIT
+                </Button>
               </div>
             </div>
           </form>

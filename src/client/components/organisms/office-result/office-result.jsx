@@ -35,7 +35,8 @@ class OfficeResult extends React.PureComponent {
     if (!item) {
       return null
     }
-
+    // console.log(id)
+    // console.log(item)
     const street = item.location_street_address ? item.location_street_address[0] : null
     const city = item.location_city ? item.location_city[0] : null
     const state = item.location_state ? item.location_state[0] : null
@@ -168,7 +169,7 @@ class OfficeResult extends React.PureComponent {
                 </div>
               </a>
             )}
-            {officeType === 'SBA District Office' ? (
+            {officeType === 'SBA District Office' && title.includes('District') ? (
               <button
                 type="button"
                 onClick={() => {
