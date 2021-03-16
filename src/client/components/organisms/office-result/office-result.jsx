@@ -41,7 +41,8 @@ class OfficeResult extends React.PureComponent {
     const state = item.location_state ? item.location_state[0] : null
     const phoneNumber = item.location_phone_number ? item.location_phone_number[0] : null
     const link = item.office_website ? item.office_website[0] : null
-    const title = item.title[0]
+    const title = item.title ? item.title[0] : null
+    const zipCode = item.location_zipcode ? item.location_zipcode[0] : null
     const sbaOfficeNames = clientConfig.sbaOfficeNames
     const officeType = item.office_type ? item.office_type[0] : ''
     const isOfficialOffice = sbaOfficeNames.includes(officeType)
@@ -171,7 +172,13 @@ class OfficeResult extends React.PureComponent {
               <button
                 type="button"
                 onClick={() => {
-                  this.props.modalActions.showOfficeContactModal(title)
+                  this.props.modalActions.showOfficeContactModal(title, {
+                    zipCode,
+                    state,
+                    street,
+                    city,
+                    phoneNumber
+                  })
                 }}
                 className={styles.contactButton}
               >

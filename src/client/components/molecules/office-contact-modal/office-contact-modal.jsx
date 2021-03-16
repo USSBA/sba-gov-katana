@@ -3,7 +3,7 @@ import ReactModal from 'react-modal'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { includes } from 'lodash'
-import { runMiscAction } from '../../../fetch-content-helper.js'
+import { runMiscAction, postMiscAction } from '../../../fetch-content-helper.js'
 import constants from '../../../services/constants.js'
 import config from '../../../services/client-config.js'
 import envelopeIcon from 'assets/svg/envelope.svg'
@@ -16,7 +16,7 @@ import {
   containsErrorOrNull,
   getNameValidationState,
   getEmailValidationState,
-  getSelectBoxValidationState,
+  getSelectBoxValidationState
 } from '../../../services/form-validation-helpers.js'
 import OfficeContactSuccess from './office-contact-success'
 
@@ -30,13 +30,15 @@ class OfficeContactModal extends React.Component {
       userFullName: '',
       userEmailAddress: '',
       userTopic: '',
+      userTopicLabel: '',
       userDetails: '',
       showSuccess: false,
       officeName: props.officeName,
+      addressObject: props.officeAddress,
       validStates: {
         userFullName: null,
         userEmailAddress: null,
-        userTopic: null,
+        userTopic: null
       }
     }
   }
@@ -93,6 +95,23 @@ class OfficeContactModal extends React.Component {
     //   userZipCode: this.state.userZipCode
     // })
 
+    // console.log(e)
+    const formData = {
+      userEmailAddress: this.state.userEmailAddress,
+      userFullName: this.state.userFullName,
+      userTopic: this.state.userTopicLabel,
+      userDetails: this.state.userDetails,
+      officeName: this.state.officeName,
+      officeState: this.state.addressObject.state,
+      officeZipCode: this.state.addressObject.zipCode,
+      officeStreet: this.state.addressObject.street,
+      officeCity: this.state.addressObject.city,
+      officePhoneNumber: this.state.addressObject.phoneNumber
+    }
+    console.log(formData)
+    this.setState({ showSuccess: true })
+    // const response = postMiscAction('office-contact-form', formData)
+    // console.log(response)
     // this.setState({ displayForm: false })
     // this.timerId = setTimeout(() => {
     //   this.setState({ modalIsOpen: false })
@@ -104,6 +123,13 @@ class OfficeContactModal extends React.Component {
     const name = e.target.name
     newState[name] = e.target.value
     this.setState(newState, () => this.validateFields([name]))
+  }
+
+  handleSelectChange(e) {
+    const newState = {}
+    newState.userTopic = e.value
+    newState.userTopicLabel = e.label
+    this.setState(newState, () => this.validateFields(['userTopic']))
   }
 
   handleKeyDown(event) {
@@ -130,16 +156,12 @@ class OfficeContactModal extends React.Component {
         contentLabel="Modal"
       >
         <a className={styles.imgContainer} onClick={this.handleClose.bind(this)} href="">
-          <img
-            className={styles.exitIcon}
-            src={exitIcon}
-            onKeyDown={event => this.handleKeyDown(event)}
-          />
+          <img className={styles.exitIcon} src={exitIcon} onKeyDown={event => this.handleKeyDown(event)} />
         </a>
         {this.state.showSuccess ? (
           <OfficeContactSuccess modalActions={this.props.modalActions} />
         ) : (
-          <form onSubmit={e => this.handleSubmit(e)} novalidate="novalidate" className={styles.form}>
+          <form onSubmit={e => this.handleSubmit(e)} noValidate="noValidate" className={styles.form}>
             <div>
               <h2 id="dialogTitle" className={styles.title}>
                 Contact your District Office
@@ -179,7 +201,7 @@ class OfficeContactModal extends React.Component {
               label="Topic"
               value={this.state.userTopic}
               validationState={this.state.validStates.userTopic}
-              onChange={this.handleChange.bind(this)}
+              onChange={this.handleSelectChange.bind(this)}
               helperText="Required. Select your topic from the provided options."
               errorText="Required. Select your topic from the provided options."
               options={[
@@ -187,8 +209,11 @@ class OfficeContactModal extends React.Component {
                 { value: 'disaster relief', label: 'Disaster Relief' },
                 { value: 'consulting', label: 'Consulting' },
                 { value: 'financial assistance', label: 'Financial Assistance' },
-                { value: 'procurement & government contracting', label: 'Procurement & Government Contracting' },
-                { value: 'other', label: 'Other' },
+                {
+                  value: 'procurement & government contracting',
+                  label: 'Procurement & Government Contracting'
+                },
+                { value: 'other', label: 'Other' }
               ]}
             />
             <TextArea
@@ -208,7 +233,7 @@ class OfficeContactModal extends React.Component {
                 </Button>
               </div>
               <div className={styles.btnContent}>
-                <Button primary alternate type="submit">SUBMIT</Button>
+                <Button primary alternate type="submit" onClick={this.handleSubmit.bind(this)}>SUBMIT</Button>
               </div>
             </div>
           </form>

@@ -18,11 +18,11 @@ export function showSbaNewsletter(userEmail) {
   }
 }
 
-export function showOfficeContactModal(officeName) {
+export function showOfficeContactModal(officeName, officeAddress) {
   return {
     type: 'SHOW_MODAL',
     modalType: 'OFFICE_CONTACT_MODAL',
-    modalProps: { officeName: officeName }
+    modalProps: { officeName, officeAddress }
   }
 }
 
