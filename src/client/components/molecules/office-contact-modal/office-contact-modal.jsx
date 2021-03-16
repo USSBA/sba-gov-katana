@@ -47,7 +47,7 @@ class OfficeContactModal extends React.Component {
     const validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
     if (validationState[name] === 'error') {
       logEvent({
-        category: 'Newsletter Modal',
+        category: 'Office Contact Modal',
         action: 'Error Event',
         label: name
       })
@@ -89,13 +89,6 @@ class OfficeContactModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.validateFields(Object.keys(this.state.validStates), 'error')
-    //we do not care about the response
-    // runMiscAction('newsletter-registration', {
-    //   userEmailAddress: this.state.userEmailAddress,
-    //   userZipCode: this.state.userZipCode
-    // })
-
-    // console.log(e)
     const formData = {
       userEmailAddress: this.state.userEmailAddress,
       userFullName: this.state.userFullName,
@@ -110,8 +103,8 @@ class OfficeContactModal extends React.Component {
     }
     console.log(formData)
     this.setState({ showSuccess: true })
-    // const response = postMiscAction('office-contact-form', formData)
-    // console.log(response)
+    const response = postMiscAction('office-contact-form', formData)
+    console.log(response)
     // this.setState({ displayForm: false })
     // this.timerId = setTimeout(() => {
     //   this.setState({ modalIsOpen: false })
