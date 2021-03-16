@@ -47,9 +47,6 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
               type="text"
             />
           </div>
-          <span
-            className="helperText"
-          />
         </div>
         <div
           className="searchIcon"
@@ -916,9 +913,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
               type="text"
             />
           </div>
-          <span
-            className="helperText"
-          />
         </div>
         <div
           className="searchIcon"
