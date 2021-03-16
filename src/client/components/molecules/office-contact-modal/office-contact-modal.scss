@@ -27,6 +27,11 @@
   color: #666666;
   border-radius: 1px;
   cursor: pointer;
+
+  @media only screen and (max-width: 600px) {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 .imgContainer {
@@ -34,6 +39,11 @@
   top: 25px;
   right: 30px;
   height: 30px;
+
+  @media only screen and (max-width: 600px) {
+    top: 20px;
+    right: 15px;
+  }
 }
 
 .title {

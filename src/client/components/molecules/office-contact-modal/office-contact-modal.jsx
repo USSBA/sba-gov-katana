@@ -31,7 +31,7 @@ class OfficeContactModal extends React.Component {
       userEmailAddress: '',
       userTopic: '',
       userDetails: '',
-      showSuccess: false,
+      showSuccess: true,
       officeName: props.officeName,
       validStates: {
         userFullName: null,
