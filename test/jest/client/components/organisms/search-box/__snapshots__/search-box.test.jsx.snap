@@ -67,6 +67,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
         data-testid="documenttype-select"
       >
         <label
+          className={null}
           htmlFor="documenttype-select"
         />
         <div
@@ -178,6 +179,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
         data-testid="program-select"
       >
         <label
+          className={null}
           htmlFor="program-select"
         />
         <div
@@ -289,6 +291,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
         data-testid="documentactivity-select"
       >
         <label
+          className={null}
           htmlFor="documentactivity-select"
         />
         <div

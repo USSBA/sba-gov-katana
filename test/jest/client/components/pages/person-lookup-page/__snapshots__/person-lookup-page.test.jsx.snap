@@ -57,6 +57,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
         data-testid="office"
       >
         <label
+          className={null}
           htmlFor="office"
         >
           Office
@@ -142,6 +143,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
         data-testid="sort-by"
       >
         <label
+          className={null}
           htmlFor="sort-by"
         >
           Sort by
