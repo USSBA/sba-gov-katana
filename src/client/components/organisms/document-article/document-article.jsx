@@ -214,15 +214,13 @@ export class DocumentArticle extends React.Component {
               {articleIdText}
             </h5>
           )}
-          {isEmpty(translatedDocList) && !isEmpty(currentFile) && (
-            <div>{this.renderDateLine(currentFile)}</div>
-          )}
+          {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
           <div data-testid="office and contact info" className={style.meta}>
             {this.renderOfficeInfo()}
             <br />
             {pageType === 'article' && this.renderContactInfo()}
           </div>
-          {isEmpty(translatedDocList) && <hr className={style.hr} />}
+          <hr className={style.hr} />
           <div className={style.summaryContainer}>
             <div className="column">
               {showDownload && currentFile && !isEmpty(currentFile.fileUrl) && (
@@ -235,51 +233,36 @@ export class DocumentArticle extends React.Component {
             </div>
             <div className="column">
               {!isEmpty(data.summary) && <h5 className={style.summary}>{data.summary}</h5>}
-              {!isEmpty(translatedDocList) && (
-                <Fragment>
-                  <h3>Your application must be submitted in English.</h3>
-                  <p>
-                    <em>All documents below are for your reference only.</em>
-                  </p>
-                </Fragment>
-              )}
             </div>
           </div>
           {/* TODO: body style for grid media queries should be baked into text section? */}
-          {!isEmpty(translatedDocList) ? (
-            <Fragment>
-              <TextSection className={style.body} text={body} />
-              <TranslatedDocuments defaultDoc={data.files[0]} docList={translatedDocList} />
-            </Fragment>
-          ) : (
-            <Fragment>
-              <div className={style.dash}>
-                <DecorativeDash width={77} />
-              </div>
-              <TextSection className={style.body} text={body} />
-              <div
-                className={'document-article-related-programs-container ' + style.relatedProgramsContainer}
-              >
-                <hr />
-                <span className={style.relatedPrograms}>Related programs: </span>
-                {data.programs.map((program, index) => {
-                  return (
-                    <span className="document-article-related-programs-link" key={index}>
-                      <Link
-                        onClick={() => {
-                          return this.handleRelatedPrograms(program)
-                        }}
-                      >
-                        {program}
-                      </Link>
-                      {index === data.programs.length - 1 ? null : ', '}
-                    </span>
-                  )
-                })}
-                <hr className={style.hr} />
-              </div>
-            </Fragment>
+          <div className={style.dash}>
+            <DecorativeDash width={77} />
+          </div>
+          <TextSection className={style.body} text={body} />
+          {!isEmpty(translatedDocList) && (
+            <TranslatedDocuments defaultDoc={data.files[0]} docList={translatedDocList} />
           )}
+          <br />
+          <div className={'document-article-related-programs-container ' + style.relatedProgramsContainer}>
+            <hr />
+            <span className={style.relatedPrograms}>Related programs: </span>
+            {data.programs.map((program, index) => {
+              return (
+                <span className="document-article-related-programs-link" key={index}>
+                  <Link
+                    onClick={() => {
+                      return this.handleRelatedPrograms(program)
+                    }}
+                  >
+                    {program}
+                  </Link>
+                  {index === data.programs.length - 1 ? null : ', '}
+                </span>
+              )
+            })}
+            <hr className={style.hr} />
+          </div>
         </div>
       )
     } else {
