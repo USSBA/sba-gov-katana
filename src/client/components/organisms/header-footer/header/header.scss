@@ -77,10 +77,12 @@ nav {
   padding: 9px 9px;
   position: absolute;
   transition: all 0.2s ease-in-out;
-  z-index: 20;
+  z-index: -999;
+  overflow: hidden;
   &:focus {
     background-color: $sba-gray-light;
     color: $sba-blue;
     transition: all 0.2s ease-in-out;
+    z-index: 999;
   }
 }
