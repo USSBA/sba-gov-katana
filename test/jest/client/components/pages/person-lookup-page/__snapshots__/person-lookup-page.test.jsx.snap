@@ -17,9 +17,11 @@ exports[`PersonLookupPage should render correctly 1`] = `
         id="search-container"
       >
         <label
+          aria-label="Search"
           className={null}
           data-testid="search-label"
           htmlFor="search"
+          tabIndex="0"
         >
           Search
         </label>
@@ -57,8 +59,10 @@ exports[`PersonLookupPage should render correctly 1`] = `
         data-testid="office"
       >
         <label
+          aria-label="Office"
           className={null}
           htmlFor="office"
+          tabIndex="0"
         >
           Office
         </label>
@@ -143,8 +147,10 @@ exports[`PersonLookupPage should render correctly 1`] = `
         data-testid="sort-by"
       >
         <label
+          aria-label="Sort by"
           className={null}
           htmlFor="sort-by"
+          tabIndex="0"
         >
           Sort by
         </label>
