@@ -169,7 +169,7 @@ class OfficeResult extends React.PureComponent {
                 </div>
               </a>
             )}
-            {officeType === 'SBA District Office' && link.includes('/offices/district/') ? (
+            {link.includes('/offices/district/') && title.includes('District') ? (
               <button
                 type="button"
                 onClick={() => {
