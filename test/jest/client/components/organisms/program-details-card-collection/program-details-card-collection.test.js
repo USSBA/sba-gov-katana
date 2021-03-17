@@ -31,12 +31,10 @@ describe('ProgramDetailsCardCollection', () => {
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
-
   test('should render nothing when given nothing', () => {
     const component = shallow(<ProgramDetailsCardCollection cards={null} />)
     expect(component.contains('CardCollection')).toEqual(false)
   })
-
   test('should render english by default', () => {
     const component = shallow(<ProgramDetailsCardCollection cards={testData} />)
     const cardsPropertyToCardCollection = component.find('CardCollection').prop('cards')
@@ -44,7 +42,6 @@ describe('ProgramDetailsCardCollection', () => {
     expect(cardsPropertyToCardCollection[0].titleText).toEqual('Title 0')
     expect(cardsPropertyToCardCollection[0].subtitleText).toEqual('Summary 0')
   })
-
   test('should render the spanish translation when the language is set', () => {
     const component = shallow(<ProgramDetailsCardCollection cards={testData} currentLanguage="es" />)
     const cardsPropertyToCardCollection = component.find('CardCollection').prop('cards')

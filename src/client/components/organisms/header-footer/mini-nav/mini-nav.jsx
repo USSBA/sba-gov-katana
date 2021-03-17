@@ -85,9 +85,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(MiniNav)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav)
 
 export { MiniNav }
