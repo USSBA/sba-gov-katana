@@ -4,7 +4,7 @@ import { assign } from 'lodash'
 import { ContactCard, ContactCardLookup } from 'molecules'
 import { SbicLookup, SuretyLookup } from 'organisms'
 import styles from './lookup.scss'
-import { fetchSiteContent } from '../../../fetch-content-helper'
+import { fetchApiSbaGovContent, fetchSiteContent } from '../../../fetch-content-helper'
 import { logEvent } from '../../../services/analytics.js'
 
 class Lookup extends React.Component {
@@ -17,14 +17,20 @@ class Lookup extends React.Component {
 
   async componentWillMount() {
     const { subtype, type } = this.props
+    const subtypeLowerCased = subtype.toLowerCase()
     const queryArgs = subtype
       ? {
           category: subtype
         }
       : null
-    this.setState({
-      filteredItems: await fetchSiteContent(type, queryArgs)
-    })
+
+    const apiSbaGovContents = ['sbic']
+
+    const filteredItems = apiSbaGovContents.includes(subtypeLowerCased)
+      ? await fetchApiSbaGovContent(`${subtypeLowerCased}/directory.json`)
+      : await fetchSiteContent(type, queryArgs)
+
+    this.setState({ filteredItems })
   }
 
   fireEvent(category, action, value) {

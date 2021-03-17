@@ -222,7 +222,7 @@ class BlogCategoryPage extends Component {
             <div className={styles.blog_paginator} data-testid="blog-top-paginator">
               {this.renderPaginator()}
             </div>
-            {this.formatCardDeck(blogDeck)}
+            {!isEmpty(blogDeck) && this.formatCardDeck(blogDeck)}
             <div className={styles.blog_paginator} data-testid="blog-bottom-paginator">
               {this.renderPaginator()}
             </div>

@@ -20,6 +20,22 @@ version: 2.1
 orbs:
   snyk: snyk/snyk@0.0.8
 
+executors:
+  node:
+    docker:
+    - image: cimg/node:12.18
+  python:
+    docker:
+    - image: cimg/python:3.9
+
+commands:
+  install-aws:
+    steps:
+      - run:
+          name: install aws
+          command: |
+            pip install awscli
+
 workflows:
   test-build-deploy:
     jobs:
@@ -55,17 +71,6 @@ workflows:
           tags:
             only:
             - /.*/
-    - test-poirot:
-        requires: 
-          - cache-dependencies-lower
-          - cache-dependencies-upper
-        filters:
-          branches:
-            only:
-            - /.*/
-          tags:
-            only:
-            - /.*/
     - test-mocha:
         requires: 
           - cache-dependencies-lower
@@ -89,7 +94,7 @@ workflows:
             only:
             - /.*/    
     - build-webpack:
-        requires: [test-jest, test-mocha, test-format, test-poirot]
+        requires: [test-jest, test-mocha, test-format]
         filters:
           branches:
             only:
@@ -190,8 +195,7 @@ workflows:
         context: sba-gov-upper
 jobs:
   cache-dependencies-lower:
-    docker:
-    - image: circleci/node:12.18
+    executor: node
     steps:
       - checkout
       # Download and cache dependencies
@@ -207,8 +211,7 @@ jobs:
             - ./node_modules
           key: v2-dependencies-v1-{{ checksum "package.json" }}
   cache-dependencies-upper:
-    docker:
-    - image: circleci/node:12.18
+    executor: node
     steps:
       - checkout
       # Download and cache dependencies
@@ -227,8 +230,7 @@ jobs:
           token-variable: SNYK
           fail-on-issues: false
   test-jest:
-    docker:
-    - image: circleci/node:12.18
+    executor: node
     steps:
       - checkout
       # Download and cache dependencies
@@ -240,8 +242,7 @@ jobs:
           command: |
             npm run test-jest
   test-mocha:
-    docker:
-    - image: circleci/node:12.18
+    executor: node
     steps:
       - checkout
       # Download and cache dependencies
@@ -253,8 +254,7 @@ jobs:
           command: |
             npm run test-mocha
   test-format:
-    docker:
-    - image: circleci/node:12.18
+    executor: node
     steps:
     - checkout
     # Download and cache dependencies
@@ -265,20 +265,8 @@ jobs:
     #     name: run eslint fix and prettier
     #     command:
     #       npm run format
-  test-poirot:
-    docker:
-    - image: circleci/python:latest
-    steps:
-    - checkout
-    - run:
-       name: Run poirot tests
-       command: |
-         sudo pip install poirot
-         poirot --patterns='https://sbagovlower-stash.s3.amazonaws.com/rules.txt'
-         poirot --patterns='https://raw.githubusercontent.com/DCgov/poirot-patterns/master/financial.txt'
   build-webpack:
-    docker:
-    - image: circleci/node:12.18
+    executor: node
     steps:
     - checkout
     # Download and cache dependencies
@@ -296,8 +284,7 @@ jobs:
         key: v1-webpack-{{ .Revision }}
   build-package:
     working_directory: /home/circleci/project
-    docker:
-      - image: circleci/node:12.18
+    executor: node
     steps:
       - checkout
       - restore_cache:
@@ -314,15 +301,14 @@ jobs:
             - build
             - assets
   upload-assets:
-    docker:
-      - image: ussba/cc-docker-git-aws:latest
+    executor: python
     steps:
       - checkout
       - attach_workspace:
           at: workspace
+      - install-aws
       - run:
           name: publish
-          shell: /bin/bash -eo pipefail
           command: |
             if [ -z "${CIRCLE_BRANCH}" ]
             then
@@ -361,15 +347,13 @@ jobs:
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
 
   deploy-package:
-    docker:
-      - image: cimg/node:12.18
+    executor: node
     steps:
       - checkout
       - attach_workspace:
           at: workspace
       - deploy:
           name: deploy
-          shell: /bin/bash -eo pipefail
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ] || [ "${CIRCLE_BRANCH}" == "main" ]; then
               # main branch, autodeploy mint
@@ -387,15 +371,14 @@ jobs:
             sudo npm i -g serverless
             serverless deploy --stage ${TARGET_ENVIRONMENT}
   upload-assets-with-approval:
-    docker:
-      - image: ussba/cc-docker-git-aws:latest
+    executor: python
     steps:
       - checkout
       - attach_workspace:
           at: workspace
+      - install-aws
       - run:
           name: publish
-          shell: /bin/bash -eo pipefail
           command: |
             if [ -z "${CIRCLE_BRANCH}" ]
             then
@@ -417,15 +400,13 @@ jobs:
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
   deploy-package-with-approval:
-    docker:
-      - image: cimg/node:12.18
+    executor: node
     steps:
       - checkout
       - attach_workspace:
           at: workspace
       - deploy:
           name: deploy
-          shell: /bin/bash -eo pipefail
           command: |
 
             sudo npm i -g serverless
