@@ -64,7 +64,14 @@ class MultiSelect extends React.Component {
 
     return (
       <div className={selectClassName} data-cy={dataCy ? dataCy : id} data-testid={testId}>
-        <label className={labelStyle ? labelStyle : null} htmlFor={id}>{label}</label>
+        <label
+          className={labelStyle ? labelStyle : null}
+          htmlFor={id}
+          tabIndex="0"
+          aria-label={label}
+        >
+          {label}
+        </label>
         <ReactSelect
           ref={input => (this.select = input)}
           className={classNames({            
@@ -86,7 +93,7 @@ class MultiSelect extends React.Component {
           {...rest}
         />
         {(helperText && validationState !== 'error') && (
-          <p className={styles.helperText}>
+          <p className={styles.helperText} tabIndex="0" aria-label={helperText}>
             {helperText}
           </p>
         )}

@@ -26,7 +26,7 @@ const OfficeContactSuccess = ({ modalActions }) => {
           from your District Office will respond during standard business hours.
         </p>
         <div>
-          <Button primary onClick={handleClose}>
+          <Button primary alternate onClick={handleClose}>
             CLOSE
           </Button>
         </div>

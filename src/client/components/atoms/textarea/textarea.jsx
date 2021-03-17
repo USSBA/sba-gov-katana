@@ -35,7 +35,12 @@ class TextArea extends React.Component {
 
     return (
       <div id={id + '-container'} className={styles.inputContainer} hidden={hidden}>
-        <label htmlFor={this.props.id} className={labelStyle ? labelStyle : styles.controlLabel}>
+        <label
+          htmlFor={this.props.id}
+          className={labelStyle ? labelStyle : styles.controlLabel}
+          tabIndex="0"
+          aria-label={label}
+        >
           {label}
         </label>
         <div className={styles.textAreaContainer}>
@@ -55,7 +60,7 @@ class TextArea extends React.Component {
           />
         </div>
         {helperText && (
-          <span className={styles.helperText}>
+          <span className={styles.helperText} tabIndex="0" aria-label={helperText}>
             {helperText}
           </span>
         )}

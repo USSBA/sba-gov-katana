@@ -32,7 +32,7 @@ class OfficeContactModal extends React.Component {
       userTopic: '',
       userTopicLabel: '',
       userDetails: '',
-      showSuccess: false,
+      showSuccess: true,
       officeName: props.officeName,
       addressObject: props.officeAddress,
       validStates: {
@@ -158,7 +158,7 @@ class OfficeContactModal extends React.Component {
         contentLabel="Modal"
       >
         <a className={styles.imgContainer} onClick={this.handleClose.bind(this)} href="">
-          <img className={styles.exitIcon} src={exitIcon} onKeyDown={event => this.handleKeyDown(event)} />
+          <img className={styles.exitIcon} src={exitIcon} aria-label="close icon" onKeyDown={event => this.handleKeyDown(event)} />
         </a>
         {this.state.showSuccess ? (
           <OfficeContactSuccess modalActions={this.props.modalActions} />

@@ -140,6 +140,8 @@ class TextInput extends React.Component {
             htmlFor={id}
             className={labelStyle ? labelStyle : null}
             data-testid={kebabCase(`${id} label`)}
+            tabIndex="0"
+            aria-label={label}
           >
             {label}
           </label>
@@ -178,7 +180,7 @@ class TextInput extends React.Component {
             />
           </div>
           {(helperText && !errorMessage) && (
-            <p className={styles.helperText}>
+            <p className={styles.helperText} tabIndex="0" aria-label={helperText}>
               {helperText}
             </p>
           )}
