@@ -794,8 +794,5 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ResourceCenterProfilePage)
+export default connect(mapStateToProps, mapDispatchToProps)(ResourceCenterProfilePage)
 export { ResourceCenterProfilePage }

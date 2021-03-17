@@ -166,8 +166,5 @@ SectionNav.defaultProps = {
   langCode: 'en'
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(SectionNav)
+export default connect(null, mapDispatchToProps)(SectionNav)
 export { SectionNav }

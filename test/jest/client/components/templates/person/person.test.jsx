@@ -193,7 +193,7 @@ describe('Person page', () => {
     })
 
     test('paginates forward and back', async () => {
-      const blogData = makeAnySizeBlogArray(7)
+      const blogData = makeAnySizeBlogArray(17)
       const mockBlogResponse = {
         response: 200,
         data: { total: blogData.length, blogs: blogData }
@@ -206,16 +206,16 @@ describe('Person page', () => {
       const paginationPrevious = await waitForElement(() => getByTestId('previous button'))
       const paginationNext = await waitForElement(() => getByTestId('next button'))
 
-      const expectedTextPage1 = /^Showing 1 - 6 of 7$/
-      const expectedTextPage2 = /^Showing 7 - 7 of 7$/
+      const expectedTextPage1 = /^Showing 1 - 6 of 17$/
+      const expectedTextPage2 = /^Showing 7 - 12 of 17$/
 
-      // Paging forward
+      // // Paging forward
       expect(paginationText).toHaveTextContent(expectedTextPage1)
       fireEvent.click(paginationNext)
       await wait(() => getByTestId('showing results text'))
       expect(paginationText).toHaveTextContent(expectedTextPage2)
 
-      // Paging back
+      // // Paging back
       fireEvent.click(paginationPrevious)
       await wait(() => getByTestId('showing results text'))
       expect(paginationText).toHaveTextContent(expectedTextPage1)
