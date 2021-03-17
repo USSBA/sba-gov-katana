@@ -161,7 +161,7 @@ class OfficeResult extends React.PureComponent {
           </div>
           <div className={styles.actions}>
             {link && (
-              <a href={link} target="_blank">
+              <a href={link} target="_blank" style={{ textDecoration: 'none' }}>
                 <div className={websiteClassName}>
                   <i className={'fa fa-globe ' + styles.fa} />
                   <br />

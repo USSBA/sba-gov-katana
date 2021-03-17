@@ -44,6 +44,14 @@ input.invalid {
   }
 }
 
+input.invalid.alternateError {
+  border: 2px solid $sba-red-dark;
+
+  &:hover {
+    border-color: $sba-red-dark;
+  }
+}
+
 .searchIconPadding {
   padding-right: 40px;
 }

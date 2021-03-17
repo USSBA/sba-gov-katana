@@ -49,6 +49,7 @@ class MultiSelect extends React.Component {
       validationState,
       reactSelectClassName,
       labelStyle,
+      alternateError,
       ...rest
     } = this.props
 
@@ -77,6 +78,7 @@ class MultiSelect extends React.Component {
           className={classNames({            
             [reactSelectClassName]: this.props?.reactSelectClassName,
             [styles.invalid]: validationState === 'error',
+            [styles.alternateError]: alternateError,
           })}
           menuBuffer={10}
           tabSelectsValue={false}
@@ -97,7 +99,7 @@ class MultiSelect extends React.Component {
             {helperText}
           </p>
         )}
-        {validationState === 'error' && <FormErrorMessage errorText={errorText} />}
+        {validationState === 'error' && <FormErrorMessage errorText={errorText} alternate />}
       </div>
     )
   }

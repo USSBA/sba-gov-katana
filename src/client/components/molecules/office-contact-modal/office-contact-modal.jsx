@@ -32,7 +32,7 @@ class OfficeContactModal extends React.Component {
       userTopic: '',
       userTopicLabel: '',
       userDetails: '',
-      showSuccess: true,
+      showSuccess: false,
       officeName: props.officeName,
       addressObject: props.officeAddress,
       validStates: {
@@ -181,6 +181,7 @@ class OfficeContactModal extends React.Component {
               validationState={this.state.validStates.userFullName}
               className={styles.input}
               labelStyle={styles.label}
+              alternateError
             />
             <TextInput
               name="userEmailAddress"
@@ -192,6 +193,7 @@ class OfficeContactModal extends React.Component {
               validationState={this.state.validStates.userEmailAddress}
               className={styles.input}
               labelStyle={styles.label}
+              alternateError
             />
             <MultiSelect
               name="userTopic"
@@ -215,6 +217,7 @@ class OfficeContactModal extends React.Component {
                 },
                 { value: 'other', label: 'Other' }
               ]}
+              alternateError
             />
             <TextArea
               name="userDetails"

@@ -24,7 +24,7 @@ class TextInput extends React.Component {
   errorMessage(validationState) {
     const { isValid } = this.state
     return validationState === 'error' || !isValid ? (
-      <FormErrorMessage errorFor={this.props.id} errorText={this.props.errorText} />
+      <FormErrorMessage errorFor={this.props.id} errorText={this.props.errorText} alternate />
     ) : null
   }
 
@@ -113,6 +113,7 @@ class TextInput extends React.Component {
       inputType,
       inputMode,
       textRef,
+      alternateError,
       ...rest
     } = this.props
     const { isFocused, isValid, value } = this.state
@@ -154,7 +155,8 @@ class TextInput extends React.Component {
               className={classNames({
                 [styles.input]: true,
                 [styles.invalid]: validationState === 'error' || !isValid,
-                [styles.searchIconPadding]: showSearchIcon
+                [styles.searchIconPadding]: showSearchIcon,
+                [styles.alternateError]: alternateError
               })}
               data-testid={id}
               type={inputType || 'text'}

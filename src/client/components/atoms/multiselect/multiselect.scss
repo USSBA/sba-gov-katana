@@ -94,3 +94,12 @@
     height: 23px;
   }
 }
+
+.invalid.alternateError {
+  :global(.Select-control) {
+    border: 2px solid $sba-red-dark;
+  }
+  :global(.Select-placeholder) {
+    height: 23px;
+  }
+}
