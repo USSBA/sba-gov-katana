@@ -23,6 +23,7 @@ import OfficeContactSuccess from './office-contact-success'
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
 class OfficeContactModal extends React.Component {
   constructor(props) {
+    console.log(props)
     super()
     this.state = {
       modalIsOpen: true,
@@ -32,7 +33,7 @@ class OfficeContactModal extends React.Component {
       userTopic: '',
       userTopicLabel: '',
       userDetails: '',
-      showSuccess: true,
+      showSuccess: false,
       officeName: props.officeName,
       officeLink: props.officeLink,
       addressObject: props.officeAddress,
@@ -115,11 +116,10 @@ class OfficeContactModal extends React.Component {
       officePhoneNumber: this.state.addressObject.phoneNumber
     }
 
-    const response = postMiscAction('office-contact-form', formData)
-
+    postMiscAction('office-contact-form', formData)
     this.timerId = setTimeout(() => {
       this.setState({ showSuccess: true })
-    }, 1000)
+    }, 1200)
   }
 
   handleChange(e) {
