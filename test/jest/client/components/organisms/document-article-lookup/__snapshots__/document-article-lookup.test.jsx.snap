@@ -22,9 +22,11 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
           id="document-lookup-text-input-container"
         >
           <label
+            aria-label="Search"
             className={null}
             data-testid="document-lookup-text-input-label"
             htmlFor="document-lookup-text-input"
+            tabIndex="0"
           >
             Search
           </label>
@@ -65,8 +67,10 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
           data-testid="title-select"
         >
           <label
+            aria-label="Title"
             className={null}
             htmlFor="title-select"
+            tabIndex="0"
           >
             Title
           </label>
@@ -155,8 +159,10 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
           data-testid="lightsabercolor-select"
         >
           <label
+            aria-label="Lightsaber Color"
             className={null}
             htmlFor="lightsabercolor-select"
+            tabIndex="0"
           >
             Lightsaber Color
           </label>
@@ -245,8 +251,10 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
           data-testid="movie-select"
         >
           <label
+            aria-label="Movie"
             className={null}
             htmlFor="movie-select"
+            tabIndex="0"
           >
             Movie
           </label>
@@ -335,8 +343,10 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
           data-testid="status-select"
         >
           <label
+            aria-label="Status"
             className={null}
             htmlFor="status-select"
+            tabIndex="0"
           >
             Status
           </label>
@@ -425,8 +435,10 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
           data-testid="office"
         >
           <label
+            aria-label="Office"
             className={null}
             htmlFor="office"
+            tabIndex="0"
           >
             Office
           </label>
@@ -893,9 +905,11 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           id="document-lookup-text-input-container"
         >
           <label
+            aria-label="Search"
             className={null}
             data-testid="document-lookup-text-input-label"
             htmlFor="document-lookup-text-input"
+            tabIndex="0"
           >
             Search
           </label>
@@ -936,8 +950,10 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           data-testid="title-select"
         >
           <label
+            aria-label="Title"
             className={null}
             htmlFor="title-select"
+            tabIndex="0"
           >
             Title
           </label>
@@ -1026,8 +1042,10 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           data-testid="lightsabercolor-select"
         >
           <label
+            aria-label="Lightsaber Color"
             className={null}
             htmlFor="lightsabercolor-select"
+            tabIndex="0"
           >
             Lightsaber Color
           </label>
@@ -1116,8 +1134,10 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           data-testid="movie-select"
         >
           <label
+            aria-label="Movie"
             className={null}
             htmlFor="movie-select"
+            tabIndex="0"
           >
             Movie
           </label>
@@ -1206,8 +1226,10 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           data-testid="status-select"
         >
           <label
+            aria-label="Status"
             className={null}
             htmlFor="status-select"
+            tabIndex="0"
           >
             Status
           </label>
