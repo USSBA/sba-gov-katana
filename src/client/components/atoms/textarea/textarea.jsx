@@ -51,6 +51,7 @@ class TextArea extends React.Component {
             onChange={onChange}
             maxLength="250"
             value={value}
+            aria-label={helperText}
           />
           <ValidationIcon
             validationState={this.props.validationState}
@@ -60,7 +61,7 @@ class TextArea extends React.Component {
           />
         </div>
         {helperText && (
-          <span className={styles.helperText} tabIndex="0" aria-label={helperText}>
+          <span className={styles.helperText}>
             {helperText}
           </span>
         )}

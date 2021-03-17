@@ -211,6 +211,7 @@ class OfficeContactModal extends React.Component {
               value={this.state.userTopic}
               validationState={this.state.validStates.userTopic}
               onChange={this.handleSelectChange.bind(this)}
+              placeholder={() => <div tabIndex="1" />}
               helperText="Required. Select your topic from the provided options."
               errorText="Required. Select your topic from the provided options."
               options={[
@@ -231,7 +232,7 @@ class OfficeContactModal extends React.Component {
               className={styles.details}
               labelStyle={styles.label}
               label="Details"
-              helperText="Tell us more information about your inquiry"
+              helperText="Tell us more information about your inquiry."
               onChange={this.handleChange.bind(this)}
               value={this.state.userDetails}
               maxLength="250"

@@ -152,6 +152,7 @@ class TextInput extends React.Component {
               {...rest}
               {...optionalPlaceholderProp}
               aria-labelledby={id}
+              aria-label={helperText}
               className={classNames({
                 [styles.input]: true,
                 [styles.invalid]: validationState === 'error' || !isValid,
@@ -182,7 +183,7 @@ class TextInput extends React.Component {
             />
           </div>
           {(helperText && !errorMessage) && (
-            <p className={styles.helperText} tabIndex="0" aria-label={helperText}>
+            <p className={styles.helperText}>
               {helperText}
             </p>
           )}

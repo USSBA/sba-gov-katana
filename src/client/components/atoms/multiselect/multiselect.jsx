@@ -86,8 +86,9 @@ class MultiSelect extends React.Component {
           value={this.state.value}
           arrowRenderer={() => <i className="fa fa-chevron-down" alt="drop-down arrow" />}
           clearRenderer={() => <span />}
-          searchable={true}
+          searchable={false}
           placeholder={!placeholder && langCode ? TRANSLATIONS.select[langCode].text : placeholder}
+          aria-label={helperText}
           inputProps={['aria-label', 'aria-labelledby', 'required']
             .filter(attr => this.props?.[attr])
             // eslint-disable-next-line no-param-reassign
@@ -95,7 +96,7 @@ class MultiSelect extends React.Component {
           {...rest}
         />
         {(helperText && validationState !== 'error') && (
-          <p className={styles.helperText} tabIndex="0" aria-label={helperText}>
+          <p className={styles.helperText}>
             {helperText}
           </p>
         )}
