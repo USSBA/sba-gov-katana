@@ -6,14 +6,19 @@
     margin-right: 30px;
     h2 {
       font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 0;
+      margin-bottom: 10;
+    }
+  }
+
+  @include grid-media($sba-grid-small) {
+    h2 {
+      font-size: 20px;
     }
   }
 
   h2,
   h3 {
-    font-weight: 700;
+    font-weight: 600;
     word-break: break-word;
   }
 
@@ -29,7 +34,6 @@
   @include grid-media($sba-grid-large) {
     h2 {
       font-size: 20px;
-      font-weight: 600;
       margin-bottom: 10px;
     }
   }
