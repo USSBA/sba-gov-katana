@@ -23,6 +23,7 @@ import OfficeContactSuccess from './office-contact-success'
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
 class OfficeContactModal extends React.Component {
   constructor(props) {
+    console.log(props)
     super()
     this.state = {
       modalIsOpen: true,
@@ -34,6 +35,7 @@ class OfficeContactModal extends React.Component {
       userDetails: '',
       showSuccess: false,
       officeName: props.officeName,
+      officeLink: props.officeLink,
       addressObject: props.officeAddress,
       validStates: {
         userFullName: null,
@@ -94,7 +96,7 @@ class OfficeContactModal extends React.Component {
 
     const hasErrors = Object.keys(validStates).filter(key => {
       return validStates[key] === 'error'
-    });
+    })
 
     if (hasErrors.length) {
       return null
@@ -106,18 +108,18 @@ class OfficeContactModal extends React.Component {
       userTopic: this.state.userTopicLabel,
       userDetails: this.state.userDetails,
       officeName: this.state.officeName,
+      officeLink: this.state.officeLink,
       officeState: this.state.addressObject.state,
       officeZipCode: this.state.addressObject.zipCode,
       officeStreet: this.state.addressObject.street,
       officeCity: this.state.addressObject.city,
       officePhoneNumber: this.state.addressObject.phoneNumber
     }
-    
-    const response = postMiscAction('office-contact-form', formData)
 
+    postMiscAction('office-contact-form', formData)
     this.timerId = setTimeout(() => {
       this.setState({ showSuccess: true })
-    }, 1000)
+    }, 1200)
   }
 
   handleChange(e) {
@@ -158,7 +160,12 @@ class OfficeContactModal extends React.Component {
         contentLabel="Modal"
       >
         <a className={styles.imgContainer} onClick={this.handleClose.bind(this)} href="">
-          <img className={styles.exitIcon} src={exitIcon} aria-label="close icon" onKeyDown={event => this.handleKeyDown(event)} />
+          <img
+            className={styles.exitIcon}
+            src={exitIcon}
+            aria-label="close icon"
+            onKeyDown={event => this.handleKeyDown(event)}
+          />
         </a>
         {this.state.showSuccess ? (
           <OfficeContactSuccess modalActions={this.props.modalActions} />

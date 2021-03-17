@@ -23,9 +23,11 @@ exports[`SearchPage to match snapshot 1`] = `
             id="search-container"
           >
             <label
+              aria-label="What are you looking for?"
               className={null}
               data-testid="search-label"
               htmlFor="search"
+              tabIndex="0"
             >
               What are you looking for?
             </label>
