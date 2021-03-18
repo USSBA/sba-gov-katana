@@ -2,7 +2,6 @@ import React from 'react'
 import { size } from 'lodash'
 
 import styles from './document-article.scss'
-import { VersionsList } from 'atoms'
 import { DocumentArticle, RelatedDocumentCards } from 'organisms'
 
 class DocumentArticleTemplate extends React.Component {
@@ -25,7 +24,6 @@ class DocumentArticleTemplate extends React.Component {
       <div data-testid={'document-article-template'}>
         <div className={styles.container}>
           <DocumentArticle data={data} />
-          {doc && <VersionsList doc={data} />}
         </div>
         {Boolean(size(data.relatedDocuments)) && <RelatedDocumentCards data={data} />}
       </div>

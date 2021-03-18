@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { VersionsList } from 'atoms'
 import classNames from 'classnames'
 import moment from 'moment'
 import queryString from 'querystring'
@@ -240,6 +241,7 @@ export class DocumentArticle extends React.Component {
             <DecorativeDash width={77} />
           </div>
           <TextSection className={style.body} text={body} />
+          <VersionsList doc={data} />
           {!isEmpty(translatedDocList) && (
             <TranslatedDocuments defaultDoc={data.files[0]} docList={translatedDocList} />
           )}

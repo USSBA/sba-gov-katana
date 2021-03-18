@@ -195,6 +195,11 @@
         clear: both;
       }
     }
+
+    li[lang='ar'] {
+      direction: rtl;
+      text-align: right;
+    }
   }
 
   @include for-medium-up {
@@ -204,9 +209,12 @@
         display: inline-block;
         width: 80%;
       }
-
       .colB {
         float: right;
+      }
+
+      &[lang='ar'] .colB {
+        float: left;
       }
     }
   }
