@@ -114,6 +114,8 @@ class TextInput extends React.Component {
       inputMode,
       textRef,
       alternateError,
+      large,
+      ariaLabel,
       ...rest
     } = this.props
     const { isFocused, isValid, value } = this.state
@@ -152,12 +154,13 @@ class TextInput extends React.Component {
               {...rest}
               {...optionalPlaceholderProp}
               aria-labelledby={id}
-              aria-label={helperText}
+              aria-label={helperText || ariaLabel}
               className={classNames({
                 [styles.input]: true,
                 [styles.invalid]: validationState === 'error' || !isValid,
                 [styles.searchIconPadding]: showSearchIcon,
-                [styles.alternateError]: alternateError
+                [styles.alternateError]: alternateError,
+                [styles.large]: large,
               })}
               data-testid={id}
               type={inputType || 'text'}

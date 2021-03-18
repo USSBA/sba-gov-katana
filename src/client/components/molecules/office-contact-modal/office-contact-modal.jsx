@@ -23,7 +23,6 @@ import OfficeContactSuccess from './office-contact-success'
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
 class OfficeContactModal extends React.Component {
   constructor(props) {
-    console.log(props)
     super()
     this.state = {
       modalIsOpen: true,
