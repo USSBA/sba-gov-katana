@@ -3,7 +3,7 @@ import { debounce, isEmpty } from 'lodash'
 
 import scrollIcon from 'assets/svg/scroll.svg'
 import styles from './hero.scss'
-import { Button } from 'atoms'
+import { Button, TextInput } from 'atoms'
 
 class Hero extends React.Component {
   constructor(props) {
@@ -27,6 +27,10 @@ class Hero extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResizeDebounced)
+  }
+
+  handleSubmit(e) {
+    console.log(e)
   }
 
   render() {
@@ -74,6 +78,38 @@ class Hero extends React.Component {
                   {item.btnText}
                 </Button>
               ))}
+            <div className={styles.zipContainer}>
+              <span className={styles.label}>Business Zip Code</span>
+              <div className={styles.form}>
+                <TextInput
+                  className={styles.field}
+                  validationFunction={input => {
+                    // only validate if there is an input value
+
+                    let isValidZip = false
+                    if (!isEmpty(input)) {
+                      const fiveDigitRegex = /^\d{5}$/g
+                      isValidZip = fiveDigitRegex.test(input)
+                    }
+                    this.setState({ isValidZip })
+                    return isValidZip
+                  }}
+                  ariaLabel="Enter a 5-digit zip code."
+                  errorText="Enter a 5-digit zip code."
+                  large
+                />
+                <div>
+                  <Button 
+                    type="submit"
+                    onClick={this.handleSubmit.bind(this)}
+                    className={styles.submit}
+                    primary alternate large
+                  >
+                    SUBMIT
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         {imageUrl && (
