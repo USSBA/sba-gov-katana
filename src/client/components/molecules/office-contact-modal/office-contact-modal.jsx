@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { RemoveScroll } from 'react-remove-scroll'
 import { bindActionCreators } from 'redux'
 import { includes } from 'lodash'
+import Checkbox from '../../atoms/checkbox/checkbox-lib.jsx'
 import { runMiscAction, postMiscAction } from '../../../fetch-content-helper.js'
 import constants from '../../../services/constants.js'
 import config from '../../../services/client-config.js'
@@ -33,6 +34,8 @@ class OfficeContactModal extends React.Component {
       userTopic: '',
       userTopicLabel: '',
       userDetails: '',
+      userOptIn: false,
+      checkboxFocus: false,
       showSuccess: false,
       officeName: props.officeName,
       officeLink: props.officeLink,
@@ -107,6 +110,7 @@ class OfficeContactModal extends React.Component {
       userFullName: this.state.userFullName,
       userTopic: this.state.userTopicLabel,
       userDetails: this.state.userDetails,
+      userOptIn: this.state.userOptIn,
       officeName: this.state.officeName,
       officeLink: this.state.officeLink,
       officeState: this.state.addressObject.state,
@@ -134,6 +138,20 @@ class OfficeContactModal extends React.Component {
     newState.userTopic = e.value
     newState.userTopicLabel = e.label
     this.setState(newState, () => this.validateFields(['userTopic']))
+  }
+
+  handleCheckbox(e) {
+    this.setState({
+      userOptIn: e.target.checked
+    })
+  }
+
+  handleCheckboxFocus(e) {
+    this.setState({ checkboxFocus: true })
+  }
+
+  handleCheckboxBlur(e) {
+    this.setState({ checkboxFocus: false })
   }
 
   handleKeyDown(event) {
@@ -249,6 +267,23 @@ class OfficeContactModal extends React.Component {
                   value={this.state.userDetails}
                   maxLength="250"
                 />
+                <div className={styles.checkboxContainer} style={{ position: 'relative' }}>
+                  <label htmlFor="optInCheckbox" className={styles.checkboxLabel}>
+                    <Checkbox
+                      id="optInCheckbox"
+                      name="optInCheckbox"
+                      checked={this.state.userOptIn}
+                      onChange={this.handleCheckbox.bind(this)}
+                      onFocus={e => {
+                        this.handleCheckboxFocus(e)
+                      }}
+                      onBlur={e => {
+                        this.handleCheckboxBlur(e)
+                      }}
+                    />{' '}
+                    Opt in to SBA email communications
+                  </label>
+                </div>
                 <div className={styles.btnContainer}>
                   <div className={styles.btnContent}>
                     <Button secondary onClick={this.handleClose.bind(this)}>
