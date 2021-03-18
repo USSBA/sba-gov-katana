@@ -35,8 +35,6 @@ class OfficeResult extends React.PureComponent {
     if (!item) {
       return null
     }
-    // console.log(id)
-    // console.log(item.office_website)
     const street = item.location_street_address ? item.location_street_address[0] : null
     const city = item.location_city ? item.location_city[0] : null
     const state = item.location_state ? item.location_state[0] : null
@@ -169,7 +167,7 @@ class OfficeResult extends React.PureComponent {
                 </div>
               </a>
             )}
-            {link.includes('/offices/district/') && title.includes('District') ? (
+            {link && link.includes('/offices/district/') && title.includes('District') ? (
               <button
                 type="button"
                 onClick={() => {
