@@ -23,7 +23,6 @@ import OfficeContactSuccess from './office-contact-success'
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
 class OfficeContactModal extends React.Component {
   constructor(props) {
-    console.log(props)
     super()
     this.state = {
       modalIsOpen: true,
@@ -155,102 +154,114 @@ class OfficeContactModal extends React.Component {
         isOpen={this.state.modalIsOpen}
         className={styles.content}
         overlayClassName={styles.overlay}
-        role="dialog"
-        aria-labelledby="dialogTitle"
-        contentLabel="Modal"
+        ariaHideApp={false}
+        onRequestClose={this.props.modalActions.closeOfficeContactModal}
+        shouldCloseOnOverlayClick={false}
+        contentLabel="Office Contact Form"
       >
-        <a className={styles.imgContainer} onClick={this.handleClose.bind(this)} href="">
-          <img
-            className={styles.exitIcon}
-            src={exitIcon}
-            aria-label="close icon"
-            onKeyDown={event => this.handleKeyDown(event)}
-          />
-        </a>
-        {this.state.showSuccess ? (
-          <OfficeContactSuccess modalActions={this.props.modalActions} />
-        ) : (
-          <form onSubmit={e => this.handleSubmit(e)} noValidate="noValidate" className={styles.form}>
-            <div>
-              <h2 id="dialogTitle" className={styles.title}>
-                Contact your District Office
-              </h2>
-              <h3 className={styles.officeName}>{this.state.officeName}</h3>
-              <div className={styles.divider} />
-            </div>
-            <TextInput
-              name="userFullName"
-              label="Full Name"
-              helperText="Required. Input your first and last name."
-              errorText="Required. Input your first and last name."
-              onChange={this.handleChange.bind(this)}
-              value={this.state.userFullName}
-              validationState={this.state.validStates.userFullName}
-              className={styles.input}
-              labelStyle={styles.label}
-              alternateError
+        <div id="contactFormModal" aria-labelledby="dialogTitle" role="dialog" aria-modal="true">
+          <div className={styles.imgContainer} onClick={this.handleClose.bind(this)}>
+            <img
+              className={styles.exitIcon}
+              src={exitIcon}
+              alt="close icon"
+              onKeyDown={event => this.handleKeyDown(event)}
             />
-            <TextInput
-              name="userEmailAddress"
-              label="Email"
-              helperText="Required. Input a valid email address format."
-              errorText="Required. Input a valid email address format."
-              onChange={this.handleChange.bind(this)}
-              value={this.state.userEmailAddress}
-              validationState={this.state.validStates.userEmailAddress}
-              className={styles.input}
-              labelStyle={styles.label}
-              alternateError
-            />
-            <MultiSelect
-              name="userTopic"
-              className={styles.topicDropdown + ' ' + styles.input}
-              labelStyle={styles.label}
-              reactSelectClassName={styles.reactSelect}
-              label="Topic"
-              value={this.state.userTopic}
-              validationState={this.state.validStates.userTopic}
-              onChange={this.handleSelectChange.bind(this)}
-              placeholder={() => <div tabIndex="1" />}
-              helperText="Required. Select your topic from the provided options."
-              errorText="Required. Select your topic from the provided options."
-              options={[
-                { value: 'covid-19 relief', label: 'Covid-19 Relief' },
-                { value: 'disaster relief', label: 'Disaster Relief' },
-                { value: 'consulting', label: 'Consulting' },
-                { value: 'financial assistance', label: 'Financial Assistance' },
-                {
-                  value: 'procurement & government contracting',
-                  label: 'Procurement & Government Contracting'
-                },
-                { value: 'other', label: 'Other' }
-              ]}
-              alternateError
-            />
-            <TextArea
-              name="userDetails"
-              className={styles.details}
-              labelStyle={styles.label}
-              label="Details"
-              helperText="Tell us more information about your inquiry."
-              onChange={this.handleChange.bind(this)}
-              value={this.state.userDetails}
-              maxLength="250"
-            />
-            <div className={styles.btnContainer}>
-              <div className={styles.btnContent}>
-                <Button secondary onClick={this.handleClose.bind(this)}>
-                  CANCEL
-                </Button>
+          </div>
+          {this.state.showSuccess ? (
+            <OfficeContactSuccess modalActions={this.props.modalActions} />
+          ) : (
+            <form
+              id="contactOfficeForm"
+              onSubmit={e => this.handleSubmit(e)}
+              noValidate="noValidate"
+              className={styles.form}
+            >
+              <div>
+                <h2 id="dialogTitle" className={styles.title}>
+                  Contact your District Office
+                </h2>
+                <h3 className={styles.officeName}>{this.state.officeName}</h3>
+                <div className={styles.divider} />
               </div>
-              <div className={styles.btnContent}>
-                <Button primary alternate type="submit" onClick={this.handleSubmit.bind(this)}>
-                  SUBMIT
-                </Button>
+              <TextInput
+                id="userFullName"
+                name="userFullName"
+                label="Full Name"
+                helperText="Required. Input your first and last name."
+                errorText="Required. Input your first and last name."
+                onChange={this.handleChange.bind(this)}
+                value={this.state.userFullName}
+                validationState={this.state.validStates.userFullName}
+                className={styles.input}
+                labelStyle={styles.label}
+                alternateError
+              />
+              <TextInput
+                id="userEmailAddress"
+                name="userEmailAddress"
+                label="Email"
+                helperText="Required. Input a valid email address format."
+                errorText="Required. Input a valid email address format."
+                onChange={this.handleChange.bind(this)}
+                value={this.state.userEmailAddress}
+                validationState={this.state.validStates.userEmailAddress}
+                className={styles.input}
+                labelStyle={styles.label}
+                alternateError
+              />
+              <MultiSelect
+                id="userTopic"
+                name="userTopic"
+                className={styles.topicDropdown + ' ' + styles.input}
+                labelStyle={styles.label}
+                reactSelectClassName={styles.reactSelect}
+                label="Topic"
+                value={this.state.userTopic}
+                validationState={this.state.validStates.userTopic}
+                onChange={this.handleSelectChange.bind(this)}
+                placeholder={() => <div tabIndex="1" />}
+                helperText="Required. Select your topic from the provided options."
+                errorText="Required. Select your topic from the provided options."
+                options={[
+                  { value: 'covid-19 relief', label: 'Covid-19 Relief' },
+                  { value: 'disaster relief', label: 'Disaster Relief' },
+                  { value: 'consulting', label: 'Consulting' },
+                  { value: 'financial assistance', label: 'Financial Assistance' },
+                  {
+                    value: 'procurement & government contracting',
+                    label: 'Procurement & Government Contracting'
+                  },
+                  { value: 'other', label: 'Other' }
+                ]}
+                alternateError
+              />
+              <TextArea
+                id="userDetails"
+                name="userDetails"
+                className={styles.details}
+                labelStyle={styles.label}
+                label="Details"
+                helperText="Tell us more information about your inquiry."
+                onChange={this.handleChange.bind(this)}
+                value={this.state.userDetails}
+                maxLength="250"
+              />
+              <div className={styles.btnContainer}>
+                <div className={styles.btnContent}>
+                  <Button secondary onClick={this.handleClose.bind(this)}>
+                    CANCEL
+                  </Button>
+                </div>
+                <div className={styles.btnContent}>
+                  <Button primary alternate type="submit" onClick={this.handleSubmit.bind(this)}>
+                    SUBMIT
+                  </Button>
+                </div>
               </div>
-            </div>
-          </form>
-        )}
+            </form>
+          )}
+        </div>
       </ReactModal>
     )
   }
