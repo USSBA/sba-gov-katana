@@ -160,8 +160,9 @@ class OfficeResult extends React.PureComponent {
               </a>
             )}
             {link && link.includes('/offices/district/') && title.includes('District') ? (
-              <button
-                type="button"
+              <a
+                href={null}
+                target="_blank"
                 onClick={() => {
                   this.props.modalActions.showOfficeContactModal(title, link, {
                     zipCode,
@@ -171,16 +172,13 @@ class OfficeResult extends React.PureComponent {
                     phoneNumber
                   })
                 }}
-                className={styles.contactButton}
               >
-                <a href={null} target="_blank">
-                  <div className={contactClassName}>
-                    <i className={'fa fa-envelope ' + styles.fa} />
-                    <br />
-                    Contact
-                  </div>
-                </a>
-              </button>
+                <div className={contactClassName}>
+                  <i className={'fa fa-envelope ' + styles.fa} />
+                  <br />
+                  Contact
+                </div>
+              </a>
             ) : (
               <> </>
             )}
