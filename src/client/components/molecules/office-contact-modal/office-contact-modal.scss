@@ -21,21 +21,21 @@ body {
   max-width: 650px;
   max-height: calc(100vh - 25px);
   overflow-y: auto;
-  background-color: #fff;
+  background-color: $sba-white;
   display: flex;
   justify-content: center;
-  border-top: 8px solid #002e6d;
+  border-top: 8px solid $sba-blue;
   padding-bottom: 30px;
 }
 
 .exitIcon {
   width: 30px;
   height: 30px;
-  color: #666666;
+  color: $sba-gray-dark;
   border-radius: 1px;
   cursor: pointer;
 
-  @media only screen and (max-width: 600px) {
+  @include grid-media($sba-grid-small) {
     width: 25px;
     height: 25px;
   }
@@ -47,7 +47,7 @@ body {
   right: 30px;
   height: 30px;
 
-  @media only screen and (max-width: 600px) {
+  @include grid-media($sba-grid-small) {
     top: 20px;
     right: 15px;
   }
@@ -59,7 +59,7 @@ body {
   font-size: 27px;
   margin-top: 30px;
 
-  @media only screen and (max-width: 600px) {
+  @include grid-media($sba-grid-small) {
     font-size: 22px;
   }
 }
@@ -67,12 +67,11 @@ body {
 .officeName {
   text-align: center;
   font-weight: 600;
-  color: #000;
-  font-size: 18px;
+  color: $secondary-black-ish;
 }
 
 .divider {
-  border-top: 3px solid #cc0000;
+  border-top: 3px solid $sba-red;
   width: 142px;
   margin: 0 auto 20px;
 }
@@ -81,7 +80,7 @@ body {
   min-width: 400px;
   max-width: 550px;
 
-  @media only screen and (max-width: 600px) {
+  @include grid-media($sba-grid-small) {
     padding: 0 25px;
   }
 }
@@ -101,7 +100,7 @@ body {
 
 .reactSelect {
   &:global(.Select.is-focused > .Select-control) {
-    border: 1px solid #686868 !important;
+    border: 1px solid $sba-gray-dark !important;
   }
 }
 
