@@ -113,9 +113,9 @@ class Hero extends React.Component {
                 {message}
               </h2>
             )}
-            <form onSubmit={e => this.handleSubmit(e)} noValidate="noValidate" className={styles.form}>
+            <form onSubmit={e => this.handleSubmit(e)} noValidate="noValidate">
               <div className={styles.zipContainer}>
-                <span className={styles.label}>Business Zip Code</span>
+                <label tabIndex="0" className={styles.label}>Business Zip Code</label>
                 <div className={styles.form}>
                   <TextInput
                     name="zipCode"
@@ -124,6 +124,7 @@ class Hero extends React.Component {
                     validationState={validStates.zipCode}
                     ariaLabel="Enter a 5-digit zip code."
                     errorText="Enter a 5-digit zip code."
+                    autocomplete="off"
                     alternateError
                     large
                   />
