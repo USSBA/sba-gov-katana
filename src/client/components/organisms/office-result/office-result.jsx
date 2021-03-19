@@ -132,15 +132,7 @@ class OfficeResult extends React.PureComponent {
                   <div id={`office-title-${id}`}>
                     <h2>{title}</h2>
                   </div>
-                  <div>
-                    <div id={`office-type-${id}`}>
-                      {/*<div className={styles.officeType}>
-                      {isOfficialOffice && <i className={'fa fa-shield ' + styles.fa} />}
-                      <span>{officeType}</span>
-                    </div>*/}
-                    </div>
-                    {street && <div>{street}</div>}
-                  </div>
+                  <div>{street && <div>{street}</div>}</div>
                 </div>
                 <div>
                   {item.office_service ? (

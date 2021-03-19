@@ -18,9 +18,13 @@ const OfficeContactSuccess = ({ modalActions }) => {
         <div className={styles.divider} />
         <div className={styles.success}>
           <i className={styles.icon + ' fa fa-check-circle'} tabIndex="0" aria-label="success checkmark" />
-          <h4 className={styles.successMessage} tabIndex="0">Your request has been sent</h4>
+          <h4 className={styles.successMessage} tabIndex="0">
+            Your request has been sent
+          </h4>
         </div>
-        <h6 className={styles.messageTitle} tabIndex="0">Thank you for contacting your district office.</h6>
+        <h6 className={styles.messageTitle} tabIndex="0">
+          Thank you for contacting your district office.
+        </h6>
         <p className={styles.message} tabIndex="0">
           You will receive an email confirmation with your request details within the next hour. Someone
           from your District Office will respond during standard business hours.
