@@ -60,12 +60,8 @@ class TextArea extends React.Component {
             extraClassName={styles.validationIcon}
           />
         </div>
-        {helperText && (
-          <span className={styles.helperText}>
-            {helperText}
-          </span>
-        )}
-        {(!helperText && showCounter) ? (
+        {helperText && <span className={styles.helperText}>{helperText}</span>}
+        {!helperText && showCounter ? (
           <span className={styles.textAreaCounter}>
             {value.length}
             /250

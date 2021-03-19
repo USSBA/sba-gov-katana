@@ -4,6 +4,11 @@ import { debounce, isEmpty } from 'lodash'
 import scrollIcon from 'assets/svg/scroll.svg'
 import styles from './hero.scss'
 import { Button, TextInput } from 'atoms'
+import { includes } from 'lodash'
+import {
+  containsErrorOrNull,
+  getZipcodeValidationState
+} from '../../../services/form-validation-helpers.js'
 
 class Hero extends React.Component {
   constructor(props) {
@@ -14,7 +19,12 @@ class Hero extends React.Component {
     this.state = {
       calloutHeight: 0,
       imageHeight: 0,
-      isSmallOnly: false
+      isSmallOnly: false,
+      zipCode: '',
+      validZip: false,
+      validStates: {
+        zipCode: ''
+      }
     }
   }
 
@@ -29,13 +39,54 @@ class Hero extends React.Component {
     window.removeEventListener('resize', this.onResizeDebounced)
   }
 
+  handleZipCodeChange(e) {
+    const newState = {}
+    const name = e.target.name
+    newState[name] = e.target.value
+    this.setState(newState, () => this.validateFields([name]))
+  }
+
+  validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
+    const validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
+
+    return validationState
+  }
+
+  validateFields(fields, defaultWhenNotSuccessful) {
+    let validStates = this.state.validStates
+
+    if (includes(fields, 'zipCode')) {
+      validStates = Object.assign(
+        validStates,
+        this.validateSingleField(getZipcodeValidationState, 'zipCode', defaultWhenNotSuccessful)
+      )
+    }
+
+    this.setState({ validStates: validStates })
+  }
+
+  isValidForm() {
+    return !containsErrorOrNull(this.state.validStates)
+  }
+
   handleSubmit(e) {
-    console.log(e)
+    e.preventDefault()
+    this.validateFields(Object.keys(this.state.validStates), 'error')
+
+    const { validStates } = this.state
+
+    const hasErrors = Object.keys(validStates).filter(key => {
+      return validStates[key] === 'error'
+    })
+
+    if (hasErrors.length) {
+      return null
+    }
   }
 
   render() {
     const { alt, buttons, imageUrl, message, title } = this.props
-    const { calloutHeight, imageHeight, isSmallOnly } = this.state
+    const { calloutHeight, imageHeight, isSmallOnly, zipCode, validStates } = this.state
 
     const style = {
       // We use a background image to take advantage of `background-size: cover`.
@@ -62,54 +113,39 @@ class Hero extends React.Component {
                 {message}
               </h2>
             )}
-            {buttons &&
-              buttons.map((item, index) => (
-                <Button
-                  key={index}
-                  primary={index === 0}
-                  secondary={index > 0}
-                  spacing={!imageUrl}
-                  url={item.url}
-                  data-testid="button"
-                >
-                  {typeof message === 'string' && (
-                    <span className={styles.accessibilityText}>{message}</span>
-                  )}
-                  {item.btnText}
-                </Button>
-              ))}
-            <div className={styles.zipContainer}>
-              <span className={styles.label}>Business Zip Code</span>
-              <div className={styles.form}>
-                <TextInput
-                  className={styles.field}
-                  validationFunction={input => {
-                    // only validate if there is an input value
-
-                    let isValidZip = false
-                    if (!isEmpty(input)) {
-                      const fiveDigitRegex = /^\d{5}$/g
-                      isValidZip = fiveDigitRegex.test(input)
-                    }
-                    this.setState({ isValidZip })
-                    return isValidZip
-                  }}
-                  ariaLabel="Enter a 5-digit zip code."
-                  errorText="Enter a 5-digit zip code."
-                  large
-                />
-                <div>
-                  <Button 
-                    type="submit"
-                    onClick={this.handleSubmit.bind(this)}
-                    className={styles.submit}
-                    primary alternate large
-                  >
-                    SUBMIT
-                  </Button>
+            <form onSubmit={e => this.handleSubmit(e)} noValidate="noValidate" className={styles.form}>
+              <div className={styles.zipContainer}>
+                <span className={styles.label}>Business Zip Code</span>
+                <div className={styles.form}>
+                  <TextInput
+                    name="zipCode"
+                    className={styles.field}
+                    onChange={this.handleZipCodeChange.bind(this)}
+                    validationState={validStates.zipCode}
+                    ariaLabel="Enter a 5-digit zip code."
+                    errorText="Enter a 5-digit zip code."
+                    alternateError
+                    large
+                  />
+                  <div>
+                    <Button
+                      type="submit"
+                      url={
+                        validStates.zipCode && validStates.zipCode !== 'error'
+                          ? `local-assistance/find/?address=${zipCode}&pageNumber=1`
+                          : ''
+                      }
+                      className={styles.submit}
+                      primary
+                      alternate
+                      large
+                    >
+                      SUBMIT
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
         {imageUrl && (

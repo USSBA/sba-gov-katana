@@ -141,7 +141,7 @@ class OfficeContactModal extends React.Component {
 
   handleCheckbox(e) {
     this.setState({
-      userOptIn: e.target.checked,
+      userOptIn: e.target.checked
     })
   }
 
@@ -278,7 +278,7 @@ class OfficeContactModal extends React.Component {
                 </Button>
               </div>
               <div className={styles.btnContent}>
-                <Button primary alternate type="submit" onClick={this.handleSubmit.bind(this)}>
+                <Button primary alternate type="submit">
                   SUBMIT
                 </Button>
               </div>

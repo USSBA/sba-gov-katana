@@ -7,12 +7,13 @@ class FormErrorMessage extends React.Component {
     const { errorFor, errorText, alternate } = this.props
     return (
       <p
-      	id={errorFor + '-error'}
-      	className={classNames({
-      		[styles.errorText]: true,
-      		[styles.alternate]: alternate,
-      	})}
-      	data-testid={errorFor + '-error'}>
+        id={errorFor + '-error'}
+        className={classNames({
+          [styles.errorText]: true,
+          [styles.alternate]: alternate
+        })}
+        data-testid={errorFor + '-error'}
+      >
         {errorText}
       </p>
     )
