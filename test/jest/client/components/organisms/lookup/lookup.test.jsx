@@ -6,12 +6,16 @@ import * as helper from 'client/fetch-content-helper'
 
 describe('Lookup', () => {
   var mockFetchSiteContent
+  var mockFetchApiSbaGovContent
   beforeEach(() => {
     mockFetchSiteContent = jest.spyOn(helper, 'fetchSiteContent')
+    mockFetchApiSbaGovContent = jest.spyOn(helper, 'fetchApiSbaGovContent')
     mockFetchSiteContent.mockReturnValue('')
+    mockFetchApiSbaGovContent.mockReturnValue('')
   })
   afterEach(() => {
     mockFetchSiteContent.mockRestore()
+    mockFetchApiSbaGovContent.mockRestore()
   })
   test('should render SbicLookup', () => {
     const props = {

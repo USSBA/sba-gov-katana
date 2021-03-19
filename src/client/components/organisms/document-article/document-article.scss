@@ -104,23 +104,6 @@
   }
 }
 
-.officialSubmissionMessage {
-  display: inline-block;
-  border: 2px solid #c5c5c5;
-  padding: 0 25px;
-  margin-bottom: 50px;
-
-  strong,
-  a,
-  i {
-    margin-left: 10px;
-  }
-
-  strong:first-child {
-    margin-left: 0;
-  }
-}
-
 .languages {
   ul {
     display: inline-block;
@@ -212,6 +195,11 @@
         clear: both;
       }
     }
+
+    li[lang='ar'] {
+      direction: rtl;
+      text-align: right;
+    }
   }
 
   @include for-medium-up {
@@ -221,9 +209,12 @@
         display: inline-block;
         width: 80%;
       }
-
       .colB {
         float: right;
+      }
+
+      &[lang='ar'] .colB {
+        float: left;
       }
     }
   }

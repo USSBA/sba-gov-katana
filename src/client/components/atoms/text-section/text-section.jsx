@@ -40,7 +40,7 @@ class TextSection extends React.Component {
         const trs = table.querySelectorAll('tbody > tr')
 
         Array.prototype.forEach.call(trs, trow => {
-          const tds = trow.querySelectorAll('td')
+          const tds = trow.querySelectorAll('th, td')
 
           if (headers.length < 1) {
             Array.prototype.forEach.call(tds, (tdata, i) => {
@@ -53,7 +53,7 @@ class TextSection extends React.Component {
               const html = "<div class='table-data-wrapper'>" + tdata.innerHTML + '</div>'
               tds[i].innerHTML = html
 
-              const label = "<div class='table-header-label'>" + headers[i] + ':</div>'
+              const label = "<div class='table-header-label'>" + headers[i] + '</div>'
               tdata.insertAdjacentHTML('beforeend', label)
             })
           }
