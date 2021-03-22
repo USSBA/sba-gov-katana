@@ -48,7 +48,7 @@ class TaxonomyMultiSelect extends React.Component {
     const generatedProps = this.generatePropsFromTaxonomy()
     return (
       <div className={this.props.className}>
-        <MultiSelect {...this.props} {...generatedProps} />
+        <MultiSelect {...this.props} {...generatedProps} searchable={false} />
       </div>
     )
   }
