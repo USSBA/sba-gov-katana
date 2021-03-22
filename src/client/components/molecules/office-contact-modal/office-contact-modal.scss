@@ -4,13 +4,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 20;
+  z-index: 99999999;
   background-color: rgba(0, 0, 0, 0.4);
-}
-body {
-  &:global(.ReactModal__Body--open) {
-    overflow: hidden;
-  }
 }
 
 .content {
@@ -20,14 +15,17 @@ body {
   outline: none;
   margin: 20px auto 0;
   max-width: 650px;
-  max-height: calc(100vh - 25px);
+  max-height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
   background-color: $sba-white;
   display: flex;
   justify-content: center;
   border-top: 8px solid $sba-blue;
-  padding-bottom: 30px;
+  @include grid-media($sba-grid-small) {
+    margin: 0 0 0;
+    border-top: 0px;
+  }
 }
 
 .exitIcon {
@@ -38,8 +36,8 @@ body {
   cursor: pointer;
 
   @include grid-media($sba-grid-small) {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -50,8 +48,8 @@ body {
   height: 30px;
 
   @include grid-media($sba-grid-small) {
-    top: 20px;
-    right: 15px;
+    top: 15px;
+    right: 20px;
   }
 }
 
@@ -81,9 +79,9 @@ body {
 
 .form {
   max-width: 550px;
-
+  padding-bottom: 30px;
   @include grid-media($sba-grid-small) {
-    padding: 0 20px;
+    padding-bottom: 15vh;
   }
 }
 
@@ -112,7 +110,6 @@ body {
   flex-direction: row;
   justify-content: center;
   padding-top: 30px;
-  padding-bottom: 10px;
 }
 
 .btnContent {
