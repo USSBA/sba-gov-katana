@@ -157,8 +157,7 @@ class SearchTemplate extends React.PureComponent {
             filteredSearchParams[paramName] = value
           }
           if (value === 'All Visible') {
-            console.log('all visible')
-            filteredSearchParams.type = 'SCORE Business Mentoring,Small Business Development Center'
+            filteredSearchParams.type = this.props.allVisibleOffices.join(',')
           }
         }
       }
