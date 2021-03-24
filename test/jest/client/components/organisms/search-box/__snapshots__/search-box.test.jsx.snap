@@ -29,6 +29,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
           className={null}
           data-testid="document-lookup-label"
           htmlFor="document-lookup"
+          tabIndex="0"
         />
         <div
           className="container"

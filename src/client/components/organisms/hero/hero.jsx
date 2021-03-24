@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react'
 import { debounce, isEmpty } from 'lodash'
 
@@ -115,7 +116,9 @@ class Hero extends React.Component {
             )}
             <form onSubmit={e => this.handleSubmit(e)} noValidate="noValidate">
               <div className={styles.zipContainer}>
-                <label tabIndex="0" className={styles.label}>Business Zip Code</label>
+                <label tabIndex="0" className={styles.label}>
+                  Business Zip Code
+                </label>
                 <div className={styles.form}>
                   <TextInput
                     name="zipCode"
@@ -124,7 +127,7 @@ class Hero extends React.Component {
                     validationState={validStates.zipCode}
                     ariaLabel="Enter a 5-digit zip code."
                     errorText="Enter a 5-digit zip code."
-                    autocomplete="off"
+                    autoComplete="off"
                     alternateError
                     large
                   />
@@ -139,7 +142,7 @@ class Hero extends React.Component {
                       className={styles.submit}
                       primary
                       alternate
-                      large
+                      small={false}
                     >
                       SUBMIT
                     </Button>
