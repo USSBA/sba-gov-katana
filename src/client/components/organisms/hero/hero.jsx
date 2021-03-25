@@ -1,6 +1,7 @@
 /* eslint-disable complexity */
 import React from 'react'
 import { debounce, isEmpty } from 'lodash'
+import { browserHistory } from 'react-router'
 
 import scrollIcon from 'assets/svg/scroll.svg'
 import styles from './hero.scss'
@@ -47,6 +48,15 @@ class Hero extends React.Component {
     this.setState(newState, () => this.validateFields([name]))
   }
 
+  submitZipCode() {
+    this.state.validStates.zipCode &&
+      this.state.validStates.zipCode !== 'error' &&
+      browserHistory.push({
+        pathname: `/local-assistance/find`,
+        search: `?address=${this.state.zipCode}&pageNumber=1`
+      })
+  }
+
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
     const validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
 
@@ -83,6 +93,7 @@ class Hero extends React.Component {
     if (hasErrors.length) {
       return null
     }
+    this.submitZipCode()
   }
 
   render() {
@@ -132,18 +143,7 @@ class Hero extends React.Component {
                     large
                   />
                   <div>
-                    <Button
-                      type="submit"
-                      url={
-                        validStates.zipCode && validStates.zipCode !== 'error'
-                          ? `local-assistance/find/?address=${zipCode}&pageNumber=1`
-                          : ''
-                      }
-                      className={styles.submit}
-                      primary
-                      alternate
-                      small={false}
-                    >
+                    <Button type="submit" className={styles.submit} primary alternate small={false}>
                       SUBMIT
                     </Button>
                   </div>
