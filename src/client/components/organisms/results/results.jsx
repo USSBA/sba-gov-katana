@@ -25,13 +25,7 @@ class Results extends React.PureComponent {
 
     return this.shouldRenderPaginator() ? (
       <div className={divClassName}>
-        <Paginator
-          pageNumber={pageNumber}
-          pageSize={pageSize}
-          total={total}
-          onBack={onBack}
-          onForward={onForward}
-        />
+        <Paginator pageNumber={pageNumber} pageSize={4} total={50} onBack={onBack} onForward={onForward} />
       </div>
     ) : null
   }
