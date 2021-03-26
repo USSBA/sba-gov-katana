@@ -6,7 +6,7 @@ import { omit, isEmpty, cloneDeep, merge } from 'lodash'
 import { parse, stringify } from 'querystring'
 
 import styles from './search.scss'
-import { fetchSiteContent } from '../../../fetch-content-helper'
+import { fetchSiteContent, fetchApiDistrictOfficeName } from '../../../fetch-content-helper'
 import { Paginator } from 'molecules'
 
 const createSlug = str => {
@@ -36,8 +36,28 @@ class SearchTemplate extends React.PureComponent {
       hasNoResults: false,
       isLoading: false,
       isZeroState: true,
-      defaultResults: []
+      defaultResults: [],
+      districtOffice: '',
+      districtOfficeDetails: {}
     }
+  }
+
+  insertDistrictOffice(output, districtOffice) {
+    output.results.forEach((obj, index) => {
+      var arrayIndex = index
+      if (obj.fields.location_name[0].toUpperCase() === districtOffice.toUpperCase()) {
+        //Add district office to the top of the list
+        this.setState({ districtOfficeDetails: obj })
+        output.results.unshift(obj)
+        arrayIndex = arrayIndex + 1
+      }
+      if (obj.fields.office_type[0] === 'SBA District Office') {
+        //Remove any other district offices found
+        output.results.splice(arrayIndex, 1)
+        arrayIndex = arrayIndex - 1
+      }
+    })
+    return output
   }
 
   calculateMaxPageNumber(pageSize = this.state.searchParams.pageSize, count = this.state.count) {
@@ -85,6 +105,7 @@ class SearchTemplate extends React.PureComponent {
       this.props.defaultSearchParams || {},
       this.generateQueryMap()
     )
+
     this.setState({ searchParams: newSearchParams })
     if (this.props.loadDefaultResults === true || urlSearchString.length) {
       this.doSearch(this.props.searchType, newSearchParams)
@@ -181,6 +202,12 @@ class SearchTemplate extends React.PureComponent {
   }
 
   doSearch(searchType, searchParams) {
+    if (searchParams.address) {
+      fetchApiDistrictOfficeName(searchParams.address).then(value => {
+        this.setState({ districtOffice: value })
+      })
+    }
+
     let search = () =>
       fetchSiteContent(searchType, filteredSearchParams)
         .then(searchResults => {
@@ -211,7 +238,8 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          this.setState(output)
+          const formatOutput = this.insertDistrictOffice(output, this.state.districtOffice)
+          this.setState(formatOutput)
         })
 
     // override search if a custom search exists
