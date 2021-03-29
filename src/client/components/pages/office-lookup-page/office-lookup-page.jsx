@@ -118,6 +118,19 @@ class OfficeLookupPage extends React.PureComponent {
       type: defaultType
     }
 
+    const officeTypeTaxonomy = {
+      name: 'officeType',
+      terms: [
+        'SCORE Business Mentoring',
+        'Small Business Development Center',
+        'U.S. Export Assistance Center',
+        'Veteran’s Business Outreach Center',
+        'Women’s Business Center',
+        'Procurement Technical Assistance Center',
+        'Certified Development Company'
+      ]
+    }
+
     const officeServiceTaxonomy = this.getTaxonomy('officeService')
 
     const searchTips = [
