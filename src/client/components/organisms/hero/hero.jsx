@@ -1,7 +1,6 @@
 /* eslint-disable complexity */
 import React from 'react'
 import { debounce, isEmpty } from 'lodash'
-import { browserHistory } from 'react-router'
 
 import scrollIcon from 'assets/svg/scroll.svg'
 import styles from './hero.scss'

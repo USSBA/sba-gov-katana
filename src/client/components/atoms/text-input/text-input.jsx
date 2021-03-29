@@ -160,7 +160,7 @@ class TextInput extends React.Component {
                 [styles.invalid]: validationState === 'error' || !isValid,
                 [styles.searchIconPadding]: showSearchIcon,
                 [styles.alternateError]: alternateError,
-                [styles.large]: large,
+                [styles.large]: large
               })}
               data-testid={id}
               type={inputType || 'text'}
@@ -185,11 +185,7 @@ class TextInput extends React.Component {
               showErrorIcon={showErrorIcon}
             />
           </div>
-          {(helperText && !errorMessage) && (
-            <p className={styles.helperText}>
-              {helperText}
-            </p>
-          )}
+          {helperText && !errorMessage && <p className={styles.helperText}>{helperText}</p>}
           {errorMessage}
         </div>
       )
