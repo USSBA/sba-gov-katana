@@ -205,7 +205,7 @@ class SearchTemplate extends React.PureComponent {
       })
     }
 
-    const filteredDistofficeSearchParams = {
+    const filteredDistOfficeSearchParams = {
       q: this.state.districtOffice,
       pageNumber: '1',
       pageSize: 1,
@@ -213,13 +213,13 @@ class SearchTemplate extends React.PureComponent {
     }
 
     const districtOfficeSearch = () =>
-      fetchSiteContent(searchType, filteredDistofficeSearchParams)
-        .then(distofficeSearchResults => {
-          let distofficeResults = []
-          if (distofficeSearchResults) {
-            distofficeResults = distofficeSearchResults.hit
+      fetchSiteContent(searchType, filteredDistOfficeSearchParams)
+        .then(distOfficeSearchResults => {
+          let distOfficeResults = []
+          if (distOfficeSearchResults) {
+            distOfficeResults = distOfficeSearchResults.hit
           }
-          return { distofficeResults }
+          return { distOfficeResults }
         })
         .then(districtOfficeOutput => {
           this.setState(districtOfficeOutput)
@@ -228,7 +228,7 @@ class SearchTemplate extends React.PureComponent {
     this.setState(
       {
         isLoading: true,
-        submitteddsSearchParams: filteredDistofficeSearchParams
+        submittedDistOfficeSearchParams: filteredDistOfficeSearchParams
       },
       districtOfficeSearch
     )
@@ -263,7 +263,7 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          const formatOutput = this.insertDistrictOffice(output, this.state.distofficeResults[0])
+          const formatOutput = this.insertDistrictOffice(output, this.state.distOfficeResults[0])
           this.setState(formatOutput)
         })
 

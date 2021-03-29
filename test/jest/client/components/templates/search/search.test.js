@@ -1,7 +1,6 @@
 /* eslint-env jest */
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import { act } from 'react-dom/test-utils'
 
 import { stub } from 'sinon'
 import SearchTemplate from 'client/components/templates/search/search.jsx'
