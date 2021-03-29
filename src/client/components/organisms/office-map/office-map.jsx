@@ -31,9 +31,9 @@ const defaultMapPadding = {
 const OfficeMap = compose(
   withProps({
     googleMapURL,
-    loadingElement: <div style={{ height: `100vh` }} />,
-    containerElement: <div style={{ height: `100vh` }} />,
-    mapElement: <div className="map" style={{ height: `100vh`, clear: 'both' }} />
+    loadingElement: <div style={{ height: `80vh` }} />,
+    containerElement: <div style={{ height: `80vh` }} />,
+    mapElement: <div className="map" style={{ height: `80vh`, clear: 'both' }} />
   }),
   withScriptjs,
   withGoogleMap

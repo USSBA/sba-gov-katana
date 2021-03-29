@@ -111,7 +111,7 @@ class OfficeLookupPage extends React.PureComponent {
 
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
-    const pageSize = 20
+    const pageSize = 5
     const defaultType = 'All'
     const defaultSearchParams = {
       pageSize,
@@ -228,6 +228,8 @@ class OfficeLookupPage extends React.PureComponent {
             extraContainerStyles={styles.centerContainer}
             extraResultContainerStyles={styles.resultContainer}
             setWhiteBackground
+            pageSize={5}
+            totalOverride={50}
           >
             <OfficeResult />
           </Results>

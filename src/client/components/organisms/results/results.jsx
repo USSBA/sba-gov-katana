@@ -15,7 +15,7 @@ class Results extends React.PureComponent {
   }
 
   renderPaginator() {
-    const { total, pageSize, pageNumber, onBack, onForward, setWhiteBackground } = this.props
+    const { total, totalOverride, pageSize, pageNumber, onBack, onForward, setWhiteBackground } = this.props
 
     const divClassName = classNames({
       [styles.paginator]: true,
@@ -28,7 +28,7 @@ class Results extends React.PureComponent {
         <Paginator
           pageNumber={pageNumber}
           pageSize={pageSize}
-          total={total}
+          total={totalOverride ? totalOverride : total}
           onBack={onBack}
           onForward={onForward}
         />
@@ -229,7 +229,8 @@ Results.propTypes = {
   // takes two params: resultsClassName and hideDetailState function
   customDetailResultsView: PropTypes.func,
   isLoading: PropTypes.bool,
-  enableNoResultsMessage: PropTypes.bool
+  enableNoResultsMessage: PropTypes.bool,
+  totalOverride: PropTypes.number
 }
 
 export default Results
