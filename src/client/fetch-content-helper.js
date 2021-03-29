@@ -33,7 +33,6 @@ async function fetchApiDistrictOfficeName(zipcode) {
   } catch (error) {
     console.error('fetchDistrictOfficeName', error)
   }
-  console.log('the data is', data)
   return data
 }
 

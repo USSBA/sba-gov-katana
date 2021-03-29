@@ -27,7 +27,7 @@ class Results extends React.PureComponent {
       <div className={divClassName}>
         <Paginator
           pageNumber={pageNumber}
-          pageSize={pageSize}
+          pageSize={4}
           total={total}
           onBack={onBack}
           onForward={onForward}

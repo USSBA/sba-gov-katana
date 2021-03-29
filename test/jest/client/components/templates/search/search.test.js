@@ -244,17 +244,35 @@ describe('Search Template', () => {
   })
 
   it('Search returns district office at the top', () => {
+    const districtOfficeDetails = {
+      fields: {
+        location_name: ['Baltimore District Office'],
+        title: ['Baltimore District'],
+        office_type: ['SBA District Office'],
+        type: ['office'],
+        id: '6403'
+      }
+    }
     const formatedResults = searchTemplateInstance.insertDistrictOffice(
       contentApiMock,
-      'BALTIMORE DISTRICT OFFICE'
+      districtOfficeDetails
     )
     expect(formatedResults.results[0].fields.location_name[0]).toEqual('Baltimore District Office')
   })
 
   it('Search only contains 1 district office', () => {
+    const districtOfficeDetails = {
+      fields: {
+        location_name: ['Baltimore District Office'],
+        title: ['Baltimore District Office'],
+        office_type: ['SBA District Office'],
+        type: ['office'],
+        id: '6403'
+      }
+    }
     const formatedResults = searchTemplateInstance.insertDistrictOffice(
       contentApiMock,
-      'BALTIMORE DISTRICT OFFICE'
+      districtOfficeDetails
     )
 
     const districtOffices = formatedResults.results.filter(

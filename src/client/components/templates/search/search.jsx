@@ -42,22 +42,20 @@ class SearchTemplate extends React.PureComponent {
     }
   }
 
-  insertDistrictOffice(output, districtOffice) {
-    output.results.forEach((obj, index) => {
+  insertDistrictOffice(searchResults, districtOfficeDetails) {
+    searchResults.results.forEach((obj, index) => {
       var arrayIndex = index
-      if (obj.fields.location_name[0].toUpperCase() === districtOffice.toUpperCase()) {
-        //Add district office to the top of the list
-        this.setState({ districtOfficeDetails: obj })
-        output.results.unshift(obj)
-        arrayIndex = arrayIndex + 1
-      }
+      //Remove any other district offices found
       if (obj.fields.office_type[0] === 'SBA District Office') {
-        //Remove any other district offices found
-        output.results.splice(arrayIndex, 1)
+        searchResults.results.splice(arrayIndex, 1)
         arrayIndex = arrayIndex - 1
       }
     })
-    return output
+    //Add district office to the top of the list
+    if (searchResults.results) {
+      searchResults.results.unshift(districtOfficeDetails)
+    }
+    return searchResults
   }
 
   calculateMaxPageNumber(pageSize = this.state.searchParams.pageSize, count = this.state.count) {
@@ -201,12 +199,60 @@ class SearchTemplate extends React.PureComponent {
     })
   }
 
-  doSearch(searchType, searchParams) {
+  async doSearch(searchType, searchParams) {
     if (searchParams.address) {
-      fetchApiDistrictOfficeName(searchParams.address).then(value => {
+      await fetchApiDistrictOfficeName(searchParams.address).then(value => {
         this.setState({ districtOffice: value })
       })
     }
+
+    const filteredDOSearchParams = {
+      q: this.state.districtOffice,
+      pageNumber: '1',
+      pageSize: 1,
+      start: 0
+    }
+
+    const districtOfficeSearch = () =>
+      fetchSiteContent(searchType, filteredDOSearchParams)
+        .then(dssearchResults => {
+          let dsresults = []
+          let dscount = 0
+          let dshasNoResults
+          let dsisLoading = this.state.isLoading
+          let dsisZeroState = this.state.isZeroState
+          let dsdefaultResults = []
+          if (dssearchResults) {
+            dsresults = dssearchResults.hit
+            dscount = dssearchResults.found
+            dsdefaultResults = dssearchResults.suggestedResults ? dssearchResults.suggestedResults.hit : []
+            dshasNoResults = dscount === 0
+            dsisLoading = false
+            dsisZeroState = false
+          } else {
+            dsisZeroState = false
+            dsisLoading = false
+          }
+
+          return {
+            dsresults,
+            dscount,
+            dshasNoResults,
+            dsisLoading,
+            dsisZeroState,
+            dsdefaultResults
+          }
+        })
+        .then(districtOfficeOutput => {
+          this.setState(districtOfficeOutput)
+        })
+    this.setState(
+      {
+        isLoading: true,
+        submitteddsSearchParams: filteredSearchParams
+      },
+      districtOfficeSearch
+    )
 
     let search = () =>
       fetchSiteContent(searchType, filteredSearchParams)
@@ -238,7 +284,7 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          const formatOutput = this.insertDistrictOffice(output, this.state.districtOffice)
+          const formatOutput = this.insertDistrictOffice(output, this.state.dsresults[0])
           this.setState(formatOutput)
         })
 
