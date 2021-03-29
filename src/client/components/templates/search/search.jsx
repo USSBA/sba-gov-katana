@@ -224,6 +224,7 @@ class SearchTemplate extends React.PureComponent {
         .then(districtOfficeOutput => {
           this.setState(districtOfficeOutput)
         })
+
     this.setState(
       {
         isLoading: true,
