@@ -243,24 +243,7 @@ describe('Search Template', () => {
     })
   })
 
-  it('Search returns district office at the top', () => {
-    const districtOfficeDetails = {
-      fields: {
-        location_name: ['Baltimore District Office'],
-        title: ['Baltimore District'],
-        office_type: ['SBA District Office'],
-        type: ['office'],
-        id: '6403'
-      }
-    }
-    const formatedResults = searchTemplateInstance.insertDistrictOffice(
-      contentApiMock,
-      districtOfficeDetails
-    )
-    expect(formatedResults.results[0].fields.location_name[0]).toEqual('Baltimore District Office')
-  })
-
-  it('Search only contains 1 district office', () => {
+  describe('District office in the results', () => {
     const districtOfficeDetails = {
       fields: {
         location_name: ['Baltimore District Office'],
@@ -270,15 +253,26 @@ describe('Search Template', () => {
         id: '6403'
       }
     }
-    const formatedResults = searchTemplateInstance.insertDistrictOffice(
-      contentApiMock,
-      districtOfficeDetails
-    )
 
-    const districtOffices = formatedResults.results.filter(
-      obj => obj.fields.office_type[0] === 'SBA District Office'
-    )
+    it('Search returns district office at the top', () => {
+      const formatedResults = searchTemplateInstance.insertDistrictOffice(
+        contentApiMock,
+        districtOfficeDetails
+      )
+      expect(formatedResults.results[0].fields.location_name[0]).toEqual('Baltimore District Office')
+    })
 
-    expect(districtOffices.length).toEqual(1)
+    it('Search only contains 1 district office', () => {
+      const formatedResults = searchTemplateInstance.insertDistrictOffice(
+        contentApiMock,
+        districtOfficeDetails
+      )
+
+      const districtOffices = formatedResults.results.filter(
+        obj => obj.fields.office_type[0] === 'SBA District Office'
+      )
+
+      expect(districtOffices.length).toEqual(1)
+    })
   })
 })
