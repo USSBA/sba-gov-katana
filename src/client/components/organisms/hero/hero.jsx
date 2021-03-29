@@ -3,12 +3,8 @@ import { debounce, isEmpty } from 'lodash'
 
 import scrollIcon from 'assets/svg/scroll.svg'
 import styles from './hero.scss'
-import { Button, TextInput } from 'atoms'
-import { includes } from 'lodash'
-import {
-  containsErrorOrNull,
-  getZipcodeValidationState
-} from '../../../services/form-validation-helpers.js'
+import { Button } from 'atoms'
+import { ZipCodeForm } from 'molecules'
 
 class Hero extends React.Component {
   constructor(props) {
@@ -19,12 +15,7 @@ class Hero extends React.Component {
     this.state = {
       calloutHeight: 0,
       imageHeight: 0,
-      isSmallOnly: false,
-      zipCode: '',
-      validZip: false,
-      validStates: {
-        zipCode: ''
-      }
+      isSmallOnly: false
     }
   }
 
@@ -39,54 +30,9 @@ class Hero extends React.Component {
     window.removeEventListener('resize', this.onResizeDebounced)
   }
 
-  handleZipCodeChange(e) {
-    const newState = {}
-    const name = e.target.name
-    newState[name] = e.target.value
-    this.setState(newState, () => this.validateFields([name]))
-  }
-
-  validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-    const validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
-
-    return validationState
-  }
-
-  validateFields(fields, defaultWhenNotSuccessful) {
-    let validStates = this.state.validStates
-
-    if (includes(fields, 'zipCode')) {
-      validStates = Object.assign(
-        validStates,
-        this.validateSingleField(getZipcodeValidationState, 'zipCode', defaultWhenNotSuccessful)
-      )
-    }
-
-    this.setState({ validStates: validStates })
-  }
-
-  isValidForm() {
-    return !containsErrorOrNull(this.state.validStates)
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    this.validateFields(Object.keys(this.state.validStates), 'error')
-
-    const { validStates } = this.state
-
-    const hasErrors = Object.keys(validStates).filter(key => {
-      return validStates[key] === 'error'
-    })
-
-    if (hasErrors.length) {
-      return null
-    }
-  }
-
   render() {
-    const { alt, buttons, imageUrl, message, title } = this.props
-    const { calloutHeight, imageHeight, isSmallOnly, zipCode, validStates } = this.state
+    const { alt, buttons, imageUrl, message, title, zipCodeSearch } = this.props
+    const { calloutHeight, imageHeight, isSmallOnly } = this.state
 
     const style = {
       // We use a background image to take advantage of `background-size: cover`.
@@ -113,40 +59,25 @@ class Hero extends React.Component {
                 {message}
               </h2>
             )}
-            <form onSubmit={e => this.handleSubmit(e)} noValidate="noValidate">
-              <div className={styles.zipContainer}>
-                <label tabIndex="0" className={styles.label}>Business Zip Code</label>
-                <div className={styles.form}>
-                  <TextInput
-                    name="zipCode"
-                    className={styles.field}
-                    onChange={this.handleZipCodeChange.bind(this)}
-                    validationState={validStates.zipCode}
-                    ariaLabel="Enter a 5-digit zip code."
-                    errorText="Enter a 5-digit zip code."
-                    autocomplete="off"
-                    alternateError
-                    large
-                  />
-                  <div>
-                    <Button
-                      type="submit"
-                      url={
-                        validStates.zipCode && validStates.zipCode !== 'error'
-                          ? `local-assistance/find/?address=${zipCode}&pageNumber=1`
-                          : ''
-                      }
-                      className={styles.submit}
-                      primary
-                      alternate
-                      large
-                    >
-                      SUBMIT
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </form>
+            {(!zipCodeSearch && buttons) &&
+              buttons.map((item, index) => (
+                <Button
+                  key={index}
+                  primary={index === 0}
+                  secondary={index > 0}
+                  spacing={!imageUrl}
+                  url={item.url}
+                  data-testid="button"
+                >
+                  {typeof message === 'string' && (
+                    <span className={styles.accessibilityText}>{message}</span>
+                  )}
+                  {item.btnText}
+                </Button>
+              ))}
+              {zipCodeSearch && (
+                <ZipCodeForm label="Business Zip Code" btnLabel="search" />
+              )}
           </div>
         </div>
         {imageUrl && (

@@ -35,6 +35,7 @@ import SuggestedRouteCard from './suggested-route-card/suggested-route-card'
 import LongScrollNav from './long-scroll-nav/long-scroll-nav'
 import TitleSection from './title-section/title-section'
 import Typeahead from './typeahead/typeahead'
+import ZipCodeForm from './zip-code-form/zip-code-form.jsx'
 
 export {
   Address,
@@ -73,5 +74,6 @@ export {
   SuggestedRouteCard,
   LongScrollNav,
   TitleSection,
-  Typeahead
+  Typeahead,
+  ZipCodeForm
 }
