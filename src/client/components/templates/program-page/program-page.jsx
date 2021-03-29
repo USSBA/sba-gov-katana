@@ -49,6 +49,7 @@ class ProgramPage extends React.Component {
             buttons={_formattedButtons}
             imageUrl={bannerImage.image.url}
             alt={bannerImage.image.alt}
+            zipCodeSearch
           />
         )}
         {!hasBannerImage && <Hero title={title} message={summary} buttons={_formattedButtons} />}
