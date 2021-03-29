@@ -37,8 +37,7 @@ class SearchTemplate extends React.PureComponent {
       isLoading: false,
       isZeroState: true,
       defaultResults: [],
-      districtOffice: '',
-      districtOfficeDetails: {}
+      districtOffice: ''
     }
   }
 
@@ -206,7 +205,7 @@ class SearchTemplate extends React.PureComponent {
       })
     }
 
-    const filteredDOSearchParams = {
+    const filteredDistofficeSearchParams = {
       q: this.state.districtOffice,
       pageNumber: '1',
       pageSize: 1,
@@ -214,34 +213,13 @@ class SearchTemplate extends React.PureComponent {
     }
 
     const districtOfficeSearch = () =>
-      fetchSiteContent(searchType, filteredDOSearchParams)
-        .then(dssearchResults => {
-          let dsresults = []
-          let dscount = 0
-          let dshasNoResults
-          let dsisLoading = this.state.isLoading
-          let dsisZeroState = this.state.isZeroState
-          let dsdefaultResults = []
-          if (dssearchResults) {
-            dsresults = dssearchResults.hit
-            dscount = dssearchResults.found
-            dsdefaultResults = dssearchResults.suggestedResults ? dssearchResults.suggestedResults.hit : []
-            dshasNoResults = dscount === 0
-            dsisLoading = false
-            dsisZeroState = false
-          } else {
-            dsisZeroState = false
-            dsisLoading = false
+      fetchSiteContent(searchType, filteredDistofficeSearchParams)
+        .then(distofficeSearchResults => {
+          let distofficeResults = []
+          if (distofficeSearchResults) {
+            distofficeResults = distofficeSearchResults.hit
           }
-
-          return {
-            dsresults,
-            dscount,
-            dshasNoResults,
-            dsisLoading,
-            dsisZeroState,
-            dsdefaultResults
-          }
+          return { distofficeResults }
         })
         .then(districtOfficeOutput => {
           this.setState(districtOfficeOutput)
@@ -249,7 +227,7 @@ class SearchTemplate extends React.PureComponent {
     this.setState(
       {
         isLoading: true,
-        submitteddsSearchParams: filteredSearchParams
+        submitteddsSearchParams: filteredDistofficeSearchParams
       },
       districtOfficeSearch
     )
@@ -284,7 +262,7 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          const formatOutput = this.insertDistrictOffice(output, this.state.dsresults[0])
+          const formatOutput = this.insertDistrictOffice(output, this.state.distofficeResults[0])
           this.setState(formatOutput)
         })
 
