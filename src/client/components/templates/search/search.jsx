@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable complexity */
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -151,8 +153,11 @@ class SearchTemplate extends React.PureComponent {
         if (value || value === 0) {
           //item.value to handle objects returned from multiselects
           value = value.value || value
-          if (value !== 'All') {
+          if (value !== 'All' && value !== 'All Visible') {
             filteredSearchParams[paramName] = value
+          }
+          if (value === 'All Visible') {
+            filteredSearchParams.type = this.props.allVisibleOffices.join(',')
           }
         }
       }
