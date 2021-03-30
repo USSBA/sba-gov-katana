@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { browserHistory } from 'react-router'
 import { includes } from 'lodash'
 import { Button, TextInput } from 'atoms'
 import {
@@ -51,6 +52,15 @@ class ZipCodeForm extends React.Component {
     return !containsErrorOrNull(this.state.validStates)
   }
 
+  submitZipCode() {
+    this.state.validStates.zipCode &&
+      this.state.validStates.zipCode !== 'error' &&
+      browserHistory.push({
+        pathname: `/local-assistance/find`,
+        search: `?address=${this.state.zipCode}&pageNumber=1`
+      })
+  }
+
   handleSubmit(e) {
     e.preventDefault()
     this.validateFields(Object.keys(this.state.validStates), 'error')
@@ -64,6 +74,7 @@ class ZipCodeForm extends React.Component {
     if (hasErrors.length) {
       return null
     }
+    this.submitZipCode()
   }
 
   render() {
@@ -92,18 +103,7 @@ class ZipCodeForm extends React.Component {
               large
             />
             <div>
-              <Button
-                type="submit"
-                url={
-                  validStates.zipCode && validStates.zipCode !== 'error'
-                    ? `local-assistance/find/?address=${zipCode}&pageNumber=1`
-                    : ''
-                }
-                className={styles.submit}
-                primary
-                alternate
-                large
-              >
+              <Button type="submit" className={styles.submit} primary alternate small={false}>
                 {btnLabel?.toUpperCase() || 'SUBMIT'}
               </Button>
             </div>
