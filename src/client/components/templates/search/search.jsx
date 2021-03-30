@@ -201,41 +201,7 @@ class SearchTemplate extends React.PureComponent {
     })
   }
 
-  async doSearch(searchType, searchParams) {
-    if (searchParams.address) {
-      await fetchApiDistrictOfficeName(searchParams.address).then(value => {
-        this.setState({ districtOffice: value })
-      })
-    }
-
-    const filteredDistOfficeSearchParams = {
-      q: this.state.districtOffice,
-      pageNumber: '1',
-      pageSize: 1,
-      start: 0
-    }
-
-    const districtOfficeSearch = () =>
-      fetchSiteContent(searchType, filteredDistOfficeSearchParams)
-        .then(distOfficeSearchResults => {
-          let distOfficeResults = []
-          if (distOfficeSearchResults) {
-            distOfficeResults = distOfficeSearchResults.hit
-          }
-          return { distOfficeResults }
-        })
-        .then(districtOfficeOutput => {
-          this.setState(districtOfficeOutput)
-        })
-
-    this.setState(
-      {
-        isLoading: true,
-        submittedDistOfficeSearchParams: filteredDistOfficeSearchParams
-      },
-      districtOfficeSearch
-    )
-
+  doSearch(searchType, searchParams) {
     let search = () =>
       fetchSiteContent(searchType, filteredSearchParams)
         .then(searchResults => {
@@ -265,11 +231,34 @@ class SearchTemplate extends React.PureComponent {
             defaultResults
           }
         })
-        .then(output => {
-          const formatOutput = this.state.distOfficeResults[0]
-            ? this.insertDistrictOffice(output, this.state.distOfficeResults[0])
-            : {}
-          this.setState(formatOutput)
+        .then(async output => {
+          if (searchParams.address) {
+            //If its a district office lookup, Look for the assigned district office at place it at the top of the search.
+            if (searchType === 'offices') {
+              fetchApiDistrictOfficeName(searchParams.address).then(districtOfficeName => {
+                const filteredDistOfficeSearchParams = {
+                  q: districtOfficeName,
+                  pageNumber: '1',
+                  pageSize: 1,
+                  start: 0
+                }
+                fetchSiteContent(searchType, filteredDistOfficeSearchParams).then(
+                  distOfficeSearchResults => {
+                    let distOfficeResults = []
+                    if (distOfficeSearchResults) {
+                      distOfficeResults = distOfficeSearchResults.hit
+                    }
+                    const formatOutput = distOfficeResults[0]
+                      ? this.insertDistrictOffice(output, distOfficeResults[0])
+                      : {}
+                    this.setState(formatOutput)
+                  }
+                )
+              })
+            } else {
+              this.setState(output)
+            }
+          }
         })
 
     // override search if a custom search exists
