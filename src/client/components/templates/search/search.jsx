@@ -8,7 +8,7 @@ import { omit, isEmpty, cloneDeep, merge } from 'lodash'
 import { parse, stringify } from 'querystring'
 
 import styles from './search.scss'
-import { fetchSiteContent } from '../../../fetch-content-helper'
+import { fetchSiteContent, fetchApiDistrictOfficeName } from '../../../fetch-content-helper'
 import { Paginator } from 'molecules'
 
 const createSlug = str => {
@@ -38,8 +38,23 @@ class SearchTemplate extends React.PureComponent {
       hasNoResults: false,
       isLoading: false,
       isZeroState: true,
-      defaultResults: []
+      defaultResults: [],
+      districtOffice: ''
     }
+  }
+
+  insertDistrictOffice(searchResults, districtOfficeDetails) {
+    searchResults.results.forEach((obj, index) => {
+      //Remove any other district offices found
+      if (obj.fields.office_type[0] === 'SBA District Office') {
+        searchResults.results.splice(index, 1)
+      }
+    })
+    //Add district office to the top of the list
+    if (searchResults.results) {
+      searchResults.results.unshift(districtOfficeDetails)
+    }
+    return searchResults
   }
 
   calculateMaxPageNumber(pageSize = this.state.searchParams.pageSize, count = this.state.count) {
@@ -87,6 +102,7 @@ class SearchTemplate extends React.PureComponent {
       this.props.defaultSearchParams || {},
       this.generateQueryMap()
     )
+
     this.setState({ searchParams: newSearchParams })
     if (this.props.loadDefaultResults === true || urlSearchString.length) {
       this.doSearch(this.props.searchType, newSearchParams)
@@ -185,7 +201,41 @@ class SearchTemplate extends React.PureComponent {
     })
   }
 
-  doSearch(searchType, searchParams) {
+  async doSearch(searchType, searchParams) {
+    if (searchParams.address) {
+      await fetchApiDistrictOfficeName(searchParams.address).then(value => {
+        this.setState({ districtOffice: value })
+      })
+    }
+
+    const filteredDistOfficeSearchParams = {
+      q: this.state.districtOffice,
+      pageNumber: '1',
+      pageSize: 1,
+      start: 0
+    }
+
+    const districtOfficeSearch = () =>
+      fetchSiteContent(searchType, filteredDistOfficeSearchParams)
+        .then(distOfficeSearchResults => {
+          let distOfficeResults = []
+          if (distOfficeSearchResults) {
+            distOfficeResults = distOfficeSearchResults.hit
+          }
+          return { distOfficeResults }
+        })
+        .then(districtOfficeOutput => {
+          this.setState(districtOfficeOutput)
+        })
+
+    this.setState(
+      {
+        isLoading: true,
+        submittedDistOfficeSearchParams: filteredDistOfficeSearchParams
+      },
+      districtOfficeSearch
+    )
+
     let search = () =>
       fetchSiteContent(searchType, filteredSearchParams)
         .then(searchResults => {
@@ -216,7 +266,10 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          this.setState(output)
+          const formatOutput = this.state.distOfficeResults[0]
+            ? this.insertDistrictOffice(output, this.state.distOfficeResults[0])
+            : {}
+          this.setState(formatOutput)
         })
 
     // override search if a custom search exists

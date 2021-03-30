@@ -23,6 +23,19 @@ async function fetchRestContent(id, langOverride) {
   return data
 }
 
+async function fetchApiDistrictOfficeName(zipcode) {
+  let data = null
+  try {
+    const response = await axios.get(
+      `https://h4z2sm4z28.execute-api.us-east-1.amazonaws.com/default/dev-ryan-district-office-zipcode-api?zipcode=${zipcode}`
+    )
+    data = response.data
+  } catch (error) {
+    console.error('fetchDistrictOfficeName', error)
+  }
+  return data
+}
+
 async function fetchApiSbaGovContent(fileDirectory) {
   let data = null
 
@@ -97,6 +110,7 @@ async function runMiscAction(type, query) {
 }
 
 export {
+  fetchApiDistrictOfficeName,
   fetchApiSbaGovContent,
   fetchRestContent,
   fetchEventContent,
