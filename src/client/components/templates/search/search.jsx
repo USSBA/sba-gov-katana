@@ -231,7 +231,7 @@ class SearchTemplate extends React.PureComponent {
             defaultResults
           }
         })
-        .then(async output => {
+        .then(output => {
           if (searchParams.address) {
             //If its a district office lookup, Look for the assigned district office at place it at the top of the search.
             if (searchType === 'offices') {
