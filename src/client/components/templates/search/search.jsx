@@ -43,11 +43,9 @@ class SearchTemplate extends React.PureComponent {
 
   insertDistrictOffice(searchResults, districtOfficeDetails) {
     searchResults.results.forEach((obj, index) => {
-      var arrayIndex = index
       //Remove any other district offices found
       if (obj.fields.office_type[0] === 'SBA District Office') {
-        searchResults.results.splice(arrayIndex, 1)
-        arrayIndex = arrayIndex - 1
+        searchResults.results.splice(index, 1)
       }
     })
     //Add district office to the top of the list
@@ -263,7 +261,9 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          const formatOutput = this.insertDistrictOffice(output, this.state.distOfficeResults[0])
+          const formatOutput = this.state.distOfficeResults[0]
+            ? this.insertDistrictOffice(output, this.state.distOfficeResults[0])
+            : {}
           this.setState(formatOutput)
         })
 
