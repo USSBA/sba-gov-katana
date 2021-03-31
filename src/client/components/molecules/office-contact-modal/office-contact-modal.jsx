@@ -272,6 +272,7 @@ class OfficeContactModal extends React.Component {
                     <Checkbox
                       id="optInCheckbox"
                       name="optInCheckbox"
+                      tabIndex={'0'}
                       checked={this.state.userOptIn}
                       onChange={this.handleCheckbox.bind(this)}
                       onFocus={e => {
