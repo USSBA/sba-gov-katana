@@ -7,7 +7,7 @@
 }
 
 @mixin placeholder {
-  display:inline-block;
+  display: inline-block;
   padding-right: 4px;  
   color: $sba-gray-dark;
   font-size: 14px;
@@ -44,6 +44,14 @@ input.invalid {
   }
 }
 
+input.invalid.alternateError {
+  border: 2px solid $sba-red-dark;
+
+  &:hover {
+    border-color: $sba-red-dark;
+  }
+}
+
 .searchIconPadding {
   padding-right: 40px;
 }
@@ -55,3 +63,12 @@ input.invalid {
   transform: translateY(-50%);
 }
 
+.helperText {
+  font-size: 14px;
+  color: $sba-gray-dark;
+  margin: 0 0 10px;
+}
+
+.large {
+  height: 56px;
+}

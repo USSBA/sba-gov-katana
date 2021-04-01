@@ -22,9 +22,11 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
           id="document-lookup-text-input-container"
         >
           <label
+            aria-label="Search"
             className={null}
             data-testid="document-lookup-text-input-label"
             htmlFor="document-lookup-text-input"
+            tabIndex="0"
           >
             Search
           </label>
@@ -888,9 +890,11 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           id="document-lookup-text-input-container"
         >
           <label
+            aria-label="Search"
             className={null}
             data-testid="document-lookup-text-input-label"
             htmlFor="document-lookup-text-input"
+            tabIndex="0"
           >
             Search
           </label>

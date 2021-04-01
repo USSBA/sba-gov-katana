@@ -17,9 +17,11 @@ exports[`PersonLookupPage should render correctly 1`] = `
         id="search-container"
       >
         <label
+          aria-label="Search"
           className={null}
           data-testid="search-label"
           htmlFor="search"
+          tabIndex="0"
         >
           Search
         </label>

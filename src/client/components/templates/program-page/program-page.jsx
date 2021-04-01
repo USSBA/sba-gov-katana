@@ -27,7 +27,7 @@ class ProgramPage extends React.Component {
   render() {
     const paragraphs = this.makeParagraphs(this.props.paragraphs)
 
-    const { title, summary, buttons, bannerImage } = this.props.heroData
+    const { title, summary, buttons, bannerImage, zipCodeSearch } = this.props.heroData
     const hasBannerImage = bannerImage && bannerImage.hasOwnProperty('image')
 
     const _formattedButtons =
@@ -49,6 +49,7 @@ class ProgramPage extends React.Component {
             buttons={_formattedButtons}
             imageUrl={bannerImage.image.url}
             alt={bannerImage.image.alt}
+            zipCodeSearch={zipCodeSearch}
           />
         )}
         {!hasBannerImage && <Hero title={title} message={summary} buttons={_formattedButtons} />}
