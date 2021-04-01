@@ -98,7 +98,7 @@ class ZipCodeForm extends React.Component {
               ariaLabel={fieldText}
               helperText={fieldText}
               errorText={fieldText}
-              autocomplete="off"
+              autoComplete="off"
               alternateError
               large
             />
