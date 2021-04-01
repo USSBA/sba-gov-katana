@@ -105,6 +105,10 @@ const EventPage = props => (
   <Async componentProps={props} load={import('./pages/event-page/event-page.jsx')} />
 )
 
+const LocalAssistancePage = props => (
+  <Async componentProps={props} load={import('./pages/local-assistance-page/local-assistance-page.jsx')} />
+)
+
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 
 const mainRouteProperties = [
@@ -138,6 +142,10 @@ const mainRouteProperties = [
   {
     component: LearningCenterLookupPage,
     path: '/course'
+  },
+  {
+    component: LocalAssistancePage,
+    path: '/local-assistance'
   },
   {
     component: CourseTemplate,

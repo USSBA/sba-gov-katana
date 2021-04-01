@@ -1,0 +1,23 @@
+.zipContainer {
+  margin-top: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+}
+
+.field {
+  height: 55px;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: $sba-blue-dark;
+}
+
+.submit {
+  margin: 6px 0 0 20px;
+}
