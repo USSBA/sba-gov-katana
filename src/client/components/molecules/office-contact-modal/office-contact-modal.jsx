@@ -154,17 +154,25 @@ class OfficeContactModal extends React.Component {
     this.setState({ checkboxFocus: false })
   }
 
-  handleKeyDown(event) {
-    const code = event.keyCode ? event.keyCode : event.which
+  handleKeyDown(e) {
+    const code = e.keyCode ? e.keyCode : e.which
     if (code === 13) {
       this.setState({ modalIsOpen: false })
     }
-    event.preventDefault()
+    e.preventDefault()
   }
 
-  handleClose(event) {
-    event.preventDefault()
+  handleClose(e) {
+    e.preventDefault()
     this.props.modalActions.closeOfficeContactModal()
+  }
+
+  handleCheckboxKeyDown(e) {
+    if (e.keyCode === 13) {
+      this.setState({
+        userOptIn: !this.state.userOptIn
+      })
+    }
   }
 
   render() {
@@ -274,6 +282,7 @@ class OfficeContactModal extends React.Component {
                       name="optInCheckbox"
                       tabIndex={'0'}
                       checked={this.state.userOptIn}
+                      onKeyDown={this.handleCheckboxKeyDown.bind(this)}
                       onChange={this.handleCheckbox.bind(this)}
                       onFocus={e => {
                         this.handleCheckboxFocus(e)
@@ -281,6 +290,8 @@ class OfficeContactModal extends React.Component {
                       onBlur={e => {
                         this.handleCheckboxBlur(e)
                       }}
+                      ariaLabel="Opt in to SBA email communications"
+                      alternate
                     />{' '}
                     Opt in to SBA email communications
                   </label>
@@ -311,6 +322,7 @@ function mapDispatchToProps(dispatch) {
     modalActions: bindActionCreators(ModalActions, dispatch)
   }
 }
+
 export default connect(null, mapDispatchToProps)(OfficeContactModal)
 
 export { OfficeContactModal }
