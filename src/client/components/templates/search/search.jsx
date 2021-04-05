@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable complexity */
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -6,7 +8,7 @@ import { omit, isEmpty, cloneDeep, merge } from 'lodash'
 import { parse, stringify } from 'querystring'
 
 import styles from './search.scss'
-import { fetchSiteContent } from '../../../fetch-content-helper'
+import { fetchSiteContent, fetchApiDistrictOfficeName } from '../../../fetch-content-helper'
 import { Paginator } from 'molecules'
 
 const createSlug = str => {
@@ -36,8 +38,23 @@ class SearchTemplate extends React.PureComponent {
       hasNoResults: false,
       isLoading: false,
       isZeroState: true,
-      defaultResults: []
+      defaultResults: [],
+      districtOffice: ''
     }
+  }
+
+  insertDistrictOffice(searchResults, districtOfficeDetails) {
+    searchResults.results.forEach((obj, index) => {
+      //Remove any other district offices found
+      if (obj.fields.office_type[0] === 'SBA District Office') {
+        searchResults.results.splice(index, 1)
+      }
+    })
+    //Add district office to the top of the list
+    if (searchResults.results) {
+      searchResults.results.unshift(districtOfficeDetails)
+    }
+    return searchResults
   }
 
   calculateMaxPageNumber(pageSize = this.state.searchParams.pageSize, count = this.state.count) {
@@ -85,6 +102,7 @@ class SearchTemplate extends React.PureComponent {
       this.props.defaultSearchParams || {},
       this.generateQueryMap()
     )
+
     this.setState({ searchParams: newSearchParams })
     if (this.props.loadDefaultResults === true || urlSearchString.length) {
       this.doSearch(this.props.searchType, newSearchParams)
@@ -151,8 +169,11 @@ class SearchTemplate extends React.PureComponent {
         if (value || value === 0) {
           //item.value to handle objects returned from multiselects
           value = value.value || value
-          if (value !== 'All') {
+          if (value !== 'All' && value !== 'All Visible') {
             filteredSearchParams[paramName] = value
+          }
+          if (value === 'All Visible') {
+            filteredSearchParams.type = this.props.allVisibleOffices.join(',')
           }
         }
       }
@@ -211,7 +232,33 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          this.setState(output)
+          if (searchParams.address) {
+            //If its a district office lookup, Look for the assigned district office at place it at the top of the search.
+            if (searchType === 'offices') {
+              fetchApiDistrictOfficeName(searchParams.address).then(districtOfficeName => {
+                const filteredDistOfficeSearchParams = {
+                  q: districtOfficeName,
+                  pageNumber: '1',
+                  pageSize: 1,
+                  start: 0
+                }
+                fetchSiteContent(searchType, filteredDistOfficeSearchParams).then(
+                  distOfficeSearchResults => {
+                    let distOfficeResults = []
+                    if (distOfficeSearchResults) {
+                      distOfficeResults = distOfficeSearchResults.hit
+                    }
+                    const formatOutput = distOfficeResults[0]
+                      ? this.insertDistrictOffice(output, distOfficeResults[0])
+                      : {}
+                    this.setState(formatOutput)
+                  }
+                )
+              })
+            } else {
+              this.setState(output)
+            }
+          }
         })
 
     // override search if a custom search exists
