@@ -103,7 +103,9 @@
 
 .resultContainer {
   width: 100%;
+  padding-bottom: 55px;
   @include grid-media($sba-grid-large) {
+    padding-bottom: 0;
     position: absolute;
     pointer-events: all;
   }

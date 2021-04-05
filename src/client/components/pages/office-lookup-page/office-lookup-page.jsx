@@ -214,7 +214,7 @@ class OfficeLookupPage extends React.PureComponent {
             customDetailResultsView={this.customDetailResultsView.bind(this)}
             extraContainerStyles={styles.centerContainer}
             extraResultContainerStyles={styles.resultContainer}
-            setWhiteBackground
+            setWhiteBackground={true}
             pageSize={5}
             totalOverride={50}
           >
