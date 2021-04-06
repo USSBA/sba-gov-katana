@@ -150,13 +150,9 @@
 
 .districtOfficeOuterDiv {
   margin: 4px;
-  border: 2px solid #007dbc;
+  border: 2px solid $secondary-blue;
   box-sizing: border-box;
-  box-shadow: 1px 1px 4px 4px #4e8dbe;
-}
-
-.districtOffice {
-  float: left;
+  box-shadow: 1px 1px 4px 4px $secondary-gray-blue;
 }
 
 .pullLeft {

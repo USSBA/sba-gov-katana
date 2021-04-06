@@ -123,7 +123,6 @@ class OfficeResult extends React.PureComponent {
                     ) : (
                       ''
                     )}
-                    {console.log('distance', distance)}
                     {distance !== null ? (
                       <Distance distance={distance} />
                     ) : (
