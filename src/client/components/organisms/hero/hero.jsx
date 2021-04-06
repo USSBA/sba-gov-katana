@@ -1,9 +1,11 @@
+/* eslint-disable complexity */
 import React from 'react'
 import { debounce, isEmpty } from 'lodash'
 
 import scrollIcon from 'assets/svg/scroll.svg'
 import styles from './hero.scss'
 import { Button } from 'atoms'
+import { ZipCodeForm } from 'molecules'
 
 class Hero extends React.Component {
   constructor(props) {
@@ -30,7 +32,7 @@ class Hero extends React.Component {
   }
 
   render() {
-    const { alt, buttons, imageUrl, message, title } = this.props
+    const { alt, buttons, imageUrl, message, title, zipCodeSearch } = this.props
     const { calloutHeight, imageHeight, isSmallOnly } = this.state
 
     const style = {
@@ -58,7 +60,8 @@ class Hero extends React.Component {
                 {message}
               </h2>
             )}
-            {buttons &&
+            {!zipCodeSearch &&
+              buttons &&
               buttons.map((item, index) => (
                 <Button
                   key={index}
@@ -74,6 +77,7 @@ class Hero extends React.Component {
                   {item.btnText}
                 </Button>
               ))}
+            {zipCodeSearch && <ZipCodeForm label="Business Zip Code" btnLabel="search" />}
           </div>
         </div>
         {imageUrl && (

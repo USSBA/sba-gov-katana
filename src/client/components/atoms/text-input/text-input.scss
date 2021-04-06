@@ -8,7 +8,7 @@
 
 @mixin placeholder {
   display: inline-block;
-  padding-right: 4px;  
+  padding-right: 4px;
   color: $sba-gray-dark;
   font-size: 14px;
   font-style: italic;
@@ -67,4 +67,8 @@ input.invalid.alternateError {
   font-size: 14px;
   color: $sba-gray-dark;
   margin: 0 0 10px;
+}
+
+.large {
+  height: 56px;
 }
