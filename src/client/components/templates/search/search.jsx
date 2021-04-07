@@ -50,6 +50,7 @@ class SearchTemplate extends React.PureComponent {
         searchResults.results.splice(index, 1)
       }
     })
+
     //Add district office to the top of the list
     if (searchResults.results) {
       searchResults.results.unshift(districtOfficeDetails)
@@ -237,6 +238,7 @@ class SearchTemplate extends React.PureComponent {
             if (searchType === 'offices') {
               fetchApiDistrictOfficeName(searchParams.address).then(districtOfficeName => {
                 const filteredDistOfficeSearchParams = {
+                  address: searchParams.address,
                   q: districtOfficeName,
                   pageNumber: '1',
                   pageSize: 1,

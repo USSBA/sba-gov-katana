@@ -62,7 +62,13 @@ class OfficeResult extends React.PureComponent {
     //elasticsearch returns all single value elements as an array *sigh*
     return (
       <div className={styles.outerDiv}>
-        <div>
+        <div
+          className={
+            item.office_type && item.office_type[0] === 'SBA District Office'
+              ? styles.districtOfficeOuterDiv
+              : ''
+          }
+        >
           <a
             id={`office-result-container-${id}`}
             className={cardLayoutClassName}
@@ -112,6 +118,9 @@ class OfficeResult extends React.PureComponent {
                     <img src={marker} className={styles.marker} />
                   </div>
                   <div id={`office-miles-${id}`} className={styles.miles}>
+                    {item.office_type && item.office_type[0] === 'SBA District Office' ? (
+                      <div className={styles.districtOfficeText}>Your District Office - </div>
+                    ) : null}
                     {distance !== null ? (
                       <Distance distance={distance} />
                     ) : (
@@ -147,8 +156,12 @@ class OfficeResult extends React.PureComponent {
           <div className={styles.resultPhoneNumber}>
             {phoneNumber && <PhoneNumber iconName="" phoneNumber={phoneNumber} />}
           </div>
-          <div className={styles.hr}>
-            <hr />
+          <div
+            className={
+              item.office_type && item.office_type[0] === 'SBA District Office' ? styles.noHr : styles.hr
+            }
+          >
+            {item.office_type && item.office_type[0] === 'SBA District Office' ? '' : <hr />}
           </div>
         </div>
         {link && (
@@ -165,9 +178,11 @@ class OfficeResult extends React.PureComponent {
   }
 }
 
-const Distance = ({ distance }) => <div>{`${Number(distance).toFixed(1)} miles`}</div>
+const Distance = ({ distance }) => (
+  <div className={styles.pullLeft}>{`${Number(distance).toFixed(1)} miles`}</div>
+)
 const Location = ({ city, state }) => (
-  <div>{`${[city, state].filter(item => item !== null).join(', ')}`}</div>
+  <div className={styles.pullLeft}>{`${[city, state].filter(item => item !== null).join(', ')}`}</div>
 )
 
 OfficeResult.defaultProps = {
