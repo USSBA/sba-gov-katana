@@ -119,7 +119,7 @@ class OfficeResult extends React.PureComponent {
                   </div>
                   <div id={`office-miles-${id}`} className={styles.miles}>
                     {item.office_type && item.office_type[0] === 'SBA District Office' ? (
-                      <div className={styles.districtOffice}>Your district office - </div>
+                      <div className={styles.pullLeft}>Your District Office - </div>
                     ) : null}
                     {distance !== null ? (
                       <Distance distance={distance} />
