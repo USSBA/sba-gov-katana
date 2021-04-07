@@ -110,18 +110,6 @@ class SearchTemplate extends React.PureComponent {
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   const { items: results, isLoading, defaultResults } = nextProps
-
-  //   const newState = {
-  //     defaultResults,
-  //     results,
-  //     isLoading
-  //   }
-
-  //   this.setState(newState)
-  // }
-
   onChange(propName, value, options = {}, callback) {
     const { scrollToTopAfterSearch } = this.props
     const _options = merge(
