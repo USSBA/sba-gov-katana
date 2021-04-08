@@ -95,6 +95,15 @@
     overflow: hidden;
     pointer-events: none;
   }
+  :global(.no-results-view) {
+    height: 100%;
+    & div {
+      height: 100%;
+      & li {
+        list-style: none;
+      }
+    }
+  }
 }
 
 .resultsZeroState {

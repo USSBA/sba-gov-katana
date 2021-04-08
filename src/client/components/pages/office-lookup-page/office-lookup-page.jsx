@@ -120,11 +120,8 @@ class OfficeLookupPage extends React.PureComponent {
 
     const officeServiceTaxonomy = this.getTaxonomy('officeService')
 
-    const searchTips = [
-      'Try using different search term.',
-      'Search near a different ZIP code.',
-      'Contact your closest SBA office.'
-    ]
+    // switch search tips based on whether there is a district office
+    const searchTips = ['No results found.  Please input a valid zip code.']
 
     return (
       <SearchTemplate
@@ -210,8 +207,7 @@ class OfficeLookupPage extends React.PureComponent {
             }}
             searchTips={searchTips}
             displaySearchTipsOnNoResults
-            displayDefaultResultOnNoResults
-            defaultResultObject={<DefaultOfficeResult />}
+            displayDefaultResultOnNoResults={false}
             customDetailResultsView={this.customDetailResultsView.bind(this)}
             extraContainerStyles={styles.centerContainer}
             extraResultContainerStyles={styles.resultContainer}

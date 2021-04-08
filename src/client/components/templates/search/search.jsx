@@ -190,13 +190,9 @@ class SearchTemplate extends React.PureComponent {
     })
   }
 
-  showErrorMessage = () => {
-    console.log('showing error message')
-  }
-
   doSearch(searchType, searchParams) {
     let search = () =>
-      fetchSiteContent(searchType, filteredSearchParams, null, this.showErrorMessage)
+      fetchSiteContent(searchType, filteredSearchParams)
         .then(searchResults => {
           let results = []
           let count = 0
@@ -225,7 +221,6 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          console.log('output count', output.count)
           if (searchParams.address) {
             //If its a district office lookup, Look for the assigned district office at place it at the top of the search.
             if (searchType === 'offices' && output.count > 0) {
