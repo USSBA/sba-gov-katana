@@ -93,9 +93,10 @@ const OfficeMap = compose(
           hoveredMarkerId === item.selfRef.id
             ? defaultIconScale * 1.25
             : defaultIconScale
+
         const icon = {
           scaledSize: new google.maps.Size(iconScale, iconScale),
-          url: index === 0 ? districtOfficeMarker : marker
+          url: index === 0 && props.mapType === 'office' ? districtOfficeMarker : marker
         }
         return (
           <Marker
@@ -344,6 +345,7 @@ class OfficeMapApp extends React.PureComponent {
     return (
       <div id="google-map" className={className}>
         <OfficeMap
+          mapType={this.props.mapType}
           markers={points}
           setBounds={this.setBounds.bind(this)}
           onMapMounted={this.onMapMounted.bind(this)}

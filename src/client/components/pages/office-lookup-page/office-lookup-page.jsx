@@ -176,6 +176,7 @@ class OfficeLookupPage extends React.PureComponent {
 
         <OfficeMap
           id="office-map"
+          mapType="office"
           onMarkerClick={item => {
             this.centerMap(true)
             this.setSelectedItem(item)
