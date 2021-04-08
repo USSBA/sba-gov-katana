@@ -5,6 +5,7 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-map
 import { isEmpty, isPlainObject, difference, get } from 'lodash'
 import PropTypes from 'prop-types'
 import marker from 'assets/svg/marker.svg'
+import districtOfficeMarker from 'assets/svg/districtOfficeMarker.svg'
 import styles from './office-map.scss'
 import clientConfig from '../../../services/client-config.js'
 import officeResultStyles from '../office-result/office-result.scss'
@@ -94,7 +95,7 @@ const OfficeMap = compose(
             : defaultIconScale
         const icon = {
           scaledSize: new google.maps.Size(iconScale, iconScale),
-          url: marker
+          url: index === 0 ? districtOfficeMarker : marker
         }
         return (
           <Marker
