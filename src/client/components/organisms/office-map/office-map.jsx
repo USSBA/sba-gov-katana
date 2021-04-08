@@ -105,6 +105,7 @@ const OfficeMap = compose(
               lat: item.lat,
               lng: item.lng
             }}
+            zIndex={index === 0 && props.mapType === 'office' ? 100 : 0}
             onClick={() => {
               onMarkerClick(item.selfRef)
             }}
