@@ -67,7 +67,7 @@ async function fetchEventContent(id, langOverride) {
   return data
 }
 
-async function fetchSiteContent(type, query, langOverride, errorHandler) {
+async function fetchSiteContent(type, query, langOverride) {
   let data = null
 
   try {
@@ -78,7 +78,6 @@ async function fetchSiteContent(type, query, langOverride, errorHandler) {
     data = response.data
   } catch (error) {
     console.error('fetchSiteContent', error)
-    errorHandler && errorHandler()
   }
   return data
 }
