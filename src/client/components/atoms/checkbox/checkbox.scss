@@ -26,6 +26,11 @@
   background-color: #ffffff;
   transition: border-color 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55),
     background-color 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
 }
 .rc-checkbox-inner:after {
   transform: rotate(45deg);
@@ -62,6 +67,15 @@
 .rc-checkbox-checked .rc-checkbox-inner {
   border-color: $secondary-green;
   background-color: $secondary-green;
+}
+
+.alternate-hover:hover {
+  border-color: $secondary-blue !important;
+}
+
+.alternate-checked {
+  border-color: $secondary-blue !important;
+  background-color: $secondary-blue !important;
 }
 
 .rc-checkbox-checked .rc-checkbox-inner:after {

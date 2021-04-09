@@ -85,15 +85,22 @@ export default class Checkbox extends React.Component {
       type,
       disabled,
       readOnly,
-      tabIndex,
       onClick,
       onFocus,
       onBlur,
-      autoFocus
+      autoFocus,
+      ariaLabel,
+      alternate
     } = this.props
     const { checked } = this.state
     const disabledClass = disabled ? styles['rc-checkbox-disabled'] : ' '
     const checkedClass = checked ? styles['rc-checkbox-checked'] : ' '
+
+    const returnAlternateCheckboxStyles = () => {
+      if (alternate && checked) {
+        return styles['alternate-hover'] + ' ' + styles['alternate-checked']
+      }
+    }
 
     return (
       <span className={styles['rc-checkbox'] + ' ' + disabledClass + ' ' + checkedClass} style={style}>
@@ -107,7 +114,7 @@ export default class Checkbox extends React.Component {
           type={type}
           readOnly={readOnly}
           disabled={disabled}
-          tabIndex={tabIndex}
+          tabindex="-1"
           className={styles['rc-checkbox-input']}
           checked={Boolean(checked)}
           onClick={e => {
@@ -119,7 +126,12 @@ export default class Checkbox extends React.Component {
           role="checkbox"
           aria-checked={checked}
         />
-        <span className={styles['rc-checkbox-inner']} />
+        <span
+          className={styles['rc-checkbox-inner'] + ' ' + returnAlternateCheckboxStyles()}
+          aria-label={ariaLabel}
+          tabIndex="0"
+          onKeyDown={this.props.onKeyDown}
+        />
       </span>
     )
   }
