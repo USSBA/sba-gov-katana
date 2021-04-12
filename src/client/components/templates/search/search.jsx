@@ -2,7 +2,7 @@
 /* eslint-disable complexity */
 import PropTypes from 'prop-types'
 import React from 'react'
-
+import geo2zip from 'geo2zip'
 import { browserHistory } from 'react-router'
 import { omit, isEmpty, cloneDeep, merge } from 'lodash'
 import { parse, stringify } from 'querystring'
@@ -202,6 +202,37 @@ class SearchTemplate extends React.PureComponent {
     })
   }
 
+  async geoToZip(mapCenter) {
+    const location = {
+      latitude: mapCenter.split(/,/)[0],
+      longitude: mapCenter.split(/,/)[1]
+    }
+    const zip = await geo2zip(location)
+    return zip[0]
+  }
+
+  getDistrictOffice(searchParams, searchType, output, zip) {
+    fetchApiDistrictOfficeName(zip).then(districtOfficeName => {
+      const filteredDistOfficeSearchParams = {
+        address: zip,
+        q: districtOfficeName,
+        pageNumber: '1',
+        pageSize: 1,
+        start: 0
+      }
+      fetchSiteContent(searchType, filteredDistOfficeSearchParams).then(distOfficeSearchResults => {
+        let distOfficeResults = []
+        if (distOfficeSearchResults) {
+          distOfficeResults = distOfficeSearchResults.hit
+        }
+        const formatOutput = distOfficeResults[0]
+          ? this.insertDistrictOffice(output, distOfficeResults[0])
+          : {}
+        this.setState(formatOutput)
+      })
+    })
+  }
+
   doSearch(searchType, searchParams) {
     let search = () =>
       fetchSiteContent(searchType, filteredSearchParams)
@@ -233,33 +264,19 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          if (searchParams.address) {
-            //If its a district office lookup, Look for the assigned district office at place it at the top of the search.
-            if (searchType === 'offices') {
-              fetchApiDistrictOfficeName(searchParams.address).then(districtOfficeName => {
-                const filteredDistOfficeSearchParams = {
-                  address: searchParams.address,
-                  q: districtOfficeName,
-                  pageNumber: '1',
-                  pageSize: 1,
-                  start: 0
-                }
-                fetchSiteContent(searchType, filteredDistOfficeSearchParams).then(
-                  distOfficeSearchResults => {
-                    let distOfficeResults = []
-                    if (distOfficeSearchResults) {
-                      distOfficeResults = distOfficeSearchResults.hit
-                    }
-                    const formatOutput = distOfficeResults[0]
-                      ? this.insertDistrictOffice(output, distOfficeResults[0])
-                      : {}
-                    this.setState(formatOutput)
-                  }
-                )
-              })
-            } else {
-              this.setState(output)
+          if (searchType === 'offices') {
+            if (searchParams.address || searchParams.mapCenter) {
+              // If its a district office lookup, Look for the assigned district office at place it at the top of the search.
+              if (searchParams.mapCenter && !searchParams.address) {
+                this.geoToZip(searchParams.mapCenter).then(zip => {
+                  this.getDistrictOffice(searchParams, searchType, output, zip)
+                })
+              } else {
+                this.getDistrictOffice(searchParams, searchType, output, searchParams.address)
+              }
             }
+          } else {
+            this.setState(output)
           }
         })
 
