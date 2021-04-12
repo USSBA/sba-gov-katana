@@ -203,11 +203,11 @@ class SearchTemplate extends React.PureComponent {
   }
 
   async geoToZip(mapCenter) {
-    const location = {
-      latitude: mapCenter.split(/,/)[0],
-      longitude: mapCenter.split(/,/)[1]
-    }
-    const zip = await geo2zip(location)
+    const [lat, long] = mapCenter.split(/,/)
+    const zip = await geo2zip({
+      latitude: lat,
+      longitude: long
+    })
     return zip[0]
   }
 
@@ -295,7 +295,6 @@ class SearchTemplate extends React.PureComponent {
       pathname: document.location.pathname,
       search: `?${stringify(urlParams)}`
     })
-
     this.setState(
       {
         isLoading: true,
