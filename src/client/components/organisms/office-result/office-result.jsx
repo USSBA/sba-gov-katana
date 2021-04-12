@@ -5,6 +5,7 @@ import { PhoneNumber } from 'molecules'
 import PropTypes from 'prop-types'
 import clientConfig from '../../../services/client-config.js'
 import marker from 'assets/svg/marker.svg'
+import districtOfficeMarker from 'assets/svg/districtOfficeMarker.svg'
 import classNames from 'classnames'
 
 class OfficeResult extends React.PureComponent {
@@ -64,7 +65,7 @@ class OfficeResult extends React.PureComponent {
       <div className={styles.outerDiv}>
         <div
           className={
-            item.office_type && item.office_type[0] === 'SBA District Office'
+            item.office_type && item.office_type?.[0] === 'SBA District Office'
               ? styles.districtOfficeOuterDiv
               : ''
           }
@@ -115,10 +116,17 @@ class OfficeResult extends React.PureComponent {
               <div>
                 <div className={styles.distance}>
                   <div>
-                    <img src={marker} className={styles.marker} />
+                    <img
+                      src={
+                        item.office_type && item.office_type?.[0] === 'SBA District Office'
+                          ? districtOfficeMarker
+                          : marker
+                      }
+                      className={styles.marker}
+                    />
                   </div>
                   <div id={`office-miles-${id}`} className={styles.miles}>
-                    {item.office_type && item.office_type[0] === 'SBA District Office' ? (
+                    {item.office_type && item.office_type?.[0] === 'SBA District Office' ? (
                       <div className={styles.districtOfficeText}>Your District Office - </div>
                     ) : null}
                     {distance !== null ? (
@@ -158,10 +166,10 @@ class OfficeResult extends React.PureComponent {
           </div>
           <div
             className={
-              item.office_type && item.office_type[0] === 'SBA District Office' ? styles.noHr : styles.hr
+              item.office_type && item.office_type?.[0] === 'SBA District Office' ? styles.noHr : styles.hr
             }
           >
-            {item.office_type && item.office_type[0] === 'SBA District Office' ? '' : <hr />}
+            {item.office_type && item.office_type?.[0] === 'SBA District Office' ? '' : <hr />}
           </div>
         </div>
         {link && (
