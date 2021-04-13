@@ -211,7 +211,7 @@ class SearchTemplate extends React.PureComponent {
     return zip[0]
   }
 
-  getDistrictOffice(searchType, output, zip) {
+  getDistrictOffice(searchType, result, zip) {
     fetchApiDistrictOfficeName(zip).then(districtOfficeName => {
       const filteredDistOfficeSearchParams = {
         address: zip,
@@ -225,10 +225,10 @@ class SearchTemplate extends React.PureComponent {
         if (distOfficeSearchResults) {
           distOfficeResults = distOfficeSearchResults.hit
         }
-        const formatOutput = distOfficeResults[0]
-          ? this.insertDistrictOffice(output, distOfficeResults[0])
+        const formatResult = distOfficeResults[0]
+          ? this.insertDistrictOffice(result, distOfficeResults[0])
           : {}
-        this.setState(formatOutput)
+        this.setState(formatResult)
       })
     })
   }
