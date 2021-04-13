@@ -215,7 +215,7 @@ class SearchTemplate extends React.PureComponent {
     fetchApiDistrictOfficeName(zip).then(districtOfficeName => {
       const filteredDistOfficeSearchParams = {
         address: zip,
-        q: districtOfficeName,
+        q: districtOfficeName.replace(/office/i, ''),
         pageNumber: '1',
         pageSize: 1,
         start: 0
