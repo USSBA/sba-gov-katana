@@ -211,7 +211,7 @@ class SearchTemplate extends React.PureComponent {
     return zip[0]
   }
 
-  getDistrictOffice(searchParams, searchType, output, zip) {
+  getDistrictOffice(searchType, output, zip) {
     fetchApiDistrictOfficeName(zip).then(districtOfficeName => {
       const filteredDistOfficeSearchParams = {
         address: zip,
@@ -269,10 +269,10 @@ class SearchTemplate extends React.PureComponent {
               // If its a district office lookup, Look for the assigned district office at place it at the top of the search.
               if (searchParams.mapCenter && !searchParams.address) {
                 this.geoToZip(searchParams.mapCenter).then(zip => {
-                  this.getDistrictOffice(searchParams, searchType, output, zip)
+                  this.getDistrictOffice(searchType, output, zip)
                 })
               } else {
-                this.getDistrictOffice(searchParams, searchType, output, searchParams.address)
+                this.getDistrictOffice(searchType, output, searchParams.address)
               }
             }
           } else {
