@@ -227,7 +227,7 @@ class SearchTemplate extends React.PureComponent {
         }
         const formatResult = distOfficeResults[0]
           ? this.insertDistrictOffice(result, distOfficeResults[0])
-          : {}
+          : result
         this.setState(formatResult)
       })
     })
