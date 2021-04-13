@@ -190,22 +190,14 @@ class SearchTemplate extends React.PureComponent {
     })
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   noResult = {
     results: [],
     count: 0,
     isLoading: false,
     isZeroState: false,
     defaultResults: []
-=======
-  showErrorMessage = () => {
-    console.log('showing error message')
->>>>>>> Previous changes caused error message to never show up. This fixes the regression
   }
 
-=======
->>>>>>> Style no results found according to designs
   doSearch(searchType, searchParams) {
     let search = () =>
       fetchSiteContent(searchType, filteredSearchParams)
@@ -240,16 +232,12 @@ class SearchTemplate extends React.PureComponent {
           if (searchParams.address) {
             //If its a district office lookup, Look for the assigned district office at place it at the top of the search.
             if (searchType === 'offices' && output.count > 0) {
-<<<<<<< HEAD
               fetchApiDistrictOfficeName(searchParams.address, () => {
                 this.setState(this.noResult)
               }).then(districtOfficeName => {
                 if (!districtOfficeName) {
                   return
                 }
-=======
-              fetchApiDistrictOfficeName(searchParams.address).then(districtOfficeName => {
->>>>>>> Previous changes caused error message to never show up. This fixes the regression
                 const filteredDistOfficeSearchParams = {
                   address: searchParams.address,
                   q: districtOfficeName,
