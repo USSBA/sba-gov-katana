@@ -190,6 +190,14 @@ class SearchTemplate extends React.PureComponent {
     })
   }
 
+  noResult = {
+    results: [],
+    count: 0,
+    isLoading: false,
+    isZeroState: false,
+    defaultResults: []
+  }
+
   doSearch(searchType, searchParams) {
     let search = () =>
       fetchSiteContent(searchType, filteredSearchParams)
@@ -224,7 +232,12 @@ class SearchTemplate extends React.PureComponent {
           if (searchParams.address) {
             //If its a district office lookup, Look for the assigned district office at place it at the top of the search.
             if (searchType === 'offices' && output.count > 0) {
-              fetchApiDistrictOfficeName(searchParams.address).then(districtOfficeName => {
+              fetchApiDistrictOfficeName(searchParams.address, () => {
+                this.setState(this.noResult)
+              }).then(districtOfficeName => {
+                if (!districtOfficeName) {
+                  return
+                }
                 const filteredDistOfficeSearchParams = {
                   address: searchParams.address,
                   q: districtOfficeName,

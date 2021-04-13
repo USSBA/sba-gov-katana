@@ -23,7 +23,7 @@ async function fetchRestContent(id, langOverride) {
   return data
 }
 
-async function fetchApiDistrictOfficeName(zipcode) {
+async function fetchApiDistrictOfficeName(zipcode, onError) {
   let data = null
   try {
     const response = await axios.get(
@@ -32,6 +32,7 @@ async function fetchApiDistrictOfficeName(zipcode) {
     data = response.data
   } catch (error) {
     console.error('fetchDistrictOfficeName', error)
+    onError && onError()
   }
   return data
 }
