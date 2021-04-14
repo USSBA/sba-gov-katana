@@ -110,18 +110,6 @@ class SearchTemplate extends React.PureComponent {
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   const { items: results, isLoading, defaultResults } = nextProps
-
-  //   const newState = {
-  //     defaultResults,
-  //     results,
-  //     isLoading
-  //   }
-
-  //   this.setState(newState)
-  // }
-
   onChange(propName, value, options = {}, callback) {
     const { scrollToTopAfterSearch } = this.props
     const _options = merge(
@@ -202,6 +190,14 @@ class SearchTemplate extends React.PureComponent {
     })
   }
 
+  noResult = {
+    results: [],
+    count: 0,
+    isLoading: false,
+    isZeroState: false,
+    defaultResults: []
+  }
+
   async geoToZip(mapCenter) {
     const [lat, long] = mapCenter.split(/,/)
     const zip = await geo2zip({
@@ -212,7 +208,9 @@ class SearchTemplate extends React.PureComponent {
   }
 
   getDistrictOffice(searchType, result, zip) {
-    fetchApiDistrictOfficeName(zip).then(districtOfficeName => {
+    fetchApiDistrictOfficeName(zip, () => {
+      this.setState(this.noResult)
+    }).then(districtOfficeName => {
       const filteredDistOfficeSearchParams = {
         address: zip,
         q: districtOfficeName.replace(/office/i, ''),
@@ -264,7 +262,7 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          if (searchType === 'offices') {
+          if (searchType === 'offices' && output.count > 0) {
             if (searchParams.address || searchParams.mapCenter) {
               // If its a district office lookup, Look for the assigned district office at place it at the top of the search.
               if (searchParams.mapCenter && !searchParams.address) {
