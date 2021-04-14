@@ -2,7 +2,7 @@
 /* eslint-disable complexity */
 import PropTypes from 'prop-types'
 import React from 'react'
-
+import geo2zip from 'geo2zip'
 import { browserHistory } from 'react-router'
 import { omit, isEmpty, cloneDeep, merge } from 'lodash'
 import { parse, stringify } from 'querystring'
@@ -198,6 +198,39 @@ class SearchTemplate extends React.PureComponent {
     defaultResults: []
   }
 
+  async geoToZip(mapCenter) {
+    const [lat, long] = mapCenter.split(/,/)
+    const zip = await geo2zip({
+      latitude: lat,
+      longitude: long
+    })
+    return zip[0]
+  }
+
+  getDistrictOffice(searchType, result, zip) {
+    fetchApiDistrictOfficeName(zip, () => {
+      this.setState(this.noResult)
+    }).then(districtOfficeName => {
+      const filteredDistOfficeSearchParams = {
+        address: zip,
+        q: districtOfficeName.replace(/office/i, ''),
+        pageNumber: '1',
+        pageSize: 1,
+        start: 0
+      }
+      fetchSiteContent(searchType, filteredDistOfficeSearchParams).then(distOfficeSearchResults => {
+        let distOfficeResults = []
+        if (distOfficeSearchResults) {
+          distOfficeResults = distOfficeSearchResults.hit
+        }
+        const formatResult = distOfficeResults[0]
+          ? this.insertDistrictOffice(result, distOfficeResults[0])
+          : result
+        this.setState(formatResult)
+      })
+    })
+  }
+
   doSearch(searchType, searchParams) {
     let search = () =>
       fetchSiteContent(searchType, filteredSearchParams)
@@ -229,38 +262,19 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          if (searchParams.address) {
-            //If its a district office lookup, Look for the assigned district office at place it at the top of the search.
-            if (searchType === 'offices' && output.count > 0) {
-              fetchApiDistrictOfficeName(searchParams.address, () => {
-                this.setState(this.noResult)
-              }).then(districtOfficeName => {
-                if (!districtOfficeName) {
-                  return
-                }
-                const filteredDistOfficeSearchParams = {
-                  address: searchParams.address,
-                  q: districtOfficeName,
-                  pageNumber: '1',
-                  pageSize: 1,
-                  start: 0
-                }
-                fetchSiteContent(searchType, filteredDistOfficeSearchParams).then(
-                  distOfficeSearchResults => {
-                    let distOfficeResults = []
-                    if (distOfficeSearchResults) {
-                      distOfficeResults = distOfficeSearchResults.hit
-                    }
-                    const formatOutput = distOfficeResults[0]
-                      ? this.insertDistrictOffice(output, distOfficeResults[0])
-                      : {}
-                    this.setState(formatOutput)
-                  }
-                )
-              })
-            } else {
-              this.setState(output)
+          if (searchType === 'offices' && output.count > 0) {
+            if (searchParams.address || searchParams.mapCenter) {
+              // If its a district office lookup, Look for the assigned district office at place it at the top of the search.
+              if (searchParams.mapCenter && !searchParams.address) {
+                this.geoToZip(searchParams.mapCenter).then(zip => {
+                  this.getDistrictOffice(searchType, output, zip)
+                })
+              } else {
+                this.getDistrictOffice(searchType, output, searchParams.address)
+              }
             }
+          } else {
+            this.setState(output)
           }
         })
 
@@ -279,7 +293,6 @@ class SearchTemplate extends React.PureComponent {
       pathname: document.location.pathname,
       search: `?${stringify(urlParams)}`
     })
-
     this.setState(
       {
         isLoading: true,
