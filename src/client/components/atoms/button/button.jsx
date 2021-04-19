@@ -12,6 +12,7 @@ const Button = props => {
     fullWidth,
     icon,
     loading,
+    naked,
     small,
     spacing,
     primary,
@@ -21,6 +22,8 @@ const Button = props => {
     ...nativeProps
   } = props
 
+  console.log('nativeProps', nativeProps)
+
   const className = classNames({
     button: true,
     [styles.alternate]: alternate,
@@ -28,6 +31,7 @@ const Button = props => {
     [styles.large]: !small,
     [styles.link]: url,
     [styles.loading]: loading,
+    [styles.naked]: naked,
     [styles.primary]: primary,
     [styles.responsive]: responsive,
     [styles.secondary]: secondary,
@@ -63,7 +67,7 @@ Button.propTypes = {
     const { disabled, primary, secondary } = props
 
     if (!disabled && !(primary ^ secondary)) {
-      return Error(`${componentName} was not specified as "primary" xor "secondary"`)
+      return Error(`${componentName} was not specified as "primary" or "secondary"`)
     }
   },
 
