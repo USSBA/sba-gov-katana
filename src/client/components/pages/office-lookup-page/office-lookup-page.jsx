@@ -109,6 +109,9 @@ class OfficeLookupPage extends React.PureComponent {
     )
   }
 
+  infoText =
+    "Use this tool to find your nearest SBA District Office and other SBA-approved organizations.  SBA District Offices are responsible for providing small business owners with information about SBA's programs. SBA District Offices also oversee free and low-cost training and business counseling provided by independent organizations funded by the SBA. "
+
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
     const pageSize = 5
@@ -141,6 +144,7 @@ class OfficeLookupPage extends React.PureComponent {
           className={styles.searchBar}
           isValid={this.state.isValidZip}
           validationFunction={false}
+          infoText={this.infoText}
         >
           <TextInput
             id="zip"
