@@ -35,7 +35,6 @@ export class PrimarySearchBar extends React.PureComponent {
   }
 
   toggleInfoText() {
-    console.log('toggling state')
     this.setState({ infoExpanded: !this.state.infoExpanded })
   }
 
@@ -65,7 +64,7 @@ export class PrimarySearchBar extends React.PureComponent {
     return (
       <div id={id}>
         <div className={bannerClassName}>
-          <div>
+          <div className={styles.titleContainer}>
             <h2
               id={`${id ? id : 'primary-search-bar'}-title`}
               className={styles.header}
@@ -74,7 +73,12 @@ export class PrimarySearchBar extends React.PureComponent {
               {this.props.title}
             </h2>
             {infoText && (
-              <Button naked small onClick={this.toggleInfoText.bind(this)}>
+              <Button
+                className={`${infoExpanded ? 'infoButton blue' : 'infoButton'}`}
+                naked
+                small
+                onClick={this.toggleInfoText.bind(this)}
+              >
                 Info <i className={`fa fa-angle-${infoExpanded ? 'up' : 'down'}`}></i>
               </Button>
             )}

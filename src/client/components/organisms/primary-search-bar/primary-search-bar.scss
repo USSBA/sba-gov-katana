@@ -16,6 +16,32 @@
     background-position: right;
     background-size: 40%;
   }
+
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h2,
+    button {
+      margin: 0;
+    }
+
+    h2 {
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    button {
+      padding: 10px 15px;
+      flex-shrink: 1;
+
+      i {
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    }
+  }
 }
 
 .bannerToIncludeSubtext {

@@ -22,8 +22,6 @@ const Button = props => {
     ...nativeProps
   } = props
 
-  console.log('nativeProps', nativeProps)
-
   const className = classNames({
     button: true,
     [styles.alternate]: alternate,
@@ -61,13 +59,13 @@ Button.defaultProps = {
 }
 
 Button.propTypes = {
-  // If not disabled, a button must be either "primary" or "secondary".
+  // If not disabled, a button must be either "primary", "secondary", or "naked".
   // Primary buttons are filled; secondary buttons are outlined.
   typeCheck: (props, propName, componentName) => {
-    const { disabled, primary, secondary } = props
+    const { disabled, primary, secondary, naked } = props
 
-    if (!disabled && !(primary ^ secondary)) {
-      return Error(`${componentName} was not specified as "primary" or "secondary"`)
+    if (!disabled && !(primary ^ secondary ^ naked)) {
+      return Error(`${componentName} was not specified as "primary", "secondary", or "naked"`)
     }
   },
 
