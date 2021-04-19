@@ -100,7 +100,7 @@
   @include inner-border($sba-red-light) color: $sba-red-light;
 }
 
-.naked:not([disabled]) {
+.borderless:not([disabled]) {
   background-color: unset;
   color: $sba-white;
   text-transform: unset;

@@ -75,7 +75,7 @@ export class PrimarySearchBar extends React.PureComponent {
             {infoText && (
               <Button
                 className={`${infoExpanded ? 'infoButton blue' : 'infoButton'}`}
-                naked
+                borderless
                 small
                 onClick={this.toggleInfoText.bind(this)}
               >
