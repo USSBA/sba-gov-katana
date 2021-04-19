@@ -105,6 +105,11 @@ describe('Primary Search Bar', () => {
     expect(searchBar.find('.infoButton').html()).toContain('Info <i class="fa fa-angle-down">')
   })
 
+  it('hides info text by default', () => {
+    const searchBar = shallow(<PrimarySearchBar id="testId" infoText="some text" />)
+    expect(searchBar.find('.subtext')).toHaveLength(0)
+  })
+
   it('changes the icon on click', () => {
     const searchBar = shallow(<PrimarySearchBar id="testId" infoText="some text" />)
     searchBar.find('.infoButton').simulate('click')
