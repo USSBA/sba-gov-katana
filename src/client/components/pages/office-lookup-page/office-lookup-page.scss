@@ -85,10 +85,14 @@
   }
 }
 
+.mapResults {
+  position: relative;
+}
+
 .officeResults {
   @include grid-media($sba-grid-large) {
     position: absolute;
-    top: 220px;
+    top: 0;
     bottom: 0;
     background-color: unset;
     width: 30%;

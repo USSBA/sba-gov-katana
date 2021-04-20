@@ -10,7 +10,7 @@
     padding: 20px 30px 20px 30px;
   }
   @include grid-media($sba-grid-large) {
-    height: 220px;
+    min-height: 220px;
     padding: 40px 28px 20px 28px;
     background-repeat: no-repeat;
     background-position: right;
