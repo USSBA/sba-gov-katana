@@ -84,7 +84,11 @@ export class PrimarySearchBar extends React.PureComponent {
             )}
           </div>
           {subtext && <p className={styles.subtext}> {subtext} </p>}
-          {infoExpanded && <p className={styles.subtext}>{infoText}</p>}
+          {infoExpanded && (
+            <p tabindex="0" className={styles.subtext}>
+              {infoText}
+            </p>
+          )}
           <form>
             {childrenWithProps}
             <div className={styles.applyButton}>
