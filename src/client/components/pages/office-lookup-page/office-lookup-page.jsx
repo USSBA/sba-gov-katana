@@ -109,6 +109,9 @@ class OfficeLookupPage extends React.PureComponent {
     )
   }
 
+  infoText =
+    "Use this tool to find your nearest SBA District Office and other SBA-approved organizations.  SBA District Offices are responsible for providing small business owners with information about SBA's programs. SBA District Offices also oversee free and low-cost training and business counseling provided by independent organizations funded by the SBA. "
+
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
     const pageSize = 5
@@ -141,6 +144,7 @@ class OfficeLookupPage extends React.PureComponent {
           className={styles.searchBar}
           isValid={this.state.isValidZip}
           validationFunction={false}
+          infoText={this.infoText}
         >
           <TextInput
             id="zip"
@@ -171,52 +175,54 @@ class OfficeLookupPage extends React.PureComponent {
           />
         </PrimarySearchBar>
 
-        <OfficeMap
-          id="office-map"
-          mapType="office"
-          onMarkerClick={item => {
-            this.centerMap(true)
-            this.setSelectedItem(item)
-          }}
-          selectedItem={selectedItem}
-          newCenter={newCenter}
-          onDragEnd={() => {
-            this.centerMap(true)
-          }}
-          shouldCenterMap={shouldCenterMap}
-          onMarkerHover={id => {
-            this.setHoveredMarkerId(id)
-          }}
-          hoveredMarkerId={hoveredMarkerId}
-        />
-        <StyleWrapperDiv className={styles.officeResults} hideOnZeroState={true}>
-          <Results
-            id="office-results"
-            paginate={true}
-            scroll
-            hasSearchInfoPanel
-            searchTermName={'q'}
-            onClick={item => {
+        <StyleWrapperDiv className={styles.mapResults}>
+          <OfficeMap
+            id="office-map"
+            mapType="office"
+            onMarkerClick={item => {
               this.centerMap(true)
               this.setSelectedItem(item)
             }}
             selectedItem={selectedItem}
-            hoveredMarkerId={hoveredMarkerId}
-            onResultHover={id => {
+            newCenter={newCenter}
+            onDragEnd={() => {
+              this.centerMap(true)
+            }}
+            shouldCenterMap={shouldCenterMap}
+            onMarkerHover={id => {
               this.setHoveredMarkerId(id)
             }}
-            searchTips={searchTips}
-            displaySearchTipsOnNoResults
-            displayDefaultResultOnNoResults={false}
-            customDetailResultsView={this.customDetailResultsView.bind(this)}
-            extraContainerStyles={styles.centerContainer}
-            extraResultContainerStyles={styles.resultContainer}
-            setWhiteBackground={true}
-            pageSize={5}
-            totalOverride={50}
-          >
-            <OfficeResult />
-          </Results>
+            hoveredMarkerId={hoveredMarkerId}
+          />
+          <StyleWrapperDiv className={styles.officeResults} hideOnZeroState={true}>
+            <Results
+              id="office-results"
+              paginate={true}
+              scroll
+              hasSearchInfoPanel
+              searchTermName={'q'}
+              onClick={item => {
+                this.centerMap(true)
+                this.setSelectedItem(item)
+              }}
+              selectedItem={selectedItem}
+              hoveredMarkerId={hoveredMarkerId}
+              onResultHover={id => {
+                this.setHoveredMarkerId(id)
+              }}
+              searchTips={searchTips}
+              displaySearchTipsOnNoResults
+              displayDefaultResultOnNoResults={false}
+              customDetailResultsView={this.customDetailResultsView.bind(this)}
+              extraContainerStyles={styles.centerContainer}
+              extraResultContainerStyles={styles.resultContainer}
+              setWhiteBackground={true}
+              pageSize={5}
+              totalOverride={50}
+            >
+              <OfficeResult />
+            </Results>
+          </StyleWrapperDiv>
         </StyleWrapperDiv>
       </SearchTemplate>
     )
