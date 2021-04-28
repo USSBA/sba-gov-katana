@@ -100,12 +100,10 @@
     pointer-events: none;
   }
   :global(.no-results-view) {
-    height: 100%;
+    width: 95%;
     & div {
+      background-color: $sba-white;
       height: 100%;
-      & li {
-        list-style: none;
-      }
     }
   }
 }
@@ -119,7 +117,7 @@
   padding-bottom: 55px;
   @include grid-media($sba-grid-large) {
     padding-bottom: 0;
-    position: absolute;
+    height: 100%;
     pointer-events: all;
   }
 }

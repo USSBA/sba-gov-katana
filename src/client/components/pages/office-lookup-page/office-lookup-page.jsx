@@ -132,7 +132,7 @@ class OfficeLookupPage extends React.PureComponent {
     const searchTips = {
       invalidZipcode: ['No results found.  Please input a valid zip code.'],
       noOfficeResults: [
-        'Your local SBA District office is displayed above, but no other results were found for your selections.',
+        'Your local SBA District office is displayed below, but no other results were found for your selections.',
         'Try to: Search a different zip code',
         'Contact your local SBA District Office'
       ]
