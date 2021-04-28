@@ -63,6 +63,21 @@ describe('Results', () => {
       const noResultsSection = component.find(NoResultsSection).get(0)
       expect(noResultsSection).toBeUndefined()
     })
+
+    test('Displays no resuls secion when length is 1 and totalOverride is present', () => {
+      const searchTips = ['tip1', 'tip2', 'tip3']
+      const items = [{ string: 'abc' }]
+      const component = shallow(
+        <Results
+          totalOverride={50}
+          items={items}
+          searchTips={searchTips}
+          displaySearchTipsOnNoResults={true}
+        />
+      )
+      const noResultsSection = component.find(NoResultsSection).get(0)
+      expect(noResultsSection).not.toBeUndefined()
+    })
   })
 
   describe('Pagination Section tests', () => {
