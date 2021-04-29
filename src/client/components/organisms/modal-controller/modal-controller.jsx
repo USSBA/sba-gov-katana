@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { SbaNewsModal } from 'molecules'
+import { SbaNewsModal, OfficeContactModal } from 'molecules'
 import { MobileSectionNavModal } from 'organisms'
 
 export const ModalController = ({ modalType, modalProps }) => {
@@ -9,6 +9,8 @@ export const ModalController = ({ modalType, modalProps }) => {
     return <div />
   } else if (modalType === 'MOBILE_SECTION_NAV') {
     return <MobileSectionNavModal {...modalProps} />
+  } else if (modalType === 'OFFICE_CONTACT_MODAL') {
+    return <OfficeContactModal {...modalProps} />
   } else if (modalType === 'SBA_NEWSLETTER') {
     return <SbaNewsModal {...modalProps} />
   } else {

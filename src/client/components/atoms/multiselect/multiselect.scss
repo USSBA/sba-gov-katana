@@ -84,3 +84,27 @@
   color: $sba-gray;
   margin-right: 14px;
 }
+
+.helperText {
+  font-size: 14px;
+  color: $sba-gray-dark;
+  margin: 10px 0 10px;
+}
+
+.invalid {
+  :global(.Select-control) {
+    border: 2px solid $sba-red-light;
+  }
+  :global(.Select-placeholder) {
+    height: 23px;
+  }
+}
+
+.invalid.alternateError {
+  :global(.Select-control) {
+    border: 2px solid $sba-red-dark;
+  }
+  :global(.Select-placeholder) {
+    height: 23px;
+  }
+}

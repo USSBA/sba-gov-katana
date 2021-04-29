@@ -18,6 +18,14 @@ export function showSbaNewsletter(userEmail) {
   }
 }
 
+export function showOfficeContactModal(officeName, officeLink, officeAddress) {
+  return {
+    type: 'SHOW_MODAL',
+    modalType: 'OFFICE_CONTACT_MODAL',
+    modalProps: { officeName, officeLink, officeAddress }
+  }
+}
+
 export function navigateLeaveSba() {
   return {
     type: 'NAVIGATE_MODAL'
@@ -31,6 +39,12 @@ export function closeLeaveSba() {
 }
 
 export function closeSbaNewsletter() {
+  return {
+    type: 'CLOSE_MODAL'
+  }
+}
+
+export function closeOfficeContactModal() {
   return {
     type: 'CLOSE_MODAL'
   }
