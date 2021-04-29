@@ -36,9 +36,14 @@ class OfficeLookupPage extends React.PureComponent {
       shouldCenterMap: false,
       hoveredMarkerId: '',
       taxonomies: null,
-      isValidZip: false
+      isValidZip: false,
+      noResultsType: null
     }
     this.textInput = React.createRef()
+  }
+
+  updateNoResultsType(type) {
+    this.setState({ noResultsType: type })
   }
 
   focusTextInput() {
@@ -124,7 +129,14 @@ class OfficeLookupPage extends React.PureComponent {
     const officeServiceTaxonomy = this.getTaxonomy('officeService')
 
     // switch search tips based on whether there is a district office
-    const searchTips = ['No results found.  Please input a valid zip code.']
+    const searchTips = {
+      invalidZipcode: ['No results found.  Please input a valid zip code.'],
+      noOfficeResults: [
+        'Your local SBA District office is displayed below, but no other results were found for your selections.',
+        'Try to: Search a different zip code',
+        'Contact your local SBA District Office'
+      ]
+    }
 
     return (
       <SearchTemplate
@@ -137,6 +149,7 @@ class OfficeLookupPage extends React.PureComponent {
         showStatus={false}
         onHandleEvent={this.centerMap.bind(this, false)}
         allVisibleOffices={officeTypeTaxonomy.terms}
+        updateNoResultsType={this.updateNoResultsType.bind(this)}
       >
         <PrimarySearchBar
           id="office-primary-search-bar"
@@ -210,7 +223,7 @@ class OfficeLookupPage extends React.PureComponent {
               onResultHover={id => {
                 this.setHoveredMarkerId(id)
               }}
-              searchTips={searchTips}
+              searchTips={searchTips[`${this.state.noResultsType}`]}
               displaySearchTipsOnNoResults
               displayDefaultResultOnNoResults={false}
               customDetailResultsView={this.customDetailResultsView.bind(this)}
