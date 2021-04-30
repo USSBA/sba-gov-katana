@@ -152,7 +152,14 @@ class SearchTemplate extends React.PureComponent {
 
   filterSearchParams(searchParams) {
     const filteredSearchParams = {}
-    for (const paramName in searchParams) {
+    const paramsWithZip = searchParams
+    if (!paramsWithZip.address && paramsWithZip.mapCenter) {
+      this.geoToZip(paramsWithZip.mapCenter).then(zip => {
+        paramsWithZip.address = zip
+        delete paramsWithZip.mapCenter
+      })
+    }
+    for (const paramName in paramsWithZip) {
       if (searchParams.hasOwnProperty(paramName)) {
         let value = searchParams[paramName]
         if (value || value === 0) {
