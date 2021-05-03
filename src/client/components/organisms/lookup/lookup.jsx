@@ -17,17 +17,17 @@ class Lookup extends React.Component {
 
   async componentWillMount() {
     const { subtype, type } = this.props
-    const subtypeLowerCased = subtype.toLowerCase()
     const queryArgs = subtype
       ? {
           category: subtype
         }
       : null
 
-    const apiSbaGovContents = ['sbic']
+    const subtypeWithHyphenLowerCased = subtype.replace(/\s+/g, '-').toLowerCase()
+    const apiSbaGovContents = ['sbic', 'surety-bond-company']
 
-    const filteredItems = apiSbaGovContents.includes(subtypeLowerCased)
-      ? await fetchApiSbaGovContent(`${subtypeLowerCased}/directory.json`)
+    const filteredItems = apiSbaGovContents.includes(subtypeWithHyphenLowerCased)
+      ? await fetchApiSbaGovContent(`${subtypeWithHyphenLowerCased}/directory.json`)
       : await fetchSiteContent(type, queryArgs)
 
     this.setState({ filteredItems })
