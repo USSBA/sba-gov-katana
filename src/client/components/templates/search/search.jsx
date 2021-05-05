@@ -152,7 +152,14 @@ class SearchTemplate extends React.PureComponent {
 
   filterSearchParams(searchParams) {
     const filteredSearchParams = {}
-    for (const paramName in searchParams) {
+    const paramsWithZip = searchParams
+    if (!paramsWithZip.address && paramsWithZip.mapCenter) {
+      this.geoToZip(paramsWithZip.mapCenter).then(zip => {
+        paramsWithZip.address = zip
+        delete paramsWithZip.mapCenter
+      })
+    }
+    for (const paramName in paramsWithZip) {
       if (searchParams.hasOwnProperty(paramName)) {
         let value = searchParams[paramName]
         if (value || value === 0) {
@@ -231,7 +238,13 @@ class SearchTemplate extends React.PureComponent {
         const distanceInMiles = 500
         // remove results farther than `distanceInMiles` from specified location
         formatResult.results = formatResult.results.filter(office => {
-          return office.exprs.distance < distanceInMiles
+          // if the API doesn't return distance, return those offices anyway
+          if (!office.exprs) {
+            return true
+          } else {
+            // if the API returns distance, filter out office that are too far away
+            return office.exprs.distance < distanceInMiles
+          }
         })
 
         this.setState(formatResult, () => {
