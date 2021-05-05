@@ -218,14 +218,15 @@ class SearchTemplate extends React.PureComponent {
     fetchApiDistrictOfficeName(zip, () => {
       this.setState(this.noResult)
       this.props.updateNoResultsType && this.props.updateNoResultsType('invalidZipcode')
-    }).then(districtOfficeName => {
+    }).then(districtOffice => {
       const filteredDistOfficeSearchParams = {
         address: zip,
-        q: districtOfficeName.replace(/office/i, ''),
+        officeId: districtOffice.nodeId,
         pageNumber: '1',
         pageSize: 1,
         start: 0
       }
+
       fetchSiteContent(searchType, filteredDistOfficeSearchParams).then(distOfficeSearchResults => {
         let distOfficeResults = []
         if (distOfficeSearchResults) {
