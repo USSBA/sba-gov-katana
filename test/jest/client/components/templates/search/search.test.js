@@ -6,7 +6,7 @@ import { stub } from 'sinon'
 import SearchTemplate from 'client/components/templates/search/search.jsx'
 import {
   fetchSiteContent as mockFetchSiteContent,
-  fetchApiDistrictOfficeName as mockFetchApiDistrictOfficeName
+  fetchApiDistrictOffice as mockFetchApiDistrictOffice
 } from 'client/fetch-content-helper'
 
 jest.mock('client/fetch-content-helper')

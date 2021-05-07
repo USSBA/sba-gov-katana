@@ -8,7 +8,7 @@ import { omit, isEmpty, cloneDeep, merge } from 'lodash'
 import { parse, stringify } from 'querystring'
 
 import styles from './search.scss'
-import { fetchSiteContent, fetchApiDistrictOfficeName } from '../../../fetch-content-helper'
+import { fetchSiteContent, fetchApiDistrictOffice } from '../../../fetch-content-helper'
 import { Paginator } from 'molecules'
 
 const createSlug = str => {
@@ -215,17 +215,18 @@ class SearchTemplate extends React.PureComponent {
   }
 
   getDistrictOffice(searchType, result, zip) {
-    fetchApiDistrictOfficeName(zip, () => {
+    fetchApiDistrictOffice(zip, () => {
       this.setState(this.noResult)
       this.props.updateNoResultsType && this.props.updateNoResultsType('invalidZipcode')
-    }).then(districtOfficeName => {
+    }).then(districtOffice => {
       const filteredDistOfficeSearchParams = {
         address: zip,
-        q: districtOfficeName.replace(/office/i, ''),
+        officeId: districtOffice.nodeId,
         pageNumber: '1',
         pageSize: 1,
         start: 0
       }
+
       fetchSiteContent(searchType, filteredDistOfficeSearchParams).then(distOfficeSearchResults => {
         let distOfficeResults = []
         if (distOfficeSearchResults) {
