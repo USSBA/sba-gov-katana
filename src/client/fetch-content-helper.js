@@ -23,14 +23,14 @@ async function fetchRestContent(id, langOverride) {
   return data
 }
 
-async function fetchApiDistrictOfficeName(zipcode, onError) {
+async function fetchApiDistrictOffice(zipcode, onError) {
   let data = null
   try {
     const response = await axios.get(`/actions/misc/search/district-office?zipcode=${zipcode}`)
 
     data = response.data
   } catch (error) {
-    console.error('fetchDistrictOfficeName', error)
+    console.error('fetchDistrictOffice', error)
     onError && onError()
   }
   return data
@@ -110,7 +110,7 @@ async function runMiscAction(type, query) {
 }
 
 export {
-  fetchApiDistrictOfficeName,
+  fetchApiDistrictOffice,
   fetchApiSbaGovContent,
   fetchRestContent,
   fetchEventContent,
