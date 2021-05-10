@@ -147,7 +147,7 @@ class OfficeResult extends React.PureComponent {
                   <div id={`office-title-${id}`}>
                     <h2>{title}</h2>
                   </div>
-                  <div>{street && <div>{street}</div>}</div>
+                  <div data-cy="contact address">{street && <div>{street}</div>}</div>
                 </div>
                 <div>
                   {item.office_service ? (
@@ -166,7 +166,7 @@ class OfficeResult extends React.PureComponent {
           </div>
           <div className={styles.actions}>
             {link && (
-              <a href={link} target="_blank" style={{ textDecoration: 'none' }}>
+              <a data-cy="contact link" href={link} target="_blank" style={{ textDecoration: 'none' }}>
                 <div className={websiteClassName}>
                   <i className={'fa fa-globe ' + styles.fa} />
                   <br />

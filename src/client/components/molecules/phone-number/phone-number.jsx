@@ -33,7 +33,9 @@ class PhoneNumber extends React.Component {
           </div>
         ) : null}
         <a href={link}>
-          <div className={addressStyles.address}>{phoneNumber ? <div>{phoneNumber}</div> : null}</div>
+          <div data-cy="contact phone" className={addressStyles.address}>
+            {phoneNumber ? <div>{phoneNumber}</div> : null}
+          </div>
         </a>
       </div>
     )
