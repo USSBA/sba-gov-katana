@@ -24,7 +24,11 @@ class TextInput extends React.Component {
   errorMessage(validationState) {
     const { isValid } = this.state
     return validationState === 'error' || !isValid ? (
-      <FormErrorMessage errorFor={this.props.id} errorText={this.props.errorText} alternate />
+      <FormErrorMessage
+        errorFor={this.props.id}
+        errorText={this.props.errorText}
+        alternate={this.props.alternateError}
+      />
     ) : null
   }
 
