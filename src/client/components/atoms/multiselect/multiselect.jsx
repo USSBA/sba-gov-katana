@@ -68,7 +68,9 @@ class MultiSelect extends React.Component {
           {...rest}
         />
         {helperText && validationState !== 'error' && <p className={styles.helperText}>{helperText}</p>}
-        {validationState === 'error' && <FormErrorMessage errorText={errorText} alternate />}
+        {validationState === 'error' && (
+          <FormErrorMessage errorText={errorText} alternate={alternateError} />
+        )}
       </div>
     )
   }

@@ -78,7 +78,7 @@ class ZipCodeForm extends React.Component {
   }
 
   render() {
-    const { label, btnLabel } = this.props
+    const { label, btnLabel, alternateError } = this.props
     const { zipCode, validStates } = this.state
 
     const fieldText = 'Enter a 5-digit zip code.'
@@ -99,7 +99,7 @@ class ZipCodeForm extends React.Component {
               helperText={fieldText}
               errorText={fieldText}
               autoComplete="off"
-              alternateError
+              alternateError={alternateError}
               large
             />
             <div>
