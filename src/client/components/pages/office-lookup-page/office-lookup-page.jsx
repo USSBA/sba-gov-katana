@@ -120,7 +120,7 @@ class OfficeLookupPage extends React.PureComponent {
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
     const pageSize = 5
-    const defaultType = 'All'
+    const defaultType = 'All Visible'
     const defaultSearchParams = {
       pageSize,
       type: defaultType
