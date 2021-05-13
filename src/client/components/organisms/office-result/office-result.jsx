@@ -29,7 +29,7 @@ class OfficeResult extends React.PureComponent {
   render() {
     const {
       id,
-      item: { fields: item, exprs },
+      item: { fields: item, exprs, id: itemId },
       hoveredMarkerId
     } = this.props
     const distance = exprs ? exprs.distance : null
@@ -174,7 +174,9 @@ class OfficeResult extends React.PureComponent {
                 </div>
               </a>
             )}
-            {link && link.includes('/offices/district/') && title.includes('Seattle District') ? (
+            {/* this is the nodeId for the Seattle Office */}
+            {link && link.includes('/offices/district/') && itemId === '6394' ? (
+              // title.includes('District')
               <a
                 href={null}
                 target="_blank"
