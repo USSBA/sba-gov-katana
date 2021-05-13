@@ -174,7 +174,7 @@ class OfficeResult extends React.PureComponent {
                 </div>
               </a>
             )}
-            {link && link.includes('/offices/district/') && title.includes('District') ? (
+            {link && link.includes('/offices/district/') && title.includes('Seattle District') ? (
               <a
                 href={null}
                 target="_blank"
