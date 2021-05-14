@@ -5,7 +5,6 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-map
 import { isEmpty, isPlainObject, difference, get } from 'lodash'
 import PropTypes from 'prop-types'
 import marker from 'assets/svg/marker.svg'
-import districtOfficeMarker from 'assets/svg/districtOfficeMarker.svg'
 import styles from './office-map.scss'
 import clientConfig from '../../../services/client-config.js'
 import officeResultStyles from '../office-result/office-result.scss'
@@ -32,9 +31,9 @@ const defaultMapPadding = {
 const OfficeMap = compose(
   withProps({
     googleMapURL,
-    loadingElement: <div style={{ height: `80vh` }} />,
-    containerElement: <div style={{ height: `80vh` }} />,
-    mapElement: <div className="map" style={{ height: `80vh`, clear: 'both' }} />
+    loadingElement: <div style={{ height: `100vh` }} />,
+    containerElement: <div style={{ height: `100vh` }} />,
+    mapElement: <div className="map" style={{ height: `100vh`, clear: 'both' }} />
   }),
   withScriptjs,
   withGoogleMap
@@ -93,10 +92,9 @@ const OfficeMap = compose(
           hoveredMarkerId === item.selfRef.id
             ? defaultIconScale * 1.25
             : defaultIconScale
-
         const icon = {
           scaledSize: new google.maps.Size(iconScale, iconScale),
-          url: index === 0 && props.mapType === 'office' ? districtOfficeMarker : marker
+          url: marker
         }
         return (
           <Marker
@@ -105,7 +103,6 @@ const OfficeMap = compose(
               lat: item.lat,
               lng: item.lng
             }}
-            zIndex={index === 0 && props.mapType === 'office' ? 100 : 0}
             onClick={() => {
               onMarkerClick(item.selfRef)
             }}
@@ -346,7 +343,6 @@ class OfficeMapApp extends React.PureComponent {
     return (
       <div id="google-map" className={className}>
         <OfficeMap
-          mapType={this.props.mapType}
           markers={points}
           setBounds={this.setBounds.bind(this)}
           onMapMounted={this.onMapMounted.bind(this)}

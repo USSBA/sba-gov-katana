@@ -59,34 +59,34 @@
   @include grid-media($sba-grid-medium) {
     position: absolute;
     bottom: 0px;
-    top: 0px;
+    top: 63px;
     right: 0px;
     left: 0px;
     pointer-events: none;
   }
 }
 
-.mapResults {
-  position: relative;
-}
-
 .lenderResults {
   @include grid-media($sba-grid-medium) {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 326px;
+    bottom: 27px;
     background-color: unset;
-    width: 30%;
+    width: 340px;
     overflow: hidden;
     pointer-events: none;
+    margin-top: 50px;
+  }
+
+  @include grid-media($sba-grid-large) {
+    top: 170px;
   }
 }
 
 .resultContainer {
-  min-width: 100%;
+  min-width: 321px;
   padding-bottom: 71px;
   @include grid-media($sba-grid-medium) {
-    padding-bottom: 0;
     position: absolute;
     pointer-events: all;
   }

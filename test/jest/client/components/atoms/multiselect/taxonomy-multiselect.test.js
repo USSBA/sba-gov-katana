@@ -20,7 +20,7 @@ test('Taxonomy Multiselect includes "All" option by default', () => {
 
   const expectedAllValue = {
     label: 'All',
-    value: 'All Visible'
+    value: 'All'
   }
 
   const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} />).find(MultiSelect)
@@ -52,7 +52,7 @@ test('Taxonomy Multiselect without options only includes "All" option by default
 
   const expectedAllValue = {
     label: 'All',
-    value: 'All Visible'
+    value: 'All'
   }
 
   const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} />).find(MultiSelect)
@@ -79,7 +79,7 @@ test('Taxonomy Multiselect sets the value to "All" when "All" option is enabled'
   }
 
   const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} />).find(MultiSelect)
-  expect(multiselect.props().value).toEqual('All Visible')
+  expect(multiselect.props().value).toEqual('All')
 })
 
 test('Taxonomy Multiselect sets the value to the first value of the taxonomy when "All" option is disabled', () => {

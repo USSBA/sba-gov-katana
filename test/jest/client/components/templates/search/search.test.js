@@ -1,19 +1,15 @@
 /* eslint-env jest */
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-
 import { stub } from 'sinon'
 import SearchTemplate from 'client/components/templates/search/search.jsx'
-import {
-  fetchSiteContent as mockFetchSiteContent,
-  fetchApiDistrictOffice as mockFetchApiDistrictOffice
-} from 'client/fetch-content-helper'
+import { AssertionError } from 'assert'
+import { fetchSiteContent as mockFetchSiteContent } from 'client/fetch-content-helper'
 
 jest.mock('client/fetch-content-helper')
 
 const searchTemplateWrapper = shallow(<SearchTemplate searchType="myType" />)
 const searchTemplateInstance = searchTemplateWrapper.instance()
-const contentApiMock = require('./contentApiMock.json')
 
 describe('Search Template', () => {
   beforeEach(() => {
@@ -239,39 +235,6 @@ describe('Search Template', () => {
       })
 
       expect(component.update().find('#no-results').length).toBe(1)
-    })
-  })
-
-  describe('District office in the results', () => {
-    const districtOfficeDetails = {
-      fields: {
-        location_name: ['Baltimore District Office'],
-        title: ['Baltimore District Office'],
-        office_type: ['SBA District Office'],
-        type: ['office'],
-        id: '6403'
-      }
-    }
-
-    it('Search returns district office at the top', () => {
-      const formatedResults = searchTemplateInstance.insertDistrictOffice(
-        contentApiMock,
-        districtOfficeDetails
-      )
-      expect(formatedResults.results[0].fields.location_name[0]).toEqual('Baltimore District Office')
-    })
-
-    it('Search only contains 1 district office', () => {
-      const formatedResults = searchTemplateInstance.insertDistrictOffice(
-        contentApiMock,
-        districtOfficeDetails
-      )
-
-      const districtOffices = formatedResults.results.filter(
-        obj => obj.fields.office_type[0] === 'SBA District Office'
-      )
-
-      expect(districtOffices.length).toEqual(1)
     })
   })
 })
