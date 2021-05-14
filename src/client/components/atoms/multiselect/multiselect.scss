@@ -10,6 +10,10 @@
   display: none;
 }
 
+.select :global(.Select-menu) {
+  max-height: 390px;
+}
+
 // override default focus stylings
 .select :global(.Select.is-focused > .Select-control) {
   border: none;
@@ -68,6 +72,7 @@
   border-width: 1px;
   border-top: none;
   border-radius: 0;
+  max-height: 390px;
 
   &:hover,
   :global(.is-focused) {
@@ -78,4 +83,28 @@
 .select :global(.fa-chevron-down) {
   color: $sba-gray;
   margin-right: 14px;
+}
+
+.helperText {
+  font-size: 14px;
+  color: $sba-gray-dark;
+  margin: 10px 0 10px;
+}
+
+.invalid {
+  :global(.Select-control) {
+    border: 2px solid $sba-red-light;
+  }
+  :global(.Select-placeholder) {
+    height: 23px;
+  }
+}
+
+.invalid.alternateError {
+  :global(.Select-control) {
+    border: 2px solid $sba-red-dark;
+  }
+  :global(.Select-placeholder) {
+    height: 23px;
+  }
 }

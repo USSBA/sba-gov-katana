@@ -40,7 +40,7 @@
 
 .primary:not([disabled]) {
   background-color: $sba-red;
-  color: white;
+  color: $sba-white;
 
   &:hover {
     background-color: $sba-red-light;
@@ -98,6 +98,21 @@
 
 .secondary.alternate.loading[disabled] {
   @include inner-border($sba-red-light) color: $sba-red-light;
+}
+
+.borderless:not([disabled]) {
+  background-color: unset;
+  color: $sba-white;
+  text-transform: unset;
+
+  &:hover {
+    outline: 2px dotted #c5c5c5;
+    outline-offset: 3px;
+  }
+
+  &:global(.blue) {
+    background-color: $secondary-blue;
+  }
 }
 
 // # Sizing -------------------------------------------------------------------

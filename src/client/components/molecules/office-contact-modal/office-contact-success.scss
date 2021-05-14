@@ -1,0 +1,67 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.title {
+  font-size: 27px;
+  margin-top: 45px;
+  text-align: center;
+}
+
+.divider {
+  border-top: 3px solid $sba-red;
+  width: 142px;
+  margin: 0 auto 20px;
+}
+
+.success {
+  width: 379px;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid $secondary-green;
+  margin-top: 30px;
+
+  @include grid-media($sba-grid-small) {
+    width: 340px;
+  }
+}
+
+.icon {
+  font-size: 45px;
+  color: $secondary-green;
+}
+
+.successMessage {
+  font-size: 22px;
+  color: $secondary-green;
+  margin-top: 10px;
+}
+
+.messageTitle {
+  color: $sba-blue-dark;
+  font-size: 18px;
+  width: 377px;
+  margin-top: 35px;
+
+  @include grid-media($sba-grid-small) {
+    padding: 0 20px;
+  }
+}
+
+.message {
+  color: $sba-blue-dark;
+  font-size: 18px;
+  width: 377px;
+  margin-top: 0;
+  margin-bottom: 30px;
+
+  @include grid-media($sba-grid-small) {
+    padding: 0 20px;
+  }
+}

@@ -44,6 +44,9 @@ class CheckBox extends React.Component {
               this.handleCheckboxBlur(e)
             }}
             autoFocus={this.props.autoFocus}
+            onKeyDown={this.props.onKeyDown}
+            ariaLabel={this.props.ariaLabel}
+            alternate={this.props.alternate}
           />{' '}
           {this.props.label}
         </label>

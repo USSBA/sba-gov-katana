@@ -19,6 +19,7 @@ import MenuTileWithLinks from './menu-tile-with-links/menu-tile-with-links'
 import NewsletterForm from './newsletter-form/newsletter-form'
 import NoResultsSection from './no-results-section/no-results-section'
 import NumberedCalloutBlock from './numbered-callout-block/numbered-callout-block'
+import OfficeContactModal from './office-contact-modal/office-contact-modal'
 import PageLinkGroup from './page-link-group/page-link-group'
 import Paginator from './paginator/paginator'
 import PhoneNumber from './phone-number/phone-number'
@@ -58,6 +59,7 @@ export {
   NewsletterForm,
   NoResultsSection,
   NumberedCalloutBlock,
+  OfficeContactModal,
   PageLinkGroup,
   Paginator,
   PhoneNumber,
