@@ -5,7 +5,7 @@ import { fetchSiteContent } from '../../../fetch-content-helper'
 
 import styles from './lender-lookup-page.scss'
 import { Card } from 'molecules'
-import { StyleWrapperDiv, TextInput, Link, DatalistDropdown } from 'atoms'
+import { StyleWrapperDiv, TextInput, Link, MultiSelect, SimpleCarousel, DatalistDropdown } from 'atoms'
 import { PrimarySearchBar, Results, LenderDetail, OfficeMap } from 'organisms'
 import { CallToAction } from 'molecules'
 import SearchTemplate from '../../templates/search/search.jsx'
@@ -168,51 +168,48 @@ class LenderLookupPage extends React.PureComponent {
             />
             <DatalistDropdown id="lenders" options={this.state.lenderSuggestions || []} />
           </PrimarySearchBar>
+          <OfficeMap
+            id="office-map"
+            onMarkerClick={item => {
+              this.centerMap(true)
+              this.setSelectedItem(item)
+            }}
+            selectedItem={selectedItem}
+            newCenter={newCenter}
+            onDragEnd={() => {
+              this.centerMap(true)
+            }}
+            shouldCenterMap={shouldCenterMap}
+            onMarkerHover={id => {
+              this.setHoveredMarkerId(id)
+            }}
+            hoveredMarkerId={hoveredMarkerId}
+          />
 
-          <StyleWrapperDiv className={styles.mapResults}>
-            <OfficeMap
-              id="office-map"
-              onMarkerClick={item => {
+          <StyleWrapperDiv className={styles.lenderResults} hideOnZeroState={true}>
+            <Results
+              id="lender-results"
+              paginate={true}
+              scroll
+              hasSearchInfoPanel
+              onClick={item => {
                 this.centerMap(true)
                 this.setSelectedItem(item)
               }}
               selectedItem={selectedItem}
-              newCenter={newCenter}
-              onDragEnd={() => {
-                this.centerMap(true)
-              }}
-              shouldCenterMap={shouldCenterMap}
-              onMarkerHover={id => {
+              hoveredMarkerId={hoveredMarkerId}
+              onResultHover={id => {
                 this.setHoveredMarkerId(id)
               }}
-              hoveredMarkerId={hoveredMarkerId}
-            />
-
-            <StyleWrapperDiv className={styles.lenderResults} hideOnZeroState={true}>
-              <Results
-                id="lender-results"
-                paginate={true}
-                scroll
-                hasSearchInfoPanel
-                onClick={item => {
-                  this.centerMap(true)
-                  this.setSelectedItem(item)
-                }}
-                selectedItem={selectedItem}
-                hoveredMarkerId={hoveredMarkerId}
-                onResultHover={id => {
-                  this.setHoveredMarkerId(id)
-                }}
-                extraContainerStyles={styles.centerContainer}
-                extraResultContainerStyles={styles.resultContainer}
-                setWhiteBackground
-                searchTermName={'lenderName'}
-                displaySearchTipsOnNoResults
-                searchTips={['Try entering a different lender name']}
-              >
-                <LenderDetail />
-              </Results>
-            </StyleWrapperDiv>
+              extraContainerStyles={styles.centerContainer}
+              extraResultContainerStyles={styles.resultContainer}
+              setWhiteBackground
+              searchTermName={'lenderName'}
+              displaySearchTipsOnNoResults
+              searchTips={['Try entering a different lender name']}
+            >
+              <LenderDetail />
+            </Results>
           </StyleWrapperDiv>
         </SearchTemplate>
         <div className={styles.noticeWithLink}>

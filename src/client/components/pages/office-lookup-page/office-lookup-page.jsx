@@ -13,19 +13,6 @@ import {
 } from 'organisms'
 import SearchTemplate from '../../templates/search/search.jsx'
 
-export const officeTypeTaxonomy = {
-  name: 'officeType',
-  terms: [
-    'SCORE Business Mentoring',
-    'Small Business Development Center',
-    'U.S. Export Assistance Center',
-    'Veteran’s Business Outreach Center',
-    'Women’s Business Center',
-    'Procurement Technical Assistance Center',
-    'Certified Development Company'
-  ]
-}
-
 class OfficeLookupPage extends React.PureComponent {
   constructor() {
     super()
@@ -36,14 +23,9 @@ class OfficeLookupPage extends React.PureComponent {
       shouldCenterMap: false,
       hoveredMarkerId: '',
       taxonomies: null,
-      isValidZip: false,
-      noResultsType: null
+      isValidZip: false
     }
     this.textInput = React.createRef()
-  }
-
-  updateNoResultsType(type) {
-    this.setState({ noResultsType: type })
   }
 
   focusTextInput() {
@@ -114,29 +96,22 @@ class OfficeLookupPage extends React.PureComponent {
     )
   }
 
-  infoText =
-    "Use this tool to find your nearest SBA District Office and other SBA-approved organizations.  SBA District Offices are responsible for providing small business owners with information about SBA's programs. SBA District Offices also oversee free and low-cost training and business counseling provided by independent organizations funded by the SBA. "
-
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
-    const pageSize = 5
+    const pageSize = 20
     const defaultType = 'All'
     const defaultSearchParams = {
       pageSize,
       type: defaultType
     }
-
+    const officeTypeTaxonomy = this.getTaxonomy('officeType')
     const officeServiceTaxonomy = this.getTaxonomy('officeService')
 
-    // switch search tips based on whether there is a district office
-    const searchTips = {
-      invalidZipcode: ['No results found.  Please input a valid zip code.'],
-      noOfficeResults: [
-        'Your local SBA District office is displayed below, but no other results were found for your selections.',
-        'Try to: Search a different zip code',
-        'Contact your local SBA District Office'
-      ]
-    }
+    const searchTips = [
+      'Try using different search term.',
+      'Search near a different ZIP code.',
+      'Contact your closest SBA office.'
+    ]
 
     return (
       <SearchTemplate
@@ -148,8 +123,6 @@ class OfficeLookupPage extends React.PureComponent {
         paginate={false}
         showStatus={false}
         onHandleEvent={this.centerMap.bind(this, false)}
-        allVisibleOffices={officeTypeTaxonomy.terms}
-        updateNoResultsType={this.updateNoResultsType.bind(this)}
       >
         <PrimarySearchBar
           id="office-primary-search-bar"
@@ -157,7 +130,6 @@ class OfficeLookupPage extends React.PureComponent {
           className={styles.searchBar}
           isValid={this.state.isValidZip}
           validationFunction={false}
-          infoText={this.infoText}
         >
           <TextInput
             id="zip"
@@ -188,54 +160,50 @@ class OfficeLookupPage extends React.PureComponent {
           />
         </PrimarySearchBar>
 
-        <StyleWrapperDiv className={styles.mapResults}>
-          <OfficeMap
-            id="office-map"
-            mapType="office"
-            onMarkerClick={item => {
+        <OfficeMap
+          id="office-map"
+          onMarkerClick={item => {
+            this.centerMap(true)
+            this.setSelectedItem(item)
+          }}
+          selectedItem={selectedItem}
+          newCenter={newCenter}
+          onDragEnd={() => {
+            this.centerMap(true)
+          }}
+          shouldCenterMap={shouldCenterMap}
+          onMarkerHover={id => {
+            this.setHoveredMarkerId(id)
+          }}
+          hoveredMarkerId={hoveredMarkerId}
+        />
+        <StyleWrapperDiv className={styles.officeResults} hideOnZeroState={true}>
+          <Results
+            id="office-results"
+            paginate={true}
+            scroll
+            hasSearchInfoPanel
+            searchTermName={'q'}
+            onClick={item => {
               this.centerMap(true)
               this.setSelectedItem(item)
             }}
             selectedItem={selectedItem}
-            newCenter={newCenter}
-            onDragEnd={() => {
-              this.centerMap(true)
-            }}
-            shouldCenterMap={shouldCenterMap}
-            onMarkerHover={id => {
+            hoveredMarkerId={hoveredMarkerId}
+            onResultHover={id => {
               this.setHoveredMarkerId(id)
             }}
-            hoveredMarkerId={hoveredMarkerId}
-          />
-          <StyleWrapperDiv className={styles.officeResults} hideOnZeroState={true}>
-            <Results
-              id="office-results"
-              paginate={true}
-              scroll
-              hasSearchInfoPanel
-              searchTermName={'q'}
-              onClick={item => {
-                this.centerMap(true)
-                this.setSelectedItem(item)
-              }}
-              selectedItem={selectedItem}
-              hoveredMarkerId={hoveredMarkerId}
-              onResultHover={id => {
-                this.setHoveredMarkerId(id)
-              }}
-              searchTips={searchTips[`${this.state.noResultsType}`]}
-              displaySearchTipsOnNoResults
-              displayDefaultResultOnNoResults={false}
-              customDetailResultsView={this.customDetailResultsView.bind(this)}
-              extraContainerStyles={styles.centerContainer}
-              extraResultContainerStyles={styles.resultContainer}
-              setWhiteBackground={true}
-              pageSize={5}
-              totalOverride={50}
-            >
-              <OfficeResult />
-            </Results>
-          </StyleWrapperDiv>
+            searchTips={searchTips}
+            displaySearchTipsOnNoResults
+            displayDefaultResultOnNoResults
+            defaultResultObject={<DefaultOfficeResult />}
+            customDetailResultsView={this.customDetailResultsView.bind(this)}
+            extraContainerStyles={styles.centerContainer}
+            extraResultContainerStyles={styles.resultContainer}
+            setWhiteBackground
+          >
+            <OfficeResult />
+          </Results>
         </StyleWrapperDiv>
       </SearchTemplate>
     )
