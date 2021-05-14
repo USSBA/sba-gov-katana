@@ -12,6 +12,7 @@ const Button = props => {
     fullWidth,
     icon,
     loading,
+    borderless,
     small,
     spacing,
     primary,
@@ -28,6 +29,7 @@ const Button = props => {
     [styles.large]: !small,
     [styles.link]: url,
     [styles.loading]: loading,
+    [styles.borderless]: borderless,
     [styles.primary]: primary,
     [styles.responsive]: responsive,
     [styles.secondary]: secondary,
@@ -57,13 +59,13 @@ Button.defaultProps = {
 }
 
 Button.propTypes = {
-  // If not disabled, a button must be either "primary" or "secondary".
+  // If not disabled, a button must be either "primary", "secondary", or "borderless".
   // Primary buttons are filled; secondary buttons are outlined.
   typeCheck: (props, propName, componentName) => {
-    const { disabled, primary, secondary } = props
+    const { disabled, primary, secondary, borderless } = props
 
-    if (!disabled && !(primary ^ secondary)) {
-      return Error(`${componentName} was not specified as "primary" xor "secondary"`)
+    if (!disabled && !(primary ^ secondary ^ borderless)) {
+      return Error(`${componentName} was not specified as "primary", "secondary", or "borderless"`)
     }
   },
 

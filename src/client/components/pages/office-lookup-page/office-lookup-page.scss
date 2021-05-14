@@ -85,15 +85,26 @@
   }
 }
 
+.mapResults {
+  position: relative;
+}
+
 .officeResults {
   @include grid-media($sba-grid-large) {
     position: absolute;
-    top: 220px;
+    top: 0;
     bottom: 0;
     background-color: unset;
     width: 30%;
     overflow: hidden;
     pointer-events: none;
+  }
+  :global(.no-results-view) {
+    width: 95%;
+    & div {
+      background-color: $sba-white;
+      height: 100%;
+    }
   }
 }
 
@@ -103,8 +114,10 @@
 
 .resultContainer {
   width: 100%;
+  padding-bottom: 55px;
   @include grid-media($sba-grid-large) {
-    position: absolute;
+    padding-bottom: 0;
+    height: 100%;
     pointer-events: all;
   }
 }
