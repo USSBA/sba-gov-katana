@@ -51,7 +51,6 @@ describe('Local Assistance Find', function() {
       expect(cy.get('#office-result-container-result-0')).to.exist
       expect(cy.get('#office-miles-result-0')).to.exist
       expect(cy.get('#office-title-result-0')).to.exist
-      expect(cy.get('#office-type-result-0')).to.exist
     })
   })
 
