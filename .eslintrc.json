@@ -1,4 +1,3 @@
-/* eslint-disable cypress/ */
 {
   "env": {
     "browser": true,
