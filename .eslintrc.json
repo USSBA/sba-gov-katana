@@ -1,3 +1,4 @@
+/* eslint-disable cypress/ */
 {
   "env": {
     "browser": true,
@@ -7,7 +8,7 @@
     "mocha": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "plugin:cypress/recommended"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {

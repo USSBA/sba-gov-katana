@@ -364,7 +364,7 @@ class OfficeMapApp extends React.PureComponent {
                   shouldResetPageNumber: true
                 },
                 () => {
-                  onFieldChange('address', '')
+                  onFieldChange('address', '90210')
                 }
               )
             }
