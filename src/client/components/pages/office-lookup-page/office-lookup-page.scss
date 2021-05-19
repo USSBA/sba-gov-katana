@@ -117,7 +117,7 @@
   padding-bottom: 55px;
   @include grid-media($sba-grid-large) {
     padding-bottom: 0;
-    height: 100%;
+    position: absolute;
     pointer-events: all;
   }
 }
