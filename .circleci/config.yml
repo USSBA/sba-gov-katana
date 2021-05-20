@@ -271,7 +271,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-v1-{{ checksum "package.json" }}
+          - v3-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: run cypress
           command: | 
