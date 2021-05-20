@@ -256,7 +256,7 @@ jobs:
   test-cypres:
     executor: node
     steps:
-      -checkout
+      - checkout
       # Download and cache dependencies
       - restore_cache:
           keys:
