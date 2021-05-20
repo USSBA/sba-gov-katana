@@ -82,6 +82,17 @@ workflows:
           tags:
             only:
             - /.*/
+    - test-cypress:
+        requires: 
+          - cache-dependencies-lower
+          - cache-dependencies-upper
+        filters:
+          branches:
+            only:
+            - /.*/
+          tags:
+            only:
+            - /.*/
     - test-format:
         requires:
           - cache-dependencies-lower
@@ -94,7 +105,7 @@ workflows:
             only:
             - /.*/    
     - build-webpack:
-        requires: [test-jest, test-mocha, test-format]
+        requires: [test-jest, test-mocha, test-cypress, test-format]
         filters:
           branches:
             only:
@@ -253,7 +264,7 @@ jobs:
           name: run mocha
           command: |
             npm run test-mocha
-  test-cypres:
+  test-cypress:
     executor: node
     steps:
       - checkout
