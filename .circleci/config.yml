@@ -212,7 +212,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v3-dependencies-v1-{{ checksum "package.json" }}
+          - v2-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: install dependencies
           command: |
@@ -220,7 +220,7 @@ jobs:
       - save_cache:
           paths:
             - ./node_modules
-          key: v3-dependencies-v1-{{ checksum "package.json" }}
+          key: v2-dependencies-v1-{{ checksum "package.json" }}
   cache-dependencies-upper:
     executor: node
     steps:
@@ -228,7 +228,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v3-dependencies-v1-{{ checksum "package.json" }}
+          - v2-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: install dependencies
           command: |
@@ -236,7 +236,7 @@ jobs:
       - save_cache:
           paths:
             - ./node_modules
-          key: v3-dependencies-v1-{{ checksum "package.json" }}
+          key: v2-dependencies-v1-{{ checksum "package.json" }}
       - snyk/scan:
           token-variable: SNYK
           fail-on-issues: false
