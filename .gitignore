@@ -71,3 +71,7 @@ ngrok
 
 # serverless
 .serverless
+
+# cypress screenshots
+test/cypress/screenshots/*
+test/cypress/videos/*
