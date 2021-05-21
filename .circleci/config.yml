@@ -282,7 +282,7 @@ jobs:
       - run:
           name: run cypress
           command: | 
-            npm run test-cypress
+            npm run cy-server-test
   test-format:
     executor: node
     steps:
