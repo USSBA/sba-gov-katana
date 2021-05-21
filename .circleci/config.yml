@@ -21,9 +21,9 @@ orbs:
   snyk: snyk/snyk@0.0.8
 
 executors:
-  node:
+  node-browsers:
     docker:
-    - image: cimg/node:12.18
+    - image: cimg/node:12.18-browsers
   python:
     docker:
     - image: cimg/python:3.9
@@ -271,7 +271,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v3-dependencies-v1-{{ checksum "package.json" }}
+          - v5-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: run cypress
           command: | 
