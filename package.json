@@ -15,7 +15,8 @@
     "test-jest": "NODE_ENV=test jest -w 1 test/jest",
     "test-mocha": "NODE_ENV=test mocha --compilers js:@babel/register --require @babel/polyfill --require ignore-styles ./test/mocha/helpers/globals.js \"test/mocha/**/*.test.js\"",
     "test-cypress": "NODE_ENV=test cypress run --project test",
-    "cy-server-test": "start-server-and-test start-server http://localhost:3000 cypress:run",
+    "start-server": "npm start",
+    "cy-server-test": "start-server-and-test start-server http://localhost:3000 test-cypress",
     "test-int-mocha": "NODE_ENV=test mocha --compilers js:@babel/register  --require @babel/polyfill --require  ignore-styles ./test/mocha/helpers/globals.js \"test/mocha/**/*.integration-test.js\"",
     "precommit": "npm run test && lint-staged"
   },
@@ -172,6 +173,7 @@
     "should": "11.1.2",
     "sinon": "2.3.1",
     "sinon-chai": "2.9.0",
+    "start-server-and-test": "^1.12.2",
     "style-loader": "0.23.1",
     "uglifyjs-webpack-plugin": "~2.0.1",
     "user-event": "^3.0.1",
