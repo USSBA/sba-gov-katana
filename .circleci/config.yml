@@ -212,7 +212,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-v1-{{ checksum "package.json" }}
+          - v5-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: install dependencies
           command: |
@@ -220,7 +220,7 @@ jobs:
       - save_cache:
           paths:
             - ./node_modules
-          key: v2-dependencies-v1-{{ checksum "package.json" }}
+          key: v5-dependencies-v1-{{ checksum "package.json" }}
   cache-dependencies-upper:
     executor: node
     steps:
@@ -228,7 +228,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-v1-{{ checksum "package.json" }}
+          - v5-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: install dependencies
           command: |
@@ -247,7 +247,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-v1-{{ checksum "package.json" }}
+          - v5-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: run jest
           command: |
@@ -259,7 +259,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-v1-{{ checksum "package.json" }}
+          - v5-dependencies-v1-{{ checksum "package.json" }}
       - run:
           name: run mocha
           command: |
@@ -283,7 +283,7 @@ jobs:
     # Download and cache dependencies
     - restore_cache:
         keys:
-        - v2-dependencies-v1-{{ checksum "package.json" }}
+        - v5-dependencies-v1-{{ checksum "package.json" }}
     # - run:
     #     name: run eslint fix and prettier
     #     command:
@@ -295,7 +295,7 @@ jobs:
     # Download and cache dependencies
     - restore_cache:
         keys:
-        - v2-dependencies-v1-{{ checksum "package.json" }}
+        - v5-dependencies-v1-{{ checksum "package.json" }}
     - run:
         name: build webpack
         command: |
