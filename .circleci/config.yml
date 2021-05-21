@@ -18,8 +18,8 @@
 version: 2.1
 
 orbs:
-  snyk: snyk/snyk@0.0.8
   cypress: cypress-io/cypress@1
+  snyk: snyk/snyk@0.0.8
 
 executors:
   node:
