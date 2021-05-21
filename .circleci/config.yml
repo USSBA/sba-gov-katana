@@ -278,7 +278,7 @@ jobs:
       - run: 
           name: install cypress
           command:  | 
-            npm run cypress install  
+            npm install cypress  
       - run:
           name: run cypress
           command: | 
