@@ -77,7 +77,9 @@ class Hero extends React.Component {
                   {item.btnText}
                 </Button>
               ))}
-            {zipCodeSearch && <ZipCodeForm label="Business Zip Code" btnLabel="search" alternateError />}
+            {zipCodeSearch && (
+              <ZipCodeForm label="Business Zip Code" btnLabel="search nearby" alternateError />
+            )}
           </div>
         </div>
         {imageUrl && (

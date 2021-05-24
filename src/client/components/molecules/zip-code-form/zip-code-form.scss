@@ -5,6 +5,10 @@
 .form {
   display: flex;
   flex-direction: row;
+
+  @include grid-media($sba-grid-medium-and-small) {
+    flex-direction: column;
+  }
 }
 
 .field {
@@ -20,4 +24,13 @@
 
 .submit {
   margin: 6px 0 0 20px;
+  font-size: 18px;
+  padding-top: 19px;
+  padding-bottom: 19px;
+
+  @include grid-media($sba-grid-medium-and-small) {
+    margin-top: 22px;
+    margin-left: 0;
+    width: 100%;
+  }
 }
