@@ -269,7 +269,6 @@ jobs:
           command: |
             npm run test-mocha
   test-cypress:
-    context: sba-gov-lower
     executor: node
     steps:
       - checkout
@@ -278,6 +277,7 @@ jobs:
           keys:
           - v5-dependencies-v1-{{ checksum "package.json" }} 
       - cypress/run:
+          context: sba-gov-lower
           name: run cypress
           command: |
             cd test
