@@ -59,7 +59,8 @@ class Hero extends React.Component {
                 {message}
               </h2>
             )}
-            {(!zipCodeSearch && buttons) &&
+            {!zipCodeSearch &&
+              buttons &&
               buttons.map((item, index) => (
                 <Button
                   key={index}
@@ -75,9 +76,7 @@ class Hero extends React.Component {
                   {item.btnText}
                 </Button>
               ))}
-              {zipCodeSearch && (
-                <ZipCodeForm label="Business Zip Code" btnLabel="search" />
-              )}
+            {zipCodeSearch && <ZipCodeForm label="Business Zip Code" btnLabel="search nearby" />}
           </div>
         </div>
         {imageUrl && (
