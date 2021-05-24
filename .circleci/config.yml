@@ -269,7 +269,6 @@ jobs:
           command: |
             npm run test-mocha
   test-cypress:
-    context: sba-gov-lower
     executor: node
     steps:
       - checkout
