@@ -75,7 +75,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
             Title
           </label>
           <div
-            className="Select is-clearable Select--single"
+            className="Select is-clearable is-searchable Select--single"
           >
             <div
               className="Select-control"
@@ -95,23 +95,47 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
                   Select...
                 </div>
                 <div
-                  aria-activedescendant="react-select-6--value"
-                  aria-disabled="false"
-                  aria-expanded={false}
-                  aria-owns=""
                   className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
                   style={
                     Object {
-                      "border": 0,
                       "display": "inline-block",
-                      "width": 1,
                     }
                   }
-                  tabIndex={0}
-                />
+                >
+                  <input
+                    aria-activedescendant="react-select-6--value"
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-owns=""
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    role="combobox"
+                    style={
+                      Object {
+                        "boxSizing": "content-box",
+                        "width": "5px",
+                      }
+                    }
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
               </span>
               <span
                 className="Select-arrow-zone"
@@ -143,7 +167,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
             Lightsaber Color
           </label>
           <div
-            className="Select is-clearable Select--single"
+            className="Select is-clearable is-searchable Select--single"
           >
             <div
               className="Select-control"
@@ -163,23 +187,47 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
                   Select...
                 </div>
                 <div
-                  aria-activedescendant="react-select-7--value"
-                  aria-disabled="false"
-                  aria-expanded={false}
-                  aria-owns=""
                   className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
                   style={
                     Object {
-                      "border": 0,
                       "display": "inline-block",
-                      "width": 1,
                     }
                   }
-                  tabIndex={0}
-                />
+                >
+                  <input
+                    aria-activedescendant="react-select-7--value"
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-owns=""
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    role="combobox"
+                    style={
+                      Object {
+                        "boxSizing": "content-box",
+                        "width": "5px",
+                      }
+                    }
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
               </span>
               <span
                 className="Select-arrow-zone"
@@ -211,7 +259,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
             Movie
           </label>
           <div
-            className="Select is-clearable Select--single"
+            className="Select is-clearable is-searchable Select--single"
           >
             <div
               className="Select-control"
@@ -231,23 +279,47 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
                   Select...
                 </div>
                 <div
-                  aria-activedescendant="react-select-8--value"
-                  aria-disabled="false"
-                  aria-expanded={false}
-                  aria-owns=""
                   className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
                   style={
                     Object {
-                      "border": 0,
                       "display": "inline-block",
-                      "width": 1,
                     }
                   }
-                  tabIndex={0}
-                />
+                >
+                  <input
+                    aria-activedescendant="react-select-8--value"
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-owns=""
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    role="combobox"
+                    style={
+                      Object {
+                        "boxSizing": "content-box",
+                        "width": "5px",
+                      }
+                    }
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
               </span>
               <span
                 className="Select-arrow-zone"
@@ -279,7 +351,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
             Status
           </label>
           <div
-            className="Select is-clearable Select--single"
+            className="Select is-clearable is-searchable Select--single"
           >
             <div
               className="Select-control"
@@ -299,23 +371,47 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
                   Select...
                 </div>
                 <div
-                  aria-activedescendant="react-select-9--value"
-                  aria-disabled="false"
-                  aria-expanded={false}
-                  aria-owns=""
                   className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
                   style={
                     Object {
-                      "border": 0,
                       "display": "inline-block",
-                      "width": 1,
                     }
                   }
-                  tabIndex={0}
-                />
+                >
+                  <input
+                    aria-activedescendant="react-select-9--value"
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-owns=""
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    role="combobox"
+                    style={
+                      Object {
+                        "boxSizing": "content-box",
+                        "width": "5px",
+                      }
+                    }
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
               </span>
               <span
                 className="Select-arrow-zone"
@@ -347,7 +443,7 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
             Office
           </label>
           <div
-            className="Select is-clearable Select--single"
+            className="Select is-clearable is-searchable Select--single"
           >
             <div
               className="Select-control"
@@ -367,23 +463,47 @@ exports[`DocumentArticleLookup should render with SBA Offices when provided 1`] 
                   Select...
                 </div>
                 <div
-                  aria-activedescendant="react-select-10--value"
-                  aria-disabled="false"
-                  aria-expanded={false}
-                  aria-owns=""
                   className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
                   style={
                     Object {
-                      "border": 0,
                       "display": "inline-block",
-                      "width": 1,
                     }
                   }
-                  tabIndex={0}
-                />
+                >
+                  <input
+                    aria-activedescendant="react-select-10--value"
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-owns=""
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    role="combobox"
+                    style={
+                      Object {
+                        "boxSizing": "content-box",
+                        "width": "5px",
+                      }
+                    }
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
               </span>
               <span
                 className="Select-arrow-zone"
@@ -838,7 +958,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             Title
           </label>
           <div
-            className="Select is-clearable Select--single"
+            className="Select is-clearable is-searchable Select--single"
           >
             <div
               className="Select-control"
@@ -858,23 +978,47 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                   Select...
                 </div>
                 <div
-                  aria-activedescendant="react-select-2--value"
-                  aria-disabled="false"
-                  aria-expanded={false}
-                  aria-owns=""
                   className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
                   style={
                     Object {
-                      "border": 0,
                       "display": "inline-block",
-                      "width": 1,
                     }
                   }
-                  tabIndex={0}
-                />
+                >
+                  <input
+                    aria-activedescendant="react-select-2--value"
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-owns=""
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    role="combobox"
+                    style={
+                      Object {
+                        "boxSizing": "content-box",
+                        "width": "5px",
+                      }
+                    }
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
               </span>
               <span
                 className="Select-arrow-zone"
@@ -906,7 +1050,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             Lightsaber Color
           </label>
           <div
-            className="Select is-clearable Select--single"
+            className="Select is-clearable is-searchable Select--single"
           >
             <div
               className="Select-control"
@@ -926,23 +1070,47 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                   Select...
                 </div>
                 <div
-                  aria-activedescendant="react-select-3--value"
-                  aria-disabled="false"
-                  aria-expanded={false}
-                  aria-owns=""
                   className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
                   style={
                     Object {
-                      "border": 0,
                       "display": "inline-block",
-                      "width": 1,
                     }
                   }
-                  tabIndex={0}
-                />
+                >
+                  <input
+                    aria-activedescendant="react-select-3--value"
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-owns=""
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    role="combobox"
+                    style={
+                      Object {
+                        "boxSizing": "content-box",
+                        "width": "5px",
+                      }
+                    }
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
               </span>
               <span
                 className="Select-arrow-zone"
@@ -974,7 +1142,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             Movie
           </label>
           <div
-            className="Select is-clearable Select--single"
+            className="Select is-clearable is-searchable Select--single"
           >
             <div
               className="Select-control"
@@ -994,23 +1162,47 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                   Select...
                 </div>
                 <div
-                  aria-activedescendant="react-select-4--value"
-                  aria-disabled="false"
-                  aria-expanded={false}
-                  aria-owns=""
                   className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
                   style={
                     Object {
-                      "border": 0,
                       "display": "inline-block",
-                      "width": 1,
                     }
                   }
-                  tabIndex={0}
-                />
+                >
+                  <input
+                    aria-activedescendant="react-select-4--value"
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-owns=""
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    role="combobox"
+                    style={
+                      Object {
+                        "boxSizing": "content-box",
+                        "width": "5px",
+                      }
+                    }
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
               </span>
               <span
                 className="Select-arrow-zone"
@@ -1042,7 +1234,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             Status
           </label>
           <div
-            className="Select is-clearable Select--single"
+            className="Select is-clearable is-searchable Select--single"
           >
             <div
               className="Select-control"
@@ -1062,23 +1254,47 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                   Select...
                 </div>
                 <div
-                  aria-activedescendant="react-select-5--value"
-                  aria-disabled="false"
-                  aria-expanded={false}
-                  aria-owns=""
                   className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
                   style={
                     Object {
-                      "border": 0,
                       "display": "inline-block",
-                      "width": 1,
                     }
                   }
-                  tabIndex={0}
-                />
+                >
+                  <input
+                    aria-activedescendant="react-select-5--value"
+                    aria-expanded="false"
+                    aria-haspopup="false"
+                    aria-owns=""
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={false}
+                    role="combobox"
+                    style={
+                      Object {
+                        "boxSizing": "content-box",
+                        "width": "5px",
+                      }
+                    }
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
               </span>
               <span
                 className="Select-arrow-zone"

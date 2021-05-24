@@ -87,14 +87,40 @@ describe('Primary Search Bar', () => {
       .simulate('change')
     expect(onChangeSpy).toHaveBeenCalledOnce
   })
+
   it('will disable the button if the button is set to inactive', () => {
     const searchBar = mount(<PrimarySearchBar searchButtonText="foo" buttonActive={false} />)
     const button = searchBar.find('Button')
     expect(button.props().disabled).toBeTruthy()
   })
+
   it('will NOT disable the button if the button is set to active', () => {
     const searchBar = mount(<PrimarySearchBar searchButtonText="foo" buttonActive={true} />)
     const button = searchBar.find('Button')
     expect(button.props().disabled).not.toBeTruthy()
+  })
+
+  it('has an info button', () => {
+    const searchBar = shallow(<PrimarySearchBar id="testId" infoText="some text" />)
+    expect(searchBar.find('.infoButton').html()).toContain('Info <i class="fa fa-angle-down">')
+  })
+
+  it('hides info text by default', () => {
+    const searchBar = shallow(<PrimarySearchBar id="testId" infoText="some text" />)
+    expect(searchBar.find('.subtext')).toHaveLength(0)
+  })
+
+  it('changes the icon on click', () => {
+    const searchBar = shallow(<PrimarySearchBar id="testId" infoText="some text" />)
+    searchBar.find('.infoButton').simulate('click')
+    expect(searchBar.find('.infoButton').html()).toContain('Info <i class="fa fa-angle-up">')
+  })
+
+  it('changes toggles info text on click', () => {
+    const searchBar = shallow(<PrimarySearchBar id="testId" infoText="some text" />)
+    searchBar.find('.infoButton').simulate('click')
+    expect(searchBar.find('.subtext').text()).toBe('some text')
+    searchBar.find('.infoButton').simulate('click')
+    expect(searchBar.find('.subtext')).toHaveLength(0)
   })
 })

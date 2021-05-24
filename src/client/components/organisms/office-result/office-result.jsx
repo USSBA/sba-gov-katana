@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux'
 import * as ModalActions from '../../../actions/show-modal'
 import clientConfig from '../../../services/client-config.js'
 import marker from 'assets/svg/marker.svg'
+import districtOfficeMarker from 'assets/svg/districtOfficeMarker.svg'
 import classNames from 'classnames'
 
 class OfficeResult extends React.PureComponent {
@@ -28,15 +29,13 @@ class OfficeResult extends React.PureComponent {
   render() {
     const {
       id,
-      item: { fields: item, exprs },
+      item: { fields: item, exprs, id: itemId },
       hoveredMarkerId
     } = this.props
     const distance = exprs ? exprs.distance : null
     if (!item) {
       return null
     }
-    // console.log(id)
-    // console.log(item.office_website)
     const street = item.location_street_address ? item.location_street_address[0] : null
     const city = item.location_city ? item.location_city[0] : null
     const state = item.location_state ? item.location_state[0] : null
@@ -69,10 +68,14 @@ class OfficeResult extends React.PureComponent {
       [styles.contact]: true
     })
 
+    const outerDivClassName = classNames({
+      [styles.outerDiv]: true,
+      [styles.districtOfficeOuterDiv]: item.office_type && item.office_type?.[0] === 'SBA District Office'
+    })
     //elasticsearch returns all single value elements as an array *sigh*
     return (
       <div>
-        <div className={styles.outerDiv}>
+        <div className={outerDivClassName}>
           <div className={styles.innerDiv}>
             <a
               id={`office-result-container-${id}`}
@@ -120,9 +123,19 @@ class OfficeResult extends React.PureComponent {
                 <div>
                   <div className={styles.distance}>
                     <div>
-                      <img src={marker} className={styles.marker} />
+                      <img
+                        src={
+                          item.office_type && item.office_type?.[0] === 'SBA District Office'
+                            ? districtOfficeMarker
+                            : marker
+                        }
+                        className={styles.marker}
+                      />
                     </div>
                     <div id={`office-miles-${id}`} className={styles.miles}>
+                      {item.office_type && item.office_type?.[0] === 'SBA District Office' ? (
+                        <div className={styles.districtOfficeText}>Your District Office - </div>
+                      ) : null}
                       {distance !== null ? (
                         <Distance distance={distance} />
                       ) : (
@@ -134,15 +147,7 @@ class OfficeResult extends React.PureComponent {
                   <div id={`office-title-${id}`}>
                     <h2>{title}</h2>
                   </div>
-                  <div>
-                    <div id={`office-type-${id}`}>
-                      {/*<div className={styles.officeType}>
-                      {isOfficialOffice && <i className={'fa fa-shield ' + styles.fa} />}
-                      <span>{officeType}</span>
-                    </div>*/}
-                    </div>
-                    {street && <div>{street}</div>}
-                  </div>
+                  <div data-cy="contact address">{street && <div>{street}</div>}</div>
                 </div>
                 <div>
                   {item.office_service ? (
@@ -161,7 +166,7 @@ class OfficeResult extends React.PureComponent {
           </div>
           <div className={styles.actions}>
             {link && (
-              <a href={link} target="_blank" style={{ textDecoration: 'none' }}>
+              <a data-cy="contact link" href={link} target="_blank" style={{ textDecoration: 'none' }}>
                 <div className={websiteClassName}>
                   <i className={'fa fa-globe ' + styles.fa} />
                   <br />
@@ -169,9 +174,12 @@ class OfficeResult extends React.PureComponent {
                 </div>
               </a>
             )}
-            {officeType === 'SBA District Office' && link.includes('/offices/district/') ? (
-              <button
-                type="button"
+            {/* this is the nodeId for the Seattle Office */}
+            {link && link.includes('/offices/district/') && itemId === '6394' ? (
+              // title.includes('District')
+              <a
+                href={null}
+                target="_blank"
                 onClick={() => {
                   this.props.modalActions.showOfficeContactModal(title, link, {
                     zipCode,
@@ -181,16 +189,13 @@ class OfficeResult extends React.PureComponent {
                     phoneNumber
                   })
                 }}
-                className={styles.contactButton}
               >
-                <a href={null} target="_blank">
-                  <div className={contactClassName}>
-                    <i className={'fa fa-envelope ' + styles.fa} />
-                    <br />
-                    Contact
-                  </div>
-                </a>
-              </button>
+                <div className={contactClassName}>
+                  <i className={'fa fa-envelope ' + styles.fa} />
+                  <br />
+                  Contact
+                </div>
+              </a>
             ) : (
               <> </>
             )}
@@ -201,9 +206,11 @@ class OfficeResult extends React.PureComponent {
   }
 }
 
-const Distance = ({ distance }) => <div>{`${Number(distance).toFixed(1)} miles`}</div>
+const Distance = ({ distance }) => (
+  <div className={styles.pullLeft}>{`${Number(distance).toFixed(1)} miles`}</div>
+)
 const Location = ({ city, state }) => (
-  <div>{`${[city, state].filter(item => item !== null).join(', ')}`}</div>
+  <div className={styles.pullLeft}>{`${[city, state].filter(item => item !== null).join(', ')}`}</div>
 )
 
 OfficeResult.defaultProps = {

@@ -15,7 +15,7 @@ class Results extends React.PureComponent {
   }
 
   renderPaginator() {
-    const { total, pageSize, pageNumber, onBack, onForward, setWhiteBackground } = this.props
+    const { total, totalOverride, pageSize, pageNumber, onBack, onForward, setWhiteBackground } = this.props
 
     const divClassName = classNames({
       [styles.paginator]: true,
@@ -28,7 +28,7 @@ class Results extends React.PureComponent {
         <Paginator
           pageNumber={pageNumber}
           pageSize={pageSize}
-          total={total}
+          total={totalOverride && totalOverride < total ? totalOverride : total}
           onBack={onBack}
           onForward={onForward}
         />
@@ -42,8 +42,12 @@ class Results extends React.PureComponent {
     return !isLoading && paginate && !(hidePaginatorOnNoResults && !items.length)
   }
   shouldShowSearchTips() {
-    const { isLoading, displaySearchTipsOnNoResults, items } = this.props
-    return !isLoading && displaySearchTipsOnNoResults && !items.length
+    const { isLoading, displaySearchTipsOnNoResults, items, totalOverride } = this.props
+    return (
+      !isLoading &&
+      displaySearchTipsOnNoResults &&
+      (!items.length || (items.length === 1 && Boolean(totalOverride)))
+    )
   }
   shouldRenderDefaultResults() {
     const { isLoading, displayDefaultResultOnNoResults, items, defaultResults } = this.props
@@ -229,7 +233,8 @@ Results.propTypes = {
   // takes two params: resultsClassName and hideDetailState function
   customDetailResultsView: PropTypes.func,
   isLoading: PropTypes.bool,
-  enableNoResultsMessage: PropTypes.bool
+  enableNoResultsMessage: PropTypes.bool,
+  totalOverride: PropTypes.number
 }
 
 export default Results

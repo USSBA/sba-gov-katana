@@ -67,7 +67,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
           Office
         </label>
         <div
-          className="Select is-clearable Select--single"
+          className="Select is-clearable is-searchable Select--single"
         >
           <div
             className="Select-control"
@@ -87,23 +87,47 @@ exports[`PersonLookupPage should render correctly 1`] = `
                 Select...
               </div>
               <div
-                aria-activedescendant="react-select-2--value"
-                aria-disabled="false"
-                aria-expanded={false}
-                aria-owns=""
                 className="Select-input"
-                onBlur={[Function]}
-                onFocus={[Function]}
-                role="combobox"
                 style={
                   Object {
-                    "border": 0,
                     "display": "inline-block",
-                    "width": 1,
                   }
                 }
-                tabIndex={0}
-              />
+              >
+                <input
+                  aria-activedescendant="react-select-2--value"
+                  aria-expanded="false"
+                  aria-haspopup="false"
+                  aria-owns=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  role="combobox"
+                  style={
+                    Object {
+                      "boxSizing": "content-box",
+                      "width": "5px",
+                    }
+                  }
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
             </span>
             <span
               className="Select-arrow-zone"
@@ -131,7 +155,7 @@ exports[`PersonLookupPage should render correctly 1`] = `
           Sort by
         </label>
         <div
-          className="Select has-value is-clearable Select--single"
+          className="Select has-value is-clearable is-searchable Select--single"
         >
           <div
             className="Select-control"
@@ -158,23 +182,47 @@ exports[`PersonLookupPage should render correctly 1`] = `
                 </span>
               </div>
               <div
-                aria-activedescendant="react-select-3--value"
-                aria-disabled="false"
-                aria-expanded={false}
-                aria-owns=""
                 className="Select-input"
-                onBlur={[Function]}
-                onFocus={[Function]}
-                role="combobox"
                 style={
                   Object {
-                    "border": 0,
                     "display": "inline-block",
-                    "width": 1,
                   }
                 }
-                tabIndex={0}
-              />
+              >
+                <input
+                  aria-activedescendant="react-select-3--value"
+                  aria-expanded="false"
+                  aria-haspopup="false"
+                  aria-owns=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  role="combobox"
+                  style={
+                    Object {
+                      "boxSizing": "content-box",
+                      "width": "5px",
+                    }
+                  }
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
             </span>
             <span
               aria-label="Clear value"

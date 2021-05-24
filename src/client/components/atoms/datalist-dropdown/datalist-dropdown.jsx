@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const DatalistDropdwon = props => {
+const DatalistDropdown = props => {
   const { id, options, className } = props
   return (
     <datalist className={className} id={id}>
@@ -13,10 +13,10 @@ const DatalistDropdwon = props => {
   )
 }
 
-DatalistDropdwon.propTypes = {
+DatalistDropdown.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.string)
 }
 
-export default DatalistDropdwon
+export default DatalistDropdown

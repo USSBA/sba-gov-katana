@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import ReactSelect from 'react-select-v1'
 import classNames from 'classnames'
 import 'react-select-v1/dist/react-select.css'
@@ -13,28 +12,6 @@ class MultiSelect extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
-  }
-
-  componentDidMount() {
-    if (this.select) {
-      // TODO: This works but breaks tests due to react-dom and requires going
-      // down a rabbit hole to fix them.
-      // const combobox = ReactDOM.findDOMNode(this.select).querySelector('.Select-input')
-      //
-      // if (this.props.disabled) {
-      //   // Manipulate the attributes that get added on to react-select's custom
-      //   // input so that a screen reader properly reads the component (when
-      //   // disabled) as disabled.
-      //   combobox.removeAttribute('aria-activedescendant')
-      //   combobox.setAttribute('aria-disabled', true)
-      // } else {
-      //   // Fix an issue where the user can type text in the hidden input inside
-      //   // react-select's dropdown when the dropdown is focused.
-      //   const input = combobox.querySelector('input')
-      //   input.setAttribute('aria-readonly', true)
-      //   input.setAttribute('readonly', true)
-      // }
-    }
   }
 
   render() {
@@ -81,7 +58,7 @@ class MultiSelect extends React.Component {
           value={this.state.value}
           arrowRenderer={() => <i className="fa fa-chevron-down" alt="drop-down arrow" />}
           clearRenderer={() => <span />}
-          searchable={false}
+          searchable={this.props.searchable}
           placeholder={!placeholder && langCode ? TRANSLATIONS.select[langCode].text : placeholder}
           aria-label={helperText}
           inputProps={['aria-label', 'aria-labelledby', 'required']
@@ -91,10 +68,15 @@ class MultiSelect extends React.Component {
           {...rest}
         />
         {helperText && validationState !== 'error' && <p className={styles.helperText}>{helperText}</p>}
-        {validationState === 'error' && <FormErrorMessage errorText={errorText} alternate />}
+        {validationState === 'error' && (
+          <FormErrorMessage errorText={errorText} alternate={alternateError} />
+        )}
       </div>
     )
   }
 }
 
+MultiSelect.defaultProps = {
+  searchable: true
+}
 export default MultiSelect

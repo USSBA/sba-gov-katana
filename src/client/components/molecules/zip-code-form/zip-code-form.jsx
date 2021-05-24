@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { browserHistory } from 'react-router'
 import { includes } from 'lodash'
 import { Button, TextInput } from 'atoms'
 import {
@@ -8,7 +9,6 @@ import {
 } from '../../../services/form-validation-helpers.js'
 
 import styles from './zip-code-form.scss'
-
 
 class ZipCodeForm extends React.Component {
   constructor() {
@@ -52,6 +52,15 @@ class ZipCodeForm extends React.Component {
     return !containsErrorOrNull(this.state.validStates)
   }
 
+  submitZipCode() {
+    this.state.validStates.zipCode &&
+      this.state.validStates.zipCode !== 'error' &&
+      browserHistory.push({
+        pathname: `/local-assistance/find`,
+        search: `?address=${this.state.zipCode}&pageNumber=1`
+      })
+  }
+
   handleSubmit(e) {
     e.preventDefault()
     this.validateFields(Object.keys(this.state.validStates), 'error')
@@ -65,10 +74,11 @@ class ZipCodeForm extends React.Component {
     if (hasErrors.length) {
       return null
     }
+    this.submitZipCode()
   }
 
   render() {
-    const { label, btnLabel } = this.props
+    const { label, btnLabel, alternateError } = this.props
     const { zipCode, validStates } = this.state
 
     const fieldText = 'Enter a 5-digit zip code.'
@@ -76,7 +86,9 @@ class ZipCodeForm extends React.Component {
     return (
       <form onSubmit={e => this.handleSubmit(e)} noValidate="noValidate">
         <div className={styles.zipContainer}>
-          <label tabIndex="0" className={styles.label}>{label}</label>
+          <label tabIndex="0" className={styles.label}>
+            {label}
+          </label>
           <div className={styles.form}>
             <TextInput
               name="zipCode"
@@ -86,26 +98,13 @@ class ZipCodeForm extends React.Component {
               ariaLabel={fieldText}
               helperText={fieldText}
               errorText={fieldText}
-              autocomplete="off"
-              alternateError
+              autoComplete="off"
+              alternateError={alternateError}
               large
             />
             <div>
-              <Button
-                type="submit"
-                url={
-                  validStates.zipCode && validStates.zipCode !== 'error'
-                    ? `local-assistance/find/?address=${zipCode}&pageNumber=1`
-                    : ''
-                }
-                className={styles.submit}
-                primary
-                alternate
-                large
-              >
-              {
-                btnLabel?.toUpperCase() || 'SUBMIT'
-              }
+              <Button type="submit" className={styles.submit} primary alternate small={false}>
+                {btnLabel?.toUpperCase() || 'SUBMIT'}
               </Button>
             </div>
           </div>
@@ -116,8 +115,7 @@ class ZipCodeForm extends React.Component {
 }
 
 ZipCodeForm.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.string
 }
 
 export default ZipCodeForm
-

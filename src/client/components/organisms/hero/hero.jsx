@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react'
 import { debounce, isEmpty } from 'lodash'
 
@@ -76,7 +77,9 @@ class Hero extends React.Component {
                   {item.btnText}
                 </Button>
               ))}
-            {zipCodeSearch && <ZipCodeForm label="Business Zip Code" btnLabel="search nearby" />}
+            {zipCodeSearch && (
+              <ZipCodeForm label="Business Zip Code" btnLabel="search nearby" alternateError />
+            )}
           </div>
         </div>
         {imageUrl && (
