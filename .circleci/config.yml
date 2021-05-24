@@ -277,10 +277,6 @@ jobs:
           keys:
           - v5-dependencies-v1-{{ checksum "package.json" }} 
       - run:
-<<<<<<< HEAD
-          context: sba-gov-lower
-=======
->>>>>>> d8939ab766d36f4d36ecca36fc9e3ecb9ed8e52b
           name: run cypress
           command: |
             npm run cy-server-test
