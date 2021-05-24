@@ -240,7 +240,7 @@ jobs:
       - save_cache:
           paths:
             - ./node_modules
-          key: v2-dependencies-v1-{{ checksum "package.json" }}
+          key: v5-dependencies-v1-{{ checksum "package.json" }}
       - snyk/scan:
           token-variable: SNYK
           fail-on-issues: false
@@ -276,11 +276,10 @@ jobs:
       - restore_cache:
           keys:
           - v5-dependencies-v1-{{ checksum "package.json" }} 
-      - cypress/run:
+      - run:
           context: sba-gov-lower
           name: run cypress
           command: |
-            cd test
             npm run cy-server-test
   test-format:
     executor: node
@@ -310,7 +309,7 @@ jobs:
         paths:
         - ./public/build
         - ./dist
-        key: v1-webpack-{{ .Revision }}
+        key: v5-webpack-{{ .Revision }}
   build-package:
     working_directory: /home/circleci/project
     executor: node
@@ -318,7 +317,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-webpack-{{ .Revision }}
+          - v5-webpack-{{ .Revision }}
       - run:
           name: create zip package
           command: |

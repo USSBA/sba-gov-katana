@@ -16,7 +16,7 @@
     "test-mocha": "NODE_ENV=test mocha --compilers js:@babel/register --require @babel/polyfill --require ignore-styles ./test/mocha/helpers/globals.js \"test/mocha/**/*.test.js\"",
     "test-cypress": "NODE_ENV=test cypress run --project test",
     "start-server": "npm start",
-    "cy-server-test": "start-server-and-test start-server http://localhost:3000 test-cypress",
+    "cy-server-test": "start-server-and-test start http://localhost:3000 test-cypress",
     "test-int-mocha": "NODE_ENV=test mocha --compilers js:@babel/register  --require @babel/polyfill --require  ignore-styles ./test/mocha/helpers/globals.js \"test/mocha/**/*.integration-test.js\"",
     "precommit": "npm run test && lint-staged"
   },
