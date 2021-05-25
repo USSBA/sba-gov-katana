@@ -327,13 +327,16 @@ app.get(['/', '/*'], async function(req, res, next) {
       // same HTTP 302 now; however, it might be worth leaving it in case we elect to
       // change them separately in the future (more than likely the first one with be changed
       // to HTTP 301 in the future)
-      if (config.get('features.urlRedirect.enabled')) {
-        redirectUrl = await findMostRecentUrlRedirect(url)
-        redirectCode = httpStatus.MOVED_TEMPORARILY
-      }
-      if (!redirectUrl && config.get('features.drupalRedirect.enabled')) {
-        redirectUrl = await fetchNewUrlByOldUrl(url)
-        redirectCode = httpStatus.MOVED_TEMPORARILY
+      console.log('the node env is ----->>>', process.env.NODE_ENV)
+      if (process.env.NODE_ENV !== 'test') {
+        if (config.get('features.urlRedirect.enabled')) {
+          redirectUrl = await findMostRecentUrlRedirect(url)
+          redirectCode = httpStatus.MOVED_TEMPORARILY
+        }
+        if (!redirectUrl && config.get('features.drupalRedirect.enabled')) {
+          redirectUrl = await fetchNewUrlByOldUrl(url)
+          redirectCode = httpStatus.MOVED_TEMPORARILY
+        }
       }
       if (redirectUrl && redirectUrl !== url) {
         console.log('Redirecting to ' + redirectUrl)
