@@ -236,32 +236,7 @@ class SearchTemplate extends React.PureComponent {
           ? this.insertDistrictOffice(result, distOfficeResults[0])
           : result
 
-        const distanceInMiles = 500
-        // remove results farther than `distanceInMiles` from specified location
-        formatResult.results = formatResult.results.filter(office => {
-          // if the API doesn't return distance, return those offices anyway
-          if (!office.exprs) {
-            return true
-          } else {
-            // if the API returns distance, filter out office that are too far away
-            return office.exprs.distance < distanceInMiles
-          }
-        })
-
-        this.setState(formatResult, () => {
-          // fix pagination when results more than `distanceInMiles` get removed
-          const { results, searchParams } = this.state
-          if (results.length < searchParams.pageSize) {
-            const newCount = (this.calculatePageNumber() - 1) * searchParams.pageSize + results.length
-            this.setState({ count: newCount })
-          }
-          if (!this.props.updateNoResultsType) {
-            return
-          }
-          if (results.length === 1) {
-            this.props.updateNoResultsType('noOfficeResults')
-          }
-        })
+        this.setState(formatResult)
       })
     })
   }
