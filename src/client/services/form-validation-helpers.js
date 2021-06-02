@@ -19,7 +19,9 @@ export function nameValidation(value) {
 }
 
 export function phoneValidation(value) {
-  const numberRegex = new RegExp(/^\d+$/)
+  const numberRegex = new RegExp(
+    /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/
+  )
   return value && value.length >= phoneMaxLength && numberRegex.test(value)
 }
 
