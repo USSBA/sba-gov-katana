@@ -68,13 +68,18 @@
 
 // Balances bottom margin when error is active
 .zip p {
-  background-color: $sba-white;
-  border: 2px solid $sba-red-light;
-  border-top: 1px;
-  color: $sba-red-dark;
+  color: $sba-white;
   margin-bottom: -20px;
   margin-top: -4px;
-  padding: 4px 5px;
+  padding: 4px;
+
+  &:before {
+    content: '*';
+  }
+
+  &:after {
+    content: '*';
+  }
 }
 
 // Results
