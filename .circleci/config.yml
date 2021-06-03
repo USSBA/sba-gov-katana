@@ -43,13 +43,14 @@ commands:
     steps:
       - restore_cache:
           keys:
-          - v1-npm-{{ checksum "package-lock.json" }}
+          - v2-npm-{{ checksum "package-lock.json" }}
   save-npm-cache:
     steps:
       - save_cache:
           paths:
             - ./node_modules
-          key: v1-npm-{{ checksum "package-lock.json" }}
+            - ~/.cache/Cypress
+          key: v2-npm-{{ checksum "package-lock.json" }}
 
 workflows:
   test-build-deploy:
