@@ -68,7 +68,18 @@
 
 // Balances bottom margin when error is active
 .zip p {
+  color: $sba-white;
   margin-bottom: -20px;
+  margin-top: -4px;
+  padding: 4px 0;
+
+  &:before {
+    content: '*';
+  }
+
+  &:after {
+    content: '*';
+  }
 }
 
 // Results
@@ -117,7 +128,7 @@
   padding-bottom: 55px;
   @include grid-media($sba-grid-large) {
     padding-bottom: 0;
-    height: 100%;
+    position: absolute;
     pointer-events: all;
   }
 }
