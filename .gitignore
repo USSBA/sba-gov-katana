@@ -62,9 +62,6 @@ scripts/db/sql/sba_*.sql
 # webpack bundle stats.json
 stats.json
 
-# until the time comes that we upgrade to node 8.3
-package-lock.json
-
 # for developer local scripts
 probes
 ngrok
