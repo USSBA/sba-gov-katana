@@ -123,9 +123,11 @@ describe('Local Assistance Find', function() {
     cy.get("[data-cy='search button']").click()
     cy.wait('@OfficeSearch')
     cy.get('input#zip').should('have.value', '20024')
-    
-    cy.visit(`${baseUrl}/local-assistance/find?type=SCORE%20Business%20Mentoring%2CSmall%20Business%20Development%20Center%2CU.S.%20Export%20Assistance%20Center%2CVeteran%E2%80%99s%20Business%20Outreach%20Center%2CWomen%E2%80%99s%20Business%20Center%2CProcurement%20Technical%20Assistance%20Center%2CCertified%20Development%20Company&address=20024&mapCenter=38.90613720305586%2C-77.09263126279296&pageNumber=1
-    `)
-    cy.get('input#zip').should('have.value', '20007')
+    cy.get(".map")
+    .trigger("mousedown")
+    .trigger("mousemove", 100, 100)
+    .trigger("mousemove")
+    .trigger("mouseup");
+    cy.get('input#zip').should('have.value', '20036')
   })
 })
