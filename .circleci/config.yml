@@ -39,11 +39,22 @@ commands:
           name: install aws
           command: |
             pip install awscli
+  restore-npm-cache:
+    steps:
+      - restore_cache:
+          keys:
+          - v1-npm-{{ checksum "package-lock.json" }}
+  save-npm-cache:
+    steps:
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: v1-npm-{{ checksum "package-lock.json" }}
 
 workflows:
   test-build-deploy:
     jobs:
-    - cache-dependencies-lower:
+    - cache-dependencies:
         filters:
           branches:
             only:
@@ -54,20 +65,11 @@ workflows:
             - demo
             - venus
             - /deploy-\w+/
-    - cache-dependencies-upper:
-        filters:
-          branches:
-            ignore:
-            - /.*/
-          tags:
-            only:
             - staging
             - production
-        context: snyk
     - test-jest:
         requires:
-          - cache-dependencies-lower
-          - cache-dependencies-upper
+          - cache-dependencies
         filters:
           branches:
             only:
@@ -77,8 +79,7 @@ workflows:
             - /.*/
     - test-mocha:
         requires: 
-          - cache-dependencies-lower
-          - cache-dependencies-upper
+          - cache-dependencies
         filters:
           branches:
             only:
@@ -88,8 +89,7 @@ workflows:
             - /.*/
     - test-cypress:
         requires: 
-          - cache-dependencies-lower
-          - cache-dependencies-upper
+          - cache-dependencies
         filters:
           branches:
             only:
@@ -98,19 +98,8 @@ workflows:
             only:
             - /.*/
         context: sba-gov-lower
-    - test-format:
-        requires:
-          - cache-dependencies-lower
-          - cache-dependencies-upper
-        filters:
-          branches:
-            only:
-            - /.*/
-          tags:
-            only:
-            - /.*/    
     - build-webpack:
-        requires: [test-jest, test-mocha, test-cypress, test-format]
+        requires: [test-jest, test-mocha, test-cypress]
         filters:
           branches:
             only:
@@ -210,49 +199,21 @@ workflows:
             - production
         context: sba-gov-upper
 jobs:
-  cache-dependencies-lower:
+  cache-dependencies:
     executor: node
     steps:
       - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v5-dependencies-v1-{{ checksum "package.json" }}
+      - restore-npm-cache
       - run:
           name: install dependencies
           command: |
             npm install --silent --no-save
-      - save_cache:
-          paths:
-            - ./node_modules
-          key: v5-dependencies-v1-{{ checksum "package.json" }}
-  cache-dependencies-upper:
-    executor: node
-    steps:
-      - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v5-dependencies-v1-{{ checksum "package.json" }}
-      - run:
-          name: install dependencies
-          command: |
-            npm install --silent --no-save
-      - save_cache:
-          paths:
-            - ./node_modules
-          key: v5-dependencies-v1-{{ checksum "package.json" }}
-      - snyk/scan:
-          token-variable: SNYK
-          fail-on-issues: false
+      - save-npm-cache
   test-jest:
     executor: node
     steps:
       - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v5-dependencies-v1-{{ checksum "package.json" }}
+      - restore-npm-cache
       - run:
           name: run jest
           command: |
@@ -261,46 +222,25 @@ jobs:
     executor: node
     steps:
       - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v5-dependencies-v1-{{ checksum "package.json" }}
+      - restore-npm-cache
       - run:
           name: run mocha
           command: |
             npm run test-mocha
   test-cypress:
-    executor: node
+    executor: node-browsers
     steps:
       - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v5-dependencies-v1-{{ checksum "package.json" }} 
+      - restore-npm-cache
       - run:
           name: run cypress
           command: |
             npm run cy-server-test
-  test-format:
-    executor: node
-    steps:
-    - checkout
-    # Download and cache dependencies
-    - restore_cache:
-        keys:
-        - v5-dependencies-v1-{{ checksum "package.json" }}
-    # - run:
-    #     name: run eslint fix and prettier
-    #     command:
-    #       npm run format
   build-webpack:
     executor: node
     steps:
     - checkout
-    # Download and cache dependencies
-    - restore_cache:
-        keys:
-        - v5-dependencies-v1-{{ checksum "package.json" }}
+    - restore-npm-cache
     - run:
         name: build webpack
         command: |
@@ -315,9 +255,7 @@ jobs:
     executor: node
     steps:
       - checkout
-      - restore_cache:
-          keys:
-          - v5-webpack-{{ .Revision }}
+      - restore-npm-cache
       - run:
           name: create zip package
           command: |
