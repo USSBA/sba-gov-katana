@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -7,6 +8,14 @@ import styles from './primary-search-bar.scss'
 import { Button } from 'atoms'
 
 export class PrimarySearchBar extends React.PureComponent {
+  constructor() {
+    super()
+
+    this.state = {
+      infoExpanded: false
+    }
+  }
+
   onFieldChange(fieldName, value) {
     const { onFieldChange } = this.props
     if (onFieldChange) {
@@ -25,6 +34,10 @@ export class PrimarySearchBar extends React.PureComponent {
     return true
   }
 
+  toggleInfoText() {
+    this.setState({ infoExpanded: !this.state.infoExpanded })
+  }
+
   render() {
     const childrenWithProps = React.Children.map(this.props.children, child => {
       const { queryParamName } = child.props
@@ -39,7 +52,8 @@ export class PrimarySearchBar extends React.PureComponent {
       })
       return clonedChild
     })
-    const { id, buttonActive, subtext } = this.props
+    const { id, buttonActive, infoText, subtext } = this.props
+    const { infoExpanded } = this.state
 
     const bannerClassName = classNames({
       [styles.banner]: true,
@@ -50,14 +64,31 @@ export class PrimarySearchBar extends React.PureComponent {
     return (
       <div id={id}>
         <div className={bannerClassName}>
-          <h2
-            id={`${id ? id : 'primary-search-bar'}-title`}
-            className={styles.header}
-            aria-label={this.props.title}
-          >
-            {this.props.title}
-          </h2>
+          <div className={styles.titleContainer}>
+            <h2
+              id={`${id ? id : 'primary-search-bar'}-title`}
+              className={styles.header}
+              aria-label={this.props.title}
+            >
+              {this.props.title}
+            </h2>
+            {infoText && (
+              <Button
+                className={`${infoExpanded ? 'infoButton blue' : 'infoButton'}`}
+                borderless
+                small
+                onClick={this.toggleInfoText.bind(this)}
+              >
+                Info <i className={`fa fa-angle-${infoExpanded ? 'up' : 'down'}`}></i>
+              </Button>
+            )}
+          </div>
           {subtext && <p className={styles.subtext}> {subtext} </p>}
+          {infoExpanded && (
+            <p tabindex="0" className={styles.subtext}>
+              {infoText}
+            </p>
+          )}
           <form>
             {childrenWithProps}
             <div className={styles.applyButton}>

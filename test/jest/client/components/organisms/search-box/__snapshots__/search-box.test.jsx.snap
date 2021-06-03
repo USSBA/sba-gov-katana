@@ -68,7 +68,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
         data-testid="documenttype-select"
       >
         <label
+          className={null}
           htmlFor="documenttype-select"
+          tabIndex="0"
         />
         <div
           className="Select has-value is-clearable is-searchable Select--single"
@@ -179,7 +181,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
         data-testid="program-select"
       >
         <label
+          className={null}
           htmlFor="program-select"
+          tabIndex="0"
         />
         <div
           className="Select has-value is-clearable is-searchable Select--single"
@@ -290,7 +294,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
         data-testid="documentactivity-select"
       >
         <label
+          className={null}
           htmlFor="documentactivity-select"
+          tabIndex="0"
         />
         <div
           className="Select has-value is-clearable is-searchable Select--single"

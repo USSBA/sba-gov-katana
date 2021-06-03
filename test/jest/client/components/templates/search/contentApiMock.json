@@ -1,0 +1,372 @@
+{
+  "results": [
+    {
+      "id": "17069",
+      "fields": {
+        "location_city": ["Annapolis"],
+        "location_phone_number": ["(410) 266-9553"],
+        "location_zipcode": ["21401"],
+        "location_state": ["MD"],
+        "location_name": ["Southern Maryland SCORE"],
+        "title": ["Southern Maryland SCORE"],
+        "office_type": ["SCORE Business Mentor"],
+        "location_email": ["info@score390.org"],
+        "geolocation": ["38.9821671,-76.5457395"],
+        "office_website": ["http://southernmaryland.score.org/chapters/southern-maryland-score"],
+        "type": ["office"],
+        "location_street_address": ["134 Holiday Court, Suite 316"]
+      },
+      "exprs": {
+        "distance": 6.7246499262119395
+      }
+    },
+    {
+      "id": "16565",
+      "fields": {
+        "location_city": ["Annapolis"],
+        "location_phone_number": ["301-624-3528"],
+        "location_zipcode": ["21401"],
+        "location_state": ["MD"],
+        "location_name": ["Maryland SBDC ~ Anne Arundel County"],
+        "title": ["Maryland SBDC ~ Anne Arundel County"],
+        "office_type": ["Small Business Development Center"],
+        "geolocation": ["38.9742733,-76.5607193"],
+        "type": ["office"],
+        "location_street_address": ["2660 Riva Road, Suite 200"]
+      },
+      "exprs": {
+        "distance": 7.240174264775846
+      }
+    },
+    {
+      "id": "16732",
+      "fields": {
+        "location_city": ["Bowie"],
+        "location_phone_number": ["240-714-7223"],
+        "location_zipcode": ["20751"],
+        "location_state": ["MD"],
+        "location_name": ["Maryland SBDC - Prince Georges County"],
+        "title": ["Maryland SBDC - Prince Georges County"],
+        "office_type": ["Small Business Development Center"],
+        "geolocation": ["39.0167504,-76.7612748"],
+        "office_website": ["https://www.marylandsbdc.org/locations/corridor-region"],
+        "type": ["office"],
+        "location_street_address": ["14000 Jericho Park Rd, 2nd floor"]
+      },
+      "exprs": {
+        "distance": 11.732028075563544
+      }
+    },
+    {
+      "id": "17660",
+      "fields": {
+        "location_city": ["Baltimore"],
+        "location_phone_number": ["410-962-4539"],
+        "location_zipcode": ["21201"],
+        "location_name": ["Baltimore U.S. Export Assistance Center"],
+        "location_fax": ["410-962-4529"],
+        "location_state": ["MD"],
+        "title": ["Baltimore U.S. Export Assistance Center"],
+        "office_type": ["U.S. Export Assistance Center"],
+        "geolocation": ["39.286447,-76.619681"],
+        "office_website": ["http://export.gov/maryland/"],
+        "type": ["office"],
+        "location_street_address": ["300 West Pratt Street, Suite 300 "]
+      },
+      "exprs": {
+        "distance": 14.703779903361156
+      }
+    },
+    {
+      "id": "16532",
+      "fields": {
+        "location_city": ["Baltimore"],
+        "location_phone_number": ["(301) 792-3435"],
+        "location_zipcode": ["21201"],
+        "location_state": ["MD"],
+        "location_name": ["Corridor Region SBDC - Baltimore City West"],
+        "title": ["Corridor Region SBDC - Baltimore City West"],
+        "office_type": ["Small Business Development Center"],
+        "location_email": ["wfreeman@umd.edu"],
+        "geolocation": ["39.2876275,-76.63158279999999"],
+        "office_website": ["https://www.marylandsbdc.org/locations/corridor-region"],
+        "type": ["office"],
+        "location_street_address": ["875 Hollins Street"]
+      },
+      "exprs": {
+        "distance": 14.93889637988326
+      }
+    },
+    {
+      "id": "6422",
+      "fields": {
+        "location_city": ["Baltimore"],
+        "location_phone_number": ["410-962-6195"],
+        "location_zipcode": ["21201"],
+        "location_name": ["Baltimore District Office"],
+        "location_hours_of_operation": ["Monday through Friday from 8 a.m. to 4:30 p.m."],
+        "location_state": ["MD"],
+        "title": ["Baltimore District"],
+        "office_type": ["SBA District Office"],
+        "location_email": ["baltimore_do@sba.gov"],
+        "summary": [
+          "We will advocate for you, work with you, and empower you to confidently start, grow, and strengthen your business."
+        ],
+        "geolocation": ["39.28698809999999,-76.61536720000001"],
+        "office_website": ["/offices/district/md/baltimore"],
+        "type": ["office"],
+        "location_street_address": ["100 South Charles St. suite 1201"]
+      },
+      "exprs": {
+        "distance": 14.690033753992129
+      }
+    },
+    {
+      "id": "16629",
+      "fields": {
+        "location_city": ["Baltimore"],
+        "location_state": ["MD"],
+        "location_zipcode": ["21201"],
+        "location_name": ["Maryland SBDC ~ Baltimore City"],
+        "title": ["Maryland SBDC ~ Baltimore City"],
+        "office_type": ["Small Business Development Center"],
+        "geolocation": ["39.3050981,-76.6165858"],
+        "type": ["office"],
+        "location_street_address": ["11 W.Mount Royal Ave."]
+      },
+      "exprs": {
+        "distance": 15.928075152112674
+      }
+    },
+    {
+      "id": "16486",
+      "fields": {
+        "location_city": ["Columbia"],
+        "location_phone_number": ["(240) 828-5224"],
+        "location_zipcode": ["21045"],
+        "location_state": ["MD"],
+        "location_name": ["Maryland SBDC ~ Howard County"],
+        "title": ["Maryland SBDC ~ Howard County"],
+        "office_type": ["Small Business Development Center"],
+        "geolocation": ["39.2363493,-76.8290382"],
+        "type": ["office"],
+        "location_street_address": ["9620 Bendix Road North"]
+      },
+      "exprs": {
+        "distance": 18.140476282788313
+      }
+    },
+    {
+      "id": "17054",
+      "fields": {
+        "location_city": ["Columbia"],
+        "location_phone_number": ["(410) 962-2233"],
+        "location_zipcode": ["21045"],
+        "location_state": ["MD"],
+        "location_name": ["Greater Baltimore SCORE"],
+        "title": ["Greater Baltimore SCORE"],
+        "office_type": ["SCORE Business Mentor"],
+        "location_email": ["baltimorescore@verizon.net"],
+        "geolocation": ["39.2372089,-76.8283082"],
+        "office_website": ["http://greaterbaltimore.score.org/chapters/greater-baltimore-score"],
+        "type": ["office"],
+        "location_street_address": ["9250 Bendix Road SCORE"]
+      },
+      "exprs": {
+        "distance": 18.144798475240357
+      }
+    },
+    {
+      "id": "38241",
+      "fields": {
+        "location_city": ["Baltimore"],
+        "location_phone_number": ["443-885-3663"],
+        "location_zipcode": ["21218"],
+        "location_state": ["MD"],
+        "location_name": ["Baltimore Metropolitan Women's Business Center"],
+        "title": ["Baltimore Metropolitan WBC at Morgan State University EDAC"],
+        "office_type": ["Women's Business Center"],
+        "geolocation": ["39.3412865,-76.5878401"],
+        "office_website": ["https://www.edacmorgan.com/"],
+        "type": ["office"],
+        "location_street_address": [
+          "Morgan State University Graves School of Business, 4100 Hillen Road Suite 302 B"
+        ]
+      },
+      "exprs": {
+        "distance": 18.18534635407372
+      }
+    },
+    {
+      "id": "16183",
+      "fields": {
+        "location_city": ["Largo"],
+        "location_phone_number": ["301-883-6900"],
+        "location_zipcode": ["20774"],
+        "location_name": ["Prince George's County Financial Services Corporat"],
+        "location_fax": ["301-883-6160"],
+        "location_state": ["MD"],
+        "title": ["Prince George's County Financial Services Corporation"],
+        "office_type": ["Certified Development Company"],
+        "geolocation": ["38.914865,-76.845134"],
+        "type": ["office"],
+        "location_street_address": ["1801 McCormick Drive, "]
+      },
+      "exprs": {
+        "distance": 19.14544640113534
+      }
+    },
+    {
+      "id": "16630",
+      "fields": {
+        "location_city": ["Owings Mills"],
+        "location_phone_number": ["443-412-2237 ext. 1"],
+        "location_zipcode": ["21117"],
+        "location_state": ["MD"],
+        "location_name": ["Maryland SBDC ~ Baltimore County"],
+        "title": ["Maryland SBDC ~ Baltimore County"],
+        "office_type": ["Small Business Development Center"],
+        "geolocation": ["39.4275903,-76.778538"],
+        "type": ["office"],
+        "location_street_address": ["100 Campus Circle"]
+      },
+      "exprs": {
+        "distance": 26.814493101256158
+      }
+    },
+    {
+      "id": "16749",
+      "fields": {
+        "location_city": ["Wye Mills"],
+        "location_phone_number": ["410-827-5304"],
+        "location_zipcode": ["21679"],
+        "location_state": ["MD"],
+        "location_name": ["Maryland SBDC ~ Chesapeake"],
+        "title": ["Maryland SBDC ~ Chesapeake"],
+        "office_type": ["Small Business Development Center"],
+        "geolocation": ["38.9532484,-76.0844681"],
+        "type": ["office"],
+        "location_street_address": ["1000 College Circle"]
+      },
+      "exprs": {
+        "distance": 26.85231970087885
+      }
+    },
+    {
+      "id": "16935",
+      "fields": {
+        "location_city": ["Washington"],
+        "location_phone_number": ["(202) 806 1550"],
+        "location_zipcode": ["20059"],
+        "location_state": ["DC"],
+        "location_name": ["Washington, D.C. Small Business Development Center"],
+        "title": ["Washington, D.C. Small Business Development Center"],
+        "office_type": ["Small Business Development Center"],
+        "geolocation": ["38.925138,-77.021376"],
+        "type": ["office"],
+        "location_street_address": ["2600 6th Street, N. W., Room 128"]
+      },
+      "exprs": {
+        "distance": 27.06048053315988
+      }
+    },
+    {
+      "id": "17540",
+      "fields": {
+        "location_city": ["Washington"],
+        "location_phone_number": ["202-741-0858"],
+        "location_zipcode": ["20001"],
+        "location_name": ["District of Columbia Procurement Technical Assista"],
+        "location_fax": ["202-724-3786"],
+        "location_state": ["DC"],
+        "title": ["District of Columbia Procurement Technical Assistance Center (DC-PTAC)"],
+        "office_type": ["Procurement Technical Assistance Center"],
+        "geolocation": ["38.904267,-77.015703"],
+        "office_website": ["http://dcptac.dc.gov/"],
+        "type": ["office"],
+        "location_street_address": ["1 Judiciary Square 441 Fourth St. NW, Ste. 970N "]
+      },
+      "exprs": {
+        "distance": 27.388356337675358
+      }
+    },
+    {
+      "id": "16981",
+      "fields": {
+        "location_city": ["Washington"],
+        "location_phone_number": ["(202)889-5090"],
+        "location_zipcode": ["20020"],
+        "location_state": ["DC"],
+        "location_name": ["Washington, D.C. Small Business Development Center"],
+        "title": ["Washington, D.C. Small Business Development Center"],
+        "office_type": ["Small Business Development Center"],
+        "geolocation": ["38.8663589,-76.9893501"],
+        "type": ["office"],
+        "location_street_address": ["2021 M.L.K. Jr. Avenue, S.E."]
+      },
+      "exprs": {
+        "distance": 27.43990650501884
+      }
+    },
+    {
+      "id": "15997",
+      "fields": {
+        "location_city": ["Washington"],
+        "location_phone_number": ["202-265-8200"],
+        "location_zipcode": ["20009"],
+        "location_state": ["DC"],
+        "location_name": ["Greater Washington Urban League"],
+        "title": ["Greater Washington Urban League"],
+        "office_type": ["Small Business Development Center"],
+        "geolocation": ["38.9269718,-77.0320234"],
+        "type": ["office"],
+        "location_street_address": ["2901 14th Street NW"]
+      },
+      "exprs": {
+        "distance": 27.5381244515262
+      }
+    },
+    {
+      "id": "6395",
+      "fields": {
+        "location_city": ["Washington"],
+        "location_phone_number": ["202-205-8800"],
+        "location_zipcode": ["20416"],
+        "location_name": ["Washington Metropolitan Area District Office"],
+        "location_hours_of_operation": ["Monday through Friday from 8 a.m. to 4:30 p.m."],
+        "location_state": ["DC"],
+        "title": ["Washington Metropolitan Area District"],
+        "office_type": ["SBA District Office"],
+        "location_email": ["wmadoee@sba.gov"],
+        "summary": [
+          "We will advocate for you, work with you, and empower you to confidently start, grow, and strengthen your business."
+        ],
+        "geolocation": ["38.88476199999999,-77.0155718"],
+        "office_website": ["/offices/district/dc/washington"],
+        "type": ["office"],
+        "location_street_address": ["409 3rd Street SW, Floor 2"]
+      },
+      "exprs": {
+        "distance": 28.005277522181657
+      }
+    },
+    {
+      "id": "16790",
+      "fields": {
+        "location_city": ["Washington"],
+        "location_phone_number": ["202-624-0606"],
+        "location_zipcode": ["20004"],
+        "location_state": ["DC"],
+        "location_name": ["Washington DC SBDC~ DC Chamber of Commerce "],
+        "title": ["Washington DC SBDC~ DC Chamber of Commerce "],
+        "office_type": ["Small Business Development Center"],
+        "geolocation": ["38.8967666,-77.0244037"],
+        "type": ["office"],
+        "location_street_address": ["506 9th St NW"]
+      },
+      "exprs": {
+        "distance": 28.038458069260955
+      }
+    }
+  ]
+}

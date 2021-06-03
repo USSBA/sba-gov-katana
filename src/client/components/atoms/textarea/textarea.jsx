@@ -28,22 +28,30 @@ class TextArea extends React.Component {
       showSuccessIcon,
       showErrorIcon,
       labelStyle,
+      helperText,
+      className,
       ...rest
     } = this.props
 
     return (
       <div id={id + '-container'} className={styles.inputContainer} hidden={hidden}>
-        <label htmlFor={this.props.id} className={labelStyle ? labelStyle : styles.controlLabel}>
+        <label
+          htmlFor={this.props.id}
+          className={labelStyle ? labelStyle : styles.controlLabel}
+          tabIndex="0"
+          aria-label={label}
+        >
           {label}
         </label>
         <div className={styles.textAreaContainer}>
           <textarea
             {...rest}
             id={id}
-            className={this.inputValidation(validationState)}
+            className={this.inputValidation(validationState) + ' ' + className}
             onChange={onChange}
             maxLength="250"
             value={value}
+            aria-label={helperText}
           />
           <ValidationIcon
             validationState={this.props.validationState}
@@ -52,7 +60,8 @@ class TextArea extends React.Component {
             extraClassName={styles.validationIcon}
           />
         </div>
-        {showCounter ? (
+        {helperText && <span className={styles.helperText}>{helperText}</span>}
+        {!helperText && showCounter ? (
           <span className={styles.textAreaCounter}>
             {value.length}
             /250

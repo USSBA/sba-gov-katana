@@ -1,12 +1,14 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable complexity */
 import PropTypes from 'prop-types'
 import React from 'react'
-
+import geo2zip from 'geo2zip'
 import { browserHistory } from 'react-router'
 import { omit, isEmpty, cloneDeep, merge } from 'lodash'
 import { parse, stringify } from 'querystring'
 
 import styles from './search.scss'
-import { fetchSiteContent } from '../../../fetch-content-helper'
+import { fetchSiteContent, fetchApiDistrictOffice } from '../../../fetch-content-helper'
 import { Paginator } from 'molecules'
 
 const createSlug = str => {
@@ -36,8 +38,24 @@ class SearchTemplate extends React.PureComponent {
       hasNoResults: false,
       isLoading: false,
       isZeroState: true,
-      defaultResults: []
+      defaultResults: [],
+      districtOffice: ''
     }
+  }
+
+  insertDistrictOffice(searchResults, districtOfficeDetails) {
+    searchResults.results.forEach((obj, index) => {
+      //Remove any other district offices found
+      if (obj.fields.office_type[0] === 'SBA District Office') {
+        searchResults.results.splice(index, 1)
+      }
+    })
+
+    //Add district office to the top of the list
+    if (searchResults.results) {
+      searchResults.results.unshift(districtOfficeDetails)
+    }
+    return searchResults
   }
 
   calculateMaxPageNumber(pageSize = this.state.searchParams.pageSize, count = this.state.count) {
@@ -85,23 +103,12 @@ class SearchTemplate extends React.PureComponent {
       this.props.defaultSearchParams || {},
       this.generateQueryMap()
     )
+
     this.setState({ searchParams: newSearchParams })
     if (this.props.loadDefaultResults === true || urlSearchString.length) {
       this.doSearch(this.props.searchType, newSearchParams)
     }
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   const { items: results, isLoading, defaultResults } = nextProps
-
-  //   const newState = {
-  //     defaultResults,
-  //     results,
-  //     isLoading
-  //   }
-
-  //   this.setState(newState)
-  // }
 
   onChange(propName, value, options = {}, callback) {
     const { scrollToTopAfterSearch } = this.props
@@ -145,14 +152,24 @@ class SearchTemplate extends React.PureComponent {
 
   filterSearchParams(searchParams) {
     const filteredSearchParams = {}
-    for (const paramName in searchParams) {
+    const paramsWithZip = searchParams
+    if (!paramsWithZip.address && paramsWithZip.mapCenter) {
+      this.geoToZip(paramsWithZip.mapCenter).then(zip => {
+        paramsWithZip.address = zip
+        delete paramsWithZip.mapCenter
+      })
+    }
+    for (const paramName in paramsWithZip) {
       if (searchParams.hasOwnProperty(paramName)) {
         let value = searchParams[paramName]
         if (value || value === 0) {
           //item.value to handle objects returned from multiselects
           value = value.value || value
-          if (value !== 'All') {
+          if (value !== 'All' && value !== 'All Visible') {
             filteredSearchParams[paramName] = value
+          }
+          if (value === 'All Visible') {
+            filteredSearchParams.type = this.props.allVisibleOffices.join(',')
           }
         }
       }
@@ -177,6 +194,50 @@ class SearchTemplate extends React.PureComponent {
     }
     this.setState(data, () => {
       this.doSearch(searchType, searchParams)
+    })
+  }
+
+  noResult = {
+    results: [],
+    count: 0,
+    isLoading: false,
+    isZeroState: false,
+    defaultResults: []
+  }
+
+  async geoToZip(mapCenter) {
+    const [lat, long] = mapCenter.split(/,/)
+    const zip = await geo2zip({
+      latitude: lat,
+      longitude: long
+    })
+    return zip[0]
+  }
+
+  getDistrictOffice(searchType, result, zip) {
+    fetchApiDistrictOffice(zip, () => {
+      this.setState(this.noResult)
+      this.props.updateNoResultsType && this.props.updateNoResultsType('invalidZipcode')
+    }).then(districtOffice => {
+      const filteredDistOfficeSearchParams = {
+        address: zip,
+        officeId: districtOffice.nodeId,
+        pageNumber: '1',
+        pageSize: 1,
+        start: 0
+      }
+
+      fetchSiteContent(searchType, filteredDistOfficeSearchParams).then(distOfficeSearchResults => {
+        let distOfficeResults = []
+        if (distOfficeSearchResults) {
+          distOfficeResults = distOfficeSearchResults.hit
+        }
+        const formatResult = distOfficeResults[0]
+          ? this.insertDistrictOffice(result, distOfficeResults[0])
+          : result
+
+        this.setState(formatResult)
+      })
     })
   }
 
@@ -211,7 +272,20 @@ class SearchTemplate extends React.PureComponent {
           }
         })
         .then(output => {
-          this.setState(output)
+          if (searchType === 'offices' && output.count > 0) {
+            if (searchParams.address || searchParams.mapCenter) {
+              // If its a district office lookup, Look for the assigned district office at place it at the top of the search.
+              if (searchParams.mapCenter && !searchParams.address) {
+                this.geoToZip(searchParams.mapCenter).then(zip => {
+                  this.getDistrictOffice(searchType, output, zip)
+                })
+              } else {
+                this.getDistrictOffice(searchType, output, searchParams.address)
+              }
+            }
+          } else {
+            this.setState(output)
+          }
         })
 
     // override search if a custom search exists
@@ -229,7 +303,6 @@ class SearchTemplate extends React.PureComponent {
       pathname: document.location.pathname,
       search: `?${stringify(urlParams)}`
     })
-
     this.setState(
       {
         isLoading: true,
