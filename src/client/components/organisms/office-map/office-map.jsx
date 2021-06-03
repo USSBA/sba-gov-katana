@@ -342,7 +342,7 @@ class OfficeMapApp extends React.PureComponent {
     // pass array of points with lats and lngs
 
     const { points, map } = this.state
-    const { onFieldChange, selectedItem, newCenter, onDragEnd, hoveredMarkerId, total, zip } = this.props
+    const { onFieldChange, selectedItem, newCenter, onDragEnd, hoveredMarkerId, total } = this.props
     const className = classNames({
       [styles.googleMap]: true,
       [styles.hasResults]: Boolean(total)
