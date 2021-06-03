@@ -114,4 +114,18 @@ describe('Local Assistance Find', function() {
     cy.get('#office-title-result-0').contains('District')
     expect(cy.get("[data-testid='showing results text']").contains('Showing 1 - 5 of 50')).to.exist
   })
+
+  it('Updates the zipcode field when the map is dragged to a different location', function() {
+    cy.server()
+    cy.route('GET', '/api/content/search/offices.json**').as('OfficeSearch')
+    cy.visit(`${baseUrl}/local-assistance/find`)
+    cy.get('input#zip').type('20024')
+    cy.get("[data-cy='search button']").click()
+    cy.wait('@OfficeSearch')
+    cy.get('input#zip').should('have.value', '20024')
+    
+    cy.visit(`${baseUrl}/local-assistance/find?type=SCORE%20Business%20Mentoring%2CSmall%20Business%20Development%20Center%2CU.S.%20Export%20Assistance%20Center%2CVeteran%E2%80%99s%20Business%20Outreach%20Center%2CWomen%E2%80%99s%20Business%20Center%2CProcurement%20Technical%20Assistance%20Center%2CCertified%20Development%20Company&address=20024&mapCenter=38.90613720305586%2C-77.09263126279296&pageNumber=1
+    `)
+    cy.get('input#zip').should('have.value', '20007')
+  })
 })

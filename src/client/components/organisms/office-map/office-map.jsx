@@ -139,7 +139,13 @@ class OfficeMapApp extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { items, shouldCenterMap } = nextProps
+    const { items, shouldCenterMap, zip } = nextProps
+    if (zip !== this.props.zip) {
+      this.props.onFieldChange('address', zip, {
+        shouldTriggerSearch: true,
+        shouldResetPageNumber: true
+      })
+    }
     const { map, areAllMapElementsRemovedFromTabOrder } = this.state
     const newPoints = this.getLatLngs(items)
     if (difference(newPoints, this.state.points)) {
@@ -336,8 +342,7 @@ class OfficeMapApp extends React.PureComponent {
     // pass array of points with lats and lngs
 
     const { points, map } = this.state
-    const { onFieldChange, selectedItem, newCenter, onDragEnd, hoveredMarkerId, total } = this.props
-
+    const { onFieldChange, selectedItem, newCenter, onDragEnd, hoveredMarkerId, total, zip } = this.props
     const className = classNames({
       [styles.googleMap]: true,
       [styles.hasResults]: Boolean(total)
@@ -356,17 +361,10 @@ class OfficeMapApp extends React.PureComponent {
               const mapCenter = map.getCenter()
               this.setState({ points: [] })
               onDragEnd()
-              onFieldChange(
-                'mapCenter',
-                `${mapCenter.lat()},${mapCenter.lng()}`,
-                {
-                  shouldTriggerSearch: true,
-                  shouldResetPageNumber: true
-                },
-                () => {
-                  onFieldChange('address', '')
-                }
-              )
+              onFieldChange('mapCenter', `${mapCenter.lat()},${mapCenter.lng()}`, {
+                shouldTriggerSearch: true,
+                shouldResetPageNumber: true
+              })
             }
           }}
           onMarkerClick={e => {
