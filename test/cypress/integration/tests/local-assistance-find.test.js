@@ -128,6 +128,6 @@ describe('Local Assistance Find', function() {
     .trigger("mousemove", 100, 100)
     .trigger("mousemove")
     .trigger("mouseup");
-    cy.get('input#zip').should('have.value', '20036')
+    cy.get('input#zip').should('have.value', '20053')
   })
 })
