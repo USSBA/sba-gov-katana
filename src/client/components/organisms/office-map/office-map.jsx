@@ -402,6 +402,7 @@ OfficeMapApp.propTypes = {
   onMarkerClick: PropTypes.func,
   onMarkerHover: PropTypes.func,
   onDragEnd: PropTypes.func,
-  shouldCenterMap: PropTypes.bool
+  shouldCenterMap: PropTypes.bool,
+  zip: PropTypes.string
 }
 export default OfficeMapApp
