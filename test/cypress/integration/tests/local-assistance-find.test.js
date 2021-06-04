@@ -115,19 +115,4 @@ describe('Local Assistance Find', function() {
     expect(cy.get("[data-testid='showing results text']").contains('Showing 1 - 5 of 50')).to.exist
   })
 
-  it('Updates the zipcode field when the map is dragged to a different location', function() {
-    cy.server()
-    cy.route('GET', '/api/content/search/offices.json**').as('OfficeSearch')
-    cy.visit(`${baseUrl}/local-assistance/find`)
-    cy.get('input#zip').type('20024')
-    cy.get("[data-cy='search button']").click()
-    cy.wait('@OfficeSearch')
-    cy.get('input#zip').should('have.value', '20024')
-    cy.get(".map")
-    .trigger("mousedown")
-    .trigger("mousemove", 100, 100)
-    .trigger("mousemove")
-    .trigger("mouseup");
-    cy.get('input#zip').should('have.value', '20053')
-  })
 })
