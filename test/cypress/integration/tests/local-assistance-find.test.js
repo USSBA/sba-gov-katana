@@ -114,4 +114,5 @@ describe('Local Assistance Find', function() {
     cy.get('#office-title-result-0').contains('District')
     expect(cy.get("[data-testid='showing results text']").contains('Showing 1 - 5 of 50')).to.exist
   })
+
 })
