@@ -1,23 +1,38 @@
+foresee:
+  environment: staging
+googleAnalytics:
+  enabled: false
 server:
   fqdn: localhost
-developmentOptions:
-    client:
-        logging: true
-    redux:
-        logging: true
-    webpack:
-        enabled: true
-        silent: false
-govdelivery:
-    popupEnabled: false
-foresee:
-    enabled: false
-aws:
-  dynamodb:
-    endpoint: UrlToNodeDev1
 features:
+  forPartners: true
+  showSbic: false
+  moon: false
+  searchUrl: /search/?q=
   urlRedirect:
-    tableName: UrlToNodeDev1
     enabled: true
+    tableName: UrlToNodeIntegration
   drupalRedirect:
-    tableName: UrlToUrlRedirectDev1
+    enabled: true
+    tableName: UrlToUrlRedirectIntegration
+  breakEvenCalculator:
+    enabled: true
+developmentOptions:
+  client:
+    logging: true
+  redux:
+    logging: true
+  webpack:
+    enabled: true
+    silent: false
+  assets:
+    endpoint: wakizashi.mint.ussba.io
+  devMode: true
+miscapi:
+  endpoint: dfkiuddxql.execute-api.us-east-1.amazonaws.com/mint/
+content:
+  endpoint: dqpulmzikk.execute-api.us-east-1.amazonaws.com/mint
+  cloudfront: d32xeasjw66w65.cloudfront.net
+  useD8EventsBackend: false
+govdelivery:
+  popupEnabled: false
