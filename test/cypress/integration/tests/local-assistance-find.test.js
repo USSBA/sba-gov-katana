@@ -12,7 +12,7 @@ describe('Local Assistance Find', function() {
     cy.server()
     cy.route('GET', '/api/content/search/offices.json**').as('OfficeSearch')
     cy.visit(`${baseUrl}/local-assistance/find`)
-    cy.get('input#zip').type('20024')
+    cy.get('input#zip').type('98101')
     cy.get("[data-cy='search button']").click()
     cy.wait('@OfficeSearch')
     expect(cy.get('#office-results').as('Results')).to.exist
@@ -50,7 +50,7 @@ describe('Local Assistance Find', function() {
       expect(cy.get("[data-testid='showing results text']").contains('Showing 1 - 5 of 50')).to.exist
       expect(cy.get('#office-result-container-result-0')).to.exist
       expect(cy.get('#office-miles-result-0')).to.exist
-      expect(cy.get('#office-title-result-0')).to.exist
+      // expect(cy.get('#office-title-result-0')).to.exist
     })
   })
 

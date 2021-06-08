@@ -144,8 +144,14 @@ class OfficeResult extends React.PureComponent {
                     </div>
                     <div className={styles.clear} />
                   </div>
-                  <h2 id={`office-title-${id}`} className={styles.title} tabIndex="0">{title}</h2>
-                  {street && <div data-cy="contact address" className={styles.street} tabIndex="0">{street}</div>}
+                  <h2 id={`office-title-${id}`} className={styles.title} tabIndex="0">
+                    {title}
+                  </h2>
+                  {street && (
+                    <div data-cy="contact address" className={styles.street} tabIndex="0">
+                      {street}
+                    </div>
+                  )}
                 </div>
                 <div>
                   {item.office_service ? (
@@ -165,7 +171,7 @@ class OfficeResult extends React.PureComponent {
           <div className={styles.actions}>
             {link && (
               <div
-                data-cy="website link"
+                data-cy="contact link"
                 role="button"
                 tabIndex="0"
                 className={websiteClassName}
@@ -180,7 +186,6 @@ class OfficeResult extends React.PureComponent {
             {link && link.includes('/offices/district/') && itemId === '6394' ? (
               // title.includes('District')
               <div
-                data-cy="contact link"
                 role="button"
                 tabIndex="0"
                 className={contactClassName}
