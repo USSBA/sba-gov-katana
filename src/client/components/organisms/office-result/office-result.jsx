@@ -132,7 +132,7 @@ class OfficeResult extends React.PureComponent {
                         className={styles.marker}
                       />
                     </div>
-                    <div id={`office-miles-${id}`} className={styles.miles}>
+                    <div id={`office-miles-${id}`} className={styles.miles} tabIndex="0">
                       {item.office_type && item.office_type?.[0] === 'SBA District Office' ? (
                         <div className={styles.districtOfficeText}>Your District Office - </div>
                       ) : null}
@@ -144,10 +144,8 @@ class OfficeResult extends React.PureComponent {
                     </div>
                     <div className={styles.clear} />
                   </div>
-                  <div id={`office-title-${id}`}>
-                    <h2>{title}</h2>
-                  </div>
-                  <div data-cy="contact address">{street && <div>{street}</div>}</div>
+                  <h2 id={`office-title-${id}`} className={styles.title} tabIndex="0">{title}</h2>
+                  {street && <div data-cy="contact address" className={styles.street} tabIndex="0">{street}</div>}
                 </div>
                 <div>
                   {item.office_service ? (
@@ -166,20 +164,27 @@ class OfficeResult extends React.PureComponent {
           </div>
           <div className={styles.actions}>
             {link && (
-              <a data-cy="contact link" href={link} target="_blank" style={{ textDecoration: 'none' }}>
-                <div className={websiteClassName}>
-                  <i className={'fa fa-globe ' + styles.fa} />
-                  <br />
-                  Website
-                </div>
-              </a>
+              <div
+                data-cy="website link"
+                role="button"
+                tabIndex="0"
+                className={websiteClassName}
+                ariaLabel="website"
+              >
+                <i className={'fa fa-globe ' + styles.fa} />
+                <br />
+                Website
+              </div>
             )}
             {/* this is the nodeId for the Seattle Office */}
             {link && link.includes('/offices/district/') && itemId === '6394' ? (
               // title.includes('District')
-              <a
-                href={null}
-                target="_blank"
+              <div
+                data-cy="contact link"
+                role="button"
+                tabIndex="0"
+                className={contactClassName}
+                ariaLabel="website"
                 onClick={() => {
                   this.props.modalActions.showOfficeContactModal(title, link, {
                     zipCode,
@@ -190,12 +195,10 @@ class OfficeResult extends React.PureComponent {
                   })
                 }}
               >
-                <div className={contactClassName}>
-                  <i className={'fa fa-envelope ' + styles.fa} />
-                  <br />
-                  Contact
-                </div>
-              </a>
+                <i className={'fa fa-envelope ' + styles.fa} />
+                <br />
+                Contact
+              </div>
             ) : (
               <> </>
             )}

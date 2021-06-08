@@ -167,6 +167,13 @@
   clear: both;
 }
 
+.title, .street {
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
+}
+
 .detailView {
   width: 100%;
   padding: 20px;
@@ -221,10 +228,24 @@
 .website {
   text-align: center;
   margin-bottom: 18px;
+  padding: 2px;
+  color: $sba-blue-alt;
+
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
 }
 
 .contact {
   text-align: center;
+  padding: 2px;
+  color: $sba-blue-alt;
+
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
 }
 
 .resultPhoneNumber {
