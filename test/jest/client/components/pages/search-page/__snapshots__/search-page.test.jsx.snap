@@ -23,7 +23,6 @@ exports[`SearchPage to match snapshot 1`] = `
             id="search-container"
           >
             <label
-              aria-label="What are you looking for?"
               className={null}
               data-testid="search-label"
               htmlFor="search"
@@ -36,7 +35,6 @@ exports[`SearchPage to match snapshot 1`] = `
             >
               <input
                 aria-controls="results-list"
-                aria-labelledby="search"
                 className="input"
                 data-testid="search"
                 defaultValue=""
