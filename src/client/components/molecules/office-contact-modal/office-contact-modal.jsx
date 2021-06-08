@@ -120,6 +120,7 @@ class OfficeContactModal extends React.Component {
       userFullName: this.state.userFullName,
       userTopic: this.state.userTopicLabel,
       userDetails: this.state.userDetails,
+      userPhoneNumber: this.state.userPhoneNumber,
       userOptIn: this.state.userOptIn,
       officeName: this.state.officeName,
       officeLink: this.state.officeLink,
