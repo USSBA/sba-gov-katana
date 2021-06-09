@@ -24,13 +24,13 @@ orbs:
 executors:
   node:
     docker:
-    - image: cimg/node:12.18
+      - image: cimg/node:12.18
   node-browsers:
     docker:
-    - image: cimg/node:12.18-browsers
+      - image: cimg/node:12.18-browsers
   python:
     docker:
-    - image: cimg/python:3.9
+      - image: cimg/python:3.9
 
 commands:
   install-aws:
@@ -43,7 +43,7 @@ commands:
     steps:
       - restore_cache:
           keys:
-          - v2-npm-{{ checksum "package-lock.json" }}
+            - v2-npm-{{ checksum "package-lock.json" }}
   save-npm-cache:
     steps:
       - save_cache:
@@ -55,150 +55,150 @@ commands:
 workflows:
   test-build-deploy:
     jobs:
-    - cache-dependencies:
-        filters:
-          branches:
-            only:
-            - /.*/
-          tags:
-            only:
-            - mint
-            - demo
-            - venus
-            - /deploy-\w+/
-            - staging
-            - production
-    - test-jest:
-        requires:
-          - cache-dependencies
-        filters:
-          branches:
-            only:
-            - /.*/
-          tags:
-            only:
-            - /.*/
-    - test-mocha:
-        requires: 
-          - cache-dependencies
-        filters:
-          branches:
-            only:
-            - /.*/
-          tags:
-            only:
-            - /.*/
-    - test-cypress:
-        requires: 
-          - cache-dependencies
-        filters:
-          branches:
-            only:
-            - /.*/
-          tags:
-            only:
-            - /.*/
-        context: sba-gov-lower
-    - build-webpack:
-        requires: [test-jest, test-mocha, test-cypress]
-        filters:
-          branches:
-            only:
-            - master
-            - /[Ff]eature-\w+-\d+[-\w]*/
-          tags:
-            only:
-            - production
-            - staging
-            - mint
-            - demo
-            - venus
-            - /deploy-\w+/
-    - build-package:
-        requires: [build-webpack]
-        filters:
-          branches:
-            only:
-            - master
-            - /[Ff]eature-\w+-\d+[-\w]*/
-          tags:
-            only:
-            - production
-            - staging
-            - mint
-            - demo
-            - venus
-            - /deploy-\w+/
-    - upload-assets:
-        requires: [build-package]
-        filters:
-          branches:
-            only:
-            - master
-          tags:
-            only:
-            - mint
-            - qa
-            - demo
-            - venus
-        context: sba-gov-lower
-    - deploy-package:
-        requires: [upload-assets]
-        filters:
-          branches: 
-            only:
-            - master
-          tags:
-            only:
-            - mint
-            - qa
-            - venus
-            - demo
-        context: sba-gov-lower
-    - deploy-package:
-        name: "deploy-package-without-assets"
-        requires: [build-package]
-        filters:
-          branches:
-            ignore:
-            - /.*/
-          tags:
-            only:
-            - /deploy-\w+/
-        context: sba-gov-lower
-    - hold:
-        type: approval
-        requires: [build-package]
-        filters:
-          branches:
-            ignore:
-            - /.*/
-          tags:
-            only:
-            - production
-            - staging
-    - upload-assets-with-approval:
-        requires: [hold]
-        filters:
-          branches: 
-            ignore:
-            - /.*/
-          tags:
-            only:
-            - staging
-            - production
-        context: sba-gov-upper
-    - deploy-package-with-approval:
-        requires: [upload-assets-with-approval]
-        filters:
-          branches: 
-            ignore:
-            - /.*/
-          tags:
-            only:
-            - staging
-            - production
-        context: sba-gov-upper
+      - cache-dependencies:
+          filters:
+            branches:
+              only:
+                - /.*/
+            tags:
+              only:
+                - mint
+                - demo
+                - venus
+                - /deploy-\w+/
+                - staging
+                - production
+      - test-jest:
+          requires:
+            - cache-dependencies
+          filters:
+            branches:
+              only:
+                - /.*/
+            tags:
+              only:
+                - /.*/
+      - test-mocha:
+          requires:
+            - cache-dependencies
+          filters:
+            branches:
+              only:
+                - /.*/
+            tags:
+              only:
+                - /.*/
+      - test-cypress:
+          requires:
+            - cache-dependencies
+          filters:
+            branches:
+              only:
+                - /.*/
+            tags:
+              only:
+                - /.*/
+          context: sba-gov-lower
+      - build-webpack:
+          requires: [test-jest, test-mocha, test-cypress]
+          filters:
+            branches:
+              only:
+                - master
+                - /[Ff]eature-\w+-\d+[-\w]*/
+            tags:
+              only:
+                - production
+                - staging
+                - mint
+                - demo
+                - venus
+                - /deploy-\w+/
+      - build-package:
+          requires: [build-webpack]
+          filters:
+            branches:
+              only:
+                - master
+                - /[Ff]eature-\w+-\d+[-\w]*/
+            tags:
+              only:
+                - production
+                - staging
+                - mint
+                - demo
+                - venus
+                - /deploy-\w+/
+      - upload-assets:
+          requires: [build-package]
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              only:
+                - mint
+                - qa
+                - demo
+                - venus
+          context: sba-gov-lower
+      - deploy-package:
+          requires: [upload-assets]
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              only:
+                - mint
+                - qa
+                - venus
+                - demo
+          context: sba-gov-lower
+      - deploy-package:
+          name: 'deploy-package-without-assets'
+          requires: [build-package]
+          filters:
+            branches:
+              ignore:
+                - /.*/
+            tags:
+              only:
+                - /deploy-\w+/
+          context: sba-gov-lower
+      - hold:
+          type: approval
+          requires: [build-package]
+          filters:
+            branches:
+              ignore:
+                - /.*/
+            tags:
+              only:
+                - production
+                - staging
+      - upload-assets-with-approval:
+          requires: [hold]
+          filters:
+            branches:
+              ignore:
+                - /.*/
+            tags:
+              only:
+                - staging
+                - production
+          context: sba-gov-upper
+      - deploy-package-with-approval:
+          requires: [upload-assets-with-approval]
+          filters:
+            branches:
+              ignore:
+                - /.*/
+            tags:
+              only:
+                - staging
+                - production
+          context: sba-gov-upper
 jobs:
   cache-dependencies:
     executor: node
@@ -240,23 +240,25 @@ jobs:
   build-webpack:
     executor: node
     steps:
-    - checkout
-    - restore-npm-cache
-    - run:
-        name: build webpack
-        command: |
-          npm run build
-    - save_cache:
-        paths:
-        - ./public/build
-        - ./dist
-        key: v5-webpack-{{ .Revision }}
+      - checkout
+      - restore-npm-cache
+      - run:
+          name: build webpack
+          command: |
+            npm run build
+      - save_cache:
+          paths:
+            - ./public/build
+            - ./dist
+          key: v5-webpack-{{ .Revision }}
   build-package:
     working_directory: /home/circleci/project
     executor: node
     steps:
       - checkout
-      - restore-npm-cache
+      - restore_cache:
+          keys:
+            - v5-webpack-{{ .Revision }}
       - run:
           name: create zip package
           command: |
