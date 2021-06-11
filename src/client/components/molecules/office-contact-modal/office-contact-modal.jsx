@@ -19,7 +19,8 @@ import {
   getNameValidationState,
   getEmailValidationState,
   getSelectBoxValidationState,
-  getPhoneValidationState
+  getPhoneValidationState,
+  getEmailMatchValidationState
 } from '../../../services/form-validation-helpers.js'
 import OfficeContactSuccess from './office-contact-success'
 
@@ -46,13 +47,26 @@ class OfficeContactModal extends React.Component {
         userFullName: null,
         userEmailAddress: null,
         userTopic: null,
-        userPhoneNumber: null
+        userPhoneNumber: null,
+        userConfirmEmailAddress: null
       }
     }
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-    const validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
+    const returnEmailValue = () => {
+      if (name === 'userConfirmEmailAddress') {
+        return this.state.userEmailAddress
+      }
+      return null
+    }
+
+    const validationState = validationFunction(
+      name,
+      this.state[name],
+      defaultWhenNotSuccessful || null,
+      returnEmailValue()
+    )
     if (validationState[name] === 'error') {
       logEvent({
         category: 'Office Contact Modal',
@@ -60,6 +74,7 @@ class OfficeContactModal extends React.Component {
         label: name
       })
     }
+
     return validationState
   }
 
@@ -77,6 +92,17 @@ class OfficeContactModal extends React.Component {
       validStates = Object.assign(
         validStates,
         this.validateSingleField(getEmailValidationState, 'userEmailAddress', defaultWhenNotSuccessful)
+      )
+    }
+
+    if (includes(fields, 'userConfirmEmailAddress')) {
+      validStates = Object.assign(
+        validStates,
+        this.validateSingleField(
+          getEmailMatchValidationState,
+          'userConfirmEmailAddress',
+          defaultWhenNotSuccessful
+        )
       )
     }
 
@@ -117,6 +143,7 @@ class OfficeContactModal extends React.Component {
 
     const formData = {
       userEmailAddress: this.state.userEmailAddress,
+      userConfirmEmailAddress: this.state.userConfirmEmailAddress,
       userFullName: this.state.userFullName,
       userTopic: this.state.userTopicLabel,
       userDetails: this.state.userDetails,
@@ -250,6 +277,19 @@ class OfficeContactModal extends React.Component {
                   alternateError
                 />
                 <TextInput
+                  id="userConfirmEmailAddress"
+                  name="userConfirmEmailAddress"
+                  label="Confirm Email"
+                  helperText="Required. Must match email address above. "
+                  errorText="Required. Must match email address above. "
+                  onChange={this.handleChange.bind(this)}
+                  value={this.state.userConfirmEmailAddress}
+                  validationState={this.state.validStates.userConfirmEmailAddress}
+                  className={styles.input}
+                  labelStyle={styles.label}
+                  alternateError
+                />
+                <TextInput
                   id="userPhoneNumber"
                   name="userPhoneNumber"
                   inputType="tel"
@@ -261,7 +301,6 @@ class OfficeContactModal extends React.Component {
                   labelStyle={styles.label}
                   helperText="Optional. Must be 10 numeric characters."
                   errorText="Optional. Must be 10 numeric characters."
-                  alternateError
                 />
                 <MultiSelect
                   id="userTopic"
