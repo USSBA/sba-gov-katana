@@ -278,14 +278,12 @@ class OfficeContactModal extends React.Component {
                   helperText="Required. Select your topic from the provided options."
                   errorText="Required. Select your topic from the provided options."
                   options={[
-                    { value: 'covid-19 relief', label: 'Covid-19 Relief' },
-                    { value: 'disaster relief', label: 'Disaster Relief' },
-                    { value: 'consulting', label: 'Consulting' },
-                    { value: 'financial assistance', label: 'Financial Assistance' },
+                    { value: 'covid-19 relief', label: 'Covid-19 Relief Programs' },
                     {
-                      value: 'procurement & government contracting',
-                      label: 'Procurement & Government Contracting'
+                      value: 'government contracting',
+                      label: 'Government Contracting'
                     },
+                    { value: 'natural disasters', label: 'Natural Disasters' },
                     { value: 'other', label: 'Other' }
                   ]}
                   alternateError
