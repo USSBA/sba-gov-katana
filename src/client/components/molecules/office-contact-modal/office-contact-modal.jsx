@@ -18,7 +18,8 @@ import {
   containsErrorOrNull,
   getNameValidationState,
   getEmailValidationState,
-  getSelectBoxValidationState
+  getSelectBoxValidationState,
+  getPhoneValidationState
 } from '../../../services/form-validation-helpers.js'
 import OfficeContactSuccess from './office-contact-success'
 
@@ -35,6 +36,7 @@ class OfficeContactModal extends React.Component {
       userTopicLabel: '',
       userDetails: '',
       userOptIn: false,
+      userPhoneNumber: null,
       checkboxFocus: false,
       showSuccess: false,
       officeName: props.officeName,
@@ -43,7 +45,8 @@ class OfficeContactModal extends React.Component {
       validStates: {
         userFullName: null,
         userEmailAddress: null,
-        userTopic: null
+        userTopic: null,
+        userPhoneNumber: null
       }
     }
   }
@@ -84,6 +87,13 @@ class OfficeContactModal extends React.Component {
       )
     }
 
+    if (this.state.userPhoneNumber && includes(fields, 'userPhoneNumber')) {
+      validStates = Object.assign(
+        validStates,
+        this.validateSingleField(getPhoneValidationState, 'userPhoneNumber', defaultWhenNotSuccessful)
+      )
+    }
+
     this.setState({ validStates: validStates })
   }
 
@@ -110,6 +120,7 @@ class OfficeContactModal extends React.Component {
       userFullName: this.state.userFullName,
       userTopic: this.state.userTopicLabel,
       userDetails: this.state.userDetails,
+      userPhoneNumber: this.state.userPhoneNumber,
       userOptIn: this.state.userOptIn,
       officeName: this.state.officeName,
       officeLink: this.state.officeLink,
@@ -236,6 +247,20 @@ class OfficeContactModal extends React.Component {
                   validationState={this.state.validStates.userEmailAddress}
                   className={styles.input}
                   labelStyle={styles.label}
+                  alternateError
+                />
+                <TextInput
+                  id="userPhoneNumber"
+                  name="userPhoneNumber"
+                  inputType="tel"
+                  label="Phone Number"
+                  onChange={this.handleChange.bind(this)}
+                  value={this.state.userPhoneNumber}
+                  validationState={this.state.validStates.userPhoneNumber}
+                  className={styles.input}
+                  labelStyle={styles.label}
+                  helperText="Optional. Must be 10 numeric characters."
+                  errorText="Optional. Must be 10 numeric characters."
                   alternateError
                 />
                 <MultiSelect
