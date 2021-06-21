@@ -154,10 +154,7 @@ class SearchTemplate extends React.PureComponent {
     const filteredSearchParams = {}
     const paramsWithZip = searchParams
     if (!paramsWithZip.address && paramsWithZip.mapCenter) {
-      this.geoToZip(paramsWithZip.mapCenter).then(zip => {
-        paramsWithZip.address = zip
-        delete paramsWithZip.mapCenter
-      })
+      this.props.geoZip
     }
     for (const paramName in paramsWithZip) {
       if (searchParams.hasOwnProperty(paramName)) {
@@ -205,15 +202,6 @@ class SearchTemplate extends React.PureComponent {
     defaultResults: []
   }
 
-  async geoToZip(mapCenter) {
-    const [lat, long] = mapCenter.split(/,/)
-    const zip = await geo2zip({
-      latitude: lat,
-      longitude: long
-    })
-    return zip[0]
-  }
-
   getDistrictOffice(searchType, result, zip) {
     fetchApiDistrictOffice(zip, () => {
       this.setState(this.noResult)
@@ -236,32 +224,7 @@ class SearchTemplate extends React.PureComponent {
           ? this.insertDistrictOffice(result, distOfficeResults[0])
           : result
 
-        const distanceInMiles = 500
-        // remove results farther than `distanceInMiles` from specified location
-        formatResult.results = formatResult.results.filter(office => {
-          // if the API doesn't return distance, return those offices anyway
-          if (!office.exprs) {
-            return true
-          } else {
-            // if the API returns distance, filter out office that are too far away
-            return office.exprs.distance < distanceInMiles
-          }
-        })
-
-        this.setState(formatResult, () => {
-          // fix pagination when results more than `distanceInMiles` get removed
-          const { results, searchParams } = this.state
-          if (results.length < searchParams.pageSize) {
-            const newCount = (this.calculatePageNumber() - 1) * searchParams.pageSize + results.length
-            this.setState({ count: newCount })
-          }
-          if (!this.props.updateNoResultsType) {
-            return
-          }
-          if (results.length === 1) {
-            this.props.updateNoResultsType('noOfficeResults')
-          }
-        })
+        this.setState(formatResult)
       })
     })
   }
@@ -301,9 +264,7 @@ class SearchTemplate extends React.PureComponent {
             if (searchParams.address || searchParams.mapCenter) {
               // If its a district office lookup, Look for the assigned district office at place it at the top of the search.
               if (searchParams.mapCenter && !searchParams.address) {
-                this.geoToZip(searchParams.mapCenter).then(zip => {
-                  this.getDistrictOffice(searchType, output, zip)
-                })
+                this.getDistrictOffice(searchType, output, this.props.geoZip)
               } else {
                 this.getDistrictOffice(searchType, output, searchParams.address)
               }
@@ -512,6 +473,7 @@ SearchTemplate.propTypes = {
   loadingText: PropTypes.string,
   noResultsHeading: PropTypes.string,
   noResultsBody: PropTypes.string,
+  geoZip: PropTypes.integer,
 
   // callback called during each event handler
   onHandleEvent: PropTypes.func

@@ -2,7 +2,7 @@ import React from 'react'
 import { isEmpty, debounce } from 'lodash'
 
 import { fetchSiteContent } from '../../../fetch-content-helper'
-
+import geo2zip from 'geo2zip'
 import styles from './lender-lookup-page.scss'
 import { Card } from 'molecules'
 import { StyleWrapperDiv, TextInput, Link, DatalistDropdown } from 'atoms'
@@ -20,8 +20,26 @@ class LenderLookupPage extends React.PureComponent {
       hoveredMarkerId: '',
       isLenderNameVisible: false,
       lenderSuggestions: [],
-      isValidZip: true
+      isValidZip: true,
+      geoZip: ''
     }
+  }
+
+  setGeoZip(mapCenter) {
+    if (mapCenter) {
+      this.geoToZip(mapCenter).then(zip => {
+        this.setState({ geoZip: zip })
+      })
+    }
+  }
+
+  async geoToZip(mapCenter) {
+    const [lat, long] = mapCenter.split(/,/)
+    const zip = await geo2zip({
+      latitude: lat,
+      longitude: long
+    })
+    return zip ? zip[0] : ''
   }
 
   async getLenderSuggestions(value) {
@@ -87,6 +105,17 @@ class LenderLookupPage extends React.PureComponent {
       pageSize
     }
 
+    const mapCenter = this.props?.location?.query?.mapCenter ? this.props.location.query.mapCenter : ''
+    mapCenter &&
+      this.geoToZip(mapCenter).then(zip => {
+        let geoZip = zip
+        if (!geoZip) {
+          geoZip = this.props.location.query.address
+        }
+        if (geoZip !== this.state.geoZip) {
+          this.setState({ geoZip: geoZip })
+        }
+      })
     return (
       <>
         <div className={styles.infoSection}>
@@ -127,6 +156,7 @@ class LenderLookupPage extends React.PureComponent {
           paginate={false}
           showStatus={false}
           onHandleEvent={this.centerMap.bind(this, false)}
+          geoZip={this.state.geoZip}
         >
           <PrimarySearchBar
             id="lender-primary-search-bar"
@@ -172,6 +202,7 @@ class LenderLookupPage extends React.PureComponent {
           <StyleWrapperDiv className={styles.mapResults}>
             <OfficeMap
               id="office-map"
+              zip={this.state.geoZip}
               onMarkerClick={item => {
                 this.centerMap(true)
                 this.setSelectedItem(item)
