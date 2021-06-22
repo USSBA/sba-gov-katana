@@ -301,6 +301,7 @@ class OfficeContactModal extends React.Component {
                   labelStyle={styles.label}
                   helperText="Optional. Must be 10 numeric characters."
                   errorText="Optional. Must be 10 numeric characters."
+                  alternateError
                 />
                 <MultiSelect
                   id="userTopic"
