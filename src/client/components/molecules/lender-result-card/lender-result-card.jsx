@@ -57,8 +57,8 @@ const LenderResultCard = props => {
       <div className={styles.firstColumn}>
         {title && (
           <h4
-            data-testid="lender card title"
-            data-cy="lender card title"
+            data-testid="lender-card-title"
+            data-cy="lender-card-title"
             tabIndex="0"
             className={styles.h4}
           >
