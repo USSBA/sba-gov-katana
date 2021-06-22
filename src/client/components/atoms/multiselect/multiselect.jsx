@@ -42,7 +42,7 @@ class MultiSelect extends React.Component {
 
     return (
       <div className={selectClassName} data-cy={dataCy ? dataCy : id} data-testid={testId}>
-        <label className={labelStyle ? labelStyle : null} htmlFor={id} tabIndex="0" aria-label={label}>
+        <label className={labelStyle ? labelStyle : null} htmlFor={id} tabIndex="0">
           {label}
         </label>
         <ReactSelect

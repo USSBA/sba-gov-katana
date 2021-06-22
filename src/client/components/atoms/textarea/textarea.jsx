@@ -39,7 +39,6 @@ class TextArea extends React.Component {
           htmlFor={this.props.id}
           className={labelStyle ? labelStyle : styles.controlLabel}
           tabIndex="0"
-          aria-label={label}
         >
           {label}
         </label>

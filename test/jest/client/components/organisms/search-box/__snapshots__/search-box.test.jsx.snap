@@ -35,7 +35,6 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
           className="container"
         >
           <input
-            aria-labelledby="document-lookup"
             className="input"
             data-testid="document-lookup"
             id="document-lookup"
