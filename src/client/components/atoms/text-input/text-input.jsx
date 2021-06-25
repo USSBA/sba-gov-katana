@@ -148,7 +148,6 @@ class TextInput extends React.Component {
             className={labelStyle ? labelStyle : null}
             data-testid={kebabCase(`${id} label`)}
             tabIndex="0"
-            aria-label={label}
           >
             {label}
           </label>
@@ -157,7 +156,6 @@ class TextInput extends React.Component {
               id={id}
               {...rest}
               {...optionalPlaceholderProp}
-              aria-labelledby={id}
               aria-label={helperText || ariaLabel}
               className={classNames({
                 [styles.input]: true,
