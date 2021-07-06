@@ -15,7 +15,7 @@
   outline: none;
   margin: 20px auto 0;
   max-width: 650px;
-  max-height: 100vh;
+  max-height: calc(100vh - 50px);
   overflow-y: auto;
   overflow-x: hidden;
   background-color: $sba-white;
@@ -141,4 +141,20 @@
   margin-left: 36px;
   width: 330px;
   margin-top: 15px;
+}
+
+.recaptchaContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.recaptchaError {
+  color: $sba-red-dark;
+  font-size: 16px;
+  margin-top: 4px;
+  margin-bottom: 0;
+  font-weight: 600;
 }

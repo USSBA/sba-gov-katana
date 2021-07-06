@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { RemoveScroll } from 'react-remove-scroll'
 import { bindActionCreators } from 'redux'
 import { includes } from 'lodash'
+import ReCAPTCHA from 'react-google-recaptcha'
 import Checkbox from '../../atoms/checkbox/checkbox-lib.jsx'
 import { runMiscAction, postMiscAction } from '../../../fetch-content-helper.js'
 import constants from '../../../services/constants.js'
@@ -25,6 +26,9 @@ import {
 import OfficeContactSuccess from './office-contact-success'
 
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
+
+const recaptchaRef = React.createRef()
+
 class OfficeContactModal extends React.Component {
   constructor(props) {
     super()
@@ -43,6 +47,7 @@ class OfficeContactModal extends React.Component {
       officeName: props.officeName,
       officeLink: props.officeLink,
       addressObject: props.officeAddress,
+      reCaptchaError: false,
       validStates: {
         userFullName: null,
         userEmailAddress: null,
@@ -129,6 +134,9 @@ class OfficeContactModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+
+    const recaptchaValue = recaptchaRef.current.getValue()
+
     this.validateFields(Object.keys(this.state.validStates), 'error')
 
     const { validStates } = this.state
@@ -137,7 +145,13 @@ class OfficeContactModal extends React.Component {
       return validStates[key] === 'error'
     })
 
-    if (hasErrors.length) {
+    if (hasErrors.length || !recaptchaValue) {
+      if (!recaptchaValue) {
+        this.setState({ reCaptchaError: true })
+      } else {
+        this.setState({ reCaptchaError: false })
+      }
+
       return null
     }
 
@@ -359,6 +373,12 @@ class OfficeContactModal extends React.Component {
                     />{' '}
                     Opt in to SBA email communications
                   </label>
+                </div>
+                <div className={styles.recaptchaContainer}>
+                  <ReCAPTCHA ref={recaptchaRef} sitekey="6Len23wbAAAAAI8PFf8CwK1sc7y1H32mJIGpYWKy" />
+                  {this.state.reCaptchaError && (
+                    <p className={styles.recaptchaError}>Confirm you are not a robot.</p>
+                  )}
                 </div>
                 <div className={styles.btnContainer}>
                   <div className={styles.btnContent}>
