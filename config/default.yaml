@@ -1,53 +1,54 @@
 developmentOptions:
-    client:
-        logging: false
-    redux:
-        logging: false
-    webpack:
-        enabled: false
-        silent: false
-    assets:
-      external: false
-      endpoint: development_assets_placeholder
+  client:
+    logging: false
+  redux:
+    logging: false
+  webpack:
+    enabled: false
+    silent: false
+  assets:
+    external: false
+    endpoint: development_assets_placeholder
 govdelivery:
-    popupEnabled: false
+  popupEnabled: false
 foresee:
-    environment: staging
-    enabled: false
+  environment: staging
+  enabled: false
 googleAnalytics:
-    enabled: false
-    accountId: UA-96147768-1
-    optimizeContainerId: GTM-NPDXPPF
-    tagManagerAccountId: GTM-WN49BK2
-    debug: false
+  enabled: false
+  accountId: UA-96147768-1
+  optimizeContainerId: GTM-NPDXPPF
+  tagManagerAccountId: GTM-WN49BK2
+  debug: false
 googleMapsApiKey: googlemaps_placeholder
+googleCaptchaApiKey: googlecaptcha_placeholder
 server:
-    port: 3000
-    fqdn: server_fqdn_placeholder
+  port: 3000
+  fqdn: server_fqdn_placeholder
 counselorCta:
-    nodeId: 6
+  nodeId: 6
 features:
-    localAssistMenuHeight: true
-    showRegisterLink: false
-    showSbic: false
-    geoLocator: false
-    searchUrl: "/search/?q="
-    urlRedirect:
-        tableName: features_urlredirect_tablename_placeholder
-        enabled: false
-    drupalRedirect:
-        enabled: false
-        tableName: DrupalUrlRedirect
-    true404: true
-    office:
-        sbaOfficeNames: ['SBA district office', 'SBA regional office']
-    pressRelease: true
-    breakEvenCalculator:
-        enabled: false
+  localAssistMenuHeight: true
+  showRegisterLink: false
+  showSbic: false
+  geoLocator: false
+  searchUrl: '/search/?q='
+  urlRedirect:
+    tableName: features_urlredirect_tablename_placeholder
+    enabled: false
+  drupalRedirect:
+    enabled: false
+    tableName: DrupalUrlRedirect
+  true404: true
+  office:
+    sbaOfficeNames: ['SBA district office', 'SBA regional office']
+  pressRelease: true
+  breakEvenCalculator:
+    enabled: false
 sizestandards:
-    endpoint: sizestandards_placeholder
+  endpoint: sizestandards_placeholder
 loanprocessing:
-    endpoint: loanprocessing_placeholder
+  endpoint: loanprocessing_placeholder
 aws:
   cloudsearch:
     searchEndpoint: 'doc-mint-hdgvyg66mwvfnu46tzaszesh5u.us-east-1.cloudsearch.amazonaws.com'

@@ -72,6 +72,7 @@ app.use(function(req, res, next) {
         geoLocator: config.get('features.geoLocator'),
         googleAnalytics: config.get('googleAnalytics'),
         googleMapsApiKey: config.get('googleMapsApiKey'),
+        googleCaptchaApiKey: config.get('googleCaptchaApiKey'),
         govdelivery: config.get('govdelivery.popupEnabled'),
         isUserLoggedIn: hasSessionCookie || false,
         pressRelease: config.get('features.pressRelease'),

@@ -375,7 +375,7 @@ class OfficeContactModal extends React.Component {
                   </label>
                 </div>
                 <div className={styles.recaptchaContainer}>
-                  <ReCAPTCHA ref={recaptchaRef} sitekey="6Len23wbAAAAAI8PFf8CwK1sc7y1H32mJIGpYWKy" />
+                  <ReCAPTCHA ref={recaptchaRef} sitekey={config.googleCaptchaApiKey} />
                   {this.state.reCaptchaError && (
                     <p className={styles.recaptchaError}>Confirm you are not a robot.</p>
                   )}
