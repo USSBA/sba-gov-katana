@@ -27,8 +27,6 @@ import OfficeContactSuccess from './office-contact-success'
 
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
 
-const recaptchaRef = React.createRef()
-
 class OfficeContactModal extends React.Component {
   constructor(props) {
     super()
@@ -47,6 +45,7 @@ class OfficeContactModal extends React.Component {
       officeName: props.officeName,
       officeLink: props.officeLink,
       addressObject: props.officeAddress,
+      reCaptchaValue: null,
       reCaptchaError: false,
       validStates: {
         userFullName: null,
@@ -135,8 +134,6 @@ class OfficeContactModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    const recaptchaValue = recaptchaRef.current.getValue()
-
     this.validateFields(Object.keys(this.state.validStates), 'error')
 
     const { validStates } = this.state
@@ -144,14 +141,10 @@ class OfficeContactModal extends React.Component {
     const hasErrors = Object.keys(validStates).filter(key => {
       return validStates[key] === 'error'
     })
+    const reCaptchaError = !this.state.reCaptchaValue
+    this.setState({ reCaptchaError })
 
-    if (hasErrors.length || !recaptchaValue) {
-      if (!recaptchaValue) {
-        this.setState({ reCaptchaError: true })
-      } else {
-        this.setState({ reCaptchaError: false })
-      }
-
+    if (hasErrors.length || reCaptchaError) {
       return null
     }
 
@@ -165,6 +158,7 @@ class OfficeContactModal extends React.Component {
       userOptIn: this.state.userOptIn,
       officeName: this.state.officeName,
       officeLink: this.state.officeLink,
+      reCaptchaValue: this.state.reCaptchaValue,
       officeState: this.state.addressObject.state,
       officeZipCode: this.state.addressObject.zipCode,
       officeStreet: this.state.addressObject.street,
@@ -375,7 +369,10 @@ class OfficeContactModal extends React.Component {
                   </label>
                 </div>
                 <div className={styles.recaptchaContainer}>
-                  <ReCAPTCHA ref={recaptchaRef} sitekey={config.googleCaptchaApiKey} />
+                  <ReCAPTCHA
+                    sitekey={config.googleCaptchaApiKey}
+                    onChange={reCaptchaValue => this.setState({ reCaptchaValue })}
+                  />
                   {this.state.reCaptchaError && (
                     <p className={styles.recaptchaError}>Confirm you are not a robot.</p>
                   )}
