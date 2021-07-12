@@ -3,8 +3,10 @@ import ReactModal from 'react-modal'
 import { connect } from 'react-redux'
 import { RemoveScroll } from 'react-remove-scroll'
 import { bindActionCreators } from 'redux'
-import { includes } from 'lodash'
+import { includes, isEmpty } from 'lodash'
 import ReCAPTCHA from 'react-google-recaptcha'
+import ReactGA from 'react-ga'
+
 import Checkbox from '../../atoms/checkbox/checkbox-lib.jsx'
 import { runMiscAction, postMiscAction } from '../../../fetch-content-helper.js'
 import constants from '../../../services/constants.js'
@@ -56,6 +58,14 @@ class OfficeContactModal extends React.Component {
         userConfirmEmailAddress: null
       }
     }
+  }
+
+  logGAEvent(category, action) {
+    return ReactGA.event({
+      category,
+      action,
+      label: 'Office Contact Modal'
+    })
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
@@ -174,6 +184,25 @@ class OfficeContactModal extends React.Component {
 
     postMiscAction('office-contact-form', formData)
     this.timerId = setTimeout(() => {
+      if (formData.userOptIn) {
+        this.logGAEvent('User Metrics', 'User opted into SBA Newsletter')
+      }
+      if (!isEmpty(formData.userPhoneNumber)) {
+        this.logGAEvent('User Metrics', 'User added a phone number')
+      }
+      if (!isEmpty(formData.userDetails)) {
+        this.logGAEvent(
+          'User Metrics',
+          `User added additional details (${formData.userDetails.length} characters)`
+        )
+      }
+      this.logGAEvent('User Event', 'User successfully schedueled an appointment')
+      ReactGA.set({
+        officeName: formData.officeName,
+        officeCity: formData.officeCity,
+        officeState: formData.officeState,
+        officeZipCode: formData.officeZipCode
+      })
       this.setState({ showSuccess: true })
     }, 1200)
   }
@@ -216,6 +245,7 @@ class OfficeContactModal extends React.Component {
 
   handleClose(e) {
     e.preventDefault()
+    this.logGAEvent('User Event', 'User left without schedueling an appointment')
     this.props.modalActions.closeOfficeContactModal()
   }
 

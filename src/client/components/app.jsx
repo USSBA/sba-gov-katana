@@ -4,12 +4,15 @@ import { Provider } from 'react-redux'
 import { Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { applyMiddleware, createStore } from 'redux'
+import ReactGA from 'react-ga'
 
 import HaxRouter from './hax-router.jsx'
 import config from '../services/client-config.js'
 import logging from '../services/logger.js'
 import rootReducer from '../reducers/index.js'
 import { logPageView, googleAnalyticsMiddleware } from '../services/analytics.js'
+
+ReactGA.initialize('UA-19362636')
 
 const middlewareList = []
 middlewareList.push(thunk)
