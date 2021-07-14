@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { RemoveScroll } from 'react-remove-scroll'
 import { bindActionCreators } from 'redux'
 import { includes } from 'lodash'
-import ReCAPTCHA from 'react-google-recaptcha'
+import Reaptcha from '@panalbish/reaptcha-enterprise'
 import Checkbox from '../../atoms/checkbox/checkbox-lib.jsx'
 import { runMiscAction, postMiscAction } from '../../../fetch-content-helper.js'
 import constants from '../../../services/constants.js'
@@ -369,11 +369,12 @@ class OfficeContactModal extends React.Component {
                   </label>
                 </div>
                 <div className={styles.recaptchaContainer}>
-                  <ReCAPTCHA
+                  <Reaptcha
                     sitekey={config.googleCaptchaApiKey}
-                    onChange={reCaptchaValue => this.setState({ reCaptchaValue })}
+                    enterprise={true}
+                    onVerify={reCaptchaValue => this.setState({ reCaptchaValue })}
                   />
-                  {this.state.reCaptchaError && (
+                  {!this.state.reCaptchaValue && (
                     <p className={styles.recaptchaError}>Confirm you are not a robot.</p>
                   )}
                 </div>
