@@ -20,6 +20,7 @@ export default class Checkbox extends React.Component {
     autoFocus: PropTypes.bool
   }
   static defaultProps = {
+    tabIndex: '0',
     className: '',
     style: {},
     type: 'checkbox',
@@ -85,6 +86,7 @@ export default class Checkbox extends React.Component {
       type,
       disabled,
       readOnly,
+      tabIndex,
       onClick,
       onFocus,
       onBlur,
@@ -114,7 +116,7 @@ export default class Checkbox extends React.Component {
           type={type}
           readOnly={readOnly}
           disabled={disabled}
-          tabindex="-1"
+          tabIndex="-1"
           className={styles['rc-checkbox-input']}
           checked={Boolean(checked)}
           onClick={e => {
@@ -123,13 +125,14 @@ export default class Checkbox extends React.Component {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={this.handleChange}
-          role="checkbox"
-          aria-checked={checked}
+          aria-hidden={true}
         />
         <span
           className={styles['rc-checkbox-inner'] + ' ' + returnAlternateCheckboxStyles()}
           aria-label={ariaLabel}
-          tabIndex="0"
+          aria-checked={checked}
+          tabIndex={tabIndex}
+          role="checkbox"
           onKeyDown={this.props.onKeyDown}
         />
       </span>

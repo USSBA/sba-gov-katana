@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react'
 import ReactModal from 'react-modal'
 import { connect } from 'react-redux'
@@ -33,12 +34,12 @@ class OfficeContactModal extends React.Component {
       displayForm: true,
       userFullName: '',
       userEmailAddress: '',
+      userConfirmEmailAddress: '',
       userTopic: '',
       userTopicLabel: '',
       userDetails: '',
       userOptIn: false,
-      userPhoneNumber: null,
-      checkboxFocus: false,
+      userPhoneNumber: '',
       showSuccess: false,
       officeName: props.officeName,
       officeLink: props.officeLink,
@@ -184,20 +185,12 @@ class OfficeContactModal extends React.Component {
     })
   }
 
-  handleCheckboxFocus(e) {
-    this.setState({ checkboxFocus: true })
-  }
-
-  handleCheckboxBlur(e) {
-    this.setState({ checkboxFocus: false })
-  }
-
   handleKeyDown(e) {
+    e.preventDefault()
     const code = e.keyCode ? e.keyCode : e.which
     if (code === 13) {
       this.setState({ modalIsOpen: false })
     }
-    e.preventDefault()
   }
 
   handleClose(e) {
@@ -206,7 +199,7 @@ class OfficeContactModal extends React.Component {
   }
 
   handleCheckboxKeyDown(e) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 32) {
       this.setState({
         userOptIn: !this.state.userOptIn
       })
@@ -221,12 +214,12 @@ class OfficeContactModal extends React.Component {
           className={styles.content}
           overlayClassName={styles.overlay}
           ariaHideApp={false}
-          onRequestClose={this.props.modalActions.closeOfficeContactModal}
+          onRequestClose={this.handleClose.bind(this)}
           shouldCloseOnOverlayClick={false}
           contentLabel="Office Contact Form"
         >
           <div id="contactFormModal" aria-labelledby="dialogTitle" role="dialog" aria-modal="true">
-            <div className={styles.imgContainer} onClick={this.handleClose.bind(this)}>
+            <div className={styles.imgContainer} onClick={this.handleClose.bind(this)} role="button">
               <img
                 className={styles.exitIcon}
                 src={exitIcon}
@@ -314,7 +307,7 @@ class OfficeContactModal extends React.Component {
                   validationState={this.state.validStates.userTopic}
                   searchable={false}
                   onChange={this.handleSelectChange.bind(this)}
-                  placeholder={() => <div tabIndex="1" />}
+                  placeholder={<div tabIndex="1" />}
                   helperText="Required. Select your topic from the provided options."
                   errorText="Required. Select your topic from the provided options."
                   options={[
@@ -340,25 +333,17 @@ class OfficeContactModal extends React.Component {
                   maxLength="250"
                 />
                 <div className={styles.checkboxContainer} style={{ position: 'relative' }}>
-                  <label htmlFor="optInCheckbox" className={styles.checkboxLabel}>
+                  <div className={styles.checkboxLabel}>
                     <Checkbox
                       id="optInCheckbox"
                       name="optInCheckbox"
-                      tabIndex={'0'}
                       checked={this.state.userOptIn}
                       onKeyDown={this.handleCheckboxKeyDown.bind(this)}
                       onChange={this.handleCheckbox.bind(this)}
-                      onFocus={e => {
-                        this.handleCheckboxFocus(e)
-                      }}
-                      onBlur={e => {
-                        this.handleCheckboxBlur(e)
-                      }}
-                      ariaLabel="Opt in to SBA email communications"
                       alternate
                     />{' '}
                     Opt in to SBA email communications
-                  </label>
+                  </div>
                 </div>
                 <div className={styles.btnContainer}>
                   <div className={styles.btnContent}>

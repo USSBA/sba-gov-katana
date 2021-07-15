@@ -207,7 +207,7 @@ class OfficeResult extends React.PureComponent {
                 role="button"
                 tabIndex="0"
                 className={websiteClassName}
-                ariaLabel="website"
+                aria-label="website"
                 onKeyPress={e => {
                   e.preventDefault()
                   e.key === 'Enter' && this.handleWebsiteClick(link)
@@ -229,7 +229,7 @@ class OfficeResult extends React.PureComponent {
                 role="button"
                 tabIndex="0"
                 className={contactClassName}
-                ariaLabel="website"
+                aria-label="website"
                 onKeyPress={e => e.key === 'Enter' && this.handleContactClick(e, officeData)}
                 onClick={e => this.handleContactClick(e, officeData)}
               >

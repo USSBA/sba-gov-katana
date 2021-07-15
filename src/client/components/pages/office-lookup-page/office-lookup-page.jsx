@@ -28,7 +28,7 @@ export const officeTypeTaxonomy = {
   ]
 }
 
-class OfficeLookupPage extends React.PureComponent {
+class OfficeLookupPage extends React.Component {
   constructor() {
     super()
 
@@ -181,7 +181,8 @@ class OfficeLookupPage extends React.PureComponent {
         onHandleEvent={this.centerMap.bind(this, false)}
         allVisibleOffices={officeTypeTaxonomy.terms}
         updateNoResultsType={this.updateNoResultsType.bind(this)}
-        geoZip={this.state.geoZip}
+        // eslint-disable-next-line radix
+        geoZip={parseInt(this.state.geoZip)}
       >
         <PrimarySearchBar
           id="office-primary-search-bar"
