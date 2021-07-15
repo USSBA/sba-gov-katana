@@ -1,9 +1,11 @@
+/* eslint-disable complexity */
 import React from 'react'
 import ReactModal from 'react-modal'
 import { connect } from 'react-redux'
 import { RemoveScroll } from 'react-remove-scroll'
 import { bindActionCreators } from 'redux'
-import { includes } from 'lodash'
+import { includes, isEmpty } from 'lodash'
+import { logEvent, logSet, logModal } from '../../../services/analytics.js'
 import Checkbox from '../../atoms/checkbox/checkbox-lib.jsx'
 import { runMiscAction, postMiscAction } from '../../../fetch-content-helper.js'
 import constants from '../../../services/constants.js'
@@ -13,7 +15,6 @@ import exitIcon from 'assets/svg/close_button.svg'
 import styles from './office-contact-modal.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
 import { Button, TextInput, MultiSelect, TextArea } from 'atoms'
-import { logEvent } from '../../../services/analytics.js'
 import {
   containsErrorOrNull,
   getNameValidationState,
@@ -25,6 +26,14 @@ import {
 import OfficeContactSuccess from './office-contact-success'
 
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
+
+function logGAEvent(category, action) {
+  return logEvent({
+    category,
+    action,
+    label: 'Office Contact Modal'
+  })
+}
 class OfficeContactModal extends React.Component {
   constructor(props) {
     super()
@@ -38,7 +47,6 @@ class OfficeContactModal extends React.Component {
       userDetails: '',
       userOptIn: false,
       userPhoneNumber: null,
-      checkboxFocus: false,
       showSuccess: false,
       officeName: props.officeName,
       officeLink: props.officeLink,
@@ -51,6 +59,9 @@ class OfficeContactModal extends React.Component {
         userConfirmEmailAddress: null
       }
     }
+  }
+  componentDidMount() {
+    logModal('/local-assistance/Office Contact Modal')
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
@@ -68,11 +79,7 @@ class OfficeContactModal extends React.Component {
       returnEmailValue()
     )
     if (validationState[name] === 'error') {
-      logEvent({
-        category: 'Office Contact Modal',
-        action: 'Error Event',
-        label: name
-      })
+      logGAEvent('User Error Event', `User failed form validation on ${name} field)`)
     }
 
     return validationState
@@ -159,6 +166,25 @@ class OfficeContactModal extends React.Component {
     }
 
     postMiscAction('office-contact-form', formData)
+
+    if (formData.userOptIn) {
+      logGAEvent('User Metrics', 'User opted into SBA Newsletter')
+    }
+    if (!isEmpty(formData.userPhoneNumber)) {
+      logGAEvent('User Metrics', 'User added a phone number')
+    }
+    if (!isEmpty(formData.userDetails)) {
+      logGAEvent(
+        'User Metrics',
+        `User added additional details (${formData.userDetails.length} characters)`
+      )
+    }
+    logGAEvent('User Event', 'User successfully scheduled an appointment')
+    logSet({
+      officeName: formData.officeName,
+      userTopic: formData.userTopic,
+      detail_length: formData.userDetails.length
+    })
     this.timerId = setTimeout(() => {
       this.setState({ showSuccess: true })
     }, 1200)
@@ -193,15 +219,17 @@ class OfficeContactModal extends React.Component {
   }
 
   handleKeyDown(e) {
+    e.preventDefault()
     const code = e.keyCode ? e.keyCode : e.which
     if (code === 13) {
+      logGAEvent('User Event', 'User left without scheduling an appointment')
       this.setState({ modalIsOpen: false })
     }
-    e.preventDefault()
   }
 
   handleClose(e) {
     e.preventDefault()
+    logGAEvent('User Event', 'User left without scheduling an appointment')
     this.props.modalActions.closeOfficeContactModal()
   }
 
@@ -221,7 +249,7 @@ class OfficeContactModal extends React.Component {
           className={styles.content}
           overlayClassName={styles.overlay}
           ariaHideApp={false}
-          onRequestClose={this.props.modalActions.closeOfficeContactModal}
+          onRequestClose={this.handleClose.bind(this)}
           shouldCloseOnOverlayClick={false}
           contentLabel="Office Contact Form"
         >

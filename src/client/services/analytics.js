@@ -36,6 +36,24 @@ function logEvent(eventToLog) {
   }
 }
 
+function logModal(modalName) {
+  if (isEnabled()) {
+    console.log('Posting modal view to GA:', modalName)
+    reactGa.modalview(modalName)
+  } else if (config.debug) {
+    console.log('Would have posted modal view to GA if enabled:', modalName)
+  }
+}
+
+function logSet(data) {
+  if (isEnabled()) {
+    console.log('Posting set data to GA:', data)
+    reactGa.set(data)
+  } else if (config.debug) {
+    console.log('Would have posted set data to GA if enabled:', data)
+  }
+}
+
 // Default "label" to window.location.pathname; value to null
 function logPageEvent(eventToLog) {
   const defaultValues = {
@@ -58,4 +76,4 @@ function googleAnalyticsMiddleware({ getState }) {
 }
 /* eslint-enable callback-return */
 
-export { logPageView, googleAnalyticsMiddleware, logEvent, logPageEvent }
+export { logPageView, googleAnalyticsMiddleware, logEvent, logSet, logModal, logPageEvent }
