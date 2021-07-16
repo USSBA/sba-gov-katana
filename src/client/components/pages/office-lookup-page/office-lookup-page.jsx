@@ -28,7 +28,7 @@ export const officeTypeTaxonomy = {
   ]
 }
 
-class OfficeLookupPage extends React.PureComponent {
+class OfficeLookupPage extends React.Component {
   constructor() {
     super()
 

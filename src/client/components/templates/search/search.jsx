@@ -473,7 +473,7 @@ SearchTemplate.propTypes = {
   loadingText: PropTypes.string,
   noResultsHeading: PropTypes.string,
   noResultsBody: PropTypes.string,
-  geoZip: PropTypes.integer,
+  geoZip: PropTypes.string,
 
   // callback called during each event handler
   onHandleEvent: PropTypes.func

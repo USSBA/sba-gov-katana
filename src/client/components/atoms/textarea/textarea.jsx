@@ -29,6 +29,7 @@ class TextArea extends React.Component {
       showErrorIcon,
       labelStyle,
       helperText,
+      ariaLabel,
       className,
       ...rest
     } = this.props
@@ -50,7 +51,7 @@ class TextArea extends React.Component {
             onChange={onChange}
             maxLength="250"
             value={value}
-            aria-label={helperText}
+            aria-label={helperText || ariaLabel}
           />
           <ValidationIcon
             validationState={this.props.validationState}
@@ -59,7 +60,11 @@ class TextArea extends React.Component {
             extraClassName={styles.validationIcon}
           />
         </div>
-        {helperText && <span className={styles.helperText}>{helperText}</span>}
+        {helperText && (
+          <span aria-hidden={!ariaLabel} className={styles.helperText}>
+            {helperText}
+          </span>
+        )}
         {!helperText && showCounter ? (
           <span className={styles.textAreaCounter}>
             {value.length}

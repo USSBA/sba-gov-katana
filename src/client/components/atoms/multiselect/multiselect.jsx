@@ -19,6 +19,7 @@ class MultiSelect extends React.Component {
       className,
       dataCy,
       helperText,
+      ariaLabel,
       errorText,
       id,
       label,
@@ -60,14 +61,18 @@ class MultiSelect extends React.Component {
           clearRenderer={() => <span />}
           searchable={this.props.searchable}
           placeholder={!placeholder && langCode ? TRANSLATIONS.select[langCode].text : placeholder}
-          aria-label={helperText}
+          aria-label={helperText || ariaLabel}
           inputProps={['aria-label', 'aria-labelledby', 'required']
             .filter(attr => this.props?.[attr])
             // eslint-disable-next-line no-param-reassign
             .reduce((acc, attr) => (acc[attr] = this.props[attr]), {})}
           {...rest}
         />
-        {helperText && validationState !== 'error' && <p className={styles.helperText}>{helperText}</p>}
+        {helperText && validationState !== 'error' && (
+          <p aria-hidden={!ariaLabel} className={styles.helperText}>
+            {helperText}
+          </p>
+        )}
         {validationState === 'error' && (
           <FormErrorMessage errorText={errorText} alternate={alternateError} />
         )}
