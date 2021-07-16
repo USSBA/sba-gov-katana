@@ -18,6 +18,7 @@ provider:
   environment: # Service-wide environment variables
     NODE_ENV: ${self:custom.env.node_env, self:provider.stage}
     GOOGLE_MAPS_API_KEY: ${ssm:${self:custom.env.account_type_uppercase}_GOOGLE_MAPS_API_KEY}
+    GOOGLE_CAPTCHA_API_KEY: ${ssm:${self:custom.env.account_type_uppercase}_GOOGLE_CAPTCHA_API_KEY}
     CONTENT_URL: ${self:custom.env.content_url}
 
 package:
@@ -29,8 +30,8 @@ functions:
     name: ${self:provider.stage}-katana-serverless
     handler: index.handler
     events:
-      - http: "ANY /"
-      - http: "ANY {proxy+}"
+      - http: 'ANY /'
+      - http: 'ANY {proxy+}'
 custom:
   config:
     default:
