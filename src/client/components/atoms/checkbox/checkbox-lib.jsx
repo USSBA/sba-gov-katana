@@ -128,6 +128,7 @@ export default class Checkbox extends React.Component {
           aria-hidden={true}
         />
         <span
+          id={`${id}_visible`}
           className={styles['rc-checkbox-inner'] + ' ' + returnAlternateCheckboxStyles()}
           aria-label={ariaLabel}
           aria-checked={checked}

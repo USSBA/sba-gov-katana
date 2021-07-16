@@ -333,15 +333,16 @@ class OfficeContactModal extends React.Component {
                   maxLength="250"
                 />
                 <div className={styles.checkboxContainer} style={{ position: 'relative' }}>
-                  <div className={styles.checkboxLabel}>
-                    <Checkbox
-                      id="optInCheckbox"
-                      name="optInCheckbox"
-                      checked={this.state.userOptIn}
-                      onKeyDown={this.handleCheckboxKeyDown.bind(this)}
-                      onChange={this.handleCheckbox.bind(this)}
-                      alternate
-                    />{' '}
+                  <Checkbox
+                    id="optInCheckbox"
+                    name="optInCheckbox"
+                    checked={this.state.userOptIn}
+                    onKeyDown={this.handleCheckboxKeyDown.bind(this)}
+                    onChange={this.handleCheckbox.bind(this)}
+                    alternate
+                    ariaLabel="Opt in to SBA email communications"
+                  />{' '}
+                  <div tabIndex="-1" aria-hidden={true} className={styles.checkboxLabel}>
                     Opt in to SBA email communications
                   </div>
                 </div>

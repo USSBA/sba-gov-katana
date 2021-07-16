@@ -187,7 +187,11 @@ class TextInput extends React.Component {
               showErrorIcon={showErrorIcon}
             />
           </div>
-          {helperText && !errorMessage && <p className={styles.helperText}>{helperText}</p>}
+          {helperText && !errorMessage && (
+            <p aria-hidden={!ariaLabel} className={styles.helperText}>
+              {helperText}
+            </p>
+          )}
           {errorMessage}
         </div>
       )
