@@ -99,12 +99,6 @@ class OfficeResult extends React.PureComponent {
       phoneNumber
     }
 
-    const activeOffices = Object.values({
-      seattle: '6394',
-      boise: '6413',
-      alaska: '6387',
-      portland: '6399'
-    })
     return (
       <div>
         <div className={outerDivClassName}>
@@ -223,7 +217,7 @@ class OfficeResult extends React.PureComponent {
               </div>
             )}
             {/* this is the nodeId for the Seattle Office */}
-            {link && link.includes('/offices/district/') && activeOffices.includes(itemId) ? (
+            {link && link.includes('/offices/district/') ? (
               // title.includes('District')
               <div
                 role="button"
