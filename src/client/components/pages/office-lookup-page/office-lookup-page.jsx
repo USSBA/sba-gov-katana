@@ -181,8 +181,7 @@ class OfficeLookupPage extends React.Component {
         onHandleEvent={this.centerMap.bind(this, false)}
         allVisibleOffices={officeTypeTaxonomy.terms}
         updateNoResultsType={this.updateNoResultsType.bind(this)}
-        // eslint-disable-next-line radix
-        geoZip={parseInt(this.state.geoZip)}
+        geoZip={this.state.geoZip)
       >
         <PrimarySearchBar
           id="office-primary-search-bar"
