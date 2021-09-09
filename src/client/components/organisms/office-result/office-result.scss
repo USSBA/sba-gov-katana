@@ -259,6 +259,27 @@
   }
 }
 
+.email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 2px;
+  color: $sba-blue-alt;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover,
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
+}
+
 .resultPhoneNumber {
   margin-left: 20px;
   margin-top: -20px;
