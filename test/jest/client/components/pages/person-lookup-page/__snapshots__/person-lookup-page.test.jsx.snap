@@ -17,7 +17,6 @@ exports[`PersonLookupPage should render correctly 1`] = `
         id="search-container"
       >
         <label
-          aria-label="Search"
           className={null}
           data-testid="search-label"
           htmlFor="search"
@@ -29,7 +28,6 @@ exports[`PersonLookupPage should render correctly 1`] = `
           className="container"
         >
           <input
-            aria-labelledby="search"
             className="input searchIconPadding"
             data-cy="search"
             data-testid="search"
@@ -59,7 +57,6 @@ exports[`PersonLookupPage should render correctly 1`] = `
         data-testid="office"
       >
         <label
-          aria-label="Office"
           className={null}
           htmlFor="office"
           tabIndex="0"
@@ -147,7 +144,6 @@ exports[`PersonLookupPage should render correctly 1`] = `
         data-testid="sort-by"
       >
         <label
-          aria-label="Sort by"
           className={null}
           htmlFor="sort-by"
           tabIndex="0"

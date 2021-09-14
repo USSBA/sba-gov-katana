@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react'
 import ReactModal from 'react-modal'
 import { connect } from 'react-redux'
@@ -18,7 +19,9 @@ import {
   containsErrorOrNull,
   getNameValidationState,
   getEmailValidationState,
-  getSelectBoxValidationState
+  getSelectBoxValidationState,
+  getPhoneValidationState,
+  getEmailMatchValidationState
 } from '../../../services/form-validation-helpers.js'
 import OfficeContactSuccess from './office-contact-success'
 
@@ -31,11 +34,12 @@ class OfficeContactModal extends React.Component {
       displayForm: true,
       userFullName: '',
       userEmailAddress: '',
+      userConfirmEmailAddress: '',
       userTopic: '',
       userTopicLabel: '',
       userDetails: '',
       userOptIn: false,
-      checkboxFocus: false,
+      userPhoneNumber: '',
       showSuccess: false,
       officeName: props.officeName,
       officeLink: props.officeLink,
@@ -43,13 +47,27 @@ class OfficeContactModal extends React.Component {
       validStates: {
         userFullName: null,
         userEmailAddress: null,
-        userTopic: null
+        userTopic: null,
+        userPhoneNumber: null,
+        userConfirmEmailAddress: null
       }
     }
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-    const validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
+    const returnEmailValue = () => {
+      if (name === 'userConfirmEmailAddress') {
+        return this.state.userEmailAddress
+      }
+      return null
+    }
+
+    const validationState = validationFunction(
+      name,
+      this.state[name],
+      defaultWhenNotSuccessful || null,
+      returnEmailValue()
+    )
     if (validationState[name] === 'error') {
       logEvent({
         category: 'Office Contact Modal',
@@ -57,6 +75,7 @@ class OfficeContactModal extends React.Component {
         label: name
       })
     }
+
     return validationState
   }
 
@@ -77,10 +96,28 @@ class OfficeContactModal extends React.Component {
       )
     }
 
+    if (includes(fields, 'userConfirmEmailAddress')) {
+      validStates = Object.assign(
+        validStates,
+        this.validateSingleField(
+          getEmailMatchValidationState,
+          'userConfirmEmailAddress',
+          defaultWhenNotSuccessful
+        )
+      )
+    }
+
     if (includes(fields, 'userTopic')) {
       validStates = Object.assign(
         validStates,
         this.validateSingleField(getSelectBoxValidationState, 'userTopic', defaultWhenNotSuccessful)
+      )
+    }
+
+    if (this.state.userPhoneNumber && includes(fields, 'userPhoneNumber')) {
+      validStates = Object.assign(
+        validStates,
+        this.validateSingleField(getPhoneValidationState, 'userPhoneNumber', defaultWhenNotSuccessful)
       )
     }
 
@@ -107,9 +144,11 @@ class OfficeContactModal extends React.Component {
 
     const formData = {
       userEmailAddress: this.state.userEmailAddress,
+      userConfirmEmailAddress: this.state.userConfirmEmailAddress,
       userFullName: this.state.userFullName,
       userTopic: this.state.userTopicLabel,
       userDetails: this.state.userDetails,
+      userPhoneNumber: this.state.userPhoneNumber,
       userOptIn: this.state.userOptIn,
       officeName: this.state.officeName,
       officeLink: this.state.officeLink,
@@ -146,20 +185,12 @@ class OfficeContactModal extends React.Component {
     })
   }
 
-  handleCheckboxFocus(e) {
-    this.setState({ checkboxFocus: true })
-  }
-
-  handleCheckboxBlur(e) {
-    this.setState({ checkboxFocus: false })
-  }
-
   handleKeyDown(e) {
+    e.preventDefault()
     const code = e.keyCode ? e.keyCode : e.which
     if (code === 13) {
       this.setState({ modalIsOpen: false })
     }
-    e.preventDefault()
   }
 
   handleClose(e) {
@@ -168,7 +199,7 @@ class OfficeContactModal extends React.Component {
   }
 
   handleCheckboxKeyDown(e) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 32) {
       this.setState({
         userOptIn: !this.state.userOptIn
       })
@@ -183,12 +214,12 @@ class OfficeContactModal extends React.Component {
           className={styles.content}
           overlayClassName={styles.overlay}
           ariaHideApp={false}
-          onRequestClose={this.props.modalActions.closeOfficeContactModal}
+          onRequestClose={this.handleClose.bind(this)}
           shouldCloseOnOverlayClick={false}
           contentLabel="Office Contact Form"
         >
           <div id="contactFormModal" aria-labelledby="dialogTitle" role="dialog" aria-modal="true">
-            <div className={styles.imgContainer} onClick={this.handleClose.bind(this)}>
+            <div className={styles.imgContainer} onClick={this.handleClose.bind(this)} role="button">
               <img
                 className={styles.exitIcon}
                 src={exitIcon}
@@ -238,6 +269,33 @@ class OfficeContactModal extends React.Component {
                   labelStyle={styles.label}
                   alternateError
                 />
+                <TextInput
+                  id="userConfirmEmailAddress"
+                  name="userConfirmEmailAddress"
+                  label="Confirm Email"
+                  helperText="Required. Must match email address above. "
+                  errorText="Required. Must match email address above. "
+                  onChange={this.handleChange.bind(this)}
+                  value={this.state.userConfirmEmailAddress}
+                  validationState={this.state.validStates.userConfirmEmailAddress}
+                  className={styles.input}
+                  labelStyle={styles.label}
+                  alternateError
+                />
+                <TextInput
+                  id="userPhoneNumber"
+                  name="userPhoneNumber"
+                  inputType="tel"
+                  label="Phone Number"
+                  onChange={this.handleChange.bind(this)}
+                  value={this.state.userPhoneNumber}
+                  validationState={this.state.validStates.userPhoneNumber}
+                  className={styles.input}
+                  labelStyle={styles.label}
+                  helperText="Optional. Must be 10 numeric characters."
+                  errorText="Optional. Must be 10 numeric characters."
+                  alternateError
+                />
                 <MultiSelect
                   id="userTopic"
                   name="userTopic"
@@ -249,18 +307,16 @@ class OfficeContactModal extends React.Component {
                   validationState={this.state.validStates.userTopic}
                   searchable={false}
                   onChange={this.handleSelectChange.bind(this)}
-                  placeholder={() => <div tabIndex="1" />}
+                  placeholder={<div tabIndex="1" />}
                   helperText="Required. Select your topic from the provided options."
                   errorText="Required. Select your topic from the provided options."
                   options={[
-                    { value: 'covid-19 relief', label: 'Covid-19 Relief' },
-                    { value: 'disaster relief', label: 'Disaster Relief' },
-                    { value: 'consulting', label: 'Consulting' },
-                    { value: 'financial assistance', label: 'Financial Assistance' },
+                    { value: 'covid-19 relief', label: 'Covid-19 Relief Programs' },
                     {
-                      value: 'procurement & government contracting',
-                      label: 'Procurement & Government Contracting'
+                      value: 'government contracting',
+                      label: 'Government Contracting'
                     },
+                    { value: 'natural disasters', label: 'Natural Disasters' },
                     { value: 'other', label: 'Other' }
                   ]}
                   alternateError
@@ -277,25 +333,18 @@ class OfficeContactModal extends React.Component {
                   maxLength="250"
                 />
                 <div className={styles.checkboxContainer} style={{ position: 'relative' }}>
-                  <label htmlFor="optInCheckbox" className={styles.checkboxLabel}>
-                    <Checkbox
-                      id="optInCheckbox"
-                      name="optInCheckbox"
-                      tabIndex={'0'}
-                      checked={this.state.userOptIn}
-                      onKeyDown={this.handleCheckboxKeyDown.bind(this)}
-                      onChange={this.handleCheckbox.bind(this)}
-                      onFocus={e => {
-                        this.handleCheckboxFocus(e)
-                      }}
-                      onBlur={e => {
-                        this.handleCheckboxBlur(e)
-                      }}
-                      ariaLabel="Opt in to SBA email communications"
-                      alternate
-                    />{' '}
+                  <Checkbox
+                    id="optInCheckbox"
+                    name="optInCheckbox"
+                    checked={this.state.userOptIn}
+                    onKeyDown={this.handleCheckboxKeyDown.bind(this)}
+                    onChange={this.handleCheckbox.bind(this)}
+                    alternate
+                    ariaLabel="Opt in to SBA email communications"
+                  />{' '}
+                  <div tabIndex="-1" aria-hidden={true} className={styles.checkboxLabel}>
                     Opt in to SBA email communications
-                  </label>
+                  </div>
                 </div>
                 <div className={styles.btnContainer}>
                   <div className={styles.btnContent}>

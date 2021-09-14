@@ -18,15 +18,19 @@
 version: 2.1
 
 orbs:
+  cypress: cypress-io/cypress@1
   snyk: snyk/snyk@0.0.8
 
 executors:
   node:
     docker:
-    - image: cimg/node:12.18
+      - image: cimg/node:12.18
+  node-browsers:
+    docker:
+      - image: cimg/node:12.18-browsers
   python:
     docker:
-    - image: cimg/python:3.9
+      - image: cimg/python:3.9
 
 commands:
   install-aws:
@@ -35,208 +39,182 @@ commands:
           name: install aws
           command: |
             pip install awscli
+  restore-npm-cache:
+    steps:
+      - restore_cache:
+          keys:
+            - v2-npm-{{ checksum "package-lock.json" }}
+  save-npm-cache:
+    steps:
+      - save_cache:
+          paths:
+            - ./node_modules
+            - ~/.cache/Cypress
+          key: v2-npm-{{ checksum "package-lock.json" }}
 
 workflows:
   test-build-deploy:
     jobs:
-    - cache-dependencies-lower:
-        filters:
-          branches:
-            only:
-            - /.*/
-          tags:
-            only:
-            - mint
-            - demo
-            - venus
-            - /deploy-\w+/
-    - cache-dependencies-upper:
-        filters:
-          branches:
-            ignore:
-            - /.*/
-          tags:
-            only:
-            - staging
-            - production
-        context: snyk
-    - test-jest:
-        requires:
-          - cache-dependencies-lower
-          - cache-dependencies-upper
-        filters:
-          branches:
-            only:
-            - /.*/
-          tags:
-            only:
-            - /.*/
-    - test-mocha:
-        requires: 
-          - cache-dependencies-lower
-          - cache-dependencies-upper
-        filters:
-          branches:
-            only:
-            - /.*/
-          tags:
-            only:
-            - /.*/
-    - test-format:
-        requires:
-          - cache-dependencies-lower
-          - cache-dependencies-upper
-        filters:
-          branches:
-            only:
-            - /.*/
-          tags:
-            only:
-            - /.*/    
-    - build-webpack:
-        requires: [test-jest, test-mocha, test-format]
-        filters:
-          branches:
-            only:
-            - master
-            - /[Ff]eature-\w+-\d+[-\w]*/
-          tags:
-            only:
-            - production
-            - staging
-            - mint
-            - demo
-            - venus
-            - /deploy-\w+/
-    - build-package:
-        requires: [build-webpack]
-        filters:
-          branches:
-            only:
-            - master
-            - /[Ff]eature-\w+-\d+[-\w]*/
-          tags:
-            only:
-            - production
-            - staging
-            - mint
-            - demo
-            - venus
-            - /deploy-\w+/
-    - upload-assets:
-        requires: [build-package]
-        filters:
-          branches:
-            only:
-            - master
-          tags:
-            only:
-            - mint
-            - qa
-            - demo
-            - venus
-        context: sba-gov-lower
-    - deploy-package:
-        requires: [upload-assets]
-        filters:
-          branches: 
-            only:
-            - master
-          tags:
-            only:
-            - mint
-            - qa
-            - venus
-            - demo
-        context: sba-gov-lower
-    - deploy-package:
-        name: "deploy-package-without-assets"
-        requires: [build-package]
-        filters:
-          branches:
-            ignore:
-            - /.*/
-          tags:
-            only:
-            - /deploy-\w+/
-        context: sba-gov-lower
-    - hold:
-        type: approval
-        requires: [build-package]
-        filters:
-          branches:
-            ignore:
-            - /.*/
-          tags:
-            only:
-            - production
-            - staging
-    - upload-assets-with-approval:
-        requires: [hold]
-        filters:
-          branches: 
-            ignore:
-            - /.*/
-          tags:
-            only:
-            - staging
-            - production
-        context: sba-gov-upper
-    - deploy-package-with-approval:
-        requires: [upload-assets-with-approval]
-        filters:
-          branches: 
-            ignore:
-            - /.*/
-          tags:
-            only:
-            - staging
-            - production
-        context: sba-gov-upper
+      - cache-dependencies:
+          filters:
+            branches:
+              only:
+                - /.*/
+            tags:
+              only:
+                - mint
+                - demo
+                - venus
+                - /deploy-\w+/
+                - staging
+                - production
+      - test-jest:
+          requires:
+            - cache-dependencies
+          filters:
+            branches:
+              only:
+                - /.*/
+            tags:
+              only:
+                - /.*/
+      - test-mocha:
+          requires:
+            - cache-dependencies
+          filters:
+            branches:
+              only:
+                - /.*/
+            tags:
+              only:
+                - /.*/
+      - test-cypress:
+          requires:
+            - cache-dependencies
+          filters:
+            branches:
+              only:
+                - /.*/
+            tags:
+              only:
+                - /.*/
+          context: sba-gov-lower
+      - build-webpack:
+          requires: [test-jest, test-mocha, test-cypress]
+          filters:
+            branches:
+              only:
+                - master
+                - /[Ff]eature-\w+-\d+[-\w]*/
+            tags:
+              only:
+                - production
+                - staging
+                - mint
+                - demo
+                - venus
+                - /deploy-\w+/
+      - build-package:
+          requires: [build-webpack]
+          filters:
+            branches:
+              only:
+                - master
+                - /[Ff]eature-\w+-\d+[-\w]*/
+            tags:
+              only:
+                - production
+                - staging
+                - mint
+                - demo
+                - venus
+                - /deploy-\w+/
+      - upload-assets:
+          requires: [build-package]
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              only:
+                - mint
+                - qa
+                - demo
+                - venus
+          context: sba-gov-lower
+      - deploy-package:
+          requires: [upload-assets]
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              only:
+                - mint
+                - qa
+                - venus
+                - demo
+          context: sba-gov-lower
+      - deploy-package:
+          name: 'deploy-package-without-assets'
+          requires: [build-package]
+          filters:
+            branches:
+              ignore:
+                - /.*/
+            tags:
+              only:
+                - /deploy-\w+/
+          context: sba-gov-lower
+      - hold:
+          type: approval
+          requires: [build-package]
+          filters:
+            branches:
+              ignore:
+                - /.*/
+            tags:
+              only:
+                - production
+                - staging
+      - upload-assets-with-approval:
+          requires: [hold]
+          filters:
+            branches:
+              ignore:
+                - /.*/
+            tags:
+              only:
+                - staging
+                - production
+          context: sba-gov-upper
+      - deploy-package-with-approval:
+          requires: [upload-assets-with-approval]
+          filters:
+            branches:
+              ignore:
+                - /.*/
+            tags:
+              only:
+                - staging
+                - production
+          context: sba-gov-upper
 jobs:
-  cache-dependencies-lower:
+  cache-dependencies:
     executor: node
     steps:
       - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v2-dependencies-v1-{{ checksum "package.json" }}
+      - restore-npm-cache
       - run:
           name: install dependencies
           command: |
             npm install --silent --no-save
-      - save_cache:
-          paths:
-            - ./node_modules
-          key: v2-dependencies-v1-{{ checksum "package.json" }}
-  cache-dependencies-upper:
-    executor: node
-    steps:
-      - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v2-dependencies-v1-{{ checksum "package.json" }}
-      - run:
-          name: install dependencies
-          command: |
-            npm install --silent --no-save
-      - save_cache:
-          paths:
-            - ./node_modules
-          key: v2-dependencies-v1-{{ checksum "package.json" }}
-      - snyk/scan:
-          token-variable: SNYK
-          fail-on-issues: false
+      - save-npm-cache
   test-jest:
     executor: node
     steps:
       - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v2-dependencies-v1-{{ checksum "package.json" }}
+      - restore-npm-cache
       - run:
           name: run jest
           command: |
@@ -245,43 +223,34 @@ jobs:
     executor: node
     steps:
       - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v2-dependencies-v1-{{ checksum "package.json" }}
+      - restore-npm-cache
       - run:
           name: run mocha
           command: |
             npm run test-mocha
-  test-format:
-    executor: node
+  test-cypress:
+    executor: node-browsers
     steps:
-    - checkout
-    # Download and cache dependencies
-    - restore_cache:
-        keys:
-        - v2-dependencies-v1-{{ checksum "package.json" }}
-    # - run:
-    #     name: run eslint fix and prettier
-    #     command:
-    #       npm run format
+      - checkout
+      - restore-npm-cache
+      - run:
+          name: run cypress
+          command: |
+            npm run cy-server-test
   build-webpack:
     executor: node
     steps:
-    - checkout
-    # Download and cache dependencies
-    - restore_cache:
-        keys:
-        - v2-dependencies-v1-{{ checksum "package.json" }}
-    - run:
-        name: build webpack
-        command: |
-          npm run build
-    - save_cache:
-        paths:
-        - ./public/build
-        - ./dist
-        key: v1-webpack-{{ .Revision }}
+      - checkout
+      - restore-npm-cache
+      - run:
+          name: build webpack
+          command: |
+            npm run build
+      - save_cache:
+          paths:
+            - ./public/build
+            - ./dist
+          key: v5-webpack-{{ .Revision }}
   build-package:
     working_directory: /home/circleci/project
     executor: node
@@ -289,7 +258,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-webpack-{{ .Revision }}
+            - v5-webpack-{{ .Revision }}
       - run:
           name: create zip package
           command: |

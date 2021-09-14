@@ -1,9 +1,9 @@
 const phoneMaxLength = 10
 const zipMaxLength = 5
 
-function executeValidation(name, value, defaultWhenNotSuccessful, tester) {
+function executeValidation(name, value, defaultWhenNotSuccessful, tester, emailValue) {
   const validStates = {}
-  if (tester(value)) {
+  if (tester(value, emailValue)) {
     validStates[name] = 'success'
   } else {
     validStates[name] = defaultWhenNotSuccessful
@@ -19,13 +19,20 @@ export function nameValidation(value) {
 }
 
 export function phoneValidation(value) {
-  const numberRegex = new RegExp(/^\d+$/)
+  const numberRegex = new RegExp(
+    /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/
+  )
   return value && value.length >= phoneMaxLength && numberRegex.test(value)
 }
 
 export function emailValidation(value) {
   const emailRegex = new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/)
   return emailRegex.test(value)
+}
+
+export function emailMatchValidation(value, emailValue) {
+  const emailRegex = new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/)
+  return Boolean(emailRegex.test(value) && value === emailValue)
 }
 
 export function hasLengthGreaterThanZero(value) {
@@ -52,6 +59,9 @@ export function getPhoneValidationState(name, value, defaultWhenNotSuccessful) {
 }
 export function getEmailValidationState(name, value, defaultWhenNotSuccessful) {
   return executeValidation(name, value, defaultWhenNotSuccessful, emailValidation)
+}
+export function getEmailMatchValidationState(name, value, defaultWhenNotSuccessful, emailValue) {
+  return executeValidation(name, value, defaultWhenNotSuccessful, emailMatchValidation, emailValue)
 }
 export function getTextAlphanumeicValidationState(name, value, defaultWhenNotSuccessful) {
   return executeValidation(name, value, defaultWhenNotSuccessful, hasLengthGreaterThanZero)

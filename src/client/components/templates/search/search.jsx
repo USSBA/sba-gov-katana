@@ -154,10 +154,7 @@ class SearchTemplate extends React.PureComponent {
     const filteredSearchParams = {}
     const paramsWithZip = searchParams
     if (!paramsWithZip.address && paramsWithZip.mapCenter) {
-      this.geoToZip(paramsWithZip.mapCenter).then(zip => {
-        paramsWithZip.address = zip
-        delete paramsWithZip.mapCenter
-      })
+      this.props.geoZip
     }
     for (const paramName in paramsWithZip) {
       if (searchParams.hasOwnProperty(paramName)) {
@@ -203,15 +200,6 @@ class SearchTemplate extends React.PureComponent {
     isLoading: false,
     isZeroState: false,
     defaultResults: []
-  }
-
-  async geoToZip(mapCenter) {
-    const [lat, long] = mapCenter.split(/,/)
-    const zip = await geo2zip({
-      latitude: lat,
-      longitude: long
-    })
-    return zip[0]
   }
 
   getDistrictOffice(searchType, result, zip) {
@@ -276,9 +264,7 @@ class SearchTemplate extends React.PureComponent {
             if (searchParams.address || searchParams.mapCenter) {
               // If its a district office lookup, Look for the assigned district office at place it at the top of the search.
               if (searchParams.mapCenter && !searchParams.address) {
-                this.geoToZip(searchParams.mapCenter).then(zip => {
-                  this.getDistrictOffice(searchType, output, zip)
-                })
+                this.getDistrictOffice(searchType, output, this.props.geoZip)
               } else {
                 this.getDistrictOffice(searchType, output, searchParams.address)
               }
@@ -487,6 +473,7 @@ SearchTemplate.propTypes = {
   loadingText: PropTypes.string,
   noResultsHeading: PropTypes.string,
   noResultsBody: PropTypes.string,
+  geoZip: PropTypes.string,
 
   // callback called during each event handler
   onHandleEvent: PropTypes.func

@@ -2,6 +2,8 @@ import React from 'react'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import { find, isEmpty } from 'lodash'
 import styles from './office-lookup-page.scss'
+import geo2zip from 'geo2zip'
+
 import { TaxonomyMultiSelect, StyleWrapperDiv, TextInput } from 'atoms'
 import {
   PrimarySearchBar,
@@ -26,7 +28,7 @@ export const officeTypeTaxonomy = {
   ]
 }
 
-class OfficeLookupPage extends React.PureComponent {
+class OfficeLookupPage extends React.Component {
   constructor() {
     super()
 
@@ -37,7 +39,8 @@ class OfficeLookupPage extends React.PureComponent {
       hoveredMarkerId: '',
       taxonomies: null,
       isValidZip: false,
-      noResultsType: null
+      noResultsType: null,
+      geoZip: ''
     }
     this.textInput = React.createRef()
   }
@@ -105,6 +108,14 @@ class OfficeLookupPage extends React.PureComponent {
     this.setState({ hoveredMarkerId })
   }
 
+  setGeoZip(mapCenter) {
+    if (mapCenter) {
+      this.geoToZip(mapCenter).then(zip => {
+        this.setState({ geoZip: zip })
+      })
+    }
+  }
+
   customDetailResultsView(resultsClassName, hideDetailState) {
     const { selectedItem } = this.state
     return (
@@ -116,6 +127,15 @@ class OfficeLookupPage extends React.PureComponent {
 
   infoText =
     "Use this tool to find your nearest SBA District Office and other SBA-approved organizations.  SBA District Offices are responsible for providing small business owners with information about SBA's programs. SBA District Offices also oversee free and low-cost training and business counseling provided by independent organizations funded by the SBA. "
+
+  async geoToZip(mapCenter) {
+    const [lat, long] = mapCenter.split(/,/)
+    const zip = await geo2zip({
+      latitude: lat,
+      longitude: long
+    })
+    return zip ? zip[0] : ''
+  }
 
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
@@ -138,6 +158,17 @@ class OfficeLookupPage extends React.PureComponent {
       ]
     }
 
+    const mapCenter = this.props?.location?.query?.mapCenter ? this.props.location.query.mapCenter : ''
+    mapCenter &&
+      this.geoToZip(mapCenter).then(zip => {
+        let geoZip = zip
+        if (!geoZip) {
+          geoZip = this.props.location.query.address
+        }
+        if (geoZip !== this.state.geoZip) {
+          this.setState({ geoZip: geoZip })
+        }
+      })
     return (
       <SearchTemplate
         searchType="offices"
@@ -150,6 +181,7 @@ class OfficeLookupPage extends React.PureComponent {
         onHandleEvent={this.centerMap.bind(this, false)}
         allVisibleOffices={officeTypeTaxonomy.terms}
         updateNoResultsType={this.updateNoResultsType.bind(this)}
+        geoZip={this.state.geoZip}
       >
         <PrimarySearchBar
           id="office-primary-search-bar"
@@ -191,6 +223,7 @@ class OfficeLookupPage extends React.PureComponent {
         <StyleWrapperDiv className={styles.mapResults}>
           <OfficeMap
             id="office-map"
+            zip={this.state.geoZip}
             mapType="office"
             onMarkerClick={item => {
               this.centerMap(true)
