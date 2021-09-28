@@ -148,6 +148,10 @@ const mainRouteProperties = [
     path: '/local-assistance'
   },
   {
+    component: LocalAssistancePage,
+    path: '/asistencia-local'
+  },
+  {
     component: CourseTemplate,
     path: '/course/:first'
   },
