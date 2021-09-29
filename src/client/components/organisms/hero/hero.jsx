@@ -7,6 +7,8 @@ import styles from './hero.scss'
 import { Button } from 'atoms'
 import { ZipCodeForm } from 'molecules'
 
+import { TRANSLATIONS } from '../../../translations.js'
+
 class Hero extends React.Component {
   constructor(props) {
     super(props)
@@ -32,7 +34,7 @@ class Hero extends React.Component {
   }
 
   render() {
-    const { alt, buttons, imageUrl, message, title, zipCodeSearch } = this.props
+    const { alt, buttons, imageUrl, message, title, zipCodeSearch, langCode } = this.props
     const { calloutHeight, imageHeight, isSmallOnly } = this.state
 
     const style = {
@@ -78,7 +80,12 @@ class Hero extends React.Component {
                 </Button>
               ))}
             {zipCodeSearch && (
-              <ZipCodeForm label="Business Zip Code" btnLabel="search nearby" alternateError />
+              <ZipCodeForm
+                label={TRANSLATIONS.localAssistance[langCode].zipCodeSearch.label}
+                btnLabel={TRANSLATIONS.localAssistance[langCode].zipCodeSearch.submit}
+                helperText={TRANSLATIONS.localAssistance[langCode].zipCodeSearch.helper}
+                alternateError
+              />
             )}
           </div>
         </div>
