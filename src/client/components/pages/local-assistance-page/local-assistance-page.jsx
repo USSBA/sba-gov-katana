@@ -47,6 +47,7 @@ class LocalAssistancePage extends React.Component {
           heroData={heroData}
           title={data.title}
           paragraphs={data.paragraphs}
+          langCode={data.langCode}
         />
       )
     }

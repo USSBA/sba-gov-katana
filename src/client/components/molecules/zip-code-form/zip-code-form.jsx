@@ -78,10 +78,8 @@ class ZipCodeForm extends React.Component {
   }
 
   render() {
-    const { label, btnLabel, alternateError } = this.props
+    const { label, btnLabel, alternateError, helperText } = this.props
     const { zipCode, validStates } = this.state
-
-    const fieldText = 'Enter a 5-digit zip code.'
 
     return (
       <form onSubmit={e => this.handleSubmit(e)} noValidate="noValidate">
@@ -95,9 +93,9 @@ class ZipCodeForm extends React.Component {
               className={styles.field}
               onChange={this.handleZipCodeChange.bind(this)}
               validationState={validStates.zipCode}
-              ariaLabel={fieldText}
-              helperText={fieldText}
-              errorText={fieldText}
+              ariaLabel={helperText}
+              helperText={helperText}
+              errorText={helperText}
               autoComplete="off"
               alternateError={alternateError}
               large

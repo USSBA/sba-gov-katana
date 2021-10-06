@@ -325,11 +325,21 @@ const TRANSLATIONS = {
   localAssistance: {
     en: {
       text: 'Local Assistance',
-      url: '/tools/local-assistance'
+      url: '/tools/local-assistance',
+      zipCodeSearch: {
+        label: 'Business Zip Code',
+        helper: 'Enter a 5-digit zip code.',
+        submit: 'SEARCH NEARBY'
+      }
     },
     es: {
       text: 'Asistencia local',
-      url: '/tools/local-assistance'
+      url: '/tools/local-assistance',
+      zipCodeSearch: {
+        label: 'Código postal de la empresa',
+        helper: 'Ingrese un código postal de 5 dígitos.',
+        submit: 'Búsqueda Cercana'
+      }
     }
   },
   location: {
