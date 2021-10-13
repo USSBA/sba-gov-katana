@@ -51,6 +51,7 @@ class OfficeResult extends React.PureComponent {
     if (!item) {
       return null
     }
+
     const street = item.location_street_address ? item.location_street_address[0] : null
     const city = item.location_city ? item.location_city[0] : null
     const state = item.location_state ? item.location_state[0] : null
@@ -58,6 +59,8 @@ class OfficeResult extends React.PureComponent {
     const link = item.office_website ? item.office_website[0] : null
     const title = item.title ? item.title[0] : null
     const zipCode = item.location_zipcode ? item.location_zipcode[0] : null
+    const email = item.location_email
+
     const sbaOfficeNames = clientConfig.sbaOfficeNames
     const officeType = item.office_type ? item.office_type[0] : ''
     const isOfficialOffice = sbaOfficeNames.includes(officeType)
@@ -83,6 +86,10 @@ class OfficeResult extends React.PureComponent {
       [styles.contact]: true
     })
 
+    const emailClassName = classNames({
+      [styles.email]: true
+    })
+
     const outerDivClassName = classNames({
       [styles.outerDiv]: true,
       [styles.districtOfficeOuterDiv]: item.office_type && item.office_type?.[0] === 'SBA District Office'
@@ -96,7 +103,8 @@ class OfficeResult extends React.PureComponent {
       state,
       street,
       city,
-      phoneNumber
+      phoneNumber,
+      email
     }
 
     return (
@@ -217,13 +225,13 @@ class OfficeResult extends React.PureComponent {
               </div>
             )}
             {/* this is the nodeId for the Seattle Office */}
-            {link && link.includes('/offices/district/') ? (
+            {link && link.includes('/offices/district/') && (
               // title.includes('District')
               <div
                 role="button"
                 tabIndex="0"
                 className={contactClassName}
-                aria-label="website"
+                aria-label="contact"
                 onKeyPress={e => e.key === 'Enter' && this.handleContactClick(e, officeData)}
                 onClick={e => this.handleContactClick(e, officeData)}
               >
@@ -231,8 +239,14 @@ class OfficeResult extends React.PureComponent {
                 <br />
                 Contact
               </div>
+            )}
+            {!link & email ? (
+              <a tabIndex="0" href={`mailto:${email}`} className={emailClassName} aria-label="mail to">
+                <i className={'fa fa-envelope ' + styles.fa} />
+                Email
+              </a>
             ) : (
-              <> </>
+              <></>
             )}
           </div>
         </div>
