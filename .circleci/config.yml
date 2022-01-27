@@ -88,17 +88,17 @@ workflows:
             tags:
               only:
                 - /.*/
-      - test-cypress:
-          requires:
-            - cache-dependencies
-          filters:
-            branches:
-              only:
-                - /.*/
-            tags:
-              only:
-                - /.*/
-          context: sba-gov-lower
+#       - test-cypress:
+#           requires:
+#             - cache-dependencies
+#           filters:
+#             branches:
+#               only:
+#                 - /.*/
+#             tags:
+#               only:
+#                 - /.*/
+#           context: sba-gov-lower
       - build-webpack:
           requires: [test-jest, test-mocha, test-cypress]
           filters:
