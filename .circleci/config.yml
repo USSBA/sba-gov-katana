@@ -100,7 +100,7 @@ workflows:
 #                 - /.*/
 #           context: sba-gov-lower
       - build-webpack:
-          requires: [test-jest, test-mocha, test-cypress]
+          requires: [test-jest, test-mocha]
           filters:
             branches:
               only:
