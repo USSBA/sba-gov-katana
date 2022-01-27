@@ -228,15 +228,15 @@ jobs:
           name: run mocha
           command: |
             npm run test-mocha
-  test-cypress:
-    executor: node-browsers
-    steps:
-      - checkout
-      - restore-npm-cache
-      - run:
-          name: run cypress
-          command: |
-            npm run cy-server-test
+#   test-cypress:
+#     executor: node-browsers
+#     steps:
+#       - checkout
+#       - restore-npm-cache
+#       - run:
+#           name: run cypress
+#           command: |
+#             npm run cy-server-test
   build-webpack:
     executor: node
     steps:
