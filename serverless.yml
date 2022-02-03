@@ -1,4 +1,4 @@
-frameworkVersion: '2'
+frameworkVersion: '3'
 
 service: katana-sls
 enableLocalInstallationFallback: true
