@@ -8,7 +8,7 @@ googleAnalytics:
     tagManagerAccountId: GTM-WN49BK2
     debug: false
 miscapi:
-    endpoint: exj89x1ga1.execute-api.us-east-1.amazonaws.com/latest/
+    endpoint: mpmhqtea8g.execute-api.us-east-1.amazonaws.com/latest/
 server:
     fqdn: venus.ussba.io
 features:
