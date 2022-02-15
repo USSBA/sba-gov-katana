@@ -5,7 +5,7 @@ googleAnalytics:
     tagManagerAccountId: GTM-WN49BK2
     debug: false
 miscapi:
-  endpoint: miscapi_placeholder
+  endpoint: mpmhqtea8g.execute-api.us-east-1.amazonaws.com/latest/
 server:
     fqdn: demo.ussba.io
 features:
