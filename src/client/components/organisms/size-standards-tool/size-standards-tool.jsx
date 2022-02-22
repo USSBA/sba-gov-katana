@@ -672,7 +672,7 @@ const RevenueScreen = props => {
       <h2>How much average annual receipts/revenue?</h2>
 
       <div className={styles.revenueInput}>
-        <label htmlFor="revenue">Three-year Average</label>
+        <label htmlFor="revenue">Five-year Average</label>
 
         <NumberFormat
           id="revenue"
@@ -694,8 +694,8 @@ const RevenueScreen = props => {
 
       <p>
         Your average annual receipts/revenue is generally calculated as your total receipts/revenue or total
-        income plus cost of goods sold (including all affiliates, if any) over the latest completed three
-        (3) fiscal years divided by three (3). See{' '}
+        income plus cost of goods sold (including all affiliates, if any) over the latest completed five
+        (5) fiscal years divided by five (5). See{' '}
         <a href="https://www.law.cornell.edu/cfr/text/13/121.104" target="_blank" rel="noopener">
           13 CFR 121.104
         </a>{' '}
