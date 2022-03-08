@@ -289,14 +289,14 @@ jobs:
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
 
-            if [ "$ENVIRONMENT" == "master" ]	
-            then	
-              ENVIRONMENT=mint	
-            fi	
+            if [ "$ENVIRONMENT" == "master" ]
+            then
+              ENVIRONMENT=mint
+            fi
 
-            case $ENVIRONMENT in	
-              mint)	
-                export ASSET_BUCKET_NAME_PREFIX=mint.ussba.io	
+            case $ENVIRONMENT in
+              mint)
+                export ASSET_BUCKET_NAME_PREFIX=mint.ussba.io
                 ;;
               demo)
                 export ASSET_BUCKET_NAME_PREFIX=demo.ussba.io
