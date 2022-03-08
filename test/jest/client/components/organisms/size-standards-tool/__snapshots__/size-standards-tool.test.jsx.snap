@@ -28,7 +28,7 @@ exports[`SizeStandardsTool EmployeesScreen should match snapshot 1`] = `
     />
   </div>
   <p>
-    This should be the average number of full-time or part-time 
+    This should be the average number of full-time or part-time
     <br />
     employees over the last 12 months.
   </p>
@@ -56,7 +56,7 @@ exports[`SizeStandardsTool NaicsScreen should match snapshot 1`] = `
           >
             <p>
               <span>
-                 
+
               </span>
             </p>
             <p>
@@ -124,7 +124,7 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
     >
       <p>
         Learn more about
-         
+
         <a
           href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards"
           target="_blank"
@@ -151,7 +151,7 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             >
               ,
             </span>
-             SW 
+             SW
             <br />
             Washington
             <span
@@ -191,7 +191,7 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
     >
       <p>
         Find out
-         
+
         <a
           href="/contracting"
           target="_blank"
@@ -218,7 +218,7 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             >
               ,
             </span>
-             SW 
+             SW
             <br />
             Washington
             <span
@@ -271,7 +271,7 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
     <label
       htmlFor="revenue"
     >
-      Three-year Average
+      Five-year Average
     </label>
     <input
       id="revenue"
@@ -286,8 +286,8 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
     />
   </div>
   <p>
-    Your average annual receipts/revenue is generally calculated as your total receipts/revenue or total income plus cost of goods sold (including all affiliates, if any) over the latest completed three (3) fiscal years divided by three (3). See
-     
+    Your average annual receipts/revenue is generally calculated as your total receipts/revenue or total income plus cost of goods sold (including all affiliates, if any) over the latest completed five (5) fiscal years divided by five (5). See
+
     <a
       href="https://www.law.cornell.edu/cfr/text/13/121.104"
       rel="noopener"
@@ -295,7 +295,7 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
     >
       13 CFR 121.104
     </a>
-     
+
     for details.
   </p>
 </div>
