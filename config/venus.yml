@@ -1,15 +1,19 @@
-developmentOptions:
-    client:
-        logging: true
+# developmentOptions:
+#     client:
+#         logging: true
 googleAnalytics:
     enabled: true
     accountId: UA-96147768-1
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-WN49BK2
     debug: false
+miscapi:
+    endpoint: exj89x1ga1.execute-api.us-east-1.amazonaws.com/latest/
 server:
     fqdn: venus.ussba.io
 features:
+    localAssistMenuHeight: true
+    geoLocator: false
     showSbic: false
     urlRedirect:
         tableName: UrlToNodeVenus
@@ -17,6 +21,8 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectVenus
+    breakEvenCalculator:
+        enabled: true
 content:
     cloudfront: d296wys6s7bkek.cloudfront.net
     useD8EventsBackend: false

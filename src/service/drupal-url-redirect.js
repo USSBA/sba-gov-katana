@@ -1,20 +1,23 @@
 const config = require('config')
-const aws = require('aws-sdk')
+// const aws = require('aws-sdk')
+const { DynamoDB } = require('@aws-sdk/client-dynamodb')
 
-const dynamodb = new aws.DynamoDB({
+const dynamodb = new DynamoDB({
   apiVersion: '2012-10-08',
   region: 'us-east-1'
 })
 
 function fetchNewUrlByOldUrl(oldUrl) {
   const params = mapUrlRedirectQueryParameters(oldUrl)
-  return dynamodb
-    .getItem(params)
-    .promise()
-    .then(response => {
-      const url = response.Item ? response.Item.NewUrl.S : null
-      return url
-    })
+  return (
+    dynamodb
+      .getItem(params)
+      // .promise()
+      .then(response => {
+        const url = response.Item ? response.Item.NewUrl.S : null
+        return url
+      })
+  )
 }
 
 /*eslint-disable id-length*/
