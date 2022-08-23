@@ -23,12 +23,6 @@ const DocumentLookupPage = props => (
 const ArticleLookupPage = props => (
   <Async componentProps={props} load={import('./pages/article-lookup-page/article-lookup-page.jsx')} />
 )
-const SizeStandardsToolPage = props => (
-  <Async
-    componentProps={props}
-    load={import('./pages/size-standards-tool-page/size-standards-tool-page.jsx')}
-  />
-)
 const ResourceCenterProfilePage = props => (
   <Async
     componentProps={props}
@@ -126,10 +120,6 @@ const mainRouteProperties = [
   {
     component: ArticleLookupPage,
     path: '/article'
-  },
-  {
-    component: SizeStandardsToolPage,
-    path: '/size-standards'
   },
   {
     component: ResourceCenterProfilePage,
